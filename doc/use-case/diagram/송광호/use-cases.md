@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Use-Case
 
 ## Actors
