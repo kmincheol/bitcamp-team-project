@@ -30,9 +30,9 @@
 ### [아이디찾기_본인인증성공](uc013-FindId_AuthenticationSuccess.md)(회원)
 - 회원이 휴대폰 인증에 성공하여 아이디를 찾는 것.
 
-### [비밀번호찾기_본인인증](uc014-FindPassword_Authentication)(회원)
+### [비밀번호찾기_본인인증](uc014-FindPassword_Authentication.md)(회원)
 - 회원이 비밀번호를 찾기위해 휴대폰 인증을 하는 것.
 
-### [비밀번호찾기_본인인증성공](uc015-FindPassword_AuthenticationSuccess)(회원)
+### [비밀번호찾기_본인인증성공](uc015-FindPassword_AuthenticationSuccess.md)(회원)
 - 회원이 휴대폰 인증에 성공하여 비밀번호를 찾는 것.
 
