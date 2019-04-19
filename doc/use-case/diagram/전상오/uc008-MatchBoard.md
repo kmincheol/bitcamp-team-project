@@ -54,7 +54,7 @@
 
 ## UI 프로토타입
 
-![매치보드조회](.images/MatchBoard.jpg)
+![매치보드조회](./images/MatchBoard.jpg)
 ![매치보드_팀정보](./images/TeamClick.jpg)
-![검색_에러](./images/MatchBoardSearchError.jpg)
+![검색_에러](./images/SearchError.jpg)
 
