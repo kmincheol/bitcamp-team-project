@@ -36,4 +36,16 @@
 ### [비밀번호찾기_본인인증성공](uc015-FindPassword_AuthenticationSuccess.md)(회원)
 - 회원이 휴대폰 인증에 성공하여 비밀번호를 찾는 것.
 
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
+<!-- 
+### 회원정보관리(MemberManagement)(관리자)
+- 회원정보를 등록, 조회, 수정, 삭제하는 것.
+
+### 팀관리(TeamManagement)(관리자)
+- 팀을 등록, 조회, 수정, 삭제하는 것.
+
+### 게시물관리(BoardManagemnet)(관리자)
+- 게시물을 등록, 조회, 수정, 삭제하는 것.
+
+### 고객문의관리(CustomerEnquiryManagement)(관리자)
+- 고객이 등록한 질문 및 개선사항을 등록, 조회, 수정, 삭제하는 것.
+-->
