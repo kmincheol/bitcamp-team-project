@@ -39,17 +39,17 @@
 ## UI 프로토타입
 
 ### 비밀번호찾기_인증
-![비밀번호찾기_본인인증](./images/16_비밀번호찾기_본인인증.jpg)
+![비밀번호찾기_본인인증](./images/uc014-findpassword_authentication.jpg)
 
 ### 비밀번호찾기_본인인증_인증예시
-![비밀번호찾기_본인인증_인증예시](./images/17_비밀번호찾기_본인인증_인증예시.jpg)
+![비밀번호찾기_본인인증_인증예시](./images/uc014-findpassword_authentication_ex.jpg)
 
-### 비밀번호찾기_본인인증_예외(아이디 없음)
-![비밀번호찾기_본인인증_예외1](./images/18_비밀번호찾기_본인인증_예외1.jpg)
+### 비밀번호찾기_본인인증_아이디 없음
+![비밀번호찾기_본인인증_아이디 없음](./images/uc014-findpassword_authentication_no_id.jpg)
 
-### 비밀번호찾기_본인인증_예외(인증실패)
-![비밀번호찾기_본인인증_예외2](./images/19_비밀번호찾기_본인인증_예외2.jpg)
+### 비밀번호찾기_본인인증_인증실패
+![비밀번호찾기_본인인증_인증실패](./images/uc014-findpassword_authentication_fail.jpg)
 
-### 비밀번호찾기_본인인증_예외(정보불일치)
-![비밀번호찾기_본인인증_예외3](./images/20_비밀번호찾기_본인인증_예외3.jpg)
+### 비밀번호찾기_본인인증_정보불일치
+![비밀번호찾기_본인인증_정보불일치](./images/uc014-findpassword_authentication_info_mismatch.jpg)
 
