@@ -88,6 +88,6 @@
 
 ## UI 프로토타입
 
-![개인정보 창](./images/uc011-my_profile.png)
+![개인정보 창](./images/uc011-detail.png)
 
-![비밀번호 변경 창](./images/uc011-password_change.png)
+![비밀번호 변경 창](./images/uc011-update_password.png)
