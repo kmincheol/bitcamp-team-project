@@ -38,5 +38,6 @@
 ![경기장_상세보기](./images/CreateMatchGround.jpg)
 ![매치등록_미리보기](./images/CreateMatchMirror.jpg)
 ![매치등록완료](./images/CreatedMatch.jpg)
+![매치_필수항목_미선택](./images/necessaryNotNull.jpg)
 
 

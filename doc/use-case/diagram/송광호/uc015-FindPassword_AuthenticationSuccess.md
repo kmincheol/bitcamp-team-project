@@ -34,9 +34,9 @@
 ## UI 프로토타입
 
 ### 비밀번호찾기_본인인증성공
-![비밀번호찾기_본인인증성공](./images/21_비밀번호찾기_본인인증성공.jpg)
+![비밀번호찾기_본인인증성공](./images/uc014-findpassword_authentication_success.jpg)
 
 ### 비밀번호찾기_본인인증성공_전송완료
-![비밀번호찾기_본인인증성공_전송완료](./images/22_비밀번호찾기_본인인증성공_전송완료.jpg)
+![비밀번호찾기_본인인증성공_전송완료](./images/uc014-findpassword_authentication_transmission.jpg)
 
 
