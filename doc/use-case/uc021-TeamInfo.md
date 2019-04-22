@@ -50,11 +50,11 @@
 ## UI 프로토타입
 
 ### 팀 정보 
-![팀정보](./images/myteaminfo.jpg)
+![팀정보](./images/uc021-detail.jpg)
     
  
 ### 경고창
-![경고창](./images/teaminfowarning.jpg)  
+![경고창](./images/uc021-warning.jpg)  
     
     
     

@@ -29,7 +29,7 @@
 ## UI 프로토타입
 
 ### 팀 정보 수정   
-![팀정보수정](./images/myteamrevise.jpg)
+![팀정보수정](./images/uc022-update.jpg)
 
     
     

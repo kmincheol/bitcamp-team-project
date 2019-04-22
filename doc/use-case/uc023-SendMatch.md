@@ -37,10 +37,10 @@
 ## UI 프로토타입
 
 ### 보낸 매치 
-![보낸매치](./images/sendmatch.jpg)
+![보낸매치](./images/uc023-list.jpg)
     
-###보낸 매치 경고창   
-![보낸매치경고창](./images/sendmatchwarning.jpg)
+### 보낸 매치 경고창   
+![보낸매치경고창](./images/uc023-warning.jpg)
  
 
     

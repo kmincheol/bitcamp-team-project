@@ -52,8 +52,15 @@
 
 ## UI 프로토타입
 
-![매치보드조회](./images/MatchBoard.jpg)
-![매치보드_팀정보](./images/TeamClick.jpg)
-![검색_지역_미선택에러](./images/LocalNotNull.jpg)
-![검색_유형_미선택에러](./images/TypeNotNull.jpg)
+### 매치보드조회
+![매치보드조회](./images/uc031-list.jpg)
+
+### 매치보드_팀정보
+![매치보드_팀정보](./images/uc031-detail_team_info.jpg)
+
+### 검색_지역_미선택에러
+![검색_지역_미선택에러](./images/uc031-search_local_not_null.jpg)
+
+### 검색_유형_미선택에러
+![검색_유형_미선택에러](./images/uc031-search_type_not_null.jpg)
 

@@ -49,7 +49,11 @@
 
 ## UI 프로토타입
 
-### 매치 상세 정보 조회하기
-![매치_상세_정보_조회](./images/MatchManagement.jpg)
-![매치_삭제하기](./images/DeleteMatch.jpg)
-![매치_변경하기](./images/ChangeMatch.jpg)
+### 매치_상세정보_조회하기
+![매치_상세정보_조회하기](./images/uc033-detail.jpg)
+
+### 매치_변경하기
+![매치_변경하기](./images/uc033-change.jpg)
+
+### 매치_삭제하기
+![매치_삭제하기](./images/uc033-delete.jpg)

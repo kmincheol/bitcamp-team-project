@@ -33,10 +33,20 @@
 ### 
 
 ## UI 프로토타입
-![매치등록하기](./images/CreateMatch.jpg)
-![경기장_상세보기](./images/CreateMatchGround.jpg)
-![매치등록_미리보기](./images/CreateMatchMirror.jpg)
-![매치등록완료](./images/CreatedMatch.jpg)
-![매치_필수항목_미선택](./images/necessaryNotNull.jpg)
+
+### 매치등록하기
+![매치등록하기](./images/uc032-create.jpg)
+
+### 경기장_상세보기
+![경기장_상세보기](./images/uc032-create_ground_detail.jpg)
+
+### 매치등록_미리보기
+![매치등록_미리보기](./images/uc032-create_mirror.jpg)
+
+### 매치등록완료
+![매치등록완료](./images/uc032-create_success.jpg)
+
+### 매치_필수항목_미선택
+![매치_필수항목_미선택](./images/uc032-create_necessary_not_null.jpg)
 
 

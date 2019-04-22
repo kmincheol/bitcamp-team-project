@@ -37,10 +37,10 @@
 ## UI 프로토타입
 
 ### 받은 매치 
-![받은매치](./images/receivematch.jpg)
+![받은매치](./images/uc024-list.jpg)
     
-###받은 매치 경고창   
-![받은매치경고창](./images/receivematchwarning.jpg)
+### 받은 매치 경고창   
+![받은매치경고창](./images/uc024-warning.jpg)
  
 
      
