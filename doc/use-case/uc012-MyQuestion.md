@@ -1,4 +1,4 @@
-# uc008 - 나의 질문 내역(My Question)
+# uc012 - 나의 질문 내역(My Question)
  - 질문내역을 조회 하는 유스케이스이다.
  
 ## 주 액터(Primary Actor)

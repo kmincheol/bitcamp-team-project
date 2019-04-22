@@ -1,4 +1,4 @@
-# uc007 - 개인정보(My Profile)
+# uc011 - 개인정보(My Profile)
  - 개인정보를 조회, 변경, 삭제 하는 유스케이스이다.
  
 ## 주 액터(Primary Actor)

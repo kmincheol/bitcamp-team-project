@@ -1,4 +1,4 @@
-# uc022 - 팀관리(TeamManagement)
+# uc042 - 팀관리(TeamManagement)
 - 팀정보를 조회, 변경, 삭제하는 것.
 
 ## 주 액터(Primary Actor)

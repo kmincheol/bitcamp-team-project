@@ -1,4 +1,4 @@
-# uc041 - 팀 정보(TeamInfo)
+# uc021 - 팀 정보(TeamInfo)
 - 팀 정보를 조회 하고 팀 원을 수정하는 유스케이스이다.
 
 ## 주 액터(Primary Actor)보

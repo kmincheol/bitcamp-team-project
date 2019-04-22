@@ -1,4 +1,4 @@
-# uc025 - 고객문의관리(CustomerEnquiryManagement)
+# uc045 - 고객문의관리(CustomerEnquiryManagement)
 - 고객이 등록한 질문 및 개선사항을 조회, 답변, 삭제하는 것.
 
 ## 주 액터(Primary Actor)

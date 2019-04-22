@@ -1,4 +1,4 @@
-# uc014 - 비밀번호찾기_본인인증(FindPassword)
+# uc006 - 비밀번호찾기_본인인증(FindPassword)
 - 회원이 로그인을 하기위해 비밀번호를 찾는 것.
 
 ## 주 액터(Primary Actor)

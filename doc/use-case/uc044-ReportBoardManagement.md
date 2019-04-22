@@ -1,4 +1,4 @@
-# uc024 - 신고게시판관리(ReportBoardManagement)
+# uc044 - 신고게시판관리(ReportBoardManagement)
 - 신고게시물을 조회, 삭제, 경고하는것.
 
 ## 주 액터(Primary Actor)

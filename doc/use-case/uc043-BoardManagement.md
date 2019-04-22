@@ -1,4 +1,4 @@
-# uc023 - 게시물관리(BoardManagement)
+# uc043 - 게시물관리(BoardManagement)
 - 게시물을 조회,삭제하는 것.
 
 ## 주 액터(Primary Actor)

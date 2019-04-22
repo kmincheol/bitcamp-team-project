@@ -1,4 +1,4 @@
-# uc043 - 보낸매치(SendMatch)
+# uc023 - 보낸매치(SendMatch)
 - 보낸 매치를 관리하는 유스케이스이다.
 
 ## 주 액터(Primary Actor)

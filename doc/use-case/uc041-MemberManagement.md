@@ -1,4 +1,4 @@
-# uc021 - 회원정보관리(MemberManagement)
+# uc041 - 회원정보관리(MemberManagement)
 - 회원정보를 조회, 변경, 삭제, 경고하는 것.
 
 ## 주 액터(Primary Actor)
