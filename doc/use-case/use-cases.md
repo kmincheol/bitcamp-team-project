@@ -3,6 +3,8 @@
 ## Actors
 
 <img src="./diagram/Actor.png" width="300"></img>
+
+## UML
 <img src="./diagram/UML.png" width="300"></img>
 
 ### 비회원
