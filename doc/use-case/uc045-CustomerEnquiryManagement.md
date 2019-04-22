@@ -43,19 +43,19 @@
 ## UI 프로토타입
 
 ### 고객문의관리_목록
-![고객문의관리_목록](./images/uc025-list.jpg)
+![고객문의관리_목록](./images/uc045-list.jpg)
 
 ### 고객문의관리_상세조회
-![고객문의관리_상세조회](./images/uc025-detail.jpg)
+![고객문의관리_상세조회](./images/uc045-detail.jpg)
 
 ### 고객문의관리_상세조회_답변하기
-![고객문의관리_상세조회_답변하기](./images/uc025-detail_answer.jpg)
+![고객문의관리_상세조회_답변하기](./images/uc045-detail_answer.jpg)
 
 ### 고객문의관리_상세조회_답변성공
-![고객문의관리_상세조회_답변성공](./images/uc025-detail_answer_success.jpg)
+![고객문의관리_상세조회_답변성공](./images/uc045-detail_answer_success.jpg)
 
 ### 고객문의관리_삭제확인
-![고객문의관리_삭제확인](./images/uc025-delete_check.jpg)
+![고객문의관리_삭제확인](./images/uc045-delete_check.jpg)
 
 ### 고객문의관리_삭제성공
-![고객문의관리_삭제성공](./images/uc025-delete_success.jpg)
+![고객문의관리_삭제성공](./images/uc045-delete_success.jpg)

@@ -50,25 +50,25 @@
 ## UI 프로토타입
 
 ### 신고게시판관리
-![신고게시판관리](./images/uc024-list.jpg)
+![신고게시판관리](./images/uc044-list.jpg)
 
 ### 신고게시판_상세조회
-![신고게시판_상세조회](./images/uc024-detail.jpg)
+![신고게시판_상세조회](./images/uc044-detail.jpg)
 
 ### 신고게시판_상세조회_삭제확인
-![신고게시판_상세조회_삭제확인](./images/uc024-detail_delete_check.jpg)
+![신고게시판_상세조회_삭제확인](./images/uc044-detail_delete_check.jpg)
 
 ### 신고게시판_상세조회_삭제성공
-![신고게시판_상세조회_삭제성공](./images/uc024-detail_delete_success.jpg)
+![신고게시판_상세조회_삭제성공](./images/uc044-detail_delete_success.jpg)
 
 ### 신고게시판_삭제확인
-![신고게시판_삭제확인](./images/uc024-delete_check.jpg)
+![신고게시판_삭제확인](./images/uc044-delete_check.jpg)
 
 ### 신고게시판_삭제성공
-![신고게시판_삭제성공](./images/uc024-delete_success.jpg)
+![신고게시판_삭제성공](./images/uc044-delete_success.jpg)
 
 ### 신고게시판_경고확인
-![신고게시판_경고확인](./images/uc024-alert_check.jpg)
+![신고게시판_경고확인](./images/uc044-alert_check.jpg)
 
 ### 신고게시판_경고성공
-![신고게시판_경고성공](./images/uc024-alert_success.jpg)
+![신고게시판_경고성공](./images/uc044-alert_success.jpg)

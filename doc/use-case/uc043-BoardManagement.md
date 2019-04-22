@@ -41,16 +41,16 @@
 ## UI 프로토타입
 
 ### 게시물관리_목록
-![게시물관리_목록](./images/uc023-list.jpg)
+![게시물관리_목록](./images/uc043-list.jpg)
 
 ### 게시물관리_상세조회
-![게시물관리_상세조회](./images/uc023-detail.jpg)
+![게시물관리_상세조회](./images/uc043-detail.jpg)
 
 ### 게시물_변경성공
-![게시물_변경성공](./images/uc023-detail_success.jpg)
+![게시물_변경성공](./images/uc043-detail_success.jpg)
 
 ### 게시물_삭제확인
-![게시물_삭제확인](./images/uc023-delete_check.jpg)
+![게시물_삭제확인](./images/uc043-delete_check.jpg)
 
 ### 게시물_삭제성공
-![게시물_삭제성공](./images/uc023-delete_success.jpg)
+![게시물_삭제성공](./images/uc043-delete_success.jpg)

@@ -47,20 +47,20 @@
 ## UI 프로토타입
 
 ### 로그인
-![로그인](./images/uc011-login.jpg)
+![로그인](./images/uc003-login.jpg)
 
 ### 로그인_페이스북
-![로그인_페이스북](./images/uc011-login_facebook.jpg)
+![로그인_페이스북](./images/uc003-login_facebook.jpg)
 
 ### 로그인_구글
-![로그인_구글](./images/uc011-login_google.jpg)
+![로그인_구글](./images/uc003-login_google.jpg)
 
 ### 로그인_카카오
-![로그인_카카오](./images/uc011-login_kakao.jpg)
+![로그인_카카오](./images/uc003-login_kakao.jpg)
 
 ### 로그인_회원정보미입력
-![로그인_회원정보미입력](./images/uc011-login_info_not_entered.jpg)
+![로그인_회원정보미입력](./images/uc003-login_info_not_entered.jpg)
 
 ### 로그인_회원정보불일치
-![로그인_회원정보불일치](./images/uc011-login_info_mismatch.jpg)
+![로그인_회원정보불일치](./images/uc003-login_info_mismatch.jpg)
 

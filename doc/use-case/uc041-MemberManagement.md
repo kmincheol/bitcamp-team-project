@@ -52,28 +52,28 @@
 ## UI 프로토타입
 
 ### 회원정보관리_목록
-![회원정보관리_목록](./images/uc021-list.jpg)
+![회원정보관리_목록](./images/uc041-list.jpg)
 
 ### 회원정보관리_상세조회
-![회원정보관리_상세조회](./images/uc021-detail.jpg)
+![회원정보관리_상세조회](./images/uc041-detail.jpg)
 
 ### 회원정보관리_상세조회_변경확인
-![회원정보관리_상세조회_변경확인](./images/uc021-update_check.jpg)
+![회원정보관리_상세조회_변경확인](./images/uc041-update_check.jpg)
 
 ### 회원정보관리_상세조회_변경실패
-![회원정보관리_상세조회_변경실패](./images/uc021-update_fail.jpg)
+![회원정보관리_상세조회_변경실패](./images/uc041-update_fail.jpg)
 
 ### 회원정보관리_변경성공
-![회원정보관리_변경성공](./images/uc021-update_success.jpg)
+![회원정보관리_변경성공](./images/uc041-update_success.jpg)
 
 ### 회원정보관리_삭제확인
-![회원정보관리_삭제확인](./images/uc021-delete_check.jpg)
+![회원정보관리_삭제확인](./images/uc041-delete_check.jpg)
 
 ### 회원정보관리_삭제성공
-![회원정보관리_삭제성공](./images/uc021-delete_success.jpg)
+![회원정보관리_삭제성공](./images/uc041-delete_success.jpg)
 
 ### 회원정보관리_경고확인
-![회원정보관리_경고확인](./images/uc021-alert_check.jpg)
+![회원정보관리_경고확인](./images/uc041-alert_check.jpg)
 
 ### 회원정보관리_경고성공
-![회원정보관리_경고성공](./images/uc021-alert_success.jpg)
+![회원정보관리_경고성공](./images/uc041-alert_success.jpg)

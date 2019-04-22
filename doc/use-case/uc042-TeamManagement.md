@@ -44,22 +44,22 @@
 ## UI 프로토타입
 
 ### 팀관리_목록
-![팀관리_목록](./images/uc022-list.jpg)
+![팀관리_목록](./images/uc042-list.jpg)
 
 ### 팀관리_상세조회
-![팀관리_상세조회](./images/uc022-detail.jpg)
+![팀관리_상세조회](./images/uc042-detail.jpg)
 
 ### 팀관리_상세조회_변경확인
-![팀관리_상세조회_변경확인](./images/uc022-update_check.jpg)
+![팀관리_상세조회_변경확인](./images/uc042-update_check.jpg)
 
 ### 팀관리_상세조회_변경실패
-![팀관리_상세조회_변경실패](./images/uc022-update_fail.jpg)
+![팀관리_상세조회_변경실패](./images/uc042-update_fail.jpg)
 
 ### 팀관리_변경성공
-![팀관리_변경성공](./images/uc022-update_success.jpg)
+![팀관리_변경성공](./images/uc042-update_success.jpg)
 
 ### 팀관리_삭제확인
-![팀관리_삭제확인](./images/uc022-delete_check.jpg)
+![팀관리_삭제확인](./images/uc042-delete_check.jpg)
 
 ### 팀관리_삭제성공
-![팀관리_삭제성공](./images/uc022-delete_success.jpg)
+![팀관리_삭제성공](./images/uc042-delete_success.jpg)
