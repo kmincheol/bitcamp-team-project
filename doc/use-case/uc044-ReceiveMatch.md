@@ -1,6 +1,5 @@
-# UC003 - 받은매치(ReceiveMatch)
-
-받은 매치를 관리하는 유스케이스이다
+# uc044 - 받은매치(ReceiveMatch)
+- 받은 매치를 관리하는 유스케이스이다.
 
 ## 주 액터(Primary Actor)
 

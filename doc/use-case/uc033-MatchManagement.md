@@ -1,6 +1,5 @@
-# UC002 - 나의 매치 현황(MatchManagement)
-
-등록한 매치를 조회, 변경, 삭제 하는 유스케이스이다.
+# uc033 - 나의 매치 현황(MatchManagement)
+- 등록한 매치를 조회, 변경, 삭제 하는 유스케이스이다.
 
 ## 주 액터(Primary Actor)
 

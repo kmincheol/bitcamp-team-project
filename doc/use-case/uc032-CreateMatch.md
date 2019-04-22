@@ -1,6 +1,5 @@
-# UC002 - 매치등록 (CreateMatch)
-
-매치를 등록하는 유스케이스이다.
+# uc032 - 매치등록 (CreateMatch)
+- 매치를 등록하는 유스케이스이다.
 
 ## 주 액터(Primary Actor)
 
