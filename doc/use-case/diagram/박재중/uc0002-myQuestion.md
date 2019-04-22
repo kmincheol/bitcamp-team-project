@@ -36,4 +36,4 @@
 
 ## UI 프로토타입
 
-![개인정보](./myquestion.png)
+![개인정보](./image/myquestion.png)
