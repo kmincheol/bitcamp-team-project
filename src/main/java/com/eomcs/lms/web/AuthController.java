@@ -25,6 +25,11 @@ public class AuthController {
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
   
+  @GetMapping("findPwd16")
+  public void findPwd16() {
+    
+  }
+  
   @GetMapping("form")
   public void form(
       @RequestHeader(value="Referer",required=false) String refererUrl,
