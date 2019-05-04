@@ -9,6 +9,7 @@ temp/
 Debug/
 Release/
 
+package-lock.json
 .DS_Store
 .classpath
 .project
@@ -23,3 +24,4 @@ Release/
 *.tar.gz
 *.rar
 hs_err_pid*
+
