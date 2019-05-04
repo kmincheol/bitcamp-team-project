@@ -17,7 +17,7 @@
 <div class="container">
   <h1>비밀번호 찾기</h1>
 
-  <hr />
+  <hr class="hrblack"/>
 
   <p>비밀번호를 초기화합니다.</p>
   <p>초기화된 <strong>임시 비밀번호</strong>를 받으실 방법을 선택하세요.</p>
@@ -30,18 +30,18 @@
     </tr>
     <tr>
       <td>휴대폰</td>
-      <td id="fpradio">휴대폰정보 <input type="radio" name="check-method" value="hp"/></td>
+      <td class="fpradio">휴대폰정보 <input type="radio" name="check-method" value="hp"/></td>
       
     </tr>
     <tr>
       <td>이메일</td>
-      <td id="fpradio">이메일정보 <input type="radio" name="check-method" value="email"/></td>
+      <td class="fpradio">이메일정보 <input type="radio" name="check-method" value="email"/></td>
     </tr>
   </table>
   
   <hr />
-  <button class="btn btn-outline-secondary" id="fpsend" 
-          type="button">임시비밀번호 발송</button>
+  <a class="btn btn-outline-secondary fpsend" type="button" 
+     href="findPwd17.jsp">임시비밀번호 발송</a>
 </div><!-- .container -->
 
 <jsp:include page="../footer.jsp"/>
@@ -50,7 +50,7 @@
 <script>
 "use strict"
 
-var send = document.querySelector("#fpsend");
+var send = document.querySelector(".fpsend");
 
 send.addEventListener("click", () => {
     var str = "초기화된 임시비밀번호가 전송되었습니다!";

@@ -30,6 +30,11 @@ public class AuthController {
     
   }
   
+  @GetMapping("findPwd17")
+  public void findPwd17() {
+    
+  }
+  
   @GetMapping("form")
   public void form(
       @RequestHeader(value="Referer",required=false) String refererUrl,

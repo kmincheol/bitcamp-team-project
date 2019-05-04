@@ -4,15 +4,16 @@ div.container {
       text-align: center;
       margin-top: 90px;
     }
-    h1 {
-      font-size: 20px;
-      font-weight: bold;
+    div.container > h1 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 18px;
+      margin: 0 0 4px 0;
     }
     p:nth-child(3) {
       font-weight: bold;
-    }
-    p {
-      font-size: 14px;
+      margin-top: 30px;
     }
     .table {
       width: 630px;
@@ -27,6 +28,7 @@ div.container {
     }
     td {
       height: 70px;
+      font-size: 14px;
     }
     td:first-child {
       width: 210px;
@@ -38,7 +40,7 @@ div.container {
       text-align: left;
       padding-left: 40px;
     }
-    #fpradio {
+    .fpradio {
       padding-bottom: 22px;
     }
     td input {
@@ -47,10 +49,15 @@ div.container {
       height: 20px;
       position: relative;
       top: 5px;
-      left: 280px;
+      left: 275px;
     }
-    #fpsend {
+    .fpsend {
       margin-top: 50px;
       border-radius: 0;
       font-weight: bold;
+    }
+    .hrblack {
+      border: 0;
+      height: 2px;
+      background-color: black;
     }
