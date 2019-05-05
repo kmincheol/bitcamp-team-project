@@ -9,7 +9,7 @@
     수업 관리 웹 애플리케이션
   </description>
 
-  <display-name>java-web-project</display-name>
+  <display-name>bitcamp-team-project</display-name>
 
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

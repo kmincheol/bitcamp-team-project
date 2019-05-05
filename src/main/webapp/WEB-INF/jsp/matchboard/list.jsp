@@ -6,22 +6,22 @@
 <head>
   <title>매치보드</title>
    <jsp:include page="../commonCss.jsp"/>
+   <jsp:include page="../header.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
 <body>
 
-  <jsp:include page="../header.jsp" />
+  
 
   <div class="container">
-  
     <h2>등록된 <b>매치 글</b>을 검색하여 찾거나</h2>
     <h2>직접 매치글을 등록할 수 있습니다.</h2>
     <br>
     <p>원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나</p>
     <p><b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.</p>
-    
-    <table class="table table-bordered">
+   
+    <table id="match_table" class="table table-bordered">
   <thead>
     <tr>
     <th scope="row">날짜 선택</th>
@@ -113,18 +113,67 @@
     </tr>
     <tr>
       <th scope="row">키워드</th>
-      <td></td>
+      <td>
+      	<input type="text">
+      </td>
     </tr>
   </tbody>
+   <jsp:include page="sideBar.jsp"/>
 </table>
-    
     <div class="button">
       <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">검색</a>
       <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">등록</a>
-    </div>
+	</div>
+	
+	<br><br><br><br><br>
+	<div>
+		<table id="subtable" class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col"></th>
+		      <th id="subtitle" scope="col" width="100%">신청 가능 매치</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row"></th>
+		      <td>
+		      	<ul>
+		      		<li></li>
+		      		<li></li>
+		      		<li></li>
+		      		<li></li>
+		      	</ul>
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="row"></th>
+		      <td>
+		      	<ul>
+		      		<li></li>
+		      		<li></li>
+		      		<li></li>
+		      		<li></li>
+		      	</ul>
+		      </td>
+		    </tr>
+		    <tr>
+		      <th scope="row"></th>
+		      <td>
+		      	<ul>
+		      		<li></li>
+		      		<li></li>
+		      		<li></li>
+		      		<li></li>
+		      	</ul>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>
+	
+	
   </div> <!-- .container -->
-  
-  
-  
+
 </body>
 </html>

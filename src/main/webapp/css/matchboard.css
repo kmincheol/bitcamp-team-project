@@ -1,33 +1,61 @@
 @charset "UTF-8";
 
 h2 {
-	text-align: center;
+  text-align: center;
 }
 
 p {
-	text-align: center;
+  text-align: center;
 }
 
 div.button
 
 {
-
-   margin: auto;
-
-   width: 50%;
+width: 400px; 
+position: absolute; 
+left: 55%; 
+margin-left: -200px;
 
 }
 
+#match_table {
+	width: 90%;
+	height: 50%;
+}
+
+#sub_title {
+	color: white;
+}
+
+#sub1 {
+	color: white;
+}
  
-
-div.button input
-
-{
-
-   padding: 5px;
-
-   width: 100%;
-
-   font-size: 18px;
-
+ 
+#content {
+   width: 600px;
+   padding: 20px;
+   margin-bottom: 20px;
+   float: left;
+   border-bottom-color: red;
 }
+
+#subtable {
+	text-align: center;
+}
+
+
+ #sidebar-right {
+  background-color: black;
+  font-size: 1.2em;
+  color: white;
+  width: 180px;
+  height: 180px; 
+  margin-left: 710px;
+  min-height: 550px;
+  position: absolute; 
+}
+
+hr style="border: solid 10px red;"
+
+

@@ -13,6 +13,10 @@ public class MatchBoardController {
 	  return "matchboard/list";
   }
 
+  @GetMapping("sideBar")
+  public String sideBar() {
+	  return "matchboard/sideBar";
+  }
 }
 
 
