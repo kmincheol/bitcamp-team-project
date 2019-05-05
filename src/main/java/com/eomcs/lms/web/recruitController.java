@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class recruitController {
   
   
-  @GetMapping("/recruit")
-  public String team() {
+  @RequestMapping("/recruit")
+  public String teamrecruit() {
    return "recruit/recruit_form";
   }
   
-  @GetMapping("/team_recruit")
+  @RequestMapping("/team_recruit")
   public String want_team() {
    return "recruit/team_recruit_form";
+  }
+  
+  @RequestMapping("/recruit_view")
+  public String recruit_view() {
+	  return "recruit/recruit_form_view";
   }
   
 }

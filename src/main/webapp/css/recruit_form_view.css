@@ -2,7 +2,6 @@
 
 body {
   font-size: small; 
-  text-align: center; 
 }
 
 h2 {
@@ -11,33 +10,19 @@ h2 {
    text-align: center; 
 }
 
-h6 {
-	height: 20px;
-  /* border: 1px solid red; */ 
+.button2 {
+   margin: auto;
+   width: 50%;
    text-align: center; 
-}
-
-div button {
-  margin-left: 110px; 
-  text-align: center
-}
-
-
-div.bit-list {
-  min-height: 200px;
 }
 
 div.container {
   height: 100px;
   width: 800px;
+  text-content: center;
 }
 
 #bit-login-state {
   margin: 0px 10px;
-}
-
-#coment {
-  height : 200px;
-  display: inline;
 }
 
