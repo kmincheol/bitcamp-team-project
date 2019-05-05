@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+h2 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+div.button
+
+{
+
+   margin: auto;
+
+   width: 50%;
+
+}
+
+ 
+
+div.button input
+
+{
+
+   padding: 5px;
+
+   width: 100%;
+
+   font-size: 18px;
+
+}
