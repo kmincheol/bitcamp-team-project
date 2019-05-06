@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+body {
+  font-size: small; 
+}
+
+h2 {
+ /* height: 30px; */
+  /* border: 1px solid red; */ 
+   text-align: center; 
+}
+
+.button2 {
+   margin: auto;
+   width: 50%;
+   text-align: center; 
+}
+
+div.container {
+  height: 100px;
+  width: 800px;
+  text-content: center;
+}
+
+#id_loc {
+	width: 150px;
+	background:#ffff88; 
+	color:#3b3b3b;
+}
+
+#contentsBox {
+	width: 500px;
+}
+
+
+
+#bit-login-state {
+  margin: 0px 10px;
+}
+

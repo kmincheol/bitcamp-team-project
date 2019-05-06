@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-  font-size: small;
+  font-size: small; 
   text-align: center; 
 }
 
@@ -36,6 +36,8 @@ div.container {
   margin: 0px 10px;
 }
 
-
-
+#coment {
+  height : 200px;
+  display: inline;
+}
 
