@@ -114,7 +114,6 @@
                     <span class="terms_choice">(선택)</span>
                   </label>
                 </span>
-                </div>
               </li>
             </ul>
           </div><!-- .terms_p -->
