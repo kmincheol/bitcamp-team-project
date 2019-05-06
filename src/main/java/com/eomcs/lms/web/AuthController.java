@@ -25,6 +25,12 @@ public class AuthController {
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
   
+  
+  @GetMapping("signUp1")
+  public void signUp1() {
+    
+  }
+  
   @GetMapping("findPwd16")
   public void findPwd16() {
     
