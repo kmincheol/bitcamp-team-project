@@ -64,41 +64,44 @@
 
 
     
-        <table class="board_view">
+                
+                    <p><b>댓글수자리  | 조회수자리</b></p>
+              
+              
+        <table class="comment_view">
             <tbody>
-                <tr>
-                    <th>댓글수자리  | 조회수자리</th>
-                    <td>
-                    </td>
-                </tr>
                    <tr>
-                   <td style="background:#f7f7f7; color:#3b3a3a;" >
-                 아이디자리입니다
-                   <p style="font-size: 8px;" >댓글날짜입니다.</p>
-                    </td>
-                    <td>
-                     <input type="hidden" value="33333" id="com_IDX">
-                     <div id="com_Div"><input type="hidden" id="com_CON">댓글내용?</div>
-                     <div align="right">
-                      <a href="#" class="btn">삭제</a>
-                      <a href="#" class="btn">수정</a>
-                     </div>                            
-                      </td>
-                     </tr>
-
+                   
+                   <td id="id_loc" >
+                   아이디자리입니다 <p style="font-size: 8px;" >댓글날짜입니다.</p>
+                   </td>
+                   
+                   <td>
+                   <input type="hidden" value="33333" id="com_IDX">
+                   <div id="contentsBox">
+                   <input type="hidden" id="com_CON">댓글내용자리입니다 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
+                   <div align="right">
+                   <a href="#" class="btn">삭제</a>
+                   <a href="#" class="btn">수정</a>
+                   </div>                            
+                   </td>
+                   
+                   </tr>
+                   
                 <tr>
                     <td colspan="2">
                         <div>
                             <textarea  rows="5" cols="130" name="COM_CONTENTS" ></textarea>
-                            <p align="right" ><a href="#" id="com_write" class="btn">등록</a></p>
+                             <p align="right" ><button type="button" id="comment_sumit" class="btn btn-primary">등록</button></p>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     
+    
         </form>
-        
+            
   </div> <!-- .container -->
   
   
