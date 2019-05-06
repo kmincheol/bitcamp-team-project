@@ -64,41 +64,50 @@
 
 
     
-        <table class="board_view">
+                
+                    <p><b>댓글수자리  | 조회수자리</b></p>
+              
+              
+        <table class="comment_view">
             <tbody>
-                <tr>
-                    <th>댓글수자리  | 조회수자리</th>
-                    <td>
-                    </td>
-                </tr>
                    <tr>
-                   <td style="background:#f7f7f7; color:#3b3a3a;" >
-                 아이디자리입니다
-                   <p style="font-size: 8px;" >댓글날짜입니다.</p>
-                    </td>
-                    <td>
-                     <input type="hidden" value="33333" id="com_IDX">
-                     <div id="com_Div"><input type="hidden" id="com_CON">댓글내용?</div>
-                     <div align="right">
-                      <a href="#" class="btn">삭제</a>
-                      <a href="#" class="btn">수정</a>
-                     </div>                            
-                      </td>
-                     </tr>
-
+                   
+                   <td id="id_loc" >
+                   아이디자리입니다 <p style="font-size: 8px;" >댓글날짜입니다.</p>
+                   </td>
+                   
+                   <td>
+                   
+                   <div id="contentsBox">
+                   <input type="hidden" id="com_CON">댓글내용자리입니다 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ호롤롤로로로로로로로롤로로로로로로로로로로롤
+                   
+                   
+                  <div align="left">
+                   <input type="text" value="댓글달기 아이콘 넣장" id="com_IDX">
+                   </div>
+                   
+                   <div align="right">
+                   <a href="#" class="btn"><b>댓글삭제</b></a>
+                   <a href="#" class="btn"><b>댓글수정</b></a>
+                   </div>                            
+                   </div>
+                   </td>
+                   </tr>
+                   
                 <tr>
                     <td colspan="2">
-                        <div>
-                            <textarea  rows="5" cols="130" name="COM_CONTENTS" ></textarea>
-                            <p align="right" ><a href="#" id="com_write" class="btn">등록</a></p>
+                        <div class="form-group row">
+                            <textarea  rows="5" cols="100" name="COM_CONTENTS" ></textarea>
+                             <button type="button" id="comment_sumit" class="btn btn-primary">등록하기</button>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     
+    <!--  <p align="right" >-->
         </form>
-        
+            
   </div> <!-- .container -->
   
   

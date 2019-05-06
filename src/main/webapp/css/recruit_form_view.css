@@ -22,6 +22,18 @@ div.container {
   text-content: center;
 }
 
+#id_loc {
+	width: 150px;
+	background:#ffff88; 
+	color:#3b3b3b;
+}
+
+#contentsBox {
+	width: 500px;
+}
+
+
+
 #bit-login-state {
   margin: 0px 10px;
 }
