@@ -77,29 +77,35 @@
                    </td>
                    
                    <td>
-                   <input type="hidden" value="33333" id="com_IDX">
-                   <div id="contentsBox">
-                   <input type="hidden" id="com_CON">댓글내용자리입니다 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
-                   <div align="right">
-                   <a href="#" class="btn">삭제</a>
-                   <a href="#" class="btn">수정</a>
-                   </div>                            
-                   </td>
                    
+                   <div id="contentsBox">
+                   <input type="hidden" id="com_CON">댓글내용자리입니다 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ호롤롤로로로로로로로롤로로로로로로로로로로롤
+                   
+                   
+                  <div align="left">
+                   <input type="text" value="댓글달기 아이콘 넣장" id="com_IDX">
+                   </div>
+                   
+                   <div align="right">
+                   <a href="#" class="btn"><b>댓글삭제</b></a>
+                   <a href="#" class="btn"><b>댓글수정</b></a>
+                   </div>                            
+                   </div>
+                   </td>
                    </tr>
                    
                 <tr>
                     <td colspan="2">
-                        <div>
-                            <textarea  rows="5" cols="130" name="COM_CONTENTS" ></textarea>
-                             <p align="right" ><button type="button" id="comment_sumit" class="btn btn-primary">등록</button></p>
+                        <div class="form-group row">
+                            <textarea  rows="5" cols="100" name="COM_CONTENTS" ></textarea>
+                             <button type="button" id="comment_sumit" class="btn btn-primary">등록하기</button>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     
-    
+    <!--  <p align="right" >-->
         </form>
             
   </div> <!-- .container -->
