@@ -1,1 +1,82 @@
 @charset "UTF-8";
+
+body, html {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	width: 100% height: 100%;
+}
+
+.img-fluid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 900px;
+}
+
+.navbar {
+	height: 95px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
+
+#header {
+	height: 150px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+#header:hover {
+	background-color: rgb(64, 64, 64, 0.7);
+}
+
+.headerImg {
+	width: 260px;
+	height: 130px;
+}
+
+.nav {
+	position: relative;
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	top: 95px;
+	height: 55px;
+	font-size: 15px;
+}
+
+.nav-item {
+	margin-left: 100px;
+	margin-right: 50px;
+}
+
+.nav-link {
+	color: white;
+	text-decoration: none;
+}
+
+#main-text {
+	position: absolute;
+	top: 380px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
+
+#main-text>h1 {
+	font-size: 50px;
+}
+
+.search-form {
+	box-sizing: border-box;
+	top: 800px;
+	height: 100px;
+	background: #fff;
+	position: relative;
+	border: 1px solid red;
+}
