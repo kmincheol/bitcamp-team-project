@@ -11,7 +11,7 @@ p {
 div.button
 
 {
-width: 400px; 
+width: 400px;  
 position: absolute; 
 left: 55%; 
 margin-left: -200px;
@@ -54,6 +54,27 @@ margin-left: -200px;
   margin-left: 710px;
   min-height: 550px;
   position: absolute; 
+}
+
+ #sidebar2-right {
+  background-color: silver;
+  font-size: 1.2em;
+  color: black;
+  width: 180px;
+  height: 180px; 
+  margin-left: 710px;
+  min-height: 550px;
+  position: absolute; 
+}
+
+#ground_title {
+	background-color: black; 
+	color: white;
+}
+
+#side_title {
+	background-color: red;
+	color: white;
 }
 
 hr style="border: solid 10px red;"

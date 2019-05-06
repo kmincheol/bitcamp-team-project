@@ -17,6 +17,12 @@ public class MatchBoardController {
   public String sideBar() {
 	  return "matchboard/sideBar";
   }
+  
+  @GetMapping("create")
+  public String create() {
+	  return "matchboard/create";
+  }
+  
 }
 
 
