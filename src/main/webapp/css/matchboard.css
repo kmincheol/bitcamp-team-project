@@ -53,6 +53,7 @@ margin-left: -200px;
   height: 180px; 
   margin-left: 710px;
   min-height: 550px;
+  overflow:scroll; 
   position: absolute; 
 }
 
