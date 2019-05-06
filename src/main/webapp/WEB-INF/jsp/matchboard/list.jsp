@@ -5,8 +5,8 @@
 <html>
 <head>
   <title>매치보드</title>
-   <jsp:include page="../commonCss.jsp"/>
    <jsp:include page="../header.jsp"/>
+   <jsp:include page="../commonCss.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
@@ -118,7 +118,7 @@
       </td>
     </tr>
   </tbody>
-   <jsp:include page="sideBar.jsp"/>
+    <jsp:include page="sideBar.jsp"/>
 </table>
     <div class="button">
       <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">검색</a>
