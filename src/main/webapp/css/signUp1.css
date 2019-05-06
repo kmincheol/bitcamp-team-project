@@ -45,7 +45,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   cursor: pointer;
   box-sizing: border-box;
 }
-:root .terms_chk_all .input_chk label:before{
+.terms_chk_all .input_chk label:before{
   content: '';
   position: absolute;
   top: 50%;
@@ -59,7 +59,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
 .input_chk input:focus+label {
   outline: dotted thin;
 }
-:root .input_chk label:before{
+.input_chk label:before{
   content: '';
   position: absolute;
   top: 47%;
@@ -88,12 +88,12 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   background-size: 15px 60px;
   background-color: #ffffff;
 }
-:root .terms_bx .input_chk input:checked+label:before{
+.terms_bx .input_chk input:checked+label:before{
   content: '';
   background: #f5f6f7 url(../images/green-check.png) no-repeat 0 0;
   background-size: 20px 20px
 }
-:root .terms_chk_all .input_chk input:checked+label:before{
+.terms_chk_all .input_chk input:checked+label:before{
   content:'';
   background:#f5f6f7 url(../images/green-check.png) no-repeat 0 0;
   background-size:24px 24px
@@ -158,6 +158,24 @@ li .input_chk {
   scrollbar-track-color: #f2f2f2;
   -webkit-overflow-scrolling: touch;
 }
+.terms_box::-webkit-scrollbar{
+  overflow: visible;
+  width: 6px;
+  margin-right: 10px;
+  background: 0 0;
+}
+.terms_box::-webkit-scrollbar-thumb{
+  min-height: 20px;
+  margin: 0 5px 0 0;
+  border-radius: 5px;
+  background-color: rgba(45,70,97,.3);
+}
+.terms_box::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(45,70,97,.3);
+}
+.terms_box::-webkit-scrollbar-corner{
+  background: 0 0;
+}
 .terms_box .article{
   font-size: 12px;
   line-height: 16px;
@@ -176,24 +194,6 @@ li .input_chk {
 }
 .article:first-child{
   margin-top: 0;
-}
-.terms_box::-webkit-scrollbar{
-  overflow: visible;
-  width: 6px;
-  margin-right: 10px;
-  background: 0 0;
-}
-.terms_box::-webkit-scrollbar-thumb{
-  min-height: 20px;
-  margin: 0 5px 0 0;
-  border-radius: 5px;
-  background-color: rgba(45,70,97,.3);
-}
-.terms_box::-webkit-scrollbar-thumb:hover{
-  background-color: rgba(45,70,97,.3);
-}
-.terms_box::-webkit-scrollbar-corner{
-  background: 0 0;
 }
 .hrblack {
   border: 0;
