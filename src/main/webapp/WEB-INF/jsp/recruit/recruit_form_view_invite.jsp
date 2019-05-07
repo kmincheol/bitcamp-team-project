@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>팀원 구함(뷰페이지)</title>
+<title>팀 구함(뷰페이지)</title>
 <!--  <jsp:include page="../commonCss.jsp"/> -->
 <link rel="stylesheet"
 	href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
 	<jsp:include page="../header.jsp" />
 
 
-	<h2>마음에 드는 팀에게 댓글을 달아보세요.</h2>
+	<h2>마음에 드는 회원을 자기팀으로 스카웃하세요.</h2>
 	<div class="container">
 
 		<hr color="black" width=90%>
@@ -36,12 +36,6 @@
 				<label for="colFormLabelSm" class="col-sm-2 col-form-label">축구</label>
 			</div>
 
-
-			<div class="form-group row">
-				<label for="team" class="col-sm-2 col-form-label" id="head"><b>소속팀</b></label>
-				<label for="colFormLabelSm" class="col-sm-2 col-form-label">비트캠프</label>
-			</div>
-
 			<div class="form-group row">
 				<label for="title" class="col-sm-2 col-form-label" id="titlabel"><b>제목</b></label>
 				<div class="col-sm-8">
@@ -54,20 +48,20 @@
 				<label for="contents" class="col-sm-2 col-form-label" id="cntlabel"><b>내용</b></label>
 				<div class="col-sm-8">
 					<textarea class="form-control" id="contents" name='contents'
-						rows='5' readonly="readonly">강남에서 축구하실 20대 3분 구합니다. </textarea>
+						rows='5' readonly="readonly">강남에서 축구하는 20대 팀에 가입하고 싶습니다. </textarea>
 				</div>
 			</div>
 
 
 			<div class="button2">
 				<div class="col-sm-10">
-					<button class="btn btn-primary"><b>신청하기</b></button>
+					<button class="btn btn-primary"><b>초대하기</b></button>
 				</div>
 			</div>
 
 			<div class="button3">
 				<div class="col-sm-10">
-					<button class="btn btn-primary"><b>모집마감</b></button>
+					<button class="btn btn-primary"><b>입단완료</b></button>
 				</div>
 			</div>
 

@@ -11,10 +11,27 @@ h2 {
 }
 
 .button2 {
-   margin: auto;
+   margin: 90px 0px 0px 200px;
    width: 50%;
    text-align: center; 
 }
+
+.button3 {
+   margin: 0px 0px 90px 200px;
+   width: 50%;
+   text-align: center; 
+}
+
+.button3 .btn {
+   background: #d3d7cf;
+   border: 1px solid #d3d7cf;
+  }
+
+.button3 .btn:hover {
+   background: #FE2E2E;
+   border: 1px solid #FE2E2E;
+  }
+
 
 div.container {
   height: 100px;
@@ -23,18 +40,31 @@ div.container {
 }
 
 #id_loc {
-	width: 150px;
-	background:#ffff88; 
-	color:#3b3b3b;
+  width: 150px;
+  background:#ffff88; 
+  color:#3b3b3b;
 }
+
+#head {
+  text-align: center;
+}
+
+#titlabel {
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+}
+
+#cntlabel {
+  margin: 50px 0px 0px 0px;
+  text-align: center;
+}
+
 
 #contentsBox {
 	width: 500px;
 }
 
-
-
-#bit-login-state {
-  margin: 0px 10px;
+.col-sm-2 col-form-label {
+  text-content: center;
 }
 

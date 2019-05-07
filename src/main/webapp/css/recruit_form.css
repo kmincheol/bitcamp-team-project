@@ -27,13 +27,25 @@ div.bit-list {
   min-height: 200px;
 }
 
+#head{
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+}
+
+#titlabel {
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+}
+
+#cntlabel {
+  margin: 50px 0px 0px 0px;
+  text-align: center;
+}
+
+
 div.container {
   height: 100px;
   width: 800px;
-}
-
-#bit-login-state {
-  margin: 0px 10px;
 }
 
 #coment {
