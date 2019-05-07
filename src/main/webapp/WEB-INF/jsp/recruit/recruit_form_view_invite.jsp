@@ -6,10 +6,8 @@
 <head>
 <title>팀 구함(뷰페이지)</title>
 <!--  <jsp:include page="../commonCss.jsp"/> -->
-<link rel="stylesheet"
-	href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${contextRootPath}/css/recruit_form_view.css">
+<link rel="stylesheet"href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet"href="${contextRootPath}/css/recruit_form_view.css">
 </head>
 <body>
 
@@ -61,7 +59,7 @@
 
 			<div class="button3">
 				<div class="col-sm-10">
-					<button class="btn btn-primary"><b>입단완료</b></button>
+					<button disabled class="btn btn-primary"><b>입단완료</b></button>
 				</div>
 			</div>
 
@@ -74,7 +72,7 @@
 				<tbody>
 					<tr>
 
-						<td id="id_loc">아이디자리입니다
+						<td id="id_loc"><b>아이디자리입니다</b>
 							<p style="font-size: 8px;">댓글날짜입니다.</p>
 						</td>
 

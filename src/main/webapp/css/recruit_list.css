@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+body {
+  text-align: center;
+}
+
+h2 {
+ /* height: 30px; */
+  /* border: 1px solid red; */ 
+   text-align: center; 
+}
+
+div.container {
+  height: 100px;
+  width: 1100px;
+}
+
+
+#selectbox{
+	text-align: right;
+	width: 120px;
+}
+
+.bar{
+	background: #EAEAEA;
+}
+
+#bar {
+	width: 260px;
+}
+
+.input-group mb-2 {
+	text-align: right;
+}
+
+.table {
+	margin: 0;
+}
+
+.table thead th {
+  vertical-align: 0%; 
+  
+}
+
+.writebtn {
+	padding: 5px 120px 5px 0px;
+	text-align: right;
+}
+
+#searchbox{
+}
+
+.table th {
+    padding: 0px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+#result {
+	text-align: left;
+	padding: 5px 0px 0px 5px;
+}
+
+#searchbox {
+	
+}
+

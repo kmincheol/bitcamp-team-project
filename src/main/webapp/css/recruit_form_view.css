@@ -19,16 +19,21 @@ h2 {
 .button3 {
    margin: 0px 0px 90px 200px;
    width: 50%;
-   text-align: center; 
+   text-align: center;
 }
 
 .button3 .btn {
-   background: #d3d7cf;
+   background: #FE2E2E;
    border: 1px solid #d3d7cf;
   }
 
 .button3 .btn:hover {
-   background: #FE2E2E;
+   background: #d3d7cf;
+   border: 1px solid #d3d7cf;
+  }
+
+.button3 .btn:active {
+   background: #d3d7cf;
    border: 1px solid #FE2E2E;
   }
 
@@ -62,6 +67,7 @@ div.container {
 
 #contentsBox {
 	width: 500px;
+	background:#D8F6CE;
 }
 
 .col-sm-2 col-form-label {
