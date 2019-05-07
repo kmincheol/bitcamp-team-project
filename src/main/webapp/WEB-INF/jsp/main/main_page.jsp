@@ -29,22 +29,16 @@
             </nav>
             <div>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">매치</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">메인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">매치</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#">팀</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
                 </ul>
-            </div>
-            <div>
-                <ul class="category">
-                    <li class="nav-item"><a class="nav-link" href="#"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
-                </ul>
-
             </div>
         </div>
 

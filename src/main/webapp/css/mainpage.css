@@ -5,7 +5,6 @@ body, html {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	height: 100%;
 }
 
 .cotainer {
@@ -17,7 +16,7 @@ body, html {
 	top: 0;
 	left: 0;
 	min-width: 100%;
-	height: 900px;
+	height: 750px;
 }
 
 #header-aa{
@@ -63,7 +62,6 @@ body, html {
 	top: 95px;
 	height: 55px;
 	font-size: 15px;
-	top: 95px;
 }
 
 .nav-item {
@@ -75,9 +73,18 @@ body, html {
 	text-decoration: none;
 }
 
-#category{
-	margin: auto 50px auto 100px;
-	position: relative;
+.category>.nav{
+	top: 150px;
+	font-size: 15px;
+	border: 1px solid red;
+	position: absolute;
+padding-left: 50px;
+	left: 0;
+	right: 0;
+}
+
+table{
+	border: 1px solid red;
 }
 
 #main-text {
@@ -95,7 +102,7 @@ body, html {
 
 .search-form {
 	box-sizing: border-box;
-	top: 850px;
+	top: 700px;
 	width: 950px;
 	margin: 0 auto;
 	height: 100px;
@@ -136,13 +143,13 @@ select {
 	margin: 0 auto;
 	width: 700px;
 	height: 340px;
-	top: 1000px;
+	top: 900px;
 	position: relative;
 }
 
 #footer {
 	position: absolute;
-	top: 1600px;
+	top: 1500px;
 	bottom: 0;
 	width: 100%;
 	left: 0;
