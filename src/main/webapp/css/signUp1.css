@@ -57,7 +57,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   width: 24px;
   height: 24px;
   margin-top: -14px;
-  background: #ffffff url(../images/check.jpg) no-repeat 0 0;
+  background: #ffffff url(../images/check.png) no-repeat 0 0;
   background-size: 24px 24px;
 }
 .input_chk input:focus+label {
@@ -72,7 +72,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   width: 20px;
   height: 20px;
   margin-top: -10px;
-  background: #f5f6f7 url(../images/check.jpg) no-repeat 0 0;
+  background: #ffffff url(../images/check.png) no-repeat 0 0;
   background-size: 20px 20px
 }
 .terms_bx_list .terms_bx:nth-child(4) .input_chk:nth-child(4) input:nth-child(3) {
@@ -94,12 +94,12 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
 }
 .terms_bx .input_chk input:checked+label:before{
   content: '';
-  background: #f5f6f7 url(../images/green-check.png) no-repeat 0 0;
+  background: #ffffff url(../images/checked.png) no-repeat 0 0;
   background-size: 20px 20px
 }
 .terms_chk_all .input_chk input:checked+label:before{
   content:'';
-  background:#f5f6f7 url(../images/green-check.png) no-repeat 0 0;
+  background:#ffffff url(../images/checked.png) no-repeat 0 0;
   background-size:24px 24px
 }
 li .input_chk {
@@ -114,9 +114,13 @@ li .input_chk {
   left: 12px; 
   top: 30%;
 }
-.input_chk > #chk_all {
+.terms_chk_all > .input_chk {
+  width: 900px;
+  height: 50px;
+}
+.input_chk > #chk_all { 
   position: absolute; 
-  left: 26%; 
+  left: 218px; 
   top: 30%;
 }
 .input_chk label .terms_necessary {
