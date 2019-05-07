@@ -31,6 +31,11 @@ public class AuthController {
     
   }
   
+  @GetMapping("signUp2")
+  public void signUp2() {
+    
+  }
+  
   @GetMapping("findPwd16")
   public void findPwd16() {
     

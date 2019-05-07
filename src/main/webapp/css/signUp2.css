@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, li, ol, p, select, table, td, textarea, th, ul, hr {
+  margin: 0;
+  padding: 0;
+} 
+#container {
+  text-align: center;
+  margin: 90px auto 0 auto;
+  width: 1000px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+.join_content{
+  width: 900px;
+  margin: 0 auto;
+}
+.join_step{
+	margin-top: 20px;
+	margin-bottom: 60px;
+}
+#content > h1 {
+  font-size: 30px;
+}
+#join_form {
+  margin-top: 50px;
+}
+.input_chk {
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+}
+.hrblack {
+  border: 0;
+  height: 2px;
+  background-color: black;
+}
+.sunext {
+  margin-top: 20px;
+  border-radius: 0;
+  font-weight: bold;
+}
+.join_form {
+	column-count: 2;
+	column-gap: 32px;
+	column-rule-color: black;
+	column-rule-style: solid;
+	column-rule-width: 3px;
+}
+.terms_choice {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(170, 170, 170);
+}
+.row_group {
+  overflow:hidden;
+  width:100%
+}
+.row_group+.row_group {
+	margin-top:20px
+}
+.join_row .green{
+	color:#08A600
+}
