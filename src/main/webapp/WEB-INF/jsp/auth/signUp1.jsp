@@ -19,7 +19,7 @@
   <h1>스포츠 매칭 <strong>홈페이지</strong> 방문을 환영합니다.</h1>
             
     <div class="join_step"><!-- step단계표현 -->
-      <img src="">
+      <img src="../../images/signUp1.png">
     </div>
 
   <hr class="hrblack"/>

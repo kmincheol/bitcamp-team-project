@@ -1,0 +1,46 @@
+
+.headerImg {
+  width: 260px;
+  height: 130px;
+  top : 0;
+}
+#userinfobg{
+	left:0; 
+	right:0;
+	width: 1000px;
+	height: 380px;
+	
+}
+#info1{
+	position : relative;
+	margin: 10%;
+	
+}
+
+#headerk{
+	position : absolute;
+	top:0;
+	color: white;
+	left:0;right:0;
+}
+
+.container12{
+border:1px solid black;
+border-radius: 20px;
+width: 900px;
+height: 1100px;	
+margin: auto;
+}
+
+.container13{
+  margin:10% auto;
+width: 700px;
+height: 900px; 
+}
+
+hr{
+	size : 2px;
+	height: 3px;
+}
+
+
