@@ -1,135 +1,135 @@
 @charset "UTF-8";
 
-body,
-        html {
-            font-family: sans-serif;
-            position: relative;
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
+body, html {
+	font-family: sans-serif;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
 
-        .cotainer{
-            min-height: 100%;
-        }
+.cotainer {
+	min-height: 100%;
+}
 
-        .img-fluid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            height: 900px;
-        }
+.img-fluid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 900px;
+}
 
-        .navbar {
-            height: 95px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-        }
+.navbar {
+	height: 95px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+}
 
-        #header {
-            height: 150px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.15);
-        }
+#header {
+	height: 150px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.15);
+}
 
-        #header:hover {
-            background-color: rgb(64, 64, 64, 0.7);
-        }
+#header:hover {
+	background-color: rgb(64, 64, 64, 0.7);
+}
 
-        .headerImg {
-            width: 260px;
-            height: 130px;
-        }
+.headerImg {
+	width: 260px;
+	height: 130px;
+}
 
-        .nav {
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.5);
-            top: 95px;
-            height: 55px;
-            font-size: 15px;
-        }
+.nav {
+	position: relative;
+	border-top: 1px solid rgba(255, 255, 255, 0.5); top : 95px;
+	height: 55px;
+	font-size: 15px;
+	top: 95px;
+}
 
-        .nav-item {
-        margin: auto 50px auto 100px;
-        }
+.nav-item {
+	margin: auto 50px auto 100px;
+}
 
-        .nav-link {
-            color: white;
-            text-decoration: none;
-        }
+.nav-link {
+	color: white;
+	text-decoration: none;
+}
 
-        #main-text {
-            position: absolute;
-            top: 380px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-        }
+#main-text {
+	position: absolute;
+	top: 380px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
 
-        #main-text>h1 {
-            font-size: 50px;
-        }
+#main-text>h1 {
+	font-size: 50px;
+}
 
-        .search-form {
-            box-sizing: border-box;
-            top: 850px;
-            width: 950px;
-            margin: 0 auto;
-            height: 100px;
-            background: #fff;
-            position: relative;
-            border: 1px solid rgb(224, 224, 224);
-        }
+.search-form {
+	box-sizing: border-box;
+	top: 850px;
+	width: 950px;
+	margin: 0 auto;
+	height: 100px;
+	background: #fff;
+	position: relative;
+	border: 1px solid rgb(224, 224, 224);
+}
 
-        select {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            border: none;
-            width: 250px;
-            height: 98px;
-            border-radius: 0px;
-            background-color: white;
-            padding-left: 20px;
-            border-right: 1px solid rgb(224, 224, 224);
-            float: left;
-            font-size: 20px;
-        }
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+	width: 250px;
+	height: 98px;
+	border-radius: 0px;
+	background-color: white;
+	padding-left: 20px;
+	border-right: 1px solid rgb(224, 224, 224);
+	float: left;
+	font-size: 20px;
+}
 
-        #search {
-            width: 198px;
-            border: none;
-        }
+#search {
+	width: 198px;
+	border: none;
+}
 
-        .list-img {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            top: 37px;
-            left: 65px;
-        }
+.list-img {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	top: 37px;
+	left: 65px;
+}
 
-        #service {
-            margin: 0 auto;
-            width: 700px;
-            height: 340px;
-            top: 1000px;
-            position: relative;
-        }
+#service {
+	margin: 0 auto;
+	width: 700px;
+	height: 340px;
+	top: 1000px;
+	position: relative;
+}
 
-        #footer {
-            position: absolute;
-            top: 1600px;
-            bottom: 0;
-            width: 100%;
-            left: 0;
-            height: 130px;
-            background-color: black;
-        }}
+#footer {
+	position: absolute;
+	top: 1600px;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+	height: 130px;
+	background-color: black;
+}
+}
