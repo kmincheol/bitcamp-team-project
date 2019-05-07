@@ -112,7 +112,7 @@ li .input_chk {
 }
 .input_chk > #chk_all {
   position: absolute; 
-  left: 219px; 
+  left: 26%; 
   top: 30%;
 }
 .input_chk label .terms_necessary {
