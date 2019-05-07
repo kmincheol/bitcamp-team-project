@@ -31,13 +31,24 @@ margin-left: -200px;
 	color: white;
 }
  
- 
+.container {
+	position: absolute;
+	top: 600px;
+	width: 100%;
+	left: 0px;
+	right: 0px;
+} 
+
 #content {
    width: 600px;
    padding: 20px;
    margin-bottom: 20px;
    float: left;
    border-bottom-color: red;
+}
+
+#match_content {
+	
 }
 
 #subtable {
@@ -50,11 +61,11 @@ margin-left: -200px;
   font-size: 1.2em;
   color: white;
   width: 180px;
-  height: 180px; 
+  height: 480px; 
   margin-left: 710px; 
-  min-height: 550px;
-  overflow:scroll; 
+  overflow:auto; 
   position: absolute; 
+  font-size: 15px;
 }
 
  #sidebar2-right {
@@ -76,8 +87,17 @@ margin-left: -200px;
 
 
 #side_title {
+	margin-left: 710px;
+  margin-bottom: 0;
 	background-color: red;
+	font-size: 30px;
 	color: white;
+	width: 165px;
+}
+
+#side_team {
+	color: white;
+	border: 3px soild black;
 }
 
 

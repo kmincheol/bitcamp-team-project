@@ -5,16 +5,24 @@
 <html>
 <head>
   <title>매치보드</title>
-   <jsp:include page="../header.jsp"/>
    <jsp:include page="../commonCss.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
+   <link rel="stylesheet" href="${contextRootPath}/css/mainpage.css">
 </head>
-<body>
+<body> 
 
-  
+    <div id="match_header">
+      <img src="${contextRootPath}/images/match-header.jpg" class="img-fluid">
+    </div>
+    <div id="header">
+        <nav class="navbar navbar-expand-lg justify-content-center">
+            <a href="#"><img src="${contextRootPath}/images/logo.png" class="headerImg"></a>
+        </nav>
 
+    </div> 
   <div class="container">
+  <div id="match_content">
     <h2>등록된 <b>매치 글</b>을 검색하여 찾거나</h2>
     <h2>직접 매치글을 등록할 수 있습니다.</h2>
     <br>
@@ -172,7 +180,7 @@
 		</table>
 	</div>
 	
-	
+	</div>
   </div> <!-- .container -->
 
 </body>
