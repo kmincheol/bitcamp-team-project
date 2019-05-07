@@ -5,16 +5,15 @@
 <html>
 
 <head>
-	<title>메인페이지</title>
-	<!--  <jsp:include page="../commonCss.jsp"/> -->
-	<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${contextRootPath}/css/mainpage.css">
+    <title>메인페이지</title>
+    <!--  <jsp:include page="../commonCss.jsp"/> -->
+    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${contextRootPath}/css/mainpage.css">
 </head>
 
 <body>
 
-
-	<div class="container">
+    <div class="container">
         <div id="main-backgroundImg">
             <img src="${contextRootPath}/images/mainpage.jpg" class="img-fluid">
         </div>
@@ -28,14 +27,25 @@
                     <a href="#" class="header-a">고객센터</a>
                 </div>
             </nav>
+            <div>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">매치</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">팀</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="category">
+                    <li class="nav-item"><a class="nav-link" href="#"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
+                </ul>
 
-            <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">매치</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">팀</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
-            </ul>
+            </div>
         </div>
 
         <div id="main-text">
@@ -83,7 +93,7 @@
     <!-- .container -->
 
 
-	<jsp:include page="../javascript.jsp" />
+    <jsp:include page="../javascript.jsp" />
 </body>
 
 </html>

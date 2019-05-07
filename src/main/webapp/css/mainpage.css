@@ -75,6 +75,11 @@ body, html {
 	text-decoration: none;
 }
 
+#category{
+	margin: auto 50px auto 100px;
+	position: relative;
+}
+
 #main-text {
 	position: absolute;
 	top: 380px;
