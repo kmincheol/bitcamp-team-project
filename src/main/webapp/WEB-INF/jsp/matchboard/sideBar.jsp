@@ -11,18 +11,19 @@
 </head>
 <body>
 
-  <div id="sidebar-right">
-        <h2 id="side_title">추천매칭</h2> 
-        <ul>
-          <li>여기에</li>
-          <li>들어갈거임</li>
-          <li>ㅎㅎ</li>
+  <h2 id="side_title">추천매칭</h2>
+   <div id="sidebar-right">
+       <div id="side_team">
+       <br>
+        <ul> 
+          <img src="${contextRootPath}/images/man_u2.jpeg" width=80px height=80px>
         </ul> 
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
+          <p>
+            맨체스터 유나이티드<br>
+            20~30대<br>
+            직장인<br>
+          </p>
+          <br>
         <ul>
           <li>1</li>
           <li>2</li>
@@ -45,6 +46,7 @@
         </ul> 
         
       </div>
+    </div>
 
 </body>
 </html>
