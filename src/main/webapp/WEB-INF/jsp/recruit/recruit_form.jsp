@@ -24,7 +24,7 @@
     <form action='add' method='post'>
       
         <div class="form-group row">
-          <label for="location" class="col-sm-2 col-form-label"><b>지역</b></label>
+          <label for="location" class="col-sm-2 col-form-label" id="head"><b>지역</b></label>
            <div class="col-sm-2">
               <div class="input-group mb-2">
                 <select name='loc1' class="custom-select" id="inputGroupSelect01">
@@ -60,7 +60,7 @@
           </div>
         
         <div class="form-group row">
-          <label for="playtype" class="col-sm-2 col-form-label"><b>경기유형</b></label>
+          <label for="playtype" class="col-sm-2 col-form-label" id="head"><b>경기유형</b></label>
                <div class="col-sm-2">
               <div class="input-group mb-2">
                 <select name='loc1' class="custom-select" id="inputGroupSelect01">
@@ -74,7 +74,7 @@
         </div>
          
         <div class="form-group row">
-          <label for="team" class="col-sm-2 col-form-label"><b>소속팀</b></label>
+          <label for="team" class="col-sm-2 col-form-label" id="head"><b>소속팀</b></label>
                <div class="col-sm-2">
               <div class="input-group mb-2">
                 <select name='loc1' class="custom-select" id="inputGroupSelect01">
@@ -88,14 +88,14 @@
         </div>
          
         <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label"><b>제목</b></label>
+          <label for="title" class="col-sm-2 col-form-label" id="titlabel"><b>제목</b></label>
           <div class="col-sm-8">
             <input type="text" class="form-control" name="title" id="title"/>
           </div>
         </div>
 
         <div class="form-group row">
-    <label for="contents" class="col-sm-2 col-form-label"><b>내용</b></label>
+    <label for="contents" class="col-sm-2 col-form-label" id="cntlabel"><b>내용</b></label>
     	<div class="col-sm-8">
       	<textarea class="form-control" id="contents" name='contents' rows='5'></textarea>
     	</div>
@@ -103,7 +103,7 @@
 
         <div class="button">
           <div class="col-sm-10">
-            <button class="btn btn-primary">글등록</button>
+            <button class="btn btn-primary"><b>글등록</b></button>
           </div>
         </div>
     

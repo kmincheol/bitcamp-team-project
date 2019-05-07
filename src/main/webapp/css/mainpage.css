@@ -20,6 +20,17 @@ body, html {
 	height: 900px;
 }
 
+#header-aa{
+	position: absolute;
+	font-size: 10px;
+	right: 10px;
+	top: 5px;
+}
+#header-aa>.header-a{
+	text-decoration: white;
+	color: white;
+}
+
 .navbar {
 	height: 95px;
 	position: absolute;
@@ -48,7 +59,8 @@ body, html {
 
 .nav {
 	position: relative;
-	border-top: 1px solid rgba(255, 255, 255, 0.5); top : 95px;
+	border-top: 1px solid rgba(255, 255, 255, 0.5);
+	top: 95px;
 	height: 55px;
 	font-size: 15px;
 	top: 95px;
@@ -61,6 +73,11 @@ body, html {
 .nav-link {
 	color: white;
 	text-decoration: none;
+}
+
+#category{
+	margin: auto 50px auto 100px;
+	position: relative;
 }
 
 #main-text {
@@ -132,4 +149,4 @@ select {
 	height: 130px;
 	background-color: black;
 }
-}
+
