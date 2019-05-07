@@ -9,8 +9,6 @@
 	<!--  <jsp:include page="../commonCss.jsp"/> -->
 	<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${contextRootPath}/css/mainpage.css">
-  <link rel="stylesheet" type="text/css" href="print.css" media="screen">
-  <link rel="stylesheet" type="text/css" href="print.css" media="print">
 </head>
 
 <body>
@@ -24,6 +22,11 @@
         <div id="header">
             <nav class="navbar navbar-expand-lg justify-content-center">
                 <a href="#"><img src="${contextRootPath}/images/logo.png" class="headerImg"></a>
+                <div id="header-aa">
+                    <a href="#" class="header-a">로그인/</a>
+                    <a href="#" class="header-a">회원가입/</a>
+                    <a href="#" class="header-a">고객센터</a>
+                </div>
             </nav>
 
             <ul class="nav justify-content-center">
