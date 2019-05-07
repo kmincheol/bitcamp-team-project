@@ -23,6 +23,11 @@ public class MatchBoardController {
 	  return "matchboard/create";
   }
   
+  @GetMapping("test")
+  public String test() {
+      return "matchboard/test";
+  }
+  
 }
 
 
