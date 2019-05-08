@@ -2,6 +2,7 @@
 
 body {
   font-size: small; 
+   text-align: center;
 }
 
 div.container {
@@ -9,7 +10,34 @@ div.container {
   width: 800px;
 }
 
-.form-group row {
-	  text-align: center; 
+p {
+  text-align: right;
 }
 
+#searchspace {
+	margin: 0px 0px 0px 50px;
+    padding-left: 60px;
+}
+
+#inputGroupSelect01 {
+	margin: 22px 15px 0px 0px;
+	font-size: small; 
+}
+
+#inputGroupSelect02 {
+	margin: 22px 0px 0px -15px;
+	font-size: small; 
+}
+
+.input-group mb-2 {
+	padding-top: 15px;
+}
+
+.col-sm-5 {
+    height: 77px;
+    padding: 0px 5px 0px 10px;
+}
+
+.form-inline my-2 my-lg-0 justify-content {
+	padding: 0px 200px 20px 0px;
+}
