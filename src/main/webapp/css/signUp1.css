@@ -26,12 +26,15 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   margin-top: 50px;
 }
 .input_chk {
-  position: relative;
+  position: relative; 
   box-sizing: border-box;
   display: block;
 }
 .input_chk input {
   position: absolute;
+}
+.terms_chk_all{
+	position: relative;
 }
 .terms_chk_all .input_chk label {
   padding-left: 34px;
@@ -118,9 +121,9 @@ li .input_chk {
   width: 900px;
   height: 50px;
 }
-.input_chk > #chk_all { 
+.input_chk #chk_all { 
   position: absolute; 
-  left: 218px; 
+  left: 62mm; 
   top: 30%;
 }
 .input_chk label .terms_necessary {
