@@ -32,11 +32,11 @@
         <tbody>
           <c:forEach items="${list}" var="board">
             <tr>
-              <th scope="row">${board.no}</th>
-              <td><a href='${board.no}'>${board.title}</a></td>
-              <td>${board.name}</td>
-              <td>${board.createdDate}</td>
-              <td>${board.viewCount}</td>
+              <th scope="row">3</th>
+              <td><a href='${board.no}'>3</a></td>
+              <td>5</td>
+              <td>5</td>
+              <td>5</td>
             </tr>
           </c:forEach>
         </tbody>
