@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+body {
+  font-size: small; 
+}
+
+div.container {
+  height: 100px;
+  width: 800px;
+}
+
+.form-group row {
+	  text-align: center; 
+}
+
