@@ -4,7 +4,7 @@ import java.util.List;
 import com.eomcs.lms.domain.Board;
 
 public interface BoardService {
-  List<Board> list(int pageNo, int pageSize);
+  List<Board> list(int pageNo, int pageSize, int memberNo);
   int add(Board board);
   Board get(int no);
   int update(Board board);

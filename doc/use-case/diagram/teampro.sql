@@ -197,7 +197,7 @@ post_id -- 게시글번호
 -- 회원
 CREATE TABLE mbr (
 mbr_id     INTEGER(30)  NOT NULL COMMENT '회원번호', -- 회원번호
-ncknm      VARCHAR(15)  NOT NULL COMMENT '닉네임', -- 닉네임
+user_id    VARCHAR(16)  NOT NULL COMMENT '유저아이디',
 pwd        VARCHAR(20)  NOT NULL COMMENT '비밀번호', -- 비밀번호
 name       VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
 bth_dt     DATETIME     NOT NULL COMMENT '생년월일', -- 생년월일

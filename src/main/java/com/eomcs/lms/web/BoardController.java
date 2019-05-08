@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.service.BoardService;
+import com.eomcs.lms.service.MemberService;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
   
   @Autowired BoardService boardService;
+  @Autowired MemberService memberService;
   
   @GetMapping("form")
   public void form() {
@@ -63,7 +65,7 @@ public class BoardController {
     else if (pageNo > totalPage)
       pageNo = totalPage;
     
-    List<Board> boards = boardService.list(pageNo, pageSize);
+    List<Board> boards = boardService.list(pageNo, pageSize, 0);
     model.addAttribute("list", boards);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);

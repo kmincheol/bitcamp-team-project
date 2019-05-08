@@ -33,8 +33,8 @@
           <c:forEach items="${list}" var="board">
             <tr>
               <th scope="row">${board.no}</th>
-              <td><a href='${board.no}'>${board.contents}</a></td>
-              <td>홍길동</td>
+              <td><a href='${board.no}'>${board.title}</a></td>
+              <td>${board.name}</td>
               <td>${board.createdDate}</td>
               <td>${board.viewCount}</td>
             </tr>
