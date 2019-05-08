@@ -30,21 +30,24 @@
   <sql id="select1">
     select 
       post_id, 
-      mbr.name,
+      m.name,
       titl, 
-      cdt, 
+      p.cdt, 
       vw_cnt 
     from 
-      post
+      mbr m
+      left outer join post p on m.mbr_id = p.mbr_id  
   </sql>
+  
+  
   
   <select id="findAll" resultMap="boardMap" parameterType="map">
     <include refid="select1"/>
     <where>
-      <if test="memberNo != null">or mbr_id = #{memberNo}</if>
+      <if test="memberNo != null">or m.mbr_id = #{memberNo}</if>
     </where>
     order by 
-      board_id desc
+      post_id desc
     <if test="#{size != null || rowNo != null}">
       limit #{rowNo}, #{size}
     </if>
@@ -53,14 +56,14 @@
   <select id="findByNo" resultMap="boardMap" parameterType="int">
     <include refid="select1"/>
     where 
-      board_id = #{value}
+      post_id = #{value}
   </select>
   
   <update id="increaseCount" parameterType="int">
     update post 
     set 
       vw_cnt = vw_cnt + 1 
-    where board_id = #{value}
+    where post_id = #{value}
   </update>
   
   <insert id="insert" parameterType="board">
