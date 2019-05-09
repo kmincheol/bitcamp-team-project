@@ -100,9 +100,6 @@ ALTER TABLE spt_clsf
       spt_clsf_id -- 종목유형번호
     );
 
-ALTER TABLE spt_clsf
-  MODIFY COLUMN spt_clsf_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '종목유형번호';
-
 -- 경기첨부파일
 CREATE TABLE mtch_file (
   mtch_file_id INTEGER(30)  NOT NULL COMMENT '경기첨부파일번호', -- 경기첨부파일번호
@@ -201,15 +198,16 @@ ALTER TABLE qstn
 
 -- 팀원모집
 CREATE TABLE rcrm (
-  rcrm_id   INTEGER(30) NOT NULL COMMENT '팀원모집번호', -- 팀원모집번호
-  tm_id     INTEGER(30) NULL     COMMENT '팀번호', -- 팀번호
-  titl      VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
-  cont      TEXT        NOT NULL COMMENT '내용', -- 내용
-  vw_cnt    INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
-  cdt       DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
-  mdt       DATETIME    NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
-  rcrm_stat VARCHAR(20) NOT NULL COMMENT '모집상태', -- 모집상태
-  rcrm_prsn INTEGER     NULL     COMMENT '모집인원' -- 모집인원
+  rcrm_id     INTEGER(30) NOT NULL COMMENT '팀원모집번호', -- 팀원모집번호
+  tm_id       INTEGER(30) NULL     COMMENT '팀번호', -- 팀번호
+  spt_clsf_id INTEGER(30) NULL     COMMENT '종목유형번호', -- 종목유형번호
+  titl        VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
+  cont        TEXT        NOT NULL COMMENT '내용', -- 내용
+  vw_cnt      INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
+  cdt         DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
+  mdt         DATETIME    NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
+  rcrm_stat   VARCHAR(20) NOT NULL COMMENT '모집상태', -- 모집상태
+  rcrm_prsn   INTEGER     NULL     COMMENT '모집인원' -- 모집인원
 )
 COMMENT '팀원모집';
 
@@ -219,6 +217,9 @@ ALTER TABLE rcrm
     PRIMARY KEY (
       rcrm_id -- 팀원모집번호
     );
+
+ALTER TABLE rcrm
+  MODIFY COLUMN rcrm_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '팀원모집번호';
 
 -- 회원
 CREATE TABLE mbr (
@@ -307,21 +308,22 @@ ALTER TABLE cmt
 
 -- 경기
 CREATE TABLE mtch (
-  mtch_id   INTEGER(30)  NOT NULL COMMENT '경기번호', -- 경기번호
-  tm_id     INTEGER(30)  NOT NULL COMMENT '경기개설팀번호', -- 경기개설팀번호
-  tm_id2    INTEGER(30)  NULL     COMMENT '경기참여팀번호', -- 경기참여팀번호
-  titl      VARCHAR(50)  NOT NULL COMMENT '제목', -- 제목
-  cont      TEXT         NOT NULL COMMENT '내용', -- 내용
-  vw_cnt    INTEGER      NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
-  cdt       DATETIME     NULL     DEFAULT now() COMMENT '작성일', -- 작성일
-  mdt       DATETIME     NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
-  game_dt   DATETIME     NOT NULL COMMENT '경기날짜', -- 경기날짜
-  area      VARCHAR(100) NOT NULL COMMENT '지역', -- 지역
-  stdm_psti VARCHAR(255) NULL     COMMENT '경기장이름', -- 경기장이름
-  stdm_lat  VARCHAR(100) NULL     COMMENT '경기장위치위도', -- 경기장위치위도
-  stdm_long VARCHAR(100) NULL     COMMENT '경기장위치경도', -- 경기장위치경도
-  tel       VARCHAR(30)  NOT NULL COMMENT '연락처', -- 연락처
-  cost      INTEGER      NULL     COMMENT '비용' -- 비용
+  mtch_id     INTEGER(30)  NOT NULL COMMENT '경기번호', -- 경기번호
+  tm_id       INTEGER(30)  NOT NULL COMMENT '경기개설팀번호', -- 경기개설팀번호
+  tm_id2      INTEGER(30)  NULL     COMMENT '경기참여팀번호', -- 경기참여팀번호
+  spt_clsf_id INTEGER(30)  NULL     COMMENT '종목유형번호', -- 종목유형번호
+  titl        VARCHAR(50)  NOT NULL COMMENT '제목', -- 제목
+  cont        TEXT         NOT NULL COMMENT '내용', -- 내용
+  vw_cnt      INTEGER      NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
+  cdt         DATETIME     NULL     DEFAULT now() COMMENT '작성일', -- 작성일
+  mdt         DATETIME     NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
+  game_dt     DATETIME     NOT NULL COMMENT '경기날짜', -- 경기날짜
+  area        VARCHAR(100) NOT NULL COMMENT '지역', -- 지역
+  stdm_psti   VARCHAR(255) NULL     COMMENT '경기장이름', -- 경기장이름
+  stdm_lat    VARCHAR(100) NULL     COMMENT '경기장위치위도', -- 경기장위치위도
+  stdm_long   VARCHAR(100) NULL     COMMENT '경기장위치경도', -- 경기장위치경도
+  tel         VARCHAR(30)  NOT NULL COMMENT '연락처', -- 연락처
+  cost        INTEGER      NULL     COMMENT '비용' -- 비용
 )
 COMMENT '경기';
 
@@ -331,6 +333,12 @@ ALTER TABLE mtch
     PRIMARY KEY (
       mtch_id -- 경기번호
     );
+
+ALTER TABLE mtch
+  MODIFY COLUMN mtch_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '경기번호';
+
+ALTER TABLE mtch
+  AUTO_INCREMENT = 1;
 
 -- 경기태그
 CREATE TABLE mtch_tag (
@@ -445,9 +453,6 @@ ALTER TABLE age
       age_id -- 연령대번호
     );
 
-ALTER TABLE age
-  MODIFY COLUMN age_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '연령대번호';
-
 -- 팀유형
 CREATE TABLE tmtype (
   tmtype_id INTEGER(30) NOT NULL COMMENT '팀유형번호', -- 팀유형번호
@@ -462,9 +467,6 @@ ALTER TABLE tmtype
       tmtype_id -- 팀유형번호
     );
 
-ALTER TABLE tmtype
-  MODIFY COLUMN tmtype_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '팀유형번호';
-
 -- 팀수준
 CREATE TABLE tmlevel (
   tmlevel_id INTEGER(30) NOT NULL COMMENT '팀수준번호', -- 팀수준번호
@@ -478,9 +480,6 @@ ALTER TABLE tmlevel
     PRIMARY KEY (
       tmlevel_id -- 팀수준번호
     );
-
-ALTER TABLE tmlevel
-  MODIFY COLUMN tmlevel_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '팀수준번호';
 
 -- 답변
 CREATE TABLE ans (
@@ -501,6 +500,9 @@ ALTER TABLE ans
       qstn_id  -- 질문게시판번호
     );
 
+ALTER TABLE ans
+  MODIFY COLUMN ans_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '답변번호';
+
 -- 자유게시판첨부파일
 CREATE TABLE free_file (
   free_file_id INTEGER(30)  NOT NULL COMMENT '자유게시판첨부파일번호', -- 자유게시판첨부파일번호
@@ -517,6 +519,9 @@ ALTER TABLE free_file
       free_file_id -- 자유게시판첨부파일번호
     );
 
+ALTER TABLE free_file
+  MODIFY COLUMN free_file_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '자유게시판첨부파일번호';
+
 -- 팀원모집첨부파일
 CREATE TABLE rcrm_file (
   rcrm_file_id INTEGER(30)  NOT NULL COMMENT '첨부파일번호', -- 첨부파일번호
@@ -532,6 +537,9 @@ ALTER TABLE rcrm_file
     PRIMARY KEY (
       rcrm_file_id -- 첨부파일번호
     );
+
+ALTER TABLE rcrm_file
+  MODIFY COLUMN rcrm_file_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '첨부파일번호';
 
 -- 후기게시판
 ALTER TABLE revw
@@ -633,6 +641,16 @@ ALTER TABLE rcrm
       tm_id -- 팀번호
     );
 
+-- 팀원모집
+ALTER TABLE rcrm
+  ADD CONSTRAINT FK_spt_clsf_TO_rcrm -- 종목유형 -> 팀원모집
+    FOREIGN KEY (
+      spt_clsf_id -- 종목유형번호
+    )
+    REFERENCES spt_clsf ( -- 종목유형
+      spt_clsf_id -- 종목유형번호
+    );
+
 -- 팀원
 ALTER TABLE tm_mbr
   ADD CONSTRAINT FK_tm_TO_tm_mbr -- 팀 -> 팀원
@@ -691,6 +709,16 @@ ALTER TABLE mtch
     )
     REFERENCES tm ( -- 팀
       tm_id -- 팀번호
+    );
+
+-- 경기
+ALTER TABLE mtch
+  ADD CONSTRAINT FK_spt_clsf_TO_mtch -- 종목유형 -> 경기
+    FOREIGN KEY (
+      spt_clsf_id -- 종목유형번호
+    )
+    REFERENCES spt_clsf ( -- 종목유형
+      spt_clsf_id -- 종목유형번호
     );
 
 -- 경기태그
