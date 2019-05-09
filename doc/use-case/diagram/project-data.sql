@@ -1,23 +1,27 @@
--- 게시판 예제 데이터
-insert into boardtype(boardtype_id, boardtype_name)
-values(1, '자유게시판');
-insert into boardtype(boardtype_id, boardtype_name)
-values(2, '모집게시판');
-insert into boardtype(boardtype_id, boardtype_name)
-values(3, '공지사항게시판');
-insert into boardtype(boardtype_id, boardtype_name)
-values(4, '매치보드게시판');
-insert into boardtype(boardtype_id, boardtype_name)
-values(5, '고객센터');
-insert into boardtype(boardtype_id, boardtype_name)
-values(6, '개인정보');
-insert into boardtype(boardtype_id, boardtype_name)
-values(7, '나의팀정보');
-insert into boardtype(boardtype_id, boardtype_name)
-values(8, '질문게시판');
+-- 팀원 모집 게시판 데이터 테이블
+insert into rcrm(rcrm_id, tm_id, titl, cont, vw_cnt, cdt, mdt, rcrm_stat, rcrm_prsn)
+values(10, 1, '모집합니다.', '모집',1,'2020-2-2','2020-3-3','모집중', 3);
 
-insert into rcrm(post_id, tm_id, rcrm_stat,rcrm_prsn)
-values(1,1,'모집중',2);
+-- 팀 데이터 테이블
+insert into tm(tm_id,name,tm_intd,area,age_id,tmtype_id,tmlevel_id,spt_clsf_id,tm_ambl_phot,tm_unf_wth,tm_unf_phot,cdt,mdt)
+values(1,'testteam','test입니다','강남',1,1,1,1,'/team',true,'/hi','2016-05-12','2017-05-15');
+
+--팀종목유형데이터 테이블
+insert into spt_clsf(spt_clsf_id,spt_clsf)
+values(1,'aaaa');
+
+--팀유형 데이터 테이블
+insert into tmtype(tmtype_id,team_type)
+values(1,'직장인');
+
+--팀수준 데이터 테이블
+insert into tmlevel(tmlevel_id,team_level)
+values(1,'상');
+
+--연령대 데이터 테이블
+insert into age(age_id,ages)
+values(1,'20대');
+
 
 --회원데이터
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
@@ -34,45 +38,5 @@ insert into post(post_id,mbr_id,boardtype_id,titl,cont)
 values(2,1,1,'test2','testtest2');
 insert into post(post_id,mbr_id,boardtype_id,titl,cont)
 values(3,1,1,'test3','testtest3');
-
---팀데이터
-
-insert into tm(tm_id,name,tm_intd,area,age_id,tmtype_id,tmlevel_id,spt_clsf_id,tm_ambl_phot,
-  tm_unf_wth,tm_unf_phot,cdt,ddt,del_res,mdt)
-values(1,'testteam','test입니다','강남',1,1,1,1,'/team',true,'/hi','2015-02-37','2016-05-12','민철이때문','2017-05-15');
-
---팀종목유형데이터
-insert into spt_clsf(spt_clsf_id,spt_clsf)
-values(1,'aaaa');
-
---팀유형 데이터
-insert into tmtype(tmtype_id,team_type)
-values(1,'직장인');
-
---팀수준 데이터
-insert into tmlevel(tmlevel_id,team_level)
-values(1,'상');
-
---연령대 데이터
-insert into age(age_id,ages)
-values(1,'20대');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
