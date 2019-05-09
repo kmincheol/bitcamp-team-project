@@ -17,21 +17,23 @@ public class Team implements Cloneable, Serializable {
   private String teamEmblemPhoto;
   private boolean teamUniform;
   private String teamUniformPhoto;
+  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date teamCreateDate;
+  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date teamDeleteDate;
-  private String teamDeleteReason;
+  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date teamInfoModifieDate;
-
+  private String teamDeleteReason;
+  
   @Override
   public String toString() {
     return "Team [teamId=" + teamId + ", name=" + name + ", teamInfo=" + teamInfo + ", area=" + area
         + ", ageId=" + ageId + ", teamTypeId=" + teamTypeId + ", teamLevelId=" + teamLevelId
         + ", sportsId=" + sportsId + ", teamEmblemPhoto=" + teamEmblemPhoto + ", teamUniform="
         + teamUniform + ", teamUniformPhoto=" + teamUniformPhoto + ", teamCreateDate="
-        + teamCreateDate + ", teamDeleteDate=" + teamDeleteDate + ", teamDeleteReason="
-        + teamDeleteReason + ", teamInfoModifieDate=" + teamInfoModifieDate + "]";
+        + teamCreateDate + ", teamDeleteDate=" + teamDeleteDate + ", teamInfoModifieDate="
+        + teamInfoModifieDate + ", teamDeleteReason=" + teamDeleteReason + "]";
   }
-  
   public int getTeamId() {
     return teamId;
   }
@@ -110,18 +112,19 @@ public class Team implements Cloneable, Serializable {
   public void setTeamDeleteDate(Date teamDeleteDate) {
     this.teamDeleteDate = teamDeleteDate;
   }
-  public String getTeamDeleteReason() {
-    return teamDeleteReason;
-  }
-  public void setTeamDeleteReason(String teamDeleteReason) {
-    this.teamDeleteReason = teamDeleteReason;
-  }
   public Date getTeamInfoModifieDate() {
     return teamInfoModifieDate;
   }
   public void setTeamInfoModifieDate(Date teamInfoModifieDate) {
     this.teamInfoModifieDate = teamInfoModifieDate;
   }
-  
+  public String getTeamDeleteReason() {
+    return teamDeleteReason;
+  }
+  public void setTeamDeleteReason(String teamDeleteReason) {
+    this.teamDeleteReason = teamDeleteReason;
+  }
+
+ 
  
 }

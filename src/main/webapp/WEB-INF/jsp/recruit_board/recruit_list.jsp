@@ -85,10 +85,9 @@
         <table class="table">
           <thead class="thead-light">
             <tr>
-              <th scope="col">번호</th>
+              <th scope="col">종목</th>
               <th scope="col">제목</th>
               <th scope="col">지역</th>
-              <th scope="col">종목</th>
               <th scope="col">작성자</th>
               <th scope="col">작성일</th>
               <th scope="col">상태</th>
@@ -98,7 +97,7 @@
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
+              <td>${teamRecruit.board.no}</td>
               <td>Otto</td>
               <td>Otto</td>
               <td>Otto</td>
