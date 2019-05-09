@@ -15,7 +15,7 @@ ul{
 }
 
 .header-category{
-    margin: 0px 60px;
+    margin: 0px 35px;
 }
 
 .navbar{
@@ -73,19 +73,35 @@ a{
 position: absolute;
 top: 220px;
 text-align: center;
-    left: 0;
-    right: 0;
-  
-    
+left: 0;
+right: 0;
 }
 
 #main-text>h2{
-
     color:white
-    
 }
 
 .dropdown{
 top : 350px;
+}
 
+#recruit-list-out{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 700px;
+    left: 0;
+    right: 0;
+    top: 450px;
+}
+
+.table{
+    width: 1000px;
+    margin: auto;
+    border: 1px solid black;
+}
+
+#in{
+    margin-top: 20px;
+    display: inline-block;
 }

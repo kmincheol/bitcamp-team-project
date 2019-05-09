@@ -2,7 +2,7 @@
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
-<div class="container">
+  <div class="container">
     <div id="main-backgroundImg">
       <img src="${contextRootPath}/images/mainpage.jpg" class="img-fluid">
       <div id="header-item">
@@ -20,7 +20,9 @@
       <div id="header-cate">
         <div>
           <ul class="nav justify-content-center">
-            <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
+            </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">매치</a>
                 <ul>
@@ -61,6 +63,3 @@
     </div>
   </div>
 </header>
-
-
-

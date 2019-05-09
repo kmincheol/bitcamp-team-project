@@ -29,7 +29,9 @@
       <div id="header-cate">
         <div>
           <ul class="nav justify-content-center">
-            <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
+            </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">매치</a>
                 <ul class="category">
@@ -78,14 +80,55 @@
     </div>
 
 
-<div>
+    <div id="recruit-list-out">
 
-  <input type="button">종목
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">번호</th>
+              <th scope="col">제목</th>
+              <th scope="col">지역</th>
+              <th scope="col">종목</th>
+              <th scope="col">작성자</th>
+              <th scope="col">작성일</th>
+              <th scope="col">상태</th>
+              <th scope="col">조회수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>Otto</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
 
-  글쓰기
-
-
-</div>
+          </tbody>
+        </table>
+<div id="in">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
 
 
