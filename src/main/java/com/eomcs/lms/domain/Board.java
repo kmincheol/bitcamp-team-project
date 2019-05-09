@@ -1,6 +1,7 @@
 package com.eomcs.lms.domain;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Board implements Cloneable, Serializable {
@@ -24,14 +25,18 @@ public class Board implements Cloneable, Serializable {
   private int topPostNo;
   private Member member;
   
+  // 조인된 자식 테이블의 데이터를 보관할 필드
+  private List<Tag> tag;
+  private List<AttachedFile> files;
+  
   @Override
   public String toString() {
     return "Board [no=" + no + ", memberNo=" + memberNo + ", boardType=" + boardType + ", title="
         + title + ", contents=" + contents + ", viewCount=" + viewCount + ", createdDate="
         + createdDate + ", modifierDate=" + modifierDate + ", Status=" + Status + ", deleteReason="
-        + deleteReason + ", topPostNo=" + topPostNo + ", member=" + member + "]";
+        + deleteReason + ", topPostNo=" + topPostNo + ", member=" + member + ", tag=" + tag
+        + ", files=" + files + "]";
   }
-  
   public int getNo() {
     return no;
   }
@@ -104,6 +109,21 @@ public class Board implements Cloneable, Serializable {
   public void setMember(Member member) {
     this.member = member;
   }
+  public List<Tag> getTag() {
+    return tag;
+  }
+  public void setTag(List<Tag> tag) {
+    this.tag = tag;
+  }
+  public List<AttachedFile> getFiles() {
+    return files;
+  }
+  public void setFiles(List<AttachedFile> files) {
+    this.files = files;
+  }
   
+  
+
+ 
   
 }

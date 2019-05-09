@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.FreeDao">
+
+  <resultMap type="free" id="freeMap">
+    <id column="free_id" property="no" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="mdt" property="modifierDate" />
+
+    <association property="member" javaType="member">
+      <id column="mbr_id" property="memberNo" />
+      <result column="name" property="name" />
+    </association>
+
+  </resultMap>
+  
+  <sql id="select1">
+    select
+    free_id,
+    m.name,
+    cont,
+    titl,
+    f.cdt,
+    mdt,
+    vw_cnt
+    from
+    free f
+    left outer join mbr m on f.mbr_id =
+    m.mbr_id
+  </sql>
+
+
+
+  <select id="findAll" resultMap="freeMap" parameterType="map">
+    <include refid="select1" />
+    <where>
+      <if test="memberNo != null">f.mbr_id = #{memberNo}</if>
+    </where>
+    order by
+    free_id desc
+    <if test="#{size != null || rowNo != null}">
+      limit #{rowNo}, #{size}
+    </if>
+  </select>
+  
+    <select id="findByNo" resultMap="freeMap" parameterType="int">
+    <include refid="select1"/>
+    where 
+      free_id = #{value}
+  </select>
+  
+  <update id="increaseCount" parameterType="int">
+    update free 
+    set 
+      vw_cnt = vw_cnt + 1 
+    where free_id = #{value}
+  </update>
+  
+  
+  <select id="countAll" resultType="int">
+    select count(*) from free;
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@
 <title>자유 게시판</title>
 <jsp:include page="../commonCss.jsp" />
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${contextRootPath}/css/freeboard.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/free.css">
 </head>
 <body>
 
@@ -30,13 +30,13 @@
           </tr>
         </thead>
         <tbody>
-          <c:forEach items="${list}" var="board">
+          <c:forEach items="${list}" var="free">
             <tr>
-              <th scope="row">${board.no}</th>
-              <td><a href='${contextRootPath}/app/board/${board.no}'>${board.title}</a></td>
-              <td>${board.member.name}</td>
-              <td>${board.createdDate}</td>
-              <td>${board.viewCount}</td>
+              <th scope="row">${free.no}</th>
+              <td><a href='${contextRootPath}/app/free/${free.no}'>${free.title}</a></td>
+              <td>${free.member.name}</td>
+              <td>${free.createdDate}</td>
+              <td>${free.viewCount}</td>
             </tr>
           </c:forEach>
         </tbody>

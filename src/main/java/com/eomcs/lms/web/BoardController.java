@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.eomcs.lms.domain.AttachedFile;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Tag;
 import com.eomcs.lms.service.BoardService;
 import com.eomcs.lms.service.MemberService;
 
@@ -42,8 +43,12 @@ public class BoardController {
   
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
-    Board board = boardService.get(no);
-    model.addAttribute("board", board);
+    Board boardNo = boardService.getByNo(no);
+    List<Tag> tags = boardService.getByNo(no).getTag();
+    List<AttachedFile> files = boardService.getByNo(no).getFiles();
+    model.addAttribute("boardNo", boardNo);
+    model.addAttribute("tags", tags);
+    model.addAttribute("files", files);
     return "board/detail";
   }
   
