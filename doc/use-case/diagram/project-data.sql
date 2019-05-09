@@ -16,6 +16,9 @@ values(7, '나의팀정보');
 insert into boardtype(boardtype_id, boardtype_name)
 values(8, '질문게시판');
 
+insert into rcrm(post_id, tm_id, rcrm_stat,rcrm_prsn)
+values(1,1,'모집중',2);
+
 --회원데이터
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
 values(1,'testId','1111','김민철','1995-5-5','남','010-1111-1111','비트캠프','강남','face');
@@ -31,4 +34,45 @@ insert into post(post_id,mbr_id,boardtype_id,titl,cont)
 values(2,1,1,'test2','testtest2');
 insert into post(post_id,mbr_id,boardtype_id,titl,cont)
 values(3,1,1,'test3','testtest3');
+
+--팀데이터
+
+insert into tm(tm_id,name,tm_intd,area,age_id,tmtype_id,tmlevel_id,spt_clsf_id,tm_ambl_phot,
+  tm_unf_wth,tm_unf_phot,cdt,ddt,del_res,mdt)
+values(1,'testteam','test입니다','강남',1,1,1,1,'/team',true,'/hi','2015-02-37','2016-05-12','민철이때문','2017-05-15');
+
+--팀종목유형데이터
+insert into spt_clsf(spt_clsf_id,spt_clsf)
+values(1,'aaaa');
+
+--팀유형 데이터
+insert into tmtype(tmtype_id,team_type)
+values(1,'직장인');
+
+--팀수준 데이터
+insert into tmlevel(tmlevel_id,team_level)
+values(1,'상');
+
+--연령대 데이터
+insert into age(age_id,ages)
+values(1,'20대');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

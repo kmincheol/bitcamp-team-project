@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.TeamRecruitDao">
+
+  <resultMap type="TeamRecruit" id="TeamRecruitMap">
+    <id column="post_id" property="no" />
+    <result column="rcrm_stat" property="recruitStat" />
+    <result column="rcrm_prsn" property="recruitMember" />
+
+
+    <association property="board" javaType="board">
+      <id column="post_id" property="no" />
+    </association>
+  </resultMap>
+
+  <select id="findAll" resultMap="TeamRecruitMap" parameterType="map">
+    select
+    post_id,
+    titl
+  
+    from
+    post
+    <!-- rcrm t
+    left outer join post p on t.post_id = p.post_id
+
+    order by
+    post_id desc
+ -->
+  </select>
+
+  <!-- <select id="findByNo" resultMap="boardMap" parameterType="int">
+    where
+    post_id = #{value}
+  </select>
+
+
+  <update id="increaseCount" parameterType="int">
+    update post
+    set
+    vw_cnt = vw_cnt + 1
+    where post_id =
+    #{value}
+  </update>
+
+  <insert id="insert" parameterType="board">
+    insert into post(cont)
+    values(#{contents})
+  </insert>
+
+  <update id="update" parameterType="board">
+    update post
+    set
+    cont = #{contents}
+    where post_id = #{no}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from post
+    where post_id = #{no}
+  </delete>
+
+  <select id="countAll" resultType="int">
+    select count(*) from post
+  </select> -->
+</mapper>
+
