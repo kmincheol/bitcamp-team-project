@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Board;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.BoardService;
 import com.eomcs.lms.service.MemberService;
 

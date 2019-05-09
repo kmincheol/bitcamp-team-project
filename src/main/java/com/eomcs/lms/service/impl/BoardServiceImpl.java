@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.BoardDao;
+import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.service.BoardService;
 
@@ -15,18 +16,17 @@ import com.eomcs.lms.service.BoardService;
 public class BoardServiceImpl implements BoardService {
 
   BoardDao boardDao;
+  MemberDao memberDao;
 
-  public BoardServiceImpl(BoardDao boardDao) {
+  public BoardServiceImpl(BoardDao boardDao, MemberDao memberDao) {
     this.boardDao = boardDao;
+    this.memberDao = memberDao;
   }
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
   @Override
   public List<Board> list(int pageNo, int pageSize, int memberNo) {
-    // 게시물 목록을 가져오는 경우 서비스 객체에서 특별하게 할 일이 없다.
-    // 그럼에도 불구하고 Command 객체와 DAO 사이에 Service 객체를 두기로 했으면 
-    // 일관성을 위해 Command 객체는 항상 Service 객체를 통해 데이터를 다뤄야 한다.
-    // 
+
     if (memberNo <= 0) {
       HashMap<String,Object> params = new HashMap<>();
       params.put("size", pageSize);

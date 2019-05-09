@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>게시물 조회</title>
+  <title>자유게시판</title>
   <jsp:include page="../commonCss.jsp"/>
 </head>
 <body>
@@ -12,7 +12,7 @@
 <jsp:include page="../header.jsp"/>
 
 <div class="container">
-<h1>게시물 조회</h1>
+<h1>자유게시판</h1>
 <c:choose>
 <c:when test="${empty board}">
   <p>해당 게시물이 없습니다</p>
@@ -26,6 +26,15 @@
              name='no' value='${board.no}' readonly>
     </div>
   </div>
+  
+    <div class="form-group row">
+    <label for="title" class="col-sm-2 col-form-label">제목</label>
+    <div class="col-sm-8">
+      <textarea class="form-control" id="title" 
+                name='contents' rows='5'>${board.titl}</textarea>
+    </div>
+  </div>
+  
   <div class="form-group row">
     <label for="contents" class="col-sm-2 col-form-label">내용</label>
     <div class="col-sm-8">
@@ -33,6 +42,8 @@
                 name='contents' rows='5'>${board.contents}</textarea>
     </div>
   </div>
+  
+  
   <div class="form-group row">
     <label for="createdDate" class="col-sm-2 col-form-label">작성일</label>
     <div class="col-sm-10">
@@ -40,6 +51,7 @@
           id="createdDate" value="${board.createdDate}">
     </div>
   </div>
+  
   <div class="form-group row">
     <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
     <div class="col-sm-10">
@@ -47,6 +59,7 @@
           id="viewCount" value="${board.viewCount}">
     </div>
   </div>
+  
   <div class="form-group row">
     <div class="col-sm-10">
       <a class="btn btn-primary" href='.'>목록</a> 
@@ -54,6 +67,7 @@
       <button class="btn btn-primary">변경</button>
     </div>
   </div>
+  
   </form>
 </c:otherwise>
 </c:choose>

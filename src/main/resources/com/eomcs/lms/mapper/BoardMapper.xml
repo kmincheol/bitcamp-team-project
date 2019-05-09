@@ -35,8 +35,8 @@
       p.cdt, 
       vw_cnt 
     from 
-      mbr m
-      left outer join post p on p.mbr_id = m.mbr_id  
+      post p
+      left outer join mbr m on p.mbr_id = m.mbr_id  
   </sql>
   
   
@@ -44,7 +44,7 @@
   <select id="findAll" resultMap="boardMap" parameterType="map">
     <include refid="select1"/>
     <where>
-      <if test="memberNo != null">or m.mbr_id = #{memberNo}</if>
+      <if test="memberNo != null">p.mbr_id = #{memberNo}</if>
     </where>
     order by 
       post_id desc
@@ -58,6 +58,7 @@
     where 
       post_id = #{value}
   </select>
+  
   
   <update id="increaseCount" parameterType="int">
     update post 
