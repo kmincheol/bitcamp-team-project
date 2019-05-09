@@ -13,7 +13,7 @@
 <body>
 
   <div class="container">
-    <h1>자유게시판 리스트</h1>
+    <h1>자유게시판</h1>
     <p>
       <a href='form' class="btn btn-primary btn-sm">새 글</a>
     </p>
@@ -32,11 +32,11 @@
         <tbody>
           <c:forEach items="${list}" var="board">
             <tr>
-              <th scope="row">3</th>
-              <td><a href='${board.no}'>3</a></td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
+              <th scope="row">${board.no}</th>
+              <td><a href='${board.no}'>${board.title}</a></td>
+              <td>${board.member.name}</td>
+              <td>${board.createdDate}</td>
+              <td>${board.viewCount}</td>
             </tr>
           </c:forEach>
         </tbody>
