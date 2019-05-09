@@ -20,8 +20,9 @@
 		<thead>
 		<tr id="bar">
     		<th>
+         <label for="tagsearch" class="col-sm-2 col-form-label" id="head"><b>태그검색</b></label>
     		<form id="searchbox" action='search' class="form-inline my-2 my-lg-0 justify-content">
-       	<input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요.">
+       	<input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="검색어할 태그를 입력해주세요">
 			<button class="btn btn-outline-success my-2 my-sm-0">검색</button>
     		</form>
     		</th>
