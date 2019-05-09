@@ -36,7 +36,7 @@
       vw_cnt 
     from 
       mbr m
-      left outer join post p on m.mbr_id = p.mbr_id  
+      left outer join post p on p.mbr_id = m.mbr_id  
   </sql>
   
   
