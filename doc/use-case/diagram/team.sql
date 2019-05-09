@@ -88,8 +88,8 @@ ALTER TABLE revw
 
 -- 종목유형
 CREATE TABLE spt_clsf (
-  spt_clsf_id INTEGER(30)  NOT NULL COMMENT '종목유형번호', -- 종목유형번호
-  spt_clsf    VARCHAR(255) NULL     COMMENT '종목' -- 종목
+  spt_clsf_id   INTEGER(30)  NOT NULL COMMENT '종목유형번호', -- 종목유형번호
+  spt_clsf_name VARCHAR(255) NULL     COMMENT '종목이름' -- 종목이름
 )
 COMMENT '종목유형';
 
@@ -181,7 +181,7 @@ CREATE TABLE qstn (
   titl      VARCHAR(50)  NOT NULL COMMENT '제목', -- 제목
   cont      TEXT         NOT NULL COMMENT '내용', -- 내용
   qstn_type VARCHAR(255) NOT NULL COMMENT '문의유형', -- 문의유형
-  ansr_stat VARCHAR(20)  NOT NULL COMMENT '답변상태', -- 답변상태
+  ansr_stat BOOLEAN      NULL     DEFAULT 0 COMMENT '답변상태', -- 답변상태
   cdt       DATETIME     NULL     DEFAULT now() COMMENT '작성일' -- 작성일
 )
 COMMENT '질문';
@@ -206,7 +206,7 @@ CREATE TABLE rcrm (
   vw_cnt      INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
   cdt         DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
   mdt         DATETIME    NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
-  rcrm_stat   VARCHAR(20) NOT NULL COMMENT '모집상태', -- 모집상태
+  rcrm_stat   BOOLEAN     NULL     DEFAULT 0 COMMENT '모집상태', -- 모집상태
   rcrm_prsn   INTEGER     NULL     COMMENT '모집인원' -- 모집인원
 )
 COMMENT '팀원모집';
@@ -288,8 +288,8 @@ CREATE TABLE cmt (
   free_id    INTEGER(30)  NULL     COMMENT '자유게시판번호', -- 자유게시판번호
   mbr_id     INTEGER(30)  NULL     COMMENT '회원번호', -- 회원번호
   cont       TEXT         NOT NULL COMMENT '내용', -- 내용
-  pcd        VARCHAR(30)  NOT NULL COMMENT '순서', -- 순서
-  level      VARCHAR(30)  NOT NULL COMMENT '단계', -- 단계
+  pcd        INTEGER      NOT NULL COMMENT '순서', -- 순서
+  level      INTEGER      NOT NULL COMMENT '단계', -- 단계
   cmt_cont   VARCHAR(255) NOT NULL COMMENT '댓글내용', -- 댓글내용
   write_time DATETIME     NULL     DEFAULT now() COMMENT '작성일시', -- 작성일시
   mdt        DATETIME     NULL     DEFAULT now() COMMENT '최근수정일' -- 최근수정일
@@ -380,7 +380,7 @@ ALTER TABLE mtchapply
 CREATE TABLE warning (
   warning_id     INTEGER(30) NOT NULL COMMENT '팀경고번호', -- 팀경고번호
   warning_reason TEXT        NOT NULL COMMENT '경고사유', -- 경고사유
-  warning_date   DATETIME    NOT NULL COMMENT '경고일', -- 경고일
+  warning_date   DATETIME    NULL     DEFAULT now() COMMENT '경고일', -- 경고일
   tm_id          INTEGER(30) NULL     COMMENT '팀번호' -- 팀번호
 )
 COMMENT '팀경고';
