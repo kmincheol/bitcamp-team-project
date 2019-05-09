@@ -3,50 +3,36 @@ package com.eomcs.lms.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.eomcs.lms.dao.BoardDao;
-import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.dao.TeamRecruitDao;
 import com.eomcs.lms.domain.TeamRecruit;
-import com.eomcs.lms.service.TeamRecruitService;
+import com.eomcs.lms.service.TeamRecruitBoardService;
 
-// 스프링 IoC 컨테이너가 관리하는 객체 중에서 
-// 비즈니스 로직을 담당하는 객체는 
+// 스프링 IoC 컨테이너가 관리하는 객체 중에서
+// 비즈니스 로직을 담당하는 객체는
 // 특별히 그 역할을 표시하기 위해 @Component 대신에 @Service 애노테이션을 붙인다.
 // 이렇게 애노테이션으로 구분해두면 나중에 애노테이션으로 객체를 찾을 수 있다.
 @Service
-public class TeamRecruitServiceImpl implements TeamRecruitService {
-  TeamRecruitDao teamRecruitDao;
-  BoardDao boardDao;
-  MemberDao memberDao;
+public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
 
-  public TeamRecruitServiceImpl(BoardDao boardDao, MemberDao memberDao,TeamRecruitDao teamRecruitDao) {
+  TeamRecruitDao teamRecruitDao;
+
+  public TeamRecruitServiceImpl(TeamRecruitDao teamRecruitDao) {
     this.teamRecruitDao = teamRecruitDao;
-    this.boardDao = boardDao;
-    this.memberDao = memberDao;
   }
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
   @Override
-  public List<TeamRecruit> list(int pageNo, int pageSize, int memberNo) {
+  public List<TeamRecruit> list(int pageNo, int pageSize) {
+    // 게시물 목록을 가져오는 경우 서비스 객체에서 특별하게 할 일이 없다.
+    // 그럼에도 불구하고 Command 객체와 DAO 사이에 Service 객체를 두기로 했으면
+    // 일관성을 위해 Command 객체는 항상 Service 객체를 통해 데이터를 다뤄야 한다.
+    //
 
-    if (memberNo <= 0) {
-      HashMap<String,Object> params = new HashMap<>();
-      params.put("size", pageSize);
-      params.put("rowNo", (pageNo - 1) * pageSize);
-      return teamRecruitDao.findAll(params);
+    HashMap<String, Object> params = new HashMap<>();
+    params.put("size", pageSize);
+    params.put("rowNo", (pageNo - 1) * pageSize);
 
-    } else {
-      HashMap<String,Object> params = new HashMap<>();
-
-      if (memberNo > 0) {
-        params.put("memberNo", memberNo);
-      } else {
-        params.put("memberNo", null);
-      }
-      params.put("size", pageSize);
-      params.put("rowNo", (pageNo - 1) * pageSize);
-      return teamRecruitDao.findAll(params);
-    }
+    return teamRecruitDao.findAll(params);
   }
 
   @Override
@@ -81,16 +67,11 @@ public class TeamRecruitServiceImpl implements TeamRecruitService {
     return teamRecruitDao.delete(no);
   }
 
-  @Override
-  public int size() {
-    // 전체 게시물의 개수
-    return teamRecruitDao.countAll();
-  }
+//  @Override
+//  public int size() {
+//    // 전체 게시물의 개수
+//    return teamRecruitDao.countAll();
+//  }
 }
-
-
-
-
-
 
 

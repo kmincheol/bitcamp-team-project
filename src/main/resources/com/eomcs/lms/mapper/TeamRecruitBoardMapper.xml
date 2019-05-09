@@ -6,65 +6,24 @@
 
 <mapper namespace="com.eomcs.lms.dao.TeamRecruitDao">
 
-  <resultMap type="TeamRecruit" id="TeamRecruitMap">
-    <id column="post_id" property="no" />
-    <result column="rcrm_stat" property="recruitStat" />
-    <result column="rcrm_prsn" property="recruitMember" />
+  <resultMap type="TeamRecruit" id="teamRecruitMap">
+    <id column="rcrm_id" property="teamId" />
+    <result column="titl" property="teamTitl" />
+    <result column="vw_cnt" property="teamVwCnt" />
 
-
-    <association property="board" javaType="board">
-      <id column="post_id" property="no" />
-    </association>
+    <!-- <association property="lesson" javaType="lesson"> <id column="lesson_id" property="no" /> <result 
+      column="lessonTitle" property="title" /> <result column="sdt" property="startDate" /> <result column="edt" 
+      property="endDate" /> </association> -->
   </resultMap>
 
-  <select id="findAll" resultMap="TeamRecruitMap" parameterType="map">
+
+  <select id="findAll" resultMap="teamRecruitMap" parameterType="map">
     select
-    post_id,
-    titl
-  
+    rcrm_id,
+    titl,
+    vw_cnt
     from
-    post
-    <!-- rcrm t
-    left outer join post p on t.post_id = p.post_id
-
-    order by
-    post_id desc
- -->
+    rcrm
   </select>
 
-  <!-- <select id="findByNo" resultMap="boardMap" parameterType="int">
-    where
-    post_id = #{value}
-  </select>
-
-
-  <update id="increaseCount" parameterType="int">
-    update post
-    set
-    vw_cnt = vw_cnt + 1
-    where post_id =
-    #{value}
-  </update>
-
-  <insert id="insert" parameterType="board">
-    insert into post(cont)
-    values(#{contents})
-  </insert>
-
-  <update id="update" parameterType="board">
-    update post
-    set
-    cont = #{contents}
-    where post_id = #{no}
-  </update>
-
-  <delete id="delete" parameterType="int">
-    delete from post
-    where post_id = #{no}
-  </delete>
-
-  <select id="countAll" resultType="int">
-    select count(*) from post
-  </select> -->
 </mapper>
-
