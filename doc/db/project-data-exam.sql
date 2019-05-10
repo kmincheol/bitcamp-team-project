@@ -296,19 +296,12 @@ insert into qstn(qstn_id,mbr_id,titl,cont,qstn_type)
 values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.','기타');
 
 -- 답변데이터
-insert into ans(ans_id,qstn_id,titl,ans_cont)
+insert into ans(ans_id,qstn_id,titl,cont)
 values(1,1,'비밀번호변경문의','비밀번호변경에서 바꿀 수 있습니다.');
-insert into ans(ans_id,qstn_id,titl,ans_cont)
+insert into ans(ans_id,qstn_id,titl,cont)
 values(2,2,'경기불참문의','경고가 주어집니다.');
-insert into ans(ans_id,qstn_id,titl,ans_cont)
+insert into ans(ans_id,qstn_id,titl,cont)
 values(3,3,'사이트접속지연문의','인터넷을 바꾸면 빨라집니다.');
-
-
-
-
-
-
-
 
 
 -- 공지사항게시판데이터
@@ -318,7 +311,6 @@ insert into anunc(anunc_id, mbr_id, titl, cont)
 values(2,1,'공지사항글테스트입니다.22','헬로헬로헬로');
 insert into anunc(anunc_id, mbr_id, titl, cont)
 values(3,1,'공지사항글테스트입니다.333','헬로헬로헬로');
-
 
 -- 공지사항게시판 첨부파일
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)

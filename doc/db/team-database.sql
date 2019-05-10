@@ -67,7 +67,11 @@ DROP TABLE IF EXISTS free_file RESTRICT;
 -- 팀원모집첨부파일
 DROP TABLE IF EXISTS rcrm_file RESTRICT;
 
+-- 공지사항
+DROP TABLE IF EXISTS anunc RESTRICT;
 
+-- 공지사항첨부파일
+DROP TABLE IF EXISTS anunc_file RESTRICT;
 
 -- 후기게시판
 CREATE TABLE revw (
@@ -180,7 +184,7 @@ ALTER TABLE tm
 -- 질문
 CREATE TABLE qstn (
   qstn_id   INTEGER(30)  NOT NULL COMMENT '질문게시판번호', -- 질문게시판번호
-  mbr_id   INTEGER(30)    NULL COMMENT '회원번호', -- 회원번호
+  mbr_id    INTEGER(30)  NULL     COMMENT '회원번호', -- 회원번호
   titl      VARCHAR(50)  NOT NULL COMMENT '제목', -- 제목
   cont      TEXT         NOT NULL COMMENT '내용', -- 내용
   qstn_type VARCHAR(255) NOT NULL COMMENT '문의유형', -- 문의유형
@@ -201,15 +205,15 @@ ALTER TABLE qstn
 
 -- 팀원모집
 CREATE TABLE rcrm (
-  rcrm_id     INTEGER(30) NOT NULL COMMENT '팀원모집번호', -- 팀원모집번호
-  tm_id       INTEGER(30) NULL     COMMENT '팀번호', -- 팀번호
-  titl        VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
-  cont        TEXT        NOT NULL COMMENT '내용', -- 내용
-  vw_cnt      INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
-  cdt         DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
-  mdt         DATETIME    NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
-  rcrm_stat   BOOLEAN     NULL     DEFAULT 0 COMMENT '모집상태', -- 모집상태
-  rcrm_prsn   INTEGER     NULL     COMMENT '모집인원' -- 모집인원
+  rcrm_id   INTEGER(30) NOT NULL COMMENT '팀원모집번호', -- 팀원모집번호
+  tm_id     INTEGER(30) NULL     COMMENT '팀번호', -- 팀번호
+  titl      VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
+  cont      TEXT        NOT NULL COMMENT '내용', -- 내용
+  vw_cnt    INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
+  cdt       DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
+  mdt       DATETIME    NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
+  rcrm_stat BOOLEAN     NULL     DEFAULT 0 COMMENT '모집상태', -- 모집상태
+  rcrm_prsn INTEGER     NULL     COMMENT '모집인원' -- 모집인원
 )
 COMMENT '팀원모집';
 
@@ -286,14 +290,14 @@ ALTER TABLE tm_mbr
 
 -- 댓글
 CREATE TABLE cmt (
-  cmt_id   INTEGER(30)  NOT NULL COMMENT '댓글번호', -- 댓글번호
-  free_id  INTEGER(30)  NULL     COMMENT '자유게시판번호', -- 자유게시판번호
-  mbr_id   INTEGER(30)  NULL     COMMENT '회원번호', -- 회원번호
-  pcd      INTEGER      NOT NULL COMMENT '순서', -- 순서
-  lev    INTEGER      NOT NULL COMMENT '단계', -- 단계
-  cont VARCHAR(255) NOT NULL COMMENT '내용', -- 내용
-  wrt_dt   DATETIME     NULL     DEFAULT now() COMMENT '작성일시', -- 작성일시
-  mdt      DATETIME     NULL     DEFAULT now() COMMENT '최근수정일' -- 최근수정일
+  cmt_id  INTEGER(30)  NOT NULL COMMENT '댓글번호', -- 댓글번호
+  free_id INTEGER(30)  NULL     COMMENT '자유게시판번호', -- 자유게시판번호
+  mbr_id  INTEGER(30)  NULL     COMMENT '회원번호', -- 회원번호
+  pcd     INTEGER      NOT NULL COMMENT '순서', -- 순서
+  lev     INTEGER      NOT NULL COMMENT '단계', -- 단계
+  cont    VARCHAR(255) NOT NULL COMMENT '내용', -- 내용
+  wrt_dt  DATETIME     NULL     DEFAULT now() COMMENT '작성일시', -- 작성일시
+  mdt     DATETIME     NULL     DEFAULT now() COMMENT '최근수정일' -- 최근수정일
 )
 COMMENT '댓글';
 
@@ -412,8 +416,8 @@ ALTER TABLE toplc
     );
 
 ALTER TABLE toplc
-  MODIFY COLUMN toplc_id INTEGER(30) NOT NULL AUTO_INCREMENT;
-    
+  MODIFY COLUMN toplc_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '시도지역번호';
+
 -- 시군구지역
 CREATE TABLE midlc (
   midlc_id INTEGER(30) NOT NULL COMMENT '시군구지역번호', -- 시군구지역번호
@@ -429,9 +433,9 @@ ALTER TABLE midlc
     PRIMARY KEY (
       midlc_id -- 시군구지역번호
     );
-    
+
 ALTER TABLE midlc
-  MODIFY COLUMN midlc_id INTEGER(30) NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN midlc_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '시군구지역번호';
 
 -- 읍면동지역
 CREATE TABLE btmlc (
@@ -448,9 +452,9 @@ ALTER TABLE btmlc
     PRIMARY KEY (
       btmlc_id -- 읍면동지역번호
     );
-    
+
 ALTER TABLE btmlc
-  MODIFY COLUMN btmlc_id INTEGER(30) NOT NULL AUTO_INCREMENT;
+  MODIFY COLUMN btmlc_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '읍면동지역번호';
 
 -- 연령대
 CREATE TABLE age (
@@ -496,12 +500,11 @@ ALTER TABLE tm_lev
 
 -- 답변
 CREATE TABLE ans (
-  ans_id   INTEGER(30) NOT NULL COMMENT '답변번호', -- 답변번호
-  mbr_id  INTEGER(30)     NULL     COMMENT '회원번호', -- 회원번호
-  qstn_id  INTEGER(30) NOT NULL COMMENT '질문게시판번호', -- 질문게시판번호
-  titl     VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
-  ans_cont TEXT        NOT NULL COMMENT '답변', -- 답변
-  ans_dt   DATETIME    NULL     DEFAULT now() COMMENT '답변일' -- 답변일
+  ans_id  INTEGER(30) NOT NULL COMMENT '답변번호', -- 답변번호
+  qstn_id INTEGER(30) NOT NULL COMMENT '질문게시판번호', -- 질문게시판번호
+  titl    VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
+  cont    TEXT        NOT NULL COMMENT '답변', -- 답변
+  ans_dt  DATETIME    NULL     DEFAULT now() COMMENT '답변일' -- 답변일
 )
 COMMENT '답변';
 
@@ -553,6 +556,47 @@ ALTER TABLE rcrm_file
 
 ALTER TABLE rcrm_file
   MODIFY COLUMN rcrm_file_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '첨부파일번호';
+
+-- 공지사항
+CREATE TABLE anunc (
+  anunc_id INTEGER(30) NOT NULL COMMENT '공지사항게시판번호', -- 공지사항게시판번호
+  mbr_id   INTEGER(30) NULL     COMMENT '회원번호', -- 회원번호
+  titl     VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
+  cont     TEXT        NOT NULL COMMENT '내용', -- 내용
+  vw_cnt   INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
+  cdt      DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
+  mdt      DATETIME    NULL     DEFAULT now() COMMENT '최근수정일' -- 최근수정일
+)
+COMMENT '공지사항';
+
+-- 공지사항
+ALTER TABLE anunc
+  ADD CONSTRAINT PK_anunc -- 공지사항 기본키
+    PRIMARY KEY (
+      anunc_id -- 공지사항게시판번호
+    );
+
+ALTER TABLE anunc
+  MODIFY COLUMN anunc_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '공지사항게시판번호';
+
+-- 공지사항첨부파일
+CREATE TABLE anunc_file (
+  anunc_file_id INTEGER(30)  NOT NULL COMMENT '공지사항첨부파일번호', -- 공지사항첨부파일번호
+  anunc_id      INTEGER(30)  NULL     COMMENT '공지사항게시판번호', -- 공지사항게시판번호
+  file_path     VARCHAR(255) NULL     COMMENT '파일경로', -- 파일경로
+  file_type     VARCHAR(30)  NULL     COMMENT '파일유형' -- 파일유형
+)
+COMMENT '공지사항첨부파일';
+
+-- 공지사항첨부파일
+ALTER TABLE anunc_file
+  ADD CONSTRAINT PK_anunc_file -- 공지사항첨부파일 기본키
+    PRIMARY KEY (
+      anunc_file_id -- 공지사항첨부파일번호
+    );
+
+ALTER TABLE anunc_file
+  MODIFY COLUMN anunc_file_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '공지사항첨부파일번호';
 
 -- 후기게시판
 ALTER TABLE revw
@@ -642,6 +686,16 @@ ALTER TABLE tm
     )
     REFERENCES tm_lev ( -- 팀수준
       tm_lev_id -- 팀수준번호
+    );
+
+-- 질문
+ALTER TABLE qstn
+  ADD CONSTRAINT FK_mbr_TO_qstn -- 회원 -> 질문
+    FOREIGN KEY (
+      mbr_id -- 회원번호
+    )
+    REFERENCES mbr ( -- 회원
+      mbr_id -- 회원번호
     );
 
 -- 팀원모집
@@ -794,16 +848,6 @@ ALTER TABLE btmlc
       midlc_id -- 시군구지역번호
     );
 
--- 질문
-ALTER TABLE qstn
-ADD CONSTRAINT FK_mbr_TO_qstn
-FOREIGN KEY (
-mbr_id
-)
-REFERENCES mbr (
-mbr_id
-);
-
 -- 답변
 ALTER TABLE ans
   ADD CONSTRAINT FK_qstn_TO_ans -- 질문 -> 답변
@@ -833,61 +877,23 @@ ALTER TABLE rcrm_file
     REFERENCES rcrm ( -- 팀원모집
       rcrm_id -- 팀원모집번호
     );
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    -- 공지사항게시판
-DROP TABLE IF EXISTS anunc RESTRICT;
 
--- 공지사항게시판첨부파일
-DROP TABLE IF EXISTS anunc_file RESTRICT;
-
-    
-    -- 공지사항게시판
-CREATE TABLE anunc (
-  anunc_id INTEGER(30) NOT NULL COMMENT '공지사항게시판번호', -- 공지사항게시판번호
-  mbr_id  INTEGER(30) NULL     COMMENT '회원번호', -- 회원번호
-  titl    VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
-  cont    TEXT        NOT NULL COMMENT '내용', -- 내용
-  vw_cnt  INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
-  cdt     DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
-  mdt     DATETIME    NULL     DEFAULT now() COMMENT '최근수정일' -- 최근수정일
-)
-COMMENT '공지사항게시판';
-
--- 공지사항게시판
+-- 공지사항
 ALTER TABLE anunc
-  ADD CONSTRAINT PK_anunc -- 공지사항게시판 기본키
-    PRIMARY KEY (
+  ADD CONSTRAINT FK_mbr_TO_anunc -- 회원 -> 공지사항
+    FOREIGN KEY (
+      mbr_id -- 회원번호
+    )
+    REFERENCES mbr ( -- 회원
+      mbr_id -- 회원번호
+    );
+
+-- 공지사항첨부파일
+ALTER TABLE anunc_file
+  ADD CONSTRAINT FK_anunc_TO_anunc_file -- 공지사항 -> 공지사항첨부파일
+    FOREIGN KEY (
+      anunc_id -- 공지사항게시판번호
+    )
+    REFERENCES anunc ( -- 공지사항
       anunc_id -- 공지사항게시판번호
     );
-
-
-    
-    
-    
--- 공지사항게시판첨부파일
-CREATE TABLE anunc_file (
-  anunc_file_id INTEGER(30)  NOT NULL COMMENT '공지사항게시판첨부파일번호', -- 공지사항게시판첨부파일번호
-  anunc_id      INTEGER(30)  NULL     COMMENT '공지사항게시판번호', -- 공지사항게시판번호
-  file_path    VARCHAR(255) NULL     COMMENT '파일경로', -- 파일경로
-  file_type    VARCHAR(30)  NULL     COMMENT '파일유형' -- 파일유형
-)
-COMMENT '공지사항게시판첨부파일';
-
--- 공지사항게시판첨부파일
-ALTER TABLE anunc_file
-  ADD CONSTRAINT PK_anunc_file -- 공지사항게시판첨부파일 기본키
-    PRIMARY KEY (
-      anunc_file_id -- 공지사항게시판첨부파일번호
-    );
-
-ALTER TABLE anunc_file
-  MODIFY COLUMN anunc_file_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '공지사항게시판첨부파일번호';
-
