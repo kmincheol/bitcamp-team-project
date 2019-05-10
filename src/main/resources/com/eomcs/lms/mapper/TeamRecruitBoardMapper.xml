@@ -28,7 +28,7 @@
     <result column="tm_id" property="teamId" />
     <result column="titl" property="teamTitle" />
     <result column="vw_cnt" property="teamViewCount" />
-    <result column="cdt" property="teamCreatedDate" />
+    <result column="mdt" property="teamModifyDate" />
     <result column="rcrm_stat" property="teamRcrmStatus" />
     <result column="cont" property="teamContents" />
 
@@ -38,7 +38,7 @@
       <result column="name" property="teamName" />
     </association>
     
-    <association property="TeamTypeSports" javaType="teamTypeSports">
+    <association property="teamTypeSports" javaType="teamTypeSports">
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
@@ -52,7 +52,7 @@
       titl,
       area,
       name,
-      t.cdt,
+      t.mdt,
       rcrm_stat,
       vw_cnt
     from
@@ -74,9 +74,17 @@
       rcrm r
       left outer join tm t on r.tm_id = t.tm_id
       left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-      
+    where
+      r.rcrm_id = #{value};
     
   </select>
+  
+  <update id="increaseCount" parameterType="int">
+    update rcrm
+    set 
+      vw_cnt = vw_cnt + 1 
+    where rcrm_id = #{value}
+  </update>
 
 
 </mapper>

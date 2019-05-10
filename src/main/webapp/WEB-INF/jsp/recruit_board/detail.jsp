@@ -18,11 +18,11 @@
         <tbody>
           <tr>
             <th scope="row">지역</th>
-            <td>${teamRecruit.team.teamArea }</td>
+            <td>${teamRecruit.team.teamArea}</td>
           </tr>
           <tr>
             <th scope="row">종목</th>
-            <td>${teamRecruit.team.teamSportsType}</td>
+            <td>${teamRecruit.teamTypeSports.teamSportsType}</td>
           </tr>
           <tr>
             <th scope="row">팀명</th>

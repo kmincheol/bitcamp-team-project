@@ -96,10 +96,10 @@
   </select>
   
   <update id="increaseCount" parameterType="int">
-    update free 
-    set 
+    update free
+    set
       vw_cnt = vw_cnt + 1 
-    where free_id = #{value}
+      where free_id = #{value};
   </update>
   
     <insert id="insert" parameterType="free"
