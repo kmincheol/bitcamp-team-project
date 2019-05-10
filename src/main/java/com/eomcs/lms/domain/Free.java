@@ -1,6 +1,7 @@
 package com.eomcs.lms.domain;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Free implements Cloneable, Serializable {
@@ -16,17 +17,15 @@ public class Free implements Cloneable, Serializable {
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date modifierDate;
   private Member member;
-  
-  
-  
-  
+  private List<FreeFile> files;
   
   @Override
   public String toString() {
     return "Free [no=" + no + ", MemberNo=" + MemberNo + ", title=" + title + ", contents="
         + contents + ", viewCount=" + viewCount + ", createdDate=" + createdDate + ", modifierDate="
-        + modifierDate + ", member=" + member + "]";
+        + modifierDate + ", member=" + member + ", files=" + files + "]";
   }
+  
   public int getNo() {
     return no;
   }
@@ -75,6 +74,11 @@ public class Free implements Cloneable, Serializable {
   public void setMember(Member member) {
     this.member = member;
   }
-  
+  public List<FreeFile> getFiles() {
+    return files;
+  }
+  public void setFiles(List<FreeFile> files) {
+    this.files = files;
+  }
   
 }

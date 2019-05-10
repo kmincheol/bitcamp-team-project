@@ -1,6 +1,10 @@
 package com.eomcs.lms.web;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import javax.servlet.ServletContext;
+import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Free;
+import com.eomcs.lms.domain.FreeFile;
 import com.eomcs.lms.service.FreeService;
 import com.eomcs.lms.service.MemberService;
 
@@ -19,6 +24,7 @@ public class FreeController {
 
   @Autowired FreeService freeService;
   @Autowired MemberService memberService;
+  @Autowired ServletContext servletContext;
 
   @GetMapping
   public String list(
@@ -67,19 +73,43 @@ public class FreeController {
   }
 
   @PostMapping("add")
-  public String add(Free free) {
-    freeService.add(free);
-    return "redirect:.";
+  public String add(Free free, Part[] photo) throws Exception {
+
+    ArrayList<FreeFile> files = new ArrayList<>();
+
+    String uploadDir = servletContext.getRealPath(
+        "/upload/free");
+
+    for (Part part : photo) {
+      if (part.getSize() == 0) 
+        continue;
+
+      String filename = UUID.randomUUID().toString();
+      part.write(uploadDir + "/" + filename);
+
+      FreeFile file = new FreeFile();
+      file.setFilePath(filename);
+      files.add(file);
+    }
+    free.setFiles(files);
+
+    if (free.getTitle().length() == 0) {
+      throw new RuntimeException("사진 게시물 제목을 입력하세요.");
+
+    } else {
+      freeService.add(free);
+      return "redirect:.";
+    }
   }
 
-  
+
   @PostMapping("update")
   public String update(Free free) {
     if (freeService.update(free) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     return "redirect:.";
   }
-  
+
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no) {
 
