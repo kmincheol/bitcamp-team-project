@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.eomcs.lms.domain.Member;
 
-@WebFilter("/app/*")
+@WebFilter("/app/app") // 임시로 오류발생시킴 ("/app/*")
 public class AuthFilter implements Filter {
   
   FilterConfig filterConfig;

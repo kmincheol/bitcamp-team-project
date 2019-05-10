@@ -57,6 +57,21 @@ insert into free(free_id,mbr_id,titl,cont)
 values(2,1,"제목입니다1","내용입니다2");
 insert into free(free_id,mbr_id,titl,cont)
 values(3,1,"제목입니다1","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(4,1,"제목입니다4","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(5,1,"제목입니다5","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(6,1,"제목입니다6","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(7,1,"제목입니다7","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(8,1,"제목입니다8","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(9,1,"제목입니다9","내용입니다3");
+insert into free(free_id,mbr_id,titl,cont)
+values(10,1,"제목입니다10","내용입니다3");
+
 
 
 --팀데이터

@@ -60,32 +60,35 @@ public class FreeServiceImpl implements FreeService {
     
     return free;
   }
-//  @Override
-//  public int add(Free free) {
-//
-//    return freeDao.insert(free);
-//  }
-//
-//  
-//  
-//
-//  @Override
-//  public int update(Free free) {
-//    // 이 메서드도 별로 할 일이 없다.
-//    // 그냥 DAO를 실행시키고 리턴 값을 그대로 전달한다.
-//    return freeDao.update(free);
-//  }
-//
-//  @Override
-//  public int delete(int no) {
-//    // 이 메서드도 그냥 DAO에 명령을 전달하는 일을 한다.
-//    // 그래도 항상 Command 객체는 이 Service 객체를 통해서 데이터를 처리해야 한다.
-//    return freeDao.delete(no);
-//  }
+  
+  @Override
+  public int add(Free free) {
+
+    return freeDao.insert(free);
+  }
+
+
+  @Override
+  public Free getUpdate(int no) {
+    
+    Free free = freeDao.detailUpdate(no);
+    
+    return free;
+  }
+  
+  
+  @Override
+  public int update(Free free) {
+    return freeDao.update(free);
+  }
+
+  @Override
+  public int delete(int no) {
+    return freeDao.delete(no);
+  }
 
   @Override
   public int size() {
-    // 전체 게시물의 개수
     return freeDao.countAll();
   }
 }

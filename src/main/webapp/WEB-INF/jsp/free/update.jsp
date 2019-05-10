@@ -18,7 +18,7 @@
         <p>해당 게시물이 없습니다</p>
       </c:when>
       <c:otherwise>
-        <form action='update' method='post'>
+        <form action='../update' method='post'>
           <div class="form-group row">
             <label for="no" class="col-sm-2 col-form-label">번호</label>
             <div class="col-sm-10">
@@ -30,14 +30,14 @@
           <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">제목</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="title" name='contents' rows='1' readonly>${free.title}</textarea>
+              <textarea class="form-control" id="title" name='title' rows='1'>${free.title}</textarea>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="contents" class="col-sm-2 col-form-label">내용</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="contents" name='contents' rows='5' readonly>${free.contents}</textarea>
+              <textarea class="form-control" id="contents" name='contents' rows='5'>${free.contents}</textarea>
             </div>
           </div>
 
@@ -61,9 +61,8 @@
 
           <div class="form-group row">
             <div class="col-sm-10">
-              <a class="btn btn-primary" href='.'>목록</a> <a class="btn btn-primary"
-                href='delete/${free.no}'>삭제</a>
-              <a href='${contextRootPath}/app/free/update/${free.no}' class="btn btn-primary btn-sm">변경</a>
+              <a class="btn btn-primary" href='.'>목록</a>
+               <button class="btn btn-primary">변경하기</button>
             </div>
           </div>
 

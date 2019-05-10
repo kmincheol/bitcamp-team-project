@@ -64,6 +64,34 @@
     where free_id = #{value}
   </update>
   
+  <insert id="insert" parameterType="free">
+     insert into free(
+      titl, 
+      cont)
+    values(
+      #{title}, 
+      #{contents})
+  </insert>
+  
+  <select id="detailUpdate" resultMap="freeMap" parameterType="int">
+    <include refid="select1"/>
+    where 
+      free_id = #{value}
+  </select>
+  
+  <update id="update" parameterType="free">
+    update free
+    set
+    titl = #{title},
+    cont = #{contents}
+    where free_id = #{no}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from free
+    where free_id = #{no}
+  </delete>
+  
   
   <select id="countAll" resultType="int">
     select count(*) from free;
