@@ -67,6 +67,8 @@ DROP TABLE IF EXISTS free_file RESTRICT;
 -- 팀원모집첨부파일
 DROP TABLE IF EXISTS rcrm_file RESTRICT;
 
+
+
 -- 후기게시판
 CREATE TABLE revw (
   tm_id   INTEGER(30) NOT NULL COMMENT '평가팀', -- 평가팀
@@ -831,3 +833,61 @@ ALTER TABLE rcrm_file
     REFERENCES rcrm ( -- 팀원모집
       rcrm_id -- 팀원모집번호
     );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    -- 공지사항게시판
+DROP TABLE IF EXISTS anunc RESTRICT;
+
+-- 공지사항게시판첨부파일
+DROP TABLE IF EXISTS anunc_file RESTRICT;
+
+    
+    -- 공지사항게시판
+CREATE TABLE anunc (
+  anunc_id INTEGER(30) NOT NULL COMMENT '공지사항게시판번호', -- 공지사항게시판번호
+  mbr_id  INTEGER(30) NULL     COMMENT '회원번호', -- 회원번호
+  titl    VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
+  cont    TEXT        NOT NULL COMMENT '내용', -- 내용
+  vw_cnt  INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
+  cdt     DATETIME    NULL     DEFAULT now() COMMENT '작성일', -- 작성일
+  mdt     DATETIME    NULL     DEFAULT now() COMMENT '최근수정일' -- 최근수정일
+)
+COMMENT '공지사항게시판';
+
+-- 공지사항게시판
+ALTER TABLE anunc
+  ADD CONSTRAINT PK_anunc -- 공지사항게시판 기본키
+    PRIMARY KEY (
+      anunc_id -- 공지사항게시판번호
+    );
+
+
+    
+    
+    
+-- 공지사항게시판첨부파일
+CREATE TABLE anunc_file (
+  anunc_file_id INTEGER(30)  NOT NULL COMMENT '공지사항게시판첨부파일번호', -- 공지사항게시판첨부파일번호
+  anunc_id      INTEGER(30)  NULL     COMMENT '공지사항게시판번호', -- 공지사항게시판번호
+  file_path    VARCHAR(255) NULL     COMMENT '파일경로', -- 파일경로
+  file_type    VARCHAR(30)  NULL     COMMENT '파일유형' -- 파일유형
+)
+COMMENT '공지사항게시판첨부파일';
+
+-- 공지사항게시판첨부파일
+ALTER TABLE anunc_file
+  ADD CONSTRAINT PK_anunc_file -- 공지사항게시판첨부파일 기본키
+    PRIMARY KEY (
+      anunc_file_id -- 공지사항게시판첨부파일번호
+    );
+
+ALTER TABLE anunc_file
+  MODIFY COLUMN anunc_file_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '공지사항게시판첨부파일번호';
+

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.AnnounceDao">
+
+  <resultMap type="announce" id="announceMap">
+    <id column="anunc_id" property="no" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="mdt" property="modifierDate" />
+
+    <association property="member" javaType="member">
+      <id column="mbr_id" property="memberNo" />
+      <result column="name" property="name" />
+    </association>
+
+  </resultMap>
+  
+   <resultMap type="announce" id="announceFileMap">
+    <id column="anunc_id" property="no" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="mdt" property="modifierDate" />
+
+    <association property="member" javaType="member">
+      <id column="mbr_id" property="memberNo" />
+      <result column="name" property="name" />
+    </association>
+    
+      <collection property="files" ofType="announceFile">
+      <id column="anunc_file_id"    property="no"/>
+      <result column="file_path"    property="filePath"/>
+      <result column="anunc_id" property="announceNo"/>
+    </collection>
+  </resultMap>
+  
+  <sql id="select1">
+    select
+    anunc_id,
+    m.name,
+    cont,
+    titl,
+    a.cdt,
+    mdt,
+    vw_cnt
+    from
+    anunc a
+    left outer join mbr m on a.mbr_id =
+    m.mbr_id
+  </sql>
+
+
+
+  <select id="findAll" resultMap="announceMap" parameterType="map">
+    <include refid="select1" />
+    <where>
+      <if test="memberNo != null">f.mbr_id = #{memberNo}</if>
+    </where>
+    order by
+    anunc_id desc
+    <if test="#{size != null || rowNo != null}">
+      limit #{rowNo}, #{size}
+    </if>
+  </select>
+  
+   <select id="findByNo" resultMap="announceMap" parameterType="int">
+    <include refid="select1"/>
+    where 
+      anunc_id = #{value}
+  </select> 
+  
+  <select id="findByNoWithFile" resultMap="announceFileMap" parameterType="int">
+    select 
+      a.anunc_id,
+      a.titl, 
+      a.cont, 
+      a.mdt, 
+      a.vw_cnt, 
+      f.anunc_file_id,
+      f.anunc_id as no,
+      f.file_path 
+    from 
+      anunc a
+      left outer join anunc_file f on a.anunc_id = f.anunc_id
+    where 
+      a.anunc_id = #{value}
+  </select>
+  
+  <update id="increaseCount" parameterType="int">
+    update anunc
+    set
+      vw_cnt = vw_cnt + 1 
+      where anunc_id = #{value};
+  </update>
+  
+    <insert id="insert" parameterType="announce"
+          useGeneratedKeys="true" keyColumn="anunc_id" keyProperty="no">
+    insert into anunc(
+      titl,
+      cont) 
+    values(
+      #{title}, 
+      #{contents})
+  </insert>
+  
+  <select id="detailUpdate" resultMap="announceMap" parameterType="int">
+    <include refid="select1"/>
+    where 
+      anunc_id = #{value}
+  </select>
+  
+  <update id="update" parameterType="announce">
+    update anunc
+    set
+    titl = #{title},
+    cont = #{contents}
+    where anunc_id = #{no}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from anunc
+    where anunc_id = #{no}
+  </delete>
+  
+  
+  <select id="countAll" resultType="int">
+    select count(*) from anunc;
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
