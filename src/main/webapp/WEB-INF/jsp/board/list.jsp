@@ -33,7 +33,7 @@
           <c:forEach items="${list}" var="board">
             <tr>
               <th scope="row">${board.no}</th>
-              <td><a href='${contextRootPath}/app/board/${board.no}'>${board.title}</a></td>
+
               <td>${board.member.name}</td>
               <td>${board.createdDate}</td>
               <td>${board.viewCount}</td>

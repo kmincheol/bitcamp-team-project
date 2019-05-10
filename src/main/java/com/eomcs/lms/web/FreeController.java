@@ -16,53 +16,45 @@ import com.eomcs.lms.service.MemberService;
 @Controller
 @RequestMapping("/free")
 public class FreeController {
-  
-  @Autowired FreeService freeService;
-  @Autowired MemberService memberService;
-  
+
+  @Autowired
+  FreeService freeService;
+  @Autowired
+  MemberService memberService;
+
   @GetMapping
-  public String list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="3") int pageSize,
-      Model model) {
-    
-    if (pageSize < 3 || pageSize > 8) 
+  public String list(@RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "3") int pageSize, Model model) {
+
+    if (pageSize < 3 || pageSize > 8)
       pageSize = 3;
-    
+
     int rowCount = freeService.size();
     int totalPage = rowCount / pageSize;
     if (rowCount % pageSize > 0)
       totalPage++;
-    
-    if (pageNo < 1) 
+
+    if (pageNo < 1)
       pageNo = 1;
     else if (pageNo > totalPage)
       pageNo = totalPage;
-    
+
     List<Free> frees = freeService.list(pageNo, pageSize, 0);
     model.addAttribute("list", frees);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
     model.addAttribute("totalPage", totalPage);
-    
+
     return "free/list";
   }
-  
+
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     Free free = freeService.get(no);
     model.addAttribute("free", free);
     return "free/detail";
   }
-  
+
 }
-
-
-
-
-
-
-
-
 
 

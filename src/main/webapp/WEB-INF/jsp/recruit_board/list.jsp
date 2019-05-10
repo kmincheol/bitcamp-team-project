@@ -7,7 +7,7 @@
 <head>
 <title>모집게시판</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 </head>
 
 <body>
@@ -92,7 +92,7 @@
             <tr>
               <td>${list.teamNo}</td>
               <td>야구</td>
-              <td>${list.teamTitle}</td>
+              <td><a href="${contextRootPath}/app/detail">${list.teamTitle}</a></td>
               <td>${list.team.teamName }</td>
               <td>${list.team.teamArea }</td>
               <td>${list.teamRcrmStatus}</td>

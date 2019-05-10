@@ -18,31 +18,32 @@ public class RecruitBoardController {
   
   @Autowired TeamRecruitBoardService recruitBoardService;
   
-  @GetMapping("form")
-  public void form() {
-  }
-  
-  @PostMapping("add")
-  public String add(TeamRecruit teamRecruit) {
-    recruitBoardService.add(teamRecruit);
-    return "redirect:.";
-  }
-  
-  @GetMapping("delete/{no}")
-  public String delete(@PathVariable int no) {
-  
-    if (recruitBoardService.delete(no) == 0) 
-      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
-    
-    return "redirect:../";
-  }
-  
+//  @GetMapping("form")
+//  public void form() {
+//  }
+//  
+//  @PostMapping("add")
+//  public String add(TeamRecruit teamRecruit) {
+//    recruitBoardService.add(teamRecruit);
+//    return "redirect:.";
+//  }
+//  
+//  @GetMapping("delete/{no}")
+//  public String delete(@PathVariable int no) {
+//  
+//    if (recruitBoardService.delete(no) == 0) 
+//      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+//    
+//    return "redirect:../";
+//  }
+//  
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     TeamRecruit teamRecruit = recruitBoardService.get(no);
-    model.addAttribute("recruit_board_list", teamRecruit);
+    model.addAttribute("teamRecruit", teamRecruit);
     return "recruit_board/detail";
-  }
+  }             
+  
   
   @GetMapping
   public String list(

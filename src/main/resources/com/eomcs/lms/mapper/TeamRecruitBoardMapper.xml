@@ -11,10 +11,9 @@
     <result column="tm_id" property="teamId" />
     <result column="titl" property="teamTitle" />
     <result column="vw_cnt" property="teamViewCount" />
-    <result column="area" property="teamArea" />
     <result column="cdt" property="teamCreatedDate" />
     <result column="rcrm_stat" property="teamRcrmStatus" />
-
+    <result column="cont" property="teamContents" />
 
     <association property="team" javaType="Team">
       <id column="tm_id" property="teamId" />
@@ -23,21 +22,62 @@
     </association>
 
   </resultMap>
+  
+  <resultMap type="TeamRecruit" id="teamRecruitMap2">
+    <id column="rcrm_id" property="teamNo" />
+    <result column="tm_id" property="teamId" />
+    <result column="titl" property="teamTitle" />
+    <result column="vw_cnt" property="teamViewCount" />
+    <result column="cdt" property="teamCreatedDate" />
+    <result column="rcrm_stat" property="teamRcrmStatus" />
+    <result column="cont" property="teamContents" />
 
+    <association property="team" javaType="Team">
+      <id column="tm_id" property="teamId" />
+      <result column="area" property="teamArea" />
+      <result column="name" property="teamName" />
+    </association>
+    
+    <association property="TeamTypeSports" javaType="teamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf" property="teamSportsType" />
+    </association>
 
+  </resultMap>
+  
+ 
   <select id="findAll" resultMap="teamRecruitMap" parameterType="map">
     select
-    rcrm_id,
-    titl,
-    area,
-    name,
-    t.cdt,
-    rcrm_stat,
-    vw_cnt
+      rcrm_id,
+      titl,
+      area,
+      name,
+      t.cdt,
+      rcrm_stat,
+      vw_cnt
     from
-    rcrm r
-    left outer join tm t on r.tm_id = t.tm_id
+      rcrm r
+      left outer join tm t on r.tm_id = t.tm_id
   </select>
+  
+  <select id="findByNo" resultMap="teamRecruitMap" parameterType="int"> 
+     select
+      rcrm_id,
+      titl,
+      area,
+      name,
+      t.cdt,
+      rcrm_stat,
+      vw_cnt,
+      spt_clsf
+    from
+      rcrm r
+      left outer join tm t on r.tm_id = t.tm_id
+      left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
+      
+    
+  </select>
+
 
 </mapper>
 

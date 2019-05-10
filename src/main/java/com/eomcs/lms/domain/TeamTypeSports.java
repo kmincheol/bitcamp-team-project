@@ -2,7 +2,7 @@ package com.eomcs.lms.domain;
 
 import java.io.Serializable;
 
-public class TeamSportsType implements Cloneable, Serializable {
+public class TeamTypeSports implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
 
   private int teamSportsTypeId;
@@ -23,7 +23,4 @@ public class TeamSportsType implements Cloneable, Serializable {
   public void setTeamSportsType(String teamSportsType) {
     this.teamSportsType = teamSportsType;
   }
-
-
-
 }

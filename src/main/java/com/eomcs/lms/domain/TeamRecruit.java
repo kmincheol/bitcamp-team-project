@@ -20,14 +20,15 @@ public class TeamRecruit implements Cloneable, Serializable {
   private int teamRcrmPerson;
 
   private Team team;
-  private String teamArea;
-
-  public String getTeamArea() {
-    return teamArea;
+  private TeamTypeSports teamTypeSports;
+  
+  
+  public TeamTypeSports getTeamTypeSports() {
+    return teamTypeSports;
   }
 
-  public void setTeamArea(String teamArea) {
-    this.teamArea = teamArea;
+  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
+    this.teamTypeSports = teamTypeSports;
   }
 
   public int getTeamNo() {

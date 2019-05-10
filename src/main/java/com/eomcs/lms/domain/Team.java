@@ -14,7 +14,7 @@ public class Team implements Cloneable, Serializable {
   private int teamAgeId;
   private int teamTypeId;
   private int teamLevelId;
-  private int teanSportsId;
+  private int teamSportsId;
   private String teamEmblemPhoto;
   private boolean teamUniform;
   private String teamUniformPhoto;
@@ -22,6 +22,7 @@ public class Team implements Cloneable, Serializable {
   private Date teamCreateDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date teamInfoModifieDate;
+
 
   public int getTeamId() {
     return teamId;
@@ -51,7 +52,7 @@ public class Team implements Cloneable, Serializable {
     return teamArea;
   }
 
-  public void setTeanArea(String teamArea) {
+  public void setTeamArea(String teamArea) {
     this.teamArea = teamArea;
   }
 
@@ -79,12 +80,12 @@ public class Team implements Cloneable, Serializable {
     this.teamLevelId = teamLevelId;
   }
 
-  public int getTeanSportsId() {
-    return teanSportsId;
+  public int getTeamSportsId() {
+    return teamSportsId;
   }
 
-  public void setTeanSportsId(int teanSportsId) {
-    this.teanSportsId = teanSportsId;
+  public void setTeamSportsId(int teamSportsId) {
+    this.teamSportsId = teamSportsId;
   }
 
   public String getTeamEmblemPhoto() {
@@ -126,6 +127,8 @@ public class Team implements Cloneable, Serializable {
   public void setTeamInfoModifieDate(Date teamInfoModifieDate) {
     this.teamInfoModifieDate = teamInfoModifieDate;
   }
+
+
 
 
 }
