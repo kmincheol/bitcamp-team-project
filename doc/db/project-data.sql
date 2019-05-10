@@ -1,15 +1,14 @@
+<<<<<<< HEAD
 -- 팀원 모집 게시판 데이터 테이블
 insert into rcrm(rcrm_id, tm_id, titl, cont, vw_cnt, cdt, mdt, rcrm_stat, rcrm_prsn)
 values(10, 1, '모집합니다.', '모집',1,'2020-2-2','2020-3-3','모집중', 3);
-insert into rcrm(rcrm_id, tm_id, titl, cont, vw_cnt, cdt, mdt, rcrm_stat, rcrm_prsn)
-values(11, 1, '모집합222.', '종료',4,'3333-2-2','2020-3-3','종료', 56);
 
 -- 팀 데이터 테이블
 insert into tm(tm_id,name,tm_intd,area,age_id,tmtype_id,tmlevel_id,spt_clsf_id,tm_ambl_phot,tm_unf_wth,tm_unf_phot,cdt,mdt)
 values(1,'testteam','test입니다','강남',1,1,1,1,'/team',true,'/hi','2016-05-12','2017-05-15');
 
 --팀종목유형데이터 테이블
-insert into spt_clsf(spt_clsf_id, spt_clsf)
+insert into spt_clsf(spt_clsf_id,spt_clsf)
 values(1,'aaaa');
 
 --팀유형 데이터 테이블
@@ -58,21 +57,6 @@ insert into free(free_id,mbr_id,titl,cont)
 values(2,1,"제목입니다1","내용입니다2");
 insert into free(free_id,mbr_id,titl,cont)
 values(3,1,"제목입니다1","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(4,1,"제목입니다4","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(5,1,"제목입니다5","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(6,1,"제목입니다6","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(7,1,"제목입니다7","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(8,1,"제목입니다8","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(9,1,"제목입니다9","내용입니다3");
-insert into free(free_id,mbr_id,titl,cont)
-values(10,1,"제목입니다10","내용입니다3");
-
 
 
 --팀데이터
@@ -97,3 +81,22 @@ insert into age(age_id,ages)
 values(1,'20대');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> refs/heads/free

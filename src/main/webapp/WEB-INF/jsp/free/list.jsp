@@ -14,16 +14,18 @@
 
   <div class="container">
     <h1>자유게시판</h1>
+    <hr>
     <p>
       <a href='form' class="btn btn-primary btn-sm">새 글</a>
     </p>
-    
-    <div class="bit-list">
+    <hr>
+    <br>
+    <div class="free-list">
       <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">번호</th>
-            <th scope="col">제목</th>
+            <th id="free-title" scope="col" width="300px">제목</th>
             <th scope="col">작성자</th>
             <th scope="col">작성일</th>
             <th scope="col">조회</th>

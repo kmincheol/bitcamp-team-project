@@ -22,6 +22,27 @@
 
   </resultMap>
   
+   <resultMap type="free" id="freeFileMap">
+    <id column="free_id" property="no" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="mdt" property="modifierDate" />
+
+    <association property="member" javaType="member">
+      <id column="mbr_id" property="memberNo" />
+      <result column="name" property="name" />
+    </association>
+    
+      <collection property="files" ofType="freeFile">
+      <id column="free_file_id"    property="no"/>
+      <result column="file_path"    property="filePath"/>
+      <result column="free_id" property="freeNo"/>
+    </collection>
+  </resultMap>
+  
   <sql id="select1">
     select
     free_id,
@@ -51,10 +72,27 @@
     </if>
   </select>
   
-    <select id="findByNo" resultMap="freeMap" parameterType="int">
+   <select id="findByNo" resultMap="freeMap" parameterType="int">
     <include refid="select1"/>
     where 
       free_id = #{value}
+  </select> 
+  
+  <select id="findByNoWithFile" resultMap="freeFileMap" parameterType="int">
+    select 
+      p.free_id,
+      p.titl, 
+      p.cont, 
+      p.mdt, 
+      p.vw_cnt, 
+      f.free_file_id,
+      f.free_id as no,
+      f.file_path 
+    from 
+      free p
+      left outer join free_file f on p.free_id = f.free_id
+    where 
+      p.free_id = #{value}
   </select>
   
   <update id="increaseCount" parameterType="int">
@@ -63,6 +101,44 @@
       vw_cnt = vw_cnt + 1 
     where free_id = #{value}
   </update>
+  
+<!--   <insert id="insert" parameterType="free">
+     insert into free(
+      titl, 
+      cont)
+    values(
+      #{title}, 
+      #{contents})
+  </insert> -->
+  
+    <insert id="insert" parameterType="free"
+          useGeneratedKeys="true" keyColumn="free_id" keyProperty="no">
+    insert into free(
+      titl,
+      cont) 
+    values(
+      #{title}, 
+      #{contents})
+  </insert>
+  
+  <select id="detailUpdate" resultMap="freeMap" parameterType="int">
+    <include refid="select1"/>
+    where 
+      free_id = #{value}
+  </select>
+  
+  <update id="update" parameterType="free">
+    update free
+    set
+    titl = #{title},
+    cont = #{contents}
+    where free_id = #{no}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from free
+    where free_id = #{no}
+  </delete>
   
   
   <select id="countAll" resultType="int">

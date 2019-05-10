@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.FreeDao;
+import com.eomcs.lms.dao.FreeFileDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.service.FreeService;
@@ -17,10 +18,15 @@ public class FreeServiceImpl implements FreeService {
 
   FreeDao freeDao;
   MemberDao memberDao;
+  FreeFileDao fileDao;
 
-  public FreeServiceImpl(FreeDao freeDao, MemberDao memberDao) {
+  public FreeServiceImpl(
+      FreeDao freeDao, 
+      MemberDao memberDao,
+      FreeFileDao fileDao) {
     this.freeDao = freeDao;
     this.memberDao = memberDao;
+    this.fileDao = fileDao;
   }
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
@@ -49,43 +55,61 @@ public class FreeServiceImpl implements FreeService {
     }
   }
 
+//  @Override
+//  public Free get(int no) {
+//    
+//    Free free = freeDao.findByNo(no);
+//    
+//    if (free != null) {
+//      freeDao.increaseCount(no);
+//    }
+//    
+//    return free;
+//  }
+  
   @Override
   public Free get(int no) {
+    // 이제 조금 서비스 객체가 뭔가를 하는 구만.
+    // Command 객체는 데이터를 조회한 후 조회수를 높이는 것에 대해 신경 쓸 필요가 없어졌다.
     
-    Free free = freeDao.findByNo(no);
-    
+    // lms_photo 테이블의 데이터와 lms_photo_file 테이블의 데이터를 조인하여 결과를 가져온다. 
+    // 그 결과를 PhotoBoard 객체에 저장한다.
+    // 특히 lms_photo_file 데이터는 PhotoFile 객체에 저장되고, 
+    // 그 목록은 PhotoBoard 객체에 포함되어 리턴된다.
+    Free free = freeDao.findByNoWithFile(no);
     if (free != null) {
       freeDao.increaseCount(no);
     }
+    return free;
+  }
+  
+  @Override
+  public int add(Free free) {
+    return freeDao.insert(free);
+  }
+
+
+  @Override
+  public Free getUpdate(int no) {
+    
+    Free free = freeDao.detailUpdate(no);
     
     return free;
   }
-//  @Override
-//  public int add(Free free) {
-//
-//    return freeDao.insert(free);
-//  }
-//
-//  
-//  
-//
-//  @Override
-//  public int update(Free free) {
-//    // 이 메서드도 별로 할 일이 없다.
-//    // 그냥 DAO를 실행시키고 리턴 값을 그대로 전달한다.
-//    return freeDao.update(free);
-//  }
-//
-//  @Override
-//  public int delete(int no) {
-//    // 이 메서드도 그냥 DAO에 명령을 전달하는 일을 한다.
-//    // 그래도 항상 Command 객체는 이 Service 객체를 통해서 데이터를 처리해야 한다.
-//    return freeDao.delete(no);
-//  }
+  
+  
+  @Override
+  public int update(Free free) {
+    return freeDao.update(free);
+  }
+
+  @Override
+  public int delete(int no) {
+    return freeDao.delete(no);
+  }
 
   @Override
   public int size() {
-    // 전체 게시물의 개수
     return freeDao.countAll();
   }
 }
