@@ -87,21 +87,44 @@ top : 350px;
 
 #recruit-list-out{
     position: absolute;
-    width: 100%;
+    width: 1000px;
     text-align: center;
+    padding-top: 20px;
+    border-top: 2px solid black;
     height: 700px;
     left: 0;
     right: 0;
     top: 450px;
+    margin: auto;
+    display: inline-block;
 }
 
 .table{
     width: 1000px;
     margin: auto;
-    border: 1px solid black;
+
+}
+
+table a{
+    color: black;
+}
+
+table a:hover{
+color: black;
+
 }
 
 #in{
     margin-top: 20px;
     display: inline-block;
+}
+
+.input-group{
+    width: 150px;
+    float: left;
+    margin-right: 20px;
+}
+
+.btn{
+    float: right;
 }

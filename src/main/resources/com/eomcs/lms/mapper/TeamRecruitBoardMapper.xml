@@ -11,7 +11,7 @@
     <result column="tm_id" property="teamId" />
     <result column="titl" property="teamTitle" />
     <result column="vw_cnt" property="teamViewCount" />
-    <result column="cdt" property="teamCreatedDate" />
+    <result column="mdt" property="teamModifyDate" />
     <result column="rcrm_stat" property="teamRcrmStatus" />
     <result column="cont" property="teamContents" />
 
@@ -52,7 +52,7 @@
       titl,
       area,
       name,
-      t.mdt,
+      r.mdt,
       rcrm_stat,
       vw_cnt
     from
@@ -66,7 +66,6 @@
       titl,
       area,
       name,
-      t.cdt,
       rcrm_stat,
       vw_cnt,
       spt_clsf_name

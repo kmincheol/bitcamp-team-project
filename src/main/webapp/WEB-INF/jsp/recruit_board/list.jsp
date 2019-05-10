@@ -5,9 +5,9 @@
 <html>
 
 <head>
-<title>모집게시판</title>
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+  <title>모집게시판</title>
+  <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 </head>
 
 <body>
@@ -35,7 +35,8 @@
                 <ul class="category">
                   <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">매치등록</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">팀</a>
@@ -43,7 +44,8 @@
                   <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">팀정보</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">모집게시판</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a>
@@ -51,31 +53,44 @@
                   <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">마이페이지</a>
                 <ul class="category">
                   <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">나의 팀 정보</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
           </ul>
         </div>
       </div>
     </div>
 
-
-
     <div id="main-text">
       <h2>모집게시판</h2>
     </div>
 
-
     <div id="recruit-list-out">
+
+      <div class="input-group mb-3">
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>종목</option>
+          <option value="1">축구</option>
+          <option value="2">야구</option>
+          <option value="3">농구</option>
+        </select>
+      </div>
+
+      <button type="button" class="btn btn-dark">글쓰기</button>
 
       <table class="table">
         <thead class="thead-light">
+          <tr>
+            
+          </tr>
           <tr>
             <th scope="col">번호</th>
             <th scope="col">종목</th>
@@ -98,48 +113,24 @@
               <td>${list.teamRcrmStatus}</td>
               <td>${list.teamModifyDate}</td>
               <td>${list.teamViewCount}</td>
-           
             </tr>
           </c:forEach>
         </tbody>
-
       </table>
       <div id="in">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
-                aria-hidden="true">&laquo;</span>
-            </a></li>
+            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+              </a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span
-                aria-hidden="true">&raquo;</span>
-            </a></li>
+            <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+              </a></li>
           </ul>
         </nav>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   </div>
