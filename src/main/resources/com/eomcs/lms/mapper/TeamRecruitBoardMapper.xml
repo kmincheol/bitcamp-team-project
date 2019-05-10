@@ -7,13 +7,21 @@
 <mapper namespace="com.eomcs.lms.dao.TeamRecruitDao">
 
   <resultMap type="TeamRecruit" id="teamRecruitMap">
-    <id column="rcrm_id" property="teamId" />
-    <result column="titl" property="teamTitl" />
-    <result column="vw_cnt" property="teamVwCnt" />
+    <id column="rcrm_id" property="teamNo" />
+    <result column="tm_id" property="teamId" />
+    <result column="titl" property="teamTitle" />
+    <result column="vw_cnt" property="teamViewCount" />
+    <result column="area" property="teamArea" />
+    <result column="cdt" property="teamCreatedDate" />
+    <result column="rcrm_stat" property="teamRcrmStatus" />
 
-    <!-- <association property="lesson" javaType="lesson"> <id column="lesson_id" property="no" /> <result 
-      column="lessonTitle" property="title" /> <result column="sdt" property="startDate" /> <result column="edt" 
-      property="endDate" /> </association> -->
+
+    <association property="team" javaType="Team">
+      <id column="tm_id" property="teamId" />
+      <result column="area" property="teamArea" />
+      <result column="name" property="teamName" />
+    </association>
+
   </resultMap>
 
 
@@ -21,9 +29,31 @@
     select
     rcrm_id,
     titl,
+    area,
+    name,
+    t.cdt,
+    rcrm_stat,
     vw_cnt
     from
-    rcrm
+    rcrm r
+    left outer join tm t on r.tm_id = t.tm_id
   </select>
 
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

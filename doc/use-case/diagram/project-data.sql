@@ -2,6 +2,8 @@
 -- 팀원 모집 게시판 데이터 테이블
 insert into rcrm(rcrm_id, tm_id, titl, cont, vw_cnt, cdt, mdt, rcrm_stat, rcrm_prsn)
 values(10, 1, '모집합니다.', '모집',1,'2020-2-2','2020-3-3','모집중', 3);
+insert into rcrm(rcrm_id, tm_id, titl, cont, vw_cnt, cdt, mdt, rcrm_stat, rcrm_prsn)
+values(11, 1, '모집합222.', '종료',4,'3333-2-2','2020-3-3','종료', 56);
 
 -- 팀 데이터 테이블
 insert into tm(tm_id,name,tm_intd,area,age_id,tmtype_id,tmlevel_id,spt_clsf_id,tm_ambl_phot,tm_unf_wth,tm_unf_phot,cdt,mdt)

@@ -2,21 +2,33 @@ package com.eomcs.lms.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TeamRecruit implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
 
   private int teamNo;
   private int teamId;
-  private String teamTitl;
-  private String teamConts;
-  private int teamVwCnt;
-  private Date teamCdt;
-  private Date teamMdt;
-  private String teamRcrmStat;
-  private int teamRcrmPrsn;
+  private String teamTitle;
+  private String teamContents;
+  private int teamViewCount;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  private Date teamCreatedDate;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+  private Date teamModifyDate;
+  private String teamRcrmStatus;
+  private int teamRcrmPerson;
 
   private Team team;
+  private String teamArea;
+
+  public String getTeamArea() {
+    return teamArea;
+  }
+
+  public void setTeamArea(String teamArea) {
+    this.teamArea = teamArea;
+  }
 
   public int getTeamNo() {
     return teamNo;
@@ -34,60 +46,60 @@ public class TeamRecruit implements Cloneable, Serializable {
     this.teamId = teamId;
   }
 
-  public String getTeamTitl() {
-    return teamTitl;
+  public String getTeamTitle() {
+    return teamTitle;
   }
 
-  public void setTeamTitl(String teamTitl) {
-    this.teamTitl = teamTitl;
+  public void setTeamTitle(String teamTitle) {
+    this.teamTitle = teamTitle;
   }
 
-  public String getTeamConts() {
-    return teamConts;
+  public String getTeamContents() {
+    return teamContents;
   }
 
-  public void setTeamConts(String teamConts) {
-    this.teamConts = teamConts;
+  public void setTeamContents(String teamContents) {
+    this.teamContents = teamContents;
   }
 
-  public int getTeamVwCnt() {
-    return teamVwCnt;
+  public int getTeamViewCount() {
+    return teamViewCount;
   }
 
-  public void setTeamVwCnt(int teamVwCnt) {
-    this.teamVwCnt = teamVwCnt;
+  public void setTeamViewCount(int teamViewCount) {
+    this.teamViewCount = teamViewCount;
   }
 
-  public Date getTeamCdt() {
-    return teamCdt;
+  public Date getTeamCreatedDate() {
+    return teamCreatedDate;
   }
 
-  public void setTeamCdt(Date teamCdt) {
-    this.teamCdt = teamCdt;
+  public void setTeamCreatedDate(Date teamCreatedDate) {
+    this.teamCreatedDate = teamCreatedDate;
   }
 
-  public Date getTeamMdt() {
-    return teamMdt;
+  public Date getTeamModifyDate() {
+    return teamModifyDate;
   }
 
-  public void setTeamMdt(Date teamMdt) {
-    this.teamMdt = teamMdt;
+  public void setTeamModifyDate(Date teamModifyDate) {
+    this.teamModifyDate = teamModifyDate;
   }
 
-  public String getTeamRcrmStat() {
-    return teamRcrmStat;
+  public String getTeamRcrmStatus() {
+    return teamRcrmStatus;
   }
 
-  public void setTeamRcrmStat(String teamRcrmStat) {
-    this.teamRcrmStat = teamRcrmStat;
+  public void setTeamRcrmStatus(String teamRcrmStatus) {
+    this.teamRcrmStatus = teamRcrmStatus;
   }
 
-  public int getTeamRcrmPrsn() {
-    return teamRcrmPrsn;
+  public int getTeamRcrmPerson() {
+    return teamRcrmPerson;
   }
 
-  public void setTeamRcrmPrsn(int teamRcrmPrsn) {
-    this.teamRcrmPrsn = teamRcrmPrsn;
+  public void setTeamRcrmPerson(int teamRcrmPerson) {
+    this.teamRcrmPerson = teamRcrmPerson;
   }
 
   public Team getTeam() {

@@ -77,25 +77,27 @@
       <table class="table">
         <thead class="thead-light">
           <tr>
+            <th scope="col">번호</th>
             <th scope="col">종목</th>
             <th scope="col">제목</th>
+            <th scope="col">팀명</th>
             <th scope="col">지역</th>
-            <th scope="col">작성자</th>
-            <th scope="col">작성일</th>
             <th scope="col">상태</th>
+            <th scope="col">작성일</th>
             <th scope="col">조회수</th>
           </tr>
         </thead>
         <tbody>
           <c:forEach items="${list}" var="list">
             <tr>
-              <td>${list.teamId}</td>
-              <td>${list.teamTitl}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td>${list.teamVwCnt}</td>
+              <td>${list.teamNo}</td>
+              <td>야구</td>
+              <td>${list.teamTitle}</td>
+              <td>${list.team.teamName }</td>
+              <td>${list.team.teamArea }</td>
+              <td>${list.teamRcrmStatus}</td>
+              <td>${list.teamCreatedDate}</td>
+              <td>${list.teamViewCount}</td>
            
             </tr>
           </c:forEach>

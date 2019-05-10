@@ -42,9 +42,14 @@ public String teamRecruitList() {
   public String recruitViewInvite() {
 	  return "recruit/recruit_form_view_invite";
   }
+
+
+
+@RequestMapping("/detail")
+public String detail() {
+    return "recruit_board/detail";
 }
-
-
+}
 
 
 

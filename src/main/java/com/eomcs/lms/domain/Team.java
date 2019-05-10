@@ -10,7 +10,7 @@ public class Team implements Cloneable, Serializable {
   private int teamId;
   private String teamName;
   private String teamInfo;
-  private String teanArea;
+  private String teamArea;
   private int teamAgeId;
   private int teamTypeId;
   private int teamLevelId;
@@ -47,12 +47,12 @@ public class Team implements Cloneable, Serializable {
     this.teamInfo = teamInfo;
   }
 
-  public String getTeanArea() {
-    return teanArea;
+  public String getTeamArea() {
+    return teamArea;
   }
 
-  public void setTeanArea(String teanArea) {
-    this.teanArea = teanArea;
+  public void setTeanArea(String teamArea) {
+    this.teamArea = teamArea;
   }
 
   public int getTeamAgeId() {
