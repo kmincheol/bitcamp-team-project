@@ -15,7 +15,9 @@
     <div id="main-backgroundImg">
       <img src="${contextRootPath}/images/recurit_board.jpg" class="img-fluid">
       <div id="header-item">
-        <a href="#">로그인/</a> <a href="#">회원가입/</a> <a href="#">고객센터</a>
+        <a href="#">로그인/</a>
+        <a href="#">회원가입/</a>
+        <a href="#">고객센터</a>
       </div>
     </div>
 
@@ -89,7 +91,7 @@
       <table class="table">
         <thead class="thead-light">
           <tr>
-            
+            <td colspan="8" class="search-result">검색 결과 총 : (3)건</td>
           </tr>
           <tr>
             <th scope="col">번호</th>

@@ -37,6 +37,14 @@ ul{
     background-color: rgba(255, 255, 255, 0.7);
 } */
 
+.search-result{
+    height: 40px;
+    font-size: 13px;
+    text-align: left;
+    color: white;
+    background-color: #343a40;
+}
+
 .headerImg{
     text-align: center;
     width: 260px;
