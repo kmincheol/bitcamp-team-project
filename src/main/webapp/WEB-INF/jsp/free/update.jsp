@@ -33,7 +33,7 @@
               <textarea class="form-control" id="title" name='title' rows='1'>${free.title}</textarea>
             </div>
           </div>
-attributeValue
+
           <div class="form-group row">
             <label for="contents" class="col-sm-2 col-form-label">내용</label>
             <div class="col-sm-8">
@@ -65,7 +65,7 @@ attributeValue
                <button class="btn btn-primary">변경하기</button>
             </div>
           </div>
-
+최소 한 개의 사진 파일을 등록해야 합니다.
         </form>
       </c:otherwise>
     </c:choose>

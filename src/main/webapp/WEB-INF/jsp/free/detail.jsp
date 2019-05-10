@@ -46,15 +46,10 @@
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="free-list" class="col-sm-2 col-form-label">사진</label>
-            <div class="col-sm-10" id="free-list">
-              <c:forEach items="${files}" var="file">
-                <img class="bit-photo" src='${contextRootPath}/upload/free/3def77c1-0430-47f7-9ae9-69cf4634bba8'
-                  class="img-thumbnail" />
-            
-              </c:forEach>
-            </div>
+          <div>
+          <c:forEach items="${free.files}" var="file">
+            <img src='${contextRootPath}/upload/free/${file.filePath}'>
+            </c:forEach>
           </div>
 
           <div class="form-group row">

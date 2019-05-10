@@ -94,7 +94,7 @@ public class FreeController {
     free.setFiles(files);
 
     if (free.getTitle().length() == 0) {
-      throw new RuntimeException("사진 게시물 제목을 입력하세요.");
+      throw new RuntimeException("게시물 제목을 입력하세요.");
 
     } else {
       freeService.add(free);

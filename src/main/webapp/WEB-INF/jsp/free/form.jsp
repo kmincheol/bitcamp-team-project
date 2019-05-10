@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,17 +32,10 @@
       <div class="form-group row">
       <div class="custom-file">
         <input name='photo' type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-        <label class="custom-file-label" for="inputGroupFile04">최소 한 개의 사진 파일을 등록해야 합니다.</label>
+        <label class="custom-file-label" for="inputGroupFile04">파일 업로드</label>
       </div>
     </div>
   
-   <div class="form-group row">
-      <div class="custom-file">
-        <input name='photo' type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-        <label class="custom-file-label" for="inputGroupFile04">최소 한 개의 사진 파일을 등록해야 합니다.</label>
-      </div>
-    </div>        
-    
       <div class="form-group row">
         <div class="col-sm-10">
           <button class="btn btn-primary">등록</button>

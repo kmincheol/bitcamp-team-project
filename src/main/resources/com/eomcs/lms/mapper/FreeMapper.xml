@@ -102,15 +102,6 @@
     where free_id = #{value}
   </update>
   
-<!--   <insert id="insert" parameterType="free">
-     insert into free(
-      titl, 
-      cont)
-    values(
-      #{title}, 
-      #{contents})
-  </insert> -->
-  
     <insert id="insert" parameterType="free"
           useGeneratedKeys="true" keyColumn="free_id" keyProperty="no">
     insert into free(

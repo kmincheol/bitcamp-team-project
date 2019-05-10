@@ -7,6 +7,7 @@ import com.eomcs.lms.dao.FreeDao;
 import com.eomcs.lms.dao.FreeFileDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.domain.Free;
+import com.eomcs.lms.domain.FreeFile;
 import com.eomcs.lms.service.FreeService;
 
 // 스프링 IoC 컨테이너가 관리하는 객체 중에서 
@@ -55,27 +56,10 @@ public class FreeServiceImpl implements FreeService {
     }
   }
 
-//  @Override
-//  public Free get(int no) {
-//    
-//    Free free = freeDao.findByNo(no);
-//    
-//    if (free != null) {
-//      freeDao.increaseCount(no);
-//    }
-//    
-//    return free;
-//  }
   
   @Override
   public Free get(int no) {
-    // 이제 조금 서비스 객체가 뭔가를 하는 구만.
-    // Command 객체는 데이터를 조회한 후 조회수를 높이는 것에 대해 신경 쓸 필요가 없어졌다.
-    
-    // lms_photo 테이블의 데이터와 lms_photo_file 테이블의 데이터를 조인하여 결과를 가져온다. 
-    // 그 결과를 PhotoBoard 객체에 저장한다.
-    // 특히 lms_photo_file 데이터는 PhotoFile 객체에 저장되고, 
-    // 그 목록은 PhotoBoard 객체에 포함되어 리턴된다.
+
     Free free = freeDao.findByNoWithFile(no);
     if (free != null) {
       freeDao.increaseCount(no);
@@ -85,7 +69,17 @@ public class FreeServiceImpl implements FreeService {
   
   @Override
   public int add(Free free) {
-    return freeDao.insert(free);
+    
+    int count = freeDao.insert(free);
+    
+    List<FreeFile> files = free.getFiles();
+    for (FreeFile f : files) {
+      f.setFreeNo(free.getNo());
+    }
+
+    fileDao.insert(free.getFiles());
+
+    return count;
   }
 
 
@@ -105,6 +99,7 @@ public class FreeServiceImpl implements FreeService {
 
   @Override
   public int delete(int no) {
+    fileDao.deleteByFreeNo(no);
     return freeDao.delete(no);
   }
 
