@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <th scope="row">팀명</th>
-            <td>비트축구단</td>
+            <td>비트축구단${teamRecruit.createdDate }</td>
           </tr>
           <tr>
             <th scope="row">제목</th>

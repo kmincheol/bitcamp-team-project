@@ -108,12 +108,12 @@
           <c:forEach items="${list}" var="list">
             <tr>
               <td>${list.teamNo}</td>
-              <td>야구</td>
+              <td>${list.team.teamTypeId}</td>
               <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
               <td>${list.team.teamName }</td>
               <td>${list.team.teamArea }</td>
               <td>${list.teamRcrmStatus}</td>
-              <td>${list.teamModifyDate}</td>
+              <td>${list.teamCreatedDate}</td>
               <td>${list.teamViewCount}</td>
             </tr>
           </c:forEach>

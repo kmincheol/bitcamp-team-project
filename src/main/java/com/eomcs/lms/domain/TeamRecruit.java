@@ -12,10 +12,13 @@ public class TeamRecruit implements Cloneable, Serializable {
   private String teamTitle;
   private String teamContents;
   private int teamViewCount;
+  
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date teamCreatedDate;
+  
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date teamModifyDate;
+  
   private String teamRcrmStatus;
   private int teamRcrmPerson;
 
