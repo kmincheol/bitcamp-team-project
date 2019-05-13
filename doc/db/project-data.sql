@@ -29,8 +29,8 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_
 values(1,'testId','1111','김민철','1995-5-5','남','010-1111-1111','비트캠프','강남','face');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
 values(2,'test2','1111','test2','1991-01-01','남','010-1234-5678','서울','강남','kakao');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
-values(3,'test3','1111','test3','1981-01-01','여','010-3334-5555','부산','해운대','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,email,gndr,tel,bas_addr,det_addr,login_type)
+values(3,'test3','1111','test3','1981-01-01','test@test.com','여','010-3334-5555','부산','해운대','google');
 
 --게시판데이터
 insert into post(post_id,mbr_id,boardtype_id,titl,cont)

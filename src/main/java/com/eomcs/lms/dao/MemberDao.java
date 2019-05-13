@@ -10,7 +10,7 @@ public interface MemberDao {
   List<Member> findAll();
   List<Member> findByKeyword(String keyword);
   Member findByNo(int no);
-  Member findByEmailPassword(Map<String,Object> paramMap);
+  Member findByIdPassword(Map<String,Object> paramMap);
   int update(Member member);
   int delete(int no);
 }

@@ -62,24 +62,24 @@ public class AuthController {
   
   @PostMapping("login")
   public String login(
-      String email,
+      String id,
       String password,
-      String saveEmail,
+      String saveId,
       HttpSession session,
       HttpServletResponse response) {
 
     Cookie cookie;
-    if (saveEmail != null) {
-      cookie = new Cookie("email", email);
+    if (saveId != null) {
+      cookie = new Cookie("id", id);
       cookie.setMaxAge(60 * 60 * 24 * 15); // 15일간 쿠키를 보관한다.
       
     } else {
-      cookie = new Cookie("email", "");
+      cookie = new Cookie("id", "");
       cookie.setMaxAge(0); // 기존의 쿠키를 제거한다.
     }
     response.addCookie(cookie); 
 
-    Member member = memberService.get(email, password);
+    Member member = memberService.get(id, password);
 
     if (member == null) {
       return "auth/fail";
