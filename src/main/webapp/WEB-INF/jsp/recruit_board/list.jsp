@@ -12,12 +12,12 @@
 
 <body>
   <div class="container">
+
     <div id="main-backgroundImg">
       <img src="${contextRootPath}/images/recurit_board.jpg" class="img-fluid">
+
       <div id="header-item">
-        <a href="#">로그인/</a>
-        <a href="#">회원가입/</a>
-        <a href="#">고객센터</a>
+        <a href="#">로그인/</a> <a href="#">회원가입/</a> <a href="#">고객센터</a>
       </div>
     </div>
 
@@ -86,7 +86,20 @@
         </select>
       </div>
 
-      <button type="button" class="btn btn-dark">글쓰기</button>
+      <div class="form-group row">
+        <div class="col-xs-4">
+          <input class="form-control" type="text" placeholder="검색어 입력">
+        </div>
+        <div id="search-btn">
+          <button class="input-group-btn btn btn-dark">검색</button>
+        </div>
+        <div id="write-btn" style="position: absolute; right: 0;">
+          <button class="input-group-btn1 btn btn-dark">글쓰기</button>
+        </div>
+      </div>
+
+
+
 
       <table class="table">
         <thead class="thead-light">
@@ -134,12 +147,15 @@
       </div>
     </div>
 
-
+    
   </div>
+      
   <jsp:include page="../javascript.jsp" />
 
 
 
 </body>
-
+<!-- <footer>
+        
+  </footer> -->
 </html>

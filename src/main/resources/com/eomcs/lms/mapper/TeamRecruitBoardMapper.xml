@@ -59,7 +59,7 @@
       left outer join tm t on r.tm_id = t.tm_id
       left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     where
-      r.rcrm_id = #{value};
+      r.rcrm_id = #{teamNo};
     
   </select>
   
@@ -67,9 +67,15 @@
     update rcrm
     set 
       vw_cnt = vw_cnt + 1 
-    where rcrm_id = #{value}
+    where rcrm_id = #{teamNo};
   </update>
 
+  <delete id="delete" parameterType="int">
+    delete from 
+    rcrm
+    where rcrm_id = #{teamNo};
+  </delete>
+  
 
 </mapper>
 

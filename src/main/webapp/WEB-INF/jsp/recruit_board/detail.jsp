@@ -34,7 +34,7 @@
           </tr>
           <tr>
             <th scope="row">내용</th>
-            <td>ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ</td>
+            <td>${teamRecruit.teamContents}</td>
           </tr>
         </tbody>
       </table>
