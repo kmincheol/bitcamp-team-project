@@ -72,6 +72,7 @@ public class AnnounceController {
   public void form() {
   }
 
+  @SuppressWarnings("unused")
   @PostMapping("add")
   public String add(Announce announce, Part[] photo) throws Exception {
 
@@ -79,7 +80,11 @@ public class AnnounceController {
 
     String uploadDir = servletContext.getRealPath(
         "/upload/announce");
+    
+    // 내가 추가한 부분
 
+    // 부분 끝
+     if (photo != null) {
     for (Part part : photo) {
       if (part.getSize() == 0) 
         continue;
@@ -92,14 +97,16 @@ public class AnnounceController {
       files.add(file);
     }
     announce.setFiles(files);
-
+     }
+    
     if (announce.getTitle().length() == 0) {
-      throw new RuntimeException("게시물 제목을 입력하세요.");
+      return "announce/form";
 
     } else {
       announceService.add(announce);
       return "redirect:.";
     }
+    
   }
 
 

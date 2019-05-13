@@ -69,16 +69,19 @@ public class AnnounceServiceImpl implements AnnounceService {
   
   @Override
   public int add(Announce announce) {
-    
     int count = announceDao.insert(announce);
-    
+
+    if(announce.getFiles().size() > 0) {
     List<AnnounceFile> files = announce.getFiles();
+    
+    
     for (AnnounceFile f : files) {
       f.setAnnounceNo(announce.getNo());
     }
 
     fileDao.insert(announce.getFiles());
-
+    }
+    
     return count;
   }
 

@@ -63,7 +63,7 @@
   <select id="findAll" resultMap="announceMap" parameterType="map">
     <include refid="select1" />
     <where>
-      <if test="memberNo != null">f.mbr_id = #{memberNo}</if>
+      <if test="memberNo != null">a.mbr_id = #{memberNo}</if>
     </where>
     order by
     anunc_id desc

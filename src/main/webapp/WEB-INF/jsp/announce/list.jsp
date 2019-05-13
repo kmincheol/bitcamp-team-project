@@ -15,7 +15,7 @@
   <div class="container">
     <h1>공지사항 게시판</h1>
     <p>
-      <a href='form' class="btn btn-primary btn-sm">새 글</a>
+      <a href='${contextRootPath}/app/announce/form.jsp' class="btn btn-primary btn-sm" >새 글</a>
     </p>
     <br>
     <div class="announce-list">
@@ -45,13 +45,22 @@
     <!-- .bit-list -->
 
     <nav aria-label="목록 페이지 이동">
-      <ul class="pagination justify-content-center">
-        <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link"
-          href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">이전</a></li>
-        <li class="page-item active"><span class="page-link">${pageNo}</span></li>
-        <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}"><a class="page-link"
-          href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
-      </ul>
+  <ul class="pagination justify-content-center">
+  
+    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
+    <a class="page-link" href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">이전</a></li>
+    
+    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
+    <a class="page-link" href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">${pageNo <= 1 ? "-" : pageNo - 1}</a></li>
+    
+    <li class="page-item active"><span class="page-link">${pageNo}</span></li>
+    
+    <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
+    <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">${pageNo >= totalPage ? "-" : pageNo + 1}</a></li>
+    
+    <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
+      <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
+  </ul>
     </nav>
 
 
@@ -83,8 +92,8 @@
 			<button class="btn btn-outline-success my-2 my-sm-0">검색</button>
     		</form>
     </div>
-  </div>
    -->
+  </div>
   
   <!-- .container -->
 

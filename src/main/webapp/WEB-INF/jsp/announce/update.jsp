@@ -41,6 +41,12 @@
             </div>
           </div>
 
+     	 <div class="form-group row">
+      	<div class="custom-file">
+     	   <input name='photo' type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+      	  <label class="custom-file-label" for="inputGroupFile04">파일 업로드</label>
+     	 </div>
+    	</div>
 
           <div class="form-group row">
             <label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
@@ -61,11 +67,10 @@
 
           <div class="form-group row">
             <div class="col-sm-10">
-              <a class="btn btn-primary" href='.'>목록</a>
+              <a class="btn btn-primary" href='../'>목록</a>
                <button class="btn btn-primary">변경하기</button>
             </div>
           </div>
-			최소 한 개의 사진 파일을 등록해야 합니다.
         </form>
       </c:otherwise>
     </c:choose>
