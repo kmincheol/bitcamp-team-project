@@ -65,7 +65,7 @@
       var postForm = function() {
         var contents = $('textarea[name="contents"]').html(
             $('#summernote').code());
-      }
+      } 
     </script>
   <jsp:include page="../javascript.jsp" />
 </body>
