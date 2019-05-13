@@ -55,7 +55,6 @@
       r.cdt,
       rcrm_stat,
       vw_cnt,
-      spt_clsf_id,
       spt_clsf_name,
       t.tm_id
     from
@@ -84,19 +83,16 @@
       r.rcrm_id = #{teamNo};
     
   </select>
-  
-     <insert id="insert" parameterType="teamRecruit"
-       useGeneratedKeys="true" keyColumn="rcrm_id" keyProperty="teamNo">
+
+  <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
+    keyProperty="teamNo">
     insert into rcrm(
       titl,
       cont
-    ) 
+    )
     values(
       #{teamTitle},
       #{teamContents})
-      
-      
-      
   </insert>
   
   <update id="increaseCount" parameterType="int">
