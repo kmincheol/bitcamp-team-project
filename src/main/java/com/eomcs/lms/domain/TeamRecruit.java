@@ -36,6 +36,17 @@ public class TeamRecruit implements Cloneable, Serializable {
   private TeamTypeSports teamTypeSports;
   
   
+  
+  
+  @Override
+  public String toString() {
+    return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle
+        + ", teamContents=" + teamContents + ", teamViewCount=" + teamViewCount
+        + ", teamCreatedDate=" + teamCreatedDate + ", teamModifyDate=" + teamModifyDate
+        + ", teamRcrmStatus=" + teamRcrmStatus + ", teamRcrmPerson=" + teamRcrmPerson + ", team="
+        + team + ", teamTypeSports=" + teamTypeSports + "]";
+  }
+
   public TeamTypeSports getTeamTypeSports() {
     return teamTypeSports;
   }
