@@ -72,12 +72,12 @@ public class FreeServiceImpl implements FreeService {
     
     int count = freeDao.insert(free);
     
-    List<FreeFile> files = free.getFiles();
-    for (FreeFile f : files) {
-      f.setFreeNo(free.getNo());
-    }
+//    List<FreeFile> files = free.getFiles();
+//    for (FreeFile f : files) {
+//      f.setFreeNo(free.getNo());
+//    }
 
-    fileDao.insert(free.getFiles());
+  //  fileDao.insert(free.getFiles());
 
     return count;
   }

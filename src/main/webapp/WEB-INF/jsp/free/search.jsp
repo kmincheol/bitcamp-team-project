@@ -7,13 +7,13 @@
 <head>
 <title>자유 게시판</title>
 <jsp:include page="../commonCss.jsp" />
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/free.css">
+   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/free.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>자유게시판</h1>
+    <h1>자유게시판 검색</h1>
     <hr>
     <p>
       <a href='${contextRootPath}/app/free/form' class="btn btn-primary btn-sm">새 글</a>
@@ -58,7 +58,7 @@
 
 
 
-    <!--     <div class="form-group row" id="searchspace">
+<!--     <div class="form-group row" id="searchspace">
       <div class="col-sm-5">
         <div class="input-group mb-2">
           <select name='loc1' class="custom-select" id="inputGroupSelect01">
@@ -78,19 +78,12 @@
             </div>
           </div>
         </div>
-      </div>	
+      </div>	 -->
     		<form id="searchbox" action='search' class="form-inline my-2 my-lg-0 justify-content">
        	<input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요.">
 			<button class="btn btn-outline-success my-2 my-sm-0">검색</button>
     		</form>
-    </div> -->
-
-    <form action='search'>
-      <input type='text' name='keyword'>
-      <button type='submit'>검색</button>
-    </form>
-
-  </div>
+    </div>
   <!-- .container -->
 
   <jsp:include page="../javascript.jsp" />
