@@ -5,8 +5,8 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
 </head>
 
 <body>
@@ -34,10 +34,17 @@
           </tr>
           <tr>
             <th scope="row">내용</th>
-            <td>ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ</td>
+            <td>${teamRecruit.teamContents}</td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <a class="btn btn-primary" href='.'>목록</a> <a class="btn btn-primary"
+          href='delete/${teamRecruit.teamNo}'>삭제</a>
+        <button class="btn btn-primary">변경</button>
+      </div>
     </div>
   </div>
   <!-- .container -->

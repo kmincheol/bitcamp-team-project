@@ -22,12 +22,22 @@ public class RecruitBoardController {
 //  public void form() {
 //  }
 //  
-//  @PostMapping("add")
-//  public String add(TeamRecruit teamRecruit) {
-//    recruitBoardService.add(teamRecruit);
-//    return "redirect:.";
-//  }
-//  
+  @PostMapping("add")
+  public String add(TeamRecruit teamRecruit) {
+    System.out.println("aaa" +teamRecruit.toString());
+    recruitBoardService.add(teamRecruit);
+    return "redirect:.";
+  }
+
+
+  @GetMapping("delete/{no}")
+  public String delete(@PathVariable int no) {
+  
+    if (recruitBoardService.delete(no) == 0) 
+      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    
+    return "redirect:../";
+  }
 //  @GetMapping("delete/{no}")
 //  public String delete(@PathVariable int no) {
 //  
@@ -37,6 +47,13 @@ public class RecruitBoardController {
 //    return "redirect:../";
 //  }
 //  
+  @RequestMapping("/form")
+  public String recruitView(Model model) {
+    List<TeamRecruit> teamRecruit = recruitBoardService.list2();
+    model.addAttribute("list2", teamRecruit);
+    return "recruit_board/form";
+  }
+  
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     TeamRecruit teamRecruit = recruitBoardService.get(no);

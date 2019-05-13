@@ -13,13 +13,18 @@
 <div class="container">
   <h1>새 글</h1>
   <form action='add' method='post'>
-  <div class="form-group row">
-    <label for="contents" class="col-sm-2 col-form-label">내용</label>
-    <div class="col-sm-8">
-      <textarea class="form-control" id="contents" 
-                name='contents' rows='5'>${board.contents}</textarea>
-    </div>
-  </div>
+      <div class="input-group mb-3">
+        <label for="area" class="col-sm-2 col-form-label">지역</label>
+        <select class="custom-select" id="area">
+          <option selected>oo시</option>
+          <option value="1">축구</option>
+          <option value="2">야구</option>
+          <option value="3">농구</option>
+        </select>
+      </div>
+ 
+
+
   <div class="form-group row">
     <div class="col-sm-10">
       <button class="btn btn-primary">등록</button>
