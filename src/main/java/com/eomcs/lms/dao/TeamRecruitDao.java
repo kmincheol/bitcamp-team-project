@@ -6,15 +6,17 @@ import com.eomcs.lms.domain.TeamRecruit;
 
 public interface TeamRecruitDao {
   int insert(TeamRecruit teamRecruit);
-
+ 
   List<TeamRecruit> findAll(Map<String, Object> params);
-
+  
+  List<TeamRecruit> findAll2();
+  
   TeamRecruit findByNo(int no);
-
+  
   int increaseCount(int no);
-
+  
   int update(TeamRecruit teamRecruit);
-
+  
   int delete(int no);
 
 //  int countAll();

@@ -34,7 +34,18 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
 
     return teamRecruitDao.findAll(params);
   }
+  @Override
+  public List<TeamRecruit> list2() {
+    // 게시물 목록을 가져오는 경우 서비스 객체에서 특별하게 할 일이 없다.
+    // 그럼에도 불구하고 Command 객체와 DAO 사이에 Service 객체를 두기로 했으면
+    // 일관성을 위해 Command 객체는 항상 Service 객체를 통해 데이터를 다뤄야 한다.
+  
+    return teamRecruitDao.findAll2();
+  }
 
+  
+  
+  
   @Override
   public int add(TeamRecruit teamRecruit) {
     // 이 메서드도 하는 일이 없다.
