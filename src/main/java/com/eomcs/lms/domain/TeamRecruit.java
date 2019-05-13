@@ -12,16 +12,6 @@ public class TeamRecruit implements Cloneable, Serializable {
   private String teamTitle;
   private String teamContents;
   private int teamViewCount;
-  
-  
-  @Override
-  public String toString() {
-    return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle
-        + ", teamContents=" + teamContents + ", teamViewCount=" + teamViewCount
-        + ", teamCreatedDate=" + teamCreatedDate + ", teamModifyDate=" + teamModifyDate
-        + ", teamRcrmStatus=" + teamRcrmStatus + ", teamRcrmPerson=" + teamRcrmPerson + ", team="
-        + team + ", teamTypeSports=" + teamTypeSports + "]";
-  }
 
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date teamCreatedDate;

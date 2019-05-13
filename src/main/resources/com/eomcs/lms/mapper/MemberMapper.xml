@@ -33,6 +33,7 @@
   <sql id="default-columns">
       mbr_id, 
       name, 
+      user_id,
       email, 
       tel,
       cdt
@@ -57,15 +58,14 @@
       member_id = #{value}
   </select>
   
-  <select id="findByEmailPassword" resultMap="memberMap" parameterType="map">
+  <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
     select 
-      <include refid="default-columns"/>, 
-      prof_phot
+      <include refid="default-columns"/>
     from 
       mbr
     where 
-      email = #{email}
-      and pwd = password(#{password})
+      user_id = #{id}
+      and pwd = #{password}
   </select>
   
   <select id="findByKeyword" resultMap="memberMap" parameterType="string">
@@ -83,17 +83,27 @@
   
   <insert id="insert" parameterType="member">
     insert into mbr(
-      name,
-      email,
+      user_id,
       pwd,
+      name,
+      bth_dt,
+      gndr,
       tel,
-      prof_phot)
+      email,
+      bas_addr,
+      det_addr,
+      login_type)
     values(
+      #{id},
+      #{password},
       #{name},
-      #{email},
-      password(#{password}),
+      #{birthDay},
+      #{gender},
       #{tel},
-      #{photo})
+      #{email},
+      #{baseAddress},
+      #{detailAddress},
+      #{loginType})
   </insert>
   
   <update id="update" parameterType="member">
