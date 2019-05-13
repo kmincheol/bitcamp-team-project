@@ -80,7 +80,7 @@ public class AuthController {
     response.addCookie(cookie); 
 
     Member member = memberService.get(id, password);
-
+    System.out.println(member);
     if (member == null) {
       return "auth/fail";
     }

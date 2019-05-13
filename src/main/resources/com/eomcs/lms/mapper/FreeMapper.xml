@@ -106,10 +106,12 @@
           useGeneratedKeys="true" keyColumn="free_id" keyProperty="no">
     insert into free(
       titl,
-      cont) 
+      cont,
+      mbr_id) 
     values(
       #{title}, 
-      #{contents})
+      #{contents},
+      #{memberNo})
   </insert>
   
   <select id="detailUpdate" resultMap="freeMap" parameterType="int">
