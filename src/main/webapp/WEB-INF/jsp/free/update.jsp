@@ -7,72 +7,96 @@
 <title>자유게시판</title>
 <jsp:include page="../commonCss.jsp" />
 </head>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<!-- include summernote-ko-KR -->
+
 <body>
 
   <!--<jsp:include page="../header.jsp" />-->
 
   <div class="container">
     <h1>자유게시판</h1>
-    <c:choose>
-      <c:when test="${empty free}">
-        <p>해당 게시물이 없습니다</p>
-      </c:when>
-      <c:otherwise>
-        <form action='../update' method='post'>
-          <div class="form-group row">
-            <label for="no" class="col-sm-2 col-form-label">번호</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control-plaintext" id="no" name='no'
-                value='${free.no}' readonly>
-            </div>
+    <section>
+      <form action='../update' method='post' enctype='multipart/form-data'>
+
+        <div class="form-group row">
+          <label for="no" class="col-sm-2 col-form-label">번호</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control-plaintext" id="no" name='no' value='${free.no}'
+              readonly>
           </div>
+        </div>
 
-          <div class="form-group row">
-            <label for="title" class="col-sm-2 col-form-label">제목</label>
-            <div class="col-sm-8">
-              <textarea class="form-control" id="title" name='title' rows='1'>${free.title}</textarea>
-            </div>
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">제목</label>
+          <div class="col-sm-8">
+            <textarea class="form-control" id="title" name='title' rows='1'>${free.title}</textarea>
           </div>
+        </div>
 
-          <div class="form-group row">
-            <label for="contents" class="col-sm-2 col-form-label">내용</label>
-            <div class="col-sm-8">
-              <textarea class="form-control" id="contents" name='contents' rows='5'>${free.contents}</textarea>
-            </div>
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">내용</label>
+          <textarea id="summernote" name="contents">${free.contents}</textarea>
+        </div>
+
+
+
+
+        <div class="form-group row">
+          <label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="createdDate"
+              value="${free.modifierDate}">
           </div>
+        </div>
 
-
-          <div class="form-group row">
-            <label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="createdDate"
-                value="${free.modifierDate}">
-            </div>
+        <div class="form-group row">
+          <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="viewCount"
+              value="${free.viewCount}">
           </div>
+        </div>
 
-          <div class="form-group row">
-            <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="viewCount"
-                value="${free.viewCount}">
-            </div>
+        <!-- 버튼과 관련된 영역 -->
+        <!-- 버튼과 관련된 영역 -->
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <a class="btn btn-primary" href='${contextRootPath}/app/free'>목록</a>
+            <button class="btn btn-primary">변경하기</button>
           </div>
-          
-
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <a class="btn btn-primary" href='.'>목록</a>
-               <button class="btn btn-primary">변경하기</button>
-            </div>
-          </div>
-최소 한 개의 사진 파일을 등록해야 합니다.
-        </form>
-      </c:otherwise>
-    </c:choose>
-
+        </div>
+      </form>
+    </section>
+    <!-- .container -->
   </div>
-  <!-- .container -->
 
+
+
+  <script>
+      $(document).ready(function() {
+        $('#summernote').summernote({
+          height : 300, // 에디터의 높이 
+          minHeight : null,
+          maxHeight : null,
+          focus : true,
+          lang : 'ko-KR' // 기본 메뉴언어 US->KR로 변경
+        });
+      });
+
+      var postForm = function() {
+        var contents = $('textarea[name="contents"]').html(
+            $('#summernote').code());
+      }
+    </script>
   <jsp:include page="../javascript.jsp" />
 </body>
 </html>

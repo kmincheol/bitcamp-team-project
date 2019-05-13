@@ -5,7 +5,7 @@ import com.eomcs.lms.domain.TeamRecruit;
 
 public interface TeamRecruitBoardService {
   List<TeamRecruit> list(int pageNo, int pageSize);
-
+  List<TeamRecruit> list2();
   int add(TeamRecruit teamRecruit);
 
   TeamRecruit get(int no);

@@ -100,6 +100,9 @@ values(2,2,'야구팀원모집합니다.','고양사시는분오세요.',0,4);
 insert into rcrm(rcrm_id,tm_id,titl,cont,rcrm_stat,rcrm_prsn)
 values(3,3,'농구팀원모집합니다.','인천사시는분오세요.',0,3);
 
+insert into rcrm(rcrm_id,tm_id,titl,cont,rcrm_stat,rcrm_prsn)
+values(6,5,'농구팀원모집합니다.','인천사시는분오세요.',0,3);
+
 -- 팀원모집첨부파일데이터
 insert into rcrm_file(rcrm_file_id,rcrm_id,file_path,file_type)
 values(1,1,'upload/rcrm/a.jpg','이미지');

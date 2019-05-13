@@ -16,7 +16,8 @@
 
 
     <h1>자유게시판</h1>
-
+    <hr>
+    <br>
     <c:choose>
       <c:when test="${empty free}">
         <p>해당 사진을 찾을 수 없습니다.</p>
@@ -39,18 +40,16 @@
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group row" contentEditable="true">
             <label for="contents" class="col-sm-2 col-form-label">내용</label>
             <div class="col-sm-8">
-              <textarea class="form-control" id="contents" name='contents' rows='5' readonly>${free.contents}</textarea>
+              <div>${free.contents}</div>
+             <%--  <c:forEach items="${free.files}" var="file">
+                <img src='${contextRootPath}/upload/free/${file.filePath}' style='width:500px'>
+              </c:forEach> --%>
             </div>
           </div>
 
-          <div>
-          <c:forEach items="${free.files}" var="file">
-            <img src='${contextRootPath}/upload/free/${file.filePath}'>
-            </c:forEach>
-          </div>
 
           <div class="form-group row">
             <label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
@@ -71,9 +70,9 @@
 
           <div class="form-group row">
             <div class="col-sm-10">
-              <a class="btn btn-primary" href='.'>목록</a> <a class="btn btn-primary"
-                href='delete/${free.no}'>삭제</a> <a
-                href='${contextRootPath}/app/free/update/${free.no}' class="btn btn-primary btn-sm">변경</a>
+              <a class="btn btn-primary" href='.'>목록</a> 
+              <a class="btn btn-primary" href='delete/${free.no}'>삭제</a> 
+              <a class="btn btn-primary" href='${contextRootPath}/app/free/update/${free.no}' class="btn btn-primary btn-sm">변경</a>
             </div>
           </div>
 
