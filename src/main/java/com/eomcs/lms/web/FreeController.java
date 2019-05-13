@@ -2,6 +2,7 @@ package com.eomcs.lms.web;
 
 import java.util.List;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Free;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.FreeService;
 import com.eomcs.lms.service.MemberService;
 
@@ -27,6 +29,7 @@ public class FreeController {
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="3") int pageSize,
+      HttpSession session,
       Model model) {
 
     if (pageSize < 3 || pageSize > 8) 
@@ -71,7 +74,7 @@ public class FreeController {
   }
 
   @PostMapping("add")
-  public String add(Free free, Part[] photo) throws Exception {
+  public String add(Free free, Part[] photo,HttpSession session) throws Exception {
 
 //    ArrayList<FreeFile> files = new ArrayList<>();
 //
@@ -95,6 +98,8 @@ public class FreeController {
       throw new RuntimeException("게시물 제목을 입력하세요.");
 
     } else {
+      Member member = (Member) session.getAttribute("loginUser");
+      free.setMemberNo(member.getNo());
       freeService.add(free);
       return "redirect:.";
     }

@@ -16,9 +16,11 @@ public class Free implements Cloneable, Serializable {
   private Date createdDate;
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date modifierDate;
+
   private Member member;
   private List<FreeFile> files;
   
+
   @Override
   public String toString() {
     return "Free [no=" + no + ", MemberNo=" + MemberNo + ", title=" + title + ", contents="
