@@ -28,8 +28,7 @@ public class RecruitBoardController {
     recruitBoardService.add(teamRecruit);
     return "redirect:.";
   }
-//  
-<<<<<<< HEAD
+
 
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no) {
@@ -38,7 +37,7 @@ public class RecruitBoardController {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     
     return "redirect:../";
-=======
+  }
 //  @GetMapping("delete/{no}")
 //  public String delete(@PathVariable int no) {
 //  
@@ -53,7 +52,6 @@ public class RecruitBoardController {
     List<TeamRecruit> teamRecruit = recruitBoardService.list2();
     model.addAttribute("list2", teamRecruit);
     return "recruit_board/form";
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
   }
   
   @GetMapping("{no}")
