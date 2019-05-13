@@ -1,47 +1,5 @@
-.img-fluid{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    max-height: 380px;
-    overflow: hidden;
-}
 
-
-.header-category{
-    margin: 0px 35px;
-}
-
-
-
-#header-cate{
-    background-color: rgba(255, 255, 255, 0.15);
-    border-top: 1px solid darkgray;
-}
-
-
-
-.headerImg{
-    text-align: center;
-    width: 260px;
-    height: 130px;
-}
-
-#header{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-
-#header-item{
-    position: absolute;
-    font-size: 10px;
-    top: 10px;
-    right: 10px;
-}
-
+ .container{
+    position : absolute;
+    
+ }

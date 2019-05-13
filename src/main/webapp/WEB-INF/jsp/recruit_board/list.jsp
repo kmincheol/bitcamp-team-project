@@ -86,7 +86,7 @@
         </select>
       </div>
 
-      <button type="button" class="btn btn-dark">글쓰기</button>
+      <button type="button" class="btn btn-dark"><a href='${contextRootPath}/app/recruit_board/form'>글쓰기</a></button>
 
       <table class="table">
         <thead class="thead-light">

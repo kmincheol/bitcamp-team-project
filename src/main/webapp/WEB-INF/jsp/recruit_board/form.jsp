@@ -7,12 +7,13 @@
 <title>게시글 등록</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
  <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_form.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 </head>
+
 <body>
 
 
   <div class="container">
-  
     <h1>새 글</h1>
     <form action='add' method='post'>
       <div id="table">
