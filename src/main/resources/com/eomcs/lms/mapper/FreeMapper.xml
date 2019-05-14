@@ -88,6 +88,25 @@
     f.free_id = #{value}
   </select> 
   
+  <select id="findByKeyword" resultMap="freeMap" parameterType="string">
+    <bind name="pattern1" value="'%' + _parameter + '%'"/>
+    select
+    free_id,
+    m.name,
+    cont,
+    titl,
+    f.cdt,
+    mdt,
+    vw_cnt
+    from
+    free f
+    left outer join mbr m on f.mbr_id =
+    m.mbr_id
+    where 
+      titl like #{pattern1}
+     
+  </select>
+  
   <select id="findByNoWithFile" resultMap="freeFileMap" parameterType="int">
     select 
       p.free_id,

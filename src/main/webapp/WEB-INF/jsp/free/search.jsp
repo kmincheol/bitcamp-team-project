@@ -7,17 +7,17 @@
 <head>
 <title>자유 게시판</title>
 <jsp:include page="../commonCss.jsp" />
-   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${contextRootPath}/css/free.css">
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/free.css">
 </head>
 <body>
 
   <div class="container">
-    <h1>자유게시판 검색</h1>
+    <h1>자유게시판</h1>
     <hr>
-    <p>
+    <c:if test="${sessionScope.loginUser != null}">
       <a href='${contextRootPath}/app/free/form' class="btn btn-primary btn-sm">새 글</a>
-    </p>
+    </c:if>
     <br>
     <div class="free-list">
       <table class="table table-hover">
@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <c:forEach items="${list}" var="free">
+          <c:forEach items="${search}" var="free">
             <tr>
               <th scope="row">${free.no}</th>
               <td><a href='${contextRootPath}/app/free/${free.no}'>${free.title}</a></td>
@@ -44,7 +44,7 @@
       </table>
     </div>
     <!-- .bit-list -->
-
+    
     <nav aria-label="목록 페이지 이동">
       <ul class="pagination justify-content-center">
         <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link"
@@ -58,7 +58,7 @@
 
 
 
-<!--     <div class="form-group row" id="searchspace">
+    <!--     <div class="form-group row" id="searchspace">
       <div class="col-sm-5">
         <div class="input-group mb-2">
           <select name='loc1' class="custom-select" id="inputGroupSelect01">
@@ -78,12 +78,19 @@
             </div>
           </div>
         </div>
-      </div>	 -->
+      </div>	
     		<form id="searchbox" action='search' class="form-inline my-2 my-lg-0 justify-content">
        	<input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요.">
 			<button class="btn btn-outline-success my-2 my-sm-0">검색</button>
     		</form>
-    </div>
+    </div> -->
+
+    <form action='free/search'>
+      <input type='search' name='keyword' placeholder="검색어 입력">
+      <button type='submit'>검색</button>
+    </form>
+
+  </div>
   <!-- .container -->
 
   <jsp:include page="../javascript.jsp" />

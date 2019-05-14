@@ -85,8 +85,8 @@
     		</form>
     </div> -->
 
-    <form action='search'>
-      <input type='text' name='keyword'>
+    <form action='free/search'>
+      <input type='search' name='keyword' placeholder="검색어 입력">
       <button type='submit'>검색</button>
     </form>
 

@@ -48,7 +48,7 @@
             </div>
           </div>
 
-          <div class="form-group row" contentEditable="true">
+          <div class="form-group row">
             <label for="contents" class="col-sm-2 col-form-label">내용</label>
             <div class="col-sm-8">
               <div>${free.contents}</div>

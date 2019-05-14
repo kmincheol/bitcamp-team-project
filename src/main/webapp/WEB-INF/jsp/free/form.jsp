@@ -12,7 +12,7 @@
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-<!-- include summernote-ko-KR -->
+<!-- include summernote-ko-KR --> <script src="lang/summernote-ko-KR.js"></script>
 
 <head>
 <title>게시글 등록</title>
@@ -22,21 +22,23 @@
 
   <div class="container">
     <h1>글 쓰기</h1>
-    <hr>
     <br>
+    
     <section>
       <form action='add' method='post' enctype='multipart/form-data'>
 
         <div class="form-group row">
-          <label for="contents" class="col-sm-2 col-form-label">제목</label>
-          <div class="col-sm-2">
+          <label for="contents" class="col-sm-10 col-form-label">제목</label>
+          <div class="col-sm-10">
             <input class="form-control" id="title" name='title'>${free.title}</input>
           </div>
         </div>
 
 
         <!-- summernote와 관련된 영역 -->
-        <b>내용</b> <br>
+        <hr>
+        <b>내용</b> 
+        <br>
         <textarea id="summernote" name="contents"></textarea>
 
         <!-- 버튼과 관련된 영역 -->
