@@ -112,12 +112,6 @@
       #{contents})
   </insert>
   
-  <select id="detailUpdate" resultMap="announceMap" parameterType="int">
-    <include refid="select1"/>
-    where 
-      anunc_id = #{value}
-  </select>
-  
   <update id="update" parameterType="announce">
     update anunc
     set

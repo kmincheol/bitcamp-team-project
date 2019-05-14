@@ -32,28 +32,13 @@ public class AnnounceServiceImpl implements AnnounceService {
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
   @Override
-  public List<Announce> list(int pageNo, int pageSize, int memberNo) {
+  public List<Announce> list(int pageNo, int pageSize) {
 
-    if (memberNo <= 0) {
       HashMap<String,Object> params = new HashMap<>();
       params.put("size", pageSize);
       params.put("rowNo", (pageNo - 1) * pageSize);
       
       return announceDao.findAll(params);
-      
-
-    } else {
-      HashMap<String,Object> params = new HashMap<>();
-
-      if (memberNo > 0) {
-        params.put("memberNo", memberNo);
-      } else {
-        params.put("memberNo", null);
-      }
-      params.put("size", pageSize);
-      params.put("rowNo", (pageNo - 1) * pageSize);
-      return announceDao.findAll(params);
-    }
   }
 
   

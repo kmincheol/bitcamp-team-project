@@ -29,11 +29,11 @@ public class AnnounceController {
   @GetMapping
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="3") int pageSize,
+      @RequestParam(defaultValue="5") int pageSize,
       Model model) {
 
-    if (pageSize < 3 || pageSize > 8) 
-      pageSize = 3;
+    if (pageSize < 5 || pageSize > 8) 
+      pageSize = 5;
 
     int rowCount = announceService.size();
     int totalPage = rowCount / pageSize;
@@ -45,7 +45,7 @@ public class AnnounceController {
     else if (pageNo > totalPage)
       pageNo = totalPage;
 
-    List<Announce> announces = announceService.list(pageNo, pageSize, 0);
+    List<Announce> announces = announceService.list(pageNo, pageSize);
     model.addAttribute("list", announces);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
@@ -66,10 +66,6 @@ public class AnnounceController {
     Announce announce = announceService.get(no);
     model.addAttribute("announce", announce);//JSP에서 활용하기 위함
     return "announce/update";
-  }
-
-  @GetMapping("form")
-  public void form() {
   }
 
   @PostMapping("add")

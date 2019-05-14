@@ -10,7 +10,6 @@ public interface AnnounceDao {
   Announce findByNo(int no);
   Announce findByNoWithFile(int no);
   int increaseCount(int no);
-  Announce detailUpdate(int no);
   int update(Announce announce);
   int delete(int no);
   int countAll();
