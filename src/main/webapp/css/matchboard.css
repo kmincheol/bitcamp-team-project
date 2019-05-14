@@ -4,6 +4,10 @@ h2 {
   text-align: center;
 }
 
+#subtable td {
+  padding: 0.35rem;
+}
+
 p {
   text-align: center;
 }
@@ -19,24 +23,24 @@ margin-left: -200px;
 }
 
 #match_table {
-	width: 90%;
-	height: 50%;
+  width: 90%;
+  height: 50%;
 }
 
 #sub_title {
-	color: white;
+  color: white;
 }
 
 #sub1 {
-	color: white;
+  color: white;
 }
  
 .container {
-	position: absolute;
-	top: 600px;
-	width: 100%;
-	left: 0px;
-	right: 0px;
+  position: absolute;
+  top: 600px;
+  width: 100%;
+  left: 0px;
+  right: 0px;
 } 
 
 #content {
@@ -44,16 +48,28 @@ margin-left: -200px;
    padding: 20px;
    margin-bottom: 20px;
    float: left;
-   border-bottom-color: red;
 }
 
 #match_content {
-	
+    
 }
 
 #subtable {
-	text-align: center;
+  text-align: center;
+  height :300px;
 }
+
+#subtitle {
+}
+
+#matchform {
+  height:150px;
+}
+
+#embloc {
+  margin: 20px;
+}
+
 
 
  #sidebar-right {
@@ -79,25 +95,25 @@ margin-left: -200px;
   position: absolute; 
 }
 
+
 #ground_title {
-	background-color: black; 
-	color: white;
+  background-color: black; 
+  color: white;
 }
 
 
 
 #side_title {
-	margin-left: 710px;
+  margin-left: 710px;
   margin-bottom: 0;
-	background-color: red;
-	font-size: 30px;
-	color: white;
-	width: 165px;
+  font-size: 30px;
+  color: white;
+  width: 165px;
 }
 
 #side_team {
-	color: white;
-	border: 3px soild black;
+  color: white;
+  border: 3px soild black;
 }
 
 
