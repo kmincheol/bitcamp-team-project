@@ -48,7 +48,6 @@
                   <c:forEach items="${list2}" var="list">
                      <option value="1"> ${list.team.teamName}</option>
                     </c:forEach>
-                    
                </select>
               </td>
             <tr>

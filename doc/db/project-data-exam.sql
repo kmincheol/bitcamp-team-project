@@ -11,6 +11,9 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_
 values(5,'test5','1111','test5','1981-01-01','남','010-2234-5678','경기','고양','homepage');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
 values(6,'test6','1111','test6','1967-01-01','여','010-5334-5555','인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
+values(7,'test7','1111','test7','1967-01-01','여','010-5334-5255','인천','연수동','google');
+
 
 -- 연령대데이터
 insert into age(age_id, ages)
@@ -69,6 +72,9 @@ values(5,'고양베어스','020101','30','2','2','2');
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(6,'연수농구단','030101','40','3','3','3');
 
+insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
+values(7,'비트농구단','030101','40','3','3','3');
+
 
 -- 팀원데이터
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
@@ -83,6 +89,8 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(5,5,1,'내야수');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(6,6,1,'센터');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(7,7,1,'센터');
 
 -- 팀경고데이터
 insert into warn(warn_id,warn_res,tm_id)
@@ -99,9 +107,10 @@ insert into rcrm(rcrm_id,tm_id,titl,cont,rcrm_stat,rcrm_prsn)
 values(2,2,'야구팀원모집합니다.','고양사시는분오세요.',0,4);
 insert into rcrm(rcrm_id,tm_id,titl,cont,rcrm_stat,rcrm_prsn)
 values(3,3,'농구팀원모집합니다.','인천사시는분오세요.',0,3);
-
 insert into rcrm(rcrm_id,tm_id,titl,cont,rcrm_stat,rcrm_prsn)
 values(6,5,'농구팀원모집합니다.','인천사시는분오세요.',0,3);
+insert into rcrm(rcrm_id,tm_id,titl,cont,rcrm_stat,rcrm_prsn)
+values(4,6,'농구팀원모집합니다.','인천사시는분오세요.',1,3);
 
 -- 팀원모집첨부파일데이터
 insert into rcrm_file(rcrm_file_id,rcrm_id,file_path,file_type)

@@ -123,7 +123,11 @@
               <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
               <td>${list.team.teamName }</td>
               <td>${list.team.teamArea }</td>
-              <td>${list.teamRcrmStatus}</td>
+              <td>
+                <c:choose>
+                  <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
+                  <c:otherwise>모집마감</c:otherwise>
+                </c:choose></td>
               <td>${list.teamCreatedDate}</td>
               <td>${list.teamViewCount}</td>
             </tr>

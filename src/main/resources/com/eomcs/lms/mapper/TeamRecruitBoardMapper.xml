@@ -28,6 +28,38 @@
 
   </resultMap>
   
+    <resultMap type="TeamRecruit" id="teamRecruitMap2">
+    <id column="rcrm_id" property="teamNo" />
+    <result column="tm_id" property="teamId" />
+    <result column="titl" property="teamTitle" />
+    <result column="vw_cnt" property="teamViewCount" />
+    <result column="cdt" property="teamCreatedDate" />
+    <result column="rcrm_stat" property="teamRcrmStatus" />
+    <result column="cont" property="teamContents" />
+
+    <association property="team" javaType="Team">
+      <id column="tm_id" property="teamId" />
+      
+      <result column="area" property="teamArea" />
+      <result column="name" property="teamName" />
+    </association>
+    
+    <association property="teamTypeSports" javaType="teamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
+
+ <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMember_id" />
+    </association>
+
+ <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+         <result column="user_id" property="id" />
+    </association>
+
+  </resultMap>
+
  
   <select id="findAll" resultMap="teamRecruitMap" parameterType="map">
     select
@@ -46,22 +78,18 @@
   </select>
   
    
-  <select id="findAll2" resultMap="teamRecruitMap" parameterType="map">
-     select
-      rcrm_id,
-      titl,
-      area,
-      name,
-      r.cdt,
-      rcrm_stat,
-      vw_cnt,
+  <select id="findAll2" resultMap="teamRecruitMap2" parameterType="map">
+   select
+     t.tm_id,
+      tm.mbr_id,
       spt_clsf_name,
-      t.tm_id
+       t.name
     from
       rcrm r
       left outer join tm t on r.tm_id = t.tm_id
       left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-      left outer join tm_mbr m on m.tm_mbr_id = t.tm_id
+       left outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
+       left outer join mbr m on m.mbr_id = tm.mbr_id
   </select>
   
   

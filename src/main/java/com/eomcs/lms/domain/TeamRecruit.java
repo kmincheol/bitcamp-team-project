@@ -24,10 +24,27 @@ public class TeamRecruit implements Cloneable, Serializable {
 
   private Team team;
   private TeamTypeSports teamTypeSports;
+  private Member member;
+  private TeamMember teamMember;
   
   
   
-  
+  public Member getMember() {
+    return member;
+  }
+
+  public void setMember(Member member) {
+    this.member = member;
+  }
+
+  public TeamMember getTeamMember() {
+    return teamMember;
+  }
+
+  public void setTeammember(TeamMember teammember) {
+    this.teamMember = teamMember;
+  }
+
   @Override
   public String toString() {
     return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle
