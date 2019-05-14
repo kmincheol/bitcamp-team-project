@@ -14,7 +14,7 @@
     <result column="vw_cnt" property="viewCount" />
     <result column="cdt" property="createdDate" />
     <result column="mdt" property="modifierDate" />
-
+   
     <association property="member" javaType="member">
       <id column="mbr_id" property="memberNo" />
       <result column="name" property="name" />
@@ -73,9 +73,19 @@
   </select>
   
    <select id="findByNo" resultMap="freeMap" parameterType="int">
-    <include refid="select1"/>
+    select
+    free_id,
+    m.name,
+    cont,
+    titl,
+    mdt,
+    vw_cnt
+    from
+    free f
+    left outer join mbr m on f.mbr_id =
+    m.mbr_id
     where 
-      free_id = #{value}
+    f.free_id = #{value}
   </select> 
   
   <select id="findByNoWithFile" resultMap="freeFileMap" parameterType="int">

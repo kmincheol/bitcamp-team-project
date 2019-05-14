@@ -5,7 +5,11 @@ import com.eomcs.lms.domain.TeamRecruit;
 
 public interface TeamRecruitBoardService {
   List<TeamRecruit> list(int pageNo, int pageSize);
+
   List<TeamRecruit> list2();
+
+  List<TeamRecruit> search(String keyword);
+
   int add(TeamRecruit teamRecruit);
 
   TeamRecruit get(int no);
@@ -14,5 +18,5 @@ public interface TeamRecruitBoardService {
 
   int delete(int no);
 
-//  int size();
+  // int size();
 }

@@ -31,35 +31,19 @@ public class FreeServiceImpl implements FreeService {
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
   @Override
-  public List<Free> list(int pageNo, int pageSize, int memberNo) {
-
-    if (memberNo <= 0) {
-      HashMap<String,Object> params = new HashMap<>();
-      params.put("size", pageSize);
-      params.put("rowNo", (pageNo - 1) * pageSize);
-      
-      return freeDao.findAll(params);
-      
-
-    } else {
+  public List<Free> list(int pageNo, int pageSize) {
       HashMap<String,Object> params = new HashMap<>();
 
-      if (memberNo > 0) {
-        params.put("memberNo", memberNo);
-      } else {
-        params.put("memberNo", null);
-      }
       params.put("size", pageSize);
       params.put("rowNo", (pageNo - 1) * pageSize);
       return freeDao.findAll(params);
     }
-  }
 
   
   @Override
   public Free get(int no) {
 
-    Free free = freeDao.findByNoWithFile(no);
+    Free free = freeDao.findByNo(no);
     if (free != null) {
       freeDao.increaseCount(no);
     }

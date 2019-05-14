@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.TeamRecruitDao;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.TeamRecruitBoardService;
 
@@ -41,6 +42,14 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     // 일관성을 위해 Command 객체는 항상 Service 객체를 통해 데이터를 다뤄야 한다.
   
     return teamRecruitDao.findAll2();
+  }
+  
+  @Override
+  public List<TeamRecruit> search(String keyword) {
+    if (keyword == null)
+      return teamRecruitDao.findAll(null);
+    else 
+      return teamRecruitDao.findByKeyword(keyword);
   }
 
   

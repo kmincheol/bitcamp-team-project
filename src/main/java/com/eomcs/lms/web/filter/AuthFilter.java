@@ -10,7 +10,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.web.FreeController;
 
 @WebFilter("/app/app") // 임시로 오류발생시킴 ("/app/*")
 public class AuthFilter implements Filter {

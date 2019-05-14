@@ -30,11 +30,15 @@
           </tr>
           <tr>
             <th scope="row">제목</th>
-            <td>제목자리입니다</td>
+            <td>${teamRecruit.teamTitle}</td>
           </tr>
           <tr>
             <th scope="row">내용</th>
             <td>${teamRecruit.teamContents}</td>
+          </tr>
+           <tr>
+            <th scope="row">조회수</th>
+            <td>${teamRecruit.teamViewCount}</td>
           </tr>
         </tbody>
       </table>

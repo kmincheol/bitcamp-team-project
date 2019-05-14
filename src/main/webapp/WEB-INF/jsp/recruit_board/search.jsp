@@ -82,7 +82,7 @@
         </select>
       </div>
 
-      </form>
+        </form>
       <form action='search'>
       <div class="form-group row">
         <div class="col-xs-4">
@@ -98,6 +98,7 @@
         </div>
       </div>
 </form>
+
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -115,25 +116,21 @@
           </tr>
         </thead>
         <tbody>
-          <c:forEach items="${list}" var="list">
+          <c:forEach items="${search}" var="search">
             <tr>
-              <td>${list.teamNo}</td>
-              <td>${list.teamTypeSports.teamSportsType}</td>
-              <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
-              <td>${list.team.teamName }</td>
-              <td>${list.team.teamArea }</td>
-              <td>
-                <c:choose>
-                  <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
-                  <c:otherwise>모집마감</c:otherwise>
-                </c:choose></td>
-              <td>${list.teamCreatedDate}</td>
-              <td>${list.teamViewCount}</td>
+              <td>${search.teamNo}</td>
+              <td>${search.teamTypeSports.teamSportsType}</td>
+              <td><a href="${contextRootPath}/app/recruit_board/${search.teamNo}">${search.teamTitle}</a></td>
+              <td>${search.team.teamName }</td>
+              <td>${search.team.teamArea }</td>
+              <td>${search.teamRcrmStatus}</td>
+              <td>${search.teamCreatedDate}</td>
+              <td>${search.teamViewCount}</td>
             </tr>
           </c:forEach>
         </tbody>
       </table>
-      <div id="in">
+      <!-- <div id="in">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
@@ -147,7 +144,7 @@
             </a></li>
           </ul>
         </nav>
-      </div>
+      </div> -->
     </div>
 
 

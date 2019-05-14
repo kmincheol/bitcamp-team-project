@@ -11,7 +11,7 @@ public class MainPageController {
   
   @RequestMapping("/main_page")
   public String teamrecruit() {
-   return "main/main_page";
+   return "main/mainpage1";
   }
   
 }
