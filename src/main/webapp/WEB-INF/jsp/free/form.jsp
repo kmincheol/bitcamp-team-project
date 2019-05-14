@@ -12,7 +12,6 @@
 <!-- include summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-<!-- include summernote-ko-KR --> <script src="lang/summernote-ko-KR.js"></script>
 
 <head>
 <title>게시글 등록</title>
@@ -23,7 +22,7 @@
   <div class="container">
     <h1>글 쓰기</h1>
     <br>
-    
+
     <section>
       <form action='add' method='post' enctype='multipart/form-data'>
 
@@ -37,21 +36,21 @@
 
         <!-- summernote와 관련된 영역 -->
         <hr>
-        <b>내용</b> 
-        <br>
+        <b>내용</b> <br>
         <textarea id="summernote" name="contents"></textarea>
 
         <!-- 버튼과 관련된 영역 -->
         <div class="form-group row">
           <div class="col-sm-10">
             <a class="btn btn-primary" href='./'>목록</a>
-            <button class="btn btn-primary">작성하기</button>
+            <button class="btn btn-primary" id="add" onclick="add_click();">작성하기</button>
           </div>
         </div>
       </form>
     </section>
   </div>
   <!-- .container -->
+  
   <script>
       $(document).ready(function() {
         $('#summernote').summernote({
@@ -67,6 +66,16 @@
         var contents = $('textarea[name="contents"]').html(
             $('#summernote').code());
       } 
+    </script>
+
+  <!-- 제목을 입력하지 않고 확인버튼을 클릭시 alert 창 띄움 -->
+  <script>
+    function add_click() {
+    var title = document.getElementById("title").value;
+    if(title.length < 1) {
+    alert("제목을 입력해주세요!")
+    } 
+  }
     </script>
   <jsp:include page="../javascript.jsp" />
 </body>

@@ -2,6 +2,7 @@ package com.eomcs.lms.web;
 
 import java.util.List;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
@@ -10,15 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
-import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.FreeService;
 import com.eomcs.lms.service.MemberService;
+import com.eomcs.lms.service.impl.FreeServiceImpl;
 
 @Controller
 @RequestMapping("/free")
@@ -30,14 +32,34 @@ public class FreeController {
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
 
+  public String ajax_addComment(@ModelAttribute("free") Free free, HttpServletRequest request) throws Exception{
+    
+    HttpSession session = request.getSession();
+    Member member = (Member)session.getAttribute("loginUser");
+    
+    try{
+    
+        free.setMemberNo(member.getNo());        
+        FreeServiceImpl.addComment(free);
+        
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+    
+    return "success";
+}
+  
+
+  
+  
   @GetMapping
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="3") int pageSize,
+      @RequestParam(defaultValue="10") int pageSize,
       Model model) {
 
-    if (pageSize < 3 || pageSize > 8) 
-      pageSize = 3;
+    if (pageSize < 10 || pageSize > 8) 
+      pageSize = 10;
 
     int rowCount = freeService.size();
     int totalPage = rowCount / pageSize;
@@ -107,7 +129,7 @@ public class FreeController {
 //    free.setFiles(files);
 
     if (free.getTitle().length() == 0) {
-      throw new RuntimeException("게시물 제목을 입력하세요.");
+      return "free/form";
 
     } else {
       Member member = (Member) session.getAttribute("loginUser");
@@ -115,8 +137,8 @@ public class FreeController {
       free.setMember(member);
       
       freeService.add(free);
-      System.out.println(session.getAttribute("loginUser"));
-      System.out.println(free.getMember());
+      
+     
       return "redirect:.";
     }
   }

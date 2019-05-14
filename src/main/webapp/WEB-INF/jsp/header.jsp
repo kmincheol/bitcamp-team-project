@@ -44,7 +44,7 @@
               <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a>
                 <ul>
                   <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
+                  <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/free">자유게시판</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
                 </ul>
               </li>

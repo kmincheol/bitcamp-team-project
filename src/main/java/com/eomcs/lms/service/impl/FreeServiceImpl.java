@@ -7,7 +7,6 @@ import com.eomcs.lms.dao.FreeDao;
 import com.eomcs.lms.dao.FreeFileDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.domain.Free;
-import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.FreeService;
 
 // 스프링 IoC 컨테이너가 관리하는 객체 중에서 
@@ -98,6 +97,10 @@ public class FreeServiceImpl implements FreeService {
   @Override
   public int size() {
     return freeDao.countAll();
+  }
+
+  public static void addComment(Free free) {
+    
   }
 }
 

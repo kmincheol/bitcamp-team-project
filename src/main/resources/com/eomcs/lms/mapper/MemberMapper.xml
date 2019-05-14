@@ -113,7 +113,6 @@
       <if test="email != null">email = #{email},</if>
       <if test="password != null">pwd = password(#{password}),</if>
       <if test="tel != null">tel = #{tel},</if>
-      <if test="photo != null">prof_phot = #{photo}</if>
     </set>  
     where 
       mbr_id = #{no}

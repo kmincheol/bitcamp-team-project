@@ -3,7 +3,6 @@ package com.eomcs.lms.dao;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.Free;
-import com.eomcs.lms.domain.TeamRecruit;
 
 public interface FreeDao {
   int insert(Free free);

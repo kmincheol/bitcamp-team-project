@@ -25,16 +25,8 @@ public class MemberController {
   }
   
   @PostMapping("add")
-  public String add(Member member, Part photoFile) throws Exception {
+  public String add(Member member) throws Exception {
     
-    if (photoFile.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
-      String uploadDir = servletContext.getRealPath(
-          "/upload/member");
-      photoFile.write(uploadDir + "/" + filename);
-      member.setPhoto(filename);
-    }
-
     memberService.add(member);
     
     return "redirect:.";

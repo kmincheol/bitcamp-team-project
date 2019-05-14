@@ -10,79 +10,129 @@
 <head>
 <title>자유게시판</title>
 <jsp:include page="../commonCss.jsp" />
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/free.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 </head>
 <body>
 
   <div class="container">
 
+    <div id="main-backgroundImg">
+      <img src="${contextRootPath}/images/match-header.jpg" class="img-fluid">
 
-    <h1>자유게시판</h1>
-    <hr>
+      <div id="header-item">
+        <a href="#">로그인/</a> <a href="#">회원가입/</a> <a href="#">고객센터</a>
+      </div>
+    </div>
+
+    <div id="header">
+      <nav class="navbar navbar-expand-lg justify-content-center">
+        <a href="#"><img src="${contextRootPath}/images/logo.png" class="headerImg"></a>
+      </nav>
+
+      <div id="header-cate">
+        <div>
+          <ul class="nav justify-content-center">
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
+            </div>
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">매치</a>
+                <ul class="category">
+                  <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">매치등록</a></li>
+                </ul></li>
+            </div>
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">팀</a>
+                <ul class="category">
+                  <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">팀정보</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">모집게시판</a></li>
+                </ul></li>
+            </div>
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a>
+                <ul class="category">
+                  <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
+                </ul></li>
+            </div>
+            <div class="header-category">
+              <li class="nav-item"><a class="nav-link" href="#">마이페이지</a>
+                <ul class="category">
+                  <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">나의 팀 정보</a></li>
+                </ul></li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-text">
+      <h2>자유게시판</h2>
+    </div>
     <br>
+    <div id="recruit-list-out">
     <c:choose>
       <c:when test="${empty free}">
-        <p>해당 사진을 찾을 수 없습니다.</p>
+        <p>해당 게시물을 찾을 수 없습니다.</p>
       </c:when>
 
       <c:otherwise>
         <form action='update' method='post'>
-          <div class="form-group row">
-            <label for="no" class="col-sm-2 col-form-label">번호</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control-plaintext" id="no" name='no' value='${free.no}'
-                readonly>
+          <div class="free-header">
+            <label for="no">게시물 번호</label> <label>${free.no}</label>
+            <hr>
+            <div class="title">
+              <div id="title" style="font-size: 40px; ">${free.title}</div>
             </div>
+
+            <div style="margin-left: 600px">
+              <span style="font-size: 12px">작성자 <b>${free.member.name}</b> </span> 
+              <span style="font-size: 12px">조회수 <b>${free.viewCount}</b> </span><br>
+              <span style="font-size: 12px">최근수정일 <b>${free.modifierDate}</b> </span>
+            </div>
+            
+            <br>
+            <hr>
           </div>
 
-          <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">작성자</label>
-            <div class="col-sm-10">
-               <input type="text" class="form-control-plaintext" id="name" name='name' value="${free.member.name}" readonly>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="title" class="col-sm-2 col-form-label">제목</label>
-            <div class="col-sm-8">
-              <textarea class="form-control" id="title" name='contents' rows='1' readonly>${free.title}</textarea>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="contents" class="col-sm-2 col-form-label">내용</label>
-            <div class="col-sm-8">
+            <div style="text-align: center;">
               <div>${free.contents}</div>
-              <%--  <c:forEach items="${free.files}" var="file">
-                <img src='${contextRootPath}/upload/free/${file.filePath}' style='width:500px'>
-              </c:forEach> --%>
             </div>
-          </div>
 
+  <div id="disqus_thread"></div>
+<script>
 
-          <div class="form-group row">
-            <label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="createdDate"
-                value="${free.modifierDate}">
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
-            <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="viewCount"
-                value="${free.viewCount}">
-            </div>
-          </div>
-
-
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <a class="btn btn-primary" href='.'>목록</a>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://bit-2.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+        <br><hr>
+          <div class="form-group row" style="text-align: center">
+            <div style="position:absolute; left:0; right:0;">
+              <a class="input-group-btn btn btn-dark" href='.'>목록</a>
               <c:if test="${sessionScope.loginUser.name eq free.member.name}">
-                <a class="btn btn-primary" href='delete/${free.no}'>삭제</a>
-                <a class="btn btn-primary" href='${contextRootPath}/app/free/update/${free.no}'
-                  class="btn btn-primary btn-sm">변경</a>
+                <a class="input-group-btn btn btn-dark" href='delete/${free.no}'>삭제</a>
+                <a class="input-group-btn btn btn-dark" href='${contextRootPath}/app/free/update/${free.no}'>변경</a>
               </c:if>
             </div>
           </div>
@@ -92,7 +142,7 @@
     </c:choose>
 
   </div>
-
+</div>
   <jsp:include page="../javascript.jsp" />
 </body>
 </html>
