@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.MatchDao">
+
+  <resultMap type="match" id="matchMap">
+    <id column="mtch_id" property="no" />
+    <result column="tm_id" property="teamNo" />
+    <result column="tm_id2" property="otherTeamNo" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="game_dt" property="playDate" />
+    <result column="area" property="location" />
+    <result column="stdm_psti" property="stadiumName" />
+    <result column="stdm_lat" property="stadiumLatitude" />
+    <result column="stdm_long" property="stadiumLongitude" />
+    <result column="tel" property="telephone" />
+    <result column="cost" property="cost" />
+    
+    <association property="team" javaType="Team">
+      <id column="tm_id" property="teamId" />
+      <result column="name" property="teamName" />
+      <result column="tm_ambl_phot" property="teamEmblemPhoto"/>
+      <result column="area" property="teamArea" />
+    </association>
+    
+        <!-- 종목유형 테이블 -->
+    <association property="teamTypeSports" javaType="teamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
+    
+  </resultMap>
+
+
+
+     <resultMap type="Team" id="team">
+     
+      <id column="tm_id" property="teamId" />
+      <result column="area" property="teamArea" />
+      <result column="name" property="teamName" />
+
+    <association property="teamTypeSports" javaType="teamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
+
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMember_id" />
+    </association>
+
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+    </association>
+
+  </resultMap>
+
+
+<!-- 매치보드에 포함될것들 -->
+<!-- 팀테이블, 팀원테이블, 회원테이블, 종목유형테이블, 매치신청테이블, 태그테이블, 후기테이블, 첨부파일 테이블 -->
+
+
+  <select id="findAll" resultMap="matchMap" parameterType="map">
+   select
+    mtch_id,
+    m.tm_id,
+    tm_id2,
+    t.spt_clsf_id,
+    titl,
+    cont,
+    vw_cnt,
+    m.cdt,
+    game_dt,
+    m.area,
+    stdm_psti,
+    stdm_lat,
+    stdm_long,
+    tel,
+    cost
+   from
+    mtch m
+    left outer join tm t on m.tm_id = t.tm_id
+    left outer join spt_clsf s on s.spt_clsf_id = m.spt_clsf_id
+  </select>
+
+
+    
+
+
+</mapper>

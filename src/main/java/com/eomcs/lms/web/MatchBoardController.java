@@ -1,62 +1,56 @@
 package com.eomcs.lms.web;
 
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.List;
 import javax.servlet.ServletContext;
-import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.eomcs.lms.domain.Announce;
-import com.eomcs.lms.domain.AnnounceFile;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.MatchFile;
 import com.eomcs.lms.service.MatchBoardService;
-import com.eomcs.lms.service.TeamService;
 
 @Controller
 @RequestMapping("/matchboard")
 public class MatchBoardController {
   
   @Autowired MatchBoardService matchBoardService;
-  @Autowired TeamService teamService;
+//  @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   
   
   @GetMapping
   public String list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="5") int pageSize,
-      Model model) {
-//
-//    if (pageSize < 5 || pageSize > 6)
-//      pageSize = 5;
-//
-////    int rowCount = matchBoardService.size();
-//    int rowCount = 1;
-//    int totalPage = rowCount / pageSize;
-//    if (rowCount % pageSize > 0)
-//      totalPage++;
-//
-//    if (pageNo < 1) 
-//      pageNo = 1;
-//    else if (pageNo > totalPage)
-//      pageNo = totalPage;
-//
-//    List<Match> matches = matchBoardService.list(pageNo, pageSize);
-//    model.addAttribute("list", matches);
-//    model.addAttribute("pageNo", pageNo);
-//    model.addAttribute("pageSize", pageSize);
-//    model.addAttribute("totalPage", totalPage);
-//    
-	  return "matchboard/list";
+        @RequestParam(defaultValue="1") int pageNo,
+        @RequestParam(defaultValue="5") int pageSize,
+        Model model) {
+
+      if (pageSize < 5 || pageSize > 6)
+        pageSize = 5;
+
+//      int rowCount = matchBoardService.size();
+      int rowCount = 1;
+      int totalPage = rowCount / pageSize;
+        if (rowCount % pageSize > 0)
+        totalPage++;
+
+        if (pageNo < 1) 
+          pageNo = 1;
+        else if (pageNo > totalPage)
+          pageNo = totalPage;
+
+        List<Match> matches = matchBoardService.list(pageNo, pageSize);
+        model.addAttribute("list", matches);
+        model.addAttribute("pageNo", pageNo);
+        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("totalPage", totalPage);
+    
+        return "matchboard/list";
   }
 
+  /*
+  
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     Match match = matchBoardService.get(no);
@@ -102,21 +96,24 @@ public class MatchBoardController {
     }
   }
   
+  @PostMapping("update")
+  public String update(Match match) {
+    if (matchBoardService.update(match) == 0) 
+      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    return "redirect:.";
+  }
   
   
+  @GetMapping("delete/{no}")
+  public String delete(@PathVariable int no) {
+    if (matchBoardService.delete(no) == 0) 
+      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+
+    return "redirect:../";
+  }
   
-  
-  
-
-
-
-
-
+  */
 }
-
-
-
-
 
 //  @GetMapping("sideBar")
 //  public String sideBar() {

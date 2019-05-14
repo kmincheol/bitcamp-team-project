@@ -109,9 +109,7 @@
                 <select name='loc1' class="custom-select" id="inputGroupSelect01">
           <option selected>실력선택</option>
             <option value="1">상</option>
-            <option value="2">중상</option>
             <option value="3">중</option>
-            <option value="4">중하</option>
             <option value="5">하</option>
                 </select>
               </div>
@@ -143,6 +141,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		  
 		    <tr>
 		      <th scope="row"></th>
 		      <td>
@@ -154,28 +153,8 @@
 		      	</ul>
 		      </td>
 		    </tr>
-		    <tr>
-		      <th scope="row"></th>
-		      <td>
-		      	<ul>
-		      		<li></li>
-		      		<li></li>
-		      		<li></li>
-		      		<li></li>
-		      	</ul>
-		      </td>
-		    </tr>
-		    <tr>
-		      <th scope="row"></th>
-		      <td>
-		      	<ul>
-		      		<li></li>
-		      		<li></li>
-		      		<li></li>
-		      		<li></li>
-		      	</ul>
-		      </td>
-		    </tr>
+		    
+		    
 		  </tbody>
 		</table>
 	</div>
