@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.FreeService;
 import com.eomcs.lms.service.MemberService;
 
@@ -72,6 +73,13 @@ public class FreeController {
     model.addAttribute("free", free);
     return "free/update";
   }
+  
+  @GetMapping("search")
+  public void search(String keyword, Model model) {
+    List<Free> free = freeService.search(keyword);
+    model.addAttribute("search", free);
+  }
+
 
   @GetMapping("form")
   public void form() {
