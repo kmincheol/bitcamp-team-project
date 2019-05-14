@@ -1,5 +1,6 @@
 <%@page import="com.eomcs.lms.domain.FreeFile"%>
 <%@page import="com.eomcs.lms.domain.Free"%>
+<%@page import="com.eomcs.lms.domain.Member"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
@@ -34,6 +35,13 @@
           </div>
 
           <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">작성자</label>
+            <div class="col-sm-10">
+               <input type="text" class="form-control-plaintext" id="name" name='name' value="${free.member.name}" readonly>
+            </div>
+          </div>
+
+          <div class="form-group row">
             <label for="title" class="col-sm-2 col-form-label">제목</label>
             <div class="col-sm-8">
               <textarea class="form-control" id="title" name='contents' rows='1' readonly>${free.title}</textarea>
@@ -44,7 +52,7 @@
             <label for="contents" class="col-sm-2 col-form-label">내용</label>
             <div class="col-sm-8">
               <div>${free.contents}</div>
-             <%--  <c:forEach items="${free.files}" var="file">
+              <%--  <c:forEach items="${free.files}" var="file">
                 <img src='${contextRootPath}/upload/free/${file.filePath}' style='width:500px'>
               </c:forEach> --%>
             </div>
@@ -70,9 +78,12 @@
 
           <div class="form-group row">
             <div class="col-sm-10">
-              <a class="btn btn-primary" href='.'>목록</a> 
-              <a class="btn btn-primary" href='delete/${free.no}'>삭제</a> 
-              <a class="btn btn-primary" href='${contextRootPath}/app/free/update/${free.no}' class="btn btn-primary btn-sm">변경</a>
+              <a class="btn btn-primary" href='.'>목록</a>
+              <c:if test="${sessionScope.loginUser.name eq free.member.name}">
+                <a class="btn btn-primary" href='delete/${free.no}'>삭제</a>
+                <a class="btn btn-primary" href='${contextRootPath}/app/free/update/${free.no}'
+                  class="btn btn-primary btn-sm">변경</a>
+              </c:if>
             </div>
           </div>
 

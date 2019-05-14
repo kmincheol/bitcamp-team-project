@@ -14,7 +14,7 @@
 
   <div class="container">
     <h1>자유게시판</h1>
-    <p>
+    z<p>
       <a href='form' class="btn btn-primary btn-sm">새 글</a>
     </p>
     
