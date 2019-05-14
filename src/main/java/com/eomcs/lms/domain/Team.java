@@ -23,6 +23,45 @@ public class Team implements Cloneable, Serializable {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date teamInfoModifieDate;
 
+  private TeamTypeSports teamTypeSports;
+  private Member member;
+  private TeamMember teamMember;
+  
+
+  @Override
+  public String toString() {
+    return "Team [teamId=" + teamId + ", teamName=" + teamName + ", teamInfo=" + teamInfo
+        + ", teamArea=" + teamArea + ", teamAgeId=" + teamAgeId + ", teamTypeId=" + teamTypeId
+        + ", teamLevelId=" + teamLevelId + ", teamSportsId=" + teamSportsId + ", teamEmblemPhoto="
+        + teamEmblemPhoto + ", teamUniform=" + teamUniform + ", teamUniformPhoto="
+        + teamUniformPhoto + ", teamCreateDate=" + teamCreateDate + ", teamInfoModifieDate="
+        + teamInfoModifieDate + ", teamTypeSports=" + teamTypeSports + ", member=" + member
+        + ", teamMember=" + teamMember + "]";
+  }
+
+  public TeamTypeSports getTeamTypeSports() {
+    return teamTypeSports;
+  }
+
+  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
+    this.teamTypeSports = teamTypeSports;
+  }
+
+  public Member getMember() {
+    return member;
+  }
+
+  public void setMember(Member member) {
+    this.member = member;
+  }
+
+  public TeamMember getTeamMember() {
+    return teamMember;
+  }
+
+  public void setTeamMember(TeamMember teamMember) {
+    this.teamMember = teamMember;
+  }
 
   public int getTeamId() {
     return teamId;

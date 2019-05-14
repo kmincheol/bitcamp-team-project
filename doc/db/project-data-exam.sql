@@ -91,6 +91,13 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(6,6,1,'센터');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(7,7,1,'센터');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(6,7,1,'포워');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(1,7,1,'격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(2,7,1,'유격수');
+
 
 -- 팀경고데이터
 insert into warn(warn_id,warn_res,tm_id)

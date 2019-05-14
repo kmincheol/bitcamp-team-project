@@ -13,6 +13,7 @@
 <body>
 
 
+  
   <div class="container">
     <h1>새 글</h1>
     <form action='add' method='post'>
@@ -29,27 +30,23 @@
                 <option selected>oo구</option>
                 <option value="1">강동</option>
                 <option value="2">강남</option>
-                <option value="3">강서</option>
             </select></td>
-            <tr>
-              <th scope="row">경기유형</th>
+              <tr>
+              <th scope="row">종목</th>
                 <td>
-                <select class="custom-select">
-                  <c:forEach items="${list2}" var="list">
-                     <option value="1">${list.teamTypeSports.teamSportsType}</option>
-                    </c:forEach>
+                <select class="custom-select" id="select2">
                </select>
               </td>
-            </tr>
-            <tr>
+                <tr>
               <th scope="row">소속팀</th>
-               <td>
-                <select class="custom-select">
-                  <c:forEach items="${list2}" var="list">
-                     <option value="1"> ${list.team.teamName}</option>
+                <td>
+                <select class="custom-select" id="select1" onchange="itemChange()">
+                  <c:forEach items="${team}" var="list">
+                     <option value="1">${list.teamName}</option>
                     </c:forEach>
                </select>
               </td>
+            
             <tr>
               <th scope="row">제목</th>
               <td>
@@ -79,5 +76,39 @@
   <!-- .container -->
 
   <jsp:include page="../javascript.jsp" />
+  <script>
+  function itemChange(){
+ 
+var keyboard = ["야구"];
+var mouse = ["광마우스","유선마우스","비싼마우스","미키마우스"];
+var monitor = ["17인치","22인치","24인치","26인치"];
+ 
+var selectItem =   $("#selBox option:selected").text();
+
+  
+var changeItem;
+  
+if(selectItem == '연수농구단'){
+  changeItem = keyboard;
+}
+else if(selectItem == "마우스"){
+  changeItem = mouse;
+}
+else if(selectItem == "모니터"){
+  changeItem =  monitor;
+}
+ 
+ 
+for(var count = 0; count < changeItem.size(); count++){                
+                var option = $("<option>"+changeItem[count]+"</option>");
+                $('#select2').append(option);
+            }
+ 
+}
+
+  
+  
+  </script>
+  
 </body>
 </html>

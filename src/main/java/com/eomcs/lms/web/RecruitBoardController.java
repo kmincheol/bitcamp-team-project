@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.TeamRecruitBoardService;
 
@@ -21,11 +22,22 @@ public class RecruitBoardController {
 
   @RequestMapping("/form")
   public String recruitView(Model model) {
-    List<TeamRecruit> teamRecruit = recruitBoardService.list2();
-    model.addAttribute("list2", teamRecruit);
+   List <Team> team = recruitBoardService.get2(7);
+    model.addAttribute("team", team);
+    
     return "recruit_board/form";
   }
 
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model) {
+    TeamRecruit teamRecruit = recruitBoardService.get(no);
+    model.addAttribute("teamRecruit", teamRecruit);
+    return "recruit_board/detail";
+  }
+  
+  
+  
+  
   @PostMapping("add")
   public String add(TeamRecruit teamRecruit) {
     System.out.println("aaa" + teamRecruit.toString());
@@ -48,12 +60,6 @@ public class RecruitBoardController {
     model.addAttribute("search", teamRecruit);
   }
 
-  @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model) {
-    TeamRecruit teamRecruit = recruitBoardService.get(no);
-    model.addAttribute("teamRecruit", teamRecruit);
-    return "recruit_board/detail";
-  }
 
 
   @GetMapping
