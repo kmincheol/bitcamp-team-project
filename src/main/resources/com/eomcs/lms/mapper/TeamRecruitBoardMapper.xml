@@ -25,7 +25,7 @@
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
-
+    
   </resultMap>
   
  
@@ -81,7 +81,25 @@
       left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     where
       r.rcrm_id = #{teamNo};
-    
+  </select>
+  
+  <select id="findByKeyword" resultMap="teamRecruitMap" parameterType="string">
+    <bind name="pattern1" value="'%' + _parameter + '%'"/>
+    select 
+      rcrm_id,
+      titl,
+      area,
+      name,
+      r.cdt,
+      rcrm_stat,
+      vw_cnt,
+      spt_clsf_name
+    from 
+      rcrm r
+      left outer join tm t on r.tm_id = t.tm_id
+      left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
+    where 
+      titl like #{pattern1}
   </select>
 
   <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
