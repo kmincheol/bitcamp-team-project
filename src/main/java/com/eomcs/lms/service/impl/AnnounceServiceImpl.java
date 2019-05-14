@@ -71,7 +71,7 @@ public class AnnounceServiceImpl implements AnnounceService {
   public int add(Announce announce) {
     int count = announceDao.insert(announce);
 
-    if(announce.getFiles().size() > 0) {
+    if(announce.getFiles().size() > 0) { // 사진파일이 있을때 추가하고 사진이 없다면 그냥 insert
     List<AnnounceFile> files = announce.getFiles();
     
     
@@ -86,17 +86,18 @@ public class AnnounceServiceImpl implements AnnounceService {
   }
 
 
-  @Override
-  public Announce getUpdate(int no) {
-    
-    Announce announce = announceDao.detailUpdate(no);
-    
-    return announce;
-  }
-  
   
   @Override
-  public int update(Announce announce) {
+  public int update(Announce announce) { // 기존 사진이 없는게시물에서 사진을 추가할때 or 사진 변경할때
+    if(announce.getFiles() != null) {  
+    List<AnnounceFile> files = announce.getFiles();
+    
+    for (AnnounceFile f : files) {
+      f.setAnnounceNo(announce.getNo());
+    }
+    fileDao.insert(announce.getFiles()); // 아마 기존 사진이 삭제 안되고 인서트 되는듯함? 매퍼파일 손보기??
+    }
+    
     return announceDao.update(announce);
   }
 

@@ -63,8 +63,8 @@ public class AnnounceController {
 
   @GetMapping("update/{no}")
   public String detailUpdate(@PathVariable int no, Model model) {
-    Announce announce = announceService.getUpdate(no);
-    model.addAttribute("announce", announce);
+    Announce announce = announceService.get(no);
+    model.addAttribute("announce", announce);//JSP에서 활용하기 위함
     return "announce/update";
   }
 
@@ -72,7 +72,6 @@ public class AnnounceController {
   public void form() {
   }
 
-  @SuppressWarnings("unused")
   @PostMapping("add")
   public String add(Announce announce, Part[] photo) throws Exception {
 
@@ -81,9 +80,6 @@ public class AnnounceController {
     String uploadDir = servletContext.getRealPath(
         "/upload/announce");
     
-    // 내가 추가한 부분
-
-    // 부분 끝
      if (photo != null) {
     for (Part part : photo) {
       if (part.getSize() == 0) 
@@ -101,14 +97,11 @@ public class AnnounceController {
     
     if (announce.getTitle().length() == 0) {
       return "announce/form";
-
     } else {
       announceService.add(announce);
       return "redirect:.";
     }
-    
   }
-
 
   @PostMapping("update")
   public String update(Announce announce) {

@@ -70,22 +70,17 @@
             $('#summernote').code());
       }
 		
+      </script>
       
-/* 	try {
+      <!-- 제목을 입력하지 않고 확인버튼을 클릭시 alert 창 띄움 -->
+      <script>
 		function add_click() {
-			var title = '${announce.title}';
-		if(title.length == 0) {
+		var title = document.getElementById("title").value;
+		if(title.length < 1) {
 		alert("제목을 입력해주세요!")
-		location.reload();
+		} else {
 		}
-		if() {
-			
-		}
-		}
-	} catch (exception) {
-		alert('예외 발생시 실행 되는 catch 구문'); 
-		} */
-	
+	}
     </script>
 
   <jsp:include page="../javascript.jsp" />
