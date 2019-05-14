@@ -44,7 +44,7 @@ public class RecruitBoardController {
 
   @GetMapping("search")
   public void search(String keyword, Model model) {
-    List<TeamRecruit> teamRecruit = recruitBoardService.search(keyword);
+    List<TeamRecruit> teamRecruit = recruitBoardService.boardSearch(keyword);
     model.addAttribute("search", teamRecruit);
   }
 

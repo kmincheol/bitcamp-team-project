@@ -82,22 +82,21 @@
         </select>
       </div>
 
-        </form>
       <form action='search'>
-      <div class="form-group row">
-        <div class="col-xs-4">
-          <input name='keyword' class="form-control" type="search" placeholder="검색어 입력">
+        <div class="form-group row">
+          <div class="col-xs-4">
+            <input name='keyword' class="form-control" type="keyword" placeholder="검색어 입력">
+          </div>
+          <div id="search-btn">
+            <button class="input-group-btn btn btn-dark">검색</button>
+          </div>
+          <div id="write-btn" style="position: absolute; right: 0;">
+            <button class="input-group-btn1 btn btn-dark">
+              <a href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
+            </button>
+          </div>
         </div>
-        <div id="search-btn">
-          <button class="input-group-btn btn btn-dark">검색</button>
-        </div>
-        <div id="write-btn" style="position: absolute; right: 0;">
-          <button class="input-group-btn1 btn btn-dark">
-            <a href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
-          </button>
-        </div>
-      </div>
-</form>
+      </form>
 
       <table class="table">
         <thead class="thead-light">

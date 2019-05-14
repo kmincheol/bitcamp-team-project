@@ -8,7 +8,7 @@ public interface TeamRecruitBoardService {
 
   List<TeamRecruit> list2();
 
-  List<TeamRecruit> search(String keyword);
+  List<TeamRecruit> boardSearch(String keyword);
 
   int add(TeamRecruit teamRecruit);
 

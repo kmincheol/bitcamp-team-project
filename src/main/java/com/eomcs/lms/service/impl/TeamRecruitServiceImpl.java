@@ -45,7 +45,7 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
   }
   
   @Override
-  public List<TeamRecruit> search(String keyword) {
+  public List<TeamRecruit> boardSearch(String keyword) {
     if (keyword == null)
       return teamRecruitDao.findAll(null);
     else 
