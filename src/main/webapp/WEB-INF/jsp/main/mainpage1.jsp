@@ -15,8 +15,9 @@
     <div id="main-backgroundImg">
       <img src="${contextRootPath}/images/mainpage.jpg" class="img-fluid">
       <div id="header-item">
-        <a href="#">로그인/</a>
-        <a href="#">회원가입/</a>
+        <a href="${contextRootPath}/app/auth/form">로그인/</a>
+        <a href="${contextRootPath}/app/auth/logout">로그아웃/</a>
+        <a href="${contextRootPath}/app/member/form">회원가입/</a>
         <a href="#">고객센터</a>
       </div>
     </div>

@@ -15,9 +15,9 @@
   <div class="container">
     <h1>자유게시판</h1>
     <hr>
-    <p>
+    <c:if test="${sessionScope.loginUser != null}">
       <a href='${contextRootPath}/app/free/form' class="btn btn-primary btn-sm">새 글</a>
-    </p>
+    </c:if>
     <br>
     <div class="free-list">
       <table class="table table-hover">

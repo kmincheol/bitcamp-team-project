@@ -4,6 +4,8 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import com.eomcs.lms.service.MemberService;
 @Controller
 @RequestMapping("/free")
 public class FreeController {
+  
+  private static final Logger logger = LogManager.getLogger(FreeController.class);
 
   @Autowired FreeService freeService;
   @Autowired MemberService memberService;
@@ -29,7 +33,6 @@ public class FreeController {
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="3") int pageSize,
-      HttpSession session,
       Model model) {
 
     if (pageSize < 3 || pageSize > 8) 
@@ -45,7 +48,7 @@ public class FreeController {
     else if (pageNo > totalPage)
       pageNo = totalPage;
 
-    List<Free> frees = freeService.list(pageNo, pageSize, 0);
+    List<Free> frees = freeService.list(pageNo, pageSize);
     model.addAttribute("list", frees);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
@@ -59,6 +62,7 @@ public class FreeController {
   public String detail(@PathVariable int no, Model model) {
     Free free = freeService.get(no);
     model.addAttribute("free", free);
+    logger.info(free);
     return "free/detail";
   }
 
@@ -100,7 +104,11 @@ public class FreeController {
     } else {
       Member member = (Member) session.getAttribute("loginUser");
       free.setMemberNo(member.getNo());
+      free.setMember(member);
+      
       freeService.add(free);
+      System.out.println(session.getAttribute("loginUser"));
+      System.out.println(free.getMember());
       return "redirect:.";
     }
   }
