@@ -82,7 +82,7 @@
         </select>
       </div>
 
-      <form action='search'>
+      <form action='recruit_board/search'>
         <div class="form-group row">
           <div class="col-xs-4">
             <input name='keyword' class="form-control" type="keyword" placeholder="검색어 입력">
