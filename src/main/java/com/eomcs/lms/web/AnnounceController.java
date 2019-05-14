@@ -53,7 +53,9 @@ public class AnnounceController {
 
     return "announce/list";
   }
-
+  @GetMapping("form")
+  public void form() {
+  }
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     Announce announce = announceService.get(no);
