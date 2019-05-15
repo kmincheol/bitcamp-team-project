@@ -97,6 +97,12 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     return teamRecruitDao.delete(no);
   }
 
+  @Override
+  public TeamRecruit getUpdate(int no) {
+    TeamRecruit teamRecruit = teamRecruitDao.detailUpdate(no);
+    return teamRecruit;
+  }
+
 //  @Override
 //  public int size() {
 //    // 전체 게시물의 개수

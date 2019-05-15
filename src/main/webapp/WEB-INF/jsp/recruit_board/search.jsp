@@ -82,14 +82,13 @@
         </select>
       </div>
 
-      <form action='recruit_board/search'>
+      <form id="keywordbox" action='search'>
         <div class="form-group row">
           <div class="col-xs-4">
-            <input name='keyword' class="form-control" type="keyword" placeholder="검색어 입력">
+            <input id="keywordbox" name='keyword' class="form-control" type="keyword"
+              placeholder="검색어 입력">
           </div>
-          <div id="search-btn">
-            <button class="input-group-btn btn btn-dark">검색</button>
-          </div>
+          <button class="input-group-btn btn btn-dark">검색</button>
           <div id="write-btn" style="position: absolute; right: 0;">
             <button class="input-group-btn1 btn btn-dark">
               <a href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
@@ -119,7 +118,7 @@
             <tr>
               <td>${search.teamNo}</td>
               <td>${search.teamTypeSports.teamSportsType}</td>
-              <td><a href="${contextRootPath}/app/recruit_board/${search.teamNo}">${search.teamTitle}</a></td>
+              <td><a href="recruit_board/${search.teamNo}">${search.teamTitle}</a></td>
               <td>${search.team.teamName }</td>
               <td>${search.team.teamArea }</td>
               <td>${search.teamRcrmStatus}</td>

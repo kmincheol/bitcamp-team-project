@@ -29,11 +29,11 @@
   </resultMap>
 
 
-     <resultMap type="Team" id="team">
-     
-      <id column="tm_id" property="teamId" />
-      <result column="area" property="teamArea" />
-      <result column="name" property="teamName" />
+  <resultMap type="Team" id="team">
+
+    <id column="tm_id" property="teamId" />
+    <result column="area" property="teamArea" />
+    <result column="name" property="teamName" />
 
     <association property="teamTypeSports" javaType="teamTypeSports">
       <id column="spt_clsf_id" property="teamSportsTypeId" />
@@ -51,7 +51,6 @@
 
   </resultMap>
 
-
   <select id="findAll" resultMap="teamRecruitMap" parameterType="map">
     select
     rcrm_id,
@@ -66,6 +65,7 @@
     rcrm r
     left outer join tm t on r.tm_id = t.tm_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
+    order by rcrm_id desc
   </select>
 
 
@@ -79,75 +79,108 @@
     from
     tm t
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-    left outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
+    left
+    outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
     left outer join mbr m on m.mbr_id = tm.mbr_id
     where
     m.mbr_id = 7;
 
-</select>
+  </select>
 
-    <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
-      select
-      rcrm_id,
-      titl,
-      area,
-      cont,
-      name,
-      rcrm_stat,
-      vw_cnt,
-      spt_clsf_name
-      from
-      rcrm r
-      left outer join tm t on r.tm_id = t.tm_id
-      left outer join spt_clsf s on s.spt_clsf_id =
-      t.spt_clsf_id
-      where
-      r.rcrm_id = #{teamNo};
-    </select>
+  <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
+    select
+    r.rcrm_id,
+    titl,
+    area,
+    cont,
+    name,
+    rcrm_stat,
+    vw_cnt,
+    spt_clsf_name
+    from
+    rcrm r
+    left outer join tm t on r.tm_id = t.tm_id
+    left
+    outer join spt_clsf s on s.spt_clsf_id =
+    t.spt_clsf_id
+    where
+    r.rcrm_id = #{teamNo};
+  </select>
 
-    <select id="findByKeyword" resultMap="teamRecruitMap" parameterType="string">
-      <bind name="pattern1" value="'%' + _parameter + '%'" />
-      select
-      rcrm_id,
-      titl,
-      area,
-      name,
-      r.cdt,
-      rcrm_stat,
-      vw_cnt,
-      spt_clsf_name
-      from
-      rcrm r
-      left outer join tm t on r.tm_id = t.tm_id
-      left outer join spt_clsf s on s.spt_clsf_id =
-      t.spt_clsf_id
-      where
-      titl like #{pattern1}
-    </select>
+  <select id="findByKeyword" resultMap="teamRecruitMap" parameterType="string">
+    <bind name="pattern1" value="'%' + _parameter + '%'" />
+    select
+    rcrm_id,
+    titl,
+    area,
+    name,
+    r.cdt,
+    rcrm_stat,
+    vw_cnt,
+    spt_clsf_name
+    from
+    rcrm r
+    left outer join tm t
+    on r.tm_id = t.tm_id
+    left outer join spt_clsf s on s.spt_clsf_id =
+    t.spt_clsf_id
+    where
+    titl like
+    #{pattern1}
+  </select>
 
-    <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true"
-      keyColumn="rcrm_id" keyProperty="teamNo">
-      insert into rcrm(
-      titl,
-      cont                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-      )
-      values(
-      #{teamTitle},
-      #{teamContents})
-    </insert>
+  <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
+    keyProperty="teamNo">
+    insert into rcrm(
+    titl,
+    cont
+    )
+    values(
+    #{teamTitle},
+    #{teamContents})
+  </insert>
 
-    <update id="increaseCount" parameterType="int">
-      update rcrm
-      set
-      vw_cnt = vw_cnt + 1
-      where rcrm_id = #{teamNo};
-    </update>
+  <update id="increaseCount" parameterType="int">
+    update rcrm
+    set
+    vw_cnt = vw_cnt + 1
+    where rcrm_id =
+    #{teamNo};
+  </update>
 
-    <delete id="delete" parameterType="int">
-      delete from
-      rcrm
-      where rcrm_id = #{teamNo};
-    </delete>
+  <delete id="delete" parameterType="int">
+    delete from
+    rcrm
+    where rcrm_id = #{teamNo};
+  </delete>
+
+  <select id="detailUpdate" resultMap="teamRecruitMap" parameterType="int">
+    select
+    r.rcrm_id,
+    titl,
+    area,
+    cont,
+    name,
+    rcrm_stat,
+    vw_cnt,
+    spt_clsf_name
+    from
+    rcrm r
+    left outer join tm t on r.tm_id = t.tm_id
+    left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
+    where
+    r.rcrm_id = #{teamNo};
+  </select>
+
+  <update id="update" parameterType="teamRecruit">
+    update
+    rcrm
+    set
+    titl = #{teamTitle},
+    cont = #{teamContents}
+    where
+    rcrm_id = #{teamNo};
+  </update>
 
 
 </mapper>
