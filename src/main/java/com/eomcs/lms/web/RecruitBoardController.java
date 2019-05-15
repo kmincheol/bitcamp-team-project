@@ -1,8 +1,10 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +22,17 @@ import com.eomcs.lms.service.TeamRecruitBoardService;
 @RequestMapping("/recruit_board")
 public class RecruitBoardController {
 
+  private static final Logger logger = LogManager.getLogger(RecruitBoardController.class);
+
   @Autowired
   TeamRecruitBoardService recruitBoardService;
+  @Autowired
+  ServletContext servletContext;
 
   @RequestMapping("/form")
   public String recruitView(Model model,HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
    List <Team> team = recruitBoardService.get2(member.getNo());
-  
     model.addAttribute("team", team);
 
     return "recruit_board/form";
@@ -37,12 +42,19 @@ public class RecruitBoardController {
   public String detail(@PathVariable int no, Model model) {
     TeamRecruit teamRecruit = recruitBoardService.get(no);
     model.addAttribute("teamRecruit", teamRecruit);
+    logger.info(teamRecruit);
     return "recruit_board/detail";
   }
-  
-  
-  
-  
+
+  @GetMapping("update/{no}")
+  public String detailUpdate(@PathVariable int no, Model model) {
+    TeamRecruit teamRecruit = recruitBoardService.getUpdate(no);
+    model.addAttribute("teamRecruit", teamRecruit);
+    logger.info(teamRecruit);
+    return "recruit_board/update";
+  }
+
+
   @PostMapping("add")
   public String add(TeamRecruit teamRecruit,HttpSession session) {
     
@@ -102,8 +114,9 @@ public class RecruitBoardController {
 
   @PostMapping("update")
   public String update(TeamRecruit teamRecruit) {
-    if (recruitBoardService.update(teamRecruit) == 0)
+    if (recruitBoardService.update(teamRecruit) == 0) {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    }
     return "redirect:.";
   }
 }

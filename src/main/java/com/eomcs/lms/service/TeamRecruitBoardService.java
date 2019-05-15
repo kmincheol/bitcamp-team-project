@@ -18,6 +18,8 @@ public interface TeamRecruitBoardService {
   TeamRecruit get(int no);
   
   List<Team> get2(int no);
+  
+  TeamRecruit getUpdate(int no);
 
   int update(TeamRecruit teamRecruit);
 
