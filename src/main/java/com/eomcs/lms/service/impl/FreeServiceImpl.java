@@ -99,9 +99,6 @@ public class FreeServiceImpl implements FreeService {
     return freeDao.countAll();
   }
 
-  public static void addComment(Free free) {
-    
-  }
 }
 
 
