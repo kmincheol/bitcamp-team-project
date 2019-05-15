@@ -46,13 +46,11 @@ public class MatchServiceImpl implements MatchBoardService {
   }
 */
   
-  /*
   @Override
   public Match get(int no) {
-    Match match = matchDao.findByNoWithFile(no);
+    Match match = matchDao.findByNo(no);
     return match;
   }
-*/
 
   /*
   @Override

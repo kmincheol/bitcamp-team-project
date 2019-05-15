@@ -11,7 +11,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="${contextRootPath}/app/board/">게시판</a></li>
+        <a class="nav-link" href="${contextRootPath}/app/free/">자유게시판</a></li>
+      <li class="nav-item active">
+        <a class="nav-link" href="${contextRootPath}/app/recruit_board/">팀원모집게시판</a></li>
       <li class="nav-item active">
         <a class="nav-link" href="${contextRootPath}/app/member/">회원관리</a></li>
       <li class="nav-item active">

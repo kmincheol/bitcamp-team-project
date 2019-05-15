@@ -11,7 +11,6 @@ h2 {
 p {
   text-align: center;
 }
-
 div.button1 {
 width: 200px;  
 position: absolute; 
@@ -22,6 +21,15 @@ div.button2 {
 width: 100px;  
 rigth: 10%; 
 }
+
+#button3from {
+  width: 30px;
+}
+
+.button3 {
+  padding: 0px 10px 0px 10px;
+}
+
 
 #match_table {
   width: 90%;

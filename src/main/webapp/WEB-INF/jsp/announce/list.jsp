@@ -14,7 +14,6 @@
 
 <jsp:include page="header.jsp" />
 
-<a href='${contextRootPath}/app/announce/form.jsp'>-------로그인</a>
   <div class="container">
     <h3>공지사항</h3>
     

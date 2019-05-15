@@ -27,17 +27,13 @@
 					<div class="form-group row">
 						<label for="no" class="col-sm-2 col-form-label">번호</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control-plaintext" id="no"
-								name='no' value='${announce.no}' readonly>
+						<label for="no" class="col-sm-2 col-form-label">${announce.no}</label>
 						</div>
 					</div>
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">이름</label>
-						<div class="col-sm-10">
-							<input type="text" name='name' class="form-control-plaintext"
-							 value="${announce.member.name}" readonly>
-						</div>
+						<label for="name" class="col-sm-2 col-form-label">${announce.member.name}</label>
 					</div>
 					
 					<div class="form-group row">
@@ -57,11 +53,11 @@
 						</div>
 					</div>
 
-					<div>
+					<div id="divphoto">
 						<c:forEach items="${announce.files}" var="file">
 							<img id="pic"
 								src='${contextRootPath}/upload/announce/${file.filePath}'
-								onerror="this.style.display='none'" alt=''>
+								onerror="this.style.display='none'">
 						</c:forEach>
 					</div>
 
@@ -75,10 +71,7 @@
 
 					<div class="form-group row">
 						<label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext"
-								id="viewCount" value="${announce.viewCount}">
-						</div>
+						<label for="viewCount" class="col-sm-2 col-form-label">${announce.viewCount}</label>
 					</div>
 
 

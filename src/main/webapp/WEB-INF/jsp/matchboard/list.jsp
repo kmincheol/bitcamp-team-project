@@ -162,6 +162,8 @@
 
           <tbody>
 		<c:forEach items="${list}" var="list">
+
+		
             <tr>
                 <td rowspan="4" align="center">${list.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
                 <br> 
@@ -173,6 +175,11 @@
             
             <tr>
               <td>위치: ${list.location} </td>
+              <td id="button3from" rowspan="2" align="center"> 
+              <div class="button3">
+         				 <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">신청하기</a>
+       		</div>
+              </td>
             </tr>
             
             <tr>

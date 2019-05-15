@@ -21,6 +21,20 @@ p {
   margin: 0px;
 }
 
+#divphoto {
+	height: 200px;
+	width: 200px;
+	margin: 30px;
+	
+}
+
+
+img #pic {
+	height: 200px;
+	width: 200px;
+}
+
+
 #searchspace {
 	margin: 0px 0px 0px 50px;
     padding-left: 60px;
