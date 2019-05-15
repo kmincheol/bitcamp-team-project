@@ -1,6 +1,8 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.TeamRecruitBoardService;
@@ -21,10 +24,12 @@ public class RecruitBoardController {
   TeamRecruitBoardService recruitBoardService;
 
   @RequestMapping("/form")
-  public String recruitView(Model model) {
-   List <Team> team = recruitBoardService.get2(7);
+  public String recruitView(Model model,HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+   List <Team> team = recruitBoardService.get2(member.getNo());
+  
     model.addAttribute("team", team);
-    
+
     return "recruit_board/form";
   }
 
@@ -39,10 +44,16 @@ public class RecruitBoardController {
   
   
   @PostMapping("add")
-  public String add(TeamRecruit teamRecruit) {
-    System.out.println("aaa" + teamRecruit.toString());
+  public String add(TeamRecruit teamRecruit,HttpSession session) {
+    
+    Member member = (Member) session.getAttribute("loginUser");
+    teamRecruit.setTeamId(member.getNo());
+   
+    System.out.println(teamRecruit.toString());
+  
     recruitBoardService.add(teamRecruit);
-    return "redirect:.";
+
+  return "redirect:.";
   }
 
   @GetMapping("delete/{no}")

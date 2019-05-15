@@ -12,7 +12,9 @@ public interface TeamRecruitBoardService {
   List<TeamRecruit> boardSearch(String keyword);
 
   int add(TeamRecruit teamRecruit);
-
+  
+  int add2(Team team);
+  
   TeamRecruit get(int no);
   
   List<Team> get2(int no);

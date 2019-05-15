@@ -61,7 +61,16 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     // 그래도 일관된 프로그래밍을 위해 Command 객체는 항상 Service 객체를 경유하여 DAO를 사용해야 한다.
     return teamRecruitDao.insert(teamRecruit);
   }
-
+  @Override
+  public int add2(Team team) {
+    // 이 메서드도 하는 일이 없다.
+    // 그래도 일관된 프로그래밍을 위해 Command 객체는 항상 Service 객체를 경유하여 DAO를 사용해야 한다.
+    return teamRecruitDao.insert2(team);
+  }
+ 
+  
+  
+  
   @Override
   public TeamRecruit get(int no) {
     TeamRecruit teamRecruit = teamRecruitDao.findByNo(no);

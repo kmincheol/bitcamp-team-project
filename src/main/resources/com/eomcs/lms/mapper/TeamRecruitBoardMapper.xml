@@ -82,7 +82,7 @@
     left outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
     left outer join mbr m on m.mbr_id = tm.mbr_id
     where
-    m.mbr_id = 7;
+    m.mbr_id = #{no};
 
 </select>
 
@@ -125,18 +125,22 @@
       titl like #{pattern1}
     </select>
 
-    <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true"
+    <insert id="insert" parameterType="teamRecruit"  useGeneratedKeys="true"
       keyColumn="rcrm_id" keyProperty="teamNo">
       insert into rcrm(
       titl,
-      cont                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      cont,
+      tm_id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
       )
       values(
       #{teamTitle},
-      #{teamContents})
+      #{teamContents},
+      #{teamId})
     </insert>
-
-    <update id="increaseCount" parameterType="int">
+    
+    
+    
+     <update id="increaseCount" parameterType="int">
       update rcrm
       set
       vw_cnt = vw_cnt + 1

@@ -7,6 +7,8 @@ import com.eomcs.lms.domain.TeamRecruit;
 
 public interface TeamRecruitDao {
   int insert(TeamRecruit teamRecruit);
+
+  int insert2(Team team);
  
   List<TeamRecruit> findAll(Map<String, Object> params);
   

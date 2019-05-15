@@ -13,7 +13,8 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_
 values(6,'test6','1111','test6','1967-01-01','여','010-5334-5555','인천','연수동','google');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
 values(7,'test7','1111','test7','1967-01-01','여','010-5334-5255','인천','연수동','google');
-
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
+values(8,'kiwon','1111','test7','1967-01-01','여','010-1334-5255','인천','연수동','google');
 
 -- 연령대데이터
 insert into age(age_id, ages)
@@ -57,6 +58,9 @@ insert into spt_clsf(spt_clsf_id,spt_clsf_name)
 values(2,'야구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
 values(3,'농구');
+insert into spt_clsf(spt_clsf_id,spt_clsf_name)
+values(4,'탁구');
+
 
 -- 팀데이터
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
@@ -74,6 +78,12 @@ values(6,'연수농구단','030101','40','3','3','3');
 
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(7,'비트농구단','030101','40','3','3','3');
+
+insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
+values(8,'롤게임','030101','40','3','3','3');
+
+
+
 
 
 -- 팀원데이터
@@ -97,6 +107,12 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(1,7,1,'격수');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(2,7,1,'유격수');
+
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,8,1,'프로게이머');
+
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(4,8,1,'프로게이머');
 
 
 -- 팀경고데이터
