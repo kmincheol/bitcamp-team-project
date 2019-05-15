@@ -15,8 +15,8 @@
     <result column="cdt" property="createdDate" />
     <result column="mdt" property="modifierDate" />
 
-    <association property="member" javaType="member">
-      <id column="mbr_id" property="memberNo" />
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
       <result column="name" property="name" />
     </association>
 
@@ -31,8 +31,8 @@
     <result column="cdt" property="createdDate" />
     <result column="mdt" property="modifierDate" />
 
-    <association property="member" javaType="member">
-      <id column="mbr_id" property="memberNo" />
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
       <result column="name" property="name" />
     </association>
     
@@ -54,8 +54,7 @@
     vw_cnt
     from
     anunc a
-    left outer join mbr m on a.mbr_id =
-    m.mbr_id
+    left outer join mbr m on m.mbr_id = a.mbr_id
   </sql>
 
 
@@ -85,12 +84,14 @@
       a.cont, 
       a.mdt, 
       a.vw_cnt, 
+      m.name,
       f.anunc_file_id,
       f.anunc_id as no,
       f.file_path 
     from 
       anunc a
       left outer join anunc_file f on a.anunc_id = f.anunc_id
+      left outer join mbr m on m.mbr_id = a.mbr_id
     where 
       a.anunc_id = #{value}
   </select>
@@ -106,14 +107,16 @@
           useGeneratedKeys="true" keyColumn="anunc_id" keyProperty="no">
     insert into anunc(
       titl,
-      cont) 
+      cont,
+      mbr_id) 
     values(
       #{title}, 
-      #{contents})
+      #{contents},
+      #{memberNo})
   </insert>
   
   <update id="update" parameterType="announce">
-    update anunc
+ 	update anunc
     set
     titl = #{title},
     cont = #{contents}

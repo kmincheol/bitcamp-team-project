@@ -7,4 +7,5 @@ public interface AnnounceFileDao {
   int insert(List<AnnounceFile> announceFiles);
   List<AnnounceFile> findByAnnounceNo(int announceNo);
   int deleteByAnnounceNo(int announceNo);
+  List<AnnounceFile> update(List<AnnounceFile> announceFiles);
 }

@@ -1,10 +1,14 @@
 package com.eomcs.lms.web;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Announce;
 import com.eomcs.lms.domain.AnnounceFile;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.AnnounceService;
 import com.eomcs.lms.service.MemberService;
 
@@ -22,6 +27,8 @@ import com.eomcs.lms.service.MemberService;
 @RequestMapping("/announce")
 public class AnnounceController {
 
+  private static final Logger logger = LogManager.getLogger(AnnounceController.class);
+  
   @Autowired AnnounceService announceService;
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
@@ -71,12 +78,11 @@ public class AnnounceController {
   }
 
   @PostMapping("add")
-  public String add(Announce announce, Part[] photo) throws Exception {
+  public String add(Announce announce, Part[] photo, HttpSession session) throws Exception {
 
     ArrayList<AnnounceFile> files = new ArrayList<>();
 
-    String uploadDir = servletContext.getRealPath(
-        "/upload/announce");
+    String uploadDir = servletContext.getRealPath("/upload/announce");
     
      if (photo != null) {
     for (Part part : photo) {
@@ -89,22 +95,47 @@ public class AnnounceController {
       AnnounceFile file = new AnnounceFile();
       file.setFilePath(filename);
       files.add(file);
-    }
+     }
     announce.setFiles(files);
      }
     
     if (announce.getTitle().length() == 0) {
       return "announce/form";
+      
     } else {
+      Member member = (Member) session.getAttribute("loginUser");
+      announce.setMemberNo(member.getNo());
+      announce.setMember(member);
+      
       announceService.add(announce);
       return "redirect:.";
     }
   }
 
   @PostMapping("update")
-  public String update(Announce announce) {
+  public String update(Announce announce, Part[] photo) throws IOException {
     if (announceService.update(announce) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    
+    ArrayList<AnnounceFile> files = new ArrayList<>();
+    String uploadDir = servletContext.getRealPath("/upload/announce");
+    
+     if (photo != null) {
+    for (Part part : photo) {
+      if (part.getSize() == 0) 
+        continue;
+
+      String filename = UUID.randomUUID().toString();
+      part.write(uploadDir + "/" + filename);
+
+      AnnounceFile file = new AnnounceFile();
+      file.setFilePath(filename);
+      files.add(file);
+     }
+    announce.setFiles(files);
+     }
+     announceService.update(announce);
+     
     return "redirect:.";
   }
 

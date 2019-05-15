@@ -83,8 +83,11 @@ insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(8,'롤게임','030101','40','3','3','3');
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
 
 -- 팀원데이터
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
@@ -349,9 +352,9 @@ values(3,1,'공지사항글테스트입니다.333','헬로헬로헬로');
 
 -- 공지사항게시판 첨부파일
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)
-values(1,1,'upload/free/a.jpeg','이미지');
+values(1,1,'upload/announce/a.jpeg','이미지');
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)
-values(2,2,'upload/free/b.avi','비디오');
+values(2,2,'upload/announce/b.avi','비디오');
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)
-values(3,3,'upload/free/c.word','문서');
+values(3,3,'upload/announce/c.word','문서');
 

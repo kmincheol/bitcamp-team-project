@@ -6,17 +6,26 @@
 <html>
 <head>
 <title>공지사항 게시판</title>
-<jsp:include page="../commonCss.jsp" />
+<!-- <jsp:include page="../commonCss.jsp" /> -->
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${contextRootPath}/css/free.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
 <body>
 
+<jsp:include page="header.jsp" />
+
+<a href='${contextRootPath}/app/announce/form.jsp'>-------로그인</a>
   <div class="container">
-    <h1>공지사항 게시판</h1>
+    <h3>공지사항</h3>
+    
+<c:if test="${!empty sessionScope.loginUser}">
+<c:if test="${sessionScope.loginUser.manager}">
     <p>
       <a href='${contextRootPath}/app/announce/form.jsp' class="btn btn-primary btn-sm" >새 글</a>
     </p>
+</c:if>    
+</c:if>
+    
     <br>
     <div class="announce-list">
       <table class="table table-hover">

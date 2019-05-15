@@ -136,54 +136,53 @@
         <jsp:include page="sideBar.jsp" />
       </table>
 
-      <div class="button">
+      <div class="button1">
         <a href="#" class="btn btn-primary btn-sm" tabindex="-1"
-          role="button" aria-disabled="true">검색</a> <a
-          href='${contextRootPath}/app/announce/form.jsp'
-          class="btn btn-primary btn-sm" tabindex="-1" role="button"
-          aria-disabled="true">등록</a>
+          role="button" aria-disabled="true">검색</a> 
       </div>
 
 
-      <br> <br> <br> <br> <br>
-
+      <br> <br> <br> <br>
+      
+		<div class="button2">
+          <a href='${contextRootPath}/app/matchboard/form.jsp'
+          class="btn btn-primary btn-sm" tabindex="-1" role="button"
+          aria-disabled="true">등록</a>
+       </div>
+           <br>
       <!--     <th scope="row" id="subtitle" scope="col" width = 100% >신청 가능 매치</th>-->
 
       <div id="subtable">
 
-        <table class="table">
+        <table class="table table-striped">
 
           <tr>
             <td id="subtitle" colspan="3" width="100%">신청 가능 매치</td>
           </tr>
 
-          <tbody bgcolor="skyblue">
-
+          <tbody>
+		<c:forEach items="${list}" var="list">
             <tr>
-                <td rowspan="4" align="center">엠블럼자리
-                <br>
-              <br> 여기는 팀명자리
+                <td rowspan="4" align="center">${list.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
+                <br> 
+              <br> ${list.team.teamName}
                 </td>
-                
-              <td >팀명</td>
-              <td>비트캠프</td>
+       
+              <td>종목: ${list.teamTypeSports.teamSportsType}</td>
+            </tr>            
+            
+            <tr>
+              <td>위치: ${list.location} </td>
             </tr>
             
             <tr>
-              <td>위치</td>
-              <td>35,000</td>
+              <td>경기장: ${list.stadiumName}</td>
             </tr>
             
             <tr>
-              <td>경기장</td>
-              <td>965,000</td>
+              <td>경기날짜: ${list.playDate}</td>
             </tr>
-            
-            <tr>
-              <td>경기장</td>
-              <td>965,000</td>
-            </tr>
-
+			</c:forEach>
           </tbody>
         </table>
 

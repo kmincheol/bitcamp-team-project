@@ -12,14 +12,15 @@ p {
   text-align: center;
 }
 
-div.button
-
-{
-width: 400px;  
+div.button1 {
+width: 200px;  
 position: absolute; 
 left: 55%; 
-margin-left: -200px;
+}
 
+div.button2 {
+width: 100px;  
+rigth: 10%; 
 }
 
 #match_table {

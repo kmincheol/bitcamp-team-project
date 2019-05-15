@@ -73,15 +73,17 @@ public class AnnounceServiceImpl implements AnnounceService {
 
   
   @Override
-  public int update(Announce announce) { // 기존 사진이 없는게시물에서 사진을 추가할때 or 사진 변경할때
+  public int update(Announce announce) { 
+// 기존 사진이 없는게시물에서 사진을 추가할때 or 사진 변경할때
+    
     if(announce.getFiles() != null) {  
     List<AnnounceFile> files = announce.getFiles();
     
     for (AnnounceFile f : files) {
       f.setAnnounceNo(announce.getNo());
     }
-    fileDao.insert(announce.getFiles()); // 아마 기존 사진이 삭제 안되고 인서트 되는듯함? 매퍼파일 손보기??
-    }
+    fileDao.update(announce.getFiles()); 
+    } 
     
     return announceDao.update(announce);
   }
