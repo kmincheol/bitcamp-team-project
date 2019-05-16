@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.TeamRecruitBoardService;
 
@@ -56,14 +57,14 @@ public class RecruitBoardController {
 
 
   @PostMapping("add")
-  public String add(TeamRecruit teamRecruit,HttpSession session) {
+  public String add(TeamRecruit teamRecruit,HttpSession session, TeamMember tm) {
     
     Member member = (Member) session.getAttribute("loginUser");
-    teamRecruit.setTeamId(member.getNo());
-   
-    System.out.println(teamRecruit.toString());
-  
+
+    teamRecruit.setTeamId(teamRecruit.getTeam().getTeamId());
+
     recruitBoardService.add(teamRecruit);
+  
 
   return "redirect:.";
   }
