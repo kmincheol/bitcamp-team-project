@@ -18,6 +18,9 @@
     <association property="member" javaType="Member">
       <id column="mbr_id" property="no" />
       <result column="name" property="name" />
+      <result column="user_id" property="id" />
+      <result column="tel" property="tel" />
+      <result column="email" property="email" />
     </association>
 
   </resultMap>
@@ -34,9 +37,12 @@
     <association property="member" javaType="Member">
       <id column="mbr_id" property="no" />
       <result column="name" property="name" />
+      <result column="user_id" property="id" />
+      <result column="tel" property="tel" />
+      <result column="email" property="email" />
     </association>
     
-      <collection property="files" ofType="announceFile">
+    <collection property="files" ofType="announceFile">
       <id column="anunc_file_id"    property="no"/>
       <result column="file_path"    property="filePath"/>
       <result column="anunc_id" property="announceNo"/>
@@ -47,6 +53,9 @@
     select
     anunc_id,
     m.name,
+    m.user_id,
+    m.tel,
+    m.email,
     cont,
     titl,
     a.cdt,
@@ -85,6 +94,9 @@
       a.mdt, 
       a.vw_cnt, 
       m.name,
+      m.user_id,
+      m.tel,
+      m.email,
       f.anunc_file_id,
       f.anunc_id as no,
       f.file_path 

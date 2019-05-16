@@ -57,6 +57,14 @@ public class MatchBoardController {
     model.addAttribute("match", match);
     return "matchboard/detail";
   }
+  
+//테스트 페이지
+@RequestMapping("test")
+public String test() {
+ return "matchboard/test";
+}
+  
+  
   /*
   
   @GetMapping("update/{no}")

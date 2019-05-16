@@ -21,17 +21,31 @@ p {
   margin: 0px;
 }
 
-#divphoto {
-	height: 200px;
-	width: 200px;
-	margin: 30px;
-	
+div #divphoto {
+	padding:0px 0px 0px 150px;
+}
+
+.img-polaroid {
+	height: auto;
+	width: 130px;
+}
+
+#space {
+	height: auto;
+	width: 50px;
 }
 
 
-img #pic {
-	height: 200px;
-	width: 200px;
+#viewlabel {
+	text-align: right;
+}
+
+#crtlabel {
+	padding: 0px;
+}
+
+#crtdate {
+	padding: 0px;
 }
 
 

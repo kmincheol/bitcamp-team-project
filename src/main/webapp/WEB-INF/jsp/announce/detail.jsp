@@ -7,8 +7,9 @@
 <head>
 <title>공지사항게시판</title>
 <!-- <jsp:include page="../commonCss.jsp" /> -->
-   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
+<link rel="stylesheet"
+	href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
 <body>
 
@@ -27,15 +28,27 @@
 					<div class="form-group row">
 						<label for="no" class="col-sm-2 col-form-label">번호</label>
 						<div class="col-sm-10">
-						<label for="no" class="col-sm-2 col-form-label">${announce.no}</label>
+							<label for="no" class="col-sm-2 col-form-label">${announce.no}</label>
+							<label id="space"></label> <label id="space"></label> <label
+								id="space"></label> <label id="viewlabel" for="viewCount"
+								class="col-sm-2 col-form-label">조회수</label> <label
+								id="viewcount" for="viewCount" class="col-sm-2 col-form-label">${announce.viewCount}</label>
 						</div>
+
 					</div>
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">이름</label>
-						<label for="name" class="col-sm-2 col-form-label">${announce.member.name}</label>
+						<div class="col-sm-10">
+							<label for="name" class="col-sm-2 col-form-label">${announce.member.name}</label>
+							<label id="space"></label> <label id="space"></label> <label
+								id="space"></label> <label id="space"></label> <label
+								id="crtlabel" class="col-sm-2 col-form-label">글작성일(수정일)</label>
+							<label id="crtdate" class="col-sm-2 col-form-label"
+								id="createdDate">${announce.modifierDate}</label>
+						</div>
 					</div>
-					
+
 					<div class="form-group row">
 						<label for="title" class="col-sm-2 col-form-label">제목</label>
 						<div class="col-sm-8">
@@ -53,39 +66,41 @@
 						</div>
 					</div>
 
-					<div id="divphoto">
-						<c:forEach items="${announce.files}" var="file">
-							<img id="pic"
-								src='${contextRootPath}/upload/announce/${file.filePath}'
+					<c:forEach items="${announce.files}" var="file">
+						<div id="divphoto">
+						<a href='${contextRootPath}/upload/member/${member.photo}' data-toggle="modal" data-target="#bit-announce-${file.filePath}">
+							<img class="img-polaroid" src='${contextRootPath}/upload/announce/${file.filePath}' 
 								onerror="this.style.display='none'">
-						</c:forEach>
-					</div>
-
-					<div class="form-group row">
-						<label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext"
-								id="createdDate" value="${announce.modifierDate}">
+						</a>
 						</div>
-					</div>
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-xl" id="bit-announce-${file.filePath}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                          <img src='${contextRootPath}/upload/announce/${file.filePath}' class="img-thumbnail"/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+					</c:forEach>
 
-					<div class="form-group row">
-						<label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
-						<label for="viewCount" class="col-sm-2 col-form-label">${announce.viewCount}</label>
-					</div>
-
+					<label id="space"></label>
 
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<a class="btn btn-primary" href='.'>목록</a> 
-							
-					<c:if test="${!empty sessionScope.loginUser}">
-					<c:if test="${sessionScope.loginUser.manager}">
-							<a class="btn btn-primary" href='delete/${announce.no}'>삭제</a> 
-							<a href='${contextRootPath}/app/announce/update/${announce.no}'
-								class="btn btn-primary">변경</a>
-					</c:if>
-					</c:if>
+							<a class="btn btn-primary" href='.'>목록</a>
+
+							<c:if test="${!empty sessionScope.loginUser}">
+								<c:if test="${sessionScope.loginUser.manager}">
+									<a class="btn btn-primary" href='delete/${announce.no}'>삭제</a>
+									<a href='${contextRootPath}/app/announce/update/${announce.no}'
+										class="btn btn-primary">변경</a>
+								</c:if>
+							</c:if>
 						</div>
 					</div>
 

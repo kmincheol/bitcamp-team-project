@@ -6,10 +6,14 @@
 <html>
 <head>
 <title>공지사항 게시판</title>
-<!-- <jsp:include page="../commonCss.jsp" /> -->
+	<meta charset="UTF-8">
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
+
 <body>
 
 <jsp:include page="header.jsp" />
@@ -41,8 +45,25 @@
           <c:forEach items="${list}" var="announce">
             <tr>
               <th scope="row">${announce.no}</th>
+              
               <td><a href='${contextRootPath}/app/announce/${announce.no}'>${announce.title}</a></td>
-              <td>${announce.member.name}</td>
+              
+              <td>
+              <!-- popover 적용됨 -->
+					<div class="form-group pos-relative">
+            	<a href='#' class="js-tooltip-trigger" id="ref">${announce.member.name}</a>
+          		<span class="js-tooltip" style="display: none;">
+          			<strong>아이디:</strong>
+          			${announce.member.id}<br>
+          			<strong>연락처:</strong>
+          			${announce.member.tel}<br>
+          			<strong>이메일:</strong>
+          			${announce.member.email}
+            	</span>
+       	 </div>
+				
+				<!-- popover끝 -->
+              </td>
               <td>${announce.createdDate}</td>
               <td>${announce.viewCount}</td>
             </tr>
@@ -56,7 +77,7 @@
   <ul class="pagination justify-content-center">
   
     <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
-    <a class="page-link" href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">이전</a></li>
+    <a class="page-link" href="?pageNo=${pageNo -  1}&pageSize=${pageSize}">이전</a></li>
     
     <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
     <a class="page-link" href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">${pageNo <= 1 ? "-" : pageNo - 1}</a></li>
@@ -71,42 +92,39 @@
   </ul>
     </nav>
 
-
-
-<!-- 
-    <div class="form-group row" id="searchspace">
-      <div class="col-sm-5">
-        <div class="input-group mb-2">
-          <select name='loc1' class="custom-select" id="inputGroupSelect01">
-            <option selected>전체기간</option>
-            <option value="1">일주일전</option>
-            <option value="2">한달전</option>
-            <option value="3">3개월전</option>
-          </select>
-          <div class="col-sm-5">
-            <div class="input-group mb-2">
-              <select name='loc1' class="custom-select" id="inputGroupSelect02">
-                <option selected>제목+내용</option>
-                <option value="1">제목</option>
-                <option value="2">내용</option>
-                <option value="3">작성자</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>	
-    		<form id="searchbox" action='search' class="form-inline my-2 my-lg-0 justify-content">
-       	<input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요.">
-			<button class="btn btn-outline-success my-2 my-sm-0">검색</button>
-    		</form>
-    </div>
-   -->
   </div>
-  
   <!-- .container -->
+
 
   <jsp:include page="../javascript.jsp" />
 </body>
+
+<script>
+$(function () {
+	  
+	  $('.js-tooltip-trigger').each(function(ind, ele){
+	    
+	    var $ele = $(ele),
+	        $ttSpan = $ele.next('.js-tooltip'),
+	        ttHtml = $ttSpan.html(),
+	        rndID = 'ttid'+ String(Math.random()).substr(2);
+	    
+	    $ttSpan.attr('id', rndID).removeAttr('style').html('');
+	    
+	    $ele.popover({
+	    	trigger: 'click',
+	  		html: true,
+	    	trigger: 'focus', 
+	    	placement: 'right',
+	    	container: '#'+rndID, 
+	    	content: ttHtml
+	  	});
+	  });
+	});
+
+</script>
+
+
 </html>
 
 

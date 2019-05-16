@@ -56,7 +56,7 @@
     rcrm_id,
     titl,
     area,
-    t.name,
+    name,
     r.cdt,
     rcrm_stat,
     vw_cnt,
@@ -65,13 +65,7 @@
     rcrm r
     left outer join tm t on r.tm_id = t.tm_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-
-    left outer join tm_mbr tmm on tmm.tm_mbr_id = t.tm_id
-    left outer join mbr m on m.mbr_id = tmm.mbr_id
-     
-
     order by rcrm_id desc
-
   </select>
 
 

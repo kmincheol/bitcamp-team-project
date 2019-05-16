@@ -26,19 +26,9 @@ public class Member implements Cloneable, Serializable {
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date latestDate;
   private boolean manager;
-  private TeamMember teamMember;
   
-
-  public TeamMember getTeamMember() {
-    return teamMember;
-  }
-
-
-  public void setTeamMember(TeamMember teamMember) {
-    this.teamMember = teamMember;
-  }
-
-
+  
+  
   @Override
   public String toString() {
     return "Member [no=" + no + ", id=" + id + ", password=" + password + ", name=" + name
@@ -48,8 +38,6 @@ public class Member implements Cloneable, Serializable {
         + ", createdDate=" + createdDate + ", latestDate=" + latestDate + ", manager=" + manager
         + "]";
   }
-  
-  
   public int getNo() {
     return no;
   }
