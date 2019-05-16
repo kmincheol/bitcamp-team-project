@@ -28,7 +28,14 @@ public class MatchServiceImpl implements MatchBoardService {
     return matchDao.findAll(params);
   }
   
-/*
+  @Override
+  public Match get(int no) {
+    Match match = matchDao.findByNo(no);
+    return match;
+  }
+
+  
+  /*
   @Override
   public int add(Match match) {
     int count = matchDao.insert(match);
@@ -46,11 +53,6 @@ public class MatchServiceImpl implements MatchBoardService {
   }
 */
   
-  @Override
-  public Match get(int no) {
-    Match match = matchDao.findByNo(no);
-    return match;
-  }
 
   /*
   @Override

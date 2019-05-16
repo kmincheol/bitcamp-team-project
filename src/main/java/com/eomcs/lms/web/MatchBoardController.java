@@ -2,6 +2,8 @@ package com.eomcs.lms.web;
 
 import java.util.List;
 import javax.servlet.ServletContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.service.MatchBoardService;
+import com.eomcs.lms.service.TeamService;
 
 @Controller
 @RequestMapping("/matchboard")
 public class MatchBoardController {
   
+  private static final Logger logger = LogManager.getLogger(AnnounceController.class);
+  
   @Autowired MatchBoardService matchBoardService;
-//  @Autowired TeamService teamService;
+  @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   
   
@@ -54,19 +59,13 @@ public class MatchBoardController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     Match match = matchBoardService.get(no);
+    logger.debug(match);
     model.addAttribute("match", match);
     return "matchboard/detail";
   }
   
-//테스트 페이지
-@RequestMapping("test")
-public String test() {
- return "matchboard/test";
-}
-  
   
   /*
-  
   @GetMapping("update/{no}")
   public String detailUpdate(@PathVariable int no, Model model) {
     Match match = matchBoardService.get(no);

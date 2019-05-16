@@ -101,7 +101,6 @@
 
 <script>
 $(function () {
-	  
 	  $('.js-tooltip-trigger').each(function(ind, ele){
 	    
 	    var $ele = $(ele),

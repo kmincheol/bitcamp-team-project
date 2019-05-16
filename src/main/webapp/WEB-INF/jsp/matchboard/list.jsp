@@ -6,14 +6,14 @@
 <html>
 <head>
 <title>매치보드</title>
-<jsp:include page="../commonCss.jsp" />
+<%-- <jsp:include page="../commonCss.jsp" /> --%>
 <link rel="stylesheet"
   href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
 <body>
 
-  <div id="match_header">
+<%--   <div id="match_header">
     <img src="${contextRootPath}/images/match-header.jpg"
       class="img-fluid">
   </div>
@@ -23,7 +23,10 @@
         class="headerImg"></a>
     </nav>
 
-  </div>
+  </div> --%>
+  
+  <jsp:include page="header.jsp" />
+  
   <div class="container">
     <div id="match_content">
       <h2>
@@ -38,7 +41,8 @@
         <b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.
       </p>
 
-      <table id="match_table" class="table table-bordered">
+<%--       
+			<table id="match_table" class="table table-bordered">
         <thead>
           <tr>
             <th scope="row">날짜 선택</th>
@@ -134,12 +138,14 @@
           </tr>
         </tbody>
         <jsp:include page="sideBar.jsp" />
-      </table>
+      </table> 
 
       <div class="button1">
         <a href="#" class="btn btn-primary btn-sm" tabindex="-1"
           role="button" aria-disabled="true">검색</a> 
       </div>
+      
+      --%>
 
 
       <br> <br> <br> <br>
@@ -153,52 +159,80 @@
       <!--     <th scope="row" id="subtitle" scope="col" width = 100% >신청 가능 매치</th>-->
 
       <div id="subtable">
-
         <table class="table table-striped">
-
           <tr>
             <td id="subtitle" colspan="3" width="100%">신청 가능 매치</td>
           </tr>
 
           <tbody>
-		<c:forEach items="${list}" var="list">
-
-		
+				<c:forEach items="${list}" var="list">
             <tr>
-                <td rowspan="4" align="center">${list.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
+                	<td id="teaminfo" class="tableline" rowspan="4" align="center">${list.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
                 <br> 
-              <br> ${list.team.teamName}
-                </td>
-       
-              <td>종목: ${list.teamTypeSports.teamSportsType}</td>
-            </tr>            
-            
+                <br> ${list.team.teamName}
+                	</td>
+              <td id="info"><a href='${contextRootPath}/app/matchboard/${match.team.teamId}'>종목: ${list.teamTypeSports.teamSportsType}</a></td>
+            </tr>
             <tr>
-              <td>위치: ${list.location} </td>
-              <td id="button3from" rowspan="2" align="center"> 
+              <td id="info">위치: ${list.location} </td>
+             <td id="button3from" rowspan="2" align="center"> 
               <div class="button3">
-         				 <a class="btn btn-primary btn-sm" role="button" aria-disabled="true">신청하기</a>
+              <c:if test="${!empty sessionScope.loginUser}">
+           		<div class="form-group pos-relative">
+            	<a href='#' class="js-tooltip-trigger" id="ref">
+            	<button id="btnsub" class="btn btn-primary btn-sm" role="button" aria-disabled="true">신청하기</button></a>
+          		<span class="js-tooltip" style="display: none;">
+          		
+          		
+          		</span>
+       	 		</div>
+       		</c:if>
        		</div>
-              </td>
+             </td>
             </tr>
-            
-            <tr>
-              <td>경기장: ${list.stadiumName}</td>
-            </tr>
-            
-            <tr>
-              <td>경기날짜: ${list.playDate}</td>
-            </tr>
+             <tr>
+               <td id="info">경기장: ${list.stadiumName}</td>
+             </tr>
+             <tr>
+               <td id="info" class="tableline">경기날짜: ${list.playDate}</td>
+             </tr>
 			</c:forEach>
           </tbody>
+          
         </table>
-
       </div>
-
-
     </div>
-  </div>
-  <!-- .container -->
-
+  </div>  <!-- .container -->
 </body>
+
+    <script>
+    $(function () {
+  	  $('.js-tooltip-trigger').each(function(ind, ele){
+  	    
+  	    var $ele = $(ele),
+  	        $ttSpan = $ele.next('.js-tooltip'),
+  	        ttHtml = $ttSpan.html(),
+  	        rndID = 'ttid'+ String(Math.random()).substr(2);
+  	    
+  	    $ttSpan.attr('id', rndID).removeAttr('style').html('');
+  	    
+  	    $ele.popover({
+  	    	trigger: 'click',
+  	  		html: true,
+  	    	/* trigger: 'focus', */ 
+  	    	placement: 'right',
+  	    	container: '#'+rndID, 
+  	    	content: ttHtml
+  	  	});
+  	  });
+  	});
+    
+		/* 유저상태로 자기가 속한 팀의 팀장이여야 하고 팀 목록을 출력해야함 */
+		/* 창의 확인, 취소 */
+		
+    </script>
+
+
+
+
 </html>

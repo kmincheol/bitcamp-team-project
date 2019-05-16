@@ -13,7 +13,7 @@
 <jsp:include page="../commonCss.jsp" />
 </head>
 <body>
-
+<jsp:include page="header.jsp" />
   <div class="container">
   <br>
     <h3>글 쓰기</h3>

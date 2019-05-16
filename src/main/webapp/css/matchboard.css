@@ -4,13 +4,24 @@ h2 {
   text-align: center;
 }
 
-#subtable td {
-  padding: 0.35rem;
+#info {
+/*     padding-right: 75px; */
+  position: relative;
+    width: 400px;
+}
+
+#teaminfo:not(#subtable) {
+  padding: 20px 20px 20px 20px;
 }
 
 p {
   text-align: center;
 }
+
+tbody {
+}
+
+
 div.button1 {
 width: 200px;  
 position: absolute; 
@@ -22,14 +33,33 @@ width: 100px;
 rigth: 10%; 
 }
 
+.pos-relative {
+  margin: 0px;
+}
+
+.tableline {
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(200, 200, 200);
+}
+
 #button3from {
-  width: 30px;
+  top: 5px;
+  position: relative;
+  border-width: 0px;
+/*   float: right; */
 }
 
 .button3 {
-  padding: 0px 10px 0px 10px;
+  height: 20px;
+  padding: 0px;
 }
 
+#btnsub {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 #match_table {
   width: 90%;
@@ -44,20 +74,21 @@ rigth: 10%;
   color: white;
 }
  
-.container {
+/* .container {
   position: absolute;
   top: 600px;
   width: 100%;
   left: 0px;
   right: 0px;
-} 
+}  */
 
+/* 
 #content {
    width: 600px;
    padding: 20px;
    margin-bottom: 20px;
    float: left;
-}
+} */
 
 #match_content {
     

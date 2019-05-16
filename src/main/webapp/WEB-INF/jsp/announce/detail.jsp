@@ -12,9 +12,8 @@
 <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
 <body>
-
+<jsp:include page="header.jsp" />
 	<div class="container">
-
 
 		<h3>공지사항</h3>
 

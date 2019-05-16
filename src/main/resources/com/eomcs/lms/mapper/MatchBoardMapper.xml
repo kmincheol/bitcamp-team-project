@@ -39,8 +39,6 @@
     
   </resultMap>
 
-
-
      <resultMap type="Team" id="team">
      
       <id column="tm_id" property="teamId" />
