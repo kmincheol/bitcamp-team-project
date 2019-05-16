@@ -41,6 +41,19 @@
     delete from anunc_file 
     where anunc_id = #{value}
   </delete>
+  
+  
+  <update id="update" parameterType="list">
+    update anunc_file
+    set
+    <foreach collection="list" item="announceFile" separator=",">
+      (#{announceFile.filePath},#{announceFile.announceNo})
+    </foreach>
+    where 
+    anunc_id = #{value}
+  </update>
+  
+  
 </mapper>
 
 

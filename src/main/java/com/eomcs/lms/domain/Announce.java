@@ -8,7 +8,7 @@ public class Announce implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
   
   private int no;
-  private int MemberNo;
+  private int memberNo;
   private String title;
   private String contents;
   private int viewCount;
@@ -20,12 +20,15 @@ public class Announce implements Cloneable, Serializable {
   private Member member;
   private List<AnnounceFile> files;
   
+
+  
   @Override
   public String toString() {
-    return "Free [no=" + no + ", MemberNo=" + MemberNo + ", title=" + title + ", contents="
+    return "Announce [no=" + no + ", memberNo=" + memberNo + ", title=" + title + ", contents="
         + contents + ", viewCount=" + viewCount + ", createdDate=" + createdDate + ", modifierDate="
         + modifierDate + ", member=" + member + ", files=" + files + "]";
   }
+  
   
   public int getNo() {
     return no;
@@ -34,10 +37,10 @@ public class Announce implements Cloneable, Serializable {
     this.no = no;
   }
   public int getMemberNo() {
-    return MemberNo;
+    return memberNo;
   }
   public void setMemberNo(int memberNo) {
-    MemberNo = memberNo;
+    this.memberNo = memberNo;
   }
   public String getTitle() {
     return title;

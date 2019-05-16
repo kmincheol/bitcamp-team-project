@@ -1,10 +1,10 @@
 -- 회원데이터
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
-values(1,'testId','1111','김민철','1995-5-5','남','010-1111-1111','비트캠프','강남','face');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
-values(2,'test2','1111','test2','1991-01-01','남','010-1234-5678','서울','강남','kakao');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
-values(3,'test3','1111','test3','1981-01-01','여','010-3334-5555','부산','해운대','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,bas_addr,det_addr,login_type)
+values(1,'testId','1111','김민철','1995-5-5','남','010-1111-1111','babo@haha.com','비트캠프','강남','face');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,bas_addr,det_addr,login_type)
+values(2,'test2','1111','test2','1991-01-01','남','010-1234-5678','test2@bot.com','서울','강남','kakao');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,bas_addr,det_addr,login_type)
+values(3,'test3','1111','test3','1981-01-01','여','010-3334-5555','test3@bot.com','부산','해운대','google');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
 values(4,'test4','1111','test4','1992-5-5','남','010-1111-1221','서울시 서초구','강남','face');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,bas_addr,det_addr,login_type)
@@ -83,8 +83,11 @@ insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(8,'롤게임','030101','40','3','3','3');
 
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
 
 -- 팀원데이터
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
@@ -329,6 +332,8 @@ insert into qstn(qstn_id,mbr_id,titl,cont,qstn_type)
 values(2,2,'상대팀이 안오네요','징계 좀 먹여줘요.','경기');
 insert into qstn(qstn_id,mbr_id,titl,cont,qstn_type)
 values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.','기타');
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,qstn_type)
+values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.','기타');
 
 -- 답변데이터
 insert into ans(ans_id,qstn_id,titl,cont)
@@ -349,9 +354,9 @@ values(3,1,'공지사항글테스트입니다.333','헬로헬로헬로');
 
 -- 공지사항게시판 첨부파일
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)
-values(1,1,'upload/free/a.jpeg','이미지');
+values(1,1,'upload/announce/a.jpeg','이미지');
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)
-values(2,2,'upload/free/b.avi','비디오');
+values(2,2,'upload/announce/b.avi','비디오');
 insert into anunc_file(anunc_file_id,anunc_id,file_path,file_type)
-values(3,3,'upload/free/c.word','문서');
+values(3,3,'upload/announce/c.word','문서');
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.QuestionDao">
+
+  <resultMap type="QuestionBoard" id="questionMap">
+    <id column="qstn_id" property="questionNo" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="qstn_type" property="questionType" />
+    <result column="ans_stat" property="questionStatus" />
+    <result column="cdt" property="createdDate" />
+
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="name" property="id" />
+    </association>
+    <!-- <association property="teamTypeSports" javaType="teamTypeSports"> <id column="spt_clsf_id" property="teamSportsTypeId" 
+      /> <result column="spt_clsf_name" property="teamSportsType" /> </association> -->
+  </resultMap>
+
+
+  <!-- <resultMap type="Team" id="team"> <id column="tm_id" property="teamId" /> <result column="area" 
+    property="teamArea" /> <result column="name" property="teamName" /> <association property="teamTypeSports" 
+    javaType="teamTypeSports"> <id column="spt_clsf_id" property="teamSportsTypeId" /> <result column="spt_clsf_name" 
+    property="teamSportsType" /> </association> <association property="teamMember" javaType="TeamMember"> 
+    <id column="tm_mbr_id" property="teamMember_id" /> </association> <association property="member" javaType="Member"> 
+    <id column="mbr_id" property="no" /> <result column="user_id" property="id" /> </association> </resultMap> -->
+  <select id="findAll" resultMap="questionMap" parameterType="map">
+    select
+    qstn_id,
+    titl,
+    cont,
+    qstn_type,
+    ans_stat,
+    q.cdt,
+    name
+    from
+    qstn q
+    left outer join mbr m on q.mbr_id = m.mbr_id
+    order by qstn_id desc
+
+  </select>
+
+  <select id="findByNo" resultMap="questionMap" parameterType="int">
+ 
+ select
+    qstn_id,
+    titl,
+    cont,
+    qstn_type,
+    ans_stat,
+    q.cdt,
+    name
+ from
+    qstn q
+    left outer join mbr m on q.mbr_id = m.mbr_id
+ where
+    q.qstn_id =
+    #{questionNo};
+  </select>
+
+
+  <!-- <select id="findByNo2" resultMap="team" parameterType="int"> select tm.mbr_id, t.tm_id, spt_clsf_name, 
+    t.name from tm t left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id left outer join tm_mbr tm 
+    on tm.tm_mbr_id = t.tm_id left outer join mbr m on m.mbr_id = tm.mbr_id where m.mbr_id = #{no}; </select> 
+    <select id="findByKeyword" resultMap="teamRecruitMap" parameterType="string"> <bind name="pattern1" value="'%' 
+    + _parameter + '%'" /> select rcrm_id, titl, area, name, r.cdt, rcrm_stat, vw_cnt, spt_clsf_name from 
+    rcrm r left outer join tm t on r.tm_id = t.tm_id left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id 
+    where titl like #{pattern1} </select> <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" 
+    keyColumn="rcrm_id" keyProperty="teamNo"> insert into rcrm( titl, cont, tm_id ) values( #{teamTitle}, 
+    #{teamContents}, #{teamId}) </insert> <update id="increaseCount" parameterType="int"> update rcrm set 
+    vw_cnt = vw_cnt + 1 where rcrm_id = #{teamNo}; </update> <delete id="delete" parameterType="int"> delete 
+    from rcrm where rcrm_id = #{teamNo}; </delete> <select id="detailUpdate" resultMap="teamRecruitMap" parameterType="int"> 
+    select r.rcrm_id, titl, area, cont, name, rcrm_stat, vw_cnt, spt_clsf_name from rcrm r left outer join 
+    tm t on r.tm_id = t.tm_id left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id where r.rcrm_id 
+    = #{teamNo}; </select> <update id="update" parameterType="teamRecruit"> update rcrm set titl = #{teamTitle}, 
+    cont = #{teamContents} where rcrm_id = #{teamNo}; </update> -->
+</mapper>

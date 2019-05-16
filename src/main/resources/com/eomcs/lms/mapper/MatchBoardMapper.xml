@@ -22,6 +22,7 @@
     <result column="stdm_long" property="stadiumLongitude" />
     <result column="tel" property="telephone" />
     <result column="cost" property="cost" />
+
     
     <association property="team" javaType="Team">
       <id column="tm_id" property="teamId" />
@@ -31,7 +32,7 @@
     </association>
     
         <!-- 종목유형 테이블 -->
-    <association property="teamTypeSports" javaType="teamTypeSports">
+    <association property="teamTypeSports" javaType="TeamTypeSports">
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
@@ -45,8 +46,9 @@
       <id column="tm_id" property="teamId" />
       <result column="area" property="teamArea" />
       <result column="name" property="teamName" />
+      <result column="tm_ambl_phot" property="teamEmblemPhoto" />
 
-    <association property="teamTypeSports" javaType="teamTypeSports">
+    <association property="teamTypeSports" javaType="TeamTypeSports">
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
@@ -63,16 +65,15 @@
   </resultMap>
 
 
-<!-- 매치보드에 포함될것들 -->
-<!-- 팀테이블, 팀원테이블, 회원테이블, 종목유형테이블, 매치신청테이블, 태그테이블, 후기테이블, 첨부파일 테이블 -->
+<!-- 매치보드에 더 포함될것들 -->
+<!-- 팀테이블, 팀원테이블, 회원테이블, 종목유형테이블, 매치신청테이블, 태그테이블, 후기테이블, 첨부파일 테이블 위치정보테이블(위치이름) -->
 
-
-  <select id="findAll" resultMap="matchMap" parameterType="map">
+<sql id="select1">
    select
     mtch_id,
     m.tm_id,
     tm_id2,
-    t.spt_clsf_id,
+    s.spt_clsf_name,
     titl,
     cont,
     vw_cnt,
@@ -83,15 +84,31 @@
     stdm_lat,
     stdm_long,
     tel,
-    cost
+    cost,
+    t.name,
+    t.tm_ambl_phot
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
-    left outer join spt_clsf s on s.spt_clsf_id = m.spt_clsf_id
+    left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
+  </sql>
+
+  <select id="findAll" resultMap="matchMap" parameterType="map">
+	<include refid="select1"/>
+    order by
+    mtch_id desc
+    <if test="#{size != null || rowNo != null}">
+      limit #{rowNo}, #{size}
+    </if>
   </select>
 
 
-    
+<select id="findByNo" resultMap="matchMap" parameterType="int">
+    <include refid="select1"/>
+    where 
+      mtch_id = #{value}
+  </select> 
+
 
 
 </mapper>

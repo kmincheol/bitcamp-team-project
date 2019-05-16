@@ -60,7 +60,8 @@
   
   <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
     select 
-      <include refid="default-columns"/>
+      <include refid="default-columns"/>,
+      mgr
     from 
       mbr
     where 
