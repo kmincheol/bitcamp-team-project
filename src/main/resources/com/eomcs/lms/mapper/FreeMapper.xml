@@ -15,8 +15,8 @@
     <result column="cdt" property="createdDate" />
     <result column="mdt" property="modifierDate" />
    
-    <association property="member" javaType="member">
-      <id column="mbr_id" property="memberNo" />
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
       <result column="name" property="name" />
     </association>
 
@@ -29,10 +29,10 @@
     <result column="cont" property="contents" />
     <result column="vw_cnt" property="viewCount" />
     <result column="cdt" property="createdDate" />
-    <result column="mdt" property="modifierDate" />
+    <result column="mdt" property="modifierDatze" />
 
-    <association property="member" javaType="member">
-      <id column="mbr_id" property="memberNo" />
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
       <result column="name" property="name" />
     </association>
     

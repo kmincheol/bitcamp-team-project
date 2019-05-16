@@ -8,7 +8,7 @@ public interface MatchDao {
 //  int insert(Match match);
   List<Match> findAll(Map<String, Object> params);
 //  List<Match> findByKeyword(String keyword);
-//  Match findByNo(int no);
+  Match findByNo(int no);
 //  Match findByNoWithFile(int no);
 //  int update(Match match);
 //  int delete(int no);

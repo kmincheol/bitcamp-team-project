@@ -2,7 +2,6 @@ package com.eomcs.lms.web;
 
 import java.util.List;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
@@ -11,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.eomcs.lms.domain.Comment;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.service.CommentService;
 import com.eomcs.lms.service.FreeService;
 import com.eomcs.lms.service.MemberService;
-import com.eomcs.lms.service.impl.FreeServiceImpl;
 
 @Controller
 @RequestMapping("/free")
@@ -30,28 +29,9 @@ public class FreeController {
 
   @Autowired FreeService freeService;
   @Autowired MemberService memberService;
+  @Autowired CommentService commentService;
   @Autowired ServletContext servletContext;
 
-  public String ajax_addComment(@ModelAttribute("free") Free free, HttpServletRequest request) throws Exception{
-    
-    HttpSession session = request.getSession();
-    Member member = (Member)session.getAttribute("loginUser");
-    
-    try{
-    
-        free.setMemberNo(member.getNo());        
-        FreeServiceImpl.addComment(free);
-        
-    } catch (Exception e){
-        e.printStackTrace();
-    }
-    
-    return "success";
-}
-  
-
-  
-  
   @GetMapping
   public String list(
       @RequestParam(defaultValue="1") int pageNo,
@@ -82,8 +62,14 @@ public class FreeController {
   }
   
   @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model) {
+  public String detail(@PathVariable int no, Model model, HttpSession session) {
     Free free = freeService.get(no);
+    session.setAttribute("freeNo", no);
+    session.setAttribute("free", free);
+    
+    List<Comment> comment = commentService.list(no);
+    model.addAttribute("list", comment);
+    
     model.addAttribute("free", free);
     logger.info(free);
     return "free/detail";
@@ -101,32 +87,13 @@ public class FreeController {
     List<Free> free = freeService.search(keyword);
     model.addAttribute("search", free);
   }
-
-
+  
   @GetMapping("form")
   public void form() {
   }
 
   @PostMapping("add")
   public String add(Free free, Part[] photo,HttpSession session) throws Exception {
-
-//    ArrayList<FreeFile> files = new ArrayList<>();
-//
-//    String uploadDir = servletContext.getRealPath(
-//        "/upload/free");
-//
-//    for (Part part : photo) {
-//      if (part.getSize() == 0) 
-//        continue;
-//
-//      String filename = UUID.randomUUID().toString();
-//      part.write(uploadDir + "/" + filename);
-//
-//      FreeFile file = new FreeFile();
-//      file.setFilePath(filename);
-//      files.add(file);
-//    }
-//    free.setFiles(files);
 
     if (free.getTitle().length() == 0) {
       return "free/form";

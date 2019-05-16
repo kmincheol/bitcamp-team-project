@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.CommentDao">
+
+  <resultMap type="comment" id="commentMap">
+    <id column="cmt_id" property="no" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="free_id" property="freeNo" />
+    <result column="procedure" property="pcd" />
+    <result column="lev" property="level" />
+    <result column="cont" property="contents" />
+    <result column="wrt_dt" property="writeDate" />
+    <result column="mdt" property="modifierDate" />
+
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="memberNo" />
+      <result column="name" property="name" />
+    </association>
+
+    <association property="free" javaType="Free">
+      <id column="free_id" property="no" />
+      <result column="free_id" property="no" />
+    </association>
+  </resultMap>
+
+
+
+  <insert id="insert" parameterType="comment" useGeneratedKeys="true" keyColumn="comment_id"
+    keyProperty="no">
+    insert into cmt(
+    cmt_id,
+    free_id,
+    mbr_id,
+    pcd,
+    lev,
+    cont,
+    wrt_dt)
+    values(
+    #{no},
+    #{freeNo},
+    #{memberNo},
+    #{procedure},
+    #{level},
+    #{contents},
+    #{writeDate})
+  </insert>
+
+
+<select id="findAll" resultMap="commentMap" parameterType="int">
+    
+    select 
+    cmt_id,
+    f.free_id,
+    m.name,
+    c.cont,
+    c.mdt
+    from
+    cmt c
+    left outer join free f on c.free_id = f.free_id
+    left outer join mbr m on c.mbr_id = m.mbr_id
+    
+    where c.free_id = #{value}
+    
+  </select>
+  
+  
+  <delete id="delete" parameterType="int">
+    delete from cmt
+    where cmt_id = #{no}
+  </delete>
+  
+  <update id="update" parameterType="comment">
+    update cmt
+    set
+    cont = #{contents}
+    where cmt_id = #{no}
+  </update>
+  
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+

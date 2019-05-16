@@ -2,6 +2,7 @@ package com.eomcs.lms.dao;
 
 import java.util.List;
 import java.util.Map;
+import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamRecruit;
 
@@ -21,6 +22,8 @@ public interface TeamRecruitDao {
   List<Team> findByNo2(int no);
   
   int increaseCount(int no);
+  
+  TeamRecruit detailUpdate(int no);
   
   int update(TeamRecruit teamRecruit);
   

@@ -5,9 +5,9 @@
 <html>
 
 <head>
-<title>모집게시판</title>
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+  <title>모집게시판</title>
+  <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 </head>
 
 <body>
@@ -37,7 +37,8 @@
                 <ul class="category">
                   <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">매치등록</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">팀</a>
@@ -45,7 +46,8 @@
                   <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">팀정보</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">모집게시판</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a>
@@ -53,14 +55,16 @@
                   <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
             <div class="header-category">
               <li class="nav-item"><a class="nav-link" href="#">마이페이지</a>
                 <ul class="category">
                   <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
                   <li class="nav-item"><a class="nav-link" href="#">나의 팀 정보</a></li>
-                </ul></li>
+                </ul>
+              </li>
             </div>
           </ul>
         </div>
@@ -72,7 +76,6 @@
     </div>
 
     <div id="recruit-list-out">
-
       <div class="input-group mb-3">
         <select class="custom-select" id="inputGroupSelect01">
           <option selected>종목</option>
@@ -85,10 +88,10 @@
       <form action='recruit_board/search'>
         <div class="form-group row">
           <div class="col-xs-4">
-            <input name='keyword' class="form-control" type="search" placeholder="검색어 입력">
+            <input id="searchwindow" name='keyword' class="form-control" type="search" placeholder="검색어 입력">
           </div>
           <div id="search-btn">
-            <button class="input-group-btn btn btn-dark">검색</button>
+            <button id="searchbtn" class="input-group-btn btn btn-dark">검색</button>
           </div>
           <div id="write-btn" style="position: absolute; right: 0;">
             <button class="input-group-btn1 btn btn-dark">
@@ -97,7 +100,7 @@
           </div>
         </div>
       </form>
-      
+
       <table class="table">
         <thead class="thead-light">
           <tr>
@@ -122,10 +125,12 @@
               <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
               <td>${list.team.teamName }</td>
               <td>${list.team.teamArea }</td>
-              <td><c:choose>
+              <td>
+                <c:choose>
                   <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
                   <c:otherwise>모집마감</c:otherwise>
-                </c:choose></td>
+                </c:choose>
+              </td>
               <td>${list.teamCreatedDate}</td>
               <td>${list.teamViewCount}</td>
             </tr>
@@ -135,15 +140,13 @@
       <div id="in">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span
-                aria-hidden="true">&laquo;</span>
-            </a></li>
+            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+              </a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span
-                aria-hidden="true">&raquo;</span>
-            </a></li>
+            <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+              </a></li>
           </ul>
         </nav>
       </div>
@@ -154,10 +157,20 @@
 
   <jsp:include page="../javascript.jsp" />
 
+  <!-- <script>
+    var search = document.getElementById("#searchbtn");
+    var sw = document.getElementById("#searchwindow");
+    search.onclick = function () {
+      if (sw.value == "") {
+        alert('검색어를 입력하세요');
+      }
+    }
+  </script> -->
 
 
 </body>
 <!-- <footer>
         
   </footer> -->
+
 </html>
