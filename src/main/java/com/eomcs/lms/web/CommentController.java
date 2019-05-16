@@ -19,17 +19,20 @@ import com.eomcs.lms.service.FreeService;
 @Controller
 @RequestMapping("/comment")
 public class CommentController {
-  
-  @Autowired CommentService commentService;
-  @Autowired FreeService freeService;
-  @Autowired ServletContext servletContext;
 
-  
+  @Autowired
+  CommentService commentService;
+  @Autowired
+  FreeService freeService;
+  @Autowired
+  ServletContext servletContext;
+
+
   @PostMapping("add")
-  public String add(Comment comment, HttpSession session) throws Exception{
+  public String add(Comment comment, HttpSession session) throws Exception {
 
-    Member member = (Member)session.getAttribute("loginUser");
-    Free free = (Free)session.getAttribute("free");
+    Member member = (Member) session.getAttribute("loginUser");
+    Free free = (Free) session.getAttribute("free");
     session.setAttribute("commentNo", comment.getNo());
     comment.setMemberNo(member.getNo());
     comment.setFreeNo(free.getNo());
@@ -41,37 +44,33 @@ public class CommentController {
 
   @GetMapping
   public String list(Model model, HttpSession session) {
-    
+
     int no = (int) session.getAttribute("freeNo");
     List<Comment> comment = commentService.list(no);
-    System.out.println(no);
     model.addAttribute("list", comment);
 
     return "comment/list";
   }
 
   @PostMapping("update")
-  public String update(Comment comment) {
+  public String update(Comment comment, HttpSession session) {
+    
+    Free free = (Free) session.getAttribute("free");
+    comment.setFreeNo(free.getNo());
+
     if (commentService.update(comment) == 0) 
-      throw new RuntimeException("해당 댓글이 없습니다.");
-    return "redirect:.";
+       throw new RuntimeException("해당 댓글이 없습니다.");
+     
+     return "redirect:../free/" + free.getNo();
   }
-  
+
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no, HttpSession session) {
-    Free free = (Free)session.getAttribute("free");
-    if (commentService.delete(no) == 0) 
+    Free free = (Free) session.getAttribute("free");
+    if (commentService.delete(no) == 0)
       throw new RuntimeException("해당 댓글이 없습니다.");
     return "redirect:../../free/" + free.getNo();
   }
 }
-
-
-
-
-
-
-
-
 
 

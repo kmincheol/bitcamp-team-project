@@ -127,92 +127,12 @@
           <br>
            <c:if test="${sessionScope.loginUser != null}">
           <jsp:include page="../comment/form.jsp" />
+          <jsp:include page="../comment/list.jsp" />
           </c:if>
         </c:otherwise>
       </c:choose>
-  
-  <form action="../comment/update">
-      <div class="comment-list" style="text-align: left;">
-    <table class="table table-hover" >
-      <tbody style="left: 0px; position: absolute;">
-        <c:forEach items="${list}" var="comment"> 
-          <span style="font-size: 15px; margin-right: 10px;"><b>${comment.member.name}</b></span> 
-          <span style="font-size: 12px;">${comment.modifierDate}</span><br> <br>
-          <input type="text" id="cmtcontents" value="${comment.contents}" style="font-size: 20px; border:none;" readonly="readonly"><br><br>
-           
-          <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
-            <a class="input-group-btn btn btn-dark" href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
-            <button id="update-btn" type="button" class="input-group-btn btn btn-dark" onclick="mybtn()">변경</button>
-            <div id="save-cancel" style="display: none; left:270px; bottom:110px; position:absolute;">
-              <a id="save-btn" type="hidden" class="input-group-btn btn btn-dark" href='${contextRootPath}/app/comment/update/${comment.no}'>저장</a>
-              <a id="cancel-btn" type="hidden" class="input-group-btn btn btn-dark" onclick="canbtn()" style="color:white;">취소</a>
-             </div> 
-          </c:if> 
-          <hr>
-           </c:forEach> 
-      </tbody>
-    </table>
   </div>
-  </form>
-  
-    </div>
   </div>
-
-<script type="text/javascript">
- function mybtn() {
-   document.getElementById('cmtcontents').readOnly = false;
-   
- };
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('#update-btn').click(function(){
-      var state = $('#save-cancel').css('display'); 
-      if(state == 'none'){
-          $('#save-cancel').show(); 
-          $('#update-btn').hide();
-      }
-      
-      var state = $('#cmtcontents').css('style'); 
-      if(state != 'none'){
-        document.getElementById('cmtcontents').setAttribute("style", "font-size: 20px; border:2px solid black;");  
-      }
-  });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('#cancel-btn').click(function(){
-      var state = $('#update-btn').css('display'); 
-      if(state == 'none') {
-        $('#update-btn').show();
-         
-      } 
-      
-      var state = $('#save-cancel').css('display'); 
-      if(state == 'none') {
-        $('#save-cancel').hide();
-      } else {
-        $('#save-cancel').hide();
-      }
-      
-      var state = $('#cmtcontents').css('style'); 
-      if(state != 'none'){
-        document.getElementById('cmtcontents').setAttribute("style", "font-size: 20px; border:none;");
-      }
-  });
-});
-</script>
-
-<script type="text/javascript">
- function canbtn() {
-   document.getElementById('cmtcontents').readOnly = true;
- };
-</script>
-  
-  
 </body>
 </html>
 

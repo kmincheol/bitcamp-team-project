@@ -3,31 +3,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<head>
+<title>자유게시판</title>
+<jsp:include page="../commonCss.jsp" />
+</head>
 
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<!-- include summernote-ko-KR -->
 
 <body>
-  <form>
-  
-        <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label">내용</label>
-          <textarea id="summernote" name="contents">${comment.contents}</textarea>
-        </div>
 
-        <div class="form-group row">
-          <label for="createdDate" class="col-sm-2 col-form-label">최근수정일</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="createdDate"
-              value="${comment.modifierDate}">
-          </div>
-        </div>
+  <!--<jsp:include page="../header.jsp" />-->
 
-        <!-- 버튼과 관련된 영역 -->
-        <div class="form-group row">
-          <div class="col-sm-10">
+  <div class="container">
+    <h1>자유게시판</h1>
+      <form action='../../comment/update' method='post' enctype='multipart/form-data'>
+
+            <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'
+              style="display:none;">
+
+            <input class="form-control" id="contents" name='contents' >${comment.contents}
+
             <button class="btn btn-primary">변경하기</button>
-          </div>
-        </div>
       </form>
+  </div>
 
   <jsp:include page="../javascript.jsp" />
 </body>
