@@ -114,6 +114,9 @@ values(8,8,1,'프로게이머');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,8,1,'프로게이머');
 
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(4,1,1,'프로게이머');
+
 
 -- 팀경고데이터
 insert into warn(warn_id,warn_res,tm_id)

@@ -47,9 +47,12 @@ public class RecruitBoardController {
   public String add(TeamRecruit teamRecruit,HttpSession session) {
     
     Member member = (Member) session.getAttribute("loginUser");
-    teamRecruit.setTeamId(member.getNo());
+  
+    teamRecruit.setTeamId(1);
    
-    System.out.println(teamRecruit.toString());
+    System.out.println("dddd"  + member);
+    
+    System.out.println("ababab" + teamRecruit.toString());
   
     recruitBoardService.add(teamRecruit);
 
@@ -92,6 +95,7 @@ public class RecruitBoardController {
       pageNo = 1;
 
     List<TeamRecruit> teamRecruits = recruitBoardService.list(pageNo, pageSize);
+    System.out.println(teamRecruits);
     model.addAttribute("list", teamRecruits);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
