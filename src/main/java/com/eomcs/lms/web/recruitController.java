@@ -49,6 +49,8 @@ public String teamRecruitList() {
 public String detail() {
     return "recruit_board/detail";
 }
+
+
 }
 
 

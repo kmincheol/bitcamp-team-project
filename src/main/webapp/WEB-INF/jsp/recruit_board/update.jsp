@@ -7,6 +7,7 @@
 <head>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
+<link rel="stylesheet" href="${contextRootPath}/css/header.css">
 </head>
 
 <body>
@@ -74,7 +75,7 @@
       <div class="form-group row">
         <div class="col-sm-10">
           <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a>
-          <button class="btn btn-primary">저장</button>
+          <button class="btn btn-primary" >저장</button>
         </div>
       </div>
     </form>

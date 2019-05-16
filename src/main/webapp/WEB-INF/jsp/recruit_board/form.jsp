@@ -6,12 +6,15 @@
 <head>
 <title>게시글 등록</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_form.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 </head>
 
 <body>
   <div class="container">
+
+    <jsp:include page="../header.jsp"></jsp:include>
+
     <h1>새 글</h1>
     <form action='add' method='post'>
       <div id="table">
@@ -30,20 +33,16 @@
             </select></td>
             <tr>
               <th scope="row">종목</th>
-              <td>
-              <input type="text" id="textTime" readonly>
-              </td>
+              <td><input type="text" id="textTime" readonly></td>
             <tr>
               <th scope="row">소속팀</th>
-              <td>
-                <select class="custom-select" id="select1" name='team.teamTypeSports.teamSportsType' onchange="setValues();">
+              <td><select class="custom-select" id="select1"
+                name='team.teamTypeSports.teamSportsType' onchange="setValues();">
                   <option>기본</option>
-                  <c:forEach items="${team}" var="team" >
-                    <option  value=${team.teamTypeSports.teamSportsType}>${team.teamName}
-                    </option>
+                  <c:forEach items="${team}" var="team">
+                    <option value=${team.teamTypeSports.teamSportsType}>${team.teamName}</option>
                   </c:forEach>
-              </select>
-            </td>
+              </select></td>
             </tr>
             <tr>
               <th scope="row">제목</th>
@@ -65,7 +64,7 @@
       <div class="form-group row">
         <div class="col-sm-10">
           <button class="btn btn-primary">등록</button>
-          <a class="btn btn-primary" href='.'>목록</a>
+          <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a>
         </div>
       </div>
     </form>
@@ -78,11 +77,11 @@
   <script>
 			function setValues() {
 				var sh = document.getElementById("select1");
-				  var sh2 = document.getElementById("select2");
+				var sh2 = document.getElementById("select2");
 				var tt = document.getElementById("textTime");
 				tt.value = sh.options[sh.selectedIndex].value;
 				sh2.value = sh.options[sh.selectedIndex].text;
-				
+
 			}
 		</script>
 

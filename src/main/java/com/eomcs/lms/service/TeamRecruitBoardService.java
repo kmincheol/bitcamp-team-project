@@ -25,5 +25,5 @@ public interface TeamRecruitBoardService {
 
   int delete(int no);
 
-  // int size();
+   int size();
 }

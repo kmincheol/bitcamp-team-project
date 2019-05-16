@@ -29,6 +29,7 @@ public class TeamRecruit implements Cloneable, Serializable {
   
   
   
+  
   public Member getMember() {
     return member;
   }

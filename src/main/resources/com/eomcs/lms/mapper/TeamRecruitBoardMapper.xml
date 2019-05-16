@@ -63,9 +63,14 @@
     spt_clsf_name
     from
     rcrm r
-    left outer join tm t on r.tm_id = t.tm_id
+    left outer join tm t
+    on r.tm_id = t.tm_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-    order by rcrm_id desc
+    order by rcrm_id
+    desc
+    <if test="#{size != null || rowNo != null}">
+      limit #{rowNo}, #{size}
+    </if>
   </select>
 
 
@@ -105,6 +110,7 @@
     t.spt_clsf_id
     where
     r.rcrm_id = #{teamNo};
+
   </select>
 
   <select id="findByKeyword" resultMap="teamRecruitMap" parameterType="string">
@@ -127,29 +133,32 @@
     where
     titl like
     #{pattern1}
+    order by rcrm_id
+    desc
   </select>
 
-    <insert id="insert" parameterType="teamRecruit"  useGeneratedKeys="true" keyColumn="rcrm_id" keyProperty="teamNo">
-      insert into rcrm(
-      titl,
-      cont,
-      tm_id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-      )
-      values(
-      #{teamTitle},
-      #{teamContents},
-      #{teamId})
-    </insert>
-    
-    
-    
-     <update id="increaseCount" parameterType="int">
-      update rcrm
-      set
-      vw_cnt = vw_cnt + 1
-      where rcrm_id = #{teamNo};
-    </update>
+  <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
+    keyProperty="teamNo">
+    insert into rcrm(
+    titl,
+    cont,
+    tm_id
+    )
+    values(
+    #{teamTitle},
+    #{teamContents},
+    #{teamId})
+  </insert>
 
+
+
+  <update id="increaseCount" parameterType="int">
+    update rcrm
+    set
+    vw_cnt = vw_cnt + 1
+    where rcrm_id =
+    #{teamNo};
+  </update>
   <delete id="delete" parameterType="int">
     delete from
     rcrm
@@ -184,5 +193,8 @@
     rcrm_id = #{teamNo};
   </update>
 
+  <select id="countAll" resultType="int">
+    select count(*) from rcrm;
+  </select>
 
 </mapper>

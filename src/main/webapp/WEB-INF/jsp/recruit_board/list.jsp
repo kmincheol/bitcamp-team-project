@@ -5,78 +5,22 @@
 <html>
 
 <head>
-  <title>모집게시판</title>
-  <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+<title>모집게시판</title>
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/header.css">
 </head>
 
 <body>
   <div class="container">
-
-    <div id="main-backgroundImg">
-      <img src="${contextRootPath}/images/recurit_board.jpg" class="img-fluid">
-
-      <div id="header-item">
-        <a href="#">로그인/</a> <a href="#">회원가입/</a> <a href="#">고객센터</a>
-      </div>
-    </div>
-
-    <div id="header">
-      <nav class="navbar navbar-expand-lg justify-content-center">
-        <a href="#"><img src="${contextRootPath}/images/logo.png" class="headerImg"></a>
-      </nav>
-
-      <div id="header-cate">
-        <div>
-          <ul class="nav justify-content-center">
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">매치</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">매치등록</a></li>
-                </ul>
-              </li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">팀</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">팀정보</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">모집게시판</a></li>
-                </ul>
-              </li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-                </ul>
-              </li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">마이페이지</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">나의 팀 정보</a></li>
-                </ul>
-              </li>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+    <jsp:include page="../header.jsp"></jsp:include>
+    
     <div id="main-text">
       <h2>모집게시판</h2>
     </div>
 
     <div id="recruit-list-out">
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" style="width: 150px;">
         <select class="custom-select" id="inputGroupSelect01">
           <option selected>종목</option>
           <option value="1">축구</option>
@@ -85,18 +29,18 @@
         </select>
       </div>
 
-      <form action='recruit_board/search'>
+      <form action='${contextRootPath}/app/recruit_board/search'>
         <div class="form-group row">
           <div class="col-xs-4">
-            <input id="searchwindow" name='keyword' class="form-control" type="search" placeholder="검색어 입력">
+            <input id="searchwindow" name='keyword' class="form-control" type="search"
+              placeholder="검색어 입력">
           </div>
           <div id="search-btn">
             <button id="searchbtn" class="input-group-btn btn btn-dark">검색</button>
           </div>
           <div id="write-btn" style="position: absolute; right: 0;">
-            <button class="input-group-btn1 btn btn-dark">
-              <a href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
-            </button>
+            <a class="input-group-btn1 btn btn-dark"
+              href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
           </div>
         </div>
       </form>
@@ -125,12 +69,10 @@
               <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
               <td>${list.team.teamName }</td>
               <td>${list.team.teamArea }</td>
-              <td>
-                <c:choose>
+              <td><c:choose>
                   <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
                   <c:otherwise>모집마감</c:otherwise>
-                </c:choose>
-              </td>
+                </c:choose></td>
               <td>${list.teamCreatedDate}</td>
               <td>${list.teamViewCount}</td>
             </tr>
@@ -138,15 +80,16 @@
         </tbody>
       </table>
       <div id="in">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-              </a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-              </a></li>
+        <nav aria-label="목록 페이지 이동">
+          <ul class="pagination justify-content-center">
+            <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link"
+              href="?pageNo=${pageNo - 1}&pageSize=${pageSize}"
+              style="background-color: gray; color: white; border-color: gray;">이전</a></li>
+            <li class="page-item active"><span class="page-link"
+              style="background-color: black; color: white; border-color: gray;">${pageNo}</span></li>
+            <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}"><a class="page-link"
+              href="?pageNo=${pageNo + 1}&pageSize=${pageSize}"
+              style="background-color: gray; color: white; border-color: gray;">다음</a></li>
           </ul>
         </nav>
       </div>
@@ -157,15 +100,9 @@
 
   <jsp:include page="../javascript.jsp" />
 
-  <!-- <script>
-    var search = document.getElementById("#searchbtn");
-    var sw = document.getElementById("#searchwindow");
-    search.onclick = function () {
-      if (sw.value == "") {
-        alert('검색어를 입력하세요');
-      }
-    }
-  </script> -->
+  <script>
+			
+		</script>
 
 
 </body>
