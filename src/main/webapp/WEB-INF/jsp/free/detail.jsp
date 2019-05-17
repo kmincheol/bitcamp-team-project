@@ -127,8 +127,8 @@
           <br>
            <c:if test="${sessionScope.loginUser != null}">
           <jsp:include page="../comment/form.jsp" />
-          <jsp:include page="../comment/list.jsp" />
           </c:if>
+          <jsp:include page="../comment/list.jsp" />
         </c:otherwise>
       </c:choose>
   </div>

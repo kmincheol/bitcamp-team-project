@@ -10,7 +10,7 @@
 <html>
 <body>
 
-  <form  id="form-save" action="../comment/update" method="post">
+  
     <div class="comment-list" style="text-align: left;">
       <table class="table table-hover">
         <tbody style="left: 0px; position: absolute;">
@@ -22,7 +22,7 @@
             <div class="conts">
               <input type="text" class="no" name="no" value="${comment.no}" style="display: none;">
               <input type="text" class="cmtcontents" name="contents" value="${comment.contents}"
-                style="font-size: 20px; border: none;" readonly> <br> <br>
+                style="font-size: 20px; border: none; display:inline;" readonly> <br> <br>
 
               <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
                 <div class="btnsave">
@@ -30,9 +30,12 @@
                     href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
                   <button class="update-btn input-group-btn btn btn-dark" type="button">변경</button>
                   <div class="save-cancel" style="display: none;">
-
+                   <form id="form-save" action="../comment/update" method="post">
+                    <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'style="display:none;">
+                   <input class="form-control" id="contents" name='contents' value="${comment.contents}">
                     <button class="save-btn input-group-btn btn btn-dark">저장</button>
-                    <a class="cancel-btn input-group-btn btn btn-dark" onclick="canbtn()"
+                     </form>
+                    <a class="cancel-btn input-group-btn btn btn-dark" onclick="canbtn()" 
                       style="color: white;">취소</a>
                   </div>
                 </div>
@@ -43,7 +46,7 @@
         </tbody>
       </table>
     </div>
-  </form>
+ 
 
 
 
@@ -71,7 +74,7 @@
         $.fn.contsFunction = function(updatebtn) {
           var state = updatebtn.parent().parent().children('.cmtcontents');
           if (state.css('style') != 'none') {
-            state.attr("style", "font-size: 20px; border:2px solid black;");
+            state.attr("style", "display:none;");
           }
         };
       });

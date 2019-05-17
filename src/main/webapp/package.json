@@ -13,7 +13,8 @@
     "jqeury": "^1.0.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
-    "summernote": "^0.8.11"
+    "summernote": "^0.8.11",
+    "blueimp-file-upload": "^9.30.0"
   },
   "devDependencies": {},
   "description": ""
