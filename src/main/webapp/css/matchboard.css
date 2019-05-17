@@ -45,6 +45,7 @@ rigth: 10%;
 }
 
 #button3from {
+  position: absolute; /* /*  */ */
   top: 5px;
   position: relative;
   border-width: 0px;

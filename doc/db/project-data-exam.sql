@@ -153,6 +153,8 @@ insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_ps
 values(2,2,5,2,'야구한판','야구합시다.','2019-09-07','020101','고양경기장','ks010101','ks202020','010-4598-5456',5000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
 values(3,3,6,3,'농구한판','농구합시다.','2019-09-03','030101','인천경기장','ss010101','ss202020','010-5645-5456',20000);
+insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
+values(10,8,6,3,'농구한판','농구합시다.','2019-09-03','030101','인천경기장','ss010101','ss202020','010-5645-5456',20000);
 
 -- 경기첨부파일데이터
 insert into mtch_file(mtch_file_id,mtch_id,file_path,file_type)

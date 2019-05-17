@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MatchDao;
 import com.eomcs.lms.dao.MatchFileDao;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.MatchFile;
 import com.eomcs.lms.service.MatchBoardService;
 
 @Service
@@ -31,11 +32,15 @@ public class MatchServiceImpl implements MatchBoardService {
   @Override
   public Match get(int no) {
     Match match = matchDao.findByNo(no);
+    
+    if (match != null) {
+      matchDao.increaseCount(no);
+    }
+    
     return match;
   }
 
   
-  /*
   @Override
   public int add(Match match) {
     int count = matchDao.insert(match);
@@ -51,10 +56,8 @@ public class MatchServiceImpl implements MatchBoardService {
     
     return count;
   }
-*/
   
 
-  /*
   @Override
   public int update(Match match) {
     if(match.getFiles() != null) {  
@@ -68,28 +71,24 @@ public class MatchServiceImpl implements MatchBoardService {
     
     return matchDao.update(match);
   }
-*/
 
-  /*
   @Override
   public int delete(int no) {
     fileDao.deleteByMatchNo(no);
     return matchDao.delete(no);
   }
+
   
-  */
-  
-  /*
   @Override
   public List<Match> search(String keyword) {
     return null;
   }
-  */
 
-//  @Override
-//  public int size() {
-//    return matchDao.countAll();
-//  }
+  
+  @Override
+  public int size() {
+    return matchDao.countAll();
+  }
 
 }
 

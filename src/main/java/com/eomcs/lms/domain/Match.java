@@ -33,6 +33,7 @@ public class Match implements Cloneable, Serializable {
   private Team team;
   private TeamTypeSports teamTypeSports;
   
+  
   @Override
   public String toString() {
     return "Match [no=" + no + ", teamNo=" + teamNo + ", otherTeamNo=" + otherTeamNo

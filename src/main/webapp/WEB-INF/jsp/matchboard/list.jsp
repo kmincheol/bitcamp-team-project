@@ -27,7 +27,7 @@
   
   <jsp:include page="header.jsp" />
   
-  <div class="container">
+  <div class="container-fluid">
     <div id="match_content">
       <h2>
         등록된 <b>매치 글</b>을 검색하여 찾거나
@@ -159,22 +159,23 @@
       <!--     <th scope="row" id="subtitle" scope="col" width = 100% >신청 가능 매치</th>-->
 
       <div id="subtable">
-        <table class="table table-striped">
+        <table class="table">
           <tr>
             <td id="subtitle" colspan="3" width="100%">신청 가능 매치</td>
           </tr>
 
           <tbody>
-				<c:forEach items="${list}" var="list">
+				<c:forEach items="${matches}" var="match">
             <tr>
-                	<td id="teaminfo" class="tableline" rowspan="4" align="center">${list.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
+                	<td id="teaminfo" class="tableline" rowspan="4" align="center">${match.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
                 <br> 
-                <br> ${list.team.teamName}
+                <!-- team URL 매핑이 아직 안되있으므로 누르면 에러남. -->
+                <br> <a href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'> ${match.team.teamName} </a>
                 	</td>
-              <td id="info"><a href='${contextRootPath}/app/matchboard/${match.team.teamId}'>종목: ${list.teamTypeSports.teamSportsType}</a></td>
+              <td id="info"><a href='${contextRootPath}/app/matchboard/${match.no}'>종목: ${match.teamTypeSports.teamSportsType}</a></td>
             </tr>
             <tr>
-              <td id="info">위치: ${list.location} </td>
+              <td id="info">위치: ${match.location} </td>
              <td id="button3from" rowspan="2" align="center"> 
               <div class="button3">
               <c:if test="${!empty sessionScope.loginUser}">
@@ -191,17 +192,37 @@
              </td>
             </tr>
              <tr>
-               <td id="info">경기장: ${list.stadiumName}</td>
+               <td id="info">경기장: ${match.stadiumName}</td>
              </tr>
              <tr>
-               <td id="info" class="tableline">경기날짜: ${list.playDate}</td>
+               <td id="info" class="tableline">경기날짜: ${match.playDate}</td>
              </tr>
 			</c:forEach>
           </tbody>
           
         </table>
       </div>
-    </div>
+      
+      <nav aria-label="목록 페이지 이동">
+  <ul class="pagination justify-content-center">
+  
+    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
+    <a class="page-link" href="?pageNo=${pageNo -  1}&pageSize=${pageSize}">이전</a></li>
+    
+    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
+    <a class="page-link" href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">${pageNo <= 1 ? "-" : pageNo - 1}</a></li>
+    
+    <li class="page-item active"><span class="page-link">${pageNo}</span></li>
+    
+    <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
+    <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">${pageNo >= totalPage ? "-" : pageNo + 1}</a></li>
+    
+    <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
+      <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
+  </ul>
+    </nav>
+      
+      
   </div>  <!-- .container -->
 </body>
 

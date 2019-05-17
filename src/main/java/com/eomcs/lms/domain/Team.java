@@ -26,7 +26,7 @@ public class Team implements Cloneable, Serializable {
   private TeamTypeSports teamTypeSports;
   private Member member;
   private TeamMember teamMember;
-  
+  private MatchApply matchApply;
 
   @Override
   public String toString() {
@@ -36,9 +36,10 @@ public class Team implements Cloneable, Serializable {
         + teamEmblemPhoto + ", teamUniform=" + teamUniform + ", teamUniformPhoto="
         + teamUniformPhoto + ", teamCreateDate=" + teamCreateDate + ", teamInfoModifieDate="
         + teamInfoModifieDate + ", teamTypeSports=" + teamTypeSports + ", member=" + member
-        + ", teamMember=" + teamMember + "]";
+        + ", teamMember=" + teamMember + ", matchApply=" + matchApply + "]";
   }
 
+  
   public TeamTypeSports getTeamTypeSports() {
     return teamTypeSports;
   }
@@ -165,6 +166,14 @@ public class Team implements Cloneable, Serializable {
 
   public void setTeamInfoModifieDate(Date teamInfoModifieDate) {
     this.teamInfoModifieDate = teamInfoModifieDate;
+  }
+
+  public MatchApply getMatchApply() {
+    return matchApply;
+  }
+
+  public void setMatchApply(MatchApply matchApply) {
+    this.matchApply = matchApply;
   }
 
 
