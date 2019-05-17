@@ -39,7 +39,13 @@ public class QuestionServiceImpl implements QuestionBoardService {
     return question;
   }
   
-//  @Override
+  @Override
+  public int delete(int no) {
+    return questionDao.delete(no);
+  }
+
+  
+  //  @Override
 //  public List<TeamRecruit> list2() {
 //    // 게시물 목록을 가져오는 경우 서비스 객체에서 특별하게 할 일이 없다.
 //    // 그럼에도 불구하고 Command 객체와 DAO 사이에 Service 객체를 두기로 했으면
@@ -94,12 +100,6 @@ public class QuestionServiceImpl implements QuestionBoardService {
 //    return teamRecruitDao.update(teamRecruit);
 //  }
 //
-//  @Override
-//  public int delete(int no) {
-//    // 이 메서드도 그냥 DAO에 명령을 전달하는 일을 한다.
-//    // 그래도 항상 Command 객체는 이 Service 객체를 통해서 데이터를 처리해야 한다.
-//    return teamRecruitDao.delete(no);
-//  }
 //
 //  @Override
 //  public TeamRecruit getUpdate(int no) {

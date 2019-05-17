@@ -13,6 +13,7 @@ public interface QuestionDao {
   
   QuestionBoard findByNo(int no);
 
+  int delete(int no);
   
   //  List<TeamRecruit> findAll2();
 //  
@@ -27,7 +28,6 @@ public interface QuestionDao {
 //  
 //  int update(TeamRecruit teamRecruit);
 //  
-//  int delete(int no);
 
 //  int countAll();
 }

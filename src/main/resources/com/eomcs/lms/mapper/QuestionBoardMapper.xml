@@ -63,6 +63,15 @@
     q.qstn_id =
     #{questionNo};
   </select>
+  
+  <delete id="delete" parameterType="int">
+    delete
+   from
+    qstn
+  where 
+    qstn_id = #{questionNo}
+  </delete>
+
 
 
   <!-- <select id="findByNo2" resultMap="team" parameterType="int"> select tm.mbr_id, t.tm_id, spt_clsf_name, 

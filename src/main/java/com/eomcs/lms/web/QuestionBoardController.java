@@ -59,6 +59,13 @@ public class QuestionBoardController {
     logger.info(question); 
     return "question/detail"; 
   }
+  
+  @GetMapping("delete/{no}") 
+  public String delete(@PathVariable int no) {
+    if (questionBoardService.delete(no) == 0) throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    return "redirect:../";
+  }
+
 
   /*
    * @RequestMapping("/form") public String recruitView(Model model,HttpSession session) { Member
@@ -89,12 +96,6 @@ public class QuestionBoardController {
    * 
    * 
    * return "redirect:."; }
-   * 
-   * @GetMapping("delete/{no}") public String delete(@PathVariable int no) {
-   * 
-   * if (recruitBoardService.delete(no) == 0) throw new RuntimeException("해당 번호의 게시물이 없습니다.");
-   * 
-   * return "redirect:../"; }
    * 
    * @GetMapping("search") public void search(String keyword, Model model) { List<TeamRecruit>
    * teamRecruit = recruitBoardService.boardSearch(keyword); model.addAttribute("search",

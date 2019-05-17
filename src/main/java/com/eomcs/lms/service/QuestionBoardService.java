@@ -9,6 +9,8 @@ public interface QuestionBoardService {
 
   QuestionBoard get(int no);
 
+
+  int delete(int no);
   
   
   //
@@ -19,8 +21,6 @@ public interface QuestionBoardService {
 //  QuestionBoard getUpdate(int no);
 //
 //  int update(QuestionBoard questionBoard);
-//
-//  int delete(int no);
   
   // int size();
 }
