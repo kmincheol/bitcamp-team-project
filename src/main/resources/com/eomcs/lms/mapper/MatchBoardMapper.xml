@@ -37,14 +37,18 @@
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
 
-    <!--     
-        매치신청테이블
-     <association property="mtchaply" javaType="MatchApply">
+    <!-- 매치신청테이블 -->
+   <association property="matchApply" javaType="MatchApply">
       <id column="tm_id" property="teamNo" />
       <result column="aply_stat" property="applyStatus" />
       <result column="aply_dt" property="applyDate" />
     </association>
-    -->
+
+    <!-- 태그테이블  -->
+    <collection property="tags" ofType="Tag">
+      <id column="mtch_id"  property="matchNo"/>
+      <result column="tag_name"  property="tagName"/>
+    </collection>
 
   </resultMap>
 
@@ -52,7 +56,7 @@
    <resultMap type="Team" id="team">
      
       <id column="tm_id" property="teamId" />
-      <result column="area" property="teamArea" />
+      <result column="area" property="teamArea" />   
       <result column="name" property="teamName" />
       <result column="tm_ambl_phot" property="teamEmblemPhoto" />
 
@@ -74,7 +78,7 @@
     </association>
 
     <!-- 매치신청 테이블 -->
-    <association property="mtchaply" javaType="MatchApply">
+    <association property="matchApply" javaType="MatchApply">
       <id column="tm_id" property="teamNo" />
       <result column="aply_stat" property="applyStatus" />
       <result column="aply_dt" property="applyDate" />
@@ -84,7 +88,7 @@
 
 
 <!-- 매치보드에 더 포함될것들 -->
-<!-- 팀테이블D, 팀원테이블, 회원테이블?, 종목유형테이블D, 매치신청테이블, 태그테이블, 후기테이블, 첨부파일테이블X 위치정보테이블(위치이름) -->
+<!-- 팀테이블D, 팀원테이블, 회원테이블?, 종목유형테이블D, 매치신청테이블D, 태그테이블D, 후기테이블, 첨부파일테이블X 위치정보테이블(위치이름) -->
 
 <sql id="select1">
    select
@@ -111,10 +115,23 @@
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
   </sql>
   
+<sql id="select2"> <!-- apply를 위한 select -->
+  select
+    m.mtch_id,
+    t.tm_id,
+    m.tm_id2,
+    t.name,
+    t.tm_ambl_phot,
+    aply_stat,
+    aply_dt
+  from
+    mtch m
+    left outer join tm t on m.tm_id = t.tm_id
+    left outer join mtchaply a on m.tm_id=a.tm_id
+</sql>
   <!-- 
        tm t
        left outer join mtchaply a on t.tm_id = a.tm_id
-     이렇게 조인해야 하나?
    -->
   
   <select id="findAll" resultMap="matchMap" parameterType="map">
@@ -133,6 +150,20 @@
       mtch_id = #{value}
   </select> 
 
+
+<!--  삭제가 안된다면 db 설계를 바꿔야함. matchtb_revise 참조-->
+  <delete id="delete" parameterType="int">
+    delete from mtch
+    where mtch_id = #{no}
+  </delete>
+
+  <update id="update" parameterType="match">
+  update mtch
+    set
+    titl = #{title},
+    cont = #{contents}
+    where mtch_id = #{no}
+  </update>
 
 <select id="increaseCount" parameterType="int">
 	 update mtch

@@ -176,9 +176,9 @@
             </tr>
             <tr>
               <td id="info">위치: ${match.location} </td>
+              <c:if test="${!empty sessionScope.loginUser}">
              <td id="button3from" rowspan="2" align="center"> 
               <div class="button3">
-              <c:if test="${!empty sessionScope.loginUser}">
            		<div class="form-group pos-relative">
             	<a href='#' class="js-tooltip-trigger" id="ref">
             	<button id="btnsub" class="btn btn-primary btn-sm" role="button" aria-disabled="true">신청하기</button></a>
@@ -187,9 +187,9 @@
           		
           		</span>
        	 		</div>
-       		</c:if>
        		</div>
              </td>
+       		</c:if>
             </tr>
              <tr>
                <td id="info">경기장: ${match.stadiumName}</td>
@@ -201,9 +201,9 @@
           </tbody>
           
         </table>
-      </div>
       
-      <nav aria-label="목록 페이지 이동">
+      
+      <nav aria-label="목록 페이지 이동" id="listnum">
   <ul class="pagination justify-content-center">
   
     <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
@@ -221,8 +221,8 @@
       <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
   </ul>
     </nav>
-      
-      
+    
+    
   </div>  <!-- .container -->
 </body>
 
@@ -236,7 +236,7 @@
   	        rndID = 'ttid'+ String(Math.random()).substr(2);
   	    
   	    $ttSpan.attr('id', rndID).removeAttr('style').html('');
-  	    
+  	   
   	    $ele.popover({
   	    	trigger: 'click',
   	  		html: true,
@@ -247,10 +247,10 @@
   	  	});
   	  });
   	});
-    
+   
 		/* 유저상태로 자기가 속한 팀의 팀장이여야 하고 팀 목록을 출력해야함 */
 		/* 창의 확인, 취소 */
-		
+
     </script>
 
 

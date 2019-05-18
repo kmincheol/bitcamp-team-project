@@ -4,20 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MatchDao;
-import com.eomcs.lms.dao.MatchFileDao;
+import com.eomcs.lms.dao.TagDao;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.MatchFile;
 import com.eomcs.lms.service.MatchBoardService;
 
 @Service
 public class MatchServiceImpl implements MatchBoardService {
 
   MatchDao matchDao;
-  MatchFileDao fileDao;
+  TagDao tagDao;
 
-  public MatchServiceImpl(MatchDao matchDao, MatchFileDao fileDao) {
+  public MatchServiceImpl(MatchDao matchDao, TagDao tagDao) {
     this.matchDao = matchDao;
-    this.fileDao = fileDao;
+    this.tagDao = tagDao;
   }
 
   @Override
@@ -44,37 +43,18 @@ public class MatchServiceImpl implements MatchBoardService {
   @Override
   public int add(Match match) {
     int count = matchDao.insert(match);
-
-    if(match.getFiles().size() > 0) { // 사진파일이 있을때 추가하고 사진이 없다면 그냥 insert
-    List<MatchFile> files = match.getFiles();
-    
-    for (MatchFile f : files) {
-      f.setMatchNo(match.getNo());
-    }
-    fileDao.insert(match.getFiles());
-    }
-    
     return count;
   }
   
 
   @Override
   public int update(Match match) {
-    if(match.getFiles() != null) {  
-    List<MatchFile> files = match.getFiles();
-    
-    for (MatchFile f : files) {
-      f.setMatchNo(match.getNo());
-    }
-    fileDao.insert(match.getFiles()); 
-    }
-    
     return matchDao.update(match);
   }
 
   @Override
   public int delete(int no) {
-    fileDao.deleteByMatchNo(no);
+    tagDao.deleteByTagNo(no);
     return matchDao.delete(no);
   }
 
