@@ -57,8 +57,9 @@ public class WebAppInitializer
   @Override
   protected void customizeRegistration(Dynamic registration) {
     // 멀티파트 설정 등 기타 DispatcherServlet에 대해 설정하려면 이 메서드를 오버라이딩 하라.
+    // 파일 하나당 5MB이하/mediumtext size 최대 크기인 16MB이하/1MB이하 파일은 임시저장 안하게 설정.
     MultipartConfigElement multipartConfig = 
-        new MultipartConfigElement("/tmp", 5000000, 20000000, 1000000);
+        new MultipartConfigElement("/tmp", 5000000, 16000000, 1000000);
     registration.setMultipartConfig(multipartConfig);
   }
 }

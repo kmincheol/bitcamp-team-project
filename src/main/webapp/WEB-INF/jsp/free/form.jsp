@@ -4,14 +4,8 @@
 <!DOCTYPE html>
 <html>
 
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<link rel="stylesheet"href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet"href="${contextRootPath}/node_modules/summernote/dist/summernote.css">
 
 <head>
 <title>게시글 등록</title>
@@ -51,32 +45,34 @@
   </div>
   <!-- .container -->
   
-  <script>
-      $(document).ready(function() {
-        $('#summernote').summernote({
-          height : 300, // 에디터의 높이 
-          minHeight : null,
-          maxHeight : null,
-          focus : true,
-          lang : 'ko-KR' // 기본 메뉴언어 US->KR로 변경
-        });
-      });
+<jsp:include page="../javascript.jsp" />
+<script src="${contextRootPath}/node_modules/summernote/dist/summernote.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#summernote').summernote({
+      height : 300, // 에디터의 높이 
+      minHeight : null,
+      maxHeight : null,
+      focus : true,
+      lang : 'ko-KR' // 기본 메뉴언어 US->KR로 변경
+    });
+  });
+  
+  var postForm = function() {
+    var contents = 
+      $('textarea[name="contents"]')
+      .html($('#summernote').code());
+  } 
+</script>
 
-      var postForm = function() {
-        var contents = $('textarea[name="contents"]').html(
-            $('#summernote').code());
-      } 
-    </script>
-
-  <!-- 제목을 입력하지 않고 확인버튼을 클릭시 alert 창 띄움 -->
-  <script>
+<!-- 제목을 입력하지 않고 확인버튼을 클릭시 alert 창 띄움 -->
+<script>
     function add_click() {
     var title = document.getElementById("title").value;
     if(title.length < 1) {
     alert("제목을 입력해주세요!")
     } 
   }
-    </script>
-  <jsp:include page="../javascript.jsp" />
+</script>
 </body>
 </html>

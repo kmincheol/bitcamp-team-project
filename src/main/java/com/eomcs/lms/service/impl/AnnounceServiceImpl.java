@@ -19,15 +19,12 @@ public class AnnounceServiceImpl implements AnnounceService {
 
   AnnounceDao announceDao;
   MemberDao memberDao;
-  AnnounceFileDao fileDao;
 
   public AnnounceServiceImpl(
       AnnounceDao announceDao, 
-      MemberDao memberDao,
-      AnnounceFileDao fileDao) {
+      MemberDao memberDao) {
     this.announceDao = announceDao;
     this.memberDao = memberDao;
-    this.fileDao = fileDao;
   }
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
@@ -44,8 +41,7 @@ public class AnnounceServiceImpl implements AnnounceService {
   
   @Override
   public Announce get(int no) {
-
-    Announce announce = announceDao.findByNoWithFile(no);
+    Announce announce = announceDao.findByNo(no);
     if (announce != null) {
       announceDao.increaseCount(no);
     }
@@ -55,18 +51,6 @@ public class AnnounceServiceImpl implements AnnounceService {
   @Override
   public int add(Announce announce) {
     int count = announceDao.insert(announce);
-
-    if(announce.getFiles().size() > 0) { // 사진파일이 있을때 추가하고 사진이 없다면 그냥 insert
-    List<AnnounceFile> files = announce.getFiles();
-    
-    
-    for (AnnounceFile f : files) {
-      f.setAnnounceNo(announce.getNo());
-    }
-
-    fileDao.insert(announce.getFiles());
-    }
-    
     return count;
   }
 
@@ -74,23 +58,11 @@ public class AnnounceServiceImpl implements AnnounceService {
   
   @Override
   public int update(Announce announce) { 
-// 기존 사진이 없는게시물에서 사진을 추가할때 or 사진 변경할때
-    
-    if(announce.getFiles() != null) {  
-    List<AnnounceFile> files = announce.getFiles();
-    
-    for (AnnounceFile f : files) {
-      f.setAnnounceNo(announce.getNo());
-    }
-    fileDao.update(announce.getFiles()); 
-    } 
-    
     return announceDao.update(announce);
   }
 
   @Override
   public int delete(int no) {
-    fileDao.deleteByAnnounceNo(no);
     return announceDao.delete(no);
   }
 

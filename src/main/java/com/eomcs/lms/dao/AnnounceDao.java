@@ -8,7 +8,6 @@ public interface AnnounceDao {
   int insert(Announce announce);
   List<Announce> findAll(Map<String,Object> params);
   Announce findByNo(int no);
-  Announce findByNoWithFile(int no);
   int increaseCount(int no);
   int update(Announce announce);
   int delete(int no);

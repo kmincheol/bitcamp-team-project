@@ -25,7 +25,7 @@
       <div id="header-cate">
         <div>
           <ul class="nav justify-content-center">
-            <div class="header-category">
+            <div class="header-category"> 
               <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
             </div>
             <div class="header-category">

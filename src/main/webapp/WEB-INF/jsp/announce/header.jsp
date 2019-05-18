@@ -28,8 +28,7 @@
         <a class="btn btn-success btn-sm" href='${contextRootPath}/app/auth/form'>로그인</a>
       </c:if>
       <c:if test="${not empty loginUser}">
-        <img src='${contextRootPath}/upload/member/${loginUser.photo}' 
-             style='height:20px;'>${loginUser.name}
+  
         <a class="btn btn-dark btn-sm" href='${contextRootPath}/app/auth/logout'>로그아웃</a> 
       </c:if>
     </div>

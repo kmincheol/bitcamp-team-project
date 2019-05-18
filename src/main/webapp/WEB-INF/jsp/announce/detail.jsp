@@ -2,13 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<html lang="ko">
 <html>
 <head>
 <title>공지사항게시판</title>
-<!-- <jsp:include page="../commonCss.jsp" /> -->
-<link rel="stylesheet"
-	href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<jsp:include page="../commonCss.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
 <body>
@@ -19,7 +17,7 @@
 
 		<c:choose>
 			<c:when test="${empty announce}">
-				<p>해당 사진을 찾을 수 없습니다.</p>
+				<p>해당 게시물을 찾을 수 없습니다.</p>
 			</c:when>
 
 			<c:otherwise>
@@ -60,32 +58,9 @@
 					<div class="form-group row">
 						<label for="contents" class="col-sm-2 col-form-label">내용</label>
 						<div class="col-sm-8">
-							<textarea class="form-control" id="contents" name='contents'
-								rows='5' readonly>${announce.contents}</textarea>
+							<p>${announce.contents}</p>
 						</div>
 					</div>
-
-					<c:forEach items="${announce.files}" var="file">
-						<div id="divphoto">
-						<a href='${contextRootPath}/upload/member/${member.photo}' data-toggle="modal" data-target="#bit-announce-${file.filePath}">
-							<img class="img-polaroid" src='${contextRootPath}/upload/announce/${file.filePath}' 
-								onerror="this.style.display='none'">
-						</a>
-						</div>
-                <!-- Modal -->
-                <div class="modal fade bd-example-modal-xl" id="bit-announce-${file.filePath}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                          <img src='${contextRootPath}/upload/announce/${file.filePath}' class="img-thumbnail"/>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-					</c:forEach>
 
 					<label id="space"></label>
 
@@ -108,11 +83,8 @@
 		</c:choose>
 
 	</div>
-	<script>
-		
-	</script>
 
-	<jsp:include page="../javascript.jsp" />
+<jsp:include page="../javascript.jsp" />
 </body>
 </html>
 

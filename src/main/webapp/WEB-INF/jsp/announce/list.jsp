@@ -6,12 +6,9 @@
 <html>
 <head>
 <title>공지사항 게시판</title>
-	<meta charset="UTF-8">
-   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
+<jsp:include page="../commonCss.jsp" />
+<link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
 
 <body>
@@ -24,7 +21,7 @@
 <c:if test="${!empty sessionScope.loginUser}">
 <c:if test="${sessionScope.loginUser.manager}">
     <p>
-      <a href='${contextRootPath}/app/announce/form.jsp' class="btn btn-primary btn-sm" >새 글</a>
+      <a href='${contextRootPath}/app/announce/form' class="btn btn-primary btn-sm" >새 글</a>
     </p>
 </c:if>    
 </c:if>
