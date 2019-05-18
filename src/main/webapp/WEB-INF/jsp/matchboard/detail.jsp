@@ -23,7 +23,7 @@
         <div class="form-group row">
           <label for="no" class="col-sm-2 col-form-label">번호</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamNo" id="no"
+            <input type="text" class="form-control" name="matchNo" id="no"
               value="${match.no}" readonly />
           </div>
         </div>
@@ -71,7 +71,7 @@
         <div class="form-group row">
           <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamViewCount" id="viewCount"
+            <input type="text" class="form-control" name="matchViewCount" id="viewCount"
               value="${match.viewCount}" readonly />
           </div>
         </div>
@@ -79,13 +79,18 @@
         <div class="form-group row">
           <div class="col-sm-10">
             <a class="btn btn-primary" href='${contextRootPath}/app/matchboard'>목록</a> 
+              
+              <c:if test="${!empty sessionScope.loginUser}">
               <a href='${contextRootPath}/app/matchboard' id="btnsub"
                class="btn btn-primary" role="button" aria-disabled="true">신청하기</a>
-            
-            
-<%--             <a class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a>
+            </c:if>
+            <!-- 해당 팀의 팀장이 자기가 쓴 매칭글에서는 신청하기 버튼이 보이지 않아야함. 혹은 신청할수 없게 막아야함 -->
+
+
+            <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
+             <a class="btn btn-primary" href='delete/${match.no}'>삭제</a>
               <a class="btn btn-primary"
-              href='${contextRootPath}/app/matchboard/update/${teamRecruit.teamNo}'>변경</a> --%>
+              href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
           </div>
         </div>
       </form>

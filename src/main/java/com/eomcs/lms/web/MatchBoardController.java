@@ -1,10 +1,7 @@
 package com.eomcs.lms.web;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.MatchFile;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
 
@@ -40,8 +36,7 @@ public class MatchBoardController {
       if (pageSize < 5 || pageSize > 6)
         pageSize = 5;
 
-//      int rowCount = matchBoardService.size();
-      int rowCount = 1;
+      int rowCount = matchBoardService.size();
       int totalPage = rowCount / pageSize;
         if (rowCount % pageSize > 0)
         totalPage++;
@@ -78,28 +73,7 @@ public class MatchBoardController {
   }
   
   @PostMapping("add")
-  public String add(Match match, Part[] photo) throws Exception {
-
-    ArrayList<MatchFile> files = new ArrayList<>();
-
-    String uploadDir = servletContext.getRealPath(
-        "/upload/match");
-    
-     if (photo != null) {
-    for (Part part : photo) {
-      if (part.getSize() == 0) 
-        continue;
-
-      String filename = UUID.randomUUID().toString();
-      part.write(uploadDir + "/" + filename);
-
-      MatchFile file = new MatchFile();
-      file.setFilePath(filename);
-      files.add(file);
-    }
-    match.setFiles(files);
-     }
-    
+  public String add(Match match) throws Exception {
     if (match.getTitle().length() == 0) {
       return "match/form";
     } else {
@@ -110,14 +84,17 @@ public class MatchBoardController {
   
   @PostMapping("update")
   public String update(Match match) {
+    logger.debug(match);
+    
     if (matchBoardService.update(match) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     return "redirect:.";
   }
   
-  
+  // 키 참조때문에 삭제 안되면 matchtb_revise.sql 파일 참조.
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no) {
+    
     if (matchBoardService.delete(no) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
 

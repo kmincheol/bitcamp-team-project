@@ -28,10 +28,10 @@ public class Match implements Cloneable, Serializable {
   private String telephone;
   private int cost;
   
-  private List<MatchFile> files;
-  
   private Team team;
   private TeamTypeSports teamTypeSports;
+  private MatchApply matchApply;
+  private List<Tag> tags;
   
   
   @Override
@@ -41,8 +41,9 @@ public class Match implements Cloneable, Serializable {
         + ", viewCount=" + viewCount + ", createdDate=" + createdDate + ", modifierDate="
         + modifierDate + ", playDate=" + playDate + ", location=" + location + ", stadiumName="
         + stadiumName + ", stadiumLatitude=" + stadiumLatitude + ", stadiumLongitude="
-        + stadiumLongitude + ", telephone=" + telephone + ", cost=" + cost + ", files=" + files
-        + ", team=" + team + ", teamTypeSports=" + teamTypeSports + "]";
+        + stadiumLongitude + ", telephone=" + telephone + ", cost=" + cost + ", team=" + team
+        + ", teamTypeSports=" + teamTypeSports + ", matchApply=" + matchApply + ", tag=" + tags
+        + "]";
   }
   
   
@@ -159,12 +160,18 @@ public class Match implements Cloneable, Serializable {
     this.teamTypeSports = teamTypeSports;
   }
 
-  public List<MatchFile> getFiles() {
-    return files;
+  public MatchApply getMatchApply() {
+    return matchApply;
+  }
+  public void setMatchApply(MatchApply matchApply) {
+    this.matchApply = matchApply;
+  }
+  public List<Tag> getTags() {
+    return tags;
+  }
+  public void setTags(List<Tag> tags) {
+    this.tags = tags;
   }
 
-  public void setFiles(List<MatchFile> files) {
-    this.files = files;
-  }
   
 }

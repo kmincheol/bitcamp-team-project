@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.eomcs.lms.dao.TagDao">
+  
+  <resultMap type="tag" id="tagMap">
+    <id column="mtch_tag_id"  property="no"/>
+    <result column="mtch_id"   property="matchNo"/>
+    <result column="mbr_id"  property="memberNo"/>
+    <result column="tag_name"  property="tagName"/>
+  </resultMap>
+  
+  <select id="findByTagNo" resultMap="tagMap" parameterType="int">
+    select 
+      mtch_tag_id, 
+      mtch_id, 
+      mbr_id,
+      tag_name
+    from 
+      mtch_tag
+    where 
+      mtch_tag_id = #{value}
+    order by 
+      mtch_tag_id asc
+  </select>
+  
+  <insert id="insert" parameterType="list">
+    insert into mtch_tag(
+      tag_name
+    values
+    <foreach collection="list" item="tag">
+      #{tag.tagName}
+    </foreach>
+    
+  </insert>
+  
+  
+  <delete id="deleteByTagNo" parameterType="int">
+    delete from mtch_tag
+    where mtch_tag_id = #{value}
+  </delete>
+  
+
+<!--업데이트가 필요한가? 태그는 삭제하면 그만이지 않을까?
+  <update id="update" parameterType="list">
+  </update>
+   -->      
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+

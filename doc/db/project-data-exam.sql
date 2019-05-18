@@ -83,11 +83,6 @@ insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(8,'롤게임','030101','40','3','3','3');
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
 
 -- 팀원데이터
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)

@@ -1,31 +1,39 @@
 package com.eomcs.lms.domain;
 import java.io.Serializable;
-import java.sql.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Tag implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
 
   private int no;
-  private int postNo;
+  private int matchNo;
+  private int memberNo;
   private String tagName;
-  
+
   
   @Override
   public String toString() {
-    return "Tag [no=" + no + ", postNo=" + postNo + ", tagName=" + tagName + "]";
+    return "Tag [no=" + no + ", matchNo=" + matchNo + ", memberNo=" + memberNo + ", tagName="
+        + tagName + "]";
   }
+  
+  
   public int getNo() {
     return no;
   }
   public void setNo(int no) {
     this.no = no;
   }
-  public int getPostNo() {
-    return postNo;
+  public int getMatchNo() {
+    return matchNo;
   }
-  public void setPostNo(int postNo) {
-    this.postNo = postNo;
+  public void setMatchNo(int matchNo) {
+    this.matchNo = matchNo;
+  }
+  public int getMemberNo() {
+    return memberNo;
+  }
+  public void setMemberNo(int memberNo) {
+    this.memberNo = memberNo;
   }
   public String getTagName() {
     return tagName;
@@ -33,6 +41,7 @@ public class Tag implements Cloneable, Serializable {
   public void setTagName(String tagName) {
     this.tagName = tagName;
   }
+  
   
   
   
