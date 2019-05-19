@@ -90,9 +90,6 @@ $(document).ready(function() {
   })
 });
 
-<<<<<<< HEAD
-  <script>
-=======
 function checkTerms() {
   var res = true;
   
@@ -108,11 +105,7 @@ function checkTerms() {
     alert("지역과 팀을 선택해주세요!");
     res = false;
   }
->>>>>>> refs/heads/freeboard
 
-<<<<<<< HEAD
-		</script>
-=======
   if (titleCheck.length <= 0 ||
       contentsCheck.length <= 0 ||
       areaSelect.length <= 0 ||
@@ -121,7 +114,6 @@ function checkTerms() {
     alert("필수 내용을 모두 입력해주세요!");
     res = false;
   }
->>>>>>> refs/heads/freeboard
 
   return res;
 }
