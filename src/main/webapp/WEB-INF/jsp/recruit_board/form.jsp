@@ -75,21 +75,7 @@
 
 
   <script>
-	/*  	function setValues() {
-				var sh = document.getElementById("select1");
-				var sh2 = document.getElementById("select2");
-				var tt = document.getElementById("textTime");
-<<<<<<< HEAD
-				tt.value = sh.options[sh.selectedIndex].value;
-				sh2.value = sh.options[sh.selectedIndex].text;
 
-			}
-=======
-			    var tt2 = document.getElementById("textTime2");
-				tt.value = sh2.options[sh2.selectedIndex].value;
-				
-			}  */
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
 		</script>
 
 
