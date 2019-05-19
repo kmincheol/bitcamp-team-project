@@ -53,7 +53,6 @@ public class RecruitBoardController {
 
 
   @PostMapping("add")
-
   public String add(TeamRecruit teamRecruit, HttpSession session, TeamMember tm) {
     Member member = (Member) session.getAttribute("loginUser");
     teamRecruit.setTeamId(teamRecruit.getTeam().getTeamId());

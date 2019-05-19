@@ -58,7 +58,7 @@
 					<div class="form-group row">
 						<label for="contents" class="col-sm-2 col-form-label">내용</label>
 						<div class="col-sm-8">
-							<p>${announce.contents}</p>
+							<p id="detail_contents">${announce.contents}</p>
 						</div>
 					</div>
 

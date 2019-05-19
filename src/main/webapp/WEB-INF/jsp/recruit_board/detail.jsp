@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board.css">
 </head>
 
 <body>
@@ -66,18 +65,17 @@
         </div>
 
         <div class="form-group row">
-          <label for="contents" class="col-sm-2 col-form-label">내용</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamContents" id="contents"
-              value="${teamRecruit.teamContents}" readonly />
-          </div>
-        </div>
-
-        <div class="form-group row">
           <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="teamViewCount" id="viewCount"
               value="${teamRecruit.teamViewCount}" readonly />
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="contents" class="col-sm-2 col-form-label">내용</label>
+          <div class="col-sm-10">
+            <p>${teamRecruit.teamContents}</p>
           </div>
         </div>
 

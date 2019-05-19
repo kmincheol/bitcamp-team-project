@@ -105,7 +105,7 @@
             </div>
 
             <div style="text-align: center;">
-              <div>${free.contents}</div>
+              <p>${free.contents}</p>
             </div>
 
             <hr><br>

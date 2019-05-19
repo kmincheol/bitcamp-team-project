@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.FreeDao;
-import com.eomcs.lms.dao.FreeFileDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.service.FreeService;
@@ -18,15 +17,12 @@ public class FreeServiceImpl implements FreeService {
 
   FreeDao freeDao;
   MemberDao memberDao;
-  FreeFileDao fileDao;
 
   public FreeServiceImpl(
       FreeDao freeDao, 
-      MemberDao memberDao,
-      FreeFileDao fileDao) {
+      MemberDao memberDao) {
     this.freeDao = freeDao;
     this.memberDao = memberDao;
-    this.fileDao = fileDao;
   }
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
@@ -60,15 +56,7 @@ public class FreeServiceImpl implements FreeService {
   
   @Override
   public int add(Free free) {
-    
     int count = freeDao.insert(free);
-    
-//    List<FreeFile> files = free.getFiles();
-//    for (FreeFile f : files) {
-//      f.setFreeNo(free.getNo());
-//    }
-
-  //  fileDao.insert(free.getFiles());
 
     return count;
   }
@@ -90,7 +78,6 @@ public class FreeServiceImpl implements FreeService {
 
   @Override
   public int delete(int no) {
-    fileDao.deleteByFreeNo(no);
     return freeDao.delete(no);
   }
 
