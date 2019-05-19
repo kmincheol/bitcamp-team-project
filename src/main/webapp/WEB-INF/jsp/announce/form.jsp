@@ -16,12 +16,12 @@
     <h3>글 쓰기</h3>
     <hr>
     <br>
-    <form action='add' method='post' enctype='multipart/form-data'>
+    <form id='add_form' action='add' method='post'>
 
       <div class="form-group row">
         <label for="title" class="col-sm-2 col-form-label">제목</label>
         <div class="col-sm-2">
-          <input class="form-control" id="title" name='title'>${announce.title}
+          <input class="form-control" id="title" name='title'>
         </div>
       </div>
 
@@ -54,11 +54,54 @@ $(document).ready(function() {
     maxHeight: null,
     focus: true
   });
+  
+  $('#add').click((e) =>{
+    submitAgree();
+    return false;
+  })
 });
 
+function checkTerms() {
+  var res = true;
+  var titleStr = $('#title').val();
+  var titleCheck = $.trim(titleStr);
+  var contentsStr = $('#summernote').summernote('code');
+  var contentsCheck = $.trim($('#summernote').val());
+
+  if (titleCheck.length <= 0 ||
+      contentsCheck.length <= 0) {
+    alert("내용을 입력해주세요!");
+    res = false;
+  }
+
+  return res;
+}
+
+function submitAgree() {
+  if (checkTerms() != true) {
+    return false;
+  }
+
+  $("#add_form").submit();
+  return true;
+}
+
+/*
 $('#add').click((e) =>{
   e.preventDefault();
-  var xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest(); 
+  xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            location.href = '.'
+          } else {
+            alert("실행 오류 입니다!");
+          }
+      }
+  };
+  xhr.open("POST", "add", true);
+  xhr.setRequestHeader("Content-type", "application/json");
+  
   var titleStr = $('#title').val();
   var titleCheck = $.trim(titleStr);
   if (titleCheck.length <= 0) {
@@ -75,20 +118,9 @@ $('#add').click((e) =>{
   aJson.title = titleStr;
   aJson.contents = contentsStr;
   var sJson = JSON.stringify(aJson);
-  xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4) {
-          if (xhr.status == 200) {  
-            alert("저장되었습니다!");
-            location.href = '.'
-          } else {
-            alert("실행 오류 입니다!");
-          }
-      }
-  };
-  xhr.open("POST", "../../app/announce/add", true);
-  xhr.setRequestHeader("Content-type", "application/json");
+  
   xhr.send(sJson);
-});
+});*/
 </script>
 </body>
 </html>

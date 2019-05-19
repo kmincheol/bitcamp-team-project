@@ -3,7 +3,6 @@ package com.eomcs.lms.web;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,28 +92,23 @@ public class FreeController {
   }
 
   @PostMapping("add")
-  public String add(Free free, Part[] photo,HttpSession session) throws Exception {
+  public String add(Free free, HttpSession session) {
 
-    if (free.getTitle().length() == 0) {
-      return "free/form";
-
-    } else {
       Member member = (Member) session.getAttribute("loginUser");
       free.setMemberNo(member.getNo());
       free.setMember(member);
       
       freeService.add(free);
-      
      
       return "redirect:.";
-    }
   }
 
 
   @PostMapping("update")
   public String update(Free free) {
-    if (freeService.update(free) == 0) 
-      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+
+    freeService.update(free); 
+    
     return "redirect:.";
   }
 

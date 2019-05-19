@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Announce;
@@ -77,7 +76,7 @@ public class AnnounceController {
   }
 
   @PostMapping("add")
-  public String add(@RequestBody Announce announce, HttpSession session) throws Exception {
+  public String add(Announce announce, HttpSession session) throws Exception {
     Member member = (Member) session.getAttribute("loginUser");
     announce.setMemberNo(member.getNo());
     announce.setMember(member);
@@ -87,14 +86,14 @@ public class AnnounceController {
   }
 
   @PostMapping("update")
-  public String update(@RequestBody Announce announce, HttpSession session) throws IOException {
+  public String update(Announce announce, HttpSession session) throws IOException {
     
     Member member = (Member) session.getAttribute("loginUser");
     announce.setMemberNo(member.getNo());
     announce.setMember(member);
     
     announceService.update(announce);
-    return "redirect:.";
+    return "redirect:../";
   }
 
   @GetMapping("delete/{no}")

@@ -2,7 +2,7 @@
 
 body {
   font-size: small; 
-   text-align: center;
+  text-align: center;
 }
 
 div.container {
@@ -16,7 +16,7 @@ p {
 
 #searchspace {
 	margin: 0px 0px 0px 50px;
-    padding-left: 60px;
+  padding-left: 60px;
 }
 
 #inputGroupSelect01 {
@@ -38,10 +38,14 @@ p {
 }
 
 .col-sm-5 {
-    height: 77px;
-    padding: 0px 5px 0px 10px;
+  height: 77px;
+  padding: 0px 5px 0px 10px;
 }
 
 .form-inline my-2 my-lg-0 justify-content {
-	padding: 0px 200px 20px 0px;
+  padding: 0px 200px 20px 0px;
+}
+
+#detail_contents {
+  text-align: center;
 }
