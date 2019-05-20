@@ -12,12 +12,12 @@
 
 
   <div class="container">
-    <form  action='../update' method='post' >
+    <form action='../update' method='post' >
 
       <div class="form-group row">
         <label for="no" class="col-sm-2 col-form-label">번호</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="matchNo" id="no"
+          <input type="text" class="form-control" name="no" id="no"
             value="${match.no}" readonly/>
         </div>
       </div>
@@ -49,7 +49,7 @@
       <div class="form-group row">
         <label for="title" class="col-sm-2 col-form-label">제목</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamTitle" id="title"
+          <input type="text" class="form-control" name="title" id="title"
             value="${match.title}" />
         </div>
       </div>
@@ -57,7 +57,7 @@
       <div class="form-group row">
         <label for="contents" class="col-sm-2 col-form-label">내용</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamContents" id="contents"
+          <input type="text" class="form-control" name="contents" id="contents"
             value="${match.contents}" />
         </div>
       </div>

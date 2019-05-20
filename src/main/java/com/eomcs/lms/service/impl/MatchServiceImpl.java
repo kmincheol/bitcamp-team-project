@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MatchDao;
 import com.eomcs.lms.dao.TagDao;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.Tag;
 import com.eomcs.lms.service.MatchBoardService;
 
 @Service
@@ -35,14 +36,26 @@ public class MatchServiceImpl implements MatchBoardService {
     if (match != null) {
       matchDao.increaseCount(no);
     }
-    
     return match;
   }
 
   
   @Override
+  public List<Match> teamInfoGet(int no) {
+    return matchDao.teamInfoGet(no);
+  }
+  
+  
+  @Override
   public int add(Match match) {
     int count = matchDao.insert(match);
+    
+    List<Tag> tags = match.getTags();
+    for (Tag t : tags) {
+      t.setMatchNo(match.getNo());
+    }
+    tagDao.insert(match.getTags());
+    
     return count;
   }
   
@@ -69,6 +82,8 @@ public class MatchServiceImpl implements MatchBoardService {
   public int size() {
     return matchDao.countAll();
   }
+
+
 
 }
 

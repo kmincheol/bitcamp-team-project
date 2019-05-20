@@ -30,6 +30,19 @@
     <result column="mgr"  property="manager"/>
   </resultMap>
   
+  <sql id="select1">  
+  Select 
+    s.name,
+    t.tlead_wth
+  from
+    mbr m 
+    left outer join tm_mbr t on m.mbr_id = t.mbr_id
+    left outer join tm s on t.tm_mbr_id = s.tm_id 
+  where
+    m.mbr_id = #{value};
+  </sql>
+  
+  
   <sql id="default-columns">
       mbr_id, 
       name, 

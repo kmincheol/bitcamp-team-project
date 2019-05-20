@@ -50,7 +50,7 @@
       <result column="tag_name"  property="tagName"/>
     </collection>
 
-  </resultMap>
+ </resultMap>
 
 
    <resultMap type="Team" id="team">
@@ -84,13 +84,40 @@
       <result column="aply_dt" property="applyDate" />
     </association>
 
-  </resultMap>
+ </resultMap>
+
+
+   <resultMap type="Member" id="member">
+     
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+
+  <!-- 팀테이블 -->
+    <association property="team" javaType="Team">
+      <id column="tm_id" property="teamId" />
+      <result column="name" property="teamName" />
+      <result column="area" property="teamArea" />
+    </association>
+
+  <!-- 팀원테이블 -->
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMember_id" />
+      <result column="tlead_wth" property="team_leader" />
+    </association>
+
+  <!-- 회원테이블 -->
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+    </association>
+
+ </resultMap>
 
 
 <!-- 매치보드에 더 포함될것들 -->
 <!-- 팀테이블D, 팀원테이블, 회원테이블?, 종목유형테이블D, 매치신청테이블D, 태그테이블D, 후기테이블, 첨부파일테이블X 위치정보테이블(위치이름) -->
 
-<sql id="select1">
+<sql id="select1"> <!-- 매치정보를 위한 select -->
    select
     mtch_id,
     m.tm_id,
@@ -129,11 +156,19 @@
     left outer join tm t on m.tm_id = t.tm_id
     left outer join mtchaply a on m.tm_id=a.tm_id
 </sql>
-  <!-- 
-       tm t
-       left outer join mtchaply a on t.tm_id = a.tm_id
-   -->
-  
+   
+<sql id="select3">
+  select
+    m.mtch_id,
+    tag_name
+  from
+    mtch m
+    left outer join mtch_tag t on m.mtch_id = t.mtch_id
+</sql>
+   
+   <!-- 회원번호가 value일때의 팀테이블에서 팀의 이름과 팀원테이블에서 리더정보를 가져옴 -->
+   
+   
   <select id="findAll" resultMap="matchMap" parameterType="map">
 	<include refid="select1"/>
     order by
@@ -144,11 +179,47 @@
   </select>
 
 
+  <select id="teamInfoGet" resultMap="matchMap" parameterType="int">
+    Select 
+      s.name,
+      s.tm_id,
+      s.area,
+      t.tlead_wth
+    from
+      mbr m
+      left outer join tm_mbr t on m.mbr_id = t.mbr_id
+      left outer join tm s on t.tm_mbr_id = s.tm_id 
+    where
+      m.mbr_id = #{value};
+  </select>
+
+
 <select id="findByNo" resultMap="matchMap" parameterType="int">
     <include refid="select1"/>
     where 
       mtch_id = #{value}
   </select> 
+
+ <insert id="insert" parameterType="match"
+          useGeneratedKeys="true" keyColumn="mtch_id" keyProperty="no">
+    insert into mtch(
+      tm_id,
+      game_dt,
+      area,
+      cost,
+      titl,
+      cont,
+      tel)
+    values(
+      #{teamNo},
+      #{playDate},
+      #{location},
+      #{cost},
+      #{title},
+      #{contents},
+      #{telephone})
+  </insert>
+
 
 
 <!--  삭제가 안된다면 db 설계를 바꿔야함. matchtb_revise 참조-->

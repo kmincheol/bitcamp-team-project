@@ -170,7 +170,7 @@
                 	<td id="teaminfo" class="tableline" rowspan="4" align="center">${match.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
                 <br> 
                 <!-- team URL 매핑이 아직 안되있으므로 누르면 에러남. -->
-                <br> <a href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'> ${match.team.teamName} </a>
+                <br> <a href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'> ${match.team.teamName}<br> 아직 팀 페이지가 없습니다. </a>
                 	</td>
               <td id="info"><a href='${contextRootPath}/app/matchboard/${match.no}'>종목: ${match.teamTypeSports.teamSportsType}</a></td>
             </tr>

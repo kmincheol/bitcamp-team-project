@@ -2,6 +2,7 @@ package com.eomcs.lms.web;
 
 import java.util.List;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Tag;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
 
@@ -26,6 +29,22 @@ public class MatchBoardController {
   @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   
+  @GetMapping("form")
+  public void form(Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    if (member == null) {
+      throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
+    }
+    
+  List<Match> matches = (List<Match>) matchBoardService.teamInfoGet(member.getNo());
+     logger.debug(matches);
+   
+//    @SuppressWarnings("unchecked")
+//    List<Team> teams = (List<Team>) teamService.getTeam(member.getNo()); 
+    
+    model.addAttribute("member", member); 
+    model.addAttribute("match",matches); 
+  }
   
   @GetMapping
   public String list(
@@ -59,7 +78,6 @@ public class MatchBoardController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     Match match = matchBoardService.get(no);
-    logger.debug(match);
     model.addAttribute("match", match);
     return "matchboard/detail";
   }
@@ -74,12 +92,13 @@ public class MatchBoardController {
   
   @PostMapping("add")
   public String add(Match match) throws Exception {
-    if (match.getTitle().length() == 0) {
-      return "match/form";
-    } else {
-      matchBoardService.add(match);
-      return "redirect:.";
+    if(match.getLocation() == null) {
+      match.setLocation(teamService.getTeam(match.getNo()).getTeamInfo());
     }
+    logger.debug(match);
+    
+    matchBoardService.add(match);
+      return "redirect:.";
   }
   
   @PostMapping("update")
@@ -108,6 +127,8 @@ public class MatchBoardController {
 //  }
 
 
+  
+  
 }
 
 
