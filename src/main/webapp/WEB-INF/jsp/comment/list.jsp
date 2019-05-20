@@ -26,17 +26,16 @@
 
               <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
                 <div class="btnsave">
-                  <a class="input-group-btn btn btn-dark"
-                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
                   <button class="update-btn input-group-btn btn btn-dark" type="button">변경</button>
                   <div class="save-cancel" style="display: none;">
                    <form id="form-save" action="../comment/update" method="post">
                     <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'style="display:none;">
-                   <input class="form-control" id="contents" name='contents' value="${comment.contents}">
+                   <textarea class="form-control" id="contents" name='contents'>${comment.contents}</textarea>
+                  <a class="input-group-btn btn btn-dark"
+                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
                     <button class="save-btn input-group-btn btn btn-dark">저장</button>
                      </form>
-                    <a class="cancel-btn input-group-btn btn btn-dark" onclick="canbtn()" 
-                      style="color: white;">취소</a>
+                    <a class="cancel-btn input-group-btn btn btn-dark" style="color: white;">취소</a>
                   </div>
                 </div>
               </c:if>
@@ -51,9 +50,6 @@
 
 
   <script type="text/javascript">
-      $('.update-btn').on('click', function() {
-        $('.cmtcontents').removeAttr('readonly');
-      })
 
       $(document).ready(function() {
         $('.update-btn').click(function() {
