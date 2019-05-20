@@ -11,7 +11,7 @@
 
 <body>
 
-  <!--<jsp:include page="../header.jsp" />-->
+  <jsp:include page="../header.jsp" />
 
   <div class="container">
     <h1>자유게시판</h1>
