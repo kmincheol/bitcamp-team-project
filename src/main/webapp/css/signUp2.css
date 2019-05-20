@@ -47,6 +47,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   column-rule-style: solid;
   column-rule-width: 1px;
   margin-top: 50px;
+  height: 900px;
 }
 .terms_choice {
   font-size: 12px;
@@ -63,3 +64,35 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
 .join_row .green{
   color:#08A600
 }
+.join_form_left{
+	height:900px;
+}
+.join_form_right{
+  height:900px;
+}
+.ps_box.focus{
+	border:solid 1px #08a600
+}
+.ps_box{
+	padding:11px
+}
+.green{
+	color:#08A600
+}
+.error{
+	display:block;
+	margin:8px 0 -1px;
+	font-size:12px;
+	line-height:14px;
+	color:red
+}
+.error_next_box{
+	display:block;
+	margin:9px 0 -2px;
+	font-size:12px;
+	line-height:14px;
+	color:red
+}
+
+
+

@@ -26,6 +26,17 @@
 
     <div class="join_content">
       <form id="join_form" action=""> <!-- 만약 form부분에 key들을 js로 추가하고 싶다면 .container위로 올리고 그 사이에 넣을것. -->
+        <input type="hidden" id="token_sjoin" name="token_sjoin" value="QWozbUyMlxRp2eN3">
+        <!--
+          <input type="hidden" id="encPswd" name="encPswd" value="">
+          <input type="hidden" id="encKey" name="encKey" value="">
+          <input type="hidden" id="joinMode" name="joinMode" value="unreal">
+          <input type="hidden" id="pbirthday" name="pbirthday" value="">
+          <input type="hidden" id="ipinFlag" name="ipinFlag" value="">
+          <input type="hidden" id="nid_kb2" name="nid_kb2" value="">
+        -->
+        <input type="hidden" id="birthday" name="birthday" value="">
+      
         <div class="join_form">
           <div class="join_form_left">
             <!-- id, password -->
@@ -54,7 +65,7 @@
                 <h3 class="join_title">
                   <label for="pswd2">비밀번호 재확인</label>
                 </h3>
-                <span class="ps box int_pass_check" id="pwd2Img">
+                <span class="ps_box int_pass_check" id="pwd2Img">
                   <input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 재확인 입력" aria-describedby="pswd2Blind" maxlength="20">
                   <span id="pswd2Blind" class="wa_blind">설정하려는 비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.
                   </span>
@@ -202,7 +213,7 @@
                   <label for="self_introduce">자기소개<span class="terms_choice">(선택)</span></label>
                 </h3>
                 <div class="self_introduce_area">
-                  <textarea class="self_introduce" id="self_introduce" placeholder="간단한 자기소개를 입력해주세요." rows="5" cols="30"></textarea>
+                  <textarea class="ps_box self_introduce" id="self_introduce" placeholder="간단한 자기소개를 입력해주세요." rows="5" cols="30"></textarea>
                 </div>
               </div>
             </div><!-- .row_group -->
@@ -221,127 +232,643 @@
 <jsp:include page="../javascript.jsp"/>
 <script>
 "use strict"
+
+// id, pw, auth check Boolean
+var idFlag = false;
+var pwFlag = false;
+var authFlag = false;
+
 $(document).ready(function() {
+ defaultScript();
 
-  $("#chk_all").prop("checked",false);
-    setTerms();
-    
-  $("#chk_all").click(function() {
-    setTerms();
-    location.hash = '#btnAgree';
-  })
+ if ($('#yy').val() != "") {
+   checkBirthday();
+ }
 
-  $("#termsService").click(function() {
-    viewTerms();
-  })
+ $('#id').blur(function() {
+  idFlag = false;
+  checkId("first");
+ });
 
-  $("#termsPrivacy").click(function() {
-    viewTerms();
-  })
+ $('#pswd1').blur(function() {
+   pwFlag = false;
+   checkPswd1();
+ }).keyup(function(event) {
+   checkShiftUp(event);
+ }).keypress(function(event) {
+   checkCapslock(event);
+ }).keydown(function(event) {
+   checkShiftDown(event);
+ });
 
-  $("#termsThirdParty").click(function() {
-    viewTerms();
-  })
+ $('#pswd2').blur(function() {
+   checkPswd2();
+ }).keyup(function(event) {
+   checkShiftUp(event);
+ }).keypress(function(evnet) {
+   checkCapslock2(event);
+ }).keydown(function(event) {
+   checkShiftDown(event);  
+ });
 
-  $("#termsMarketing").click(function() {
-    setMarketingTerms();
-    viewTerms();
-  })
-  
-  $("#termsEmail").click(function() {
-    viewTerms();
-  })
-  
-  $("#termsSms").click(function() {
-    viewTerms();
-  })
+ $('#name').blur(function() {
+   checkName();
+ });
 
-  $("#btnAgree").click(function(event) {
-    submitAgree();
-    return false;
-  })
+ $('#yy').blur(function() {
+   checkBirthday();
+ });
+
+ $('#mm').change(function() {
+   checkBirthday();
+ });
+
+ $('#dd').blur(function() {
+  checkBirthday();
+ });
+
+ $('#gender').change(function() {
+   checkGender();
+ });
+
+ $('#email').blur(function() {
+   checkEmail();
+ });
+
+ $('#phoneNo').blur(function() {
+   checkPhoneNo();
+ });
+
+ /* 전화인증번호 클릭이벤트처리
+ $('#btnSend').click(function() {
+   sendSmsButton();
+   return false;
+ });
+ */
+
+ /* 인증
+ $('#authNo').blur(function() {
+   authFlag = false;
+   checkAuthNo();
+ })
+ */
+
+ $('#btnJoin').click(function(event) {
+   clickcr(this, 'sup.signup', '', '', event);
+   submitClose();
+   if (idFlag && pwFlag && authFlag) {
+     mainSubmit();
+   } else {
+     setTimeout(function() {
+       mainSubmit();
+     }, 700);
+   }
+ });
 });
 
-function setTerms() {
-  if ($("#chk_all").is(":checked")) {
-    $("#termsService").prop("checked",true);
-    $("#termsPrivacy").prop("checked",true);
-    $("#termsThirdParty").prop("checked",true);
-    $("#termsMarketing").prop("checked",true);
-    $("#termsEmail").prop("checked",true);
-    $("#termsSms").prop("checked",true);
-  } else {
-    $("#termsService").prop("checked",false);
-    $("#termsPrivacy").prop("checked",false);
-    $("#termsThirdParty").prop("checked",false);
-    $("#termsMarketing").prop("checked",false);
-    $("#termsEmail").prop("checked",false);
-    $("#termsSms").prop("checked",false);
-  }
-
-  return true;
-}
-
-function viewTerms() {
-
-  if( !$("#termsService").is(":checked") ||
-      !$("#termsPrivacy").is(":checked") ||
-      !$("#termsThirdParty").is(":checked") ||
-      !$("#termsMarketing").is(":checked") ||
-      !$("#termsEmail").is(":checked") ||
-      !$("#termsSms").is(":checked")) {
-    
-    $("#chk_all").prop("checked",false);
-  }
-
-  if( $("#termsService").is(":checked") &&
-      $("#termsPrivacy").is(":checked") &&
-      $("#termsThirdParty").is(":checked") &&
-      $("#termsMarketing").is(":checked") &&
-      $("#termsEmail").is(":checked") &&
-      $("#termsSms").is(":checked")) {
-    
-    $("#chk_all").prop("checked",true);
-  }
-
-  return true;
-}
-
-function setMarketingTerms() {
-  if ($("#termsMarketing").is(":checked")) {
-    $("#termsEmail").prop("checked",true);
-    $("#termsSms").prop("checked",true);
-  } else {
-    $("#termsEmail").prop("checked",false);
-    $("#termsSms").prop("checked",false);
-  }
-
-  return true;
-}
-
-
-function checkTerms() {
-  var res = true;
-
-  if ($("#termsService").is(":checked") == false ||
-      $("#termsPrivacy").is(":checked") == false ||
-      $("#termsThirdParty").is(":checked") == false) {
-    
-    alert("서비스 이용약관과 개인정보 수집 및 이용, 개인정보 제3자 제공에 대하여 모두 동의해주세요 ");
-    res = false;
-  }
-
-  return res;
-}
-
-function submitAgree() {
-  if (checkTerms() != true) {
+function mainSubmit() {
+  if (!checkUnrealInput()) {
+    submitOpen();
     return false;
   }
 
-  $("#join_form").submit();
+  if (idFlag && pwFlag && authFlag) {
+    $('#join_form').submit();
+  } else {
+    submitOpen();
+    return false;
+  }
+}
+
+function submitClose() {
+  $('#btnJoin').attr("disabled", true);
+}
+
+function submitOpen() {
+  $('#btnJoin').attr("disabled", false);
+}
+
+function checkUnrealInput() {
+  if (checkId('join') &
+      checkPswd1() &
+      checkPswd2() &
+      checkName() &
+      checkBirthday() &
+      checkGender() &
+      checkEmail() &
+      checkPhoneNo() // & checkAuthNo()
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+}
+ 
+function defaultScript() {
+  $('.ps_box').click(function() {
+    $(this).children('input').focus();
+    $(this).addClass('focus');
+  }).focusout(function() {
+    var welInputText = $('.ps_box');
+    welInputText.removeClass('focus');
+  });
+};
+
+function checkBirthday() {
+  var birthday;
+  var yy = $('#yy').val();
+  var mm = $('#mm').val();
+  var dd = $('#dd').val();
+  var oMsg = $('#birthdayMsg');
+  var lang = "ko_KR";
+
+  if (yy == "" && mm == "" && dd == "") {
+    showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
+    return false;
+  }
+
+  if (mm.length == 1) {
+    mm = "0" + mm;
+  }
+
+  if (dd.length == 1) {
+    dd = "0" + dd;
+  }
+
+  if (yy == "") {
+    showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
+    return false;
+  }
+  if (yy.length != 4 || yy.indexOf('e') != -1 || yy.indexOf('E') != -1 ) {
+    showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
+    return false;
+  }
+  if (mm == "") {
+    //alert(mm);
+    showErrorMsg(oMsg, "태어난 월을 선택하세요.");
+    return false;
+  }
+  if (dd == "") {
+    showErrorMsg(oMsg, "태어난 일(날짜) 2자리를 정확하게 입력하세요.");
+    return false;
+  }
+  if (dd.length != 2 || dd.indexOf('e') != -1 || dd.indexOf('E') != -1) {
+    showErrorMsg(oMsg, "태어난 일(날짜) 2자리를 정확하게 입력하세요.");
+    return false;
+  }
+
+  birthday = yy + mm + dd;
+  if (!isValidDate(birthday)) {
+    showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
+    return false;
+  }
+  $("#birthday").val(birthday);
+  console.log($("#birthday"));
+
+  var age = calcAge(birthday);
+  if (age < 0) {
+    showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
+    return false;
+  } else if (age >= 100) {
+    showErrorMsh(oMsg, "생년월일을 다시 확인해주세요.");
+    return false;
+  } else if (age < 14) {
+    showErrorMsg(oMsg, "14세미만 회원에게는 서비스를 제공하지 않습니다.");
+    return false;
+  } else {
+    hideMsg(oMsg);
+    return true;
+  }
   return true;
 }
+
+function showErrorMsg(obj, msg) {
+  obj.attr("class", "error_next_box");
+  obj.html(msg);
+  obj.show();
+}
+
+function showSuccessMsg(obj, msg) {
+  obj.attr("class", "error_next_box green");
+  obj.html(msg);
+  obj.show();
+}
+
+function hideMsg(obj) {
+  obj.hide();
+}
+
+function isValidDate(param) {
+  try {
+    param = param.replace(/-/g, '');
+
+    if (isNaN(param) || param.length != 8) {
+      return false;
+    }
+
+    var year = Number(param.subString(0, 4));
+    var month = Number(param.subString(4, 6));
+    var day = Number(param.subString(6, 8));
+
+    if (month < 1 || month > 12) {
+      return false;
+    }
+
+    var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var maxDay = maxDaysInMonth[month - 1];
+
+    // 윤년 체크
+    if (month == 2 && (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)) {
+      maxDay = 29;
+    }
+    
+    if (day <= 0 || day > maxDay) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+function calcAge(birth) {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = (date.getMonth() + 1);
+  var day = date.getDate();
+  if (month < 10) {
+    month = '0' + month;
+  }
+  if (day < 10) {
+    day = '0' + day;
+  }
+  var monthDay = month + '' + day;
+
+  birth = birth.replace('-', '').replace('-', '');
+  var birthdayy = birth.substr(0, 4);
+  var birthdaymd = birth.substr(4, 4); //?
+  console.log(birthdaymd);
+  
+  var age = monthDay < birthdaymd ? year -birthdayy - 1 : year - birthdayy;
+  return age;
+}
+
+function checkId(event) {
+  if (idFlag) {
+    return true;
+  }
+
+  var id = $('#id').val();
+  var oMsg = $('#idMsg');
+
+  if (id == "") {
+    showErrorMsg(oMsg, "아이디를 입력해주세요.");
+    return false;
+  }
+
+  var isId = /^[a-z0-9][a-z0-9_\-]{4,14}$/; // 15자까지
+  // regex 패턴확인
+  if (!isId.test(id)) {
+    showErrorMsg(oMsg, "5~15자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용할 수 있습니다.");
+    return false;
+  }
+
+  idFlag = false;
+  /*
+  $.ajax({
+    type: "GET",
+    url: 아이디확인할url
+    success : function(data) {
+      var result = data.substr(4);
+
+      if (result == "Y") {
+        if (event == "first") {
+          showSuccessMsg(oMsg, "멋진 아이디네요!");
+        } else {
+          hideMsg(oMsg);
+        }
+        idFlag = true;
+      } else {
+        showErrorMsg(oMsg, "이미 사용중인 아이디입니다.");
+      }
+    }
+  });
+  */
+  return true;
+}
+
+function checkPswd1() {
+  if (pwFlag) {
+    return true;
+  }
+
+  var id = $('#id').val();
+  var pw = $('#pswd1').val();
+  var oMsg = $('#pswd1Msg');
+
+  if (pw == "") {
+    showErrorMsg(oMsg, "패스워드를 입력해주세요.");
+    return false;
+  }
+
+  if (isValidPasswd(pw) != true) {
+    showErrorMsg(oMsg, "8~16자 영문 대 소문자, 숫자 특수문자를 사용하세요.");
+    return false;
+  }
+
+  pwFlag = false;
+  /*
+  $.ajax({
+    type:"GET",
+    url: 패스워드확인url
+    success: function(data) {
+      var result = data.substr(4); 5번째 문자로 result 결과 판단
+      if (result == 1) {
+        showErrorMsg(oMsg, "8~16자 영문 대 소문자, 숫자 특수문자를 사용하세요.");
+        return false;
+      } else {
+        oMsg.hide();
+      }
+      pwFlag = true;      
+    }
+  });
+    */
+  return true;
+}
+
+function isValidPasswd(str) {
+  var cnt = 0;
+  if (str == "") {
+    return false;
+  }
+
+  // 패스워드에 공백이 있는지 확인
+  var retVal = checkSpace(str);
+  if (retVal) {
+    return false;
+  }
+  if (str.length < 8) {
+    return false;
+  }
+  for (var i = 0; i < str.length; ++i) {
+    if (str.charAt(0) == str.substring(i, i + 1)) {
+      ++cnt;
+    }
+  }
+  if (cnt == str.length) {
+    console.log("str.charAt에서 걸림");
+    return false;
+  }
+
+  var isPW = /^[A-Za-z0-9`\-=\\\[\];',\./~!@#\$%\^&\*\(\)_\+|\{\}:"<>\?]{8,16}$/;
+  if (!isPW.test(str)) {
+    return false;
+  }
+
+  return true;
+}
+
+function checkSpace(str) {
+  if (str.search(/\s/) != -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var isShift = false;
+function checkShiftUp(e) {
+  if (e.which && e.which == 16) {
+    isShift = false;
+  }
+}
+
+function checkShiftDown(e) {
+  if (e.which && e.which == 16) {
+    isShift == true;
+  }
+}
+
+function checkCapslock(e) {
+  var myKeyCode = 0;
+  var myShiftKey = false;
+  if (window.event) { // IE
+    myKeyCode = e.keyCode;
+    myShiftKey = e.shiftKey;
+  } else if (e.which) { // netscape ff opera
+    myKeyCode = e.which;
+    myShiftKey = isShift;
+  }
+
+  var oMsg = $('#pswd1Msg');
+  if ((myKeyCode >= 65 && myKeyCode <= 90) && !myShiftKey) {
+    showErrorMsg(oMsg, "Caps Lock이 켜져 있습니다.");
+  } else if ((myKeyCode >= 97 && myKeyCode <= 122) && myShiftKey) {
+    showErrorMsg(oMsg, "Caps Lock이 켜져 있습니다.");
+  } else {
+    hideMsg(oMsg);
+  }
+}
+
+function checkCapslock2(e) {
+  var myKeyCode = 0;
+  var myShiftKey = false;
+  if (window.event) { // IE
+    myKeyCode = e.keyCode;
+    myShiftKey = e.shiftKey;
+  } else if (e.which) { // netscape ff opera
+    myKeyCode = e.which;
+    myShiftKey = isShift;
+  }
+
+  var oMsg = $("#pswd2Msg");
+  if ((myKeyCode >= 65 && myKeyCode <= 90) && !myShiftKey) {
+    showErrorMsg(oMsg,"Caps Lock이 켜져 있습니다.");
+  } else if ((myKeyCode >= 97 && myKeyCode <= 122) && myShiftKey) {
+    showErrorMsg(oMsg,"Caps Lock이 켜져 있습니다.");
+  } else {
+    hideMsg(oMsg);
+  }
+}
+
+function checkPswd2() {
+  var pswd1 = $('#pswd1');
+  var pswd2 = $('#pswd2');
+  var oMsg = $('#pswd2Msg');
+  var oBlind = $('#pswd2Blind');
+
+  if (pswd2.val() == "") {
+    showErrorMsg(oMsg, "비밀번호 재확인칸을 입력해주세요.");
+    oBlind.html("설정하려는 비밀번호가 맞는지 확인하고 다시 입력해주세요.");
+    return false;
+  }
+
+  if (pswd1.val() != pswd2.val()) {
+    showErrorMsg(oMsg, "비밀번호가 일치하지 않습니다.");
+    oBlind.html("설정하려는 비밀번호가 맞는지 확인하고 다시 입력해주세요.");
+    pswd2.val("");
+    return false;
+  } else {
+    oBlind.html("비밀번호가 일치합니다.");
+    hideMsg(oMsg);
+    return true;
+  }
+
+  return true;
+}
+
+function checkName() {
+  var oMsg = $('#nameMsg');
+  var nonchar = /[^가-힣a-zA-Z0-9]/gi;
+
+  var name = $('#name').val();
+  if (name == "") {
+    showErrorMsg(oMsg, "이름을 입력해주세요.");
+    return false
+  }
+  if (name != "" && nonchar.test(name)) {
+    showErrorMsg(oMsg, "한글과 알파벳 대 소문자를 사용하세요. 특수기호와 공백은 사용할 수 없습니다.");
+    return false;
+  }
+
+  hideMsg(oMsg);
+  return true;
+}
+
+function checkGender() {
+  var gender = $('#gender').val();
+  var oMsg = $('#genderMsg');
+
+  if (gender == "") {
+    showErrorMsg(oMsg, "성별을 선택해주세요.");
+    return false;
+  }
+  hideMsg(oMsg);
+  return true;
+}
+
+function checkEmail() {
+  var email = $('#email').val();
+  var oMsg = $('#emailMsg');
+
+  if (email == "") {
+    hideMsg(oMsg);
+    return true;
+  }
+
+  var isEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var isHan = /[ㄱ-ㅎ가-힣]/g;
+  if (!isEmail.test(email) || isHan.test(email)) {
+    showErrorMsg(oMsg, "이메일 주소를 확인하시고 다시 입력해주세요.");
+    return false;
+  }
+
+  hideMsg(oMsg);
+  return true;
+}
+
+function checkPhoneNo() {
+  var phoneNo = $('#phoneNo').val();
+  var oMsg = $('#phoneNoMsg');
+
+  if (phoneNo == "") {
+    showErrorMsg(oMsg, "전화번호를 입력해주세요.");
+    return false;
+  }
+
+  hideMsg(oMsg);
+  return true;
+}
+/*
+function sendSmsButton() {
+  var nationNo = $('#nationNo').val();
+  var phoneNo = $('#phoneNo').val();
+  var key = $('#token_sjoin').val();
+  var oMsg = $('#phoneNoMsg');
+  var lang = "ko_KR";
+
+  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
+  $('#phoneNo').val(phoneNo);
+  authFlag = false;
+
+  $('#authNoMsg').hide();
+  if (nationNo == "82" && !isCellPhone(phoneNo)) {
+    showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
+    return false;
+  }
+  $.ajax({
+    type: "GET",
+    url: 전화번호인증하는 url
+    success: function(data) {
+      var result = data.substr(4);
+      if (result == "S") {
+        showSuccessMsg(oMsg, "인증번호를 발송했습니다.(유효시간 30분)<br>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>이미 가입된 번호이거나, 가상전화번호는 인증번호를 받을 수 없습니다.");
+        $('#authNo).attr("disabled", false);
+        var oBox = $('#authNoBox');
+        var oCode = $('#authNoCode');
+        showAuthDefaultBox(oBox, oCode);
+      } else {
+        showErrorMsg(oMsg, "전화번호를 다시 확인하시고 입력해주세요.");
+      }
+    }
+  });
+  return false;
+}
+
+*/
+/*
+function checkAuthNo() {
+  var authNo = $('#authNo').val();
+  var oMsg = $('#authNoMsg');
+  var oBox = $('#authNoBox');
+  var oCode= $('#authNoCode');
+
+  if (authNo == "") {
+    showErrorMsg(oMsg, "인증이 필요합니다.");
+    return false;
+  }
+
+  if (authFlag) {
+    showSuccessMsg(oMsg, "인증이 성공했습니다.");
+    showAuthSuccessBox(oBox, oCode, "일치");
+    $('#phoneNoMsg').hide();
+    return true;
+  } else {
+    checkAuthnoByAjax();
+  }
+  return true;
+}
+
+function checkAuthnoByAjax() {
+  var authNo = $('#authNo').val();
+  var key = $('#token_sjoin').val();
+  var oMsg = $('#authNoMsg');
+  var oBox = $('#authNoBox');
+  var oCode = $('#authNoCode');
+
+  $.ajax({
+    type: "GET",
+    url: 인증번호 확인 url,
+    success: function(data) {
+      var result = data.substr(4);
+      if (result == "S") {
+        showSuccessMsg(oMsg, "인증이 성공했습니다.");
+        showAuthSuccessBox(oBox, oCode, "일치");
+        $("#phoneNoMsg").hide();
+        authFlag = true;
+      } else if (result == "Cnt") {
+        showErrorMsg(oMsg, "인증을 다시 진행해주세요.");
+        showAuthErrorBox(oBox, oCode, "불일치");
+      } else {
+        showErrorMsg(oMsg, "인증번호를 다시 확인해주세요.");
+        showAuthErrorBox(oBox, oCode, "불일치");
+      }
+    }
+  });
+  return true;
+}
+*/
 
 </script>
 </body>
