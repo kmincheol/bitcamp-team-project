@@ -50,6 +50,10 @@ public String detail() {
     return "recruit_board/detail";
 }
 
+@RequestMapping("/header")
+public String header() {
+    return "recruit_board/header";
+}
 
 }
 

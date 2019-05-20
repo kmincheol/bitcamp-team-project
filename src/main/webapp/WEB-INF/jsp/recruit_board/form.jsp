@@ -15,7 +15,7 @@
 <body>
   <div class="container">
 
-    <!--<jsp:include page="../header.jsp"></jsp:include>-->
+    <%-- <jsp:include page="../header.jsp"></jsp:include> --%>
 
     <h1>새 글</h1>
     <form id='add_form' action='add' method='post'>

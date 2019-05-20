@@ -1,88 +1,100 @@
 @charset "UTF-8";
 
-body, html{
-    margin: 0px;
-    padding: 0px;
-    height: 100%;   
+* {
+	margin: 0px;
+	padding: 0px;
 }
 
-/* footer{
-    position: absolute;
-    left:0;
-    bottom : 0;
-    width: 100%;
-    height:130px;
-    background-color:black;
+html, body{
+	width:100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+} 
+
+.container-fluid{
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+
+#header {
+	background-color: black;
+}
+/* 
+.header-all, #header-cate {
+	background-color: rgba(255, 255, 255, 0.15);
+	transition: 0.4s;
+}
+
+.header-all:hover, #header-cate:hover {
+	background-color: rgba(64, 64, 64);
+}
+
+#header-top {
+	position: relative;
+	width: 100%;
+	height: 95px;
+}
+
+#header-img {
+	position: relative;
+	margin: 0 auto;
+}
+
+.headerImg {
+	top: -18px;
+	text-align: center;
+	width: 260px;
+	height: 130px;
+}
+
+#header-item {
+	position: absolute;
+	text-decoration: none;
+	font-size: 10px;
+	top: 10px;
+	right: 10px;
+	color: rgba(255, 255, 255, .7);
+}
+
+#header-item>a {
+	color: rgba(255, 255, 255, .7);
+}
+
+#header-item>a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.header-category {
+	width: 120px;
+	margin: 0 40px;
+}
+
+#header-cate .nav .header-category .nav-item a {
+	color: rgba(255, 255, 255, .8);
+}
+
+#header-cate .nav .header-category .nav-item a:hover {
+	color: white;
+	text-decoration: none;
+	width: 100%;
+}
+
+#header-cate {
+	border-top: 1px solid darkgray;
+	width: 100%;
+	height: 57px;
+	transition: 0.4s;
+	overflow: hidden;
+}
+
+#header-cate:hover {
+	height: 205px;
+}
+
+.fixed {
+	position: fixed;
+	top: 0px;
 } */
-
-.img-fluid{
-    position: absolute;
-   left : 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    background-color: black;
-    max-height: 380px;
-    overflow: hidden;
-}
-
-ul{
-    list-style:none;
-    text-align: center;
-    padding-left: 0px;
-}
-
-.header-category{
-    margin: 0px 35px;
-}
-
-.navbar{
-    background-color: rgba(255, 255, 255, 0.15);
-    height: 95px;
-}
-
-.nav{
-    padding-top: 10px;
-    height: 55px;
-}
-
-#header-cate{
-    background-color: rgba(255, 255, 255, 0.15);
-    border-top: 1px solid darkgray;
-}
-
-/* #header-cate:hover{
-    background-color: rgba(255, 255, 255, 0.7);
-} */
-
-.headerImg{
-    text-align: center;
-    width: 260px;
-    height: 130px;
-}
-
-#header{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-a{
-    text-decoration: none;
-    color: white;
-}
-
-#header-item{
-    position: absolute;
-    font-size: 10px;
-    top: 10px;
-    right: 10px;
-    color: white;
-}
-
-.category{
-    visibility: hidden;
-}
