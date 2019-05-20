@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.AnnounceDao;
-import com.eomcs.lms.dao.AnnounceFileDao;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.domain.Announce;
-import com.eomcs.lms.domain.AnnounceFile;
 import com.eomcs.lms.service.AnnounceService;
 
 // 스프링 IoC 컨테이너가 관리하는 객체 중에서 
