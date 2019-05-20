@@ -10,6 +10,7 @@
    <jsp:include page="../commonCss.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
@@ -31,41 +32,24 @@
     </tr>
   </thead>
   <tbody>
-     <tr>
+          <tr>
       <th scope="row">소속팀</th>
       <td>
         <div class="form-group row">
            <div class="col-sm">
               <div class="input-group mb-2">
-                <select name='teamId' class="custom-select" id="select2">
+                <select name='teamNo' class="custom-select" id="selectBox" onchange="chageSelect()">
          	 	<option selected>소속팀 선택</option>
                 <c:forEach items="${match}" var="match">
                      <c:if test="${!match.team.teamMember.team_leader}">
-                    	<option value='${match.team.teamId}'>${match.team.teamName}</option>
+                    	<option value='${match.team.teamId}'>${match.team.teamName}${match.team.teamArea}</option>
                      </c:if> 
                 </c:forEach>
                 </select>
               </div>
-              <%-- ${match.team.teamArea} --%>
             </div>
+            <input type="text" name="location">
             </div>
-      </td>
-      <td>
-      </td>
-    </tr>
-         <tr>
-      <th scope="row">위치</th>
-      <td>
-        <div class="form-group row">
-           <div class="col-sm">
-              <div class="input-group mb-2">
-              <input type="number" name="cost">
-              </div>
-              <%-- ${match.team.teamArea} --%>
-            </div>
-            </div>
-      </td>
-      <td>
       </td>
     </tr>
     
@@ -115,45 +99,27 @@
   </div> <!-- .container -->
 </form>
 
-<!-- <script type="text/javascript">
-function checkTerms() {
-	  var res = true;
-	  
-	  var dateSelect = $('#playDate').val();
-	  var contentsCheck = $.trim($('#summernote').val());
-	  var areaSelect = $('#area_select').val();
-	  var localSelect = $('#local_select').val();
-	  var teamSelect = $('#select2').val();
-	  
-	  if (areaSelect == $('#area_select option:eq(0)').val() ||
-	      localSelect == $('#local_select option:eq(0)').val() ||
-	      teamSelect == $('#select2 option:eq(0)').val()) {
-	    alert("지역과 팀을 선택해주세요!");
-	    res = false;
-	  }
+<script type="text/javascript">
 
-	  if (dateSelect.length <=  ||
-	      titleCheck.length <= 0 ||
-	      contentsCheck.length <= 0 ||
-	      areaSelect.length <= 0 ||
-	      localSelect.length <= 0 ||
-	      teamSelect.length <= 0) {
-	    alert("필수 내용을 모두 입력해주세요!");
-	    res = false;
-	  }
+// function chageSelect(){
+//   var Select = document.getElementById("select2");
+   
+//   // select element에서 선택된 option의 value가 저장된다.
+//   var selectValue = Select.options[Select.selectedIndex].value;
+  
+// }
+ 
+function chageSelect() {
+  
+  var Select = document.getElementById("selectBox");
+  var selectValue = Select.options[Select.selectedIndex].value;
+  var data = document.write(str.substr( str.length-6, 6 ));
+ 
+ $("input[name='location']").val(data);
 
-	  return res;
-	}
+}
+</script>
 
-	function submitAgree() {
-	  if (checkTerms() != true) {
-	    return false;
-	  }
-
-	  $("#add").submit();
-	  return true;
-	}
 	
-</script> -->
 </body>
 </html>
