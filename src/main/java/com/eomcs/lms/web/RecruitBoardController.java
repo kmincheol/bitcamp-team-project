@@ -112,9 +112,5 @@ public class RecruitBoardController {
     return "redirect:.";
   }
 
-  @RequestMapping("/header")
-  public String header() {
-    return "recruit_board/header";
-  }
 }
 

@@ -14,13 +14,12 @@
 <body>
 
   <div class="container">
-    <div>
+   <%--  <div>
       <jsp:include page="../header.jsp" />
-    </div>
+    </div> --%>
     
-    <div id="main-text">
-      <h2>모집게시판</h2>
-    </div>
+    <h1>게시판 목록</h1>
+    <br>
 
     <div>
       <form action='update' method='post' enctype='multipart/form-data'>

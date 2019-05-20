@@ -7,19 +7,21 @@
 <head>
 <title>모집게시판</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<%-- <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/header.css"> --%>
 </head>
 
 <body>
   <div class="container">
 
-    <jsp:include page="../header.jsp"></jsp:include>
+    <%-- <jsp:include page="../header.jsp"></jsp:include> --%>
 
     <div id="main-text">
       <h2>모집게시판</h2>
     </div>
-
+    
+    <br>
+    
     <div id="recruit-list-out">
 
       <div class="input-group mb-3" style="width: 150px;">

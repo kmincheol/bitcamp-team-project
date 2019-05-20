@@ -7,17 +7,20 @@
 <head>
 <title>모집게시판</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<%-- <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css"> --%>
 </head>
 
 <body>
-  <div class="container">
-    <jsp:include page="../header.jsp"></jsp:include>
-    
-    <div id="main-text">
+
+  <jsp:include page="../header.jsp"></jsp:include>
+  
+  <%-- <div class="container">
+
+    <!--     <div id="main-text">
       <h2>모집게시판</h2>
-    </div>
+    </div> -->
+    <br>
 
     <div id="recruit-list-out">
       <div class="input-group mb-3" style="width: 150px;">
@@ -38,10 +41,7 @@
           <div id="search-btn">
             <button id="searchbtn" class="input-group-btn btn btn-dark">검색</button>
           </div>
-          <div id="write-btn" style="position: absolute; right: 0;">
-            <a class="input-group-btn1 btn btn-dark"
-              href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
-          </div>
+
         </div>
       </form>
 
@@ -80,6 +80,9 @@
         </tbody>
       </table>
       <div id="in">
+        <div id="write-btn" style="position: absolute; right: 0;">
+          <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
+        </div>
         <nav aria-label="목록 페이지 이동">
           <ul class="pagination justify-content-center">
             <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link"
@@ -92,11 +95,15 @@
               style="background-color: gray; color: white; border-color: gray;">다음</a></li>
           </ul>
         </nav>
+
       </div>
+
+
+
     </div>
 
 
-  </div>
+  </div> --%>
 
   <jsp:include page="../javascript.jsp" />
 
