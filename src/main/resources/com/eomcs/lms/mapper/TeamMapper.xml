@@ -42,11 +42,6 @@
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
 
-    <association property="teamTypeSports" javaType="teamTypeSports">
-      <id column="spt_clsf_id" property="teamSportsTypeId" />
-      <result column="spt_clsf_name" property="teamSportsType" />
-    </association>
-
     <association property="teamMember" javaType="TeamMember">
       <id column="tm_mbr_id" property="teamMember_id" />
       <id column="pstn" property="positon" />
@@ -102,11 +97,10 @@
     tmb.tlead_wth
     from
     tm t
-    left outer join tm t on s.spt_clsf_id = t.spt_clsf_id 
-    left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-   
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id 
+     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
     where
-    r.rcrm_id = #{teamNo};
+    t.tm_id = '1';
 
   </select>
 
