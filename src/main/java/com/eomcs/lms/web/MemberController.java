@@ -2,6 +2,7 @@ package com.eomcs.lms.web;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,8 +42,9 @@ public class MemberController {
   }
   
   @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model) {
-    Member member = memberService.get(no);
+  public String detail(@PathVariable int no, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member = memberService.get(no);
     model.addAttribute("member", member);
     return "member/detail";
   }
@@ -71,6 +73,15 @@ public class MemberController {
     }
 
     if (memberService.update(member) == 0)
+      throw new RuntimeException("해당 번호의 회원이 없습니다.");
+      
+    return "redirect:.";
+  }
+  
+  @PostMapping("updatePassword")
+  public String updatePassword(Member member) throws Exception {
+    
+    if (memberService.updatePassword(member) == 0)
       throw new RuntimeException("해당 번호의 회원이 없습니다.");
       
     return "redirect:.";

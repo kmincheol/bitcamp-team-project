@@ -55,39 +55,9 @@
       </ul>
     </nav>
 
-
-
-
-    <!--     <div class="form-group row" id="searchspace">
-      <div class="col-sm-5">
-        <div class="input-group mb-2">
-          <select name='loc1' class="custom-select" id="inputGroupSelect01">
-            <option selected>전체기간</option>
-            <option value="1">일주일전</option>
-            <option value="2">한달전</option>
-            <option value="3">3개월전</option>
-          </select>
-          <div class="col-sm-5">
-            <div class="input-group mb-2">
-              <select name='loc1' class="custom-select" id="inputGroupSelect02">
-                <option selected>제목+내용</option>
-                <option value="1">제목</option>
-                <option value="2">내용</option>
-                <option value="3">작성자</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>	
-    		<form id="searchbox" action='search' class="form-inline my-2 my-lg-0 justify-content">
-       	<input id="searchbox" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요.">
-			<button class="btn btn-outline-success my-2 my-sm-0">검색</button>
-    		</form>
-    </div> -->
-
-    <form action='free/search'>
+    <form action='search'>
       <input type='search' name='keyword' placeholder="검색어 입력">
-      <button type='submit'>검색</button>
+      <button class="input-group-btn btn btn-dark" type='submit'>검색</button>
     </form>
 
   </div>

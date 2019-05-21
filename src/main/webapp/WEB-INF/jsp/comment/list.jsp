@@ -11,28 +11,28 @@
 <body>
 
   
-    <div class="comment-list" style="text-align: left;">
+    <div class="comment-list">
       <table class="table table-hover">
-        <tbody style="left: 0px; position: absolute;">
+        <tbody class="cmtlist">
           <c:forEach items="${list}" var="comment">
             <span style="font-size: 15px; margin-right: 10px;"><b>${comment.member.name}</b></span>
             <span style="font-size: 12px;">${comment.modifierDate}</span>
-            <br>
-            <br>
+            <br> 
             <div class="conts">
               <input type="text" class="no" name="no" value="${comment.no}" style="display: none;">
               <input type="text" class="cmtcontents" name="contents" value="${comment.contents}"
-                style="font-size: 20px; border: none; display:inline;" readonly> <br> <br>
-
+                style="font-size: 20px; border: none; display:inline; margin-left: 10px; margin-bottom:5px;" readonly>  
+ 
               <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
                 <div class="btnsave">
+                
+                  <a class="deletebtn input-group-btn btn btn-dark" 
+                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
                   <button class="update-btn input-group-btn btn btn-dark" type="button">변경</button>
                   <div class="save-cancel" style="display: none;">
                    <form id="form-save" action="../comment/update" method="post">
                     <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'style="display:none;">
-                   <textarea class="form-control" id="contents" name='contents'>${comment.contents}</textarea>
-                  <a class="input-group-btn btn btn-dark"
-                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
+                   <textarea class="form-control" id="contents" name='contents' style='margin-top:10px; font-size: 20px;'>${comment.contents}</textarea>
                     <button class="save-btn input-group-btn btn btn-dark">저장</button>
                      </form>
                     <a class="cancel-btn input-group-btn btn btn-dark" style="color: white;">취소</a>
@@ -54,7 +54,7 @@
       $(document).ready(function() {
         $('.update-btn').click(function() {
           $(this).hide();
-
+          $(this).prev().hide();
           $.fn.btnFuntion($(this));
           $.fn.contsFunction($(this));
         });
@@ -78,6 +78,7 @@
       $(document).ready(function() {
         $('.cancel-btn').click(function() {
           $('.update-btn').show();
+           $('.deletebtn').show();  
           var state = $('.save-cancel').css('display');
 
           if (state == 'none') {
@@ -88,7 +89,7 @@
 
           var state = $('.cmtcontents').css('style');
           if (state != 'none') {
-            $('.cmtcontents').attr("style", "font-size: 20px; border: none;");
+            $('.cmtcontents').attr("style", "font-size: 20px; border: none; margin-left:10px;");
           }
         });
       });
@@ -96,6 +97,15 @@
       $('.cancel-btn').on('click', function() {
         $('.cmtcontents').attr('readonly', 'true');
       });
+      
+      $(document).ready(function(){
+        $(".save-btn").click(function(){
+            $(".cmt-list").load("list.jsp");
+        });
+    });
+
+        
+      
       
     </script>
 

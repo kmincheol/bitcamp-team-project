@@ -9,11 +9,11 @@
 </head>
 <body>
 
-  <jsp:include page="../header.jsp" /> 
+  <%-- <jsp:include page="../header.jsp" /> --%> 
    
   <div class="container">
    
-    <h1>회원 상세조회</h1>
+    <h2>회원 정보를 <b>확인하고 수정</b>할 수 있습니다.</h2>
   
     <c:choose>
       <c:when test="${empty member}">
@@ -26,7 +26,7 @@
       <form action='update' method='post' enctype='multipart/form-data'>
       
         <div class="row">
-          <div class="col-3 bit-photo">
+          <%-- <div class="col-3 bit-photo">
           
             <c:if test="${empty member.photo}">
               <img src='${contextRootPath}/images/default.jpg' class="bit-photo img-fluid rounded-circle mx-auto d-block" alt="Responsive image"><br>
@@ -47,57 +47,92 @@
               </div>
             </div>
             
-          </div> <!-- .bit-photo -->
+          </div> <!-- .bit-photo --> --%>
           
           <div class="bit-pro col-7">
 
-            <div class="form-group row">
-              <label for="no" class="col-sm-2 col-form-label">번호</label>
+            <div class="form-group row" style="display:none;">
+              <label for="no" class="col-sm-5 col-form-label">번호</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control-plaintext" name="no" id="no" value="${member.no}" readonly/>
               </div>
             </div>
+          
+          <input type="text" id="pInput" value="${member.no}">
+
+
+
 
             <div class="form-group row">
-              <label for="name" class="col-sm-2 col-form-label">이름</label>
+              <label for="name" class="col-sm-5 col-form-label">이름</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="name" id="name" value="${member.name}" />
               </div>
             </div>
-
-            <div class="form-group row">
-              <label for="password" class="col-sm-2 col-form-label">비밀번호</label>
+            
+             <div class="form-group row">
+              <label for="birthday" class="col-sm-5 col-form-label">생년월일</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" name="password" id="password"/>
+                <input type="text" class="form-control" name="birthday" id="birthday" value="${member.birthDay}" />
               </div>
             </div>
 
             <div class="form-group row">
-              <label for="email" class="col-sm-2 col-form-label">ID (이메일)</label>
+              <label for="email" class="col-sm-5 col-form-label">이메일</label>
               <div class="col-sm-10">
                 <input type="email" class="form-control" name="email" id="email" value='${member.email}'/>
               </div>
             </div>
+            
+              <div class="form-group row">
+              <label for="id" class="col-sm-5 col-form-label">아이디</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="id" id="id" value='${member.id}'/>
+              </div>
+            </div>
 
             <div class="form-group row">
-              <label for="tel" class="col-sm-2 col-form-label">전화번호</label>
+              <label for="password" class="col-sm-5 col-form-label">비밀번호</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" name="password" id="password" value='${member.password}'/>
+              </div>
+              <button id="password-btn" type="button"> 비밀번호 변경</button>
+            </div>
+
+
+            <div class="form-group row">
+              <label for="tel" class="col-sm-5 col-form-label">전화번호</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="tel" id="tel" value='${member.tel}'/>
               </div>
             </div>
 
+
             <div class="form-group row">
-              <label for="createdDate" class="col-sm-2 col-form-label">가입일</label>
+              <label for="baseAddress" class="col-sm-5 col-form-label">기본주소</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" id="createdDate" value='${member.registeredDate}' readonly/>
+                <input type="text" class="form-control-plaintext" id="baseAddress" value='${member.baseAddress}' readonly/>
+              </div>
+            </div>
+            
+            <div class="form-group row">
+              <label for="detailAddress" class="col-sm-5 col-form-label">상세주소</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control-plaintext" id="detailAddress" value='${member.detailAddress}' readonly/>
+              </div>
+            </div>
+            
+             <div class="form-group row">
+              <label for="createdDate" class="col-sm-5 col-form-label">자기소개</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control-plaintext" id="selfIntroduce" value='${member.selfIntroduce}' readonly/>
               </div>
             </div>
 
             <div class="form-group row">
               <div class="col-sm-10">
-                <a class="btn btn-primary" href='./'>회원목록</a>
-                <a class="btn btn-primary" href='delete/${member.no}'>삭제</a>
-                <button class="btn btn-primary">변경</button>
+                <a class="btn btn-primary" href='../'>회원목록</a>
+                <button class="btn btn-primary">저장</button>
               </div>
             </div>    
             
@@ -134,7 +169,17 @@
     </div>
   </div>
   
+  <jsp:include page="../javascript.jsp"/> 
+
+  <script type="text/javascript">
+   $('#password-btn').on('click', function () {
+      var url = "form.jsp";  
+      var winObj = window.open(url, "비밀번호변경", 'width=500px', 'height=300px');
+      winObj.document.getElementById('cInput').value = document.getElementById('pInput').value; 
+    });
+    
+    
+  </script>
   
-  <jsp:include page="../javascript.jsp"/>
 </body>
 </html>

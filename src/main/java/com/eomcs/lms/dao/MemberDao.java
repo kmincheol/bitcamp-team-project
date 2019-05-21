@@ -12,6 +12,7 @@ public interface MemberDao {
   Member findByNo(int no);
   Member findByIdPassword(Map<String,Object> paramMap);
   int update(Member member);
+  int updatePassword(Member member);
   int delete(int no);
 }
 

@@ -90,13 +90,13 @@
               <label for="no">게시물 번호</label> <label>${free.no}</label>
               <hr>
               <div class="title">
-                <div id="title" style="font-size: 40px;">${free.title}</div>
+                <div id="title">${free.title}</div>
               </div>
 
-              <div style="margin-left: 600px">
-                <span style="font-size: 12px">작성자 <b>${free.member.name}</b>
-                </span> <span style="font-size: 12px">조회수 <b>${free.viewCount}</b>
-                </span><br> <span style="font-size: 12px">최근수정일 <b>${free.modifierDate}</b>
+              <div class="freeInfo">
+                <span>작성자 <b>${free.member.name}</b>
+                </span> <span>조회수 <b>${free.viewCount}</b>
+                </span><br> <span>최근수정일 <b>${free.modifierDate}</b>
                 </span>
               </div>
 
@@ -104,13 +104,13 @@
               <hr>
             </div>
 
-            <div style="text-align: center;">
-              <p>${free.contents}</p>
+            <div>
+              ${free.contents} 
             </div>
 
             <hr><br>
-            <div class="form-group row" style="text-align: center">
-              <div style="position: absolute; left: 0; right: 0;">
+            <div class="btns form-group row">
+              <div class="btns2">
                 <a class="input-group-btn btn btn-dark" href='.'>목록</a>
                 <c:if test="${sessionScope.loginUser.name eq free.member.name}">
                   <a class="input-group-btn btn btn-dark" href='delete/${free.no}'>삭제</a>

@@ -1,14 +1,15 @@
 package com.eomcs.lms.web;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.eomcs.lms.domain.Comment;
 import com.eomcs.lms.domain.Free;
@@ -40,16 +41,37 @@ public class CommentController {
     return "redirect:../free/" + free.getNo();
 
   }
+  
+  /*
+   * @PostMapping(value="add", produces="text/plain;charset=UTF-8") public Object add(@RequestBody
+   * Comment comment, HttpSession session) throws Exception {
+   * 
+   * Member member = (Member) session.getAttribute("loginUser"); Free free = (Free)
+   * session.getAttribute("free"); session.setAttribute("commentNo", comment.getNo());
+   * comment.setMemberNo(member.getNo()); comment.setFreeNo(free.getNo());
+   * commentService.add(comment);
+   * 
+   * List<Comment> comment1 = commentService.list(free.getNo()); //model.addAttribute("list",
+   * comment); HashMap<String,Object> commentMap = new HashMap<>(); commentMap.put("list",
+   * comment1);
+   * 
+   * return "redirect:../free/" + free.getNo();
+   * 
+   * }
+   */
 
 
   @GetMapping
-  public String list(Model model, HttpSession session) {
-
+  public Object list(HttpSession session) {
+    
     int no = (int) session.getAttribute("freeNo");
-    List<Comment> comment = commentService.list(no);
-    model.addAttribute("list", comment);
-
-    return "comment/list";
+    
+    List<Comment> comment1 = commentService.list(no);
+    //model.addAttribute("list", comment);
+ HashMap<String,Object> commentMap = new HashMap<>();
+ commentMap.put("list", comment1);
+ 
+    return commentMap;
   }
 
   @PostMapping("update")

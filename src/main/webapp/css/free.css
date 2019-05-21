@@ -10,8 +10,27 @@ div.container {
   width: 800px;
 }
 
-p {
-  text-align: right;
+#title {
+	font-size: 40px;
+}
+
+.freeInfo {
+	margin-left: 600px; 
+}
+
+.btns {
+	"text-align: center"
+}
+
+.btns2 {
+	position: absolute; 
+	left: 0; 
+	right: 0;
+}
+
+
+span {
+	font-size: 12px
 }
 
 #searchspace {
@@ -40,6 +59,10 @@ p {
 .col-sm-5 {
   height: 77px;
   padding: 0px 5px 0px 10px;
+}
+
+#free-title{
+	 width: 300px;
 }
 
 .form-inline my-2 my-lg-0 justify-content {

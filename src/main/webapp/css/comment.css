@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.a {
+	left: 520px; 
+	top:0px; 
+	position: absolute;  
+}
+
+.cmtform {
+	width:500px;
+}
+
+.comment-list {
+	text-align: left;
+}
+
+.cmtlist {
+	left: 0px; 
+	position: absolute;
+}
+
+
