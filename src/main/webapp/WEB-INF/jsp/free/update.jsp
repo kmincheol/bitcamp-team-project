@@ -6,14 +6,14 @@
 <head>
 <title>자유게시판</title>
 <jsp:include page="../commonCss.jsp" />
+<jsp:include page="../header.jsp" />
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <!--<jsp:include page="../header.jsp" />-->
-
   <div class="container">
+  <br><br> 
     <h1>자유게시판</h1>
     <section>
       <form id='update_form' action='../update' method='post'>
@@ -54,7 +54,6 @@
           </div>
         </div>
 
-        <!-- 버튼과 관련된 영역 -->
         <!-- 버튼과 관련된 영역 -->
         <div class="form-group row">
           <div class="col-sm-10">

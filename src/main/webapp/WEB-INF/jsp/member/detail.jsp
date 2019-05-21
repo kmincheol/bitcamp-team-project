@@ -63,14 +63,14 @@
             <div class="form-group row">
               <label for="name" class="col-sm-5 col-form-label">이름</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" id="name" value="${member.name}" />
+                <input type="text" class="form-control" name="name" id="name" value="${member.name}" readonly/>
               </div>
             </div>
             
              <div class="form-group row">
               <label for="birthday" class="col-sm-5 col-form-label">생년월일</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="birthday" id="birthday" value="${member.birthDay}" />
+                <input type="text" class="form-control" name="birthday" id="birthday" value="${member.birthDay}" readonly/>
               </div>
             </div>
 
@@ -84,7 +84,7 @@
               <div class="form-group row">
               <label for="id" class="col-sm-5 col-form-label">아이디</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="id" id="id" value='${member.id}'/>
+                <input type="text" class="form-control" name="id" id="id" value='${member.id}' readonly/>
               </div>
             </div>
 
@@ -114,21 +114,21 @@
             <div class="form-group row">
               <label for="baseAddress" class="col-sm-5 col-form-label">기본주소</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" id="baseAddress" value='${member.baseAddress}' readonly/>
+                <input type="text" class="form-control" id="baseAddress" name="baseAddress" value='${member.baseAddress}'/>
               </div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row"> 
               <label for="detailAddress" class="col-sm-5 col-form-label">상세주소</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" id="detailAddress" value='${member.detailAddress}' readonly/>
+                <input type="text" class="form-control" id="detailAddress" name="detailAddress" value='${member.detailAddress}'/>
               </div>
             </div>
             
              <div class="form-group row">
               <label for="createdDate" class="col-sm-5 col-form-label">자기소개</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" id="selfIntroduce" value='${member.selfIntroduce}' readonly/>
+                <textarea class="form-control" id="selfIntroduce" name="selfIntroduce">${member.selfIntroduce}</textarea>
               </div>
             </div>
 

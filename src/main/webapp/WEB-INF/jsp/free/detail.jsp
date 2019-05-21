@@ -24,7 +24,6 @@
       <h2>자유게시판</h2>
     </div>
     <br>
-    <div id="recruit-list-out">
       <c:choose>
         <c:when test="${empty free}">
           <p>해당 게시물을 찾을 수 없습니다.</p>
@@ -77,7 +76,6 @@
           <jsp:include page="../comment/list.jsp" />
         </c:otherwise>
       </c:choose>
-  </div>
   </div>
 </body>
 </html>
