@@ -80,10 +80,10 @@
 
         <div class="form-group row">
           <div class="col-sm-10">
-            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a> <a
-              class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a> <a
-              class="btn btn-primary"
-              href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
+            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a> 
+            <a class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a> 
+            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
+            <a class="btn btn-primary" href=''>가입신청</a>
           </div>
         </div>
       </form>

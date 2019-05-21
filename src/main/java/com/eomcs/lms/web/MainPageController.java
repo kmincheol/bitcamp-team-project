@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainPageController {
   
   
-  @RequestMapping("/main_page")
+  @RequestMapping("/main")
   public String teamrecruit() {
-   return "main/mainpage1";
+   return "mainpage/main_page";
   }
   
 }
