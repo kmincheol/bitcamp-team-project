@@ -15,6 +15,7 @@
     <result column="gndr"  property="gender"/>
     <result column="tel"  property="tel"/>
     <result column="email"   property="email"/>
+    <result column="post" property="post"/>
     <result column="bas_addr"  property="baseAddress"/>
     <result column="det_addr"    property="detailAddress"/>
     <result column="prof_phot"    property="photo"/>
@@ -104,6 +105,7 @@
       gndr,
       tel,
       email,
+      post,
       bas_addr,
       det_addr,
       login_type)
@@ -115,6 +117,7 @@
       #{gender},
       #{tel},
       #{email},
+      #{post},
       #{baseAddress},
       #{detailAddress},
       #{loginType})

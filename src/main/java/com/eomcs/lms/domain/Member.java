@@ -15,6 +15,7 @@ public class Member implements Cloneable, Serializable {
   private String gender;
   private String tel;
   private String email;
+  private int post;
   private String baseAddress;
   private String detailAddress;
   private String photo;
@@ -27,17 +28,16 @@ public class Member implements Cloneable, Serializable {
   private Date latestDate;
   private boolean manager;
   
-  
-  
   @Override
   public String toString() {
     return "Member [no=" + no + ", id=" + id + ", password=" + password + ", name=" + name
         + ", birthDay=" + birthDay + ", gender=" + gender + ", tel=" + tel + ", email=" + email
-        + ", baseAddress=" + baseAddress + ", detailAddress=" + detailAddress + ", photo=" + photo
-        + ", selfIntroduce=" + selfIntroduce + ", loginType=" + loginType + ", status=" + status
-        + ", createdDate=" + createdDate + ", latestDate=" + latestDate + ", manager=" + manager
-        + "]";
+        + ", post=" + post + ", baseAddress=" + baseAddress + ", detailAddress=" + detailAddress
+        + ", photo=" + photo + ", selfIntroduce=" + selfIntroduce + ", loginType=" + loginType
+        + ", status=" + status + ", createdDate=" + createdDate + ", latestDate=" + latestDate
+        + ", manager=" + manager + "]";
   }
+  
   public int getNo() {
     return no;
   }
@@ -85,6 +85,12 @@ public class Member implements Cloneable, Serializable {
   }
   public void setEmail(String email) {
     this.email = email;
+  }
+  public int getPost() {
+    return post;
+  }
+  public void setPost(int post) {
+    this.post = post;
   }
   public String getBaseAddress() {
     return baseAddress;
@@ -140,15 +146,6 @@ public class Member implements Cloneable, Serializable {
   public void setManager(boolean manager) {
     this.manager = manager;
   }
-
-
-  
-  
- 
-  
-  
-  
-  
 }
   
   

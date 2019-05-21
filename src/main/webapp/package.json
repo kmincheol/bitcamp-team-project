@@ -12,6 +12,7 @@
     "handlebars-paginate": "^0.1.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
+    "blueimp-file-upload": "^9.30.0",
     "summernote": "^0.8.12"
   },
   "devDependencies": {},

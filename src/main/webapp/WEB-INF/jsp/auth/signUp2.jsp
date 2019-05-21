@@ -35,7 +35,9 @@
           <input type="hidden" id="ipinFlag" name="ipinFlag" value="">
           <input type="hidden" id="nid_kb2" name="nid_kb2" value="">
         -->
-        <input type="hidden" id="birthday" name="birthday" value="">
+        <input type="hidden" id="birthday" name="birthDay" value="">
+        <input type="hidden" id="photo" name="photo" value="">
+        <input type="hidden" id="loginType" name="loginType" value="homepage"> 
       
         <div class="join_form">
           <div class="join_form_left">
@@ -47,6 +49,7 @@
                 </h3>
                 <span class="ps_box int_id">
                   <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
+                  <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
                 </span>
               </div>
               <div class="join_row">
@@ -54,7 +57,7 @@
                   <label for ="pswd1">비밀번호</label>
                 </h3>
                 <span class="ps_box int_pass" id="pswdImg">
-                  <input type="password" id="pswd1" name="pswd1" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
+                  <input type="password" id="pswd1" name="password" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
                   <span class ="lbl">
                     <span id="pswd1Span" class="step_txt">
                     </span>
@@ -152,14 +155,14 @@
               </h3>
               <div class="int_mobile_area">
                 <span class="ps_box int_mobile">
-                  <input type="tel" id="phoneNo" name="phoneNo" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
+                  <input type="tel" id="phoneNo" name="tel" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
                   <label for="phoneNo" class="lbl"></label>              
                 </span>
                 <a href="#" class="btn_verify btn_primary" id="btnSend" role="button">
                   <span class="">인증번호 받기</span>
                 </a>
               </div>
-              <div class="ps_box disable box_right_space" id="authNoBox">
+              <div class="ps_box_disable box_right_space" id="authNoBox">
                 <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled maxlength="4">
                 <label id="wa_verify" for="authNo" class="lbl">
                   <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
@@ -177,35 +180,51 @@
                 <h3 class="join_title">
                   <label for="photo">프로필 사진<span class="terms_choice">(선택)</span></label>
                 </h3>
+                <!--  
                 <button class="btn btn-outline-secondary sunext" id="btnPhoto"
                   type="button">파일 첨부</button>
+                <button id='upload-btn' type='button'>등록</button>
+                -->
+                 <input id="fileupload" type="file" name="files" value="파일첨부"><br>
               </div>
               <div class="join_photo_view">
                 <span class="photoView">
                   <label for="photo">
                     <!-- 파일 이미지 보이게하기 - 배우면 적용 -->
-                    <img src="../../images/default.jpg" style="width:200px; height:200px;">
+                    <img id="images-div" src="../../images/default.jpg" style="width:200px; height:200px;">
                   </label>
                 </span>
               </div>
             </div><!-- .join_photo -->
             <div class="row_group">
               <div class="join_row">
+              
                 <h3 class="join_title">
                   <label for="addressBtn">주소/상세주소</label>
                 </h3>
                 <div class="address_area">
                   <span class="ps_box address_box">
-                    <input type="text" id="addressNo" name="addressNo" maxlength="6" readonly>
+                  <input class="form-control" style="width: 40%; display: inline;" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" >
+                 <!-- 
+                 <input type="text" id="addressNo" name="addressNo" maxlength="6" readonly>
+                  -->   
                   </span>
-                  <!-- 주소찾기버튼 -->
+                  <button id="addressBtn" type="button" class="btn btn-outline-secondary sunext addressBtn" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>
+                  <!--
                   <a href="#" class="btn btn-outline-secondary sunext addressBtn" id="addressBtn" type="button">우편번호 찾기</a>
+                    -->
                 </div>
                 <div class="ps_box">
-                  <input type="text" name="addressBase" id="addressBase" title="주소를 입력해주세요." placeholder="주소를 입력해주세요." readonly>
+                <input class="form-control" style="top: 5px;" placeholder="도로명 주소" name="baseAddress" id="addr2" type="text" readonly="readonly" />
+                <!-- 
+                <input type="text" name="addressBase" id="addressBase" title="주소를 입력해주세요." placeholder="주소를 입력해주세요." readonly>
+                 -->  
                 </div>
                 <div class="ps_box">
+                <input class="form-control" placeholder="상세주소" name="detailAddress" id="addr3" type="text"  />
+                  <!-- 
                   <input type="text" name="addressDetail" id="addressDetail" title="상세주소를 입력해주세요." placeholder="상세주소를 입력해주세요." readonly>
+                   -->
                 </div>
               </div>
               <div class="join_row">
@@ -213,14 +232,14 @@
                   <label for="self_introduce">자기소개<span class="terms_choice">(선택)</span></label>
                 </h3>
                 <div class="self_introduce_area">
-                  <textarea class="ps_box self_introduce" id="self_introduce" placeholder="간단한 자기소개를 입력해주세요." rows="5" cols="30"></textarea>
+                  <textarea class="ps_box self_introduce" id="self_introduce" name="selfIntroduce" placeholder="간단한 자기소개를 입력해주세요." rows="5" cols="30"></textarea>
                 </div>
               </div>
             </div><!-- .row_group -->
           </div><!-- .join_form_right -->
         </div><!-- .join_form -->
         <div class="btn_area">
-          <button class="btn btn-outline-secondary sunext" id="btnJoin"
+          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin"
                   type="button">가입하기</button>
         </div><!-- .btn_area -->
       </form>
@@ -230,8 +249,89 @@
 
 <jsp:include page="../footer.jsp"/>
 <jsp:include page="../javascript.jsp"/>
+<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="${contextRootPath}/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
+<script src="${contextRootPath}/node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
+<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
 <script>
 "use strict"
+
+function execPostCode() {
+  
+  daum.postcode.load(function(){
+         new daum.Postcode({
+             oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+ 
+                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+ 
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                if(fullRoadAddr !== ''){
+                    fullRoadAddr += extraRoadAddr;
+                }
+ 
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                console.log(data.zonecode);
+                console.log(fullRoadAddr);
+                
+                
+                $("[name=post]").val(data.zonecode);
+                $("[name=baseAddress]").val(fullRoadAddr);
+                
+                /* document.getElementById('signUpUserPostNo').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
+                document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
+            }
+         }).open();
+  });
+     }
+
+$('#fileupload').fileupload({
+  autoUpload: false,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+  disableImageResize: /Android(?!.*Chrome)|Opera/
+        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
+  previewMaxWidth: 200,   // 미리보기 이미지 너비
+  previewMaxHeight: 200,  // 미리보기 이미지 높이 
+  previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
+  processalways: function(e, data) { //Callback for the end (done or fail) of an individual file processing queue.
+      var photo;
+      for (var i = 0; i < data.files.length; i++) {
+        try {
+          if (data.files[i].preview.toDataURL) {
+            // Base64로 바이너리 데이터를 텍스트로 변환해서 추가
+            photo = data.files[i].preview.toDataURL();
+            $('#images-div')
+            .attr('src', data.files[i]
+              .preview.toDataURL())
+              .css('width', '100px');
+            $('#photo').val(photo);
+          }
+        } catch (err) {
+        }
+      }
+  }
+});
 
 // id, pw, auth check Boolean
 var idFlag = false;
@@ -454,6 +554,18 @@ function showSuccessMsg(obj, msg) {
   obj.show();
 }
 
+function showAuthSuccessBox(oBox, oCode, msg) {
+  oBox.attr("class", "ps_box accord");
+  oCode.html(msg);
+  oCode.show();
+}
+
+function showAuthErrorBox(oBox, oCode, msg) {
+  oBox.attr("class", "ps_box discord");
+  oCode.html(msg);
+  oCode.show();
+  }
+
 function hideMsg(obj) {
   obj.hide();
 }
@@ -526,7 +638,7 @@ function checkId(event) {
     showErrorMsg(oMsg, "아이디를 입력해주세요.");
     return false;
   }
-
+  
   var isId = /^[a-z0-9][a-z0-9_\-]{4,14}$/; // 15자까지
   // regex 패턴확인
   if (!isId.test(id)) {
