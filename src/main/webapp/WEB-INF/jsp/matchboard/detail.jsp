@@ -49,7 +49,7 @@
           <label for="sportsType" class="col-sm-2 col-form-label">종목</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="teamSportsType" id="sportsType"
-              value="${match.teamTypeSports.teamSportsType}" readonly />
+              value="${match.team.teamSportsId}" readonly />
           </div>
         </div>
 

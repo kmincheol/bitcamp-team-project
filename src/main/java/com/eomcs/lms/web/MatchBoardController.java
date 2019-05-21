@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.Member;
-import com.eomcs.lms.domain.Tag;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
 
@@ -35,6 +34,7 @@ public class MatchBoardController {
     if (member == null) {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
     }
+    
     
   List<Match> match = matchBoardService.teamInfoGet(member.getNo());
      logger.debug(match);
@@ -65,6 +65,7 @@ public class MatchBoardController {
         else if (pageNo > totalPage)
           pageNo = totalPage;
 
+        
         List<Match> matches = matchBoardService.list(pageNo, pageSize);
         model.addAttribute("matches", matches);
         model.addAttribute("pageNo", pageNo);

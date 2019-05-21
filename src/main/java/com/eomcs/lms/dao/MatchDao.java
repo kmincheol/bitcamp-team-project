@@ -3,6 +3,7 @@ package com.eomcs.lms.dao;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.Team;
 
 public interface MatchDao {
   int insert(Match match);

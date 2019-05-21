@@ -14,13 +14,13 @@
   <div class="container">
     <form action='../update' method='post' >
 
-      <div class="form-group row">
+       <div class="form-group row">
         <label for="no" class="col-sm-2 col-form-label">번호</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" name="no" id="no"
             value="${match.no}" readonly/>
         </div>
-      </div>
+      </div> 
 
         <div class="form-group row">
           <label for="playdt" class="col-sm-2 col-form-label">경기날짜</label>
@@ -35,14 +35,6 @@
         <div class="col-sm-10">
           <input type="text" class="form-control" name="teamArea" id="location"
             value="${match.location}" readonly />
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="sportsType" class="col-sm-2 col-form-label">종목</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamSportsType" id="sportsType"
-            value="${match.teamTypeSports.teamSportsType}" readonly />
         </div>
       </div>
 
@@ -70,13 +62,13 @@
         </div>
       </div>
 
-      <div class="form-group row">
+<%--       <div class="form-group row">
         <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" name="matchViewCount" id="viewCount"
             value="${match.viewCount}" readonly />
         </div>
-      </div>
+      </div> --%>
 
       <div class="form-group row">
         <div class="col-sm-10">

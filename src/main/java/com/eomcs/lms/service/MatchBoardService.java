@@ -2,6 +2,7 @@ package com.eomcs.lms.service;
 
 import java.util.List;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.Team;
 
 public interface MatchBoardService {
   List<Match> list(int pageNo, int pageSize);

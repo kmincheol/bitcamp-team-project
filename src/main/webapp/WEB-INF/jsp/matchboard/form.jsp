@@ -50,14 +50,18 @@
                 </select>
               </div>
 				</div>
-            <select name="location" class="custom-select-sm" id="select2">
+				<input type="number" class="form-control-sm" name="location">
+<%--			팀의 지역값이 아니여도 오류가 아님
+             <select name="location" class="custom-select-sm" id="select2">
             <c:forEach items="${match}" var="match">
             <c:if test="${!match.team.teamMember.team_leader}">
             <option value="${match.team.teamArea}">${match.team.teamArea}</option>
-            </c:if> 
+            </c:if>
             </c:forEach>
-            </select>
-<%--             		<select name="teamSportsId" class="custom-select-sm" id="select3">
+            </select> --%>
+            
+            		<%-- 매치보드에 등록하는 팀의 스포츠 이름 가져오기 실패
+            		 <select name="teamSportsId" class="custom-select-sm" id="select3">
             		<c:forEach items="${match}" var="match">
             		<c:if test="${!match.team.teamMember.team_leader}">
             		<option value="${match.team.teamSportsId}">${match.team.teamTypeSports.teamSportsType}</option>

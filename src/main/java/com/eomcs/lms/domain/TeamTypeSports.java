@@ -9,8 +9,6 @@ public class TeamTypeSports implements Cloneable, Serializable {
   private String teamSportsType;
 
   
-  
-  
   @Override
   public String toString() {
     return "TeamTypeSports [teamSportsTypeId=" + teamSportsTypeId + ", teamSportsType="
