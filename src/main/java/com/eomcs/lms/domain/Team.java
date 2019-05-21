@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Team implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
 
-  private int teamId;
+  private int teamId; 
   private String teamName;
   private String teamInfo;
   private int teamArea;  // 임시 숫자로 바꿈
