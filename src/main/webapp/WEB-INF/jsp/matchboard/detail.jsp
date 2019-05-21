@@ -97,12 +97,12 @@
 
 
             <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
-            <c:if test="${match.team.teamMember.team_leader == true}">
-            <c:if test="${sessionScope.loginUser.team.teamName eq match.team.teamName}">
+            <%-- <c:if test="${match.team.teamMember.team_leader == true}"> --%>
+            <%-- <c:if test="${sessionScope.loginUser.team.teamName eq match.team.teamName}"> --%>
           <a class="btn btn-primary" href='delete/${match.no}'>삭제</a>
           <a class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
-            </c:if>
-            </c:if>
+<%--             </c:if>
+            </c:if> --%>
           </div>
         </div>
       </form>
