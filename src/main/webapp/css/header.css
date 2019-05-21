@@ -13,7 +13,6 @@ html, body {
 }
 
 .container-fluid {
-	height: 100%;
 	margin: 0px;
 	padding: 0px;
 }
@@ -71,11 +70,13 @@ html, body {
 	height: 55px;
 	transition: 0.4s;
 	overflow: hidden;
+	background-color: black;
+	z-index: 1;
 }
 
 .header-category {
-	width: 120px;
-	margin: 0 40px;
+	width: 200px;
+	z-index: 1;
 }
 
 .header-category .nav-item {

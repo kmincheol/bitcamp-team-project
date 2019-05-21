@@ -1,4 +1,3 @@
-<%@page import="com.eomcs.lms.domain.FreeFile"%>
 <%@page import="com.eomcs.lms.domain.Free"%>
 <%@page import="com.eomcs.lms.domain.Member"%>
 <%@page import="com.eomcs.lms.domain.Comment"%>
@@ -10,75 +9,21 @@
 <html>
 <head>
 <title>자유게시판</title>
-<jsp:include page="../commonCss.jsp" />
 <jsp:include page="../javascript.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<jsp:include page="../header.jsp" />
+<link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <link rel="stylesheet" href="${contextRootPath}/css/free.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 </head>
 <body>
 
   <div class="container">
 
-    <div id="main-backgroundImg">
-      <img src="${contextRootPath}/images/match-header.jpg" class="img-fluid">
-
-      <div id="header-item">
-        <a href="#">로그인/</a> <a href="#">회원가입/</a> <a href="#">고객센터</a>
-      </div>
-    </div>
-
-    <div id="header">
-      <nav class="navbar navbar-expand-lg justify-content-center">
-        <a href="#"><img src="${contextRootPath}/images/logo.png" class="headerImg"></a>
-      </nav>
-
-      <div id="header-cate">
-        <div>
-          <ul class="nav justify-content-center">
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">메인</a></li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">매치</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">매치보드</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">매치등록</a></li>
-                </ul></li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">팀</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">팀정보</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">모집게시판</a></li>
-                </ul></li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
-                </ul></li>
-            </div>
-            <div class="header-category">
-              <li class="nav-item"><a class="nav-link" href="#">마이페이지</a>
-                <ul class="category">
-                  <li class="nav-item"><a class="nav-link" href="#">개인정보</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">나의 팀 정보</a></li>
-                </ul></li>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </div>
-
     <div id="main-text">
+    <br><br>
       <h2>자유게시판</h2>
     </div>
     <br>
-    <div id="recruit-list-out">
       <c:choose>
         <c:when test="${empty free}">
           <p>해당 게시물을 찾을 수 없습니다.</p>
@@ -131,7 +76,6 @@
           <jsp:include page="../comment/list.jsp" />
         </c:otherwise>
       </c:choose>
-  </div>
   </div>
 </body>
 </html>

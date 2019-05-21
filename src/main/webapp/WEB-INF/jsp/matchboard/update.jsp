@@ -22,6 +22,14 @@
         </div>
       </div>
 
+        <div class="form-group row">
+          <label for="playdt" class="col-sm-2 col-form-label">경기날짜</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" name="playDate"
+              value="${match.playDate}"/>
+          </div>
+        </div>
+
       <div class="form-group row">
         <label for="location" class="col-sm-2 col-form-label">지역</label>
         <div class="col-sm-10">

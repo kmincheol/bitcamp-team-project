@@ -4,15 +4,14 @@
 <html>
 <head>
   <title>Home</title>
-  <jsp:include page="commonCss.jsp"/>
+<jsp:include page="header.jsp"/>
+<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+
 </head>
 <body>
 
-<jsp:include page="header.jsp"/>
 
 <div class="container">
-<h1>수업 관리 시스템</h1>
-<p>이 예제는 비트캠프 2019년 12월 개강 반에서 작업한 프로젝트이다.</p>
 </div>
 
 <jsp:include page="javascript.jsp"/>

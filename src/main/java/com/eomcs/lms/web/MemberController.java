@@ -21,16 +21,16 @@ public class MemberController {
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
   
-  @GetMapping("form")
-  public void form() {
+  @GetMapping("join")
+  public void join() {
   }
   
-  @PostMapping("add")
+  @PostMapping("enter")
   public String add(Member member) throws Exception {
     
     memberService.add(member);
     
-    return "redirect:.";
+    return "redirect:../../";
   }
   
   @GetMapping("delete/{no}")
@@ -65,17 +65,16 @@ public class MemberController {
   @PostMapping("update")
   public String update(Member member, Part photoFile) throws Exception {
 
-    if (photoFile.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
-      String uploadDir = servletContext.getRealPath("/upload/member");
-      photoFile.write(uploadDir + "/" + filename);
-      member.setPhoto(filename);
-    }
+    /*
+     * if (photoFile.getSize() > 0) { String filename = UUID.randomUUID().toString(); String
+     * uploadDir = servletContext.getRealPath("/upload/member"); photoFile.write(uploadDir + "/" +
+     * filename); member.setPhoto(filename); }
+     */
 
     if (memberService.update(member) == 0)
       throw new RuntimeException("해당 번호의 회원이 없습니다.");
       
-    return "redirect:.";
+    return "redirect:./" + member.getNo();
   }
   
   @PostMapping("updatePassword")

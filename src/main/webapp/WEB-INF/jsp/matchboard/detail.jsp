@@ -29,6 +29,15 @@
         </div>
 
         <div class="form-group row">
+          <label for="playdt" class="col-sm-2 col-form-label">경기날짜</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" name="playDate"
+              value="${match.playDate}" readonly/>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
           <label for="location" class="col-sm-2 col-form-label">지역</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="teamArea" id="location"
@@ -88,9 +97,12 @@
 
 
             <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
-             <a class="btn btn-primary" href='delete/${match.no}'>삭제</a>
-              <a class="btn btn-primary"
-              href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
+            <%-- <c:if test="${match.team.teamMember.team_leader == true}"> --%>
+            <%-- <c:if test="${sessionScope.loginUser.team.teamName eq match.team.teamName}"> --%>
+          <a class="btn btn-primary" href='delete/${match.no}'>삭제</a>
+          <a class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
+<%--             </c:if>
+            </c:if> --%>
           </div>
         </div>
       </form>

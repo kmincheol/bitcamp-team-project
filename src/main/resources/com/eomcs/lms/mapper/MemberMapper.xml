@@ -64,12 +64,20 @@
   
   <select id="findByNo" resultMap="memberMap" parameterType="int">
     select 
-      <include refid="default-columns"/>, 
-      prof_phot
+      mbr_id,
+      name,
+      bth_dt,
+      email,
+      user_id,
+      pwd,
+      tel,
+      bas_addr,
+      det_addr,
+      s_intd
     from 
       mbr
     where 
-      member_id = #{value}
+      mbr_id = #{value}
   </select>
   
   <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
@@ -120,16 +128,29 @@
       #{post},
       #{baseAddress},
       #{detailAddress},
-      #{loginType})
+      #{loginType}
+      )
   </insert>
   
   <update id="update" parameterType="member">
-    update lms_member
+    update mbr
     <set>
       <if test="name != null">name = #{name},</if>
       <if test="email != null">email = #{email},</if>
-      <if test="password != null">pwd = password(#{password}),</if>
+      <if test="password != null">pwd = #{password},</if>
       <if test="tel != null">tel = #{tel},</if>
+      <if test="baseAddress != null">bas_addr = #{baseAddress},</if>
+      <if test="detailAddress != null">det_addr = #{detailAddress},</if>
+      <if test="selfIntroduce != null">s_intd = #{selfIntroduce}</if>
+    </set>  
+    where 
+      mbr_id = #{no}
+  </update>
+  
+    <update id="updatePassword" parameterType="member">
+    update mbr
+    <set>
+      <if test="password != null">pwd = #{password}</if>
     </set>  
     where 
       mbr_id = #{no}

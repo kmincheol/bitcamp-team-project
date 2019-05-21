@@ -16,9 +16,9 @@
   <div class="container">
 
     <div class="form-group row">
-      <label for="no" class="col-sm-2 col-form-label">유형</label>
+      <label for="no" class="col-sm-2 col-form-label">번호</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="questionType" id="type" value="${question.questionType}"
+        <input type="text" class="form-control" name="questionType" id="type" value="${question.questionNo}"
           readonly />
       </div>
     </div>
@@ -28,8 +28,8 @@
       <div class="col-sm-10">
           <input tyep="text" class="form-control"
           value = " <c:choose>
-                <c:when test="${question.questionStatus == false}">답변대기</c:when>
-                <c:otherwise>답변완료</c:otherwise>
+                <c:when test="${question.questionStatus == false}">대기</c:when>
+                <c:otherwise>완료</c:otherwise>
               </c:choose>" readonly/>
       </div>
     </div>
@@ -68,13 +68,11 @@
       <div class="col-sm-10">
         <a class="btn btn-primary" href='.'>목록</a> <a class="btn btn-primary"
           href='delete/${question.questionNo}'>삭제</a> <a class="btn btn-primary"
-          href='${contextRootPath}/app/recruit_board/update/${question.questionNo}'>변경</a>
+          href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
       </div>
     </div> 
   </div>
   <!-- .container -->
-
-  <jsp:include page="../javascript.jsp" />
 
 </body>
 

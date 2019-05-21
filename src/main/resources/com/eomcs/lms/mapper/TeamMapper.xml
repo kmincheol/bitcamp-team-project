@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.TeamDao">
+
+  <resultMap type="Team" id="teamMap">
+    <id column="tm_id" property="teamId" />
+    <result column="tm_id" property="teamName" />
+    <result column="titl" property="teamInfo" />
+    <result column="vw_cnt" property="teamArea" />
+    <result column="age_id" property="teamAgeId" />
+    <result column="tm_type_id" property="teamTypeId" />
+    <result column="tm_lev_id" property="teamLevelId" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="tm_ambl_phot" property="teamEmblemPhoto" />
+    <result column="tm_unf_wth" property="teamUniform" />
+    <result column="tm_unf_phot" property="teamUniformPhoto" />
+    <result column="cdt" property="teamCreateDate" />
+    <result column="mdt" property="teamInfoModifieDate" />
+</resultMap>
+
+  <resultMap type="Team" id="teamMap1">
+    <id column="tm_id" property="teamId" />
+    <result column="tm_id" property="teamName" />
+    <result column="titl" property="teamInfo" />
+    <result column="vw_cnt" property="teamArea" />
+    <result column="age_id" property="teamAgeId" />
+    <result column="tm_type_id" property="teamTypeId" />
+    <result column="tm_lev_id" property="teamLevelId" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="tm_ambl_phot" property="teamEmblemPhoto" />
+    <result column="tm_unf_wth" property="teamUniform" />
+    <result column="tm_unf_phot" property="teamUniformPhoto" />
+    <result column="cdt" property="teamCreateDate" />
+    <result column="mdt" property="teamInfoModifieDate" />
+
+    <association property="teamTypeSports" javaType="teamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
+
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMember_id" />
+      <id column="pstn" property="positon" />
+      <id column="tlead_wth" property="team_leader" />
+    </association>
+
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+    </association>
+
+  </resultMap>
+
+  <select id="findAll" resultMap="teamMap1" parameterType="map">
+    select
+    tm_id,
+    name,
+    tm_intd,
+    area,
+    age_id,
+    tm_type_id,
+    tm_lev_id,
+    spt_clsf_id,
+    tm_ambl_phot,
+    tm_unf_wth,
+    tm_unf_phot,
+    cdt,
+    mdt
+    from
+    tm
+   
+  </select>
+
+
+
+  <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
+    select
+    tm_id,
+    name,
+    tm_intd,
+    area,
+    age_id,
+    tm_type_id, 
+    tm_lev_id,
+    s.spt_clsf_name,
+    tm_ambl_phot,
+    tm_unf_wth,
+    tm_unf_phot,
+    cdt,
+    mdt,
+    tmb.tm_mbr_id,
+    tmb.pstn,
+    tmb.tlead_wth
+    from
+    tm t
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id 
+     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
+    where
+    t.tm_id = '1';
+
+  </select>
+
+</mapper>

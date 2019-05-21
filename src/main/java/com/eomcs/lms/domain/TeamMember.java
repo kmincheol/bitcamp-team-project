@@ -10,7 +10,7 @@ public int getTeamMember_id() {
 }
 public void setTeamMember_id(int teamMember_id) {
   this.teamMember_id = teamMember_id;
-}
+} 
 public int getMember_id() {
   return member_id;
 }

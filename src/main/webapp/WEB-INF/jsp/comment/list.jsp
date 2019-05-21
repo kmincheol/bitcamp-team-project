@@ -1,4 +1,3 @@
-<%@page import="com.eomcs.lms.domain.FreeFile"%>
 <%@page import="com.eomcs.lms.domain.Free"%>
 <%@page import="com.eomcs.lms.domain.Member"%>
 <%@page import="com.eomcs.lms.domain.Comment"%>

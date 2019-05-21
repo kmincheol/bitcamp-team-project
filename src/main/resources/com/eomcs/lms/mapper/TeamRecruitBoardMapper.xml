@@ -88,7 +88,7 @@
     outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
     left outer join mbr m on m.mbr_id = tm.mbr_id
     where
-    m.mbr_id = #{no};
+    t.tm_id = '1';
 
   </select>
 

@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Team implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
 
-  private int teamId;
+  private int teamId; 
   private String teamName;
   private String teamInfo;
-  private String teamArea;
+  private int teamArea;  // 임시 숫자로 바꿈
   private int teamAgeId;
   private int teamTypeId;
   private int teamLevelId;
@@ -88,13 +88,15 @@ public class Team implements Cloneable, Serializable {
     this.teamInfo = teamInfo;
   }
 
-  public String getTeamArea() {
+  public int getTeamArea() {
     return teamArea;
   }
 
-  public void setTeamArea(String teamArea) {
+
+  public void setTeamArea(int teamArea) {
     this.teamArea = teamArea;
   }
+
 
   public int getTeamAgeId() {
     return teamAgeId;

@@ -5,7 +5,7 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 
 public interface TeamService {
-  List<Team> teamList(int pageNo, int pageSize);
+  List<Team> teamList();
   List<Member> memberList(int pageNo, int pageSize); 
   int addTeam(Team team);
   int addMember(Member member);
