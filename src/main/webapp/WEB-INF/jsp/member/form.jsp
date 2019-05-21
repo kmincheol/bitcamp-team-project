@@ -14,7 +14,7 @@
 
   <div class="container">
 
-    <h2>회원가입(임시)</h2>
+    <h1>회원가입(임시 무조건 임시임 이거 아님 오해 ㄴㄴ)</h1>
 
     <form action='enter' method='post' enctype='multipart/form-data'>
 
@@ -100,7 +100,7 @@
         <div class="form-group row">
           <label for="baseAddress" class="col-sm-5 col-form-label">기본주소</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-plaintext" id="baseAddress" name="baseAddress"
+            <input type="text" class="form-control" id="baseAddress" name="baseAddress"
               value='${member.baseAddress}'/>
           </div>
         </div>
@@ -108,7 +108,7 @@
         <div class="form-group row">
           <label for="detailAddress" class="col-sm-5 col-form-label">상세주소</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-plaintext" id="detailAddress" name="detailAddress"
+            <input type="text" class="form-control" id="detailAddress" name="detailAddress"
               value='${member.detailAddress}'/>
           </div>
         </div>
@@ -116,8 +116,8 @@
         <div class="form-group row">
           <label for="createdDate" class="col-sm-5 col-form-label">자기소개</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control-plaintext" id="selfIntroduce" name="selfIntroduce"
-              value='${member.selfIntroduce}' />
+            <textarea class="form-control" id="selfIntroduce" name="selfIntroduce">
+            ${member.selfIntroduce}</textarea>
           </div>
         </div>
         
