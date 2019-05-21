@@ -1,118 +1,60 @@
-body, html{
-    margin: 0px;
-    padding: 0px;
-    height: 100%;   
+* {
+	margin: 0px;
+	padding: 0px;
 }
 
-ul{
-    list-style:none;
-    text-align: center;
-    padding-left: 0px;
-}
-
-.header-category{
-    margin: 0px 35px;
-}
-
-.navbar{
-    background-color: rgba(255, 255, 255, 0.15);
-    height: 95px;
-}
-
-.nav{
-    padding-top: 10px;
-    height: 55px;
-}
-
-.search-result{
-    height: 40px;
-    font-size: 13px;
-    text-align: left;
-    color: white;
-    background-color: #343a40;
-}
-
-.headerImg{
-    text-align: center;
-    width: 260px;
-    height: 130px;
-}
-
-#header{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-a{
-    text-decoration: none;
-    color: white;
-}
-
-#header-item{
-    position: absolute;
-    font-size: 10px;
-    top: 10px;
-    right: 10px;
-}
-
-
-
-#main-text{
-position: absolute;
-top: 220px;
-text-align: center;
-left: 0;
-right: 0;
-}
-
-#main-text>h2{
-    color:white
-}
-
-.dropdown{
-top : 350px;
-}
-
-#recruit-list-out{
-    position: absolute;
-    width: 1000px;
-    text-align: center;
-    padding-top: 20px;
-    border-top: 2px solid black;
-    height: 700px;
-    left: 0;
-    right: 0;
-    top: 450px;
-    margin: auto;
-    display: inline-block;
-}
-
- #inputGroupSelect01{
-    position: absolute;
-    width: 150px;
-} 
-
-.table{
-    width: 1000px;
-    margin: auto;
-
-}
-
-table a{
-    color: black;
-}
-
-table a:hover{
-color: black;
-
-}
-
-#in{
+body, html {
 	width: 100%;
-    margin-top: 20px;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 
+#main-text {
+	position: relative;
+	top: 220px;
+	text-align: center;
+	left: 0;
+	right: 0;
+}
+
+#main-text>h2 {
+	color: black;
+}
+
+#recruit-list-out {
+	position: absolute;
+	width: 1000px;
+	text-align: center;
+	padding-top: 20px;
+	border-top: 2px solid black;
+	height: 700px;
+	left: 0;
+	right: 0;
+	top: 450px;
+	margin: auto;
+	display: inline-block;
+}
+
+#inputGroupSelect01 {
+	position: absolute;
+	width: 150px;
+}
+
+.table {
+	width: 1000px;
+	margin: auto;
+}
+
+table a {
+	color: black;
+}
+
+table a:hover {
+	color: black;
+}
+
+#in {
+	width: 100%;
+	margin-top: 20px;
+}

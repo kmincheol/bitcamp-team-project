@@ -70,11 +70,15 @@ html, body {
 	height: 55px;
 	transition: 0.4s;
 	overflow: hidden;
+	background-color: black;
+	z-index: 1;
 }
 
 .header-category {
-	width: 120px;
-	margin: 0 40px;
+	width: 200px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-right: 1px solid gray;
 }
 
 .header-category .nav-item {

@@ -6,19 +6,17 @@
 
 <head>
 <title>모집게시판</title>
-<jsp:include page="../header.jsp"></jsp:include>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+<jsp:include page="../header.jsp"></jsp:include>
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 </head>
 
 <body>
-
-
   <div class="container">
-
-    <!--     <div id="main-text">
+    <div id="main-text">
       <h2>모집게시판</h2>
-    </div> -->
+    </div>
     <br>
 
     <div id="recruit-list-out">
@@ -40,7 +38,6 @@
           <div id="search-btn">
             <button id="searchbtn" class="input-group-btn btn btn-dark">검색</button>
           </div>
-
         </div>
       </form>
 
@@ -91,26 +88,16 @@
               style="background-color: gray; color: white; border-color: gray;">다음</a></li>
           </ul>
         </nav>
-
       </div>
-
-
-
     </div>
-
-
   </div>
-
   <jsp:include page="../javascript.jsp" />
 
   <script>
-			
+			$(function() {
+				$('html').removeClass('no-js');
+			});
 		</script>
 
-
 </body>
-<!-- <footer>
-        
-  </footer> -->
-
 </html>
