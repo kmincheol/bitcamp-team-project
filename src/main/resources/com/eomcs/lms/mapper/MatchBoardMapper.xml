@@ -211,8 +211,7 @@
       cost,
       titl,
       cont,
-      tel,
-      spt_clsf_id)
+      tel)
     values(
       #{teamNo},
       #{playDate},
@@ -220,8 +219,7 @@
       #{cost},
       #{title},
       #{contents},
-      #{telephone},
-      #{teamSportsId})
+      #{telephone})
   </insert>
 
 

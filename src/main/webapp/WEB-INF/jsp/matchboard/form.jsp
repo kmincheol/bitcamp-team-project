@@ -57,13 +57,13 @@
             </c:if> 
             </c:forEach>
             </select>
-            		<select name="teamSportsId" class="custom-select-sm" id="select3">
+<%--             		<select name="teamSportsId" class="custom-select-sm" id="select3">
             		<c:forEach items="${match}" var="match">
             		<c:if test="${!match.team.teamMember.team_leader}">
             		<option value="${match.team.teamSportsId}">${match.team.teamTypeSports.teamSportsType}</option>
             		</c:if> 
             		</c:forEach>
-            		</select>
+            		</select> --%>
         </div>
       </td>
     </tr>
