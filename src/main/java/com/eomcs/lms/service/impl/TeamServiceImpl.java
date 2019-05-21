@@ -20,7 +20,7 @@ public class TeamServiceImpl implements TeamService {
   }
 
   @Override
-  public List<Team> teamList(int pageNo, int pageSize) {
+  public List<Team> teamList() {
     return null;
   }
 
