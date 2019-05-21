@@ -21,8 +21,8 @@ public class MemberController {
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
   
-  @GetMapping("form")
-  public void form() {
+  @GetMapping("join")
+  public void join() {
   }
   
   @PostMapping("enter")

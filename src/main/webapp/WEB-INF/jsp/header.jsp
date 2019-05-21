@@ -32,7 +32,7 @@
             <a href="${contextRootPath}/app/auth/logout">로그아웃</a>
           </c:if>
           <c:if test="${sessionScope.loginUser == null}">
-          / <a href="${contextRootPath}/app/member/form.jsp">회원가입</a>
+          / <a href="${contextRootPath}/app/member/join">회원가입</a>
           </c:if>
           / <a href="#">고객센터</a>
         </div>
@@ -71,7 +71,9 @@
           <div class="header-category">
             <li class="nav-item"><a class="nav-link" href="#">마이페이지</a>
               <ul class="category">
+              <c:if test="${sessionScope.loginUser != null}">
                 <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/member/${sessionScope.loginUser.no}">개인정보</a></li>
+                </c:if>
                 <li class="nav-item"><a class="nav-link" href="#">나의 팀 정보</a></li>
               </ul></li>
           </div>

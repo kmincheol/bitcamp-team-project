@@ -7,13 +7,14 @@
 <head>
   <title>회원 상세조회</title>
   <jsp:include page="../commonCss.jsp"/>
+  <jsp:include page="../header.jsp"/>
 </head>
 <body>
 
   <%-- <jsp:include page="../header.jsp" /> --%> 
    
   <div class="container">
-   
+   <br><br>
     <h2>회원 정보를 <b>확인하고 수정</b>할 수 있습니다.</h2>
   
     <c:choose>
@@ -90,11 +91,9 @@
             <div class="form-group row">
               <label for="password" class="col-sm-5 col-form-label">비밀번호</label>
               <div class="col-sm-10">
-                <input type="password" class="pwd form-control" name="password" id="password" value='${member.password}' style="display:none;"/>
                 <button id="password-btn" type="button"> 비밀번호 변경</button>
-               
                 <div class="updatepwd" style="display:none;">
-                <input type="password" class="newpwd form-control" name="password" id="newpwd" placeholder="변경할 비밀번호"/>
+                <input type="password" class="newpwd form-control" id="newpwd" placeholder="변경할 비밀번호"/>
                 <input type="password" class="pwdcheck form-control" name="password" id="pwdcheck" placeholder="비밀번호 확인" value='${member.password}' />
                 <div class="updatepwdbtn">
                   <button id="updatebtn">저장</button> 
@@ -135,7 +134,7 @@
 
             <div class="form-group row">
               <div class="col-sm-10">
-                <a class="btn btn-primary" href='../'>회원목록</a>
+                <a class="btn btn-primary" href='../../'>메인화면</a>
                 <button class="btn btn-primary">저장</button>
               </div>
             </div>    
@@ -185,6 +184,8 @@
       $('.updatepwd').show();
       $(this).hide();
       $(this).prev().hide();
+      $('#pwdcheck').val('');
+
     });
     
     $('#cancelbtn').on('click', function() {
@@ -201,11 +202,7 @@
     if (newpwd != pwdcheck) {
       alert("비밀번호가 일치하지 않습니다.");
       return false;
-    } 
-    e.preventDefault();
-    $('#newpassword')[0].submit();
-    /* alert("비밀번호가 변경되었습니다."); */
-    
+    } alert("비밀번호가 변경 되었습니다."); 
   }); 
     
   </script>

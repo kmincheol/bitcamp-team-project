@@ -14,7 +14,7 @@
 <body>
 
   <div class="container">
-
+<br><br>
 
     <div id="main-text">
       <h2>자유게시판</h2>

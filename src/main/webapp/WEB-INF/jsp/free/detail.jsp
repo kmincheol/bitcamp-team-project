@@ -20,6 +20,7 @@
   <div class="container">
 
     <div id="main-text">
+    <br><br>
       <h2>자유게시판</h2>
     </div>
     <br>

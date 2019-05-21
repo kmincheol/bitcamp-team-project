@@ -45,6 +45,8 @@ public class AuthFilter implements Filter {
     if (pathInfo.endsWith("add")
         || pathInfo.endsWith("update")
         || pathInfo.endsWith("delete")
+        || pathInfo.endsWith("member")
+        || pathInfo.substring(pathInfo.lastIndexOf("/")+ 1, pathInfo.length()).matches("(^[0-9]*$)")
         || (!pathInfo.endsWith("/auth/form") && 
              pathInfo.endsWith("form"))) {
       // 로그인 되어 있어야 한다.
