@@ -89,7 +89,7 @@
     tm_intd,
     area,
     age_id,
-    tm_type_id,
+    tm_type_id, 
     tm_lev_id,
     s.spt_clsf_name,
     tm_ambl_phot,

@@ -28,7 +28,7 @@ public class TeamController {
   @Autowired TeamService teamService;
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
-
+ 
   @GetMapping
   public String list(Model model) {
 
