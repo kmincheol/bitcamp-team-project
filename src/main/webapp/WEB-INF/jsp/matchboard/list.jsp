@@ -150,11 +150,13 @@
 
       <br> <br> <br> <br>
       
+      <c:if test="${!match.team.teamMember.team_leader}">
 		<div class="button2">
           <a href='${contextRootPath}/app/matchboard/form.jsp'
           class="btn btn-primary btn-sm" tabindex="-1" role="button"
           aria-disabled="true">등록</a>
        </div>
+       </c:if>
            <br>
       <!--     <th scope="row" id="subtitle" scope="col" width = 100% >신청 가능 매치</th>-->
 

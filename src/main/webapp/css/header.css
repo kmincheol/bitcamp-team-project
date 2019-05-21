@@ -76,9 +76,7 @@ html, body {
 
 .header-category {
 	width: 200px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	border-right: 1px solid gray;
+	z-index: 1;
 }
 
 .header-category .nav-item {

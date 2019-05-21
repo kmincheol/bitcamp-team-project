@@ -8,33 +8,44 @@ body, html {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+
+}
+
+.container {
+	width:100%;
+	height: 100%;
+	margin: 0px;
+  padding: 0px;
+	
 }
 
 #main-text {
 	position: relative;
-	top: 220px;
 	text-align: center;
-	left: 0;
-	right: 0;
+	width: 100%;
+	height: 230px;
 }
 
 #main-text>h2 {
+	position: relative;
+	top: 90px;
 	color: black;
 }
 
 #recruit-list-out {
-	position: absolute;
-	width: 1000px;
+	position: relative;
+	width: 100%;
 	text-align: center;
 	padding-top: 20px;
 	border-top: 2px solid black;
 	height: 700px;
-	left: 0;
-	right: 0;
-	top: 450px;
-	margin: auto;
+}
+
+.search-form{
 	display: inline-block;
 }
+
+
 
 #inputGroupSelect01 {
 	position: absolute;

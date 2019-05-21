@@ -59,6 +59,7 @@
       <result column="area" property="teamArea" />   
       <result column="name" property="teamName" />
       <result column="tm_ambl_phot" property="teamEmblemPhoto" />
+      <result column="spt_clsf_id" property="teamSportsId" />
 
 	<!-- 종목테이블 -->
     <association property="teamTypeSports" javaType="TeamTypeSports">
@@ -142,7 +143,7 @@
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
   </sql>
   
-<sql id="select2"> <!-- apply를 위한 select -->
+<sql id="select2"> <!-- apply를 위한 select 아직 미완 -->
   select
     m.mtch_id,
     t.tm_id,
@@ -154,7 +155,7 @@
   from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
-    left outer join mtchaply a on m.tm_id=a.tm_id
+    left outer join mtchaply a on m.tm_id = a.tm_id
 </sql>
    
 <sql id="select3">
@@ -184,7 +185,8 @@
       s.name,
       s.tm_id,
       s.area,
-      t.tlead_wth
+      t.tlead_wth,
+      spt_clsf_id
     from
       mbr m
       left outer join tm_mbr t on m.mbr_id = t.mbr_id
