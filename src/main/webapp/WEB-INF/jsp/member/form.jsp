@@ -14,7 +14,7 @@
 
   <div class="container">
 
-    <h1>회원가입(임시 무조건 임시임 이거 아님 오해 ㄴㄴ)</h1>
+    <h1>회원가입 <br> (임시 무조건 임시임 이거 아님 오해 하지 말아주시길 바랍니다. 저희 api 적용 다했는데 인증부분만 하면 되요) </h1>
 
     <form action='enter' method='post' enctype='multipart/form-data'>
 
