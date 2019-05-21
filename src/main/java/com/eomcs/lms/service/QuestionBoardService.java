@@ -12,15 +12,15 @@ public interface QuestionBoardService {
 
   int delete(int no);
   
+  QuestionBoard getUpdate(int no);
   
+  int update(QuestionBoard questionBoard);
   //
 //  int add(QuestionBoard questionBoard);
 //  List<QuestionBoard> boardSearch(String keyword);
 //  
 //  
-//  QuestionBoard getUpdate(int no);
 //
-//  int update(QuestionBoard questionBoard);
   
   // int size();
 }
