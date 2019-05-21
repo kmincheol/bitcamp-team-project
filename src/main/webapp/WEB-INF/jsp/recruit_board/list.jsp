@@ -13,33 +13,20 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div id="main-text">
       <h2>모집게시판</h2>
     </div>
-    <br>
 
     <div id="recruit-list-out">
-      <div class="input-group mb-3" style="width: 150px;">
+      <!--       <div class="input-group mb-3" style="width: 150px;">
         <select class="custom-select" id="inputGroupSelect01">
           <option selected>종목</option>
           <option value="1">축구</option>
           <option value="2">야구</option>
           <option value="3">농구</option>
         </select>
-      </div>
-
-      <form action='${contextRootPath}/app/recruit_board/search'>
-        <div class="form-group row">
-          <div class="col-xs-4">
-            <input id="searchwindow" name='keyword' class="form-control" type="search"
-              placeholder="검색어 입력">
-          </div>
-          <div id="search-btn">
-            <button id="searchbtn" class="input-group-btn btn btn-dark">검색</button>
-          </div>
-        </div>
-      </form>
+      </div> -->
 
       <table class="table">
         <thead class="thead-light">
@@ -89,10 +76,26 @@
           </ul>
         </nav>
       </div>
+
+      <form action='${contextRootPath}/app/recruit_board/search' class="search-form">
+        <div class="form-group row">
+          <div class="col-xs-4">
+            <input id="searchwindow" name='keyword' class="form-control" type="search"
+              placeholder="검색어 입력">
+          </div>
+          <div id="search-btn">
+            <button id="searchbtn" class="input-group-btn btn btn-dark">검색</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="footer">
+    <p>footer</p>
     </div>
   </div>
-  <jsp:include page="../javascript.jsp" />
+  
 
+  <jsp:include page="../javascript.jsp" />
   <script>
 			$(function() {
 				$('html').removeClass('no-js');

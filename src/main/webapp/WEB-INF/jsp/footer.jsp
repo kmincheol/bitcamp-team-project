@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="${contextRootPath}/css/footer.css"></jsp:include>
 <meta charset="UTF-8">
 <title>footer</title>
 </head>

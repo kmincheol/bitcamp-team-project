@@ -24,14 +24,14 @@
     
     <div id="recruit-list-out">
 
-      <div class="input-group mb-3" style="width: 150px;">
+    <!--   <div class="input-group mb-3" style="width: 150px;">
         <select class="custom-select" id="inputGroupSelect01">
           <option selected>종목</option>
           <option value="1">축구</option>
           <option value="2">야구</option>
           <option value="3">농구</option>
         </select>
-      </div>
+      </div> -->
 
       <form id="keywordbox" action='search'>
         <div class="form-group row">
