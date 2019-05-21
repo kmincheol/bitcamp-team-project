@@ -36,14 +36,14 @@ public class MatchBoardController {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
     }
     
-  List<Match> matches = (List<Match>) matchBoardService.teamInfoGet(member.getNo());
-     logger.debug(matches);
+  List<Match> match = matchBoardService.teamInfoGet(member.getNo());
+     logger.debug(match);
    
 //    @SuppressWarnings("unchecked")
 //    List<Team> teams = (List<Team>) teamService.getTeam(member.getNo()); 
     
     model.addAttribute("member", member); 
-    model.addAttribute("match",matches); 
+    model.addAttribute("match",match); 
   }
   
   @GetMapping
@@ -92,9 +92,6 @@ public class MatchBoardController {
   
   @PostMapping("add")
   public String add(Match match) throws Exception {
-    if(match.getLocation() == null) {
-      match.setLocation(teamService.getTeam(match.getNo()).getTeamInfo());
-    }
     logger.debug(match);
     
     matchBoardService.add(match);

@@ -25,40 +25,41 @@ public class MatchServiceImpl implements MatchBoardService {
     HashMap<String,Object> params = new HashMap<>();
     params.put("size", pageSize);
     params.put("rowNo", (pageNo - 1) * pageSize);
-    
+
     return matchDao.findAll(params);
   }
-  
+
   @Override
   public Match get(int no) {
     Match match = matchDao.findByNo(no);
-    
+
     if (match != null) {
       matchDao.increaseCount(no);
     }
     return match;
   }
 
-  
+
   @Override
   public List<Match> teamInfoGet(int no) {
+
     return matchDao.teamInfoGet(no);
   }
-  
-  
+
+
   @Override
   public int add(Match match) {
-    int count = matchDao.insert(match);
+    System.out.println("AAAAAAAA" + match);
+
+//    List<Tag> tags = match.getTags(); 
+//    for (Tag t : tags) {
+//      t.setMatchNo(match.getNo());
+//      }
+//    tagDao.insert(match.getTags());
     
-    List<Tag> tags = match.getTags();
-    for (Tag t : tags) {
-      t.setMatchNo(match.getNo());
-    }
-    tagDao.insert(match.getTags());
-    
-    return count;
+    return matchDao.insert(match);
   }
-  
+
 
   @Override
   public int update(Match match) {
@@ -71,13 +72,13 @@ public class MatchServiceImpl implements MatchBoardService {
     return matchDao.delete(no);
   }
 
-  
+
   @Override
   public List<Match> search(String keyword) {
     return null;
   }
 
-  
+
   @Override
   public int size() {
     return matchDao.countAll();
