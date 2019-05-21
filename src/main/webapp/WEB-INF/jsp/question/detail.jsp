@@ -73,7 +73,7 @@
     </div> 
   </div>
   <!-- .container -->
-
+    <jsp:include page="answer.jsp" />
 </body>
 
 </html>

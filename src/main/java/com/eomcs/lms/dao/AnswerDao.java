@@ -5,17 +5,16 @@ import java.util.Map;
 import com.eomcs.lms.domain.AnswerBoard;
 public interface AnswerDao {
  
- // int insert(QuestionBoard questionBoard);
  
-  List<AnswerBoard> findAll(Map<String, Object> params);
+  List<AnswerBoard> findAll();
   
-  //QuestionBoard findByNo(int no);
-
-  //int delete(int no);
+  int insert(AnswerBoard answerBoard);
   
- // int update(QuestionBoard questionBoard);
+  int update(AnswerBoard answerBoard);
 
-  //QuestionBoard detailUpdate(int no);
+  int delete(int no);
+
+
   
 }
 

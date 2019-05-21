@@ -1,15 +1,15 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
+
 import javax.servlet.ServletContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import com.eomcs.lms.domain.AnswerBoard;
 import com.eomcs.lms.service.AnswerBoardService;
 
@@ -17,9 +17,6 @@ import com.eomcs.lms.service.AnswerBoardService;
 @RequestMapping("/answer")
 public class AnswerBoardController {
 
-  
-  
-  private static final Logger logger = LogManager.getLogger(AnswerBoardController.class);
 
   @Autowired
   AnswerBoardService answerBoardService;
@@ -28,32 +25,34 @@ public class AnswerBoardController {
 
   
   @GetMapping
-  public String list(@RequestParam(defaultValue = "1") int pageNo,
-      @RequestParam(defaultValue = "3") int pageSize, Model model) {
-
-    if (pageSize < 3 || pageSize > 8)
-      pageSize = 3;
-
-    // int rowCount = recruitBoardService.size();
-    int rowCount = 1;
-    int totalPage = rowCount / pageSize;
-    if (rowCount % pageSize > 0)
-      totalPage++;
-
-    if (pageNo > totalPage)
-      pageNo = totalPage;
-    if (pageNo < 1)
-      pageNo = 1;
-
-    List<AnswerBoard> answer = answerBoardService.list(pageNo, pageSize);
-   System.out.println(answer.toString());
-    model.addAttribute("answer", answer);
-    model.addAttribute("pageNo", pageNo);
-    model.addAttribute("pageSize", pageSize);
-    model.addAttribute("totalPage", totalPage);
-
-    return "answer/list";
+  private  String list(Model model) throws Exception{
+	  List<AnswerBoard> answer = answerBoardService.list();
+	  model.addAttribute("answer", answer);
+	  
+	  System.out.println(answer.toString());
+      return "question/answer";
   }
+  
+  
+	/*
+	 * @GetMapping public String list(@RequestParam(defaultValue = "1") int pageNo,
+	 * 
+	 * @RequestParam(defaultValue = "3") int pageSize, Model model) {
+	 * 
+	 * if (pageSize < 3 || pageSize > 8) pageSize = 3;
+	 * 
+	 * // int rowCount = recruitBoardService.size(); int rowCount = 1; int totalPage
+	 * = rowCount / pageSize; if (rowCount % pageSize > 0) totalPage++;
+	 * 
+	 * if (pageNo > totalPage) pageNo = totalPage; if (pageNo < 1) pageNo = 1;
+	 * 
+	 * List<AnswerBoard> answer = answerBoardService.list(pageNo, pageSize);
+	 * System.out.println(answer.toString()); model.addAttribute("answer", answer);
+	 * model.addAttribute("pageNo", pageNo); model.addAttribute("pageSize",
+	 * pageSize); model.addAttribute("totalPage", totalPage);
+	 * 
+	 * return "answer/list"; }
+	 */
   
 //  @GetMapping("{no}") 
 //  public String detail(@PathVariable int no, Model model) { 

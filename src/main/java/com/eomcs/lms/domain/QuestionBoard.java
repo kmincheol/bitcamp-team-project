@@ -16,7 +16,13 @@ public class QuestionBoard {
         
         
         
-        public Member getMember() {
+        @Override
+	public String toString() {
+		return "QuestionBoard [questionNo=" + questionNo + ", memberNo=" + memberNo + ", title=" + title + ", contents="
+				+ contents + ", questionType=" + questionType + ", questionStatus=" + questionStatus + ", createdDate="
+				+ createdDate + ", member=" + member + "]";
+	}
+		public Member getMember() {
           return member;
         }
         public void setMember(Member member) {

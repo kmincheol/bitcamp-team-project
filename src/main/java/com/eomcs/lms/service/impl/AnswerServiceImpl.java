@@ -1,8 +1,9 @@
 package com.eomcs.lms.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import com.eomcs.lms.dao.AnswerDao;
 import com.eomcs.lms.domain.AnswerBoard;
 import com.eomcs.lms.service.AnswerBoardService;
@@ -21,11 +22,10 @@ public class AnswerServiceImpl implements AnswerBoardService {
   }
 
   @Override
-  public List<AnswerBoard> list(int pageNo, int pageSize) {
-    HashMap<String, Object> params = new HashMap<>();
-    params.put("size", pageSize);
-    params.put("rowNo", (pageNo - 1) * pageSize);
-    return answerDao.findAll(params);
+  public List<AnswerBoard> list() {
+  
+  
+    return answerDao.findAll();
   }
 //  
 //  @Override

@@ -77,7 +77,7 @@
 
 
 
-  <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
+  <!-- <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
     select
     tm_id,
     name,
@@ -103,5 +103,5 @@
     t.tm_id = '1';
 
   </select>
-
+ -->
 </mapper>

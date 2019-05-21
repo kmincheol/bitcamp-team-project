@@ -5,7 +5,7 @@ import com.eomcs.lms.domain.AnswerBoard;
 
 public interface AnswerBoardService {
  
-  List<AnswerBoard> list(int pageNo, int pageSize);
+  List<AnswerBoard> list();
 
 //  QuestionBoard get(int no);
 
