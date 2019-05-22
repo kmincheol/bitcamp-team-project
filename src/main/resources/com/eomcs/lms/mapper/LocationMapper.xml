@@ -4,21 +4,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.eomcs.lms.dao.TopLocation">
+<mapper namespace="com.eomcs.lms.dao.LocationDao">
   
   <resultMap type="topLocation" id="topLocationMap">
     <id column="toplc_id"  property="topLocationId"/>
     <result column="toplc_no"   property="topLocationNo"/>
     <result column="name"  property="topLocationName"/>
   
-    <collection property="middleLocation" javaType="MiddleLocation">
+    <collection property="middleLocation" ofType="MiddleLocation">
       <id column="toplc_id" property="topLocationId" />
       <result column="midlc_id" property="middleLocationId" />
       <result column="midlc_no" property="middleLocationNo" />
       <result column="name" property="middleLocationName" />
     </collection>
     
-      <collection property="bottomLocation" javaType="BottomLocation">
+      <collection property="bottomLocation" ofType="BottomLocation">
         <id column="midlc_id" property="middleLocationId" />
         <result column="btmlc_id" property="bottomLocationId" />
         <result column="btmlc_no" property="bottomLocationNo" />
