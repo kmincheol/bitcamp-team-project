@@ -29,8 +29,8 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     // 일관성을 위해 Command 객체는 항상 Service 객체를 통해 데이터를 다뤄야 한다.
     //
     HashMap<String, Object> params = new HashMap<>();
-    params.put("size", pageSize);
-    params.put("rowNo", (pageNo - 1) * pageSize);
+//    params.put("size", pageSize);
+//    params.put("rowNo", (pageNo - 1) * pageSize);
 
     return teamRecruitDao.findAll(params);
   }

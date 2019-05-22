@@ -20,7 +20,7 @@
     <div id="main-backgroundImg">
       <img src="${contextRootPath}/images/mainpage.jpg" class="img-fluid">
       <div id="main-text">
-        <h1>S P O R T S - M A T C H I N G</h1>
+        <h1></h1>
       </div>
 
       <div class="search-form">
@@ -61,13 +61,7 @@
   </div>
   <!-- .container -->
 
-
-
   <jsp:include page="../javascript.jsp" />
-  <script>
-			
-		</script>
-
+  
 </body>
-
 </html>

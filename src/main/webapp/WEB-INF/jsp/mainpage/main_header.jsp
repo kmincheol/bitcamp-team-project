@@ -6,9 +6,9 @@
 
 <head>
 <title>모집게시판</title>
-<link rel="stylesheet" href="${contextRootPath}/css/main_header.css">
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/main_header.css">
 </head>
 
 <body>
