@@ -80,6 +80,16 @@
       mbr_id = #{value}
   </select>
   
+  
+  <select id="findByEmail" resultMap="memberMap" parameterType="string">
+    select
+      email
+    from 
+      mbr
+    where 
+      email = #{value}
+  </select>
+  
   <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
     select 
       <include refid="default-columns"/>,

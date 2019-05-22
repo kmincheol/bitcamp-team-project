@@ -142,9 +142,18 @@
                 <h3 class="join_title">
                   <label for="email">본인 확인 이메일</label>
                 </h3>
-                <span class="ps_box int_email box_right_space">
-                  <input type="text" id="email" name="email" maxlength="100" placeholder="선택입력" aria-label="선택입력" class="int">
-                </span>
+                <span class="ps_box int_email box_right_space" id="joinCode">
+                  <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요."
+                  maxlength="100" class="int">
+                </span> 
+                <input id="btnSend" type="button" value="인증" class="btn btn-primary btn-sm">
+              </div>
+              <div class="ps_box_disable box_right_space" id="authNoBox">
+                <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled maxlength="4">
+                <label id="wa_verify" for="authNo" class="lbl">
+                  <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
+                  <span class="input_code" id="authNoCode" style="display:none;"></span>
+                </label>
               </div>
               <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
             </div><!-- .row_group -->
@@ -158,17 +167,23 @@
                   <input type="tel" id="phoneNo" name="tel" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
                   <label for="phoneNo" class="lbl"></label>              
                 </span>
-                <a href="#" class="btn_verify btn_primary" id="btnSend" role="button">
+                <!--
+
+                  <a href="#" class="btn_verify btn_primary" id="btnSend" role="button">
+                -->
                   <span class="">인증번호 받기</span>
                 </a>
               </div>
-              <div class="ps_box_disable box_right_space" id="authNoBox">
-                <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled maxlength="4">
-                <label id="wa_verify" for="authNo" class="lbl">
-                  <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                  <span class="input_code" id="authNoCode" style="display:none;"></span>
-                </label>
-              </div>
+              <!--
+                <div class="ps_box_disable box_right_space" id="authNoBox">
+                  <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled maxlength="4">
+                  <label id="wa_verify" for="authNo" class="lbl">
+                    <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
+                    <span class="input_code" id="authNoCode" style="display:none;"></span>
+                  </label>
+                </div>
+
+              -->
               <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
               <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               <span class="error_next_box" id="joinMsg" style="display:none" role="alert"></span>
@@ -247,7 +262,6 @@
   </div><!-- .content -->
 </div><!-- .container -->
 
-<jsp:include page="../footer.jsp"/>
 <jsp:include page="../javascript.jsp"/>
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="${contextRootPath}/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
@@ -392,18 +406,18 @@ $(document).ready(function() {
  });
 
  $('#email').blur(function() {
-   checkEmail();
+   checkEmailText();
  });
 
  $('#phoneNo').blur(function() {
    checkPhoneNo();
  });
 
- /* 전화인증번호 클릭이벤트처리
  $('#btnSend').click(function() {
-   sendSmsButton();
+   checkEmail();
    return false;
  });
+ /* 전화인증번호 클릭이벤트처리
  */
 
  /* 인증
@@ -455,6 +469,7 @@ function checkUnrealInput() {
       checkName() &
       checkBirthday() &
       checkGender() &
+      checkEmailText() &
       checkEmail() &
       checkPhoneNo() // & checkAuthNo()
       ) {
@@ -860,7 +875,7 @@ function checkGender() {
   return true;
 }
 
-function checkEmail() {
+function checkEmailText() {
   var email = $('#email').val();
   var oMsg = $('#emailMsg');
 
@@ -892,43 +907,71 @@ function checkPhoneNo() {
   hideMsg(oMsg);
   return true;
 }
-/*
-function sendSmsButton() {
-  var nationNo = $('#nationNo').val();
-  var phoneNo = $('#phoneNo').val();
-  var key = $('#token_sjoin').val();
+
+function checkEmail() {
+  var email = $("#email").val();
   var oMsg = $('#phoneNoMsg');
-  var lang = "ko_KR";
 
-  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
-  $('#phoneNo').val(phoneNo);
-  authFlag = false;
-
-  $('#authNoMsg').hide();
-  if (nationNo == "82" && !isCellPhone(phoneNo)) {
-    showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
+  if (email == "") {
+    alert("메일을 입력해주세요!");
     return false;
   }
-  $.ajax({
-    type: "GET",
-    url: 전화번호인증하는 url
-    success: function(data) {
-      var result = data.substr(4);
-      if (result == "S") {
-        showSuccessMsg(oMsg, "인증번호를 발송했습니다.(유효시간 30분)<br>인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>이미 가입된 번호이거나, 가상전화번호는 인증번호를 받을 수 없습니다.");
-        $('#authNo).attr("disabled", false);
-        var oBox = $('#authNoBox');
-        var oCode = $('#authNoCode');
-        showAuthDefaultBox(oBox, oCode);
-      } else {
-        showErrorMsg(oMsg, "전화번호를 다시 확인하시고 입력해주세요.");
-      }
-    }
-  });
-  return false;
-}
 
-*/
+  var qs = 'email=' + encodeURIComponent(email);
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4 || xhr.status != 200){
+      return;
+    }
+    
+      var data = xhr.responseText;
+      console.log(data);
+      var str = data.substring(0, data.length - 1);
+      var number = data.substring(data.length - 1, data.length);
+      if (number == 0) {
+        alert(str);
+        $('#joinCode').css('display', 'none');
+      } else {
+        sendEmail(email);
+        alert(str);
+        $('#joinCode').css("display", "");
+      }
+  };
+  xhr.open('POST', '../member/checkEmail', true);
+  xhr.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+  xhr.send(qs);
+
+  return false;
+};
+
+function sendEmail(email) {
+  var qs = 'email=' + encodeURIComponent(email);
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystagechange = function() {
+    if (xhr.readyState != 4 || xhr.status != 200){
+      return;
+    }
+    var data = xhr.responseText;
+      console.log(data);
+      var str = data.substring(0, data.length - 1);
+      var number = data.substring(data.length - 1, data.length);
+      if (number == 0) {
+        alert(str);
+      } else {
+        alert(str);
+      
+    }
+  };
+
+  xhr.open('POST', '../member/sendEmail', true);
+  xhr.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
+  xhr.send(qs);
+
+  return false;
+};
+
+
 /*
 function checkAuthNo() {
   var authNo = $('#authNo').val();
