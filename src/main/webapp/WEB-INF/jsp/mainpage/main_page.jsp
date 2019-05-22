@@ -7,9 +7,9 @@
 <head>
 <title>메인페이지</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/mainpage.css">
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
-<link rel="stylesheet" href="${contextRootPath}/css/mainpage.css">
 </head>
 
 <body>

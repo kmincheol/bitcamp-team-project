@@ -41,7 +41,7 @@
       <div id="header-cate">
         <ul class="nav justify-content-center">
           <div class="header-category">
-            <li class="nav-item"><a class="nav-link" href="${contextRootPath}">메인</a></li>
+            <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/main">메인</a></li>
           </div>
           <div class="header-category">
             <li class="nav-item"><a class="nav-link" href="#">매치</a>
