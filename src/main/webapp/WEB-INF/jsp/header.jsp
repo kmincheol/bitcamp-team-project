@@ -21,7 +21,7 @@
       <div id="header-top">
         <!-- 헤더 로고 이미지 -->
         <div id="header-img">
-          <a href="${contextRootPath}"><img src="${contextRootPath}/images/logo.png"
+          <a href="${contextRootPath}/app/main"><img src="${contextRootPath}/images/logo.png"
             class="headerImg"></a>
         </div>
         <div id="header-item">
