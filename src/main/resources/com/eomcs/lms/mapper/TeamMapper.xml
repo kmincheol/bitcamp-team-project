@@ -8,9 +8,9 @@
 
   <resultMap type="Team" id="teamMap">
     <id column="tm_id" property="teamId" />
-    <result column="tm_id" property="teamName" />
-    <result column="titl" property="teamInfo" />
-    <result column="vw_cnt" property="teamArea" />
+    <result column="name" property="teamName" />
+    <result column="tm_intd" property="teamInfo" />
+    <result column="area" property="teamArea" />
     <result column="age_id" property="teamAgeId" />
     <result column="tm_type_id" property="teamTypeId" />
     <result column="tm_lev_id" property="teamLevelId" />
@@ -20,13 +20,13 @@
     <result column="tm_unf_phot" property="teamUniformPhoto" />
     <result column="cdt" property="teamCreateDate" />
     <result column="mdt" property="teamInfoModifieDate" />
-</resultMap>
+  </resultMap>
 
   <resultMap type="Team" id="teamMap1">
     <id column="tm_id" property="teamId" />
-    <result column="tm_id" property="teamName" />
-    <result column="titl" property="teamInfo" />
-    <result column="vw_cnt" property="teamArea" />
+    <result column="name" property="teamName" />
+    <result column="tm_intd" property="teamInfo" />
+    <result column="area" property="teamArea" />
     <result column="age_id" property="teamAgeId" />
     <result column="tm_type_id" property="teamTypeId" />
     <result column="tm_lev_id" property="teamLevelId" />
@@ -36,72 +36,173 @@
     <result column="tm_unf_phot" property="teamUniformPhoto" />
     <result column="cdt" property="teamCreateDate" />
     <result column="mdt" property="teamInfoModifieDate" />
+
+    <association property="teamAges" javaType="TeamAges">
+      <id column="age_id" property="teamAgeId" />
+      <result column="ages" property="teamAges" />
+    </association>
+
+    <association property="teamLevel" javaType="TeamLevel">
+      <id column="tm_lev_id" property="teamLevelId" />
+      <result column="levs" property="teamLevel" />
+    </association>
+
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMemberNo" />
+      <id column="pstn" property="positon" />
+      <id column="tlead_wth" property="teamLeader" />
+    </association>
+
+    <association property="teamType" javaType="teamType">
+      <id column="tm_type_id" property="teamTypeId" />
+      <result column="types" property="teamType" />
+    </association>
 
     <association property="teamTypeSports" javaType="teamTypeSports">
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
 
-    <association property="teamMember" javaType="TeamMember">
-      <id column="tm_mbr_id" property="teamMember_id" />
-      <id column="pstn" property="positon" />
-      <id column="tlead_wth" property="team_leader" />
-    </association>
-
     <association property="member" javaType="Member">
       <id column="mbr_id" property="no" />
       <result column="user_id" property="id" />
+      <result column="name" property="name" />
     </association>
 
   </resultMap>
 
-  <select id="findAll" resultMap="teamMap1" parameterType="map">
+  <resultMap type="TeamAges" id="ageMap">
+    <id column="age_id" property="teamAgeId" />
+    <result column="ages" property="teamAges" />
+  </resultMap>
+
+  <resultMap type="TeamType" id="typeMap">
+    <id column="tm_type_id" property="teamTypeId" />
+    <result column="types" property="teamType" />
+  </resultMap>
+
+  <resultMap type="TeamTypeSports" id="typeSportsMap">
+    <id column="spt_clsf_id" property="teamSportsTypeId" />
+    <result column="spt_clsf_name" property="teamSportsType" />
+  </resultMap>
+
+  <resultMap type="TeamLevel" id="teamLevelMap">
+    <id column="tm_lev_id" property="teamLevelId" />
+    <result column="levs" property="teamLevel" />
+  </resultMap>
+
+  <select id="findAllTeam" resultMap="teamMap1" parameterType="map">
     select
     tm_id,
     name,
     tm_intd,
     area,
-    age_id,
+    a.ages,
+    tl.levs,
+    tt.types,
+    spt_clsf_name,
+    tm_ambl_phot,
+    tm_unf_phot,
+    cdt,
+    mdt
+    from
+    tm t
+    left outer join
+    age a on t.age_id = a.age_id
+    left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+    left outer
+    join tm_type tt on t.tm_type_id = tt.tm_type_id
+    left outer join spt_clsf s on t.spt_clsf_id =
+    s.spt_clsf_id
+  </select>
+
+  <select id="findTeamType" resultMap="typeMap" parameterType="map">
+    select
     tm_type_id,
-    tm_lev_id,
+    types
+    from
+    tm_type
+  </select>
+
+  <select id="findTeamAge" resultMap="ageMap" parameterType="map">
+    select
+    age_id,
+    ages
+    from
+    age
+  </select>
+
+  <select id="findSportsType" resultMap="typeSportsMap" parameterType="map">
+    select
     spt_clsf_id,
+    spt_clsf_name
+    from
+    spt_clsf
+  </select>
+
+  <select id="findTeamLevel" resultMap="teamLevelMap" parameterType="map">
+    select
+    tm_lev_id,
+    levs
+    from
+    tm_lev
+  </select>
+
+  <select id="findByNo" resultMap="teamMap1" parameterType="int">
+    select
+    tm_id,
+    t.name,
+    tm_intd,
+    area,
+    a.ages,
+    tl.levs,
+    tmb.pstn,
+    tmb.tlead_wth,
+    tt.types,
+    spt_clsf_name,
     tm_ambl_phot,
     tm_unf_wth,
     tm_unf_phot,
     cdt,
     mdt
     from
-    tm
-   
+    tm t
+    left outer join age a on t.age_id = a.age_id
+    left outer join tm_lev tl
+    on t.tm_lev_id = tl.tm_lev_id
+    left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
+    left
+    outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    left outer join tm_mbr tmb on t.tm_id =
+    tmb.tm_mbr_id
+    where tm_id = ${teamId}
   </select>
 
-
-
-  <!-- <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
-    select
-    tm_id,
+  <insert id="insert" parameterType="team" useGeneratedKeys="true" keyColumn="tm_id"
+    keyProperty="teamId">
+    insert into tm(
     name,
     tm_intd,
     area,
     age_id,
-    tm_type_id, 
     tm_lev_id,
-    s.spt_clsf_name,
+    tm_type_id,
+    spt_clsf_id,
     tm_ambl_phot,
-    tm_unf_wth,
-    tm_unf_phot,
-    cdt,
-    mdt,
-    tmb.tm_mbr_id,
-    tmb.pstn,
-    tmb.tlead_wth
-    from
-    tm t
-    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id 
-     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
-    where
-    t.tm_id = '1';
+    tm_unf_phot)
+    values(
+    #{teamName},
+    #{teamInfo},
+    #{teamArea},
+    #{teamAgeId},
+    #{teamLevelId},
+    #{teamTypeId},
+    #{teamSportsId},
+    #{teamEmblemPhoto},
+    #{teamUniformPhoto}
+    )
 
-  </select>
- -->
+  </insert>
+
+
 </mapper>
