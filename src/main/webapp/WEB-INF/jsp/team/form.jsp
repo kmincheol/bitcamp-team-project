@@ -93,14 +93,14 @@
       
           <div class="emblem">
             <h3 class="join_title">
-              <input type="hidden" id="photo1" name="teamEmblemPhoto" value="../../upload/emblem/vs.jpg">
+              <input type="hidden" id="photo1" name="teamEmblemPhoto" value="${contextRootPath}/upload/emblem/vs.jpg">
             </h3>
 
             <input id="fileupload1" type="file" name="files" value="파일첨부"><br>
           <div class="join_photo_view">
             <span class="photoView"> 
             <label for="photo"> 
-             <img id="images-div1" src="../../upload/emblem/vs.jpg" style="width: 200px; height: 200px;">
+             <img id="images-div1" src="${contextRootPath}/upload/emblem/vs.jpg" style="width: 200px; height: 200px;">
             </label>
             </span>
           </div>
