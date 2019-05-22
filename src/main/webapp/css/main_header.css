@@ -20,15 +20,16 @@ html, body {
 #header {
 	position: relative;
 	height: 150px;
+	z-index: 1;
 }
 
 #header-top {
-	background-color: rgba(255, 255, 255, 0.2)
+	background-color: rgba(0, 0, 0, 0.40);
 	height: 95px;
 }
 
 #header-top, #header-cate {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(0, 0, 0, 0.40);
 	transition: 0.4s;
 }
 
@@ -65,12 +66,13 @@ html, body {
 }
 
 #header-cate {
-	border-top: 1px solid darkgray;
+	border-top: 1px solid gray;
+	font-weight: bold;
 	height: 55px;
 	transition: 0.4s;
 	overflow: hidden;
-	/* background-color: black; */
 	z-index: 1;
+	height: 55px;
 }
 
 .header-category {
@@ -97,7 +99,7 @@ html, body {
 }
 
 #header-top:hover, #header-cate:hover {
-	background-color: rgba(64, 64, 64);
+	background-color: rgba(0, 0, 0, 0.40);
 }
 
 ul {
