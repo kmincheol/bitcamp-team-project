@@ -106,7 +106,7 @@ public class AuthController {
     logger.debug("loginUser: " + session.getAttribute("loginUser"));
     session.invalidate();
     
-    return "redirect:/";
+    return "redirect:/app/main";
   }
 }
 
