@@ -19,9 +19,17 @@
       <id column="mbr_id" property="no" />
       <result column="name" property="id" />
     </association>
+
+    <association property="answerBoard" javaType="AnswerBoard">
+      <id column="ans_id" property="answerNo" />
+        <result column="cont" property="contents"/>
+    </association>
+    
   </resultMap>
  
-<!--  <resultMap type="Team" id="team">
+<!--  
+
+<resultMap type="Team" id="team">
 
     <id column="tm_id" property="teamId" />
     <result column="area" property="teamArea" />
@@ -47,15 +55,17 @@
 
   <select id="findAll" resultMap="questionMap" parameterType="map">
   select
-    qstn_id,
-    titl,
-    cont,
+    q.qstn_id,
+    q.titl,
+      a.cont,
     ans_stat,
     q.cdt,
+  ans_id, 
     name
   from
     qstn q
     left outer join mbr m on q.mbr_id = m.mbr_id
+  left outer join ans a on q.qstn_id = a.qstn_id 
     order by qstn_id desc
 
   </select>

@@ -2,6 +2,7 @@ package com.eomcs.lms.web;
 
 import java.util.List;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.eomcs.lms.domain.AnswerBoard;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.QuestionBoard;
 import com.eomcs.lms.domain.TeamRecruit;
+import com.eomcs.lms.service.AnswerBoardService;
 import com.eomcs.lms.service.QuestionBoardService;
 
 @Controller
@@ -22,6 +26,8 @@ public class QuestionBoardController {
 
   private static final Logger logger = LogManager.getLogger(QuestionBoardController.class);
 
+  @Autowired
+  AnswerBoardService answerBoardService;
   @Autowired
   QuestionBoardService questionBoardService;
   @Autowired
@@ -46,8 +52,10 @@ public class QuestionBoardController {
       pageNo = 1;
 
     List<QuestionBoard> question = questionBoardService.list(pageNo, pageSize);
-
+    List<AnswerBoard> answer = answerBoardService.list();
+    
     model.addAttribute("question", question);
+    model.addAttribute("answer", answer);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
     model.addAttribute("totalPage", totalPage);
@@ -55,10 +63,37 @@ public class QuestionBoardController {
     return "question/list";
   }
   
-  @GetMapping("{no}") 
-  public String detail(@PathVariable int no, Model model) { 
+  
+  @GetMapping("form2/{no}")
+  public String form2(@PathVariable int no, Model model ) {
     QuestionBoard  question = questionBoardService.get(no); 
+    AnswerBoard  answer = answerBoardService.get(no); 
     model.addAttribute("question", question);
+    model.addAttribute("answer", answer);
+    
+    return "question/form2";
+  }
+
+  
+  @PostMapping("add2")
+  public String add(AnswerBoard answerBoard, HttpSession session ,QuestionBoard question) {
+    
+    System.out.println(question.toString());
+    Member member = (Member) session.getAttribute("loginUser");
+    
+    answerBoardService.add(answerBoard);
+    
+    return "question/list";
+  }
+  
+  
+  @GetMapping("{no}") 
+  public String detail(@PathVariable int no, Model model ) { 
+    QuestionBoard  question = questionBoardService.get(no); 
+    AnswerBoard  answer = answerBoardService.get(no); 
+    model.addAttribute("question", question);
+    model.addAttribute("answer", answer);
+    
     return "question/detail"; 
   }
   

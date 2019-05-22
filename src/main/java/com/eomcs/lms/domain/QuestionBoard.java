@@ -11,17 +11,24 @@ public class QuestionBoard {
       private boolean questionStatus;
       private Date createdDate;
       private Member member;
-     
+      private AnswerBoard answerBoard;
         
         
         
         
         @Override
-	public String toString() {
-		return "QuestionBoard [questionNo=" + questionNo + ", memberNo=" + memberNo + ", title=" + title + ", contents="
-				+ contents + ", questionType=" + questionType + ", questionStatus=" + questionStatus + ", createdDate="
-				+ createdDate + ", member=" + member + "]";
-	}
+    public String toString() {
+      return "QuestionBoard [questionNo=" + questionNo + ", memberNo=" + memberNo + ", title="
+          + title + ", contents=" + contents + ", questionType=" + questionType
+          + ", questionStatus=" + questionStatus + ", createdDate=" + createdDate + ", member="
+          + member + ", answerBoard=" + answerBoard + "]";
+    }
+        public AnswerBoard getAnswerBoard() {
+      return answerBoard;
+    }
+    public void setAnswerBoard(AnswerBoard answerBoard) {
+      this.answerBoard = answerBoard;
+    }
 		public Member getMember() {
           return member;
         }
