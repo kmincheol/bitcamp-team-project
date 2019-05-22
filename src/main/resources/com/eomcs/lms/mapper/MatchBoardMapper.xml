@@ -166,7 +166,7 @@
     left outer join tm t on m.tm_id = t.tm_id
     left outer join mtchaply a on m.tm_id = a.tm_id
 </sql>
-   
+
 <sql id="select3">
   select
     m.mtch_id,
@@ -175,10 +175,33 @@
     mtch m
     left outer join mtch_tag t on m.mtch_id = t.mtch_id
 </sql>
+
+
+
+
+   <select id="search" resultMap="matchMap" parameterType="map">
+    <include refid="select1"/>  
+      <where>
+      <if test="location1 != null">
+        toplc_id = #{toplocationNo}
+      </if> 
+      
+       <if test="search != null">
+        <bind name="pattern1" value="'%' + search + '%'"/>
+        s.spt_clsf_name like #{pattern1}
+        or titl like #{pattern1}
+        or t.name like #{pattern1}
+        or game_dt like #{pattern1}
+      </if>     
+    </where>
+    order by
+    mtch_id desc
+   </select>
+   
    
    
   <select id="findAll" resultMap="matchMap" parameterType="map">
-	<include refid="select1"/>
+	<include refid="select1"/>  
     order by
     mtch_id desc
     <if test="#{size != null || rowNo != null}">

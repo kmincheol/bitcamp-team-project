@@ -1,5 +1,7 @@
 package com.eomcs.lms.web;
 
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -15,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.TeamAges;
+import com.eomcs.lms.domain.TeamLevel;
+import com.eomcs.lms.domain.TeamType;
+import com.eomcs.lms.domain.TopLocation;
+import com.eomcs.lms.service.LocationService;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
 
@@ -26,15 +33,16 @@ public class MatchBoardController {
   
   @Autowired MatchBoardService matchBoardService;
   @Autowired TeamService teamService;
+  @Autowired LocationService locationService;
   @Autowired ServletContext servletContext;
   
+
   @GetMapping("form")
   public void form(Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
     if (member == null) {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
     }
-    
     
   List<Match> match = matchBoardService.teamInfoGet(member.getNo());
      logger.debug(match);
@@ -117,6 +125,39 @@ public class MatchBoardController {
 
     return "redirect:../";
   }
+  
+  
+  @GetMapping("search") // 인클루드로 처리
+  public String search(
+      Model model, //location 정보 뿌려줘야 함
+      Date playDate,
+      int topLocationNo,
+      TeamType teamType,
+      TeamAges teamAges,
+      TeamLevel teamLevel,
+      String keyword) {
+    
+    
+    HashMap<String,Object> choices = new HashMap<>();
+    choices.put("playDate", playDate);
+    choices.put("topLocation", topLocationNo);
+    choices.put("teamType", teamType);
+    choices.put("teamAges", teamAges);
+    choices.put("teamLevel",teamLevel);
+    choices.put("keyword", keyword);
+    
+    // 값 받은걸 내부로 map으로 저장 후 넘겨서
+    List<Match> matches = matchBoardService.search(choices);
+    // 리턴으로 값 검색 값 얻어옴
+    
+    // model에 담아줘서 jsp로 출력
+    model.addAttribute("matches", matches);
+    
+    return "redirect:."; //검색 결과는 다시 폼에 뿌려주기?
+  }
+  
+  
+  
   
 
 //  @GetMapping("sideBar")

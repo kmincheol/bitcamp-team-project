@@ -3,7 +3,6 @@ package com.eomcs.lms.dao;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.Team;
 
 public interface MatchDao {
   int insert(Match match);
@@ -11,6 +10,7 @@ public interface MatchDao {
   List<Match> findByKeyword(String keyword);
   Match findByNo(int no);
   List<Match> teamInfoGet(int no);
+  List<Match> search(Map<String, Object> params);
   void increaseCount(int no);
   int update(Match match);
   int delete(int no);
