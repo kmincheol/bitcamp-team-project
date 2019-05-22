@@ -21,7 +21,7 @@
       <div id="header-top">
         <!-- 헤더 로고 이미지 -->
         <div id="header-img">
-          <a href="${contextRootPath}"><img src="${contextRootPath}/images/logo.png"
+          <a href="${contextRootPath}/app/main"><img src="${contextRootPath}/images/logo.png"
             class="headerImg"></a>
         </div>
         <div id="header-item">
@@ -41,7 +41,7 @@
       <div id="header-cate">
         <ul class="nav justify-content-center">
           <div class="header-category">
-            <li class="nav-item"><a class="nav-link" href="${contextRootPath}">메인</a></li>
+            <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/main">메인</a></li>
           </div>
           <div class="header-category">
             <li class="nav-item"><a class="nav-link" href="#">매치</a>

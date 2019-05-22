@@ -18,6 +18,9 @@ p {
   text-align: center;
 }
 
+
+
+
 tbody {
 }
 
@@ -157,4 +160,7 @@ rigth: 10%;
   border: 3px soild black;
 }
 
+#searchbtn {
+  width: 300px;
+  }
 

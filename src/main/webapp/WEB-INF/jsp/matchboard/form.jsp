@@ -7,6 +7,8 @@
 
 <html>
 <head>
+<jsp:include page="header.jsp" />
+
   <title>매치보드 글 등록하기</title>
    <%-- <jsp:include page="../header.jsp"/> --%>
    <jsp:include page="../commonCss.jsp"/>
