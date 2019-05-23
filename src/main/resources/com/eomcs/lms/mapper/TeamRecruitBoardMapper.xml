@@ -68,9 +68,6 @@
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     order by rcrm_id
     desc
-<!--     <if test="#{size != null || rowNo != null}">
-      limit #{rowNo}, #{size}
-    </if> -->
   </select>
 
 
@@ -100,6 +97,7 @@
     cont,
     name,
     rcrm_stat,
+    r.cdt,
     vw_cnt,
     spt_clsf_name
     from

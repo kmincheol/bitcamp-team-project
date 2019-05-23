@@ -1,14 +1,44 @@
-
-#table{
-	
-	
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
-th{
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  width: auto;
+  height: auto;
+  min-height: 100%;
+  padding: 0px;
+  margin: 0 auto;
+}
+
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+}
+
+#main-text>h2 {
+  position: relative;
+  top: 90px;
+  color: black;
+}
+
+#title-row{
+	width:100%;
+	height:100px;
+}
+
+#title{
+	font-size: 35px;
 	text-align: center;
-}
-
-.table{
-	border-top: 2px solid black;
 }
 

@@ -8,15 +8,14 @@ body, html {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-
 }
 
 .container {
-	width:100%;
-	height: 100%;
-	margin: 0px;
-  padding: 0px;
-	
+	width: auto;
+	height: auto;
+	min-height: 100%;
+	padding: 0px;
+	margin: 0 auto;
 }
 
 #main-text {
@@ -24,6 +23,8 @@ body, html {
 	text-align: center;
 	width: 100%;
 	height: 230px;
+	border-bottom: 2px solid black;
+	margin-bottom: 15px;
 }
 
 #main-text>h2 {
@@ -41,11 +42,9 @@ body, html {
 	height: 700px;
 }
 
-.search-form{
+.search-form {
 	display: inline-block;
 }
-
-
 
 #inputGroupSelect01 {
 	position: absolute;
@@ -65,12 +64,17 @@ table a:hover {
 	color: black;
 }
 
-#in {
-	width: 100%;
-	margin-top: 20px;
+img {
+	width: 30px;
+	height: 30px;
 }
 
-img{
-	width:30px;
-	height:30px;
+#in {
+	width: 100%;
+	position: relative;
+	top:-78px;
+}
+
+#write-btn{
+	float: right;
 }

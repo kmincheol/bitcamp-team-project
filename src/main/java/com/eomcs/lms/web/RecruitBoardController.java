@@ -109,7 +109,7 @@ public class RecruitBoardController {
     if (recruitBoardService.update(teamRecruit) == 0) {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     }
-    return "redirect:.";
+    return "redirect:../recruit_board/" + String.valueOf(teamRecruit.getTeamNo());
   }
 
 }

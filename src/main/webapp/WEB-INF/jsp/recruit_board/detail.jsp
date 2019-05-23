@@ -5,31 +5,45 @@
 <html>
 
 <head>
+<title>모집게시판_detail</title>
+<!-- include header.jsp -->
+<jsp:include page="../header.jsp" />
+<!-- header.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/header.css">
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+
+
+
 </head>
 
 <body>
 
   <div class="container">
-   <%--  <div>
-      <jsp:include page="../header.jsp" />
-    </div> --%>
-    
-    <h1>게시판 목록</h1>
-    <br>
+
+    <div id="main-text">
+      <h2>게시글</h2>
+    </div>
 
     <div>
       <form action='update' method='post' enctype='multipart/form-data'>
         <div class="form-group row">
-          <label for="no" class="col-sm-2 col-form-label">번호</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamNo" id="no"
-              value="${teamRecruit.teamNo}" readonly />
+          <div id="title-wrap" class="col-sm-12">
+            <div id="title" name="teamTitle">${teamRecruit.teamTitle}</div>
+          </div>
+
+          <div id="teamName-row" class="col-sm-10">
+            <span id="teamName" name="teamName">${teamRecruit.team.teamName}</span> 
+            <span>|</span>
+            <span id="createdDate" name="createdDate">${teamRecruit.teamCreatedDate}</span> 
+            <span>|</span>
+            <span id="viewCount" name="teamViewCount">${teamRecruit.teamViewCount}</span>
           </div>
         </div>
+
+
 
         <div class="form-group row">
           <label for="location" class="col-sm-2 col-form-label">지역</label>
@@ -47,21 +61,8 @@
           </div>
         </div>
 
-        <div class="form-group row">
-          <label for="teamName" class="col-sm-2 col-form-label">팀명</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamName" id="teamName"
-              value="${teamRecruit.team.teamName}" readonly />
-          </div>
-        </div>
 
-        <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label">제목</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamTitle" id="title"
-              value="${teamRecruit.teamTitle}" readonly />
-          </div>
-        </div>
+
 
         <div class="form-group row">
           <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
@@ -70,7 +71,7 @@
               value="${teamRecruit.teamViewCount}" readonly />
           </div>
         </div>
-        
+
         <div class="form-group row">
           <label for="contents" class="col-sm-2 col-form-label">내용</label>
           <div class="col-sm-10">
@@ -80,10 +81,11 @@
 
         <div class="form-group row">
           <div class="col-sm-10">
-            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a> 
-            <a class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a> 
-            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
-            <a class="btn btn-primary" href=''>가입신청</a>
+            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a> <a
+              class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a> <a
+              class="btn btn-primary"
+              href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a> <a
+              class="btn btn-primary" href=''>가입신청</a>
           </div>
         </div>
       </form>
