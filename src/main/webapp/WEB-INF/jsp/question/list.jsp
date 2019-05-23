@@ -6,13 +6,14 @@
 <html>
 
 <head>
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<jsp:include page="../commonCss.jsp" />
+<jsp:include page="../header.jsp" />
+<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
 </head>
 
 <body>
   <div class="container">
-
-
     <div id="main-text">
       <h2>질문게시판</h2>
     </div>
@@ -38,18 +39,17 @@
             
              <td>
               <c:choose>
-                <c:when test="${fn:length(question.answerBoard.contents) == 0}"> 대기 </c:when>
-                <c:otherwise>완료</c:otherwise>
+                <c:when test="${fn:length(question.answerBoard.contents) == 0}"> <img src="${contextRootPath}/images/idea.png" 
+                style = "width:30px"> </c:when>
+                <c:otherwise><img src="${contextRootPath}/images/idea2.png" 
+                style = "width:30px"></c:otherwise>
               </c:choose>
           </tr>
         </c:forEach>
-        
       </tbody>
-   
     </table>
-    
     <div>
-        <a class="btn btn-warning" href="${contextRootPath}/app/question/form" >글쓰기</a>
+        <a class="btn btn-dark" href="${contextRootPath}/app/question/form" >글쓰기</a>
     </div>
   </div>
 

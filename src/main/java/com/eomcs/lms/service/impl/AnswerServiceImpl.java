@@ -42,10 +42,15 @@ public class AnswerServiceImpl implements AnswerBoardService {
     return answer;
   }
   
-//  @Override
-//  public int delete(int no) {
-//    return questionDao.delete(no);
-//  }
+    @Override
+    public int update(AnswerBoard answerBoard) {
+      return answerDao.update(answerBoard);
+    }
+    
+  @Override
+  public int delete(int no) {
+    return answerDao.delete(no);
+  }
 
   
 //  
@@ -55,10 +60,6 @@ public class AnswerServiceImpl implements AnswerBoardService {
 //    return questionBoard;
 //  }
 //
-//  @Override
-//  public int update(QuestionBoard questionBoard) {
-//    return questionDao.update(questionBoard);
-//  }
 
 }
 

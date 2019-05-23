@@ -63,29 +63,46 @@ public class QuestionBoardController {
     return "question/list";
   }
   
-  
-  @GetMapping("form2/{no}")
-  public String form2(@PathVariable int no, Model model ) {
-    QuestionBoard  question = questionBoardService.get(no); 
-    AnswerBoard  answer = answerBoardService.get(no); 
-    model.addAttribute("question", question);
-    model.addAttribute("answer", answer);
-    
-    return "question/form2";
+  @GetMapping("form")
+  public void form() {
   }
-
+  
+  @PostMapping("add")
+  public String add(QuestionBoard questionBoard, HttpSession session ) {
+    
+    Member member = (Member) session.getAttribute("loginUser");
+    
+    questionBoardService.add(questionBoard);
+    
+    return "redirect:.";
+  }
+  
   
   @PostMapping("add2")
   public String add(AnswerBoard answerBoard, HttpSession session ,QuestionBoard question) {
     
-    System.out.println(question.toString());
     Member member = (Member) session.getAttribute("loginUser");
     
     answerBoardService.add(answerBoard);
     
-    return "question/list";
+    return "redirect:.";
   }
   
+  @PostMapping("update2")
+  public String update(AnswerBoard answerBoard) {
+    
+      System.out.println(answerBoard.toString());
+    if (answerBoardService.update(answerBoard) == 0) {
+      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    }
+    return "redirect:./";
+  }
+  
+  @GetMapping("delete2/{no}") 
+  public String delete2(@PathVariable int no) {
+    if (answerBoardService.delete(no) == 0) throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    return "redirect:../";
+  }
   
   @GetMapping("{no}") 
   public String detail(@PathVariable int no, Model model ) { 
@@ -108,14 +125,17 @@ public class QuestionBoardController {
     QuestionBoard question = questionBoardService.getUpdate(no);
     model.addAttribute("question", question);
     return "question/update";
-  }
+  }   
+
 
   @PostMapping("update")
   public String update(QuestionBoard question) {
+    String a = String.valueOf(question.getQuestionNo());
+   
     if (questionBoardService.update(question) == 0) {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     }
-    return "redirect:.";
+    return "redirect:../question/" + String.valueOf(question.getQuestionNo()); 
   }
 
 }

@@ -11,7 +11,6 @@
         <label for="content">답변</label>
         <form name="commentInsertForm">
             <div class="input-group">
-               <input type="hidden" name="bno" value="1"/>
                <input type="text" class="form-control" id="content" name="content" value="${answer.contents}" readonly>
             </div>
         </form>
