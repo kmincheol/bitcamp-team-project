@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<title>모집게시판</title>
+<title>모집게시판_list</title>
 <!-- include header.jsp -->
 <jsp:include page="../header.jsp" />
 <!-- header.css -->
@@ -119,6 +119,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 			var lang_kor = {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
+				"zeroRecords" : "검색된 데이터가 없습니다.",
 				"paginate" : {
 					"next" : "다음",
 					"previous" : "이전"
@@ -128,7 +129,6 @@ div.dataTables_wrapper div.dataTables_paginate {
 			$(document).ready(function() {
 				$('#dtBasicExample').DataTable({
 					"info" : false,
-					/* "lengthChange":false, */
 					language : lang_kor
 				});
 				$('.dataTables_length').addClass('bs-select');
