@@ -5,17 +5,21 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
 import com.eomcs.lms.domain.TeamLevel;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TeamTypeSports;
 
 public interface TeamService {
-  List<Team> teamList();
+  List<Team> teamList1(); // 관리자 팀조회
+  List<Team> teamList2(); // 유저 팀조회
   List<Member> memberList(int pageNo, int pageSize); 
   
-  List<TeamLevel> teamLevelList();
+  List<TeamLevel> teamLevelList(); 
+  
   List<TeamType> teamTypeList();
   List<TeamAges> teamAgeList();
   List<TeamTypeSports> sportsTypeList();
+  List<TeamMember> teamMemberList();
   
   int addTeam(Team team);
   int addMember(Member member);

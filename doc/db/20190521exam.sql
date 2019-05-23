@@ -60,7 +60,7 @@ values(3,'농구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
 values(4,'탁구');
 
--- 팀데이터
+ 팀데이터
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(1,'비트캠프사커','010101','20','1','1','1');
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)

@@ -49,8 +49,14 @@
 
     <association property="teamMember" javaType="TeamMember">
       <id column="tm_mbr_id" property="teamMemberNo" />
-      <id column="pstn" property="positon" />
+      <id column="pstn" property="position" />
       <id column="tlead_wth" property="teamLeader" />
+    </association>
+    
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+      <result column="name" property="name" />
     </association>
 
     <association property="teamType" javaType="teamType">
@@ -61,12 +67,6 @@
     <association property="teamTypeSports" javaType="teamTypeSports">
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
-    </association>
-
-    <association property="member" javaType="Member">
-      <id column="mbr_id" property="no" />
-      <result column="user_id" property="id" />
-      <result column="name" property="name" />
     </association>
 
   </resultMap>
@@ -90,8 +90,57 @@
     <id column="tm_lev_id" property="teamLevelId" />
     <result column="levs" property="teamLevel" />
   </resultMap>
+  
+  <resultMap type="TeamMember" id="teamMemberMap">
+    <id column="tm_mbr_id" property="teamMemberNo" />
+    <id column="pstn" property="position" />
+    <id column="tlead_wth" property="teamLeader" />
+    
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+      <result column="name" property="name" />
+    </association>
+    
+  </resultMap>
 
-  <select id="findAllTeam" resultMap="teamMap1" parameterType="map">
+ <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
+    select
+    tm_id,
+    t.name,
+    tm_ambl_phot,
+    tm_intd,
+    area,
+    tl.levs,
+    a.ages,
+    spt_clsf_name,
+    t.cdt,
+    tm_mbr_id,
+    m.name,    
+    pstn,
+    tlead_wth
+    from
+    tm t
+    left outer join age a on t.age_id = a.age_id
+    left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
+    left outer join mbr m on tmb.mbr_id = m.mbr_id
+  </select> 
+
+<!-- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
+    select
+    tm_id,
+    tm_ambl_phot,
+    name,
+    spt_clsf_name
+    from
+    tm t
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+  </select> -->
+
+
+  <select id="findAllTeam2" resultMap="teamMap1" parameterType="map">
     select
     tm_id,
     name,
@@ -147,35 +196,41 @@
     from
     tm_lev
   </select>
+  
+   <select id="findTeamMember" resultMap="teamMemberMap" parameterType="map">
+    select
+    tm_mbr_id,
+    name,    
+    pstn,
+    tlead_wth
+    from
+    tm_mbr tmb
+    left outer join mbr m on tmb.mbr_id = m.mbr_id
+  </select>
 
   <select id="findByNo" resultMap="teamMap1" parameterType="int">
     select
     tm_id,
     t.name,
+    tm_ambl_phot,
     tm_intd,
     area,
     a.ages,
-    tl.levs,
-    tmb.pstn,
-    tmb.tlead_wth,
     tt.types,
     spt_clsf_name,
-    tm_ambl_phot,
-    tm_unf_wth,
-    tm_unf_phot,
-    cdt,
-    mdt
+    t.cdt,
+    m.name,
+    pstn,
+    tlead_wth
     from
     tm t
-    left outer join age a on t.age_id = a.age_id
-    left outer join tm_lev tl
-    on t.tm_lev_id = tl.tm_lev_id
+    left outer join
+    age a on t.age_id = a.age_id
     left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
-    left
-    outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
-    left outer join tm_mbr tmb on t.tm_id =
-    tmb.tm_mbr_id
-    where tm_id = ${teamId}
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    left outer join mbr m on t.tm_id = m.mbr_id
+    left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
+    where tm_id = ${value}
   </select>
 
   <insert id="insert" parameterType="team" useGeneratedKeys="true" keyColumn="tm_id"
