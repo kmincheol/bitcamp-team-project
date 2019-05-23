@@ -13,8 +13,8 @@
 
 <body>
 
-<jsp:include page="header.jsp" />
-
+<jsp:include page="../header.jsp" />
+<br><br><br>
   <div class="container">
     <h3>공지사항</h3>
     

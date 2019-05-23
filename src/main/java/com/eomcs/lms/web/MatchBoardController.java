@@ -48,7 +48,6 @@ public class MatchBoardController {
     model.addAttribute("location", location);
     
   List<Match> match = matchBoardService.teamInfoGet(member.getNo());
-     logger.debug(match);
    
 //    @SuppressWarnings("unchecked")
 //    List<Team> teams = (List<Team>) teamService.getTeam(member.getNo()); 
@@ -112,7 +111,6 @@ public class MatchBoardController {
   
   @PostMapping("update")
   public String update(Match match) {
-    logger.debug(match);
     
     if (matchBoardService.update(match) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
@@ -160,7 +158,30 @@ public class MatchBoardController {
   }
   
   
-  
+  @GetMapping("sideBar")
+  public String list2(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="3") int pageSize,
+      Model model) {
+
+    if (pageSize < 2 || pageSize > 4)
+      pageSize = 3;
+
+    int rowCount = matchBoardService.size();
+    int totalPage = rowCount / pageSize;
+      if (rowCount % pageSize > 0)
+      totalPage++;
+
+      if (pageNo < 1) 
+        pageNo = 1;
+      else if (pageNo > totalPage)
+        pageNo = totalPage;
+      
+      
+    List<Match> matches = matchBoardService.list(pageNo, pageSize);
+    model.addAttribute("matches", matches);
+    return "matchboard/sidebar";
+  }
   
 
 //  @GetMapping("sideBar")

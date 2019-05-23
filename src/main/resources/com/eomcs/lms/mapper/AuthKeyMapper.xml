@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.AuthKeyDao">
+
+  <resultMap type="AuthKey" id="authKeyMap">
+    <id column="atk_id" property="no" />
+    <result column="atk_email" property="email" />
+    <result column="atk_cont" property="keyContent" />
+    <result column="atk_type" property="type" />
+    <result column="atk_dt" property="createdDate" />
+  </resultMap>
+
+  <select id="findByEmail" resultMap="authKeyMap" parameterType="map">
+    select
+      atk_id,
+      atk_email,
+      atk_cont,
+      atk_type,
+      atk_dt
+    from
+      atk
+    where
+      atk_email = #{email}
+    and
+      atk_type = #{type}
+  </select>
+  
+  <select id="checkAuthKey" resultMap="authKeyMap" parameterType="map">
+    select
+      atk_id,
+      atk_email,
+      atk_cont,
+      atk_type,
+      atk_dt
+    from
+      atk
+    where
+      atk_email = #{email}
+    and
+      atk_cont = #{keyContent}
+    and
+      atk_type = #{type}
+  </select>
+  
+  <insert id="insert" parameterType="authKey">
+    insert into atk(
+      atk_email,
+      atk_cont,
+      atk_type
+    ) values (
+      #{email},
+      #{keyContent},
+      #{type})
+  </insert>
+  
+  <delete id="delete" parameterType="authKey">
+    delete from atk
+    where atk_email = #{email}
+    and atk_type = #{type}
+  </delete>
+  
+  <delete id="deleteByTenMinute">
+    delete from atk
+    <!--[CDATA[
+    where 
+     TIMESTAMPDIFF(MINUTE,atk_dt,NOW()) > 10;
+     ]]-->
+  </delete>
+
+</mapper>

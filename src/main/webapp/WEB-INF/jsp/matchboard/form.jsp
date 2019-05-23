@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 
   <title>매치보드 글 등록하기</title>
    <%-- <jsp:include page="../header.jsp"/> --%>
@@ -15,9 +15,10 @@
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
-
+<br><br><br>
 
   <div class="container">
    <form action='add' method='post' enctype='multipart/form-data'>
@@ -42,7 +43,7 @@
         <div class="form-group row">
            <div class="col-sm">
               <div class="input-group mb-2">
-                <select name='teamNo' class="custom-select" id="selectBox" onchange="chageSelect()" >
+                <select name='teamNo' class="custom-select" id="selectBox" >
          	 	<option selected>소속팀 선택</option>
                 <c:forEach items="${match}" var="match">
                      <c:if test="${!match.team.teamMember.team_leader}">
@@ -52,42 +53,52 @@
                 </select>
               </div>
 				</div>
-				           <div class="col-sm">
+			 </div>
+			 <div class="form-group row">
+				 <div class="col-sm">
               <div class="input-group mb-2">
-                <select name='location' class="custom-select" id="inputGroupSelect01"> 
+                <select name='location' class="custom-select" id="sido" onchange="itemChange()">
             <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
             <option value="01">서울</option>
             <option value="02">경기</option>
-            <option value="03">인천</option>
+            <option value="03">인천</option> 
                 </select>
               </div>
             </div>
-				           <div class="col-sm">
+				  <div class="col-sm">
               <div class="input-group mb-2">
-                <select name='location' class="custom-select" id="inputGroupSelect01"> 
+                <select name='location' class="custom-select" id="gugun">
             <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
-            <option value="01"></option>
-            <option value="02"></option>
-            <option value="03"></option>
                 </select>
               </div>
             </div>
-            
-            
-            		<%-- 매치보드에 등록하는 팀의 스포츠 이름 가져오기 실패
-            		 <select name="teamSportsId" class="custom-select-sm" id="select3">
-            		<c:forEach items="${match}" var="match">
-            		<c:if test="${!match.team.teamMember.team_leader}">
-            		<option value="${match.team.teamSportsId}">${match.team.teamTypeSports.teamSportsType}</option>
-            		</c:if> 
-            		</c:forEach>
-            		</select> --%>
-        </div>
+            </div>      	 
+    	  </td>
+ 	   </tr>
+    <tr>
+      <th scope="row">경기장</th>
+      <td>
+        <input type="text" class="form-control-sm" name="stadiumName">
       </td>
     </tr>
-    <%-- 팀의 이름을 출력할때 그렇다면 , leader 조건을 팀 지역에도 걸면
-    팀의 번호와 leader의 개수가 같고 순서또한 같을것이다. 그럼 팀의 번호와 같은 지역만 출력해준다?--%>
     
+    
+      <tr>
+      <th scope="row">종목</th>
+      <td>
+         <div class="col-sm">
+              <div class="input-group mb-2">
+                <select name='teamSportsId' class="custom-select" id="inputGroupSelect01"> 
+            <option value="" disabled selected hidden>종목선택</option> <!-- db명 toplc  -->
+            <option value="1">축구</option>
+            <option value="2">야구</option>
+            <option value="3">농구</option>
+            <option value="4">탁구</option>
+                </select>
+              </div>
+            </div>
+      </td>
+    </tr>
     <tr>
       <th scope="row">비용</th>
       <td>
@@ -152,31 +163,145 @@
 		
 	 </script>
 
-<script type="text/javascript">
 
-
-/* function itemChange(){
-	var teamArea = [${team.teamArea}];
-	var selectItem = $("#selectBox").val();
+<script>
+function itemChange(){
+	var Seoul = [
+		'강남구','강동구','강북구','강서구','관악구','광진구',
+		'구로구','금천구','노원구','도봉구','동대문구','동작구',
+		'마포구','서대문구','서초구','성동구','성북구','송파구',
+		'양천구','영등포구','용산구','은평구','종로구','중구',
+		'중랑구'
+		];
+	 var Gyeonggi = [
+		'고양시 덕양구','고양시 일산동구','고양시 일산서구','과천시','광명시',
+		'광주시','구리시','군포시','김포시','남양주시','동두천시',
+		'부천시 소사구','부천시 오정구','부천시 원미구','성남시 분당구',
+		'성남시 수정구','성남시 중원구','수원시 권선구','수원시 영통구',
+		'수원시 장안구','수원시 팔달구','시흥시','안산시 단원구','안산시 상록구',
+		'안성시','안양시 동안구','안양시 만안구','양주시','오산시','용인시 기흥구',
+		'용인시 수지구','용인시 처인구','의왕시','의정부시','이천시','파주시',
+		'평택시','포천시','하남시','화성시','가평군','양평군','여주군','연천군'
+		];
+	var Incheon = [
+		'계양구','남구','남동구','동구','부평구','서구',
+		'연수구','중구','강화군','옹진군'
+		]; 
+	 
+	var selectItem = $("#sido").val();
+	 
 	var changeItem;
-	
 	  
-	if(selectItem == "팀정보"){
-	  changeItem = teamArea;
+	if(selectItem == "01"){ // 서울
+	  changeItem = Seoul;
 	}
+	 else if(selectItem == "02"){ // 경기
+	  changeItem = Gyeonggi;
+	}
+	else if(selectItem == "03"){ // 인천
+	  changeItem =  Incheon;
+	} 
 	 
-	$('#select2').empty();
+	$('#gugun').empty();
 	 
-	for(var count = 0; count < changeItem.size(); count++){                
-	                var option = $("<option>"+changeItem[count]+"</option>");
-	                $('#select2').append(option);
+	for(var count = 0; count < changeItem.length; count++){                
+	    var option = $("<option>"+changeItem[count]+"</option>");
+	    $('#gugun').append(option);
 	            }
-	 
-	} */
-
-
+	
+	}
+	
 </script>
 
+
+
+
+<!-- <script type="text/javascript">
+
+function js_select_region(select1,select2){
+	if(!select1){alert('error');return;}
+	if(!select2){alert('error');return;}
+	if(!js_select_region_select_sido(select1)){alert('error');return;}
+	if(!js_select_region_select_gugun(select1,select2)){alert('error');return;}	
+	select1.onchange=function(){
+		select2.value = '';
+		js_select_region_select_gugun(select1,select2)
+	}
+}
+
+function js_select_region_select_sido(select1){
+	if(!js_select_region_sido){return false;}
+	if(select1.tagName !='SELECT'){return false;}
+
+	var sido = js_select_region_sido;
+	var val = select1.value;
+	var opts = select1.options;
+	select1.length = 0;
+
+	var opt = new Option('시/도','',(val==''),(val==''));
+	opts.add(opt);
+	
+	for(var i=0,m=sido.length;i<m;i++){
+		var opt = new Option(sido[i],sido[i],(val==sido[i]),(val==sido[i]));
+		opts.add(opt);		
+	}
+	return true;
+}
+function js_select_region_select_gugun(select1,select2){
+	if(!js_select_region_gugun){return false;}
+	if(select1.tagName !='SELECT'){return false;}
+	if(select2.tagName !='SELECT'){return false;}
+	
+	var gugun = js_select_region_gugun;
+	var val = select2.value;
+	var opts = select2.options;
+	select2.length = 0;	
+	var opt = new Option('구/군','',(val==''),(val==''));
+	opts.add(opt);
+
+	if(!select1.value){		select2.disabled=true;			return true;	}
+	else{		select2.disabled=false;		}
+	
+	var list = gugun[select1.value];
+	if(!list){return false;}
+	   
+	for(var i=0,m=list.length;i<m;i++){
+		var opt = new Option(list[i],list[i],(val==list[i]),(val==list[i]));
+		opts.add(opt);		
+	}
+	return true;	
+}
+
+var js_select_region_sido = new Array(
+		'서울',
+		'인천',
+		'경기',
+		);
+
+		var js_select_region_gugun = new Object();
+		js_select_region_gugun['서울'] = new Array(
+		'강남구','강동구','강북구','강서구','관악구','광진구',
+		'구로구','금천구','노원구','도봉구','동대문구','동작구',
+		'마포구','서대문구','서초구','성동구','성북구','송파구',
+		'양천구','영등포구','용산구','은평구','종로구','중구',
+		'중랑구'			  
+		);
+		js_select_region_gugun['인천'] = new Array(
+		'계양구','남구','남동구','동구','부평구','서구',
+		'연수구','중구','강화군','옹진군'
+		);
+		js_select_region_gugun['경기'] = new Array(
+		'고양시 덕양구','고양시 일산동구','고양시 일산서구','과천시','광명시',
+		'광주시','구리시','군포시','김포시','남양주시','동두천시',
+		'부천시 소사구','부천시 오정구','부천시 원미구','성남시 분당구',
+		'성남시 수정구','성남시 중원구','수원시 권선구','수원시 영통구',
+		'수원시 장안구','수원시 팔달구','시흥시','안산시 단원구','안산시 상록구',
+		'안성시','안양시 동안구','안양시 만안구','양주시','오산시','용인시 기흥구',
+		'용인시 수지구','용인시 처인구','의왕시','의정부시','이천시','파주시',
+		'평택시','포천시','하남시','화성시','가평군','양평군','여주군','연천군'
+		);
+
+</script> -->
 	
 </body>
 </html>

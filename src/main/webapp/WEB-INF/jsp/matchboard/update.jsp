@@ -9,7 +9,8 @@
 </head>
 
 <body>
-
+<jsp:include page="../header.jsp" />
+<br><br><br>
 
   <div class="container">
     <form action='../update' method='post' >
@@ -34,7 +35,15 @@
         <label for="location" class="col-sm-2 col-form-label">지역</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" name="teamArea" id="location"
-            value="${match.location}" readonly />
+            value="${match.location}" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="location" class="col-sm-2 col-form-label">경기장</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="stadiumName" id="stadiumName"
+            value="${match.stadiumName}" />
         </div>
       </div>
 

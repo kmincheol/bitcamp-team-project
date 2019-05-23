@@ -18,16 +18,14 @@ p {
   text-align: center;
 }
 
-
-
-
 tbody {
 }
 
 
 div.button1 {
-width: 200px;  
-position: absolute; 
+/* width: 200px;   */
+/* position: absolute;  */
+  text-align: center;
 left: 55%; 
 }
 
@@ -146,12 +144,10 @@ rigth: 10%;
 }
 
 
-
 #side_title {
   margin-left: 710px;
   margin-bottom: 0;
   font-size: 30px;
-  color: white;
   width: 165px;
 }
 
@@ -163,4 +159,14 @@ rigth: 10%;
 #searchbtn {
   width: 300px;
   }
+
+/* popover 디자인 */
+.popover-body {
+  width:200px;
+  height:100px;
+  display:block;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
 

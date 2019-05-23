@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-
 <html>
 <head>
   <title>매치보드</title>
@@ -15,38 +15,22 @@
    <div id="sidebar-right">
        <div id="side_team">
        <br>
-        <ul> 
-          <img src="${contextRootPath}/images/man_u2.jpeg" width=80px height=80px>
-        </ul> 
-          <p>
-            맨체스터 유나이티드<br>
-            20~30대<br>
-            직장인<br>
-          </p>
-          <br>
+       <c:if test="${!empty sessionScope.loginUser}">
+       <c:forEach items="${matches}" var="match">
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+          <li>${match.team.teamEmblemPhoto}</li>
+          <li>${match.team.teamName}</li>
         </ul>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
+        <ul style = "cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/${match.no}'"
+        onMouseOver="this.style.backgroundColor='#424242';" onMouseOut="this.style.backgroundColor='' ">
+          <li>${match.location}</li>
+          <li>${match.teamTypeSports.teamSportsType}</li>
+          <!-- <li>팀유형.</li> -->
+          <br><br>
         </ul>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul> 
-        
+        </c:forEach>
+        </c:if>
       </div>
     </div>
-
 </body>
 </html>

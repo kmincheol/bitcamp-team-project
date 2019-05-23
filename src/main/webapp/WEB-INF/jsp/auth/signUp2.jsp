@@ -26,8 +26,8 @@
 
     <div class="join_content">
       <form id="join_form" action=""> <!-- 만약 form부분에 key들을 js로 추가하고 싶다면 .container위로 올리고 그 사이에 넣을것. -->
-        <input type="hidden" id="token_sjoin" name="token_sjoin" value="QWozbUyMlxRp2eN3">
         <!--
+          <input type="hidden" id="token_sjoin" name="token_sjoin" value="QWozbUyMlxRp2eN3">
           <input type="hidden" id="encPswd" name="encPswd" value="">
           <input type="hidden" id="encKey" name="encKey" value="">
           <input type="hidden" id="joinMode" name="joinMode" value="unreal">
@@ -38,6 +38,7 @@
         <input type="hidden" id="birthday" name="birthDay" value="">
         <input type="hidden" id="photo" name="photo" value="">
         <input type="hidden" id="loginType" name="loginType" value="homepage"> 
+        <input type="hidden" id="authType" name="authType" value="join"> 
       
         <div class="join_form">
           <div class="join_form_left">
@@ -138,9 +139,10 @@
                 </div>
               </div>
               <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
+
               <div class="join_row join_email">
                 <h3 class="join_title">
-                  <label for="email">본인 확인 이메일</label>
+                  <label for="email">이메일 인증</label>
                 </h3>
                 <span class="ps_box int_email box_right_space" id="joinCode">
                   <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요."
@@ -149,16 +151,19 @@
                 <input id="btnSend" type="button" value="인증" class="btn btn-primary btn-sm">
               </div>
               <div class="ps_box_disable box_right_space" id="authNoBox">
-                <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled maxlength="4">
+                <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" maxlength="6" disabled>
                 <label id="wa_verify" for="authNo" class="lbl">
                   <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
                   <span class="input_code" id="authNoCode" style="display:none;"></span>
                 </label>
+                <input id="authSend" type="button" value="인증" class="btn btn-primary btn-sm">
               </div>
+              <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
+
             </div><!-- .row_group -->
             <!-- mobile -->
-            <div class="join_row join_mobile" id="modDiv">
+            <div class="join_row join_mobile">
               <h3 class="join_title">
                 <label for="phoneNo">휴대전화</label>
               </h3>
@@ -167,39 +172,18 @@
                   <input type="tel" id="phoneNo" name="tel" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
                   <label for="phoneNo" class="lbl"></label>              
                 </span>
-                <!--
-
-                  <a href="#" class="btn_verify btn_primary" id="btnSend" role="button">
-                -->
-                  <span class="">인증번호 받기</span>
                 </a>
               </div>
-              <!--
-                <div class="ps_box_disable box_right_space" id="authNoBox">
-                  <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" disabled maxlength="4">
-                  <label id="wa_verify" for="authNo" class="lbl">
-                    <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                    <span class="input_code" id="authNoCode" style="display:none;"></span>
-                  </label>
-                </div>
-
-              -->
               <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
-              <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
-              <span class="error_next_box" id="joinMsg" style="display:none" role="alert"></span>
             </div><!-- .join_row .join_mobile-->
           </div><!-- .join_form_left -->
+
           <div  class="join_form_right">
             <div class="join_row join_photo">
               <div class="join_photo_title">
                 <h3 class="join_title">
                   <label for="photo">프로필 사진<span class="terms_choice">(선택)</span></label>
                 </h3>
-                <!--  
-                <button class="btn btn-outline-secondary sunext" id="btnPhoto"
-                  type="button">파일 첨부</button>
-                <button id='upload-btn' type='button'>등록</button>
-                -->
                  <input id="fileupload" type="file" name="files" value="파일첨부"><br>
               </div>
               <div class="join_photo_view">
@@ -219,27 +203,15 @@
                 </h3>
                 <div class="address_area">
                   <span class="ps_box address_box">
-                  <input class="form-control" style="width: 40%; display: inline;" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" >
-                 <!-- 
-                 <input type="text" id="addressNo" name="addressNo" maxlength="6" readonly>
-                  -->   
+                  <input class="form-control" style="display: inline;" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" maxlength="6">
                   </span>
-                  <button id="addressBtn" type="button" class="btn btn-outline-secondary sunext addressBtn" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>
-                  <!--
-                  <a href="#" class="btn btn-outline-secondary sunext addressBtn" id="addressBtn" type="button">우편번호 찾기</a>
-                    -->
+                  <button id="addressBtn" type="button" class="btn btn-outline-secondary sunext addressBtn" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>                  
                 </div>
                 <div class="ps_box">
                 <input class="form-control" style="top: 5px;" placeholder="도로명 주소" name="baseAddress" id="addr2" type="text" readonly="readonly" />
-                <!-- 
-                <input type="text" name="addressBase" id="addressBase" title="주소를 입력해주세요." placeholder="주소를 입력해주세요." readonly>
-                 -->  
                 </div>
                 <div class="ps_box">
                 <input class="form-control" placeholder="상세주소" name="detailAddress" id="addr3" type="text"  />
-                  <!-- 
-                  <input type="text" name="addressDetail" id="addressDetail" title="상세주소를 입력해주세요." placeholder="상세주소를 입력해주세요." readonly>
-                   -->
                 </div>
               </div>
               <div class="join_row">
@@ -313,9 +285,6 @@ function execPostCode() {
                 $("[name=post]").val(data.zonecode);
                 $("[name=baseAddress]").val(fullRoadAddr);
                 
-                /* document.getElementById('signUpUserPostNo').value = data.zonecode; //5자리 새우편번호 사용
-                document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
-                document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
             }
          }).open();
   });
@@ -406,7 +375,7 @@ $(document).ready(function() {
  });
 
  $('#email').blur(function() {
-   checkEmailText();
+   checkEmail();
  });
 
  $('#phoneNo').blur(function() {
@@ -414,18 +383,19 @@ $(document).ready(function() {
  });
 
  $('#btnSend').click(function() {
-   checkEmail();
+   sendEmail();
    return false;
  });
- /* 전화인증번호 클릭이벤트처리
- */
 
- /* 인증
  $('#authNo').blur(function() {
-   authFlag = false;
    checkAuthNo();
- })
- */
+ });
+
+ $('#authSend').click(function() {
+   authFlag = false;
+   checkAuthnoByAjax();
+   return false;
+ });
 
  $('#btnJoin').click(function(event) {
    clickcr(this, 'sup.signup', '', '', event);
@@ -469,9 +439,9 @@ function checkUnrealInput() {
       checkName() &
       checkBirthday() &
       checkGender() &
-      checkEmailText() &
       checkEmail() &
-      checkPhoneNo() // & checkAuthNo()
+      checkPhoneNo() & 
+      checkAuthNo()
       ) {
         return true;
       } else {
@@ -579,7 +549,13 @@ function showAuthErrorBox(oBox, oCode, msg) {
   oBox.attr("class", "ps_box discord");
   oCode.html(msg);
   oCode.show();
-  }
+}
+
+function showAuthDefaultBox(oBox, oCode) {
+  oBox.attr("class", "ps_box");
+  oCode.html("");
+  oCode.hide();
+}
 
 function hideMsg(obj) {
   obj.hide();
@@ -875,17 +851,11 @@ function checkGender() {
   return true;
 }
 
-function checkEmailText() {
-  var email = $('#email').val();
+function checkEmailText(email) {
   var oMsg = $('#emailMsg');
-
-  if (email == "") {
-    hideMsg(oMsg);
-    return true;
-  }
-
   var isEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   var isHan = /[ㄱ-ㅎ가-힣]/g;
+
   if (!isEmail.test(email) || isHan.test(email)) {
     showErrorMsg(oMsg, "이메일 주소를 확인하시고 다시 입력해주세요.");
     return false;
@@ -903,76 +873,102 @@ function checkPhoneNo() {
     showErrorMsg(oMsg, "전화번호를 입력해주세요.");
     return false;
   }
+  
+  if (!isCellPhone(phoneNo)) {
+    showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
+    return false;
+  }
+
+  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
+  $("#phoneNo").val(phoneNo);
 
   hideMsg(oMsg);
   return true;
 }
 
-function checkEmail() {
-  var email = $("#email").val();
-  var oMsg = $('#phoneNoMsg');
+function isCellPhone(p) {
+  var regPhone = /^((01[1|6|7|8|9])[1-9][0-9]{6,7})$|(010[1-9][0-9]{7})$/;
+  return regPhone.test(p);
+}
 
-  if (email == "") {
-    alert("메일을 입력해주세요!");
+function checkEmail() {
+  var emailAuth = $("#email").val();
+  var typeAuth = $('#authType').val();
+  var oMsg = $('#emailMsg');
+
+  if (emailAuth == "") {
+    showErrorMsg(oMsg, "이메일을 입력해주세요.");
     return false;
   }
 
-  var qs = 'email=' + encodeURIComponent(email);
+  if (!checkEmailText(emailAuth)) {
+    return false;
+  }
 
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState != 4 || xhr.status != 200){
-      return;
-    }
-    
-      var data = xhr.responseText;
-      console.log(data);
-      var str = data.substring(0, data.length - 1);
-      var number = data.substring(data.length - 1, data.length);
-      if (number == 0) {
-        alert(str);
+  $("#authNoMsg").hide();
+
+  $.ajax({
+    type:"POST",
+    url:'../member/checkEmail',
+    contentType: 'application/json',
+    dataType: "text",
+    data:JSON.stringify({
+      email: emailAuth,
+      type: typeAuth
+    }),
+    success : function(data) {
+      var result = data.substr(5);
+      if (result == "1") {
         $('#joinCode').css('display', 'none');
+        showSuccessMsg(oMsg, "")
+      } else if (result == "0") {
+        $('#joinCode').css('display', "");
+        showErrorMsg(oMsg, "이 이메일로 가입된 아이디가 있습니다.");
       } else {
-        sendEmail(email);
-        alert(str);
-        $('#joinCode').css("display", "");
+        $('#joinCode').css('display', "");
+        showErrorMsg(oMsg, "잘못된 접근입니다.");
       }
-  };
-  xhr.open('POST', '../member/checkEmail', true);
-  xhr.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
-  xhr.send(qs);
+    }
+  });
 
-  return false;
+  return true;
 };
 
-function sendEmail(email) {
-  var qs = 'email=' + encodeURIComponent(email);
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystagechange = function() {
-    if (xhr.readyState != 4 || xhr.status != 200){
-      return;
-    }
-    var data = xhr.responseText;
-      console.log(data);
-      var str = data.substring(0, data.length - 1);
-      var number = data.substring(data.length - 1, data.length);
-      if (number == 0) {
-        alert(str);
+function sendEmail() {
+  var emailAuth = $("#email").val();
+  var typeAuth = $('#authType').val();
+  var oMsg = $('#emailMsg');
+
+  $.ajax({
+    type:"POST",
+    url:'../member/sendEmail',
+    contentType: 'application/json',
+    dataType: "text",
+    data:JSON.stringify({
+      email: emailAuth,
+      type: typeAuth
+    }),
+    success : function(data) {
+      var result = data.substr(4);
+      if (result == "1") {
+        showSuccessMsg(oMsg,"인증메일을 발송했습니다.<br>인증메일이 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>");
+        $("#authNo").attr("disabled", false);
+        var oBox = $("#authNoBox");
+        var oCode = $("#authNoCode");
+        showAuthDefaultBox(oBox, oCode);
+      } else if (result == "0") {
+        showErrorMsg(oMsg, "인증 중에 오류가 발생했습니다. 다시 인증 버튼을 눌러주세요.");
       } else {
-        alert(str);
-      
+        showErrorMsg(oMsg, "인증메일 발송에 실패했습니다. 이메일을 확인해주세요.");
+      }
     }
-  };
-
-  xhr.open('POST', '../member/sendEmail', true);
-  xhr.setRequestHeader('Content-Type', "application/x-www-form-urlencoded");
-  xhr.send(qs);
+  });
 
   return false;
 };
 
 
-/*
+
 function checkAuthNo() {
   var authNo = $('#authNo').val();
   var oMsg = $('#authNoMsg');
@@ -987,43 +983,50 @@ function checkAuthNo() {
   if (authFlag) {
     showSuccessMsg(oMsg, "인증이 성공했습니다.");
     showAuthSuccessBox(oBox, oCode, "일치");
-    $('#phoneNoMsg').hide();
+    $('#emailMsg').hide();
     return true;
   } else {
-    checkAuthnoByAjax();
+    showErrorMsg(oMsg, "인증이 필요합니다.");
+    return false;
   }
-  return true;
 }
 
 function checkAuthnoByAjax() {
   var authNo = $('#authNo').val();
-  var key = $('#token_sjoin').val();
+  var emailAuth = $("#email").val();
+  var typeAuth = $('#authType').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');
   var oCode = $('#authNoCode');
 
   $.ajax({
-    type: "GET",
-    url: 인증번호 확인 url,
+    type: "POST",
+    url: "../member/checkAuthNo",
+    contentType: 'application/json',
+    dataType: "text",
+    data: JSON.stringify({
+      authKey: authNo,
+      email: emailAuth,
+      type: typeAuth
+    }),
     success: function(data) {
       var result = data.substr(4);
-      if (result == "S") {
+      if (result == "0") {
         showSuccessMsg(oMsg, "인증이 성공했습니다.");
         showAuthSuccessBox(oBox, oCode, "일치");
-        $("#phoneNoMsg").hide();
+        $("#emailMsg").hide();
+        $('#btnSend').css('display', 'none');
+        $('#authNoBox').css('display', 'none');
         authFlag = true;
-      } else if (result == "Cnt") {
-        showErrorMsg(oMsg, "인증을 다시 진행해주세요.");
-        showAuthErrorBox(oBox, oCode, "불일치");
       } else {
         showErrorMsg(oMsg, "인증번호를 다시 확인해주세요.");
         showAuthErrorBox(oBox, oCode, "불일치");
       }
     }
   });
-  return true;
+  return false;
 }
-*/
+
 
 </script>
 </body>
