@@ -12,11 +12,6 @@ html, body {
 	padding: 0px;
 }
 
-.container-fluid {
-	margin: 0px;
-	padding: 0px;
-}
-
 #header {
 	position: relative;
 	height: 150px;

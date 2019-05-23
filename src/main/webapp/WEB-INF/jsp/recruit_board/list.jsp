@@ -6,10 +6,14 @@
 
 <head>
 <title>모집게시판</title>
-<jsp:include page="../header.jsp"></jsp:include>
+<!-- include header.jsp -->
+<jsp:include page="../header.jsp" />
+<!-- header.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+<!-- recruit_board_list.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
-
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <!-- Bootstrap core CSS -->
@@ -23,26 +27,26 @@
   rel="stylesheet">
 
 <style>
-.pagination{
-    display: inline-flex;
+.pagination {
+	display: inline-flex;
 }
-div.dataTables_wrapper div.dataTables_paginate{
-    text-align: left;
-    width: 100%;
+
+div.dataTables_wrapper div.dataTables_paginate {
+	text-align: left;
+	width: 100%;
 }
 </style>
 
 </head>
 
 <body>
-
   <div class="container">
+
     <div id="main-text">
       <h2>모집게시판</h2>
     </div>
 
-    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-      width="100%" style="text-align: center">
+    <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>
         <tr>
           <th class="th-sm">번호</th>
@@ -88,11 +92,14 @@ div.dataTables_wrapper div.dataTables_paginate{
     </table>
 
     <div id="in">
-      <div id="write-btn" style="position: absolute; right: 0;">
+      <div id="write-btn">
         <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
       </div>
     </div>
   </div>
+
+  <jsp:include page="../footer.jsp" />
+
   <!-- SCRIPTS -->
   <!-- JQuery -->
   <script type="text/javascript"
@@ -120,15 +127,12 @@ div.dataTables_wrapper div.dataTables_paginate{
 
 			$(document).ready(function() {
 				$('#dtBasicExample').DataTable({
-					"ordering" : false,
 					"info" : false,
 					/* "lengthChange":false, */
 					language : lang_kor
 				});
 				$('.dataTables_length').addClass('bs-select');
 			});
-			
-			
 		</script>
 </body>
 </html>
