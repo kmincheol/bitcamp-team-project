@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.TeamDao;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamAges;
+import com.eomcs.lms.domain.TeamLevel;
+import com.eomcs.lms.domain.TeamType;
+import com.eomcs.lms.domain.TeamTypeSports;
 import com.eomcs.lms.service.TeamService;
 
 // 5월 14일 생성만 함
@@ -21,7 +25,7 @@ public class TeamServiceImpl implements TeamService {
 
   @Override
   public List<Team> teamList() {
-    return null;
+    return teamDao.findAllTeam();
   }
 
   @Override
@@ -31,9 +35,29 @@ public class TeamServiceImpl implements TeamService {
 
   @Override
   public int addTeam(Team team) {
-    return 0;
+    return teamDao.insert(team);
   }
 
+  @Override
+  public List<TeamType> teamTypeList() {
+    return teamDao.findTeamType();
+  }
+  
+  @Override
+  public List<TeamAges> teamAgeList() {
+    return teamDao.findTeamAge();
+  }
+  
+  @Override
+  public List<TeamTypeSports> sportsTypeList() {
+    return teamDao.findSportsType();
+  }
+  
+  @Override
+  public List<TeamLevel> teamLevelList() {
+    return teamDao.findTeamLevel();
+  }
+  
   @Override
   public int addMember(Member member) {
     return 0;
@@ -74,6 +98,11 @@ public class TeamServiceImpl implements TeamService {
     return 0;
   }
 
+  @Override
+public int size() {
+  // TODO Auto-generated method stub
+  return 0;
+}
  
 }
 

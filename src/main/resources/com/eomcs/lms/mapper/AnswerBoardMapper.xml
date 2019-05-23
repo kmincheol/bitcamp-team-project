@@ -19,15 +19,13 @@
 
   </resultMap>
 
-
- 
-
   <select id="findAll" resultMap="answerBoardMap" parameterType="map">
  select
     ans_id,
     a.qstn_id,
     a.titl,
     a.cont,
+    ans_stat,
     ans_dt
  from
     ans a
@@ -36,6 +34,31 @@
   </select>
 
 
+  <insert id="insert" parameterType="answerBoard" useGeneratedKeys="true" keyColumn="ans_id"
+    keyProperty="answerNo">
+    insert into ans(
+    cont,
+    qstn_id
+   )
+    values(
+    #{contents},
+     #{questionNo}
+    )
+  </insert>
+
+
+  <select id="findByNo" resultMap="answerBoardMap" parameterType="int">
+ select
+    ans_id,
+    a.cont,
+    a.qstn_id
+ from
+    ans a 
+    left outer join  qstn q on a.qstn_id = q.qstn_id
+ where
+    a.qstn_id =#{questionNo};
+
+  </select>
 <!-- 
   <select id="findByNo2" resultMap="team" parameterType="int">
     select
@@ -51,27 +74,6 @@
     left outer join mbr m on m.mbr_id = tm.mbr_id
     where
     t.tm_id = '1';
-
-  </select>
-
-  <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
-    select
-    r.rcrm_id,
-    titl,
-    area,
-    cont,
-    name,
-    rcrm_stat,
-    vw_cnt,
-    spt_clsf_name
-    from
-    rcrm r
-    left outer join tm t on r.tm_id = t.tm_id
-    left
-    outer join spt_clsf s on s.spt_clsf_id =
-    t.spt_clsf_id
-    where
-    r.rcrm_id = #{teamNo};
 
   </select>
 
@@ -98,19 +100,6 @@
     order by rcrm_id
     desc
   </select>
-
-  <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
-    keyProperty="teamNo">
-    insert into rcrm(
-    titl,
-    cont,
-    tm_id
-    )
-    values(
-    #{teamTitle},
-    #{teamContents},
-    #{teamId})
-  </insert>
 
 
 

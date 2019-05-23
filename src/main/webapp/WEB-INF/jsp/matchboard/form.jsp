@@ -31,7 +31,7 @@
     <tr>
     <th scope="row">경기일</th>
       <td>
-     <input class="form-control" type='date' name='playDate'/>
+     <input class="form-control" type='date' id="playDate" name='playDate'/>
       </td>
     </tr>
   </thead>
@@ -52,15 +52,27 @@
                 </select>
               </div>
 				</div>
-				<input type="number" class="form-control-sm" name="location">
-<%--			팀의 지역값이 아니여도 오류가 아님
-             <select name="location" class="custom-select-sm" id="select2">
-            <c:forEach items="${match}" var="match">
-            <c:if test="${!match.team.teamMember.team_leader}">
-            <option value="${match.team.teamArea}">${match.team.teamArea}</option>
-            </c:if>
-            </c:forEach>
-            </select> --%>
+				           <div class="col-sm">
+              <div class="input-group mb-2">
+                <select name='location' class="custom-select" id="inputGroupSelect01"> 
+            <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
+            <option value="01">서울</option>
+            <option value="02">경기</option>
+            <option value="03">인천</option>
+                </select>
+              </div>
+            </div>
+				           <div class="col-sm">
+              <div class="input-group mb-2">
+                <select name='location' class="custom-select" id="inputGroupSelect01"> 
+            <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
+            <option value="01"></option>
+            <option value="02"></option>
+            <option value="03"></option>
+                </select>
+              </div>
+            </div>
+            
             
             		<%-- 매치보드에 등록하는 팀의 스포츠 이름 가져오기 실패
             		 <select name="teamSportsId" class="custom-select-sm" id="select3">
@@ -116,6 +128,29 @@
 	
 </form>
   </div> <!-- .container -->
+    <script type="text/javascript">
+
+    	function getDate() {
+    	  var today = new Date();
+    	  var dd = today.getDate();
+    	  var mm = today.getMonth()+1; //January is 0!
+    	  var yyyy = today.getFullYear();
+
+    	  if(dd<10) {
+    	      dd = '0'+dd
+    	  } 
+    	  if(mm<10) {
+    	      mm = '0'+mm
+    	  } 
+    	  today = yyyy + '-' + mm + '-' + dd;
+    	  console.log(today);
+    	  document.getElementById("playDate").value = today;
+    	}
+    	window.onload = function() {
+    	  getDate();
+    	};
+		
+	 </script>
 
 <script type="text/javascript">
 

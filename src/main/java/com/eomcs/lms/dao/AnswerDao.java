@@ -3,6 +3,7 @@ package com.eomcs.lms.dao;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.AnswerBoard;
+import com.eomcs.lms.domain.QuestionBoard;
 public interface AnswerDao {
  
  
@@ -14,7 +15,7 @@ public interface AnswerDao {
 
   int delete(int no);
 
-
+  AnswerBoard findByNo(int no);
   
 }
 

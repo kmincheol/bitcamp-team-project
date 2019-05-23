@@ -38,11 +38,14 @@ public class MatchBoardController {
   
 
   @GetMapping("form")
-  public void form(Model model, HttpSession session) {
+  public void form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
     Member member = (Member) session.getAttribute("loginUser");
     if (member == null) {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
     }
+    
+    List<TopLocation> location = locationService.findlocation(topLocationNo);
+    model.addAttribute("location", location);
     
   List<Match> match = matchBoardService.teamInfoGet(member.getNo());
      logger.debug(match);

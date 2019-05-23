@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +13,6 @@
 
 <body>
 
-
   <div class="container">
 
     <div class="form-group row">
@@ -20,17 +20,6 @@
       <div class="col-sm-10">
         <input type="text" class="form-control" name="questionType" id="type" value="${question.questionNo}"
           readonly />
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="viewCount" class="col-sm-2 col-form-label">답변상태</label>
-      <div class="col-sm-10">
-          <input tyep="text" class="form-control"
-          value = " <c:choose>
-                <c:when test="${question.questionStatus == false}">대기</c:when>
-                <c:otherwise>완료</c:otherwise>
-              </c:choose>" readonly/>
       </div>
     </div>
 
@@ -64,16 +53,52 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div id ="aa" class="form-group row">
       <div class="col-sm-10">
-        <a class="btn btn-primary" href='.'>목록</a> <a class="btn btn-primary"
-          href='delete/${question.questionNo}'>삭제</a> <a class="btn btn-primary"
-          href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
+        <a class="btn btn-primary" href='.'>목록</a> 
+        <a class="btn btn-primary" href='delete/${question.questionNo}'>삭제</a> 
+        <a class="btn btn-primary" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
+         <a class="btn btn-primary" href='${contextRootPath}/app/question/form2/${question.questionNo}'>답글달기</a>
       </div>
-    </div> 
+   </div> 
+   <div class="container">
+    
+    <h1>답변하기</h1>
+    <form id='add_form' action='../add2' method='post'>
+    <div class="form-group row">
+
+      <label for="title" class="col-sm-2 col-form-label">내용</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="contents" id="contents" value="${answer.contents}" />
+      </div>
+    
+    </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button id="add" class="btn btn-primary" >등록</button>
+          <a class="btn btn-primary" href='${contextRootPath}/app/question'>목록</a>
+        </div>
+      </div>
+    </form>
+  </div>
+   
+   
   </div>
   <!-- .container -->
-    <jsp:include page="answer.jsp" />
+
+
+ <%-- <jsp:include page="alist.jsp" /> --%>
+
+  <jsp:include page="../javascript.jsp" />
+ 
+ 
+ 
+<script>
+</script>
+
+
+
+
 </body>
 
 </html>

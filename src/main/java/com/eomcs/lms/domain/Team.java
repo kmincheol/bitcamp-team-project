@@ -10,7 +10,7 @@ public class Team implements Cloneable, Serializable {
   private int teamId; 
   private String teamName;
   private String teamInfo;
-  private int teamArea;  // 임시 숫자로 바꿈
+  private String teamArea;
   private int teamAgeId;
   private int teamTypeId;
   private int teamLevelId;
@@ -23,11 +23,14 @@ public class Team implements Cloneable, Serializable {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date teamInfoModifieDate;
 
-  private TeamTypeSports teamTypeSports;
   private Member member;
+  private TeamAges teamAges;
+  private TeamLevel teamLevel;
   private TeamMember teamMember;
+  private TeamType teamType;
+  private TeamTypeSports teamTypeSports;
   private MatchApply matchApply;
-
+  
   @Override
   public String toString() {
     return "Team [teamId=" + teamId + ", teamName=" + teamName + ", teamInfo=" + teamInfo
@@ -35,150 +38,134 @@ public class Team implements Cloneable, Serializable {
         + ", teamLevelId=" + teamLevelId + ", teamSportsId=" + teamSportsId + ", teamEmblemPhoto="
         + teamEmblemPhoto + ", teamUniform=" + teamUniform + ", teamUniformPhoto="
         + teamUniformPhoto + ", teamCreateDate=" + teamCreateDate + ", teamInfoModifieDate="
-        + teamInfoModifieDate + ", teamTypeSports=" + teamTypeSports + ", member=" + member
-        + ", teamMember=" + teamMember + ", matchApply=" + matchApply + "]";
+        + teamInfoModifieDate + ", member=" + member + ", teamAges=" + teamAges + ", teamLevel="
+        + teamLevel + ", teamMember=" + teamMember + ", teamType=" + teamType + ", teamTypeSports="
+        + teamTypeSports + ", matchApply=" + matchApply + "]";
   }
-
   
-  public TeamTypeSports getTeamTypeSports() {
-    return teamTypeSports;
-  }
-
-  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
-    this.teamTypeSports = teamTypeSports;
-  }
-
-  public Member getMember() {
-    return member;
-  }
-
-  public void setMember(Member member) {
-    this.member = member;
-  }
-
-  public TeamMember getTeamMember() {
-    return teamMember;
-  }
-
-  public void setTeamMember(TeamMember teamMember) {
-    this.teamMember = teamMember;
-  }
-
   public int getTeamId() {
     return teamId;
   }
-
   public void setTeamId(int teamId) {
     this.teamId = teamId;
   }
-
   public String getTeamName() {
     return teamName;
   }
-
   public void setTeamName(String teamName) {
     this.teamName = teamName;
   }
-
   public String getTeamInfo() {
     return teamInfo;
   }
-
   public void setTeamInfo(String teamInfo) {
     this.teamInfo = teamInfo;
   }
-
-  public int getTeamArea() {
+  public String getTeamArea() {
     return teamArea;
   }
-
-
-  public void setTeamArea(int teamArea) {
+  public void setTeamArea(String teamArea) {
     this.teamArea = teamArea;
   }
-
-
   public int getTeamAgeId() {
     return teamAgeId;
   }
-
   public void setTeamAgeId(int teamAgeId) {
     this.teamAgeId = teamAgeId;
   }
-
   public int getTeamTypeId() {
     return teamTypeId;
   }
-
   public void setTeamTypeId(int teamTypeId) {
     this.teamTypeId = teamTypeId;
   }
-
   public int getTeamLevelId() {
     return teamLevelId;
   }
-
   public void setTeamLevelId(int teamLevelId) {
     this.teamLevelId = teamLevelId;
   }
-
   public int getTeamSportsId() {
     return teamSportsId;
   }
-
   public void setTeamSportsId(int teamSportsId) {
     this.teamSportsId = teamSportsId;
   }
-
   public String getTeamEmblemPhoto() {
     return teamEmblemPhoto;
   }
-
   public void setTeamEmblemPhoto(String teamEmblemPhoto) {
     this.teamEmblemPhoto = teamEmblemPhoto;
   }
-
   public boolean isTeamUniform() {
     return teamUniform;
   }
-
   public void setTeamUniform(boolean teamUniform) {
     this.teamUniform = teamUniform;
   }
-
   public String getTeamUniformPhoto() {
     return teamUniformPhoto;
   }
-
   public void setTeamUniformPhoto(String teamUniformPhoto) {
     this.teamUniformPhoto = teamUniformPhoto;
   }
-
   public Date getTeamCreateDate() {
     return teamCreateDate;
   }
-
   public void setTeamCreateDate(Date teamCreateDate) {
     this.teamCreateDate = teamCreateDate;
   }
-
   public Date getTeamInfoModifieDate() {
     return teamInfoModifieDate;
   }
-
   public void setTeamInfoModifieDate(Date teamInfoModifieDate) {
     this.teamInfoModifieDate = teamInfoModifieDate;
   }
-
+  public Member getMember() {
+    return member;
+  }
+  public void setMember(Member member) {
+    this.member = member;
+  }
+  public TeamAges getTeamAges() {
+    return teamAges;
+  }
+  public void setTeamAges(TeamAges teamAges) {
+    this.teamAges = teamAges;
+  }
+  public TeamLevel getTeamLevel() {
+    return teamLevel;
+  }
+  public void setTeamLevel(TeamLevel teamLevel) {
+    this.teamLevel = teamLevel;
+  }
+  public TeamMember getTeamMember() {
+    return teamMember;
+  }
+  public void setTeamMember(TeamMember teamMember) {
+    this.teamMember = teamMember;
+  }
+  public TeamType getTeamType() {
+    return teamType;
+  }
+  public void setTeamType(TeamType teamType) {
+    this.teamType = teamType;
+  }
+  public TeamTypeSports getTeamTypeSports() {
+    return teamTypeSports;
+  }
+  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
+    this.teamTypeSports = teamTypeSports;
+  }
   public MatchApply getMatchApply() {
     return matchApply;
   }
-
   public void setMatchApply(MatchApply matchApply) {
     this.matchApply = matchApply;
   }
-
-
+  
+  
+ 
 
 
 }

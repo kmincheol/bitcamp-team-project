@@ -7,15 +7,17 @@ public interface AnswerBoardService {
  
   List<AnswerBoard> list();
 
-//  QuestionBoard get(int no);
+  int add(AnswerBoard answerBoard);
+
+  AnswerBoard get(int no);
+  
+ // AnswerBoard getUpdate(int no);
 
  // int delete(int no);
   
-//  int add(QuestionBoard questionBoard);
   
  // int update(QuestionBoard questionBoard);
 
- // QuestionBoard getUpdate(int no);
 
   
 //  List<QuestionBoard> boardSearch(String keyword);

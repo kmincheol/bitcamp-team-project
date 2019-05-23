@@ -41,5 +41,6 @@ public class MiddleLocation implements Cloneable, Serializable {
   public void setTopLocationId(int topLocationId) {
     this.topLocationId = topLocationId;
   }
+  
 
 }

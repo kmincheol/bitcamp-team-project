@@ -27,28 +27,27 @@ public class AnswerServiceImpl implements AnswerBoardService {
   
     return answerDao.findAll();
   }
-//  
-//  @Override
-//  public QuestionBoard get(int no) {
-//    QuestionBoard question = questionDao.findByNo(no);
-//    if (question != null) {
-////      questionDao.increaseCount(no);
-//    }
-//    return question;
-//  }
-//  
+  
+  @Override
+  public int add(AnswerBoard answerBoard) {
+    return answerDao.insert(answerBoard);
+  }
+
+    @Override
+  public AnswerBoard get(int no) {
+      AnswerBoard answer = answerDao.findByNo(no);
+    if (answer != null) {
+  //    questionDao.increaseCount(no);
+    }
+    return answer;
+  }
+  
 //  @Override
 //  public int delete(int no) {
 //    return questionDao.delete(no);
 //  }
-//
-//  @Override
-//  public int add(QuestionBoard questionBoard) {
-//    // 이 메서드도 하는 일이 없다.
-//    // 그래도 일관된 프로그래밍을 위해 Command 객체는 항상 Service 객체를 경유하여 DAO를 사용해야 한다.
-//    return questionDao.insert(questionBoard);
-//  }
-//  
+
+  
 //  
 //  @Override
 //  public QuestionBoard getUpdate(int no) {

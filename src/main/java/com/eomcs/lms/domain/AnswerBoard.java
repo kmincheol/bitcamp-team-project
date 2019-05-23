@@ -10,6 +10,7 @@ public class AnswerBoard {
       private Date createdDate;
       private QuestionBoard questionBoard;
     
+      
       @Override
       public String toString() {
         return "AnswerBoard [answerNo=" + answerNo + ", questionNo=" + questionNo + ", title="
