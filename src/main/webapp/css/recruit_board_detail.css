@@ -1,44 +1,72 @@
 * {
-  margin: 0px;
-  padding: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 body, html {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 
 .container {
-  width: auto;
-  height: auto;
-  min-height: 100%;
-  padding: 0px;
-  margin: 0 auto;
+	width: auto;
+	height: auto;
+	min-height: 100%;
+	padding: 0px;
+	margin: 0 auto;
 }
 
 #main-text {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  height: 230px;
-  border-bottom: 2px solid black;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	height: 230px;
+	border-bottom: 2px solid black;
 }
 
 #main-text>h2 {
-  position: relative;
-  top: 90px;
-  color: black;
+	position: relative;
+	top: 90px;
+	color: black;
 }
 
-#title-row{
-	width:100%;
-	height:100px;
-}
-
-#title{
-	font-size: 35px;
+#title-wrap {
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	text-align: center;
+	border-bottom: 1px solid gray;
 }
 
+#title {
+	font-size: 35px;
+}
+
+#contents-wrap {
+	margin-top: 50px;
+}
+
+table.info-table {
+	text-align: left;
+	line-height: 1.5;
+	width: 100%;
+	border-top: 1px solid #ccc;
+}
+
+table.info-table th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+}
+
+table.info-table td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
