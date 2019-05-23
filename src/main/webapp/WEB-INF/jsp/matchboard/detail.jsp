@@ -7,8 +7,24 @@
 <head>
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
 <jsp:include page="../header.jsp" />
+<style>
+#viewCount {
+text-align: right;
+}
+#viewCnt {
+text-align: right;
+}
+#locleb {
+text-align: right;
+}
+#typlab{
+text-align: right;
+}
+</style>
+
 <body>
 
   <div class="container">
@@ -22,17 +38,30 @@
       
         <div class="form-group row">
           <label for="no" class="col-sm-2 col-form-label">번호</label>
-          <div class="col-sm-10">
+          
+          <div class="col-sm-3">
             <input type="text" class="form-control" name="matchNo" id="no"
               value="${match.no}" readonly />
+          </div>
+          
+          <label for="viewCount" class="col-sm-2 col-form-label" id="viewCnt">조회수</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" name="matchViewCount" id="viewCount"
+              value="${match.viewCount}" readonly />
           </div>
         </div>
 
         <div class="form-group row">
           <label for="playdt" class="col-sm-2 col-form-label">경기날짜</label>
-          <div class="col-sm-10">
+          <div class="col-sm-3">
             <input type="date" class="form-control" name="playDate"
               value="${match.playDate}" readonly/>
+          </div>
+          
+          <label for="location" class="col-sm-2 col-form-label" id="locleb">지역</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" name="teamArea" id="location"
+              value="${match.location}" readonly />
           </div>
         </div>
 
@@ -45,32 +74,21 @@
         </div> --%>
 
         <div class="form-group row">
-          <label for="location" class="col-sm-2 col-form-label">지역</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="teamArea" id="location"
-              value="${match.location}" readonly />
-          </div>
-        </div>
-
-        <div class="form-group row">
           <label for="location" class="col-sm-2 col-form-label">경기장</label>
-          <div class="col-sm-10">
+          <div class="col-sm-3">
             <input type="text" class="form-control" name="stadiumName" id="stadiumName"
               value="${match.stadiumName}" readonly />
           </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="sportsType" class="col-sm-2 col-form-label">종목</label>
-          <div class="col-sm-10">
+          <label for="sportsType" class="col-sm-2 col-form-label" id="typlab">종목</label>
+          <div class="col-sm-3">
             <input type="text" class="form-control" name="teamSportsType" id="sportsType"
               value="${match.teamTypeSports.teamSportsType}" readonly />
           </div>
         </div>
 
-        <div class="form-group row">
-          <label for="teamName" class="col-sm-2 col-form-label">팀명</label>
-          <div class="col-sm-10">
+        <div class="form-group row" >
+          <label for="teamName" class="col-sm-2 col-form-label">팀</label>
+          <div class="col-sm-3">
             <input type="text" class="form-control" name="teamName" id="teamName"
               value="${match.team.teamName}" readonly />
           </div>
@@ -78,7 +96,7 @@
 
         <div class="form-group row">
           <label for="title" class="col-sm-2 col-form-label">제목</label>
-          <div class="col-sm-10">
+          <div class="col-sm-3">
             <input type="text" class="form-control" name="teamTitle" id="title"
               value="${match.title}" readonly />
           </div>
@@ -92,13 +110,6 @@
           </div>
         </div>
 
-        <div class="form-group row">
-          <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="matchViewCount" id="viewCount"
-              value="${match.viewCount}" readonly />
-          </div>
-        </div>
 
         <div class="form-group row">
           <div class="col-sm-10">
@@ -107,7 +118,7 @@
               
               <c:if test="${!empty sessionScope.loginUser}">
               <%-- <c:if test="${!sessionScope.loginUser.match.teamMember.teamLeader eq match.match.teamMember.teamLeader}"> --%>
-              <a href='${contextRootPath}/app/matchboard' id="btnsub"
+              <a href='${contextRootPath}/app/matchboard' id="btnsub2"
                class="btn btn-primary" role="button" aria-disabled="true">신청하기</a>
             </c:if>
             <%-- </c:if> --%>
@@ -117,8 +128,8 @@
             <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
             <%-- <c:if test="${match.team.teamMember.team_leader == true}"> --%>
             <%-- <c:if test="${sessionScope.loginUser.team.teamName eq match.team.teamName}"> --%>
-          <a class="btn btn-primary" href='delete/${match.no}'>삭제</a>
-          <a class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
+          <a id="delt" class="btn btn-primary" href='delete/${match.no}'>삭제</a>
+          <a id="updt" class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
 <%--             </c:if>
             </c:if> --%>
           </div>
