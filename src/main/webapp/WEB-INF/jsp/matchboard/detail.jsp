@@ -8,13 +8,13 @@
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-
+<jsp:include page="../header.jsp" />
 <body>
 
   <div class="container">
-    
+    <br><br><br>
     <div id="main-text">
-      <h2>매치보드 작성글</h2>
+      <h2>작성글 확인</h2>
     </div>
 
     <div>
@@ -36,6 +36,13 @@
           </div>
         </div>
 
+<%--         <div class="form-group row">
+          <label for="playdt" class="col-sm-2 col-form-label">연령대</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" name="teamAges"
+              value="${match.teamAges.teamAges}" readonly/>
+          </div>
+        </div> --%>
 
         <div class="form-group row">
           <label for="location" class="col-sm-2 col-form-label">지역</label>
@@ -46,10 +53,18 @@
         </div>
 
         <div class="form-group row">
+          <label for="location" class="col-sm-2 col-form-label">경기장</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="stadiumName" id="stadiumName"
+              value="${match.stadiumName}" readonly />
+          </div>
+        </div>
+
+        <div class="form-group row">
           <label for="sportsType" class="col-sm-2 col-form-label">종목</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="teamSportsType" id="sportsType"
-              value="${match.team.teamSportsId}" readonly />
+              value="${match.teamTypeSports.teamSportsType}" readonly />
           </div>
         </div>
 
@@ -88,12 +103,15 @@
         <div class="form-group row">
           <div class="col-sm-10">
             <a class="btn btn-primary" href='${contextRootPath}/app/matchboard'>목록</a> 
+
               
               <c:if test="${!empty sessionScope.loginUser}">
+              <%-- <c:if test="${!sessionScope.loginUser.match.teamMember.teamLeader eq match.match.teamMember.teamLeader}"> --%>
               <a href='${contextRootPath}/app/matchboard' id="btnsub"
                class="btn btn-primary" role="button" aria-disabled="true">신청하기</a>
             </c:if>
-            <!-- 해당 팀의 팀장이 자기가 쓴 매칭글에서는 신청하기 버튼이 보이지 않아야함. 혹은 신청할수 없게 막아야함 -->
+            <%-- </c:if> --%>
+            <!-- 로그인 한 사용자와 글을 작성한 팀장과 같다면 버튼을 가림 -->
 
 
             <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->

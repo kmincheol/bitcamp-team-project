@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="${contextRootPath}/css/announce.css">
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
   <div class="container">
+  <br><br><br>
   <br>
     <h3>글 쓰기</h3>
     <hr>

@@ -49,8 +49,9 @@
       <id column="mtch_id"  property="matchNo"/>
       <result column="tag_name"  property="tagName"/>
     </collection>
-
+    
  </resultMap>
+ 
 
 
    <resultMap type="Team" id="team">
@@ -58,6 +59,7 @@
       <id column="tm_id" property="teamId" />
       <result column="area" property="teamArea" />   
       <result column="name" property="teamName" />
+      <result column="age_id" property="teamAgeId" />
       <result column="tm_ambl_phot" property="teamEmblemPhoto" />
       <result column="spt_clsf_id" property="teamSportsId" />
 
@@ -85,6 +87,12 @@
       <result column="aply_dt" property="applyDate" />
     </association>
 
+    <!-- 팀나이 -->
+   <association property="teamAges" javaType="TeamAges">
+      <id column="age_id" property="teamAgeId" />
+      <result column="ages" property="teamAges" />
+    </association>
+
  </resultMap>
 
 
@@ -98,6 +106,7 @@
       <id column="tm_id" property="teamId" />
       <result column="name" property="teamName" />
       <result column="area" property="teamArea" />
+      <result column="spt_clsf_id" property="teamSportsId" />
     </association>
 
   <!-- 팀원테이블 -->
@@ -110,6 +119,12 @@
     <association property="member" javaType="Member">
       <id column="mbr_id" property="no" />
       <result column="user_id" property="id" />
+    </association>
+
+  <!-- 종목테이블 -->
+    <association property="teamTypeSports" javaType="TeamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
     </association>
 
  </resultMap>
@@ -136,12 +151,14 @@
     tel,
     cost,
     t.name,
+    t.age_id,
     t.tm_ambl_phot
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
+    left outer join age a on t.age_id = a.age_id
   </sql>
   
   <!-- 정보 팀 종목 출력 실패...
@@ -216,11 +233,12 @@
       s.tm_id,
       s.area,
       t.tlead_wth,
-      spt_clsf_id
+      p.spt_clsf_name
     from
       mbr m
       left outer join tm_mbr t on m.mbr_id = t.mbr_id
       left outer join tm s on t.tm_mbr_id = s.tm_id
+      left outer join spt_clsf p on s.spt_clsf_id = p.spt_clsf_id
     where
       m.mbr_id = #{value};
   </select>
@@ -237,6 +255,8 @@
       tm_id,
       game_dt,
       area,
+      stdm_psti,
+      spt_clsf_id,
       cost,
       titl,
       cont,
@@ -245,6 +265,8 @@
       #{teamNo},
       #{playDate},
       #{location},
+      #{stadiumName},
+      #{teamSportsId},
       #{cost},
       #{title},
       #{contents},

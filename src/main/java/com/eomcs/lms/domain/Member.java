@@ -1,6 +1,7 @@
 package com.eomcs.lms.domain;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Member implements Cloneable, Serializable {
@@ -28,6 +29,10 @@ public class Member implements Cloneable, Serializable {
   private Date latestDate;
   private boolean manager;
   
+  private List<Team> team;
+  private TeamMember teamMember;
+  private TeamTypeSports teamTypeSports;
+  
   @Override
   public String toString() {
     return "Member [no=" + no + ", id=" + id + ", password=" + password + ", name=" + name
@@ -35,8 +40,10 @@ public class Member implements Cloneable, Serializable {
         + ", post=" + post + ", baseAddress=" + baseAddress + ", detailAddress=" + detailAddress
         + ", photo=" + photo + ", selfIntroduce=" + selfIntroduce + ", loginType=" + loginType
         + ", status=" + status + ", createdDate=" + createdDate + ", latestDate=" + latestDate
-        + ", manager=" + manager + "]";
+        + ", manager=" + manager + ", team=" + team + ", teamMember=" + teamMember
+        + ", teamTypeSports=" + teamTypeSports + "]";
   }
+  
   
   public int getNo() {
     return no;
@@ -145,6 +152,24 @@ public class Member implements Cloneable, Serializable {
   }
   public void setManager(boolean manager) {
     this.manager = manager;
+  }
+  public List<Team> getTeam() {
+    return team;
+  }
+  public void setTeam(List<Team> team) {
+    this.team = team;
+  }
+  public TeamMember getTeamMember() {
+    return teamMember;
+  }
+  public void setTeamMember(TeamMember teamMember) {
+    this.teamMember = teamMember;
+  }
+  public TeamTypeSports getTeamTypeSports() {
+    return teamTypeSports;
+  }
+  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
+    this.teamTypeSports = teamTypeSports;
   }
 }
   
