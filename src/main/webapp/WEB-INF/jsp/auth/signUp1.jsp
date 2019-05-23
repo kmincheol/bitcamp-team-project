@@ -127,7 +127,6 @@
   </div><!-- .content -->
 </div><!-- .container -->
 
-<jsp:include page="../footer.jsp"/>
 <jsp:include page="../javascript.jsp"/>
 <script>
 "use strict"
