@@ -1,5 +1,37 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
 
- .container{
-    position : absolute;
-    
- }
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.container {
+	width: auto;
+	height: auto;
+	min-height: 100%;
+	padding: 0px;
+	margin: 0 auto;
+}
+
+#main-text {
+	position: relative;
+	text-align: center;
+	width: 100%;
+	height: 230px;
+	border-bottom: 2px solid black;
+	margin-bottom: 15px;
+}
+
+.text-field {
+	position: relative;
+	top: 40px;
+}
+
+.table-header {
+	background: #efefef;
+}

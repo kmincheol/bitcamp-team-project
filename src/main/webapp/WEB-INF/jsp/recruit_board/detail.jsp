@@ -12,10 +12,8 @@
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
-
 </head>
 
 <body>
@@ -45,43 +43,40 @@
           <table class="info-table">
             <tr>
               <th>
-                <div scope="row">종목</div>
+                <div>종목</div>
               </th>
               <td>
                 <div id="sportsType" name="teamSportsType">${teamRecruit.teamTypeSports.teamSportsType}</div>
               </td>
               <th>
-                <div scope="row">지역</div>
+                <div>지역</div>
               </th>
               <td>
                 <div id="location" name="teamArea">${teamRecruit.team.teamArea}</div>
               </td>
-              <th>
-                <div scope="row">내용</div>
-              </th>
             </tr>
           </table>
         </div>
 
-        <div class="form-group row">
-          <label for="contents" class="col-sm-2 col-form-label">내용</label>
-          <div class="col-sm-10">
-            <p>${teamRecruit.teamContents}</p>
+        <div id="contents-section">
+          <div class="contents-section-head">
+            <div>내용</div>
+          </div>
+          <div class="contents-section-body">
+            <div class="contents">${teamRecruit.teamContents}</div>
           </div>
         </div>
 
-        <div class="form-group row">
+        <div id="control-box" class="form-group row">
           <div class="col-sm-10">
-            <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a> <a
-              class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a> <a
-              class="btn btn-primary"
-              href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a> <a
-              class="btn btn-primary" href=''>가입신청</a>
+            <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a> 
+            <a class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a>
+            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
+            <a class="btn btn-primary" href=''>가입신청</a>
           </div>
         </div>
       </div>
     </form>
-</button>
   </div>
   <!-- .container -->
  <jsp:include page="../footer.jsp" />

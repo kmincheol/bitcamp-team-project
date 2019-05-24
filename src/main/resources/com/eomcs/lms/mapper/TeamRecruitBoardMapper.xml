@@ -60,11 +60,11 @@
     r.cdt,
     rcrm_stat,
     vw_cnt,
+    s.spt_clsf_id,
     spt_clsf_name
     from
     rcrm r
-    left outer join tm t
-    on r.tm_id = t.tm_id
+    left outer join tm t on r.tm_id = t.tm_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     order by rcrm_id
     desc

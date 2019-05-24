@@ -26,7 +26,9 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
 
+
 <style>
+/* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
 	display: inline-flex;
 }
@@ -34,6 +36,32 @@
 div.dataTables_wrapper div.dataTables_paginate {
 	text-align: left;
 	width: 100%;
+}
+
+/* 테이블 헤더 색상 변경 */
+table.dataTable thead tr {
+	/* background-color: gray; */
+	
+}
+/* 테이블 목록 색상 변경 */
+.table tbody tr.even {
+	/* background-color: #eaeaea; */
+	
+}
+/* 테이블 목록 색상 변경 */
+.table tbody tr.odd {
+	/* background-color: white; */
+	
+}
+/* 테이블 목록 hover 색상 변경 */
+#dtBasicExample tbody tr:hover {
+	/* background-color: #ffa; */
+	
+}
+/* 테이블 목록 hover 색상 변경 */
+#dtBasicExample tbody tr:hover>.sorting_1 {
+	/* background-color: #ffa; */
+	
 }
 </style>
 
@@ -62,7 +90,9 @@ div.dataTables_wrapper div.dataTables_paginate {
       <tbody>
         <c:forEach items="${list}" var="list">
           <tr>
+            <!-- 게시글 번호 -->
             <td>${list.teamNo}</td>
+            <!-- 종목에 따라 이미지 출력 -->
             <td><c:choose>
                 <c:when test="${list.teamTypeSports.teamSportsType eq '축구'}">
                   <img src="${contextRootPath}/images/football_list.png">
@@ -77,14 +107,20 @@ div.dataTables_wrapper div.dataTables_paginate {
                   <img src="${contextRootPath}/images/pingpong_list.png">
                 </c:when>
               </c:choose></td>
+            <!-- 제목 -->
             <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
+            <!-- 팀명 -->
             <td>${list.team.teamName }</td>
+            <!-- 지역 -->
             <td>${list.team.teamArea }</td>
+            <!-- 게시글 상태(모집중, 모집완료) -->
             <td><c:choose>
                 <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
                 <c:otherwise>모집마감</c:otherwise>
               </c:choose></td>
+            <!-- 게시글 작성일 -->
             <td>${list.teamCreatedDate}</td>
+            <!-- 조회수 -->
             <td>${list.teamViewCount}</td>
           </tr>
         </c:forEach>
