@@ -1,17 +1,11 @@
 package com.eomcs.lms.service.impl;
 
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import org.apache.ibatis.javassist.compiler.ast.Keyword;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MatchDao;
 import com.eomcs.lms.dao.TagDao;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.TeamAges;
-import com.eomcs.lms.domain.TeamLevel;
-import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.service.MatchBoardService;
 
 @Service
@@ -78,30 +72,8 @@ public class MatchServiceImpl implements MatchBoardService {
 
 
   @Override
-  public List<Match> search(Map<String,Object> choices) {
-    
-    Date playDate = (Date) choices.get("playDate");
-    
-    int topLocationNo = (int) choices.get("topLocation");
-    
-    TeamType teamType = (TeamType) choices.get("teamType");
-    
-    TeamAges teamAges =  (TeamAges) choices.get("teamAges");
-    
-    TeamLevel teamLevel = (TeamLevel) choices.get("teamLevel");
-    
-    Keyword keyword = (Keyword) choices.get("keyword");
-    
-    
-    HashMap<String,Object> params = new HashMap<>();
-    params.put("playDate", playDate);
-    params.put("topLocation", topLocationNo);
-    params.put("teamType", teamType);
-    params.put("teamAges", teamAges);
-    params.put("teamLevel",teamLevel);
-    params.put("keyword", keyword);
-    
-    return matchDao.search(params);
+  public List<Match> search() {
+    return matchDao.search();
   }
 
 
@@ -109,6 +81,7 @@ public class MatchServiceImpl implements MatchBoardService {
   public int size() {
     return matchDao.countAll();
   }
+
 
 
 

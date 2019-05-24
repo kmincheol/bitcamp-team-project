@@ -195,22 +195,9 @@
 
 
 
-
-   <select id="search" resultMap="matchMap" parameterType="map">
-    <include refid="select1"/>  
-      <where>
-      <if test="location1 != null">
-        toplc_id = #{toplocationNo}
-      </if> 
-      
-       <if test="search != null">
-        <bind name="pattern1" value="'%' + search + '%'"/>
-        s.spt_clsf_name like #{pattern1}
-        or titl like #{pattern1}
-        or t.name like #{pattern1}
-        or game_dt like #{pattern1}
-      </if>     
-    </where>
+<!-- js로 처리할거라 모든 데이터 가져옴 -->
+   <select id="search" resultMap="matchMap">
+    <include refid="select1"/>
     order by
     mtch_id desc
    </select>

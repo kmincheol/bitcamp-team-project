@@ -1,7 +1,5 @@
 package com.eomcs.lms.web;
 
-import java.sql.Date;
-import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -17,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.Member;
-import com.eomcs.lms.domain.TeamAges;
-import com.eomcs.lms.domain.TeamLevel;
-import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.LocationService;
 import com.eomcs.lms.service.MatchBoardService;
@@ -59,11 +54,11 @@ public class MatchBoardController {
   @GetMapping
   public String list(
         @RequestParam(defaultValue="1") int pageNo,
-        @RequestParam(defaultValue="5") int pageSize,
+        @RequestParam(defaultValue="7") int pageSize,
         Model model) {
 
-      if (pageSize < 5 || pageSize > 6)
-        pageSize = 5;
+      if (pageSize < 7 || pageSize > 8)
+        pageSize = 7;
 
       int rowCount = matchBoardService.size();
       int totalPage = rowCount / pageSize;
@@ -74,14 +69,15 @@ public class MatchBoardController {
           pageNo = 1;
         else if (pageNo > totalPage)
           pageNo = totalPage;
-
         
+        List<Match> all = matchBoardService.search();
         List<Match> matches = matchBoardService.list(pageNo, pageSize);
         model.addAttribute("matches", matches);
         model.addAttribute("pageNo", pageNo);
         model.addAttribute("pageSize", pageSize);
         model.addAttribute("totalPage", totalPage);
-    
+        model.addAttribute("all", all);
+        
         return "matchboard/list";
   }
 
@@ -125,36 +121,6 @@ public class MatchBoardController {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
 
     return "redirect:../";
-  }
-  
-  
-  @GetMapping("search") // 인클루드로 처리
-  public String search(
-      Model model, //location 정보 뿌려줘야 함
-      Date playDate,
-      int topLocationNo,
-      TeamType teamType,
-      TeamAges teamAges,
-      TeamLevel teamLevel,
-      String keyword) {
-    
-    
-    HashMap<String,Object> choices = new HashMap<>();
-    choices.put("playDate", playDate);
-    choices.put("topLocation", topLocationNo);
-    choices.put("teamType", teamType);
-    choices.put("teamAges", teamAges);
-    choices.put("teamLevel",teamLevel);
-    choices.put("keyword", keyword);
-    
-    // 값 받은걸 내부로 map으로 저장 후 넘겨서
-    List<Match> matches = matchBoardService.search(choices);
-    // 리턴으로 값 검색 값 얻어옴
-    
-    // model에 담아줘서 jsp로 출력
-    model.addAttribute("matches", matches);
-    
-    return "redirect:."; //검색 결과는 다시 폼에 뿌려주기?
   }
   
   
