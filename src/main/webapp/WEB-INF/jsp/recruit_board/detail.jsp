@@ -68,7 +68,7 @@
         </div>
 
         <div id="control-box" class="form-group row">
-          <div class="col-sm-10">
+          <div class="col-sm-12 text-center">
             <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a> 
             <a class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a>
             <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>

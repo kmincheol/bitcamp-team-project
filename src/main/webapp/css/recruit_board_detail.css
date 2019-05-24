@@ -32,6 +32,11 @@ body, html {
 	color: black;
 }
 
+form {
+  width: 1000px;
+  margin: 0 auto;
+}
+
 #title-wrap {
 	margin: 0px;
 	padding-top: 20px;

@@ -156,6 +156,7 @@ table.dataTable thead tr {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
 				"zeroRecords" : "검색된 데이터가 없습니다.",
+				"searchPlaceholder": "검색어 입력",
 				"paginate" : {
 					"next" : "다음",
 					"previous" : "이전"
@@ -164,6 +165,8 @@ table.dataTable thead tr {
 
 			$(document).ready(function() {
 				$('#dtBasicExample').DataTable({
+					order:[[1,"desc"]],
+					
 					"info" : false,
 					language : lang_kor
 				});
