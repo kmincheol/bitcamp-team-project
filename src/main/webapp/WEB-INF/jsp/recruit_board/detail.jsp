@@ -24,7 +24,7 @@
       <h2>게시글</h2>
     </div>
 
-      <form action='update' method='post' enctype='multipart/form-data'>
+      <form action='update' method='post' name="remove" enctype='multipart/form-data'>
         <div id="title-wrap" class="form-group row">
           <div id="title-row" class="col-sm-12">
             <div id="title" name="teamTitle">${teamRecruit.teamTitle}</div>
@@ -70,7 +70,7 @@
         <div id="control-box" class="form-group row">
           <div class="col-sm-12 text-center">
             <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a> 
-            <a class="btn btn-primary" href='delete/${teamRecruit.teamNo}'>삭제</a>
+            <a class="btn btn-primary" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
             <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
             <a class="btn btn-primary" href=''>가입신청</a>
           </div>
@@ -81,7 +81,16 @@
   <!-- .container -->
  <jsp:include page="../footer.jsp" />
   <jsp:include page="../javascript.jsp" />
-
+  <script>
+			function removeCheck() {
+				if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+					document.remove.submit();
+				alert('삭제되었습니다.');
+				} else { //취소
+					return false;
+				}
+			}
+		</script>
 </body>
 
 </html>

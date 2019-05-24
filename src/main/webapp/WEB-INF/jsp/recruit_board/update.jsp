@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <form id='update_form' action='../update' method='post'>
+    <form id='update_form' action='../update' name="change" method='post'>
       <div id="table">
         <table class="table table-bordered">
           <tbody>
@@ -71,7 +71,7 @@
       <div class="form-group row">
         <div class="col-sm-12 text-center">
           <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
-          <button id="update" class="btn btn-dark">저장</button>
+          <a class="btn btn-dark" id="update" >저장</a>
         </div>
       </div>
     </form>
@@ -92,8 +92,13 @@ $(document).ready(function() {
   });
   
   $('#update').click((e) =>{
+	  e.preventDefault();
+	  if(confirm('변경 사항을 저장하시겠습니까?')) {
     submitAgree();
-    return false;
+    return false;		  
+	  } else {
+		  return false;
+		}
   })
 });
 
@@ -121,6 +126,15 @@ function submitAgree() {
   $("#update_form").submit();
   return true;
 }
+/*
+function changeCheck(){
+	if(confirm('변경 사항을 저장하시겠습니까?')){
+		//document.change.submit();
+		console.log("true");
+		alert('저장되었습니다.');
+	} 
+}
+*/
 
 </script>
 </body>

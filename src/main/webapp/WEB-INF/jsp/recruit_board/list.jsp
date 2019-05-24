@@ -126,12 +126,13 @@ table.dataTable thead tr {
         </c:forEach>
       </tbody>
     </table>
-
-    <div id="in">
-      <div id="write-btn">
-        <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
+    <c:if test="${sessionScope.loginUser != null}">
+      <div id="in">
+        <div id="write-btn">
+          <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
+        </div>
       </div>
-    </div>
+    </c:if>
   </div>
 
   <jsp:include page="../footer.jsp" />
