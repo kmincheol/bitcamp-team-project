@@ -22,7 +22,7 @@ body{position:relative;background:#f5f6f7}
 .error_next_box{display:block;margin:9px 0 -2px;font-size:12px;line-height:14px;color:red}
 
 .lbl{display:block;position:absolute;top:50%;left:14px;margin-top:-9px;font-size:15px;line-height:18px;color:#8e8e8e;z-index:9}
-.int{display:block;position:relative;width:100%;height:29px;padding-right:25px;line-height:29px;border:none;background:#fff;font-size:15px;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:10;*position:absolute;*top:0;*left:0;apperance:none;-webkit-apperance:none}
+.int{display:block;position:relative;width:100%;height:29px;line-height:29px;border:none;background:#fff;font-size:15px;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:10;*position:absolute;*top:0;*left:0;apperance:none;-webkit-apperance:none}
 .row_group{overflow:hidden;width:100%}
 .row_group+.row_group{margin-top:20px}
 .join_title{margin:19px 0 8px;font-size:14px;font-weight:700}
@@ -30,11 +30,9 @@ body{position:relative;background:#f5f6f7}
 .ps_box,.ps_box_disable{display:block;position:relative;width:100%;height:51px;border:solid 1px #dadada;padding:10px 14px 10px 14px;background:#fff;-webkit-box-sizing:border-box;box-sizing:border-box;vertical-align:top;}
 .ps_box .lbl{left:0;padding:0 14px;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box}
 .ps_box.int_id{padding-right:110px}
-.ps_box.int_pass:after,.ps_box.int_pass_check:after{content:'';display:inline-block;position:absolute;top:50%;right:16px;width:18px;height:20px;margin-top:-10px;cursor:pointer}
 .step_txt{display:inline-block;position:absolute;top:1px;right:38px;font-size:12px}
 .ps_box.accord,.ps_box.focus{border:solid 1px #08a600}
 .ps_box.discord{border:solid 1px red}
-.ps_box.int_pass,.ps_box.int_pass_check,.ps_box.int_pass_check2{padding-right:40px}
 .join_email .terms_choice{font-size:12px;font-weight:400}
 .box_right_space{padding-right:14px;-webkit-box-sizing:border-box;box-sizing:border-box}
 .join_birthday{padding:0}
@@ -57,12 +55,26 @@ body{position:relative;background:#f5f6f7}
 .join_sex{overflow:hidden}
 .wa_blind{position:absolute;overflow:hidden;clip:rect(0 0 0 0);margin:-1px;width:1px;height:1px;font-size:0}
 .group_join{margin-bottom:-2px}
-.ps_box.int_pass:after{background:#fff url(https://static.nid.naver.com/images/ui/join/m_icon_pass.png) 0 0 no-repeat;-webkit-background-size:18px 20px;background-size:18px 20px}
-.ps_box.int_pass_check:after{background:#fff url(https://static.nid.naver.com/images/ui/join/m_icon_check_disable.png) 0 0 no-repeat;-webkit-background-size:20px 20px;background-size:20px 20px}
-.accord .input_code:after{background:url(https://static.nid.naver.com/images/ui/myinfo/m_input_text_ok.png) no-repeat 0 0;-webkit-background-size:17px 13px;background-size:17px 13px}
-.discord .input_code:after{background:url(https://static.nid.naver.com/images/ui/myinfo/m_input_text_fail.png) no-repeat 0 0;-webkit-background-size:15px 15px;background-size:15px 15px}
+
 html[lang=ko] #header .lang .sel{padding:3px 5px 3px 5px}
 .join_birthday .ps_box{padding:11px}
+
+.ps_box.int_pass,.ps_box.int_pass_check,.ps_box.int_pass_check2{padding-right:110px}
+.ps_box.int_pass:after,.ps_box.int_pass_check2:after,.ps_box.int_pass_check:after{
+  content:'';display:inline-block;position:absolute;top:50%;
+  right:10px;margin-top:-16px;cursor:pointer}
+.ps_box.int_pass:after{
+  width: 30px; height: 30px;
+  background:#fff url(../images/write.png) no-repeat center center;}
+.ps_box.int_pass_check:after{
+  width: 30px; height: 30px;
+  background:#fff url(../images/ok.png) no-repeat center center;}
+.ps_box.int_pass_check2:after{
+  width: 30px; height: 30px;
+  background:#fff url(../images/error.png) no-repeat center center;}
+
+
+
 
 #container{margin:0 auto;max-width:1200px;min-width:900px}
 

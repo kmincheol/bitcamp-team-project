@@ -208,7 +208,7 @@ CREATE TABLE mbr (
   bth_dt     DATETIME     NOT NULL COMMENT '생년월일', -- 생년월일
   gndr       CHAR(2)      NOT NULL COMMENT '성별', -- 성별
   tel        VARCHAR(30)  NOT NULL COMMENT '휴대폰번호', -- 휴대폰번호
-  email      VARCHAR(40)  NULL     COMMENT '이메일', -- 이메일
+  email      VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
   post       INTEGER      NOT NULL COMMENT '우편번호', -- 우편번호
   bas_addr   VARCHAR(255) NOT NULL COMMENT '기본주소', -- 기본주소
   det_addr   VARCHAR(255) NOT NULL COMMENT '상세주소', -- 상세주소
@@ -238,7 +238,7 @@ CREATE UNIQUE INDEX UIX_mbr
 -- 회원 유니크 인덱스2
 CREATE UNIQUE INDEX UIX_mbr2
   ON mbr ( -- 회원
-    tel ASC -- 휴대폰번호
+    email ASC -- 이메일
   );
 
 ALTER TABLE mbr
@@ -530,9 +530,9 @@ ALTER TABLE atk
     PRIMARY KEY (
       atk_id -- 인증키번호
     );
-    
+
 ALTER TABLE atk
-  MODIFY COLUMN atk_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '인증키';
+  MODIFY COLUMN atk_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '인증키번호';
 
 -- 후기게시판
 ALTER TABLE revw

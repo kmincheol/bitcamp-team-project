@@ -41,19 +41,23 @@
                 </h3>
                 <span class="ps_box int_id">
                   <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
-                  <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
+                  <!-- 아이디 체크박스 -->
+                  <span class="step_url"></span>
                 </span>
+                <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
               </div>
               <div class="join_row">
                 <h3 class="join_title">
                   <label for ="pswd1">비밀번호</label>
                 </h3>
-                <span class="ps_box int_pass" id="pswdImg">
+                <span class="ps_box int_pass" id="pswd1Img">
                   <input type="password" id="pswd1" name="password" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
+                  <!--
                   <span class ="lbl">
-                    <span id="pswd1Span" class="step_txt">
-                    </span>
+
+                    <span id="pswd1Span" class="step_txt"></span>
                   </span>
+                -->
                   <span class="error_next_box" id="pswd1Msg" style="display:none" role="alert">5~12자의 영문 소문자, 숫자와 특수기호(...)만 사용 가능합니다.
                   </span>
                 </span>
@@ -646,14 +650,18 @@ function checkPswd1() {
 
   var id = $('#id').val();
   var pw = $('#pswd1').val();
+  var oImg = $('#pswd1Img');
+  var oSpan = $('#pswd1Span');
   var oMsg = $('#pswd1Msg');
 
   if (pw == "") {
     showErrorMsg(oMsg, "패스워드를 입력해주세요.");
+    showCheckImgByStep(oImg, oSpan, 1);
     return false;
   }
 
   if (isValidPasswd(pw) != true) {
+    showCheckImgByStep(oImg, oSpan, 1);
     showErrorMsg(oMsg, "8~16자 영문 대 소문자, 숫자 특수문자를 사용하세요.");
     return false;
   }
@@ -692,6 +700,20 @@ function isValidPasswd(str) {
   }
 
   return true;
+}
+
+function showCheckImgByStep(oImg, oSpan, step) {
+  
+  if (step == 0) { // 불일치
+    oImg.attr("class", "ps_box int_pass_check");
+    //oSpan.attr("class", "step_txt txt_red");
+  } else if (step == 1) { // 일치
+    oImg.attr("class", "ps_box int_pass_check2");
+    //oSpan.attr("class", "step_txt txt_orange");
+  } else { // 기본
+    oImg.attr("class", "ps_box int_pass");
+    //oSpan.attr("class", "step_txt");
+  }
 }
 
 function checkSpace(str) {

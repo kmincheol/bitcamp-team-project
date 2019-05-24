@@ -5,18 +5,18 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_
 values(2,'test2',password('1111'),'test2','1991-01-01','남','010-1234-5678','test2@bot.com',11112,'서울','강남','kakao');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
 values(3,'test3',password('1111'),'test3','1981-01-01','여','010-3334-5555','test3@bot.com',44441,'부산','해운대','google');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,post,bas_addr,det_addr,login_type)
-values(4,'test4',password('1111'),'test4','1992-5-5','남','010-1111-1221',11113,'서울시 서초구','강남','face');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,post,bas_addr,det_addr,login_type)
-values(5,'test5',password('1111'),'test5','1981-01-01','남','010-2234-5678',22221,'경기','고양','homepage');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,post,bas_addr,det_addr,login_type)
-values(6,'test6',password('1111'),'test6','1967-01-01','여','010-5334-5555',33331,'인천','연수동','google');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,post,bas_addr,det_addr,login_type)
-values(7,'test7',password('1111'),'test7','1967-01-01','여','010-5334-5255',33332,'인천','연수동','google');
-insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,post,bas_addr,det_addr,login_type)
-values(8,'kiwon',password('1111'),'test7','1967-01-01','여','010-1334-5255',33333,'인천','연수동','google');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
-values(9,'hoho',password('1111'),'test8','1967-01-01','여','010-1322-5255','test118@gmail.com',33333,'인천','연수동','google');
+values(4,'test4',password('1111'),'test4','1992-5-5','남','010-1111-1221','test4@bot.com',11113,'서울시 서초구','강남','face');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(5,'test5',password('1111'),'test5','1981-01-01','남','010-2234-5678','test5@bot.com',22221,'경기','고양','homepage');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(6,'test6',password('1111'),'test6','1967-01-01','여','010-5334-5555','test6@bot.com',33331,'인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(7,'test7',password('1111'),'test7','1967-01-01','여','010-5334-5255','test7@bot.com',33332,'인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(8,'kiwon',password('1111'),'test7','1967-01-01','여','010-1334-5255','test8@bot.com',33333,'인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(9,'hoho',password('1111'),'test8','1967-01-01','여','010-1322-5255','test9@gmail.com',33333,'인천','연수동','google');
 
 -- 연령대데이터
 insert into age(age_id, ages)

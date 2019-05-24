@@ -41,6 +41,7 @@ body,html {
 	position: relative;
 }
 .terms_chk_all .input_chk label {
+  background-color: #fff;
   padding-left: 34px;
   line-height: 21px;
   position: relative;
@@ -50,6 +51,7 @@ body,html {
   box-sizing: border-box;
 }
 .terms_bx .input_chk label {
+  background-color: #fff;
   padding-left: 30px;
   line-height: 21px;
   position: relative;
