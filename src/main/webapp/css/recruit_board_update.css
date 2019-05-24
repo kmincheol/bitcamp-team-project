@@ -62,3 +62,7 @@ form {
 .note-toolbar {
   z-index: 0;
 }
+
+.content-number{
+	display: none;
+}

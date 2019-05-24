@@ -62,6 +62,6 @@
   <!-- .container -->
 
   <jsp:include page="../javascript.jsp" />
-  
+
 </body>
 </html>

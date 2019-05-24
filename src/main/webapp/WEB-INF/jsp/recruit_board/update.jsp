@@ -5,85 +5,82 @@
 <html>
 
 <head>
-<jsp:include page="../commonCss.jsp" />
-<link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
+<!-- include header.jsp -->
+<jsp:include page="../header.jsp" />
+<!-- header.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+<link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_update.css">
 </head>
 
 <body>
 
   <div class="container">
+
+    <div id="main-text">
+      <div class="text-field">
+        <span style="font-weight: bold; font-size: 2.0em;">팀원을 모집 </span> 
+        <span style="font-size: 2.0em;"> 하는 글을 <br></span>
+        <span style="font-weight: bold; font-size: 2.0em;">수정</span>
+        <span style="font-size: 2.0em;">할 수 있습니다. </span> 
+        <br> <br> 
+        <span>수정할 항목을 변경 후 <span style="font-weight: bold;">저장</span> 버튼을 누르세요.</span>
+      </div>
+    </div>
+
     <form id='update_form' action='../update' method='post'>
+      <div id="table">
+        <table class="table table-bordered">
+          <tbody>
+            <!-- 번호 넘겨줘야함 / 화면에 보이지 않음 -->
+            <div class="content-number">
+              <label for="no" class="col-sm-2 col-form-label">번호</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="teamNo" id="no"
+                  value="${teamRecruit.teamNo}" readonly />
+              </div>
+            </div>
 
-      <div class="form-group row">
-        <label for="no" class="col-sm-2 col-form-label">번호</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamNo" id="no"
-            value="${teamRecruit.teamNo}" readonly/>
-        </div>
+            <tr>
+              <th id="table-header" scope="row">지역</th>
+              <td>
+                <div id="area_select" name="teamArea">${teamRecruit.team.teamArea}</div>
+                <div id="local_select"></div>
+              </td>
+            </tr>
+            <tr>
+              <th id="table-header" scope="row">소속팀</th>
+              <td>
+                <div name="teamName" id="teamName">${teamRecruit.team.teamName}</div>
+              </td>
+            </tr>
+            <tr>
+              <th id="table-header" scope="row">제목</th>
+              <td><input type="text" class="form-control" name="teamTitle" id="title"
+                value="${teamRecruit.teamTitle}" /></td>
+            </tr>
+            <tr>
+              <th id="table-header" scope="row">내용</th>
+              <td><textarea class="form-control" id="summernote" name='teamContents' rows='5'>${teamRecruit.teamContents}</textarea></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
       <div class="form-group row">
-        <label for="location" class="col-sm-2 col-form-label">지역</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamArea" id="location"
-            value="${teamRecruit.team.teamArea}" readonly />
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="sportsType" class="col-sm-2 col-form-label">종목</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamSportsType" id="sportsType"
-            value="${teamRecruit.teamTypeSports.teamSportsType}" readonly />
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="teamName" class="col-sm-2 col-form-label">팀명</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamName" id="teamName"
-            value="${teamRecruit.team.teamName}" readonly />
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label">제목</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamTitle" id="title"
-            value="${teamRecruit.teamTitle}" />
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="viewCount" class="col-sm-2 col-form-label">조회수</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" name="teamViewCount" id="viewCount"
-            value="${teamRecruit.teamViewCount}" readonly />
-        </div>
-      </div>
-      
-      <div class="form-group row">
-        <label for="summernote" class="col-sm-2 col-form-label">내용</label>
-        <div class="col-sm-10">
-          <textarea class="form-control" id="summernote" name='teamContents' rows='5'>${teamRecruit.teamContents}</textarea>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board'>목록</a>
-          <button id="update" class="btn btn-primary" >저장</button>
+        <div class="col-sm-12 text-center">
+          <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
+          <button id="update" class="btn btn-dark">저장</button>
         </div>
       </div>
     </form>
   </div>
   <!-- .container -->
-
-<jsp:include page="../javascript.jsp" />  
-<script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
-<script>
+  <jsp:include page="../footer.jsp" />
+  <jsp:include page="../javascript.jsp" />
+  <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+  <script>
 "use strict"
 
 $(document).ready(function() {
