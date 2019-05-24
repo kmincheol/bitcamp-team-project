@@ -18,23 +18,14 @@
   <div id="content">
   <h1>스포츠 매칭 <strong>홈페이지</strong> 방문을 환영합니다.</h1>
             
-    <div class="join_step"><!-- step단계표현 -->
+    <div class="join_step">
       <img src="../../images/signUp2.png">
     </div>
 
   <hr class="hrblack"/>
 
     <div class="join_content">
-      <form id="join_form" action=""> <!-- 만약 form부분에 key들을 js로 추가하고 싶다면 .container위로 올리고 그 사이에 넣을것. -->
-        <!--
-          <input type="hidden" id="token_sjoin" name="token_sjoin" value="QWozbUyMlxRp2eN3">
-          <input type="hidden" id="encPswd" name="encPswd" value="">
-          <input type="hidden" id="encKey" name="encKey" value="">
-          <input type="hidden" id="joinMode" name="joinMode" value="unreal">
-          <input type="hidden" id="pbirthday" name="pbirthday" value="">
-          <input type="hidden" id="ipinFlag" name="ipinFlag" value="">
-          <input type="hidden" id="nid_kb2" name="nid_kb2" value="">
-        -->
+      <form id="join_form" action="../member/enter" method='POST' enctype='multipart/form-data'>
         <input type="hidden" id="birthday" name="birthDay" value="">
         <input type="hidden" id="photo" name="photo" value="">
         <input type="hidden" id="loginType" name="loginType" value="homepage"> 
@@ -133,8 +124,8 @@
                 <div class="ps_box gender_code">
                   <select id="gender" name="gender" class="sel" aria-label="성별">
                     <option value="" selected>성별</option>
-                    <option value="0">남자</option>
-                    <option value="1">여자</option>
+                    <option value="남자">남자</option>
+                    <option value="여자">여자</option>
                   </select>
                 </div>
               </div>
@@ -158,8 +149,8 @@
                 </label>
                 <input id="authSend" type="button" value="인증" class="btn btn-primary btn-sm">
               </div>
-              <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
+              <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
 
             </div><!-- .row_group -->
             <!-- mobile -->
@@ -189,7 +180,6 @@
               <div class="join_photo_view">
                 <span class="photoView">
                   <label for="photo">
-                    <!-- 파일 이미지 보이게하기 - 배우면 적용 -->
                     <img id="images-div" src="../../images/default.jpg" style="width:200px; height:200px;">
                   </label>
                 </span>
@@ -229,7 +219,7 @@
           <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin"
                   type="button">가입하기</button>
         </div><!-- .btn_area -->
-      </form>
+      </form><!-- #join_form-->
     </div><!-- .join_content -->
   </div><!-- .content -->
 </div><!-- .container -->
@@ -252,35 +242,25 @@ function execPostCode() {
   daum.postcode.load(function(){
          new daum.Postcode({
              oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
- 
-                // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
-                var extraRoadAddr = ''; // 도로명 조합형 주소 변수
- 
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+
+                var fullRoadAddr = data.roadAddress;
+                var extraRoadAddr = ''; 
+
                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
                     extraRoadAddr += data.bname;
                 }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
+                
                 if(data.buildingName !== '' && data.apartment === 'Y'){
                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                 }
-                // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                
                 if(extraRoadAddr !== ''){
                     extraRoadAddr = ' (' + extraRoadAddr + ')';
                 }
-                // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                
                 if(fullRoadAddr !== ''){
                     fullRoadAddr += extraRoadAddr;
                 }
- 
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                console.log(data.zonecode);
-                console.log(fullRoadAddr);
-                
                 
                 $("[name=post]").val(data.zonecode);
                 $("[name=baseAddress]").val(fullRoadAddr);
@@ -291,18 +271,17 @@ function execPostCode() {
      }
 
 $('#fileupload').fileupload({
-  autoUpload: false,        // 파일을 추가할 때 자동 업로딩 하지 않도록 설정.
+  autoUpload: false,
   disableImageResize: /Android(?!.*Chrome)|Opera/
-        .test(window.navigator && navigator.userAgent), // 안드로이드와 오페라 브라우저는 크기 조정 비활성 시키기
-  previewMaxWidth: 200,   // 미리보기 이미지 너비
-  previewMaxHeight: 200,  // 미리보기 이미지 높이 
-  previewCrop: true,      // 미리보기 이미지를 출력할 때 원본에서 지정된 크기로 자르기
-  processalways: function(e, data) { //Callback for the end (done or fail) of an individual file processing queue.
+        .test(window.navigator && navigator.userAgent),
+  previewMaxWidth: 200,
+  previewMaxHeight: 200,
+  previewCrop: true,
+  processalways: function(e, data) {
       var photo;
       for (var i = 0; i < data.files.length; i++) {
         try {
           if (data.files[i].preview.toDataURL) {
-            // Base64로 바이너리 데이터를 텍스트로 변환해서 추가
             photo = data.files[i].preview.toDataURL();
             $('#images-div')
             .attr('src', data.files[i]
@@ -316,10 +295,10 @@ $('#fileupload').fileupload({
   }
 });
 
-// id, pw, auth check Boolean
 var idFlag = false;
 var pwFlag = false;
 var authFlag = false;
+var emailFlag = false;
 
 $(document).ready(function() {
  defaultScript();
@@ -328,10 +307,10 @@ $(document).ready(function() {
    checkBirthday();
  }
 
- $('#id').blur(function() {
+ $('#id').keyup(debounce(function() {
   idFlag = false;
   checkId("first");
- });
+ }, 500));
 
  $('#pswd1').blur(function() {
    pwFlag = false;
@@ -354,33 +333,33 @@ $(document).ready(function() {
    checkShiftDown(event);  
  });
 
- $('#name').blur(function() {
+ $('#name').keyup(debounce(function() {
    checkName();
- });
+ }, 500));
 
- $('#yy').blur(function() {
+ $('#yy').keyup(debounce(function() {
    checkBirthday();
- });
+ }, 500));
 
  $('#mm').change(function() {
    checkBirthday();
  });
 
- $('#dd').blur(function() {
+ $('#dd').keyup(debounce(function() {
   checkBirthday();
- });
+ }, 500));
 
  $('#gender').change(function() {
    checkGender();
  });
 
- $('#email').blur(function() {
+ $('#email').keyup(debounce(function() {
    checkEmail();
- });
+ }, 500));
 
- $('#phoneNo').blur(function() {
+ $('#phoneNo').keyup(debounce(function() {
    checkPhoneNo();
- });
+ }, 500));
 
  $('#btnSend').click(function() {
    sendEmail();
@@ -398,8 +377,8 @@ $(document).ready(function() {
  });
 
  $('#btnJoin').click(function(event) {
-   clickcr(this, 'sup.signup', '', '', event);
    submitClose();
+   
    if (idFlag && pwFlag && authFlag) {
      mainSubmit();
    } else {
@@ -415,7 +394,6 @@ function mainSubmit() {
     submitOpen();
     return false;
   }
-
   if (idFlag && pwFlag && authFlag) {
     $('#join_form').submit();
   } else {
@@ -433,13 +411,14 @@ function submitOpen() {
 }
 
 function checkUnrealInput() {
+
   if (checkId('join') &
       checkPswd1() &
       checkPswd2() &
       checkName() &
       checkBirthday() &
       checkGender() &
-      checkEmail() &
+      checkEmailText($('#email').val()) &
       checkPhoneNo() & 
       checkAuthNo()
       ) {
@@ -461,6 +440,7 @@ function defaultScript() {
 
 function checkBirthday() {
   var birthday;
+  var birthdaySave;
   var yy = $('#yy').val();
   var mm = $('#mm').val();
   var dd = $('#dd').val();
@@ -489,7 +469,6 @@ function checkBirthday() {
     return false;
   }
   if (mm == "") {
-    //alert(mm);
     showErrorMsg(oMsg, "태어난 월을 선택하세요.");
     return false;
   }
@@ -507,15 +486,15 @@ function checkBirthday() {
     showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
     return false;
   }
-  $("#birthday").val(birthday);
-  console.log($("#birthday"));
+  birthdaySave = yy + "-" + mm + "-" + dd;
+  $("#birthday").val(birthdaySave);
 
   var age = calcAge(birthday);
   if (age < 0) {
     showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
     return false;
   } else if (age >= 100) {
-    showErrorMsh(oMsg, "생년월일을 다시 확인해주세요.");
+    showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
     return false;
   } else if (age < 14) {
     showErrorMsg(oMsg, "14세미만 회원에게는 서비스를 제공하지 않습니다.");
@@ -569,9 +548,9 @@ function isValidDate(param) {
       return false;
     }
 
-    var year = Number(param.subString(0, 4));
-    var month = Number(param.subString(4, 6));
-    var day = Number(param.subString(6, 8));
+    var year = Number(param.substring(0, 4));
+    var month = Number(param.substring(4, 6));
+    var day = Number(param.substring(6, 8));
 
     if (month < 1 || month > 12) {
       return false;
@@ -609,10 +588,9 @@ function calcAge(birth) {
   var monthDay = month + '' + day;
 
   birth = birth.replace('-', '').replace('-', '');
+
   var birthdayy = birth.substr(0, 4);
-  var birthdaymd = birth.substr(4, 4); //?
-  console.log(birthdaymd);
-  
+  var birthdaymd = birth.substr(4, 8);
   var age = monthDay < birthdaymd ? year -birthdayy - 1 : year - birthdayy;
   return age;
 }
@@ -638,16 +616,16 @@ function checkId(event) {
   }
 
   idFlag = false;
-  /*
+  
   $.ajax({
     type: "GET",
-    url: 아이디확인할url
+    url: "../member/checkId?userId=" + id,
     success : function(data) {
-      var result = data.substr(4);
+      var result = data.substr(7);
 
-      if (result == "Y") {
+      if (result == "1") {
         if (event == "first") {
-          showSuccessMsg(oMsg, "멋진 아이디네요!");
+          showSuccessMsg(oMsg, "가입 가능한 아이디입니다!");
         } else {
           hideMsg(oMsg);
         }
@@ -657,7 +635,7 @@ function checkId(event) {
       }
     }
   });
-  */
+  
   return true;
 }
 
@@ -681,22 +659,7 @@ function checkPswd1() {
   }
 
   pwFlag = false;
-  /*
-  $.ajax({
-    type:"GET",
-    url: 패스워드확인url
-    success: function(data) {
-      var result = data.substr(4); 5번째 문자로 result 결과 판단
-      if (result == 1) {
-        showErrorMsg(oMsg, "8~16자 영문 대 소문자, 숫자 특수문자를 사용하세요.");
-        return false;
-      } else {
-        oMsg.hide();
-      }
-      pwFlag = true;      
-    }
-  });
-    */
+  
   return true;
 }
 
@@ -720,7 +683,6 @@ function isValidPasswd(str) {
     }
   }
   if (cnt == str.length) {
-    console.log("str.charAt에서 걸림");
     return false;
   }
 
@@ -815,10 +777,9 @@ function checkPswd2() {
   } else {
     oBlind.html("비밀번호가 일치합니다.");
     hideMsg(oMsg);
+    pwFlag = true;
     return true;
   }
-
-  return true;
 }
 
 function checkName() {
@@ -873,14 +834,13 @@ function checkPhoneNo() {
     showErrorMsg(oMsg, "전화번호를 입력해주세요.");
     return false;
   }
+
+  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
   
   if (!isCellPhone(phoneNo)) {
     showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
     return false;
   }
-
-  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
-  $("#phoneNo").val(phoneNo);
 
   hideMsg(oMsg);
   return true;
@@ -919,25 +879,32 @@ function checkEmail() {
     success : function(data) {
       var result = data.substr(5);
       if (result == "1") {
-        $('#joinCode').css('display', 'none');
-        showSuccessMsg(oMsg, "")
+        showSuccessMsg(oMsg, "이 이메일로 가입하실 수 있습니다. 인증을 진행해주세요.");
+        emailFlag = true;
+        console.log(emailFlag);
+        return true;
       } else if (result == "0") {
-        $('#joinCode').css('display', "");
-        showErrorMsg(oMsg, "이 이메일로 가입된 아이디가 있습니다.");
+        showErrorMsg(oMsg, "이 이메일로 가입한 아이디가 있습니다.");
+        return false;
       } else {
-        $('#joinCode').css('display', "");
         showErrorMsg(oMsg, "잘못된 접근입니다.");
+        return false;
       }
     }
   });
 
-  return true;
+  return false;
 };
 
 function sendEmail() {
   var emailAuth = $("#email").val();
   var typeAuth = $('#authType').val();
   var oMsg = $('#emailMsg');
+
+  if (!emailFlag) {
+    return false;
+  }
+  console.log("send");
 
   $.ajax({
     type:"POST",
@@ -1026,6 +993,28 @@ function checkAuthnoByAjax() {
   });
   return false;
 }
+
+function debounce(func, wait, immediate) {
+  var timeout;
+
+  return function executedFunction() {
+    var context = this;
+    var args = arguments;
+	    
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+	
+    clearTimeout(timeout);
+
+    timeout = setTimeout(later, wait);
+	
+    if (callNow) func.apply(context, args);
+  };
+};
 
 
 </script>

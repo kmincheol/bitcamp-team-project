@@ -36,10 +36,7 @@ public class MemberController {
   @RequestMapping(value="checkEmail", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkEMail(@RequestBody Map<String,Object> content) throws Exception {
-    logger.info(content.get("type"));
-    logger.info(content.get("email"));
 
-    // 저장된지 10분이 넘은 인증키값 삭제
     authKeyService.deleteTemp();
 
     String email = (String) content.get("email");
@@ -76,12 +73,13 @@ public class MemberController {
   @PostMapping(value="sendEmail", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String sendEMail(@RequestBody Map<String,Object> content) {
+
     int randomCode = new Random().nextInt(998999) + 1000;
     String joinCode = String.valueOf(randomCode);
     String email = (String) content.get("email");
     String type = (String) content.get("type");
     String subject = "이메일 본인인증 번호입니다.";
-    
+
     AuthKey authKey = new AuthKey();
     authKey.setEmail(email);
     int authType = 0;
@@ -93,14 +91,14 @@ public class MemberController {
     }
     authKey.setType(authType);
     authKey.setKeyContent(joinCode);
-    
+
     StringBuilder sb = new StringBuilder();
     sb.append("이메일 본인인증 승인 번호는 ").append(joinCode).append(" 입니다.");
     if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
       if (authKeyService.add(authKey) != 0) {
         return "send" + 1;      
       }
-        return "send" + 0;
+      return "send" + 0;
     } else {
       return "send" + 2;
     }
@@ -109,9 +107,7 @@ public class MemberController {
   @PostMapping(value="checkAuthNo", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkAuthNo(@RequestBody Map<String,Object> content) {
-    logger.info(content.get("authKey"));
-    logger.info(content.get("email"));
-    logger.info(content.get("type"));
+
     String email = (String) content.get("email");
     String keyContent = (String) content.get("authKey");
     String type = (String) content.get("type");
@@ -131,6 +127,17 @@ public class MemberController {
       return "auth" + 0;
     } else {
       return "auth" + 1;
+    }
+  }
+
+  @GetMapping(value="checkId", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  private String checkId(String userId) {
+    logger.info(userId);
+    if (memberService.checkId(userId) != null) {
+      return "checkId" + 0;
+    } else {
+      return "checkId" + 1;
     }
   }
 

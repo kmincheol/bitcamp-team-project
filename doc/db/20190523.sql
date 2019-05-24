@@ -203,7 +203,7 @@ ALTER TABLE rcrm
 CREATE TABLE mbr (
   mbr_id     INTEGER(30)  NOT NULL COMMENT '회원번호', -- 회원번호
   user_id    VARCHAR(15)  NOT NULL COMMENT '아이디', -- 아이디
-  pwd        VARCHAR(20)  NOT NULL COMMENT '비밀번호', -- 비밀번호
+  pwd        VARCHAR(41)  NOT NULL COMMENT '비밀번호', -- 비밀번호
   name       VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
   bth_dt     DATETIME     NOT NULL COMMENT '생년월일', -- 생년월일
   gndr       CHAR(2)      NOT NULL COMMENT '성별', -- 성별
