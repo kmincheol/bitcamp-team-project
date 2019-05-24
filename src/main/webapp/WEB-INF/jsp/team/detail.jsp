@@ -5,25 +5,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>팀 상세조회</title>
-  <jsp:include page="../commonCss.jsp"/>
-  <link rel="stylesheet" href="${contextRootPath}/css/team.css">
+<title>팀 상세조회</title>
+<jsp:include page="../commonCss.jsp" />
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/team.css">
 </head>
 <body>
 
-  <%-- <jsp:include page="../header.jsp" /> --%> 
-   
+  <%-- <jsp:include page="../header.jsp" /> --%>
+
   <div class="container">
-   <br><br>
-    <c:choose>
-      <c:when test="${empty team}">
+    <br>
+    <br>
+   <%--   <c:choose>
+      <c:when test="${empty teamMembers}">
         <p>해당하는 팀이 없습니다.</p>
       </c:when>
-      
-      <c:otherwise>
-      
-      
-        <div class="row" style="border:2px solid gray; width: 400px; padding: 15px;">
+
+      <c:otherwise>  --%>
+
+        
+       <%--  <div class="row" style="border:2px solid gray; width: 400px; padding: 15px;">
           <div class="bit-pro col-7">
             <div class="form-group row" style="display:none;">
               <label for="no" class="col-sm-3 col-form-label">번호</label>
@@ -73,40 +75,59 @@
               <label for="teamInfo" class="col-sm-5 col-form-label">팀 소개</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control-plaintext" name="teamInfo" id="teamInfo" value='${team.teamInfo}' readonly/>
+              </div> 
               </div>
-            </div>
-            
-             <div class="form-group row">
-              <label for="name" class="col-sm-5 col-form-label">팀원</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" name="name" id="name" value='${team.member.name}' readonly/>
-              </div>
-            </div>
-            
-             <div class="form-group row">
-              <label for="position" class="col-sm-5 col-form-label">포지션</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" name="position" id="position" value='${team.teamMember.position}' readonly/>
-              </div>
-            </div>
-            
-             <div class="form-group row">
-              <label for="teamLeader" class="col-sm-5 col-form-label">리더</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control-plaintext" name="teamLeader" id="teamLeader" value='${team.teamMember.teamLeader}' readonly/>
-              </div>
-            </div>
-            <!--  멤버 이름 못받는 상태 ${} 다시 확인하기 -->
-          </div> <!-- .bit-pro -->
-          
-        </div> <!-- .row -->
-    
-      </c:otherwise>
-    </c:choose>
+  </div>
+  </div>  --%>
   
-  </div> <!-- .container -->
+  <table border="1" id="list_table">
+  <colgroup>
+    <!-- column 의 설정을 할수 있다. -->
+    <col style="width:70px;">
+    <col style="width:200px;">
+    <col style="width:300px;">
+    <col style="width:200px;">
+  </colgroup>
+
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th>이름</th>
+      <th>포지션</th>
+      <th>리더</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${teamMembers}" var="teamMember"> 
+    <tr>
+      <td>${teamMember.teamMemberNo}</td>
+      <td>${teamMember.member.name}</td>
+      <td>${teamMember.position}</td>
+      <td>${teamMember.teamLeader}</td>
+    </tr>
+        </c:forEach>
+  </tbody>
+</table>
   
-  <jsp:include page="../javascript.jsp"/> 
   
+      <!-- style="width:1000px; left:500px; bottom:500px; position: relative;" -->
+      <%--   <div class="tmb">
+        
+         <input type="text" name="teamMemberNo"  value='${teamMember.teamMemberNo}' style="display:none; border:none;"readonly/>
+          <input type="text" name="name" id="teamAges" value='${teamMember.member.name}' style="border:none;" readonly/>
+          <input type="text" name="position" id="teamAges" value='${teamMember.position}'style="border:none;" readonly/>
+          <input type="text" name="teamLeader" id="teamAges" value='${teamMember.teamLeader}' style="border:none;" readonly/>
+        </div> --%>
+      
+        
+     <%-- </c:otherwise>
+    </c:choose>  --%>
+  </div>
+
+
+
+
+  <jsp:include page="../javascript.jsp" />
+
 </body>
 </html>

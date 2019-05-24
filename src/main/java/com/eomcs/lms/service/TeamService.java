@@ -20,6 +20,7 @@ public interface TeamService {
   List<TeamAges> teamAgeList();
   List<TeamTypeSports> sportsTypeList();
   List<TeamMember> teamMemberList();
+  List<TeamMember> getTeamMember(int no);
   
   int addTeam(Team team);
   int addMember(Member member);

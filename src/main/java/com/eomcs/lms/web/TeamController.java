@@ -35,13 +35,17 @@ public class TeamController {
 
   @GetMapping
   public String list(Model model) {
-
+    //Team team = new Team();
     List<Team> teams = teamService.teamList1();
-    List<TeamMember> TeamMembers = teamService.teamMemberList();
+    //List<TeamMember> teamMembers = teamService.getTeamMember();
+    List<TeamMember> teamMembers = teamService.teamMemberList(); 
+    /* team.setTeamMember((TeamMember)teamMembers); */
+
+    /* teams.add(team); */
     
     model.addAttribute("teams", teams);
-    model.addAttribute("teamMembers", TeamMembers); // 멤버만 따로 뽑기 위함 지금은 안씀
-    
+     model.addAttribute("teamMembers", teamMembers); // 멤버만 따로 뽑기 위함 지금은 안씀
+     
     return "team/list1";
   }
 
@@ -86,10 +90,17 @@ public class TeamController {
   
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
+    //TeamMember teamMember = new TeamMember();
     Team team = teamService.getTeam(no);
-    model.addAttribute("team", team);
+    List<TeamMember> teamMembers = teamService.getTeamMember(no);
+    System.out.println(teamMembers);
+    model.addAttribute("teamMembers", teamMembers);
+    model.addAttribute("team", team); 
+   
     return "team/detail";
   }
+  
+  
 //
 //  @GetMapping("update/{no}")
 //  public String detailUpdate(@PathVariable int no, Model model) {

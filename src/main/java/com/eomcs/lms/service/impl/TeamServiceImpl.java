@@ -80,6 +80,10 @@ public class TeamServiceImpl implements TeamService {
     return teamDao.findByNo(no);
   }
   
+@Override
+public List<TeamMember> getTeamMember(int no) {
+  return (List<TeamMember>) teamDao.findByNoWithTeamMember(no);
+}
 
   @Override
   public Member getMember(int no) {

@@ -6,19 +6,19 @@ public class TeamMember {
  private boolean teamLeader;
  private String position;
  private Member member;
+ private Team team;
  
 @Override
 public String toString() {
   return "TeamMember [teamMemberNo=" + teamMemberNo + ", memberNo=" + memberNo + ", teamLeader="
-      + teamLeader + ", position=" + position + ", member=" + member + "]";
+      + teamLeader + ", position=" + position + ", member=" + member + ", team=" + team + "]";
 }
-
 public int getTeamMemberNo() {
   return teamMemberNo;
 }
 public void setTeamMemberNo(int teamMemberNo) {
   this.teamMemberNo = teamMemberNo;
-} 
+}
 public int getMemberNo() {
   return memberNo;
 }
@@ -43,10 +43,13 @@ public Member getMember() {
 public void setMember(Member member) {
   this.member = member;
 }
- 
+public Team getTeam() {
+  return team;
+}
+public void setTeam(Team team) {
+  this.team = team;
+}
  
 
-
- 
  
 }

@@ -21,7 +21,7 @@ public interface TeamDao {
   List<TeamTypeSports> findSportsType();
   List<TeamLevel> findTeamLevel();
   List<TeamMember> findTeamMember();
-  
+  List<TeamMember> findByNoWithTeamMember(int no);
   List<Member> findAllMember(Map<String,Object> params);
   int update(Team teamO);
   int delete(int no);

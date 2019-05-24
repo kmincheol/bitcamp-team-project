@@ -102,13 +102,36 @@
       <result column="name" property="name" />
     </association>
     
+     <association property="team" javaType="Team">
+       <id column="tm_id" property="teamId" />
+    <result column="name" property="teamName" />
+    </association>
+    
+  </resultMap>
+  
+  <resultMap type="TeamMember" id="teamMemberMap2">
+    <id column="tm_mbr_id" property="teamMemberNo" />
+    <id column="pstn" property="position" />
+    <id column="tlead_wth" property="teamLeader" />
+    
+    <collection property="member" ofType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+      <result column="name" property="name" />
+    </collection>
+    
+     <collection property="team" ofType="Team">
+       <id column="tm_id" property="teamId" />
+    <result column="name" property="teamName" />
+    </collection>
+    
   </resultMap>
 
  <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
     select
     tm_id,
-    t.name,
     tm_ambl_phot,
+    t.name,
     tm_intd,
     area,
     tl.levs,
@@ -125,7 +148,7 @@
     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
-    left outer join mbr m on tmb.mbr_id = m.mbr_id
+    left outer join mbr m on t.tm_id = m.mbr_id
   </select> 
 
 <!-- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
@@ -200,12 +223,28 @@
    <select id="findTeamMember" resultMap="teamMemberMap" parameterType="map">
     select
     tm_mbr_id,
-    name,    
+    tm_id,
+    tmb.mbr_id,
+    m.name,    
     pstn,
     tlead_wth
     from
     tm_mbr tmb
+    left outer join tm t on tmb.tm_mbr_id = t.tm_id
     left outer join mbr m on tmb.mbr_id = m.mbr_id
+  </select>
+  
+  <select id="findByNoWithTeamMember" resultMap="teamMemberMap2" parameterType="int">
+    select
+    tm_mbr_id,
+    m.name,    
+    pstn,
+    tlead_wth
+    from
+    tm_mbr tmb
+    left outer join tm t on tmb.tm_mbr_id = t.tm_id
+    left outer join mbr m on tmb.mbr_id = m.mbr_id
+    where tm_mbr_id = ${value}
   </select>
 
   <select id="findByNo" resultMap="teamMap1" parameterType="int">
