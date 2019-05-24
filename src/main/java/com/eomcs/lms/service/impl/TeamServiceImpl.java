@@ -7,6 +7,7 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
 import com.eomcs.lms.domain.TeamLevel;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TeamTypeSports;
 import com.eomcs.lms.service.TeamService;
@@ -24,15 +25,20 @@ public class TeamServiceImpl implements TeamService {
   } 
 
   @Override
-  public List<Team> teamList() {
-    return teamDao.findAllTeam();
+  public List<Team> teamList1() {
+    return teamDao.findAllTeam1();
+  }
+  
+  @Override
+  public List<Team> teamList2() {
+    return teamDao.findAllTeam2();
   }
 
   @Override
   public List<Member> memberList(int pageNo, int pageSize) {
     return null;
   }
-
+  
   @Override
   public int addTeam(Team team) {
     return teamDao.insert(team);
@@ -59,14 +65,21 @@ public class TeamServiceImpl implements TeamService {
   }
   
   @Override
+  public List<TeamMember> teamMemberList() {
+    
+    return teamDao.findTeamMember();
+  }
+  
+  @Override
   public int addMember(Member member) {
     return 0;
   }
 
   @Override
   public Team getTeam(int no) {
-    return null;
+    return teamDao.findByNo(no);
   }
+  
 
   @Override
   public Member getMember(int no) {

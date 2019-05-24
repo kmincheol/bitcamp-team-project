@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.eomcs.lms.domain.Member;
@@ -31,15 +32,29 @@ public class TeamController {
   @Autowired TeamService teamService;
   @Autowired MemberService memberService;
   @Autowired ServletContext servletContext;
- 
+
   @GetMapping
   public String list(Model model) {
 
-    List<Team> teams = teamService.teamList();
-    model.addAttribute("teams", teams);
+    List<Team> teams = teamService.teamList1();
+    List<TeamMember> TeamMembers = teamService.teamMemberList();
     
-    return "team/list";
+    model.addAttribute("teams", teams);
+    model.addAttribute("teamMembers", TeamMembers); // 멤버만 따로 뽑기 위함 지금은 안씀
+    
+    return "team/list1";
   }
+
+  
+  
+//  @GetMapping
+//  public String list(Model model) {
+//
+//    List<Team> teams = teamService.teamList1();
+//    model.addAttribute("teams", teams);
+//    
+//    return "team/list";
+//  }
   
   @GetMapping("form")
   public void form(Map<String,Object> map) {
@@ -47,10 +62,12 @@ public class TeamController {
     List<TeamAges> teamAges = teamService.teamAgeList();
     List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
     List<TeamLevel> teamLevels = teamService.teamLevelList();
+    List<TeamMember> teamMembers = teamService.teamMemberList();
     map.put("teamTypes", teamTypes);
     map.put("teamAges", teamAges);
     map.put("teamTypeSports", teamTypeSports);
     map.put("teamLevels", teamLevels);
+    map.put("teamMembers", teamMembers);
   }
 
   @PostMapping("add")
@@ -67,19 +84,12 @@ public class TeamController {
       return "redirect:.";
   }
   
-//  @GetMapping("{no}")
-//  public String detail(@PathVariable int no, Model model, HttpSession session) {
-//    Free free = freeService.get(no);
-//    session.setAttribute("freeNo", no);
-//    session.setAttribute("free", free);
-//    
-//    List<Comment> comment = commentService.list(no);
-//    model.addAttribute("list", comment);
-//    
-//    model.addAttribute("free", free);
-//    logger.info(free);
-//    return "free/detail";
-//  }
+  @GetMapping("{no}")
+  public String detail(@PathVariable int no, Model model) {
+    Team team = teamService.getTeam(no);
+    model.addAttribute("team", team);
+    return "team/detail";
+  }
 //
 //  @GetMapping("update/{no}")
 //  public String detailUpdate(@PathVariable int no, Model model) {

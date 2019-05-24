@@ -501,7 +501,7 @@ function js_select_region_select_gugun(select1,select2){
 	   
 	for(var i=0,m=list.length;i<m;i++){
 		var opt = new Option(list[i],list[i],(val==list[i]),(val==list[i]));
-		opts.add(opt);		
+		opts.add(opt);
 	}
 	return true;	
 }

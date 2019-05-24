@@ -27,8 +27,10 @@
 						<label for="no" class="col-sm-2 col-form-label">번호</label>
 						<div class="col-sm-10">
 							<label for="no" class="col-sm-2 col-form-label">${announce.no}</label>
-							<label id="space"></label> <label id="space"></label> <label
-								id="space"></label> <label id="viewlabel" for="viewCount"
+							<label id="space"></label> <label id="space"></label> 
+							<label id="space"></label>
+							<label id="space"></label>
+							 <label id="viewlabel" for="viewCount"
 								class="col-sm-2 col-form-label">조회수</label> <label
 								id="viewcount" for="viewCount" class="col-sm-2 col-form-label">${announce.viewCount}</label>
 						</div>
@@ -39,9 +41,11 @@
 						<label class="col-sm-2 col-form-label">이름</label>
 						<div class="col-sm-10">
 							<label for="name" class="col-sm-2 col-form-label">${announce.member.name}</label>
-							<label id="space"></label> <label id="space"></label> <label
-								id="space"></label> <label id="space"></label> <label
-								id="crtlabel" class="col-sm-2 col-form-label">글작성일(수정일)</label>
+							<label id="space"></label>
+							 <label id="space"></label>
+							  <label id="space"></label>
+							   <label id="space"></label> 
+							   <label id="crtlabel" class="col-sm-2 col-form-label">글작성일</label>
 							<label id="crtdate" class="col-sm-2 col-form-label"
 								id="createdDate">${announce.modifierDate}</label>
 						</div>

@@ -122,6 +122,18 @@
  where
     qstn_id = #{questionNo};
   </update>
+  
+  <insert id="insert" parameterType="questionBoard" useGeneratedKeys="true" keyColumn="qstn_id"
+    keyProperty="questionNo">
+    insert into qstn(
+    titl,
+    cont
+    )
+    values(
+    #{title},
+    #{contents}
+   )
+  </insert>
 
 
   

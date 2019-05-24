@@ -59,6 +59,25 @@
     a.qstn_id =#{questionNo};
 
   </select>
+  
+  <update id="update" parameterType="answerBoard">
+ update
+    ans
+ set
+    cont = #{contents}
+ where
+    ans_id = #{answerNo};
+  </update>
+  
+  
+  <delete id="delete" parameterType="int">
+    delete from
+      ans
+    where ans_id = #{answerNo};
+  </delete>
+  
+  
+  
 <!-- 
   <select id="findByNo2" resultMap="team" parameterType="int">
     select
@@ -110,11 +129,6 @@
     where rcrm_id =
     #{teamNo};
   </update>
-  <delete id="delete" parameterType="int">
-    delete from
-    rcrm
-    where rcrm_id = #{teamNo};
-  </delete>
 
   <select id="detailUpdate" resultMap="teamRecruitMap" parameterType="int">
     select
@@ -134,15 +148,7 @@
     r.rcrm_id = #{teamNo};
   </select>
 
-  <update id="update" parameterType="teamRecruit">
-    update
-    rcrm
-    set
-    titl = #{teamTitle},
-    cont = #{teamContents}
-    where
-    rcrm_id = #{teamNo};
-  </update>
+  
 
   <select id="countAll" resultType="int">
     select count(*) from rcrm;

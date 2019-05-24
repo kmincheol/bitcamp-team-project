@@ -13,10 +13,10 @@ public interface AnswerBoardService {
   
  // AnswerBoard getUpdate(int no);
 
- // int delete(int no);
+ int delete(int no);
   
   
- // int update(QuestionBoard questionBoard);
+ int update(AnswerBoard answerBoard);
 
 
   

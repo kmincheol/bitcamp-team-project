@@ -4,12 +4,13 @@ public class TeamMember {
  private int teamMemberNo;
  private int memberNo;
  private boolean teamLeader;
- private String positon;
+ private String position;
+ private Member member;
  
 @Override
 public String toString() {
   return "TeamMember [teamMemberNo=" + teamMemberNo + ", memberNo=" + memberNo + ", teamLeader="
-      + teamLeader + ", positon=" + positon + "]";
+      + teamLeader + ", position=" + position + ", member=" + member + "]";
 }
 
 public int getTeamMemberNo() {
@@ -17,7 +18,7 @@ public int getTeamMemberNo() {
 }
 public void setTeamMemberNo(int teamMemberNo) {
   this.teamMemberNo = teamMemberNo;
-}
+} 
 public int getMemberNo() {
   return memberNo;
 }
@@ -30,12 +31,21 @@ public boolean isTeamLeader() {
 public void setTeamLeader(boolean teamLeader) {
   this.teamLeader = teamLeader;
 }
-public String getPositon() {
-  return positon;
+public String getPosition() {
+  return position;
 }
-public void setPositon(String positon) {
-  this.positon = positon;
+public void setPosition(String position) {
+  this.position = position;
 }
+public Member getMember() {
+  return member;
+}
+public void setMember(Member member) {
+  this.member = member;
+}
+ 
+ 
+
 
  
  

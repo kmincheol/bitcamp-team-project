@@ -38,7 +38,7 @@
   </thead>
   <tbody>
           <tr>
-      <th scope="row">소속팀</th>
+      <th scope="row" >소속팀</th>
       <td>
         <div class="form-group row">
            <div class="col-sm">
@@ -54,14 +54,19 @@
               </div>
 				</div>
 			 </div>
+    	  </td>
+    	  </tr>
+    	  <tr>
+    	  <th scope="row">위치</th>
+    	  <td>
 			 <div class="form-group row">
 				 <div class="col-sm">
               <div class="input-group mb-2">
                 <select name='location' class="custom-select" id="sido" onchange="itemChange()">
             <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
             <option value="01">서울</option>
-            <option value="02">경기</option>
-            <option value="03">인천</option> 
+            <!-- <option value="02">경기</option>
+            <option value="03">인천</option>  -->
                 </select>
               </div>
             </div>
@@ -72,8 +77,8 @@
                 </select>
               </div>
             </div>
-            </div>      	 
-    	  </td>
+    	  </div>
+ 	   </td>
  	   </tr>
     <tr>
       <th scope="row">경기장</th>
@@ -81,7 +86,6 @@
         <input type="text" class="form-control-sm" name="stadiumName">
       </td>
     </tr>
-    
     
       <tr>
       <th scope="row">종목</th>
@@ -100,9 +104,9 @@
       </td>
     </tr>
     <tr>
-      <th scope="row">비용</th>
+      <th scope="row">전화번호</th>
       <td>
-        <input type="number" class="form-control-sm" name="cost">원
+      	<input type="text" class="form-control-sm" name="telephone">
       </td>
     </tr>
     <tr>
@@ -118,9 +122,9 @@
       </td>
     </tr>
     <tr>
-      <th scope="row">전화번호</th>
+      <th scope="row">비용</th>
       <td>
-      	<input type="text" class="form-control-sm" name="telephone">
+        <input type="number" class="form-control-sm" name="cost">원
       </td>
     </tr>
 
@@ -130,8 +134,8 @@
 </table>
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="add" class="btn btn-primary">등록</button>
           <a class="btn btn-primary" href='.'>목록</a>
+          <button id="add" class="btn btn-primary">매치보드에 등록하기</button>
         </div>
       </div>
 	
@@ -173,7 +177,7 @@ function itemChange(){
 		'양천구','영등포구','용산구','은평구','종로구','중구',
 		'중랑구'
 		];
-	 var Gyeonggi = [
+	 /* var Gyeonggi = [
 		'고양시 덕양구','고양시 일산동구','고양시 일산서구','과천시','광명시',
 		'광주시','구리시','군포시','김포시','남양주시','동두천시',
 		'부천시 소사구','부천시 오정구','부천시 원미구','성남시 분당구',
@@ -186,7 +190,7 @@ function itemChange(){
 	var Incheon = [
 		'계양구','남구','남동구','동구','부평구','서구',
 		'연수구','중구','강화군','옹진군'
-		]; 
+		];  */
 	 
 	var selectItem = $("#sido").val();
 	 
@@ -195,12 +199,12 @@ function itemChange(){
 	if(selectItem == "01"){ // 서울
 	  changeItem = Seoul;
 	}
-	 else if(selectItem == "02"){ // 경기
+	/*  else if(selectItem == "02"){ // 경기
 	  changeItem = Gyeonggi;
 	}
 	else if(selectItem == "03"){ // 인천
 	  changeItem =  Incheon;
-	} 
+	}  */
 	 
 	$('#gugun').empty();
 	 

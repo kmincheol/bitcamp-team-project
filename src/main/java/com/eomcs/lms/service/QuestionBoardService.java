@@ -16,7 +16,7 @@ public interface QuestionBoardService {
   
   int update(QuestionBoard questionBoard);
   //
-//  int add(QuestionBoard questionBoard);
+int add(QuestionBoard questionBoard);
 //  List<QuestionBoard> boardSearch(String keyword);
 //  
 //  
