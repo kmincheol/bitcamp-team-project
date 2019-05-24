@@ -9,19 +9,32 @@
    <jsp:include page="../commonCss.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
-   
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+  
 <jsp:include page="../header.jsp" />
+    <style>
+body{
+  padding:20px 20px;
+}
+.results tr[visible='false'],
+.no-result{
+  display:none;
+}
+.results tr[visible='true']{
+  display:table-row;
+}
+.counter{
+  padding:8px;
+  color:#ccc;
+}
+    </style>
+
 </head>
 <body> 
-
-<%--     <div id="match_header">
-      <img src="${contextRootPath}/images/match-header.jpg" class="img-fluid">
-    </div>
-    <div id="header">
-        <nav class="navbar navbar-expand-lg justify-content-center">
-            <a href="#"><img src="${contextRootPath}/images/logo.png" class="headerImg"></a>
-        </nav>
-    </div> --%> 
     
   <div class="container">
   <br><br><br>
@@ -31,128 +44,15 @@
     <br>
     <p>원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나</p>
     <p><b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.</p>
-   
-      <form action='search' method='get'>
-    <table id="match_table" class="table table-bordered">
-  <thead>
-    <tr>
-    <th scope="row">경기 날짜</th>
-      <td>
-      <input class="form-control" id="playDate" type='date' name='playDate'/>
-      </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">지역</th>
-      <td>
-       <div class="form-group row">
-           <div class="col-sm">
-              <div class="input-group mb-2">
-                <select name='location' class="custom-select" id="inputGroupSelect01"> 
-            <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
-            <option value="01">서울</option>
-            <option value="02">경기</option>
-            <option value="03">인천</option>
-                </select>
-              </div>
-            </div>
-          <div class="col-sm">
-              <div class="input-group mb-2">
-                <select name='location2' class="custom-select" id="inputGroupSelect01">
-          <option selected>지역선택</option> <!-- db명 midlc -->
-            <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
-            <option value="01">강남구</option>
-            <option value="02">서초구</option>
-            <option value="03">송파구</option>
-            <option value="04">고양시</option>
-            <option value="05">구리시</option>
-            <option value="06">광명시</option>
-            <option value="07">미추홀구</option>
-            <option value="08">동구</option>
-            <option value="09">연수구</option>
-              </select>
-              </div>
-            </div>
-            </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">경기유형</th>
-      <td>
-        <div class="form-group row">
-           <div class="col-sm">
-              <div class="input-group mb-2">
-                <select name='sportType' class="custom-select" id="inputGroupSelect01">
-            <option selected>축구</option>  <!--  db명 spt_clsf -->
-            <option value="1">야구</option>
-            <option value="2">농구</option>
-            <option value="3">탁구</option>
-                </select>
-              </div>
-            </div>
-            </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">연령대</th>
-      <td>
-        <div class="form-group row">
-           <div class="col-sm">
-              <div class="input-group mb-2">
-                <select name='age' class="custom-select" id="inputGroupSelect01">
-          <option selected>연령대선택</option> <!-- db명 age -->
-            <option value="1">10대</option>
-            <option value="2">20대</option>
-            <option value="3">30대</option>
-            <option value="4">40대</option>
-            <option value="5">50대 이상</option>
-                </select>
-              </div>
-            </div>
-            </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">실력</th>
-      <td>
-        <div class="form-group row">
-           <div class="col-sm">
-              <div class="input-group mb-2">
-                <select name='teamLevel' class="custom-select" id="inputGroupSelect01">
-          <option selected>실력선택</option> <!-- db명 tm_lev -->
-            <option value="1">상</option>
-            <option value="2">중</option>
-            <option value="3">하</option>
-                </select>
-              </div>
-            </div>
-            </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">키워드</th>
-      <td>
-      	<input name='search' value="${search}" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="검색">
-      </td>
-    </tr>
-  </tbody>
-    <jsp:include page="sideBar.jsp"/>
-</table>
-    <div class="button1">
-      <button class="btn btn-outline-success my-2 my-sm-0" style ="width:130px;">
-      검색
-      </button>
+
+   <div class="form-group pull-right">
+    <input type="text" class="search form-control" placeholder="검색어를 입력하세요." style="witdh:30px;">
 	</div>
-      </form>
-
-
 
       <br> <br> <br> <br>
       
       <c:if test="${!match.team.teamMember.team_leader}">
 		<div style="text-align:center;">
-		
           <a href='${contextRootPath}/app/matchboard/form.jsp'
           class="btn btn-primary btn-sm" tabindex="-1" role="button"
           aria-disabled="true" style="width:300px;">
@@ -162,73 +62,63 @@
        </c:if>
            <br>
       <!--     <th scope="row" id="subtitle" scope="col" width = 100% >신청 가능 매치</th>-->
-
+      
+<span class="counter pull-right"></span>
       <div id="subtable">
-        <table class="table">
+          
+        <table id="dtBasicExample" class="table table-bordered table-striped results"  cellspacing="0" width="100%">
           <tr>
-            <td id="subtitle" colspan="3" width="100%">신청 가능 매치</td>
+            <td id="subtitle" colspan="3" width="100%" style="background-color:white;"><b>신청 가능 매치</b></td>
           </tr>
+          <!-- 검색결과 없을때 -->
+    		<tr class="warning no-result">
+      			<td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    		</tr>
 
           <tbody>
-				<c:forEach items="${matches}" var="match">
+				<c:forEach items="${all}" var="match">
             <tr>
-                <td id="teaminfo" class="tableline" rowspan="4" align="center"
+                <td id="teaminfo" class="th-sm sorting_asc" rowspan="1" align="center" 
                 	style = "cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'"
-                	onMouseOver="this.style.backgroundColor='#FFF4E9';" onMouseOut="this.style.backgroundColor='' ">
-                	${match.team.teamEmblemPhoto}  <!-- 엠블럼 들어갑니다. -->
+                	onMouseOver="this.style.backgroundColor='#f2fffd';" onMouseOut="this.style.backgroundColor='' ">
+                	${match.team.teamEmblemPhoto} 엠블럼자리  <!-- 엠블럼 들어갑니다. -->
                 <br>
                 <br>
                 ${match.team.teamName}<br> 
                   아직 팀 페이지가 없습니다.
                 </td>
-                	
-              <td id="info" style = "cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/${match.no}'">
-              종목: ${match.teamTypeSports.teamSportsType}
-              </td>
-            </tr>
-            <tr>
-              <td id="info"  style = "cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/${match.no}'">
-              위치: ${match.location} 
+            
+               <td id="info" style = "cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/${match.no}'">
+              종목: ${match.teamTypeSports.teamSportsType} <br><br>
+              위치: ${match.location} <br> <br>
+              경기장: ${match.stadiumName} <br> <br>
+              경기날짜: ${match.playDate} <br>
               </td>
               
               <c:if test="${!empty sessionScope.loginUser}">
-             <td id="button3from" rowspan="2" align="center"> 
+              <td rowspan="1">
               <div class="button3">
-              
-           		<div class="form-group pos-relative">
+           		<div class="form-group pos-relative" id="applybtn">
             	<a class="js-tooltip-trigger" id="ref">
-            	<button id="btnsub"class="btn btn-primary btn-sm"
-            	  aria-disabled="true">신청하기</button>
+            	<button id="btnsub"class="btn btn-primary btn-sm" aria-disabled="true">신청하기</button>
             	</a>
           		<span class="js-tooltip" style="display:block;width:100px;height:80px;text-overflow:ellipsis;overflow: hidden;white-space:nowrap;" >
           			<strong>제목:${match.title} </strong><br>
           			<strong>내용:${match.contents} </strong><br>
           			<strong>연락처:${match.telephone} </strong><br>
-          			
           			<strong><a href="#">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </a></strong>
           		</span>
        	 		</div>
        		</div>
-             </td>
+            </td>
        		</c:if>
             </tr>
-             <tr>
-               <td id="info" style="cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/${match.no}'">
-               경기장: ${match.stadiumName}
-               </td>
-             </tr>
-             <tr>
-               <td id="info" class="tableline" style="cursor:pointer;" onClick = "location.href='${contextRootPath}/app/matchboard/${match.no}'">
-               경기날짜: ${match.playDate}
-               </td>
-             </tr>
 			</c:forEach>
           </tbody>
-          
         </table>
+        
       
-      
-      <nav aria-label="목록 페이지 이동" id="listnum">
+<%--       <nav aria-label="목록 페이지 이동" id="listnum">
   <ul class="pagination justify-content-center">
   
     <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
@@ -245,41 +135,162 @@
     <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
       <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
   </ul>
-    </nav>
+    </nav> --%>
     
     </div>
     </div>
   </div>  <!-- .container -->
   
   <jsp:include page="../javascript.jsp" />
+  
+    <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript"
+    src="${contextRootPath}/node_modules/mdbootstrap/js/jquery-3.4.0.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="${contextRootPath}/node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/mdb.min.js"></script>
+  <!-- MDBootstrap Datatables  -->
+  <script type="text/javascript"
+    src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
+    
 </body>
 
+<script type="text/javascript">
+var $setRows = $('#setRows');
 
-<script type="text/javascript"> // 매치보드 날짜 오늘로 초기화
-    
-    function getDate() {
-    	  var today = new Date();
-    	  var dd = today.getDate();
-    	  var mm = today.getMonth()+1; //January is 0!
-    	  var yyyy = today.getFullYear();
+$setRows.submit(function (e) {
+	e.preventDefault();
+	var rowPerPage = $('[name="rowPerPage"]').val() * 1;// 1 을  곱하여 문자열을 숫자형로 변환
 
-    	  if(dd<10) {
-    	      dd = '0'+dd
-    	  } 
-    	  if(mm<10) {
-    	      mm = '0'+mm
-    	  } 
-    	  today = yyyy + '-' + mm + '-' + dd;
-    	  console.log(today);
-    	  document.getElementById("playDate").value = today;
-    	}
-    	window.onload = function() {
-    	  getDate();
-    	};
-		
+//		console.log(typeof rowPerPage);
+
+	var zeroWarning = 'Sorry, but we cat\'t display "0" rows page. + \nPlease try again.'
+	if (!rowPerPage) {
+		alert(zeroWarning);
+		return;
+	}
+	$('#nav').remove();
+	var $products = $('#products');
+
+	$products.after('<div id="nav">');
+
+
+	var $tr = $($products).find('tbody tr');
+	var rowTotals = $tr.length;
+//	console.log(rowTotals);
+
+	var pageTotal = Math.ceil(rowTotals/ rowPerPage);
+	var i = 0;
+
+	for (; i < pageTotal; i++) {
+		$('<a href="#"></a>')
+				.attr('rel', i)
+				.html(i + 1)
+				.appendTo('#nav');
+	}
+
+	$tr.addClass('off-screen')
+			.slice(0, rowPerPage)
+			.removeClass('off-screen');
+
+	var $pagingLink = $('#nav a');
+	$pagingLink.on('click', function (evt) {
+		evt.preventDefault();
+		var $this = $(this);
+		if ($this.hasClass('active')) {
+			return;
+		}
+		$pagingLink.removeClass('active');
+		$this.addClass('active');
+
+		// 0 => 0(0*4), 4(0*4+4)
+		// 1 => 4(1*4), 8(1*4+4)
+		// 2 => 8(2*4), 12(2*4+4)
+		// 시작 행 = 페이지 번호 * 페이지당 행수
+		// 끝 행 = 시작 행 + 페이지당 행수
+
+		var currPage = $this.attr('rel');
+		var startItem = currPage * rowPerPage;
+		var endItem = startItem + rowPerPage;
+
+		$tr.css('opacity', '0.0')
+				.addClass('off-screen')
+				.slice(startItem, endItem)
+				.removeClass('off-screen')
+				.animate({opacity: 1}, 300);
+
+	});
+
+	$pagingLink.filter(':first').addClass('active');
+
+});
+
+	$setRows.submit();
 </script>
 
-<script>// 위치선택 할 때
+<script>
+$(document).ready(function() {
+	  $(".search").keyup(function () {
+	    var searchTerm = $(".search").val();
+	    var listItem = $('.results tbody').children('tr');
+	    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+	    
+	  $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+	        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+	    }
+	  });
+	    
+	  $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+	    $(this).attr('visible','false'); 
+	  });
+
+	  $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+	    $(this).attr('visible','true');
+	  });
+
+	  // 검색 결과없을때 출력하는거
+	  var jobCount = $('.results tbody tr[visible="true"]').length;
+	    $('.counter').text(jobCount + ' item');
+
+	  if(jobCount == '0') {$('.no-result').show();}
+	    else {$('.no-result').hide();}
+			  });
+	});
+</script>
+
+<script> // 신청하기 버튼 누를때.
+$(function () {
+	  $('.js-tooltip-trigger').each(function(ind, ele){
+	    
+	    var $ele = $(ele),
+	        $ttSpan = $ele.next('.js-tooltip'),
+	        ttHtml = $ttSpan.html(),
+	        rndID = 'ttid'+ String(Math.random()).substr(2);
+	    
+	    $ttSpan.attr('id', rndID).removeAttr('style').html('');
+	    
+	    $ele.popover({
+ 	    	trigger: 'click', 
+	  		html: true,
+ 	       trigger: 'focus',  
+	    	placement: 'right',
+	    	container: '#'+rndID, 
+	    	content: ttHtml
+	  	});
+	  });
+	});$(document).ready(function () {
+		$('#dtBasicExample').DataTable();
+		$('.dataTables_length').addClass('bs-select');
+		});
+
+</script>
+
+<!-- <script>// 위치선택 할 때
 function itemChange(){ 
 	var Seoul = [
 		'강남구','강동구','강북구','강서구','관악구','광진구',
@@ -325,32 +336,9 @@ function itemChange(){
 	            }
 	}
 	
-</script>
+</script> -->
 
 
-<script> // 신청하기 버튼 누를때.
-$(function () {
-	  $('.js-tooltip-trigger').each(function(ind, ele){
-	    
-	    var $ele = $(ele),
-	        $ttSpan = $ele.next('.js-tooltip'),
-	        ttHtml = $ttSpan.html(),
-	        rndID = 'ttid'+ String(Math.random()).substr(2);
-	    
-	    $ttSpan.attr('id', rndID).removeAttr('style').html('');
-	    
-	    $ele.popover({
- 	    	trigger: 'click', 
-	  		html: true,
- 	       trigger: 'focus',  
-	    	placement: 'right',
-	    	container: '#'+rndID, 
-	    	content: ttHtml
-	  	});
-	  });
-	});
-
-</script>
 
 <!-- <script>
 
@@ -389,7 +377,10 @@ var js_select_region_sido = new Array(
 		'부천시 소사구','부천시 오정구','부천시 원미구','성남시 분당구',
 		'성남시 수정구','성남시 중원구','수원시 권선구','수원시 영통구',
 		'수원시 장안구','수원시 팔달구','시흥시','안산시 단원구','안산시 상록구',
-		'안성시','안양시 동안구','안양시 만안구','양주시','오산시','용인시 기흥구',
+		'안성시','안양시 동안구','안$(document).ready(function () {
+$('#dtBasicExample').DataTable();
+$('.dataTables_length').addClass('bs-select');
+});양시 만안구','양주시','오산시','용인시 기흥구',
 		'용인시 수지구','용인시 처인구','의왕시','의정부시','이천시','파주시',
 		'평택시','포천시','하남시','화성시','가평군','양평군','여주군','연천군'
 		);
@@ -424,7 +415,7 @@ var js_select_region_sido = new Array(
 		);
 		js_select_region_gugun['경남'] = new Array(
 		'거제시','김해시','마산시','밀양시','사천시','양산시','진주시',
-		'진해시','창원시','통영시','거창군','고성군','남해군','산청군',
+		'진해시','창원시','통영시','거창군','고성군','남해군','산resulo청군',
 		'의령군','창녕군','하동군','함안군','함양군','합천군'
 		);
 		js_select_region_gugun['경북'] = new Array(

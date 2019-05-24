@@ -10,7 +10,7 @@ public interface MatchDao {
   List<Match> findByKeyword(String keyword);
   Match findByNo(int no);
   List<Match> teamInfoGet(int no);
-  List<Match> search(Map<String, Object> params);
+  List<Match> search();
   void increaseCount(int no);
   int update(Match match);
   int delete(int no);

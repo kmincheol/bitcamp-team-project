@@ -10,20 +10,7 @@
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
 <jsp:include page="../header.jsp" />
-<style>
-#viewCount {
-text-align: right;
-}
-#viewCnt {
-text-align: right;
-}
-#locleb {
-text-align: right;
-}
-#typlab{
-text-align: right;
-}
-</style>
+
 
 <body>
 
@@ -46,7 +33,7 @@ text-align: right;
           
           <label for="viewCount" class="col-sm-2 col-form-label" id="viewCnt">조회수</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" name="matchViewCount" id="viewCount"
+            <input type="text" class="form-control" name="matchViewCount" id="viewCnt"
               value="${match.viewCount}" readonly />
           </div>
         </div>
@@ -58,7 +45,7 @@ text-align: right;
               value="${match.playDate}" readonly/>
           </div>
           
-          <label for="location" class="col-sm-2 col-form-label" id="locleb">지역</label>
+          <label for="location" class="col-sm-2 col-form-label" id="loclab">지역</label>
           <div class="col-sm-3">
             <input type="text" class="form-control" name="teamArea" id="location"
               value="${match.location}" readonly />

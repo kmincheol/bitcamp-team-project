@@ -43,21 +43,39 @@ rigth: 10%;
 
 #button3from {
   position: absolute; /* /*  */ */
-  top: 5px;
+  top: 50px;
   position: relative;
   border-width: 0px;
 /*   float: right; */
 }
+
+#btnsub {
+  top: 27px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+
+
+#viewCnt {
+text-align: right;
+}
+#viewCnt {
+text-align: right;
+}
+#loclab {
+text-align: right;
+}
+#typlab{
+text-align: right;
+}
+
 
 .button3 {
   height: 20px;
   padding: 0px;
 }
 
-#btnsub {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
 
 #match_table {
   width: 90%;
@@ -95,6 +113,10 @@ rigth: 10%;
 #subtable {
   text-align: center;
   height :300px;
+}
+
+#selectType{
+  padding-left: 0px;
 }
 
 #subtitle {

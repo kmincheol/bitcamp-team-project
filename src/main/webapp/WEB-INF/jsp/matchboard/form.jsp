@@ -90,7 +90,7 @@
       <tr>
       <th scope="row">종목</th>
       <td>
-         <div class="col-sm">
+         <div class="col-sm" id="selectType">
               <div class="input-group mb-2">
                 <select name='teamSportsId' class="custom-select" id="inputGroupSelect01"> 
             <option value="" disabled selected hidden>종목선택</option> <!-- db명 toplc  -->
