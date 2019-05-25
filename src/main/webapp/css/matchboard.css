@@ -41,19 +41,30 @@ rigth: 10%;
   border-bottom-color: rgb(200, 200, 200);
 }
 
-#button3from {
+
+#applybtn{
+  top:60px;'
+}
+
+
+#button3 {
   position: absolute; /* /*  */ */
-  top: 50px;
+  top: 60px;
   position: relative;
   border-width: 0px;
 /*   float: right; */
 }
 
 #btnsub {
-  top: 27px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+  margin-left: 13px;
+  padding-top:36px;
+  padding-bottom:36px;
 }
+
+#btnform{
+  padding-top: 40px;
+}
+
 
 
 
@@ -70,8 +81,8 @@ text-align: right;
 text-align: right;
 }
 
-
 .button3 {
+  top:60px;
   height: 20px;
   padding: 0px;
 }
