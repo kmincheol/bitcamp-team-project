@@ -213,7 +213,7 @@ CREATE TABLE mbr (
   bas_addr   VARCHAR(255) NOT NULL COMMENT '기본주소', -- 기본주소
   det_addr   VARCHAR(255) NOT NULL COMMENT '상세주소', -- 상세주소
   prof_phot  MEDIUMTEXT   NULL     COMMENT '프로필사진', -- 프로필사진
-  s_intd     VARCHAR(255) NULL     COMMENT '자기소개', -- 자기소개
+  s_intd     TEXT         NULL     COMMENT '자기소개', -- 자기소개
   login_type VARCHAR(255) NOT NULL COMMENT '로그인유형', -- 로그인유형
   stat       VARCHAR(255) NULL     DEFAULT "정상" COMMENT '상태', -- 상태
   cdt        DATETIME     NULL     DEFAULT now() COMMENT '가입일', -- 가입일

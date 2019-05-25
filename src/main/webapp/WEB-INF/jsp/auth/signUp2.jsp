@@ -39,10 +39,8 @@
                 <h3 class="join_title">
                   <label for="id">아이디</label>
                 </h3>
-                <span class="ps_box int_id">
+                <span class="ps_box int_id int_pass" id="idImg">
                   <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
-                  <!-- 아이디 체크박스 -->
-                  <span class="step_url"></span>
                 </span>
                 <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
               </div>
@@ -52,22 +50,13 @@
                 </h3>
                 <span class="ps_box int_pass" id="pswd1Img">
                   <input type="password" id="pswd1" name="password" class="int" title="비밀번호 입력" aria-describedby="pswd1Msg" maxlength="20">
-                  <!--
-                  <span class ="lbl">
-
-                    <span id="pswd1Span" class="step_txt"></span>
-                  </span>
-                -->
-                  <span class="error_next_box" id="pswd1Msg" style="display:none" role="alert">5~12자의 영문 소문자, 숫자와 특수기호(...)만 사용 가능합니다.
-                  </span>
                 </span>
+                <span class="error_next_box" id="pswd1Msg" style="display:none" role="alert">5~12자의 영문 소문자, 숫자와 특수기호(...)만 사용 가능합니다.</span>
                 <h3 class="join_title">
                   <label for="pswd2">비밀번호 재확인</label>
                 </h3>
-                <span class="ps_box int_pass_check" id="pwd2Img">
-                  <input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 재확인 입력" aria-describedby="pswd2Blind" maxlength="20">
-                  <span id="pswd2Blind" class="wa_blind">설정하려는 비밀번호가 맞는지 확인하기 위해 다시 입력 해주세요.
-                  </span>
+                <span class="ps_box int_pass" id="pswd2Img">
+                  <input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 재확인 입력" maxlength="20">
                 </span>
                 <span class="error_next_box" id="pswd2Msg" style="display:none" role="alert"></span>
               </div>
@@ -78,7 +67,7 @@
                 <h3 class="join_title">
                   <label for="name">이름</label>
                 </h3>
-                <span class="ps_box box_right_space">
+                <span class="ps_box box_right_space int_pass"  id="nameImg">
                   <input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
                 </span>
                 <span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>
@@ -132,30 +121,27 @@
                     <option value="여자">여자</option>
                   </select>
                 </div>
+                <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
               </div>
-              <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
 
               <div class="join_row join_email">
                 <h3 class="join_title">
                   <label for="email">이메일 인증</label>
                 </h3>
-                <span class="ps_box int_email box_right_space" id="joinCode">
+                <span class="ps_box int_email box_right_space int_pass" id="joinCode">
                   <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요."
                   maxlength="100" class="int">
                 </span> 
-                <input id="btnSend" type="button" value="인증" class="btn btn-primary btn-sm">
+                <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn">
+                <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
               </div>
-              <div class="ps_box_disable box_right_space" id="authNoBox">
-                <input type="tel" id="authNo" placeholder="인증번호 입력하세요" aria-label="인증번호 입력하세요" aria-describedby="wa_verify" class="int" maxlength="6" disabled>
-                <label id="wa_verify" for="authNo" class="lbl">
-                  <span class="wa_blind">인증받은 후 인증번호를 입력해야 합니다.</span>
-                  <span class="input_code" id="authNoCode" style="display:none;"></span>
-                </label>
-                <input id="authSend" type="button" value="인증" class="btn btn-primary btn-sm">
+              <div class="join_row join_email join_authNo_confirm">
+                <span class="ps_box int_email box_right_space int_pass" id="authNoBox">
+                  <input type="tel" id="authNo" placeholder="인증번호 입력하세요"  class="int" maxlength="6" disabled>
+                </span>
+                <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn">
+                <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               </div>
-              <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
-              <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
-
             </div><!-- .row_group -->
             <!-- mobile -->
             <div class="join_row join_mobile">
@@ -163,49 +149,52 @@
                 <label for="phoneNo">휴대전화</label>
               </h3>
               <div class="int_mobile_area">
-                <span class="ps_box int_mobile">
-                  <input type="tel" id="phoneNo" name="tel" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">
-                  <label for="phoneNo" class="lbl"></label>              
+                <span class="ps_box int_pass" id="telImg">
+                  <input type="tel" id="phoneNo" name="tel" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">          
                 </span>
-                </a>
               </div>
               <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
             </div><!-- .join_row .join_mobile-->
           </div><!-- .join_form_left -->
 
-          <div  class="join_form_right">
-            <div class="join_row join_photo">
-              <div class="join_photo_title">
-                <h3 class="join_title">
-                  <label for="photo">프로필 사진<span class="terms_choice">(선택)</span></label>
+          <div class="join_form_right">
+            <div class="row_group join_photo">
+              <div class="join_row join_photo_title">
+                <h3 class="join_title" id="photo_title">
+                  <label for="fileupload">프로필 사진<span class="terms_choice">(선택)</span></label>
+                  <div class="file_input">
+                    <input type="text" readonly="readonly" title="File Route" id="file_route">
+                    <label>
+                       사진올리기
+                      <input type="file" id="fileupload" name="files">
+                    </label>
+                  </div>
                 </h3>
-                 <input id="fileupload" type="file" name="files" value="파일첨부"><br>
               </div>
               <div class="join_photo_view">
                 <span class="photoView">
                   <label for="photo">
-                    <img id="images-div" src="../../images/default.jpg" style="width:200px; height:200px;">
+                    <img id="images-div" src="../../images/profile.png">
                   </label>
                 </span>
               </div>
             </div><!-- .join_photo -->
             <div class="row_group">
               <div class="join_row">
-              
                 <h3 class="join_title">
                   <label for="addressBtn">주소/상세주소</label>
                 </h3>
                 <div class="address_area">
-                  <span class="ps_box address_box">
-                  <input class="form-control" style="display: inline;" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" maxlength="6">
+                  <span class="ps_box address_box" id="postBox">
+                    <input class="int" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" maxlength="6">
                   </span>
-                  <button id="addressBtn" type="button" class="btn btn-outline-secondary sunext addressBtn" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>                  
+                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호찾기">               
+                </div>
+                <div class="ps_box baseAddr">
+                  <input class="int" placeholder="도로명 주소" name="baseAddress" id="addr2" type="text" readonly="readonly" />
                 </div>
                 <div class="ps_box">
-                <input class="form-control" style="top: 5px;" placeholder="도로명 주소" name="baseAddress" id="addr2" type="text" readonly="readonly" />
-                </div>
-                <div class="ps_box">
-                <input class="form-control" placeholder="상세주소" name="detailAddress" id="addr3" type="text"  />
+                  <input class="int" placeholder="상세주소" name="detailAddress" id="addr3" type="text"  />
                 </div>
               </div>
               <div class="join_row">
@@ -241,62 +230,33 @@
 <script>
 "use strict"
 
-function execPostCode() {
-  
-  daum.postcode.load(function(){
-         new daum.Postcode({
-             oncomplete: function(data) {
-
-                var fullRoadAddr = data.roadAddress;
-                var extraRoadAddr = ''; 
-
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraRoadAddr += data.bname;
-                }
-                
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                
-                if(extraRoadAddr !== ''){
-                    extraRoadAddr = ' (' + extraRoadAddr + ')';
-                }
-                
-                if(fullRoadAddr !== ''){
-                    fullRoadAddr += extraRoadAddr;
-                }
-                
-                $("[name=post]").val(data.zonecode);
-                $("[name=baseAddress]").val(fullRoadAddr);
-                
-            }
-         }).open();
-  });
-     }
-
 $('#fileupload').fileupload({
   autoUpload: false,
   disableImageResize: /Android(?!.*Chrome)|Opera/
         .test(window.navigator && navigator.userAgent),
   previewMaxWidth: 200,
   previewMaxHeight: 200,
-  previewCrop: true,
+  previewCrop: false,
   processalways: function(e, data) {
-      var photo;
-      for (var i = 0; i < data.files.length; i++) {
-        try {
-          if (data.files[i].preview.toDataURL) {
-            photo = data.files[i].preview.toDataURL();
-            $('#images-div')
-            .attr('src', data.files[i]
-              .preview.toDataURL())
-              .css('width', '100px');
-            $('#photo').val(photo);
-          }
-        } catch (err) {
+    var photo;
+    for (var i = 0; i < data.files.length; i++) {
+      try {
+        if (data.files[i].preview.toDataURL) {
+          photo = data.files[i].preview.toDataURL();
+          $('#images-div')
+          .attr('src', data.files[i]
+          .preview.toDataURL())
+          $('#photo').val(photo);
         }
+      } catch (err) {
       }
+    }
   }
+});
+
+$('.file_input input[type=file]').change(function() {
+  var filename = $(this).val().replace(/c:\\fakepath\\/i, '');
+  $('.file_input input[type=text]').val(filename);
 });
 
 var idFlag = false;
@@ -370,9 +330,9 @@ $(document).ready(function() {
    return false;
  });
 
- $('#authNo').blur(function() {
-   checkAuthNo();
- });
+ $('#authNo').keyup(debounce(function() {
+  checkAuthNo();
+ }, 500));
 
  $('#authSend').click(function() {
    authFlag = false;
@@ -391,7 +351,46 @@ $(document).ready(function() {
      }, 700);
    }
  });
+
+ $('#addressBtn').click(function() {
+  execPostCode();
+  return false;
+ });
+
 });
+
+function execPostCode() {
+  
+  daum.postcode.load(function(){
+    new daum.Postcode({
+      oncomplete: function(data) {
+
+        var fullRoadAddr = data.roadAddress;
+        var extraRoadAddr = ''; 
+
+        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+          extraRoadAddr += data.bname;
+        }
+                
+        if(data.buildingName !== '' && data.apartment === 'Y'){
+          extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+        }
+                
+        if(extraRoadAddr !== ''){
+          extraRoadAddr = ' (' + extraRoadAddr + ')';
+        }
+                
+        if(fullRoadAddr !== ''){
+          fullRoadAddr += extraRoadAddr;
+        }
+                
+        $("[name=post]").val(data.zonecode);
+        $("[name=baseAddress]").val(fullRoadAddr);
+                
+      }
+    }).open();
+  });
+}
 
 function mainSubmit() {
   if (!checkUnrealInput()) {
@@ -522,22 +521,20 @@ function showSuccessMsg(obj, msg) {
   obj.show();
 }
 
-function showAuthSuccessBox(oBox, oCode, msg) {
-  oBox.attr("class", "ps_box accord");
-  oCode.html(msg);
-  oCode.show();
-}
-
-function showAuthErrorBox(oBox, oCode, msg) {
-  oBox.attr("class", "ps_box discord");
-  oCode.html(msg);
-  oCode.show();
-}
-
-function showAuthDefaultBox(oBox, oCode) {
+function showAuthDefaultBox(oBox) {
   oBox.attr("class", "ps_box");
-  oCode.html("");
-  oCode.hide();
+}
+
+function showSuccessBox(oBox) {
+  oBox.attr("class", "ps_box accord");
+}
+
+function showErrorBox(oBox) {
+  oBox.attr("class", "ps_box discord");
+}
+
+function showDefaultBox(oBox) {
+  oBox.attr("class", "ps_box default");
 }
 
 function hideMsg(obj) {
@@ -606,9 +603,11 @@ function checkId(event) {
 
   var id = $('#id').val();
   var oMsg = $('#idMsg');
+  var oImg = $('#idImg');
 
   if (id == "") {
     showErrorMsg(oMsg, "아이디를 입력해주세요.");
+    showCheckImgByStep(oImg, 2);
     return false;
   }
   
@@ -616,6 +615,7 @@ function checkId(event) {
   // regex 패턴확인
   if (!isId.test(id)) {
     showErrorMsg(oMsg, "5~15자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용할 수 있습니다.");
+    showCheckImgByStep(oImg, 0);
     return false;
   }
 
@@ -630,12 +630,14 @@ function checkId(event) {
       if (result == "1") {
         if (event == "first") {
           showSuccessMsg(oMsg, "가입 가능한 아이디입니다!");
+          showCheckImgByStep(oImg, 1);
         } else {
           hideMsg(oMsg);
         }
         idFlag = true;
       } else {
         showErrorMsg(oMsg, "이미 사용중인 아이디입니다.");
+        showCheckImgByStep(oImg, 0);
       }
     }
   });
@@ -651,23 +653,22 @@ function checkPswd1() {
   var id = $('#id').val();
   var pw = $('#pswd1').val();
   var oImg = $('#pswd1Img');
-  var oSpan = $('#pswd1Span');
   var oMsg = $('#pswd1Msg');
 
   if (pw == "") {
+    showCheckImgByStep(oImg, 2);
     showErrorMsg(oMsg, "패스워드를 입력해주세요.");
-    showCheckImgByStep(oImg, oSpan, 1);
     return false;
   }
 
   if (isValidPasswd(pw) != true) {
-    showCheckImgByStep(oImg, oSpan, 1);
+    showCheckImgByStep(oImg, 0);
     showErrorMsg(oMsg, "8~16자 영문 대 소문자, 숫자 특수문자를 사용하세요.");
     return false;
   }
-
-  pwFlag = false;
   
+  showCheckImgByStep(oImg, 1);
+  pwFlag = false;
   return true;
 }
 
@@ -702,17 +703,14 @@ function isValidPasswd(str) {
   return true;
 }
 
-function showCheckImgByStep(oImg, oSpan, step) {
+function showCheckImgByStep(oImg, step) {
   
   if (step == 0) { // 불일치
-    oImg.attr("class", "ps_box int_pass_check");
-    //oSpan.attr("class", "step_txt txt_red");
-  } else if (step == 1) { // 일치
     oImg.attr("class", "ps_box int_pass_check2");
-    //oSpan.attr("class", "step_txt txt_orange");
-  } else { // 기본
+  } else if (step == 1) { // 일치
+    oImg.attr("class", "ps_box int_pass_check");
+  } else { // 기본, step == 2로 설정 추천
     oImg.attr("class", "ps_box int_pass");
-    //oSpan.attr("class", "step_txt");
   }
 }
 
@@ -783,21 +781,21 @@ function checkPswd2() {
   var pswd1 = $('#pswd1');
   var pswd2 = $('#pswd2');
   var oMsg = $('#pswd2Msg');
-  var oBlind = $('#pswd2Blind');
+  var oImg = $('#pswd2Img');
 
   if (pswd2.val() == "") {
     showErrorMsg(oMsg, "비밀번호 재확인칸을 입력해주세요.");
-    oBlind.html("설정하려는 비밀번호가 맞는지 확인하고 다시 입력해주세요.");
+    showCheckImgByStep(oImg, 2);
     return false;
   }
 
   if (pswd1.val() != pswd2.val()) {
     showErrorMsg(oMsg, "비밀번호가 일치하지 않습니다.");
-    oBlind.html("설정하려는 비밀번호가 맞는지 확인하고 다시 입력해주세요.");
+    showCheckImgByStep(oImg, 0);
     pswd2.val("");
     return false;
   } else {
-    oBlind.html("비밀번호가 일치합니다.");
+    showCheckImgByStep(oImg, 1);
     hideMsg(oMsg);
     pwFlag = true;
     return true;
@@ -807,17 +805,21 @@ function checkPswd2() {
 function checkName() {
   var oMsg = $('#nameMsg');
   var nonchar = /[^가-힣a-zA-Z0-9]/gi;
-
+  var oImg = $('#nameImg');
   var name = $('#name').val();
+
   if (name == "") {
     showErrorMsg(oMsg, "이름을 입력해주세요.");
+    showCheckImgByStep(oImg, 2);
     return false
   }
   if (name != "" && nonchar.test(name)) {
-    showErrorMsg(oMsg, "한글과 알파벳 대 소문자를 사용하세요. 특수기호와 공백은 사용할 수 없습니다.");
+    showErrorMsg(oMsg, "한글과 알파벳 대 소문자를 사용하세요.<br> 특수기호와 공백은 사용할 수 없습니다.");
+    showCheckImgByStep(oImg, 0);
     return false;
   }
 
+  showCheckImgByStep(oImg, 1);
   hideMsg(oMsg);
   return true;
 }
@@ -836,11 +838,13 @@ function checkGender() {
 
 function checkEmailText(email) {
   var oMsg = $('#emailMsg');
+  var oImg = $('#joinCode');
   var isEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   var isHan = /[ㄱ-ㅎ가-힣]/g;
 
   if (!isEmail.test(email) || isHan.test(email)) {
     showErrorMsg(oMsg, "이메일 주소를 확인하시고 다시 입력해주세요.");
+    showCheckImgByStep(oImg, 0);
     return false;
   }
 
@@ -851,9 +855,11 @@ function checkEmailText(email) {
 function checkPhoneNo() {
   var phoneNo = $('#phoneNo').val();
   var oMsg = $('#phoneNoMsg');
+  var oImg = $('#telImg');
 
   if (phoneNo == "") {
     showErrorMsg(oMsg, "전화번호를 입력해주세요.");
+    showCheckImgByStep(oImg, 2);
     return false;
   }
 
@@ -861,10 +867,12 @@ function checkPhoneNo() {
   
   if (!isCellPhone(phoneNo)) {
     showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
+    showCheckImgByStep(oImg, 0);
     return false;
   }
 
   hideMsg(oMsg);
+  showCheckImgByStep(oImg, 1);
   return true;
 }
 
@@ -877,9 +885,11 @@ function checkEmail() {
   var emailAuth = $("#email").val();
   var typeAuth = $('#authType').val();
   var oMsg = $('#emailMsg');
+  var oImg = $('#joinCode');
 
   if (emailAuth == "") {
     showErrorMsg(oMsg, "이메일을 입력해주세요.");
+    showCheckImgByStep(oImg, 2);
     return false;
   }
 
@@ -902,14 +912,16 @@ function checkEmail() {
       var result = data.substr(5);
       if (result == "1") {
         showSuccessMsg(oMsg, "이 이메일로 가입하실 수 있습니다. 인증을 진행해주세요.");
+        showCheckImgByStep(oImg, 1);
         emailFlag = true;
-        console.log(emailFlag);
         return true;
       } else if (result == "0") {
         showErrorMsg(oMsg, "이 이메일로 가입한 아이디가 있습니다.");
+        showCheckImgByStep(oImg, 0);
         return false;
       } else {
         showErrorMsg(oMsg, "잘못된 접근입니다.");
+        showCheckImgByStep(oImg, 0);
         return false;
       }
     }
@@ -922,8 +934,10 @@ function sendEmail() {
   var emailAuth = $("#email").val();
   var typeAuth = $('#authType').val();
   var oMsg = $('#emailMsg');
+  var oBox = $("#joinCode");
 
   if (!emailFlag) {
+    showCheckImgByStep(oBox, 0);
     return false;
   }
   console.log("send");
@@ -942,13 +956,14 @@ function sendEmail() {
       if (result == "1") {
         showSuccessMsg(oMsg,"인증메일을 발송했습니다.<br>인증메일이 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>");
         $("#authNo").attr("disabled", false);
-        var oBox = $("#authNoBox");
-        var oCode = $("#authNoCode");
-        showAuthDefaultBox(oBox, oCode);
+        showAuthDefaultBox(oBox);
+        showCheckImgByStep(oBox, 1);
       } else if (result == "0") {
         showErrorMsg(oMsg, "인증 중에 오류가 발생했습니다. 다시 인증 버튼을 눌러주세요.");
+        showCheckImgByStep(oBox, 0);
       } else {
         showErrorMsg(oMsg, "인증메일 발송에 실패했습니다. 이메일을 확인해주세요.");
+        showCheckImgByStep(oBox, 0);
       }
     }
   });
@@ -962,20 +977,21 @@ function checkAuthNo() {
   var authNo = $('#authNo').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');
-  var oCode= $('#authNoCode');
 
   if (authNo == "") {
-    showErrorMsg(oMsg, "인증이 필요합니다.");
+    showErrorMsg(oMsg, "인증번호를 입력해주세요.");
+    showCheckImgByStep(oBox, 2);
     return false;
   }
 
   if (authFlag) {
-    showSuccessMsg(oMsg, "인증이 성공했습니다.");
-    showAuthSuccessBox(oBox, oCode, "일치");
+    showSuccessMsg(oMsg, "이메일 인증에 성공했습니다.");
+    showCheckImgByStep(oBox, 1);
     $('#emailMsg').hide();
     return true;
   } else {
     showErrorMsg(oMsg, "인증이 필요합니다.");
+    showCheckImgByStep(oBox, 2);
     return false;
   }
 }
@@ -986,7 +1002,6 @@ function checkAuthnoByAjax() {
   var typeAuth = $('#authType').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');
-  var oCode = $('#authNoCode');
 
   $.ajax({
     type: "POST",
@@ -1002,14 +1017,13 @@ function checkAuthnoByAjax() {
       var result = data.substr(4);
       if (result == "0") {
         showSuccessMsg(oMsg, "인증이 성공했습니다.");
-        showAuthSuccessBox(oBox, oCode, "일치");
+        showCheckImgByStep(oBox, 1);
         $("#emailMsg").hide();
-        $('#btnSend').css('display', 'none');
-        $('#authNoBox').css('display', 'none');
+        $("#authNo").attr("disabled", true);
         authFlag = true;
       } else {
         showErrorMsg(oMsg, "인증번호를 다시 확인해주세요.");
-        showAuthErrorBox(oBox, oCode, "불일치");
+        showCheckImgByStep(oBox, 0);
       }
     }
   });

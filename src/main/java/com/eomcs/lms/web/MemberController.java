@@ -107,6 +107,8 @@ public class MemberController {
   @PostMapping(value="checkAuthNo", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkAuthNo(@RequestBody Map<String,Object> content) {
+    
+    authKeyService.deleteTemp();
 
     String email = (String) content.get("email");
     String keyContent = (String) content.get("authKey");
