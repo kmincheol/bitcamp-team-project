@@ -60,12 +60,13 @@
       a.cont,
     ans_stat,
     q.cdt,
-  ans_id, 
-    name
+    ans_id, 
+    m.name,
+    q.mbr_id
   from
     qstn q
     left outer join mbr m on q.mbr_id = m.mbr_id
-  left outer join ans a on q.qstn_id = a.qstn_id 
+    left outer join ans a on q.qstn_id = a.qstn_id 
     order by qstn_id desc
 
   </select>
@@ -127,11 +128,13 @@
     keyProperty="questionNo">
     insert into qstn(
     titl,
-    cont
+    cont,
+    mbr_id
     )
     values(
     #{title},
-    #{contents}
+    #{contents},
+    #{memberNo}
    )
   </insert>
 

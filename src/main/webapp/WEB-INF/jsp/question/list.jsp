@@ -1,3 +1,4 @@
+<%@page import="org.aspectj.weaver.patterns.TypePatternQuestions.Question"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,7 +35,7 @@
           <tr>
             <td>${question.questionNo}</td>
              <td><a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a></td>
-            <td>${question.member.name}</td>
+            <td>${question.member.id}</td>
             <td>${question.createdDate}</td>
             
              <td>

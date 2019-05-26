@@ -11,7 +11,8 @@
 <body>
 
   <div class="container">
-    <form id='update_form' action='../update' method='post'>
+  
+    <form id='update_form' action='../update' method='post' onsubmit="return add_check()">
 
       <div class="form-group row">
         <label for="questionNo" class="col-sm-2 col-form-label">번호</label>
@@ -32,16 +33,14 @@
       <div class="form-group row">
         <label for="title" class="col-sm-2 col-form-label">제목</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name=title id="title"
-            value="${question.title}"/>
+          <input type="text" class="form-control" name=title id="titleb" value="${question.title}"/>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="contents" class="col-sm-2 col-form-label">내용</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="contents" id="contents"
-            value="${question.contents}" />
+          <input type="text" class="form-control" name="contents" id="aaaaa" value="${question.contents}" />
         </div>
       </div>
 
@@ -54,8 +53,19 @@
     </form>
   </div>
   <!-- .container -->
-
+  <jsp:include page="../javascript.jsp" />
+ 
 <script>
+
+function add_check(){
+    
+	var theForm = $('#aaaaa').val();
+
+    if(theForm == ""){
+     alert("빈값입니다.") ;
+      return false;
+   }
+}
 
 </script>
 </body>

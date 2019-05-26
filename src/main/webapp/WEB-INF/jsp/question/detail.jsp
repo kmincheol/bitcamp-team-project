@@ -33,7 +33,7 @@
     <div class="form-group row">
       <label for="title" class="col-sm-2 col-form-label">작성자</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="member" id="member" value="${question.member.name}" readonly />
+        <input type="text" class="form-control" name="member" id="member" value="${question.member.id}" readonly />
       </div>
     </div>
 
@@ -54,12 +54,12 @@
 
     <div id ="aa" class="form-group row">
       <div class="col-sm-10">
-        <a class="btn btn-primary" href='.'>목록</a> 
-        <a class="btn btn-primary" href='delete/${question.questionNo}'>삭제</a> 
-        <a class="btn btn-primary" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
+        <a class="btn btn-dark" href='.'>목록</a> 
+        <a class="btn btn-dark" href='delete/${question.questionNo}'>삭제</a> 
+        <a class="btn btn-dark" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
       </div>
        <c:choose>
-          <c:when test="${fn:length(answer.contents) == 0}"> <button id="answer_Btn" onclick="button1_click();">답변하기</button> </c:when>
+          <c:when test="${fn:length(answer.contents) == 0}"> <button id="answer_Btn" class="btn btn-dark" onclick="button1_click();">답변하기</button> </c:when>
           <c:otherwise> <button id="answerModify_Btn" onclick="button2_click();">답변수정</button></c:otherwise>
         </c:choose>
       
@@ -68,22 +68,22 @@
    <jsp:include page="alist.jsp"></jsp:include>
 
 <!-- 답변달기 --> 
-   <div id="answer_form"  style="display: none;">
+   <div id="answer_form"    style="display: none;" >
     <h1>답변하기</h1>
-    <form id='add_form' action='add2' method='post'>
+    <form id='add_form' action='add2' method='post' onsubmit="return add_check()">
     <div class="form-group row">
       <div class="col-sm-10" style="display: none;">
         <input type="text" class="form-control" name="questionNo" id="questionNo" value="${question.questionNo}" />
       </div>
       <label for="title" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="contents" id="contents" value="${answer.contents}" />
+        <input type="text" class="form-control" name="contents" id="anwerContents" value="${answer.contents}" />
       </div>
     </div>
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="add" class="btn btn-primary" >등록</button>
-          <a class="btn btn-primary" href='${contextRootPath}/app/question'>목록</a>
+          <button id="add_Answer_Btn" class="btn btn-primary" >등록</button>
+          <a class="btn btn-dark" href='${contextRootPath}/app/question'>목록</a>
         </div>
       </div>
     </form>
@@ -91,32 +91,37 @@
   
   <!--  답변수정 -->
    <div id="modify_form"  style="display: none;">
-    <h1>답변수정하기</h1>
-    <form id='answer_modify_form' action='update2' method='post'>
+    <h4>답변수정하기</h4>
+    <form id='answer_modify_form' onsubmit="return add_Modify_check()" action='update2' method='post'>
+
     <div class="form-group row">
       <div class="col-sm-10" style="display: none;">
         <input type="text" class="form-control" name="answerNo" id="answerNo" value="${answer.answerNo}" />
       </div>
       <label for="title" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="contents" id="contents" value="${answer.contents}" />
+        <input type="text" class="form-control" name="contents" id="modify_contents" value="${answer.contents}" />
       </div>
-    
     </div>
+     
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="modify" class="btn btn-primary" >수정</button>
+          <button id="modify_button" class="btn btn-dark" onclick="button3_click();">수정</button>
           <a class="btn btn-primary" href='delete2/${answer.answerNo}'>삭제</a> 
         </div>
       </div>
     </form>
   </div>   
-  </div>
-  <!-- .container -->
+ 
+  </div> <!-- .container -->
   
   <jsp:include page="../javascript.jsp" />
  
+ 
+ 
+ 
 <script>
+
 function button1_click(){
 $("#answer_form").css("display","block");
 }
@@ -124,6 +129,26 @@ $("#answer_form").css("display","block");
 function button2_click(){
 	$("#modify_form").css("display","block");
 	}
+
+function add_check(){
+  	var theForm = $('#anwerContents').val();
+	 if(theForm == ""){
+		 alert("빈값입니다.") ;
+		  return false;
+	 }
+}
+
+function add_Modify_check(){
+    var theForm = $('#modify_contents').val();
+   if(theForm == ""){
+     alert("빈값입니다.") ;
+      return false;
+   }
+}
+
+	
+	
+
 
 
 </script>
