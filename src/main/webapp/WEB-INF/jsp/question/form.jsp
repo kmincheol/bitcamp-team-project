@@ -20,7 +20,7 @@
     <h2>질문작성하기</h2>
 </div>
 
-    <form id="add_form" action='add' method='post'>
+    <form id="add_form" action='add' method='post' onsubmit="return check()">
 
     <div class="form-group row">
       <label for="no" class="col-sm-2 col-form-label">제목</label>
@@ -38,20 +38,25 @@
     </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <a class="btn btn-warning" href='${contextRootPath}/app/question' onclick="myFunction()">취소하기</a>
-          <button id="add" class="btn btn-warning">질문하기</button>
+          <a class="btn btn-dark" href='${contextRootPath}/app/question' >취소하기</a>
+          <button  class="btn btn-dark">질문하기</button>
         </div>
       </div>
     </form>
   </div>
   <!-- .container -->
-
+ <jsp:include page="../javascript.jsp" />
+ 
 <script>
-function myFunction() {
-	alert("질문이 저장되지 않을 수 있습니다.");
-	}
 
-
+function check(){
+    var title = $('#title').val(); 
+    var content = $('#contents').val();
+   if(title == "" || content == ""){
+     alert("빈값을 입력 하세요.") ;
+      return false;
+   }
+}
 
 </script>
 </body>

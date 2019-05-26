@@ -35,7 +35,7 @@ public class QuestionBoardController {
 
   @GetMapping
   public String list(@RequestParam(defaultValue = "1") int pageNo,
-      @RequestParam(defaultValue = "3") int pageSize, Model model) {
+      @RequestParam(defaultValue = "3") int pageSize, Model model, HttpSession session) {
 
     if (pageSize < 3 || pageSize > 8)
       pageSize = 3;
@@ -53,7 +53,7 @@ public class QuestionBoardController {
 
     List<QuestionBoard> question = questionBoardService.list(pageNo, pageSize);
     List<AnswerBoard> answer = answerBoardService.list();
-    
+    System.out.println("aaaa" + question);
     model.addAttribute("question", question);
     model.addAttribute("answer", answer);
     model.addAttribute("pageNo", pageNo);
@@ -68,12 +68,16 @@ public class QuestionBoardController {
   }
   
   @PostMapping("add")
-  public String add(QuestionBoard questionBoard, HttpSession session ) {
+  public String add(QuestionBoard questionBoard, HttpSession session) {
     
     Member member = (Member) session.getAttribute("loginUser");
     
-    questionBoardService.add(questionBoard);
+    questionBoard.setMember(member);
+    questionBoard.setMemberNo(member.getNo());
+
+    System.out.println(questionBoard);
     
+    questionBoardService.add(questionBoard);
     return "redirect:.";
   }
   
@@ -82,6 +86,7 @@ public class QuestionBoardController {
   public String add(AnswerBoard answerBoard, HttpSession session ,QuestionBoard question) {
     
     Member member = (Member) session.getAttribute("loginUser");
+    
     
     answerBoardService.add(answerBoard);
     
