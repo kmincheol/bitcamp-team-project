@@ -72,13 +72,13 @@ body {
   column-rule-style: solid;
   column-rule-width: 1px;
   margin-top: 50px;
-  height: 1100px;
+  height: 1150px;
 }
 .join_form_left{
-	height:1100px;
+	height:1150px;
 }
 .join_form_right{
-  height:1100px;
+  height:1150px;
 }
 .terms_choice {
   font-size: 12px;
@@ -94,12 +94,6 @@ body {
 }
 .join_row .green{
   color:#08A600
-}
-.join_birthday {
-  padding:0
-}
-.join_birthday .ps_box {
-  padding:11px 14px
 }
 .bir_title {
   font-size:13px;
@@ -120,6 +114,9 @@ body {
 .bir_wrap {
   display:table;
   width:100%
+}
+#birdd, #birmm, #biryy {
+  padding: 11px 14px
 }
 .bir_dd,.bir_mm,.bir_yy {
   display:table-cell;
@@ -193,7 +190,7 @@ html[lang=ko] #header .lang .sel {
   -webkit-box-sizing:border-box;
   box-sizing:border-box
 }
-.ps_box.int_id,.ps_box.int_pass,.ps_box.int_pass_check,.ps_box.int_pass_check2,.ps_box.box_right_space {
+.ps_box.int_pass,.ps_box.int_pass_check,.ps_box.int_pass_check2,.ps_box.box_right_space {
   padding-right:50px
 }
 .ps_box.int_pass:after,.ps_box.int_pass_check2:after,.ps_box.int_pass_check:after {
@@ -221,15 +218,11 @@ html[lang=ko] #header .lang .sel {
   background:#fff url(../images/error.png) no-repeat center center
 }
 .ps_box.accord {
-  padding-right:70px;
+  padding-right:50px;
   border:solid 1px #08a600
 }
 .ps_box.discord{
-  padding-right:70px;
-  border:solid 1px red
-}
-.ps_box.default{
-  padding-right:70px;
+  padding-right:50px;
   border:solid 1px red
 }
 .green{
@@ -298,11 +291,6 @@ html[lang=ko] #header .lang .sel {
   font-size:15px;
   box-sizing:border-box
 }
-.box_right_space {
-  padding-right:14px;
-  -webkit-box-sizing:border-box;
-  box-sizing:border-box
-}
 .step_txt {
   display:inline-block;
   position:absolute;
@@ -322,6 +310,9 @@ html[lang=ko] #header .lang .sel {
   display: inline-block;
   height: 51px;
   width: 100px
+}
+#genderBox {
+  padding: 10px 14px
 }
 #addressBtn {
   display: inline-block;
@@ -344,7 +335,7 @@ html[lang=ko] #header .lang .sel {
 .join_authNo_confirm {
   margin: 10px 0 8px
 }
-.baseAddr {
+#baseAddr, #detailAddr {
   margin-top: 10px
 }
 .join_photo_title {
@@ -395,6 +386,6 @@ html[lang=ko] #header .lang .sel {
 }
 #self_introduce {
   width: 400px;
-  height: 252px;
+  height: 256px;
   resize: none
 }

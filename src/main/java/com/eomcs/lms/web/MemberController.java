@@ -74,11 +74,12 @@ public class MemberController {
   @ResponseBody
   private String sendEMail(@RequestBody Map<String,Object> content) {
 
-    int randomCode = new Random().nextInt(998999) + 1000;
+    int randomCode = new Random().nextInt(899999) + 100000;
+
     String joinCode = String.valueOf(randomCode);
     String email = (String) content.get("email");
     String type = (String) content.get("type");
-    String subject = "이메일 본인인증 번호입니다.";
+    String subject = "BATTLE MATCHING 회원가입에 사용하실 이메일 인증 번호입니다.";
 
     AuthKey authKey = new AuthKey();
     authKey.setEmail(email);
@@ -93,7 +94,7 @@ public class MemberController {
     authKey.setKeyContent(joinCode);
 
     StringBuilder sb = new StringBuilder();
-    sb.append("이메일 본인인증 승인 번호는 ").append(joinCode).append(" 입니다.");
+    sb.append("이메일 인증 승인 번호는 ").append(joinCode).append(" 입니다. 인증번호 6자리를 모두 입력해주세요.");
     if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
       if (authKeyService.add(authKey) != 0) {
         return "send" + 1;      
@@ -135,7 +136,7 @@ public class MemberController {
   @GetMapping(value="checkId", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkId(String userId) {
-    logger.info(userId);
+    logger.info("checkId >>> " + userId);
     if (memberService.checkId(userId) != null) {
       return "checkId" + 0;
     } else {
@@ -149,6 +150,8 @@ public class MemberController {
 
   @PostMapping("enter")
   public String add(Member member) throws Exception {
+    logger.info("아이디 >>> " + member.getId());
+    logger.info("멤버객체 >>> " + member);
 
     memberService.add(member);
 

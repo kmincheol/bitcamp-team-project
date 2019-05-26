@@ -132,9 +132,9 @@
       post,
       bas_addr,
       det_addr,
-      login_type,
-      <if test="photo != null">prof_phot,</if>
-      <if test="selfIntroduce != null">s_intd</if>
+      login_type
+      <if test="photo != null">,prof_phot</if>
+      <if test="selfIntroduce != null">,s_intd</if>
       ) values(
       #{id},
       password(#{password}),
@@ -146,9 +146,9 @@
       #{post},
       #{baseAddress},
       #{detailAddress},
-      #{loginType},
-      <if test="photo != null">#{photo},</if>
-      <if test="selfIntroduce != null">#{selfIntroduce}</if>
+      #{loginType}
+      <if test="photo != null">,#{photo}</if>
+      <if test="selfIntroduce != null">,#{selfIntroduce}</if>
       )
   </insert>
   

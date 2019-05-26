@@ -65,10 +65,8 @@
   
   <delete id="deleteByTenMinute">
     delete from atk
-    <!--[CDATA[
     where 
-     TIMESTAMPDIFF(MINUTE,atk_dt,NOW()) > 10;
-     ]]-->
+     TIMESTAMPDIFF(MINUTE,atk_dt,NOW()) <![CDATA[>]]> 10;
   </delete>
 
 </mapper>
