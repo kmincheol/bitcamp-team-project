@@ -43,13 +43,10 @@ dependencies {
     // JSON
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
     
-    // javax.mail-api - 메일전송
-//    compile group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
-    
-    // https://mvnrepository.com/artifact/com.sun.mail/javax.mail
+    // javax.mail - 메일전송
     compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
 
-    // spring-context-support -  메일전송
+    // spring-context-support - 메일전송
     compile group: 'org.springframework', name: 'spring-context-support', version: '5.1.7.RELEASE'
  
     // javax.activation - 메일전송
