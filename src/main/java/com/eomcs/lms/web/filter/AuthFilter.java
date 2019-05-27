@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.web.FreeController;
 
-@WebFilter("/app/*") // 임시로 오류발생시킴 ("/app/*")
+@WebFilter("/app/app") // 임시로 오류발생시킴 ("/app/*")
 public class AuthFilter implements Filter {
   
   FilterConfig filterConfig;

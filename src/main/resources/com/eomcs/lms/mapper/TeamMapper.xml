@@ -283,7 +283,8 @@
     tm_type_id,
     spt_clsf_id,
     tm_ambl_phot,
-    tm_unf_phot)
+    tm_unf_phot
+    )
     values(
     #{teamName},
     #{teamInfo},

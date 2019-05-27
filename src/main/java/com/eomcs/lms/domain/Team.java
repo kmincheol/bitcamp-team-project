@@ -24,12 +24,14 @@ public class Team implements Cloneable, Serializable {
   private Date teamInfoModifieDate;
 
   private Member member;
+  private int memberNo;
   private TeamAges teamAges;
   private TeamLevel teamLevel;
   private TeamMember teamMember;
   private TeamType teamType;
   private TeamTypeSports teamTypeSports;
   private MatchApply matchApply;
+  
   
   @Override
   public String toString() {
@@ -38,11 +40,10 @@ public class Team implements Cloneable, Serializable {
         + ", teamLevelId=" + teamLevelId + ", teamSportsId=" + teamSportsId + ", teamEmblemPhoto="
         + teamEmblemPhoto + ", teamUniform=" + teamUniform + ", teamUniformPhoto="
         + teamUniformPhoto + ", teamCreateDate=" + teamCreateDate + ", teamInfoModifieDate="
-        + teamInfoModifieDate + ", member=" + member + ", teamAges=" + teamAges + ", teamLevel="
-        + teamLevel + ", teamMember=" + teamMember + ", teamType=" + teamType + ", teamTypeSports="
-        + teamTypeSports + ", matchApply=" + matchApply + "]";
+        + teamInfoModifieDate + ", member=" + member + ", memberNo=" + memberNo + ", teamAges="
+        + teamAges + ", teamLevel=" + teamLevel + ", teamMember=" + teamMember + ", teamType="
+        + teamType + ", teamTypeSports=" + teamTypeSports + ", matchApply=" + matchApply + "]";
   }
-  
   public int getTeamId() {
     return teamId;
   }
@@ -127,6 +128,12 @@ public class Team implements Cloneable, Serializable {
   public void setMember(Member member) {
     this.member = member;
   }
+  public int getMemberNo() {
+    return memberNo;
+  }
+  public void setMemberNo(int memberNo) {
+    this.memberNo = memberNo;
+  }
   public TeamAges getTeamAges() {
     return teamAges;
   }
@@ -164,8 +171,6 @@ public class Team implements Cloneable, Serializable {
     this.matchApply = matchApply;
   }
   
-  
  
-
 
 }

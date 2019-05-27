@@ -35,13 +35,18 @@ public class TeamController {
 
   @GetMapping
   public String list(Model model) {
-    //Team team = new Team();
-    List<Team> teams = teamService.teamList1();
     //List<TeamMember> teamMembers = teamService.getTeamMember();
-    List<TeamMember> teamMembers = teamService.teamMemberList(); 
     /* team.setTeamMember((TeamMember)teamMembers); */
-
     /* teams.add(team); */
+
+    List<Team> teams = teamService.teamList1();
+    List<TeamMember> teamMembers = teamService.teamMemberList();
+    
+    Team team = new Team();
+    TeamMember teamMember = new TeamMember();
+    team.setMember(teamMember.getMember());
+    
+    teams.add(team);
     
     model.addAttribute("teams", teams);
      model.addAttribute("teamMembers", teamMembers); // 멤버만 따로 뽑기 위함 지금은 안씀
@@ -78,11 +83,14 @@ public class TeamController {
   public String add(Team team, HttpSession session, TeamMember teamMember) {
 
       Member member = (Member) session.getAttribute("loginUser");
+      
       team.setMember(member);
-      /* add 할 시 팀장 지정
+      teamService.addMember(member);
+      teamMember.setMember(member);
+      // add 할 시 팀장 지정
       teamMember.setTeamLeader(true);
       team.setTeamMember(teamMember);
-      */
+      
       teamService.addTeam(team);
      
       return "redirect:.";
