@@ -79,6 +79,8 @@
   
   <select id="findByEmail" resultMap="memberMap" parameterType="string">
     select
+      mbr_id,
+      user_id,
       email
     from 
       mbr
@@ -107,6 +109,16 @@
       and pwd = password(#{password})
   </select>
   
+  <select id="findByNameWithEmail" resultMap="memberMap" parameterType="member">
+    select 
+      user_id
+    from 
+      mbr
+    where 
+      name = #{name}
+      and email = #{email}
+  </select>
+
   <select id="findByKeyword" resultMap="memberMap" parameterType="string">
     <bind name="pattern1" value="'%' + _parameter + '%'"/>
     select 
