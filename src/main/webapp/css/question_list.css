@@ -16,60 +16,24 @@ body, html {
   min-height: 100%;
   padding: 0px;
   margin: 0 auto;
+   text-align: center;
 }
 
-.col-sm-2 {
-	text-align: center;
-	 
-	
-}
-
-#main_title{
-	 position:relative;
+#main-text{
+   position:relative;
   height : 230px;
-	text-align: center;
-}
-
-#main_title > h2{
-   position:relative; 
-	 top:180px;
   text-align: center;
 }
 
-
-#add_form{
-	position:relative;
-top:30px;
-border-top: solid;
+#main-text>h2{
+  position:relative; 
+   top:100px;
+  text-align: center;
 }
 
-#add{
-	margin-right: 10px;
-}
-.form-group{
-	margin-top: 30px;
+#btnbtn{
+  float: right;	
 	
 }
-
-/*글씨 진하게  */
-.col-sm-2{
-font-weight:bold;
-	
-}
-
-.hrr{
-	 border: 0;
-    height: 2px;
-    background: #ccc;
-}
-
-.btn{
-	
-	float: right;
-}
-
-
-
-
 
 

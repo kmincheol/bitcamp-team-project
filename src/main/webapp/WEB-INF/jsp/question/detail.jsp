@@ -47,8 +47,9 @@
        <div class="form-group row">
       <label for="contents" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="contents" id="contents"
-          value="${question.contents}" readonly />
+        <textarea class="form-control col-sm-13" name="contents" id="contents"
+          readonly>${question.contents}</textarea> 
+          
       </div>
     </div>
 

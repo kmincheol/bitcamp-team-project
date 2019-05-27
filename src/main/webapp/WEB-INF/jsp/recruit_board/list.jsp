@@ -5,6 +5,7 @@
 <html>
 
 <head>
+
 <title>모집게시판_list</title>
 <!-- include header.jsp -->
 <jsp:include page="../header.jsp" />

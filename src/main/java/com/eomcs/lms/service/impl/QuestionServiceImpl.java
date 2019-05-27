@@ -76,6 +76,10 @@ public class QuestionServiceImpl implements QuestionBoardService {
     // 그래도 일관된 프로그래밍을 위해 Command 객체는 항상 Service 객체를 경유하여 DAO를 사용해야 한다.
     return questionDao.insert(questionBoard);
   }
+  @Override
+  public int size() {
+    return questionDao.countAll();
+  }
 
 }
 

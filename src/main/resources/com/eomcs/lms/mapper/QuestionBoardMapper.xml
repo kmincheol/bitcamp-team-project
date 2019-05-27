@@ -139,6 +139,8 @@
     #{memberNo}
    )
   </insert>
-
+  <select id="countAll" resultType="int">
+    select count(*) from qstn;
+  </select>
   
 </mapper>

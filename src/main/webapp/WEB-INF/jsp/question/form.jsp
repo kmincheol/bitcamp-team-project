@@ -29,13 +29,26 @@
       </div>
     </div>
  <hr class="hrr">
+
     <div class="form-group row">
       <label for="title" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-        <input type="textarea" class="form-control" name="contents" id="contents" value="${question.contents}" />
+        <textarea class="form-control col-sm-13" rows="5" name="contents" id="contents" />${question.contents}
+    </textarea>
       </div>
-    
     </div>
+ <%-- 
+ <hr class="hrr">
+    
+    <div class="form-group row">
+      <label for="file_upload" class="col-sm-2 col-form-label">파일업로드</label>
+      <div class="col-sm-10">
+        <textarea class="form-control col-sm-13" rows="5" name="file_upload" id="file_upload" value="${question.contents}" />
+    </textarea>
+      </div>
+    </div> --%>
+    
+    
       <div class="form-group row">
         <div class="col-sm-12">
           <a class="btn btn-dark" href='${contextRootPath}/app/question' >취소하기</a>

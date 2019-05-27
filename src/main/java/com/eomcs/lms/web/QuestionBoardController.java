@@ -40,8 +40,7 @@ public class QuestionBoardController {
     if (pageSize < 3 || pageSize > 8)
       pageSize = 3;
 
-    // int rowCount = recruitBoardService.size();
-    int rowCount = 1;
+    int rowCount = questionBoardService.size();
     int totalPage = rowCount / pageSize;
     if (rowCount % pageSize > 0)
       totalPage++;
