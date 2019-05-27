@@ -26,7 +26,8 @@
           <li>${match.location}</li>
           <li>${match.teamTypeSports.teamSportsType}</li>
           <!-- <li>팀유형.</li> -->
-          <br><br>
+          <br>
+          <br>
         </ul>
         </c:forEach>
         </c:if>

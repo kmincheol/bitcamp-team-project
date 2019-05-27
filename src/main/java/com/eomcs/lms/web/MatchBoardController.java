@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.LocationService;
+import com.eomcs.lms.service.MatchApplyService;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
 
@@ -28,9 +30,9 @@ public class MatchBoardController {
   
   @Autowired MatchBoardService matchBoardService;
   @Autowired TeamService teamService;
-  @Autowired LocationService locationService;
+  @Autowired MatchApplyService matchApplyService;
+  @Autowired LocationService locationService; // 사실상 사용하지 않음.
   @Autowired ServletContext servletContext;
-  
 
   @GetMapping("form")
   public void form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
@@ -55,6 +57,7 @@ public class MatchBoardController {
   public String list(
         @RequestParam(defaultValue="1") int pageNo,
         @RequestParam(defaultValue="7") int pageSize,
+        HttpSession session,
         Model model) {
 
       if (pageSize < 7 || pageSize > 8)
@@ -70,6 +73,12 @@ public class MatchBoardController {
         else if (pageNo > totalPage)
           pageNo = totalPage;
         
+        if (session.getAttribute("loginUser") != null) {
+        Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
+        List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+        model.addAttribute("myteam",teames);
+        } else {
+         }
         List<Match> all = matchBoardService.search();
         List<Match> matches = matchBoardService.list(pageNo, pageSize);
         model.addAttribute("matches", matches);
@@ -113,7 +122,11 @@ public class MatchBoardController {
     return "redirect:.";
   }
   
-  // 키 참조때문에 삭제 안되면 matchtb_revise.sql 파일 참조.
+  // 키 참조때문에 삭제 안되면 matchtb_revise.sql 파일 참조. --임시
+  // 경기신청 데이터 지우고,
+  // 후기게시판 데이터 지우고,
+  // 태그 데이터 지우고
+  // 그리고 나서 매치보드 번호 삭제. 
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no) {
     
@@ -149,7 +162,20 @@ public class MatchBoardController {
     return "matchboard/sidebar";
   }
   
+  @GetMapping("{no}/submit")
+  public String submit(@PathVariable int no) {
+    Match match = matchBoardService.get(no);
+    int writeTeamNo = match.getTeamNo();
 
+    MatchApply matchApply = new MatchApply();
+    
+    matchApply.setMatchNo(match.getNo());
+    matchApply.setTeamNo(writeTeamNo);
+
+    matchApplyService.add(matchApply);
+    return "redirect:../";
+  }
+  
 //  @GetMapping("sideBar")
 //  public String sideBar() {
 //    return "matchboard/sideBar";

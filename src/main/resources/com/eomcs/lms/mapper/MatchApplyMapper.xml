@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.MatchApplyDao">
+
+  <resultMap type="matchApply" id="matchApplyMap">
+    <id column="mtch_id" property="matchNo" />
+    <id column="tm_id" property="teamNo" />
+    <result column="aply_dt" property="applyDate" />
+    <result column="aply_stat" property="applyStatus" />
+    
+    <association property="team" javaType="Team">
+     <id column="tm_id" property="teamId"/>
+     <result column="name" property="teamName"/>
+    </association>
+    
+    <association property="match" javaType="Match">
+    <id column="mtch_id" property="matchNo"/>
+    <result column="tm_id" property="teamNo"/>
+    </association>
+ </resultMap>
+
+<sql id="select1"> <!-- 모든 팀의 신청 정보를 다가져옴 -->
+   select
+    a.mtch_id,
+    t.tm_id, 
+    t.name,
+    aply_dt,
+    aply_stat
+   from
+    mtchaply a
+    left outer join tm t on a.tm_id = t.tm_id
+    left outer join mtch m on a.mtch_id = m.mtch_id
+  </sql>
+  
+  <!-- 다른팀에게 매치를 신청할 때 저장하는 용도. -->
+  <insert id="add" parameterType="matchApply">
+    insert into mtchaply(
+      mtch_id,
+      tm_id,
+      aply_dt,
+      aply_stat)
+    values(
+      #{matchNo},
+      #{teamNo},
+      #{applyDate},
+      #{applyStatus})
+  </insert>
+  
+  
+  <!-- 하나의 팀에서 모든 신청 정보를 가져올때 -->
+  <select id="findAll" resultMap="matchApplyMap" parameterType="int">
+    <include refid="select1"/>
+    where
+    mtch_id = #{value}
+  </select>
+  
+  
+  <!-- 팀에서 신청받은걸 지울때 사용 -->
+  <delete id="delete" parameterType="int">
+    delete from mtchaply
+    where mtch_id = #{no}
+  </delete>
+
+
+<!-- 매치글을 지우면 글작성 팀이 해당 매치글에서 받은 신청을 모두 삭제-->
+  <delete id="deleteAll" parameterType="int">
+    delete from mtchaply
+    where tm_id = #{no}
+  </delete>
+
+</mapper>
+
+
+
