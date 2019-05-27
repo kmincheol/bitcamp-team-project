@@ -56,34 +56,23 @@
                 <li style="display:none;">${team.teamLevel.teamLevel}</li> 
                 <li style="display:none;">${team.teamInfo}</li>
                 
-                <li  style="display:none;" id="0">${team.teamMember.teamMemberNo}</li> 
-                <li  style="display:none;"id="1">${team.teamMember.member.name}</li>
-                <li  style="display:none;"id="2">${team.teamMember.position}</li>
-                <li  style="display:none;"id="3">${team.teamMember.teamLeader}</li>  
+            <c:forEach items="${teamMembers}" var="teamMember">
+            <c:if test="${teamMember.teamMemberNo eq team.teamId}"> 
+                <li>${teamMember.member.name}</li>  
+                <li  style="display:none;">${team.teamMember.position}</li>
+                <li  style="display:none;">${team.teamMember.teamLeader}</li>  
+                </c:if>
+               </c:forEach>
                 
              </ul>   
-       
-               </c:forEach>
-          
-      <%--       <c:forEach items="${teamMembers}" var="teamMember"> 
-       <div class="tmb" style=" position: relative; width:1000px; display:none;"> 
-       <input name="teamNo" id="teamNo" style=" border:none;" readonly>    
-         <input type="text" name="teamMemberNo" id="teamMemberNo"  value='${teamMember.teamMemberNo}' style=" border:none;"readonly/>
-          <input type="text" name="name" id="name" value='${teamMember.member.name}' style="border:none;" readonly/>
-          <input type="text" name="position" id="position" value='${teamMember.position}'style="border:none;" readonly/>
-          <input type="text" name="teamLeader" id="teamLeader" value='${teamMember.teamLeader}' style="border:none;" readonly/>
-        </div>
-        </c:forEach>        --%>
-         
-         
-         
+                </c:forEach>
             </div>
     <div class="col-lg-12" id="teamInfo" style="font-size: 20px; border:1px solid gray; width:400px; padding:30px; padding-left:45px; display:none; left:32px; top:800px; position: absolute;" ></div>
-    <!-- <div class="col-lg-12" id="teamMemberInfo" style="left:450px; bottom:600px; font-size: 20px; top:30px; width:500px; display:none;"></div> -->  
+    <div class="col-lg-12" id="teamMemberInfo" style="left:450px; bottom:600px; font-size: 20px; top:30px; width:500px; display:none;"></div>  
     
-    <div class="col-lg-12" id="info" style="left:450px; bottom:600px; font-size: 20px; top:30px; width:500px; display:none;">
+    <%-- <div class="col-lg-12" id="info" style="left:450px; bottom:600px; font-size: 20px; top:30px; width:500px;">
     <jsp:include page="detail.jsp" /> 
-    </div> 
+    </div>  --%>
      
       <br><br><br><br>
 <!-- </div> -->
@@ -115,7 +104,7 @@
     
     var photo = $(this).attr('src');
     
-     console.log("팀원 : "+div.val()); 
+      console.log("팀원 : "+div.text());
      
     var no = li.eq(0).text();
     var teamEmblemPhoto = photo;
@@ -127,19 +116,10 @@
     var teamLev = li.eq(7).text();
     var teamInfo = li.eq(8).text();
     
-    
-/*     var tmNo = no;
-    var tmbNo = $('#teamMemberNo').val();
-    var name = $('#name').val();
-    var position = $('#position').val();
-    var leader = $('#teamLeader').val(); */
-    
-    
     var tmNo = no;
-    var tmbNo = li.eq(9).text();
-    var name = li.eq(10).text();
-    var position = li.eq(11).text();
-    var leader = li.eq(12).text(); 
+    var name = li.eq(9).text();
+    var position = li.eq(10).text();
+    var leader = li.eq(11).text(); 
     
     // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
     li.each(function(i){   
@@ -149,21 +129,19 @@
        divli.each(function(i) {   
       divArr.push(divli.eq(i).val());
     });   
-         $(document).ready(function() {
+             $(document).ready(function() {
          $('#list_table').append(
            $('<tr>').append(
-             $('<td>').append(no),
-             $('<td>').append(tmbNo),
+             $('<td>').append(tmNo),
              $('<td>').append(name),
              $('<td>').append(position),
              $('<td>').append(leader)
-             /* $('<td>').append($('#position').val()),
-             $('<td>').append($('#teamLeader').val()), */
            )
          );
-       }); 
-
-       str2 +=      "<table border='1' id='list_table'>" +
+       });     
+           
+       str2 +=      
+         "<table border='1' id='list_table'>" +
        "<colgroup>"+
          "<col style='width:70px;'>"+ 
          "<col style='width:200px;'>" +
@@ -173,22 +151,24 @@
        "<thead>" +
          "<tr>"+
            "<th>팀번호</th>"+
-           "<th>팀원번호</th>"+
            "<th>이름</th>"+
            "<th>포지션</th>"+
            "<th>리더</th>"+
          "</tr>"+
        "</thead>"+
-       "<tbody>"+
+        "<tbody>"+
+         "<c:forEach items='${teamMembers}' var='teamMember'>"
+         "<c:if test='${teamMember.teamMemberNo eq team.teamId}'>"   
          "<tr>"+
-           "<td>" + tmNo + "</td>"+
-           "<td>" + tmbNo + "</td>"+
-           "<td>" + name + "</td>"+
-           "<td>" + position + "</td>"+
-           "<td>" + leader + "</td>"+
-         "</tr>"+
+           "<td>" + ${teamMember.teamMemberNo} + "</td>"+
+           "<td>" + ${teamMember.member.name} + "</td>"+
+           "<td>" + ${teamMember.position} + "</td>"+
+           "<td>" + ${teamMember.teamLeader} + "</td>"+
+         "</tr>"+ 
+          "</c:if>"
+         "</c:forEach>" 
        "</tbody>"+
-     "</table>"; 
+     "</table>" ; 
        
      str +=  " <div style='display:none;'> <b>팀번호</b> : "+ no + "</div>" +
         "<div><img src=" + teamEmblemPhoto + " style='width:300px; height:300px;'></div>" + 
@@ -200,6 +180,11 @@
         "<div style='margin:5px;'> <b>연령대</b> :" + teamAges + "</div>" +
         "<div style='margin:5px;'> <b>팀실력 </b> :" + teamLev + "</div>" +  
         "<div style='margin:5px;'> <b>팀소개 </b> :" + teamInfo + "</div>" ; 
+        
+     /*    str2 +=  " <div> <b>팀원번호</b> : "+ tmNo + "</div>" +
+        "<div style='margin:5px;'> <b>이름</b> :" + name + "</div>" + 
+        "<div style='margin:5px;'> <b>포지션</b> :" + position + "</div>" +
+        "<div style='margin:5px;'> <b>리더</b> :" + leader + "</div>"; */
     
     $("#teamInfo").html(str);  
     $('#teamMemberInfo').html(str2); 

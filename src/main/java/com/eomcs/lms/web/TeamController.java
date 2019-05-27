@@ -42,12 +42,6 @@ public class TeamController {
     List<Team> teams = teamService.teamList1();
     List<TeamMember> teamMembers = teamService.teamMemberList();
     
-    Team team = new Team();
-    TeamMember teamMember = new TeamMember();
-    team.setMember(teamMember.getMember());
-    
-    teams.add(team);
-    
     model.addAttribute("teams", teams);
      model.addAttribute("teamMembers", teamMembers); // 멤버만 따로 뽑기 위함 지금은 안씀
      
