@@ -11,7 +11,8 @@
         <label for="content">답변</label>
         <form name="commentInsertForm">
             <div class="input-group">
-               <input type="text" class="form-control" id="content" name="content" value="${answer.contents}" readonly>
+               <textarea class="form-control col-sm-13" rows="5" id="content" name="content" 
+                readonly>${answer.contents}</textarea>
             </div>
         </form>
     </div>

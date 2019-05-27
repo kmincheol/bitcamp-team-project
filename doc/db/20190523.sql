@@ -157,9 +157,8 @@ ALTER TABLE tm
 CREATE TABLE qstn (
   qstn_id   INTEGER(30)  NOT NULL COMMENT '질문게시판번호', -- 질문게시판번호
   mbr_id    INTEGER(30)  NULL     COMMENT '회원번호', -- 회원번호
-  titl      VARCHAR(50)  NOT NULL COMMENT '제목', -- 제목
+  titl      VARCHAR(50)  NULL COMMENT '제목', -- 제목
   cont      MEDIUMTEXT   NOT NULL COMMENT '내용', -- 내용
-  qstn_type VARCHAR(255) NOT NULL COMMENT '문의유형', -- 문의유형
   ans_stat  BOOLEAN      NULL     DEFAULT 0 COMMENT '답변상태', -- 답변상태
   cdt       DATETIME     NULL     DEFAULT now() COMMENT '작성일' -- 작성일
 )
@@ -475,7 +474,7 @@ ALTER TABLE tm_lev
 CREATE TABLE ans (
   ans_id  INTEGER(30) NOT NULL COMMENT '답변번호', -- 답변번호
   qstn_id INTEGER(30) NOT NULL COMMENT '질문게시판번호', -- 질문게시판번호
-  titl    VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
+  titl    VARCHAR(50)  NULL COMMENT '제목', -- 제목
   cont    MEDIUMTEXT  NOT NULL COMMENT '답변', -- 답변
   ans_dt  DATETIME    NULL     DEFAULT now() COMMENT '답변일' -- 답변일
 )

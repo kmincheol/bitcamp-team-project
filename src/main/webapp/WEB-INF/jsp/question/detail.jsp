@@ -47,8 +47,9 @@
        <div class="form-group row">
       <label for="contents" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="contents" id="contents"
-          value="${question.contents}" readonly />
+        <textarea class="form-control col-sm-13" name="contents" id="contents"
+          readonly>${question.contents}</textarea> 
+          
       </div>
     </div>
 
@@ -60,7 +61,7 @@
       </div>
        <c:choose>
           <c:when test="${fn:length(answer.contents) == 0}"> <button id="answer_Btn" class="btn btn-dark" onclick="button1_click();">답변하기</button> </c:when>
-          <c:otherwise> <button id="answerModify_Btn" onclick="button2_click();">답변수정</button></c:otherwise>
+          <c:otherwise> <button  class="btn btn-dark" id="answerModify_Btn" onclick="button2_click();">답변수정</button></c:otherwise>
         </c:choose>
       
         
@@ -82,7 +83,7 @@
     </div>
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="add_Answer_Btn" class="btn btn-primary" >등록</button>
+          <button id="add_Answer_Btn" class="btn btn-dark" >등록</button>
           <a class="btn btn-dark" href='${contextRootPath}/app/question'>목록</a>
         </div>
       </div>
@@ -107,7 +108,7 @@
       <div class="form-group row">
         <div class="col-sm-10">
           <button id="modify_button" class="btn btn-dark" onclick="button3_click();">수정</button>
-          <a class="btn btn-primary" href='delete2/${answer.answerNo}'>삭제</a> 
+          <a class="btn btn-dark" href='delete2/${answer.answerNo}'>삭제</a> 
         </div>
       </div>
     </form>
@@ -133,7 +134,7 @@ function button2_click(){
 function add_check(){
   	var theForm = $('#anwerContents').val();
 	 if(theForm == ""){
-		 alert("빈값입니다.") ;
+		 alert("내용을 입력해주세요.") ;
 		  return false;
 	 }
 }
@@ -141,7 +142,7 @@ function add_check(){
 function add_Modify_check(){
     var theForm = $('#modify_contents').val();
    if(theForm == ""){
-     alert("빈값입니다.") ;
+     alert("내용을 입력해주세요.") ;
       return false;
    }
 }

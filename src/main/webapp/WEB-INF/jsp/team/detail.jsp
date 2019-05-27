@@ -1,4 +1,6 @@
 <%@page import="com.eomcs.lms.domain.Team"%>
+<%@page import="com.eomcs.lms.domain.Member"%>
+<%@page import="com.eomcs.lms.domain.TeamMember"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -79,7 +81,7 @@
               </div>
   </div>
   </div>  --%>
-  
+  <div class="teamMember">
   <table border="1" id="list_table">
   <colgroup>
     <!-- column 의 설정을 할수 있다. -->
@@ -99,7 +101,9 @@
   </thead>
   <tbody>
   <c:forEach items="${teamMembers}" var="teamMember"> 
+
     <tr>
+    <%-- <td><%=no%></td> --%>
       <td>${teamMember.teamMemberNo}</td>
       <td>${teamMember.member.name}</td>
       <td>${teamMember.position}</td>
@@ -108,6 +112,7 @@
         </c:forEach>
   </tbody>
 </table>
+</div>
   
   
       <!-- style="width:1000px; left:500px; bottom:500px; position: relative;" -->

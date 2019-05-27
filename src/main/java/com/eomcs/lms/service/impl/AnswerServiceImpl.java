@@ -51,6 +51,10 @@ public class AnswerServiceImpl implements AnswerBoardService {
   public int delete(int no) {
     return answerDao.delete(no);
   }
+  @Override
+  public int deleteq(int no) {
+    return answerDao.deleteq(no);
+  }
 
   
 //  

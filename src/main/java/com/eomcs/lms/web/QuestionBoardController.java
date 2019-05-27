@@ -40,8 +40,7 @@ public class QuestionBoardController {
     if (pageSize < 3 || pageSize > 8)
       pageSize = 3;
 
-    // int rowCount = recruitBoardService.size();
-    int rowCount = 1;
+    int rowCount = questionBoardService.size();
     int totalPage = rowCount / pageSize;
     if (rowCount % pageSize > 0)
       totalPage++;
@@ -51,11 +50,14 @@ public class QuestionBoardController {
     if (pageNo < 1)
       pageNo = 1;
 
+      Member member = (Member) session.getAttribute("loginUser");
+        
     List<QuestionBoard> question = questionBoardService.list(pageNo, pageSize);
     List<AnswerBoard> answer = answerBoardService.list();
-    System.out.println("aaaa" + question);
+   
     model.addAttribute("question", question);
     model.addAttribute("answer", answer);
+    model.addAttribute("aa", member);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
     model.addAttribute("totalPage", totalPage);
@@ -87,7 +89,9 @@ public class QuestionBoardController {
     
     Member member = (Member) session.getAttribute("loginUser");
     
-    
+    question.setQuestionStatus(true);
+    questionBoardService.update22(question);
+
     answerBoardService.add(answerBoard);
     
     return "redirect:.";
@@ -101,6 +105,12 @@ public class QuestionBoardController {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     }
     return "redirect:./";
+  }
+  @GetMapping("delete/{no}") 
+  public String delete(@PathVariable int no) {
+     answerBoardService.deleteq(no);
+    if (questionBoardService.delete(no) == 0) throw new RuntimeException("해당 번호의 게시물이 없습니다.");
+    return "redirect:../";
   }
   
   @GetMapping("delete2/{no}") 
@@ -119,11 +129,13 @@ public class QuestionBoardController {
     return "question/detail"; 
   }
   
-  @GetMapping("delete/{no}") 
-  public String delete(@PathVariable int no) {
-    if (questionBoardService.delete(no) == 0) throw new RuntimeException("해당 번호의 게시물이 없습니다.");
-    return "redirect:../";
+  @GetMapping("mylist/{no}") 
+  public String mylist(@PathVariable int no, Model model ) { 
+    List<QuestionBoard> question = questionBoardService.get2(no); 
+    model.addAttribute("question", question);
+    return "question/mylist"; 
   }
+  
 
   @GetMapping("update/{no}")
   public String detailUpdate(@PathVariable int no, Model model) {

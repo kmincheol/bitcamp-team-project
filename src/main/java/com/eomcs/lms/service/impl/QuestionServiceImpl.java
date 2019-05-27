@@ -33,7 +33,14 @@ public class QuestionServiceImpl implements QuestionBoardService {
   public QuestionBoard get(int no) {
     QuestionBoard question = questionDao.findByNo(no);
     if (question != null) {
-//      questionDao.increaseCount(no);
+    }
+    return question;
+  }
+  
+  @Override
+  public List<QuestionBoard> get2(int no) {
+    List<QuestionBoard> question = questionDao.myfindByNo(no);
+    if (question != null) {
     }
     return question;
   }
@@ -50,6 +57,13 @@ public class QuestionServiceImpl implements QuestionBoardService {
     // 그냥 DAO를 실행시키고 리턴 값을 그대로 전달한다.
     return questionDao.update(questionBoard);
   }
+  
+  @Override
+  public int update22(QuestionBoard questionBoard) {
+    // 이 메서드도 별로 할 일이 없다.
+    // 그냥 DAO를 실행시키고 리턴 값을 그대로 전달한다.
+    return questionDao.update22(questionBoard);
+  }
 
   @Override
   public QuestionBoard getUpdate(int no) {
@@ -61,6 +75,10 @@ public class QuestionServiceImpl implements QuestionBoardService {
     // 이 메서드도 하는 일이 없다.
     // 그래도 일관된 프로그래밍을 위해 Command 객체는 항상 Service 객체를 경유하여 DAO를 사용해야 한다.
     return questionDao.insert(questionBoard);
+  }
+  @Override
+  public int size() {
+    return questionDao.countAll();
   }
 
 }

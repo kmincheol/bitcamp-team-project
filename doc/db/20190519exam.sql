@@ -299,6 +299,10 @@ insert into qstn(qstn_id,mbr_id,titl,cont)
 values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.');
 insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont)
 values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(5,2,'비밀번호변경','비밀번호가 안 바뀌네요.');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(6,2,'비밀번호변경','비밀번호가 안 바뀌네요.');
 
 -- 답변데이터
 insert into ans(ans_id,qstn_id,titl,cont)

@@ -27,31 +27,6 @@
     
   </resultMap>
  
-<!--  
-
-<resultMap type="Team" id="team">
-
-    <id column="tm_id" property="teamId" />
-    <result column="area" property="teamArea" />
-    <result column="name" property="teamName" />
-
-    <association property="teamTypeSports" javaType="teamTypeSports">
-      <id column="spt_clsf_id" property="teamSportsTypeId" />
-      <result column="spt_clsf_name" property="teamSportsType" />
-    </association>
-
-    <association property="teamMember" javaType="TeamMember">
-      <id column="tm_mbr_id" property="teamMember_id" />
-    </association>
-
-    <association property="member" javaType="Member">
-      <id column="mbr_id" property="no" />
-      <result column="user_id" property="id" />
-    </association>
-
-  </resultMap>
-
- -->
 
   <select id="findAll" resultMap="questionMap" parameterType="map">
   select
@@ -72,7 +47,23 @@
   </select>
 
   <select id="findByNo" resultMap="questionMap" parameterType="int">
- 
+ select
+    qstn_id,
+    titl,
+    cont,
+    ans_stat,
+    q.cdt,
+    name
+ from
+    qstn q
+    left outer join mbr m on q.mbr_id = m.mbr_id
+    
+ where
+    q.qstn_id =
+    #{questionNo};
+  </select>
+  
+    <select id="myfindByNo" resultMap="questionMap" parameterType="int">
  select
     qstn_id,
     titl,
@@ -84,8 +75,7 @@
     qstn q
     left outer join mbr m on q.mbr_id = m.mbr_id
  where
-    q.qstn_id =
-    #{questionNo};
+    q.mbr_id = #{memberNo};
   </select>
   
   <delete id="delete" parameterType="int">
@@ -119,10 +109,22 @@
     qstn
  set
     titl = #{title},
-    cont = #{contents}
+    cont = #{contents},
+    ans_stat = #{questionStatus}
  where
     qstn_id = #{questionNo};
   </update>
+  
+  <update id="update22" parameterType="questionBoard">
+  update
+    qstn
+ set
+    ans_stat = #{questionStatus}
+ where
+    qstn_id = #{questionNo};
+  </update>
+  
+  
   
   <insert id="insert" parameterType="questionBoard" useGeneratedKeys="true" keyColumn="qstn_id"
     keyProperty="questionNo">
@@ -137,7 +139,8 @@
     #{memberNo}
    )
   </insert>
-
-
+  <select id="countAll" resultType="int">
+    select count(*) from qstn;
+  </select>
   
 </mapper>

@@ -293,14 +293,14 @@ insert into cmt(cmt_id,free_id,mbr_id,pcd,lev,cont)
 values(18,2,1,3,2,'빠이');
 
 -- 질문데이터
-insert into qstn(qstn_id,mbr_id,titl,cont,qstn_type)
-values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.','회원정보');
-insert into qstn(qstn_id,mbr_id,titl,cont,qstn_type)
-values(2,2,'상대팀이 안오네요','징계 좀 먹여줘요.','경기');
-insert into qstn(qstn_id,mbr_id,titl,cont,qstn_type)
-values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.','기타');
-insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,qstn_type)
-values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.','기타');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(2,2,'상대팀이 안오네요','징계 좀 먹여줘요.');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.');
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont)
+values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.');
 
 -- 답변데이터
 insert into ans(ans_id,qstn_id,titl,cont)
