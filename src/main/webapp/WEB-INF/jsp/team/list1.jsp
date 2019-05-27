@@ -70,8 +70,8 @@
                 </c:forEach>
             </div>
     <div class="col-lg-12" id="teamInfo" style="font-size: 20px; border:1px solid gray; width:400px; padding:30px; padding-left:45px; display:none; left:36px; top:740px; position: absolute;" ></div>
-    <div class="col-lg-12" id="teamMemberInfo" style="left:430px; bottom:600px; font-size: 20px; top:0px; width:450px; height:675px; border:1px solid gray; margin:30px; display:none; ">
-    <div style="text-align:center;"> <h2> 팀원 정보 </h2></div>
+    <div class="col-lg-12" id="teamMemberInfo" style="left:430px; bottom:600px; font-size: 25px; top:0px; width:450px; height:675px; border:1px solid gray; margin:30px; display:none;">
+    <div style="text-align:center; top:25px; position:relative;"> <h2> 팀원 정보 </h2></div>
        <div id="finallist"></div> 
     </div>  
     
@@ -112,17 +112,16 @@
     var teamInfo = li.eq(8).text();
   
     var tmNo = no;
+    var size = $('.mbrlist').length;
+    for (var i = 9; i < size; i++){
+    var mbrName = li.eq(i).children('.mbrName').text();
+    var mbrPosition = li.eq(i).children('.mbrPosition').text();
+    var mbrLeader = li.eq(i).children('.mbrLeader').text(); 
     
-    for (var i = 9; i < 30; i++ ){
-    var mbr1 = li.eq(i).text();
-    /* var mbr2 = li.eq(10).text();
-    var mbr3 = li.eq(11).text();
-    var mbr4 = li.eq(12).text(); */
-    console.log(mbr1);
     li.each(function(i){   
       liArr.push(li.eq(i).text());
     });
-    
+   
     
     /* $('.list').append(
         $('<p>').append(mbr1)); */
@@ -158,11 +157,13 @@
      str2 +=  "<div class='list' style='top:50px; position:relative; text-align:center;'> <div style='display:none;'>" +
      "<b>팀번호</b> : "+ no + "</div>" +
      /* "<p>팀원    &nbsp;  포지션   &nbsp;    리더</p>" +   */
-     "<div style='margin:5px;'>" + mbr1 + "&nbsp;&nbsp;</div></div>" ; 
+     "<span style='margin:30px; text-align:center;'>" + mbrName + "</span>" +
+     "<span style='margin:30px; text-align:center;'>" + mbrPosition + "</span>" +
+     "<span style='margin:30px; text-align:center;'>" + mbrLeader + "</span></div>"; 
 /*      "<div style='margin:5px;'>" + mbr2 + "&nbsp;&nbsp;</div>"+
      "<div style='margin:5px;'>" + mbr3 + "&nbsp;&nbsp;</div>" +
      "<div style='margin:5px;'>" + mbr4 + "&nbsp;&nbsp;</div>" ; */
-   
+    };
     /*  $(document).ready(function() {
        $('#list_table').append(
         $('<tr>').append(
@@ -173,7 +174,6 @@
         )
       ); 
        });       */ 
-    }; 
      str +=  " <div style='display:none;'> <b>팀번호</b> : "+ no + "</div>" +
         "<div><img src=" + teamEmblemPhoto + " style='width:300px; height:300px;'></div>" + 
         "<hr><br>" +  
