@@ -44,7 +44,7 @@
               <li style="display:none;" id='teamId'>${team.teamId}</li>   
                <li> 
                <div class="hover01 column"> 
-                <figure id="picture"><img src = '${team.teamEmblemPhoto}' 
+                <figure id="picture"><img src = '${team.teamEmblemPhoto}' onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'"
                 class="detailbtn" style="width:100px; height:100px;"></figure>
                 </div>
                 </li>
@@ -58,24 +58,26 @@
                 
             <c:forEach items="${teamMembers}" var="teamMember">
             <c:if test="${teamMember.teamMemberNo eq team.teamId}"> 
-                <li>${teamMember.member.name}</li>  
-                <li  style="display:none;">${team.teamMember.position}</li>
-                <li  style="display:none;">${team.teamMember.teamLeader}</li>  
+            <ul class="mbrlist">
+                <li class="mbrName" id="mbrName" style="display:none;">${teamMember.member.name}</li>    
+                <li  class="mbrPosition" style="display:none;" >${teamMember.position}</li>
+                <li  class="mbrLeader" style="display:none;">${teamMember.teamLeader}</li>  
+              </ul>
                 </c:if>
                </c:forEach>
                 
              </ul>   
                 </c:forEach>
             </div>
-    <div class="col-lg-12" id="teamInfo" style="font-size: 20px; border:1px solid gray; width:400px; padding:30px; padding-left:45px; display:none; left:32px; top:800px; position: absolute;" ></div>
-    <div class="col-lg-12" id="teamMemberInfo" style="left:450px; bottom:600px; font-size: 20px; top:30px; width:500px; display:none;"></div>  
+    <div class="col-lg-12" id="teamInfo" style="font-size: 20px; border:1px solid gray; width:400px; padding:30px; padding-left:45px; display:none; left:36px; top:740px; position: absolute;" ></div>
+    <div class="col-lg-12" id="teamMemberInfo" style="left:430px; bottom:600px; font-size: 20px; top:0px; width:450px; height:675px; border:1px solid gray; margin:30px; display:none; ">
+    <div style="text-align:center;"> <h2> 팀원 정보 </h2></div>
+       <div id="finallist"></div> 
+    </div>  
     
-    <%-- <div class="col-lg-12" id="info" style="left:450px; bottom:600px; font-size: 20px; top:30px; width:500px;">
-    <jsp:include page="detail.jsp" /> 
-    </div>  --%>
      
       <br><br><br><br>
-<!-- </div> -->
+ </div> 
 
   <jsp:include page="../javascript.jsp" />  
   
@@ -83,29 +85,22 @@
  
   $(".detailbtn").click(function(){ 
     
-    /* $("#info").load('detail.jsp', $('#teamId')); */
-    
     $("#teamInfo").show();
-    $("#info").show();
     $("#teamMemberInfo").show();
     
     var str = ""
     var str2 = ""  
-    var divArr = new Array(); 
+    
     var liArr = new Array();  
+    var liArrLength = liArr.length;
     
     var detailbtn = $(this);
-    
-    var div = $(".tmb");
-    var divli = div.children();  
     
     var ul = detailbtn.parent().parent().parent().parent();
     var li = ul.children();
     
     var photo = $(this).attr('src');
     
-      console.log("팀원 : "+div.text());
-     
     var no = li.eq(0).text();
     var teamEmblemPhoto = photo;
     var teamName = li.eq(2).text();
@@ -115,32 +110,26 @@
     var teamAges = li.eq(6).text();
     var teamLev = li.eq(7).text();
     var teamInfo = li.eq(8).text();
-    
+  
     var tmNo = no;
-    var name = li.eq(9).text();
-    var position = li.eq(10).text();
-    var leader = li.eq(11).text(); 
     
-    // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+    for (var i = 9; i < 30; i++ ){
+    var mbr1 = li.eq(i).text();
+    /* var mbr2 = li.eq(10).text();
+    var mbr3 = li.eq(11).text();
+    var mbr4 = li.eq(12).text(); */
+    console.log(mbr1);
     li.each(function(i){   
       liArr.push(li.eq(i).text());
     });
     
-       divli.each(function(i) {   
-      divArr.push(divli.eq(i).val());
-    });   
-             $(document).ready(function() {
-         $('#list_table').append(
-           $('<tr>').append(
-             $('<td>').append(tmNo),
-             $('<td>').append(name),
-             $('<td>').append(position),
-             $('<td>').append(leader)
-           )
-         );
-       });     
+    
+    /* $('.list').append(
+        $('<p>').append(mbr1)); */
+    
+        
            
-       str2 +=      
+  /*      str2 +=      
          "<table border='1' id='list_table'>" +
        "<colgroup>"+
          "<col style='width:70px;'>"+ 
@@ -156,20 +145,35 @@
            "<th>리더</th>"+
          "</tr>"+
        "</thead>"+
-        "<tbody>"+
-         "<c:forEach items='${teamMembers}' var='teamMember'>"
-         "<c:if test='${teamMember.teamMemberNo eq team.teamId}'>"   
+         "<tbody>"+
          "<tr>"+
-           "<td>" + ${teamMember.teamMemberNo} + "</td>"+
-           "<td>" + ${teamMember.member.name} + "</td>"+
-           "<td>" + ${teamMember.position} + "</td>"+
-           "<td>" + ${teamMember.teamLeader} + "</td>"+
-         "</tr>"+ 
-          "</c:if>"
-         "</c:forEach>" 
-       "</tbody>"+
-     "</table>" ; 
-       
+           "<td>" + tmNo + "</td>"+
+           "<td>" + name + "</td>"+
+           "<td>" + position + "</td>"+
+           "<td>" + leader + "</td>"+
+         "</tr>"+  
+       "</tbody>"+  
+     "</table>" ;  */
+     
+     str2 +=  "<div class='list' style='top:50px; position:relative; text-align:center;'> <div style='display:none;'>" +
+     "<b>팀번호</b> : "+ no + "</div>" +
+     /* "<p>팀원    &nbsp;  포지션   &nbsp;    리더</p>" +   */
+     "<div style='margin:5px;'>" + mbr1 + "&nbsp;&nbsp;</div></div>" ; 
+/*      "<div style='margin:5px;'>" + mbr2 + "&nbsp;&nbsp;</div>"+
+     "<div style='margin:5px;'>" + mbr3 + "&nbsp;&nbsp;</div>" +
+     "<div style='margin:5px;'>" + mbr4 + "&nbsp;&nbsp;</div>" ; */
+   
+    /*  $(document).ready(function() {
+       $('#list_table').append(
+        $('<tr>').append(
+          $('<td>').append(no),
+          $('<td>').append(name),
+          $('<td>').append(position),
+          $('<td>').append(leader)
+        )
+      ); 
+       });       */ 
+    }; 
      str +=  " <div style='display:none;'> <b>팀번호</b> : "+ no + "</div>" +
         "<div><img src=" + teamEmblemPhoto + " style='width:300px; height:300px;'></div>" + 
         "<hr><br>" +  
@@ -181,13 +185,8 @@
         "<div style='margin:5px;'> <b>팀실력 </b> :" + teamLev + "</div>" +  
         "<div style='margin:5px;'> <b>팀소개 </b> :" + teamInfo + "</div>" ; 
         
-     /*    str2 +=  " <div> <b>팀원번호</b> : "+ tmNo + "</div>" +
-        "<div style='margin:5px;'> <b>이름</b> :" + name + "</div>" + 
-        "<div style='margin:5px;'> <b>포지션</b> :" + position + "</div>" +
-        "<div style='margin:5px;'> <b>리더</b> :" + leader + "</div>"; */
-    
     $("#teamInfo").html(str);  
-    $('#teamMemberInfo').html(str2); 
+    $('#finallist').html(str2); 
   });
   </script>
 </body>

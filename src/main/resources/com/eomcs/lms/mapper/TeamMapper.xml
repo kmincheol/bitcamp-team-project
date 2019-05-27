@@ -148,7 +148,7 @@
     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
-    left outer join mbr m on t.tm_id = m.mbr_id
+    left outer join mbr m on tmb.tm_mbr_id = m.mbr_id
   </select> 
 
 <!-- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
