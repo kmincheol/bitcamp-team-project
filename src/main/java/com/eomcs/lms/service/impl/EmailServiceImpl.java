@@ -16,10 +16,6 @@ public class EmailServiceImpl implements EmailService{
   private static final Logger logger = LogManager.getLogger(EmailServiceImpl.class);
 
   @Autowired JavaMailSender mailSender;
-//  
-//  public EmailServiceImpl(JavaMailSender javaMailSender) {
-//    this.javaMailSender = javaMailSender;
-//  }
   
   @Override
   public boolean send(String subject, String text, String from, String to) {

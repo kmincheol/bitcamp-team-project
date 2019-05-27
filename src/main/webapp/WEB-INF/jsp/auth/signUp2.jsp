@@ -6,7 +6,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>회원가입(정보기입)</title>
+  <title>회원정보입력</title>
   <jsp:include page="../commonCss.jsp"/>
   <link rel="stylesheet" href="${contextRootPath}/css/signUp2.css">
 </head>
@@ -214,8 +214,7 @@
           </div><!-- .join_form_right -->
         </div><!-- .join_form -->
         <div class="btn_area">
-          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin"
-                  type="button">가입하기</button>
+          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin" type="button">가입하기</button>
         </div><!-- .btn_area -->
       </form><!-- #join_form-->
     </div><!-- .join_content -->
@@ -326,10 +325,6 @@ $(document).ready(function() {
     checkEmail();
   }, 500));
 
-  $('#phoneNo').keyup(debounce(function() {
-    checkPhoneNo();
-  }, 500));
-
   $('#btnSend').click(function() {
     sendEmail();
     return false;
@@ -344,6 +339,10 @@ $(document).ready(function() {
     checkAuthnoByAjax();
     return false;
   });
+
+  $('#phoneNo').keyup(debounce(function() {
+    checkPhoneNo();
+  }, 500));
 
   $('#addressBtn').click(function() {
    execPostCode();
@@ -769,18 +768,6 @@ function isValidPasswd(str) {
 
   return true;
 }
-/*
-function showCheckImgByStep(oImg, step) {
-  
-  if (step == 0) { // 불일치
-    oImg.attr("class", "ps_box int_pass_check2 discord");
-  } else if (step == 1) { // 일치
-    oImg.attr("class", "ps_box int_pass_check");
-  } else { // 기본, step == 2로 설정 추천
-    oImg.attr("class", "ps_box int_pass discord");
-  }
-}
-*/
 
 function checkSpace(str) {
   if (str.search(/\s/) != -1) {
@@ -882,7 +869,7 @@ function checkName() {
     return false
   }
   if (name != "" && nonchar.test(name)) {
-    showErrorMsg(oMsg, "한글과 알파벳 대 소문자를 사용하세요.<br> 특수기호와 공백은 사용할 수 없습니다.");
+    showErrorMsg(oMsg, "한글과 알파벳 대 소문자를 사용하세요.<br>특수기호와 공백은 사용할 수 없습니다.");
     showErrorBoxByError(oImg);
     return false;
   }

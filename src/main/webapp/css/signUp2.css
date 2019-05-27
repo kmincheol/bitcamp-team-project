@@ -138,6 +138,7 @@ body {
   color:#000;
   border:none;
   border-radius:0;
+  background-color: #fff;
   *height:auto;
   *margin-top:3px;
   -webkit-appearance:none
@@ -147,10 +148,6 @@ html[lang=ko] #header .lang .sel {
 }
 .join_sex {
   overflow:hidden
-}
-.join_email .terms_choice {
-  font-size:12px;
-  font-weight:400
 }
 .ps_box.focus {
 	border:solid 1px #08a600
@@ -297,14 +294,6 @@ html[lang=ko] #header .lang .sel {
   top:1px;
   right:38px;
   font-size:12px
-}
-.input_code {
-  position:absolute;
-  top:1px;
-  right:10px;
-  background:0 0;
-  font-size:12px;
-  z-index:10
 }
 .emailBtn {
   display: inline-block;

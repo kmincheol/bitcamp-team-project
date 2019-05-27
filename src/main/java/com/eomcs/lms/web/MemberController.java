@@ -1,7 +1,10 @@
 package com.eomcs.lms.web;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
@@ -49,8 +52,7 @@ public class MemberController {
     int authType = 0;
     switch(type) {
       case "join" : authType = 1; break;
-      case "email" : authType = 2; break;
-      case "password" : authType = 3; break;
+      case "password" : authType = 2; break;
       default: break;
     }
     if (authType == 0) {
@@ -79,15 +81,20 @@ public class MemberController {
     String joinCode = String.valueOf(randomCode);
     String email = (String) content.get("email");
     String type = (String) content.get("type");
-    String subject = "BATTLE MATCHING 회원가입에 사용하실 이메일 인증 번호입니다.";
+    String subject = null;
 
     AuthKey authKey = new AuthKey();
     authKey.setEmail(email);
     int authType = 0;
     switch(type) {
-      case "join" : authType = 1; break;
-      case "email" : authType = 2; break;
-      case "password" : authType = 3; break;
+      case "join" : 
+        authType = 1; 
+        subject = "BATTLE MATCHING 회원가입에 사용하실 이메일 인증 번호입니다."; 
+        break;
+      case "password" : 
+        authType = 2; 
+        subject = "BATTLE MATCHING 비밀번호 찾기에 사용하실 이메일 인증 번호입니다."; 
+        break;
       default: break;
     }
     authKey.setType(authType);
@@ -95,13 +102,39 @@ public class MemberController {
 
     StringBuilder sb = new StringBuilder();
     sb.append("이메일 인증 승인 번호는 ").append(joinCode).append(" 입니다. 인증번호 6자리를 모두 입력해주세요.");
-    if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
-      if (authKeyService.add(authKey) != 0) {
+    if (authKeyService.add(authKey) != 0) {
+      if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
         return "send" + 1;      
       }
-      return "send" + 0;
-    } else {
       return "send" + 2;
+    } else {
+      return "send" + 0;
+    }
+  }
+  
+  @GetMapping(value="sendPwdEmail", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  private String sendPwdEmail(String email) throws UnsupportedEncodingException {
+
+    String tempPwd = UUID.randomUUID().toString().replaceAll("-", ""); 
+    tempPwd = tempPwd.substring(0, 10); 
+    String subject = "BATTLE MATCHING에서 발급한 임시비밀번호입니다.";
+    StringBuilder sb = new StringBuilder();
+    Member member = memberService.get(email);
+    member.setPassword(tempPwd);
+    
+    sb.append("임시비밀번호는 ")
+       .append(tempPwd)
+       .append(" 입니다. 로그인하시고 마이페이지에서 비밀번호를 변경해주시길 바랍니다.");
+    
+    if (memberService.updatePassword(member) != 0) {
+      if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
+        return "pwdSend" + 1;
+      } else {
+        return "pwdSend" + 2;
+      }
+    } else {
+      return "PwdSend" + 0;
     }
   }
 
@@ -120,8 +153,7 @@ public class MemberController {
     int authType = 0;
     switch(type) {
       case "join" : authType = 1; break;
-      case "email" : authType = 2; break;
-      case "password" : authType = 3; break;
+      case "password" : authType = 2; break;
       default: break;
     }
     authKey.setType(authType);
@@ -141,6 +173,24 @@ public class MemberController {
       return "checkId" + 0;
     } else {
       return "checkId" + 1;
+    }
+  }
+  
+  @GetMapping(value="findId", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  private String findId(String email, String name) {
+    
+    Member member = new Member();
+    member.setName(name);
+    member.setEmail(email);
+    
+    member = memberService.findId(member);
+    
+    if (member != null) {
+      String userId = member.getId();
+      return "findId" + 0 + userId;
+    } else {
+      return "findId" + 1;
     }
   }
 

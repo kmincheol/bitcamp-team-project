@@ -6,7 +6,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>회원가입(약관동의)</title>
+  <title>약관동의</title>
   <jsp:include page="../commonCss.jsp"/>
   <link rel="stylesheet" href="${contextRootPath}/css/signUp1.css">
 </head>
@@ -16,13 +16,13 @@
 
 <div id="container">
   <div id="content">
-  <h1>스포츠 매칭 <strong>홈페이지</strong> 방문을 환영합니다.</h1>
+    <h1>스포츠 매칭 <strong>홈페이지</strong> 방문을 환영합니다.</h1>
             
     <div class="join_step"><!-- step단계표현 -->
       <img src="../../images/signUp1.png">
     </div>
 
-  <hr class="hrblack"/>
+    <hr class="hrblack"/>
 
     <div class="join_content">
       <div class="join_form">
