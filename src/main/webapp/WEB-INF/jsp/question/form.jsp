@@ -32,7 +32,7 @@
     <div class="form-group row">
       <label for="title" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="contents" id="contents" value="${question.contents}" />
+        <input type="textarea" class="form-control" name="contents" id="contents" value="${question.contents}" />
       </div>
     
     </div>
@@ -52,10 +52,14 @@
 function check(){
     var title = $('#title').val(); 
     var content = $('#contents').val();
-   if(title == "" || content == ""){
-     alert("빈값을 입력 하세요.") ;
+   if(title == ""){
+     alert("제목을 입력 하세요.") ;
       return false;
    }
+   else if(content == ""){
+	     alert("내용을 입력 하세요.") ;
+	      return false;
+	   }
 }
 
 </script>

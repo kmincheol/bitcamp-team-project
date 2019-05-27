@@ -63,6 +63,7 @@ public class AnnounceServiceImpl implements AnnounceService {
   public int delete(int no) {
     return announceDao.delete(no);
   }
+  
 
   @Override
   public int size() {

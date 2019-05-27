@@ -76,6 +76,13 @@
     where ans_id = #{answerNo};
   </delete>
   
+    <delete id="deleteq" parameterType="int">
+    delete from
+      ans
+    where 
+      qstn_id = #{questionNo};
+  </delete>
+  
   
   
 <!-- 

@@ -33,7 +33,14 @@ public class QuestionServiceImpl implements QuestionBoardService {
   public QuestionBoard get(int no) {
     QuestionBoard question = questionDao.findByNo(no);
     if (question != null) {
-//      questionDao.increaseCount(no);
+    }
+    return question;
+  }
+  
+  @Override
+  public List<QuestionBoard> get2(int no) {
+    List<QuestionBoard> question = questionDao.myfindByNo(no);
+    if (question != null) {
     }
     return question;
   }
@@ -49,6 +56,13 @@ public class QuestionServiceImpl implements QuestionBoardService {
     // 이 메서드도 별로 할 일이 없다.
     // 그냥 DAO를 실행시키고 리턴 값을 그대로 전달한다.
     return questionDao.update(questionBoard);
+  }
+  
+  @Override
+  public int update22(QuestionBoard questionBoard) {
+    // 이 메서드도 별로 할 일이 없다.
+    // 그냥 DAO를 실행시키고 리턴 값을 그대로 전달한다.
+    return questionDao.update22(questionBoard);
   }
 
   @Override

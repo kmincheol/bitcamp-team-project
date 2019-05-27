@@ -12,7 +12,7 @@
 
   <div class="container">
   
-    <form id='update_form' action='../update' method='post' onsubmit="return add_check()">
+    <form id='update_form' action='../update' method='post' onsubmit="return update_check()">
 
       <div class="form-group row">
         <label for="questionNo" class="col-sm-2 col-form-label">번호</label>
@@ -40,7 +40,7 @@
       <div class="form-group row">
         <label for="contents" class="col-sm-2 col-form-label">내용</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" name="contents" id="aaaaa" value="${question.contents}" />
+          <input type="text" class="form-control" name="contents" id="contentsb" value="${question.contents}" />
         </div>
       </div>
 
@@ -57,16 +57,20 @@
  
 <script>
 
-function add_check(){
+function update_check(){
     
-	var theForm = $('#aaaaa').val();
+	   if($('#titleb').val() == "" ){
+	     alert("제목을 입력해주세요.") ;
+	      return false;
+	   } else if($('#contentsb').val() == "" ){
+	       alert("내용을 입력해주세요.") ;
+	        return false;
+	     }
+	}
 
-    if(theForm == ""){
-     alert("빈값입니다.") ;
-      return false;
-   }
-}
 
+	  
+	  
 </script>
 </body>
 </html>

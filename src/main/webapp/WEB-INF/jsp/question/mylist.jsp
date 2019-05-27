@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div id="main-text">
-      <h2>질문게시판</h2>
+      <h2>내가 질문한 글</h2>
     </div>
 
 
@@ -50,13 +50,8 @@
       </tbody>
     </table>
     <div>
-        <a class="btn btn-dark" href="${contextRootPath}/app/question/form" >글쓰기</a>
+        <a class="btn btn-dark" href="${contextRootPath}/app/question" >목록가기</a>
     </div>
-      <div>
-        <a class="btn btn-dark" href="${contextRootPath}/app/question/mylist/${aa.no}" > 내 글 보기</a>
-    </div>
-    
-       
     
   </div>
 

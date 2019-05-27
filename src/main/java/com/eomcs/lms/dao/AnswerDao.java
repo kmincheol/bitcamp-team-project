@@ -14,6 +14,8 @@ public interface AnswerDao {
   int update(AnswerBoard answerBoard);
 
   int delete(int no);
+  
+  int deleteq(int no);
 
   AnswerBoard findByNo(int no);
   

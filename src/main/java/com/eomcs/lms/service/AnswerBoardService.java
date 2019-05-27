@@ -11,16 +11,12 @@ public interface AnswerBoardService {
 
   AnswerBoard get(int no);
   
- // AnswerBoard getUpdate(int no);
 
  int delete(int no);
+ 
+ int deleteq(int no);
   
   
  int update(AnswerBoard answerBoard);
 
-
-  
-//  List<QuestionBoard> boardSearch(String keyword);
-  
-  // int size();
 }
