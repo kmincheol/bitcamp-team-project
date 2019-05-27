@@ -43,22 +43,11 @@ public class TeamController {
     List<TeamMember> teamMembers = teamService.teamMemberList();
     
     model.addAttribute("teams", teams);
-     model.addAttribute("teamMembers", teamMembers); // 멤버만 따로 뽑기 위함 지금은 안씀
+     model.addAttribute("teamMembers", teamMembers); 
      
     return "team/list1";
   }
 
-  
-  
-//  @GetMapping
-//  public String list(Model model) {
-//
-//    List<Team> teams = teamService.teamList1();
-//    model.addAttribute("teams", teams);
-//    
-//    return "team/list";
-//  }
-  
   @GetMapping("form")
   public void form(Map<String,Object> map) {
     List<TeamType> teamTypes = teamService.teamTypeList();
@@ -81,6 +70,7 @@ public class TeamController {
       team.setMember(member);
       teamService.addMember(member);
       teamMember.setMember(member);
+      // 팀멤버 서비스 add 메퍼에서 insert 처리 -> 
       // add 할 시 팀장 지정
       teamMember.setTeamLeader(true);
       team.setTeamMember(teamMember);
