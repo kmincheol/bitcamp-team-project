@@ -93,6 +93,7 @@
   
   <resultMap type="TeamMember" id="teamMemberMap">
     <id column="tm_mbr_id" property="teamMemberNo" />
+    <id column="mbr_id" property="teamMemberNo"/>
     <id column="pstn" property="position" />
     <id column="tlead_wth" property="teamLeader" />
     
@@ -272,9 +273,12 @@
     where tm_id = ${value}
   </select>
 
+
+
   <insert id="insert" parameterType="team" useGeneratedKeys="true" keyColumn="tm_id"
     keyProperty="teamId">
     insert into tm(
+    tm_id,
     name,
     tm_intd,
     area,
@@ -286,6 +290,7 @@
     tm_unf_phot
     )
     values(
+    #{teamId},
     #{teamName},
     #{teamInfo},
     #{teamArea},
@@ -295,6 +300,21 @@
     #{teamSportsId},
     #{teamEmblemPhoto},
     #{teamUniformPhoto}
+    )
+
+  </insert>
+  
+  <insert id="insertTeamLeader" parameterType="teamMember" useGeneratedKeys="true" keyColumn="tm_mbr_id"
+    keyProperty="teamMemberNo">
+    insert into tm_mbr(
+    tm_mbr_id,
+    mbr_id,
+    tlead_wth
+    )
+    values(
+    #{teamMemberNo},
+    #{memberNo},
+    #{teamLeader}
     )
 
   </insert>
