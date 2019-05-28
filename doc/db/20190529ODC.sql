@@ -595,7 +595,7 @@ ALTER TABLE free
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    ) ON DELETE CASCADE;
 
 -- 팀
 ALTER TABLE tm
@@ -645,7 +645,7 @@ ALTER TABLE qstn
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    )ON DELETE CASCADE;
 
 -- 팀원모집
 ALTER TABLE rcrm
@@ -675,7 +675,7 @@ ALTER TABLE tm_mbr
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    ) ON DELETE CASCADE;
 
 -- 댓글
 ALTER TABLE cmt
@@ -685,7 +685,7 @@ ALTER TABLE cmt
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    )ON DELETE CASCADE;
 
 -- 댓글
 ALTER TABLE cmt
@@ -695,7 +695,7 @@ ALTER TABLE cmt
     )
     REFERENCES free ( -- 자유게시판
       free_id -- 자유게시판번호
-    );
+    )ON DELETE CASCADE;
 
 -- 경기
 ALTER TABLE mtch
@@ -745,7 +745,7 @@ ALTER TABLE mtch_tag
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    ) ON DELETE CASCADE;
 
 -- 경기신청
 ALTER TABLE mtchaply
@@ -805,7 +805,7 @@ ALTER TABLE ans
     )
     REFERENCES qstn ( -- 질문
       qstn_id -- 질문게시판번호
-    );
+    ) ON DELETE CASCADE;
 
 -- 공지사항
 ALTER TABLE anunc
@@ -815,7 +815,7 @@ ALTER TABLE anunc
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    )ON DELETE CASCADE;
 
 -- 약관선택
 ALTER TABLE terms_optn
@@ -825,4 +825,4 @@ ALTER TABLE terms_optn
     )
     REFERENCES mbr ( -- 회원
       mbr_id -- 회원번호
-    );
+    )ON DELETE CASCADE;
