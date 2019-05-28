@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
@@ -35,13 +36,10 @@ public class TeamController {
 
   @GetMapping
   public String list(Model model) {
-    //List<TeamMember> teamMembers = teamService.getTeamMember();
-    /* team.setTeamMember((TeamMember)teamMembers); */
-    /* teams.add(team); */
-
     List<Team> teams = teamService.teamList1();
     List<TeamMember> teamMembers = teamService.teamMemberList();
-    
+    List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
+    model.addAttribute("teamTypeSports", teamTypeSports);
     model.addAttribute("teams", teams);
      model.addAttribute("teamMembers", teamMembers); 
      
@@ -92,6 +90,16 @@ public class TeamController {
     return "team/detail";
   }
   
+  
+  @GetMapping("search")
+  public void search(String keyword, Model model) {
+    List<TeamMember> teamMembers = teamService.teamMemberList();
+    List<Team> team = teamService.search(keyword);
+    List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
+    model.addAttribute("teamTypeSports", teamTypeSports);
+    model.addAttribute("teamMembers", teamMembers); 
+    model.addAttribute("search", team);
+  }
   
 //
 //  @GetMapping("update/{no}")

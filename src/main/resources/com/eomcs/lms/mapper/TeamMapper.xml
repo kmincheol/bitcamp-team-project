@@ -183,6 +183,28 @@
     s.spt_clsf_id
   </select>
 
+ <select id="findBykeyword" resultMap="teamMap1" parameterType="string">
+    <bind name="pattern1" value="'%' + _parameter + '%'"/>
+   select
+    tm_id,
+    tm_ambl_phot,
+    t.name,
+    tm_intd,
+    area,
+    tl.levs,
+    a.ages,
+    spt_clsf_name,
+    t.cdt
+    from
+    tm t
+    left outer join age a on t.age_id = a.age_id
+    left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    where 
+    t.name like #{pattern1}
+     
+  </select>
+
   <select id="findTeamType" resultMap="typeMap" parameterType="map">
     select
     tm_type_id,

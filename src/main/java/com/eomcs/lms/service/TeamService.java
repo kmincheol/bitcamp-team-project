@@ -1,6 +1,7 @@
 package com.eomcs.lms.service;
 
 import java.util.List;
+import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
@@ -21,6 +22,7 @@ public interface TeamService {
   List<TeamTypeSports> sportsTypeList();
   List<TeamMember> teamMemberList();
   List<TeamMember> getTeamMember(int no);
+  List<Team> search(String keyword);
   
   int addTeam(Team team);
   int addTeamLeader(TeamMember teamMember);

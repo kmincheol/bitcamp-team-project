@@ -65,7 +65,7 @@
     f.free_id = #{value}
   </select> 
   
-  <select id="findByKeyword" resultMap="freeMap" parameterType="string">
+  <select id="findBykeyword" resultMap="freeMap" parameterType="string">
     <bind name="pattern1" value="'%' + _parameter + '%'"/>
     select
     free_id,

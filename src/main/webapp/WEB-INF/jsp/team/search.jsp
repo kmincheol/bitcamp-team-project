@@ -30,13 +30,14 @@
     <c:if test="${sessionScope.loginUser != null}">
       <p>
         <a href='${contextRootPath}/app/team/form' class="input-group-btn1 btn btn-dark"
-          style="left: 800px; width:100px; top:215px; position:absolute;">팀 생성</a>
+          style="left: 800px; position: relative;">팀 생성</a>
       </p>
     </c:if>
     <br>
     <br>
+     <form action='search' style="left: 20px; margin:10px; top:30px; position: relative;">
      
-     <select class="custom-select" id="teamSportsId" name='teamSportsId' onchange="changeItem()" style=" left: 35px; width:180px; position: absolute;"> 
+     <select class="custom-select" id="teamSportsId" name='teamSportsId' onchange="changeItem()" style="width:180px;">
       <c:forEach items="${teamTypeSports}" var="typeSports">
            <option value="${typeSports.teamSportsTypeId}"
             ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>${typeSports.teamSportsType}
@@ -44,16 +45,22 @@
       </c:forEach>
     </select>
      
-     <form action='${contextRootPath}/app/team/search' style="left: 230px; margin:10px; top:208px; position:absolute;">
       <input type='search' name='keyword' style="height:38px; border:1px solid silver; text-align: center; "placeholder="팀명을 입력하세요">
-      <button type='submit' class="searchbtn input-group-btn btn btn-dark">검색</button>
+      <button type='button' class="searchbtn input-group-btn btn btn-dark">검색</button>
     </form>
 
     <br>
    
+   <!--  <button id="all"> 전체 </button><br>
+    <button id="soccer"> 축구 </button><br>
+    <button id="basket"> 농구 </button><br>
+    <button id="baseball"> 야구 </button><br> 
+    <button id="pingpong"> 탁구 </button><br>  -->
+    
+    
     <div class="team-list"
       style="border: 2px solid black; padding: 20px; margin: 20px; overflow: auto; box-sizing: border-box; width: 890px; height: 320px; position: relative;">
-      <c:forEach items="${teams}" var="team">
+      <c:forEach items="${search}" var="team">
 
         <ul class="team_ul">
           <li style="display: none;" id='teamId'>${team.teamId}</li>
@@ -93,7 +100,7 @@
       </c:forEach>
     </div>
     <div class="col-lg-12" id="teamInfo"
-      style="font-size: 20px; border: 1px solid gray; width: 400px; padding: 30px; padding-left: 45px; display: none; left: 36px; top: 610px; position: absolute;"></div>
+      style="font-size: 20px; border: 1px solid gray; width: 400px; padding: 30px; padding-left: 45px; display: none; left: 36px; top: 670px; position: absolute;"></div>
     <div class="col-lg-12" id="teamMemberInfo"
       style="left: 430px; bottom: 600px; font-size: 25px; top: 0px; width: 450px; height: 675px; border: 1px solid gray; margin: 30px; display: none;">
       <div style="top: 25px; position: relative;">
@@ -118,6 +125,13 @@
 
   <script type="text/javascript">
  
+  /*  $("#soccer").on('click', function(){
+    alert("확인")
+    var Type = $('.Type').text();
+    $('.team_ul');
+    
+  })   */
+  
   
   function changeItem(){
     // 종목 선택시 콘솔 출력 

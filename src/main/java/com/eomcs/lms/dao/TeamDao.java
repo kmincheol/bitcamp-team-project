@@ -2,6 +2,7 @@ package com.eomcs.lms.dao;
 
 import java.util.List;
 import java.util.Map;
+import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
@@ -16,7 +17,7 @@ public interface TeamDao {
   Team findByNo(int no);
   List<Team> findAllTeam1();
   List<Team> findAllTeam2();
-  
+  List<Team> findBykeyword(String keyword);
   List<TeamType> findTeamType();
   List<TeamAges> findTeamAge();
   List<TeamTypeSports> findSportsType();
