@@ -70,13 +70,13 @@
 
         <div id="control-box" class="form-group row">
           <div class="col-sm-12 text-center">
-            <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a> 
-          <c:forEach var="teamMember" items="${teamMember}">
-            <c:if test = "${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
-            <a class="btn btn-primary" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
-            <a class="btn btn-primary" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
+            <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a>
+            <c:forEach var="teamMember" items="${teamMember}">
+              <c:if test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
+                <a class="btn btn-dark" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
+                <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
               </c:if>
-</c:forEach>
+            </c:forEach>
             <a class="btn btn-primary" href=''>가입신청</a>
           </div>
         </div>
