@@ -33,6 +33,9 @@ public class Team implements Cloneable, Serializable {
   private MatchApply matchApply;
   
   
+  
+  
+  
   @Override
   public String toString() {
     return "Team [teamId=" + teamId + ", teamName=" + teamName + ", teamInfo=" + teamInfo
@@ -171,6 +174,7 @@ public class Team implements Cloneable, Serializable {
     this.matchApply = matchApply;
   }
   
- 
+  
+  
 
 }

@@ -30,7 +30,6 @@
 
 
   <resultMap type="Team" id="team">
-
     <id column="tm_id" property="teamId" />
     <result column="area" property="teamArea" />
     <result column="name" property="teamName" />
@@ -48,8 +47,24 @@
       <id column="mbr_id" property="no" />
       <result column="user_id" property="id" />
     </association>
-
   </resultMap>
+  
+  
+  <resultMap type="teamMember" id="team2">
+    <id column="tm_mbr_id" property="teamMemberNo" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="tlead_wth" property="teamLeader" />
+  </resultMap>
+  
+<!--    
+    <collection property="teamMember" ofType="TeamMember">
+      <id column="tm_mbr_id" property="teamMemberNo" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="tlead_wth" property="teamLeader" />
+    </collection>
+   -->
+  
+  
 
   <select id="findAll" resultMap="teamRecruitMap" parameterType="map">
     select
@@ -81,17 +96,32 @@
     from
     tm t
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
-    left
-    outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
+    left outer join tm_mbr tm on tm.tm_mbr_id = t.tm_id
     left outer join mbr m on m.mbr_id = tm.mbr_id
     where
-    t.tm_id = '1';
+    tm.mbr_id = #{value};
 
   </select>
+  
+  <select id="findByNo3" resultMap="team2" parameterType="int">
+  select
+    mbr_id,
+    tlead_wth
+   from
+     tm_mbr
+   where
+    tm_mbr_id = #{value};
+
+  </select>
+  
+  
+  
+  
 
   <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">
     select
     r.rcrm_id,
+    r.tm_id,
     titl,
     area,
     cont,

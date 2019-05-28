@@ -38,9 +38,23 @@ public class RecruitBoardController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     TeamRecruit teamRecruit = recruitBoardService.get(no);
-    model.addAttribute("teamRecruit", teamRecruit);
-    logger.info(teamRecruit);
+  
+    int b =  teamRecruit.getTeamId();
+    
+    List<TeamMember> teamMember = recruitBoardService.get3(b);
+    
+      System.out.println(b);
+    System.out.println(teamRecruit.toString());
+  
+    
+    
+     model.addAttribute("teamRecruit", teamRecruit);
+    model.addAttribute("teamMember", teamMember);
+    
     return "recruit_board/detail";
+ 
+  
+  
   }
 
   @GetMapping("update/{no}")
