@@ -69,14 +69,12 @@ public class TeamController {
       
       teamMember.setMemberNo(member.getNo());
       teamMember.setMember(member);
-      teamMember.setTeamLeader(true);
-      teamMember.setTeamMemberNo(team.getTeamId());
-      System.out.println(team.getTeamId());
-      // 팀멤버 서비스 add 메퍼에서 insert 처리 -> 
       // add 할 시 팀장 지정
+      teamMember.setTeamLeader(true);
       team.setTeamMember(teamMember);
-      
+
       teamService.addTeam(team);
+      teamMember.setTeamMemberNo(team.getTeamId());
       teamService.addTeamLeader(teamMember);
      
       return "redirect:.";

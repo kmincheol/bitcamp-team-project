@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>팀 조회</title>
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <link rel="stylesheet" href="${contextRootPath}/css/team.css">
@@ -54,7 +55,7 @@
               </figure>
             </div>
           </li>
-          <li style="text-align: center; margin: 5px;">${team.teamName}</li>
+          <li style="text-align: center; margin: 5px;">${team.teamName}</li> 
           <li style="display: none;">${team.teamTypeSports.teamSportsType}</li>
           <li style="display: none;">${team.teamArea}</li>
           <li style="display: none;">${team.teamCreateDate}</li>
@@ -63,13 +64,23 @@
           <li style="display: none;">${team.teamInfo}</li>
 
           <c:forEach items="${teamMembers}" var="teamMember">
-            <c:if test="${teamMember.teamMemberNo eq team.teamId}">
+             <c:if test="${team.teamId eq teamMember.teamMemberNo}">
               <ul class="mbrlist">
                 <li class="mbrName" id="mbrName" style="display: none;">${teamMember.member.name}</li>
                 <li class="mbrPosition" style="display: none;">${teamMember.position}</li>
-                <li class="mbrLeader" style="display: none;">${teamMember.teamLeader}</li>
+                <li class="mbrLeader" style="display: none;">
+                <c:if test="${teamMember.teamLeader eq true}">
+                <span>
+                <!-- <i class="fas fa-crown"></i> -->
+                   팀장
+                </span>
+                </c:if>
+                <c:if test="${teamMember.teamLeader eq false}">
+                <span>팀원</span>
+                </c:if>
+                </li>
               </ul>
-            </c:if>
+             </c:if> 
           </c:forEach>
 
         </ul>
@@ -84,7 +95,7 @@
         <div class="category" style="text-align: center; margin: 20px; position: relative;">
           <span style='margin: 30px; text-align: center;'><b>팀원</b></span> <span
             style='margin: 30px; text-align: center;'><b>포지션</b></span> <span
-            style='margin: 30px; text-align: center;'><b>리더</b></span><br>
+            style='margin: 30px; text-align: center;'><b>등급</b></span><br>
           <hr>
         </div>
       </div>
@@ -119,6 +130,9 @@
     
     var photo = $(this).attr('src');
     
+    var leader = $('.mbrLeader i'); 
+    console.log(leader);
+   
     var no = li.eq(0).text();
     var teamEmblemPhoto = photo;
     var teamName = li.eq(2).text();
@@ -128,25 +142,32 @@
     var teamAges = li.eq(6).text();
     var teamLev = li.eq(7).text();
     var teamInfo = li.eq(8).text();
-  
+    var leaderPhoto = leader;
     var tmNo = no;
     var size = $('.mbrlist').length;
+    console.log(size);
+    
     for (var i = 9; i < size; i++){
     var mbrName = li.eq(i).children('.mbrName').text();
     var mbrPosition = li.eq(i).children('.mbrPosition').text();
     var mbrLeader = li.eq(i).children('.mbrLeader').text(); 
     
+    console.log(mbrName);
+    console.log(mbrPosition);
+    console.log(mbrLeader);
     li.each(function(i){   
       liArr.push(li.eq(i).text());
     });
      
-     str2 +=  "<div class='list' style='top:20px; margin:15px; position:relative; text-align:center;'> <div style='display:none;'>" +
+     str2 +=    
+     "<div style='display:none;'>" +
      "<b>팀번호</b> : "+ no + "</div>" +
      "<span style='margin:30px; text-align:center;'>" + mbrName + "</span>" +
      "<span style='margin:30px; text-align:center;'>" + mbrPosition + "</span>" +
-     "<span style='margin:30px; text-align:center;'>" + mbrLeader + "</span></div>";  
+     "<span style='margin:30px; text-align:center;'>" + mbrLeader + "</span>" ;
+     
+   
     };
-    
      str +=  " <div style='display:none;'> <b>팀번호</b> : "+ no + "</div>" +
         "<div><img src=" + teamEmblemPhoto + " style='width:300px; height:300px;'></div>" + 
         "<hr><br>" +  
@@ -156,7 +177,7 @@
         "<div style='margin:5px;'> <b>창단일</b> :" + teamCreateDate + "</div>" +
         "<div style='margin:5px;'> <b>연령대</b> :" + teamAges + "</div>" +
         "<div style='margin:5px;'> <b>팀실력 </b> :" + teamLev + "</div>" +  
-        "<div style='margin:5px;'> <b>팀소개 </b> :" + teamInfo + "</div>" ; 
+        "<div style='margin:5px;'> <b>팀소개 </b> :" + teamInfo + "</div>"; 
         
     $("#teamInfo").html(str);  
     $('#finallist').html(str2); 

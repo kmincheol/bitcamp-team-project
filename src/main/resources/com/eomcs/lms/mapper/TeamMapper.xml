@@ -49,6 +49,7 @@
 
     <association property="teamMember" javaType="TeamMember">
       <id column="tm_mbr_id" property="teamMemberNo" />
+      <id column="mbr_id" property="memberNo" />
       <id column="pstn" property="position" />
       <id column="tlead_wth" property="teamLeader" />
     </association>
@@ -93,7 +94,7 @@
   
   <resultMap type="TeamMember" id="teamMemberMap">
     <id column="tm_mbr_id" property="teamMemberNo" />
-    <id column="mbr_id" property="teamMemberNo"/>
+    <id column="mbr_id" property="memberNo"/>
     <id column="pstn" property="position" />
     <id column="tlead_wth" property="teamLeader" />
     
@@ -125,10 +126,9 @@
        <id column="tm_id" property="teamId" />
     <result column="name" property="teamName" />
     </collection>
-    
   </resultMap>
-
- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
+  
+   <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
     select
     tm_id,
     tm_ambl_phot,
@@ -138,18 +138,12 @@
     tl.levs,
     a.ages,
     spt_clsf_name,
-    t.cdt,
-    tm_mbr_id,
-    m.name,    
-    pstn,
-    tlead_wth
+    t.cdt
     from
     tm t
     left outer join age a on t.age_id = a.age_id
     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
-    left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
-    left outer join mbr m on tmb.tm_mbr_id = m.mbr_id
   </select> 
 
 <!-- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
@@ -278,7 +272,6 @@
   <insert id="insert" parameterType="team" useGeneratedKeys="true" keyColumn="tm_id"
     keyProperty="teamId">
     insert into tm(
-    tm_id,
     name,
     tm_intd,
     area,
@@ -290,7 +283,6 @@
     tm_unf_phot
     )
     values(
-    #{teamId},
     #{teamName},
     #{teamInfo},
     #{teamArea},
