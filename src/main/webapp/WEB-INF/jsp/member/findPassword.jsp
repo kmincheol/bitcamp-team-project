@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>비밀번호찾기</title>
 <jsp:include page="../commonCss.jsp"/>
-<link rel="stylesheet" href="${contextRootPath}/css/findPwd1.css">
+<link rel="stylesheet" href="${contextRootPath}/css/findPassword.css">
 </head>
 <body>
 
@@ -67,8 +67,8 @@
             <p><strong>임시 비밀번호</strong>를 인증하신 이메일로 발송했습니다.
             <br>임시 비밀번호로 로그인 하신 후, 
             <br>마이페이지에서 비밀번호를 변경해 주시기 바랍니다.</p>
-            <a href="#" class="btn btn-primary btn-lg" id="mainBtn" type="button">메인화면</a>
-            <a href="#" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인 하기</a>
+            <a href="../main" class="btn btn-primary btn-lg" id="mainBtn" type="button">메인화면</a>
+            <a href="../auth/form" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인 하기</a>
           </div>
         </div>
 
@@ -280,9 +280,16 @@ function checkAuthNo() {
   var authNo = $('#authNo').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');
+  var isNum = /^[0-9]+$/;
 
   if (authNo == "") {
     showErrorMsg(oMsg, "인증번호를 입력해주세요.");
+    showErrorBoxByError(oBox);
+    return false;
+  }
+  
+  if (!isNum.test(authNo)) {
+    showErrorMsg(oMsg, "숫자만 입력할 수 있습니다.");
     showErrorBoxByError(oBox);
     return false;
   }
@@ -315,7 +322,7 @@ function checkAuthnoByAjax() {
 
   $.ajax({
     type: "POST",
-    url: "../member/checkAuthNo",
+    url: "checkAuthNo",
     contentType: 'application/json',
     dataType: "text",
     data: JSON.stringify({
@@ -369,7 +376,7 @@ function pwdSend() {
 
   $.ajax({
     type: "GET",
-    url: "../member/sendPwdEmail?email=" + email,
+    url: "sendPwdEmail?email=" + email,
     success : function(data) {
       var result = data.substr(7);
       if (result == "1") {

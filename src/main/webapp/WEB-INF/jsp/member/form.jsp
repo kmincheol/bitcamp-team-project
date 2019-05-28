@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <title>회원정보입력</title>
   <jsp:include page="../commonCss.jsp"/>
-  <link rel="stylesheet" href="${contextRootPath}/css/signUp2.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/member_form.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
   <hr class="hrblack"/>
 
     <div class="join_content">
-      <form id="join_form" action="../member/enter" method='POST'>
+      <form id="join_form" action="enter" method='POST'>
         <input type="hidden" id="birthday" name="birthDay" value="">
         <input type="hidden" id="photo" name="photo" value="">
         <input type="hidden" id="loginType" name="loginType" value="homepage"> 
@@ -688,7 +688,7 @@ function checkId(event) {
   
   $.ajax({
     type: "GET",
-    url: "../member/checkId?userId=" + id,
+    url: "checkId?userId=" + id,
     success : function(data) {
       var result = data.substr(7);
 
@@ -943,7 +943,7 @@ function checkEmail() {
 
   $.ajax({
     type:"POST",
-    url:'../member/checkEmail',
+    url:'checkEmail',
     contentType: 'application/json',
     dataType: "text",
     data:JSON.stringify({
@@ -1003,7 +1003,7 @@ function sendEmail() {
 
   $.ajax({
     type:"POST",
-    url:'../member/sendEmail',
+    url:'sendEmail',
     contentType: 'application/json',
     dataType: "text",
     data:JSON.stringify({
@@ -1037,9 +1037,16 @@ function checkAuthNo() {
   var authNo = $('#authNo').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');
+  var isNum = /^[0-9]+$/;
 
   if (authNo == "") {
     showErrorMsg(oMsg, "인증번호를 입력해주세요.");
+    showErrorBoxByError(oBox);
+    return false;
+  }
+  
+  if (!isNum.test(authNo)) {
+    showErrorMsg(oMsg, "숫자만 입력할 수 있습니다.");
     showErrorBoxByError(oBox);
     return false;
   }
@@ -1072,7 +1079,7 @@ function checkAuthnoByAjax() {
 
   $.ajax({
     type: "POST",
-    url: "../member/checkAuthNo",
+    url: "checkAuthNo",
     contentType: 'application/json',
     dataType: "text",
     data: JSON.stringify({

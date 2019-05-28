@@ -540,6 +540,7 @@ ALTER TABLE atk
 CREATE TABLE terms_optn (
   terms_optn_id INTEGER(30) NOT NULL COMMENT '약관번호', -- 약관번호
   mbr_id        INTEGER(30) NULL     COMMENT '회원번호', -- 회원번호
+  terms_req     BOOLEAN     NOT NULL COMMENT '필수약관동의', -- 필수약관동의
   mkt_email     BOOLEAN     NOT NULL COMMENT '마케팅이메일', -- 마케팅이메일
   mkt_sms       BOOLEAN     NOT NULL COMMENT '마케팅SMS', -- 마케팅SMS
   agr_dt        DATETIME    NULL     DEFAULT now() COMMENT '동의일' -- 동의일
@@ -552,6 +553,9 @@ ALTER TABLE terms_optn
     PRIMARY KEY (
       terms_optn_id -- 약관번호
     );
+    
+ALTER TABLE terms_optn
+  MODIFY COLUMN terms_optn_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '약관번호';
 
 -- 후기게시판
 ALTER TABLE revw

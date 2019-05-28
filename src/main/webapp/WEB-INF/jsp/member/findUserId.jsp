@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>아이디찾기</title>
 <jsp:include page="../commonCss.jsp"/>
-<link rel="stylesheet" href="${contextRootPath}/css/findId1.css">
+<link rel="stylesheet" href="${contextRootPath}/css/findUserId.css">
 </head>
 <body>
 
@@ -71,8 +71,8 @@
             </span>
           </div>
           <div class="btn_area" id="AfterBtnBox" style="display:none">
-            <a href="#" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인 하기</a>
-            <a href="#" class="btn btn-primary btn-lg" id="findPwdBtn" type="button">비밀번호 찾기</a>
+            <a href="../auth/form" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인 하기</a>
+            <a href="findPassword" class="btn btn-primary btn-lg" id="findPwdBtn" type="button">비밀번호 찾기</a>
           </div>
         </div>
 
@@ -269,7 +269,7 @@ function findId() {
  
   $.ajax({
     type: "GET",
-    url: "../member/findId?email=" + email + "&name=" + name,
+    url: "findId?email=" + email + "&name=" + name,
     success : function(data) {
       var result = data.substr(6, 1);
       var userId;

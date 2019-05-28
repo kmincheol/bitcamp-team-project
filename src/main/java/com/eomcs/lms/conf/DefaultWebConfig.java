@@ -1,14 +1,17 @@
 package com.eomcs.lms.conf;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.util.UrlPathHelper;
+import com.eomcs.lms.web.interceptor.AgreeTermsInterceptor;
 
 // DispatcherServlet의 IoC 컨테이너가 준비해야 할 객체에 대한 정보.
 // => app-servlet.xml의 설정을 이 클래스가 대체한다.
@@ -16,6 +19,9 @@ import org.springframework.web.util.UrlPathHelper;
 @ComponentScan("com.eomcs.lms.web")
 @EnableWebMvc
 public class DefaultWebConfig implements WebMvcConfigurer {
+  
+  @Autowired
+  private AgreeTermsInterceptor agreeTermsInterceptor;
   
   @Override
   public void configurePathMatch(PathMatchConfigurer configurer) {
@@ -66,6 +72,13 @@ public class DefaultWebConfig implements WebMvcConfigurer {
         "/WEB-INF/jsp/", ".jsp");
     vr.setViewClass(JstlView.class);
     return vr;
+  }
+  
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(agreeTermsInterceptor)
+    .addPathPatterns("/member/form")
+    .addPathPatterns("/member/enter");
   }
 }
 

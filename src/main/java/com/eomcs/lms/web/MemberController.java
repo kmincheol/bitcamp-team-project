@@ -1,11 +1,14 @@
 package com.eomcs.lms.web;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.AuthKey;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.AuthKeyService;
 import com.eomcs.lms.service.EmailService;
 import com.eomcs.lms.service.MemberService;
@@ -35,6 +39,76 @@ public class MemberController {
   @Autowired AuthKeyService authKeyService;
   @Autowired EmailService emailService;
   @Autowired ServletContext servletContext;
+  
+  @GetMapping("agreeTerms")
+  public void agreeTerms() {
+  }
+  
+  @GetMapping("invalid")
+  public void invalid() {
+  }
+  
+  @PostMapping("checkTerms")
+  public String checkTerms(
+      Boolean termsService,
+      Boolean termsPrivacy,
+      Boolean termsThirdParty,
+      Boolean termsEmail,
+      Boolean termsSms,
+      HttpSession session,
+      HttpServletRequest request,
+      HttpServletResponse response,
+      Model model) throws Exception {
+    
+    TermsAgree termsAgree = new TermsAgree();
+
+    if (termsService == null ||
+        termsPrivacy == null ||
+        termsThirdParty == null) {
+      
+      throw new RuntimeException("회원가입약관의 필수사항에 동의하지 않으시면 가입하실 수 없습니다.");
+    } else {
+      termsAgree.setTermsRequired(true);
+    }
+      
+    if (termsEmail == null) {
+      termsAgree.setTermsEmail(false);
+    } else {
+      termsAgree.setTermsEmail(true);
+    }
+    
+    if (termsSms == null) {
+      termsAgree.setTermsSms(false);
+    } else {
+      termsAgree.setTermsSms(true);
+    }
+    
+    // 약관정보 다시 설정시 재발급
+    if (session.getAttribute("termsAgree") != null) {
+      session.removeAttribute("termsAgree");
+    }
+    
+    // 톰캣 기본 유지시간 30분 이용
+    session.setAttribute("termsAgree", termsAgree);
+    
+    return "redirect:form";
+  }
+  
+  @GetMapping("form")
+  public void form() {
+  }
+  
+  @GetMapping("signUpCompletion")
+  public void signUpCompletion() {
+  }
+  
+  @GetMapping("findUserId")
+  public void findUserId() {
+  }
+  
+  @GetMapping("findPassword")
+  public void findPassword() {
+  }
 
   @RequestMapping(value="checkEmail", produces="text/plain;charset=UTF-8")
   @ResponseBody
@@ -199,13 +273,14 @@ public class MemberController {
   }
 
   @PostMapping("enter")
-  public String add(Member member) throws Exception {
-    logger.info("아이디 >>> " + member.getId());
-    logger.info("멤버객체 >>> " + member);
+  public String add(Member member, HttpSession session) throws Exception {
+    
+    TermsAgree termsAgree = (TermsAgree) session.getAttribute("termsAgree");
+    memberService.add(member, termsAgree);
+    
+    session.invalidate();
 
-    memberService.add(member);
-
-    return "redirect:../../";
+    return "redirect:signUpCompletion";
   }
 
   @GetMapping("delete/{no}")

@@ -26,10 +26,7 @@ public class AuthController {
   @Autowired ServletContext servletContext;
   
   
-  @GetMapping("signUp1")
-  public void signUp1() {
-    
-  }
+
   
   @GetMapping("signUp2")
   public void signUp2() {

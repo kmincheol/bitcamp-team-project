@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <title>약관동의</title>
   <jsp:include page="../commonCss.jsp"/>
-  <link rel="stylesheet" href="${contextRootPath}/css/signUp1.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/agreeTerms.css">
 </head>
 <body>
 
@@ -26,7 +26,7 @@
 
     <div class="join_content">
       <div class="join_form">
-        <form id="join_form" action="">
+        <form id="join_form" method="POST" action="checkTerms.jsp">
           <div class="terms_p">
             <p class="terms_chk_all">
               <span class="input_chk">
@@ -116,6 +116,7 @@
                 </span>
               </li>
             </ul>
+            <span class="error" id="agreeMsg" style="display:none">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 동의에 모두 동의해주세요.</span>
           </div><!-- .terms_p -->
             <div class="btn_area">
               <a class="btn btn-outline-secondary sunext" id="btnAgree"
@@ -236,8 +237,10 @@ function checkTerms() {
       $("#termsPrivacy").is(":checked") == false ||
       $("#termsThirdParty").is(":checked") == false) {
     
-    alert("서비스 이용약관과 개인정보 수집 및 이용, 개인정보 제3자 제공에 대하여 모두 동의해주세요 ");
+    $('#agreeMsg').show();
     res = false;
+  } else {
+    $('#agreeMsg').hide();
   }
 
   return res;

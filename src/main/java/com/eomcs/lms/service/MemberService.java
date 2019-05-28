@@ -2,10 +2,11 @@ package com.eomcs.lms.service;
 
 import java.util.List;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.TermsAgree;
 
 public interface MemberService {
   List<Member> list(String keyword);
-  int add(Member member);
+  int add(Member member, TermsAgree termsAgree);
   Member get(int no);
   Member get(String id, String password);
   Member get(String email);

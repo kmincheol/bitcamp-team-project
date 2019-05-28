@@ -328,9 +328,9 @@ insert into atk(atk_id,atk_email,atk_cont,atk_type)
 values(3,'testhuhu@hanmail.net',456826,3);
 
 -- 약관선택데이터
-insert into terms_optn(terms_optn_id, mbr_id, mkt_email, mkt_sms)
-values (1, 1, 1, 1);
-insert into terms_optn(terms_optn_id, mbr_id, mkt_email, mkt_sms)
-values (2, 2, 1, 1);
-insert into terms_optn(terms_optn_id, mbr_id, mkt_email, mkt_sms)
-values (3, 3, 1, 1);
+insert into terms_optn(terms_optn_id, mbr_id, terms_req, mkt_email, mkt_sms)
+values (1, 1, 1, 1, 1);
+insert into terms_optn(terms_optn_id, mbr_id, terms_req, mkt_email, mkt_sms)
+values (2, 2, 1, 1, 1);
+insert into terms_optn(terms_optn_id, mbr_id, terms_req, mkt_email, mkt_sms)
+values (3, 3, 1, 1, 1);

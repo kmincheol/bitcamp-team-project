@@ -132,7 +132,8 @@
     order by name asc
   </select>
   
-  <insert id="insert" parameterType="member">
+  <insert id="insert" parameterType="member"
+    useGeneratedKeys="true" keyColumn="mbr_id" keyProperty="no">
     insert into mbr(
       user_id,
       pwd,

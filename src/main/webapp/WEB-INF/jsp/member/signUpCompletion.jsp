@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>가입완료</title>
 <jsp:include page="../commonCss.jsp"/>
-<link rel="stylesheet" href="${contextRootPath}/css/signUp3.css">
+<link rel="stylesheet" href="${contextRootPath}/css/signUpCompletion.css">
 </head>
 <body>
 
@@ -38,10 +38,10 @@
       </div><!-- #successContent -->
       <div id="successButton">
         <span id="leftBtnBox">
-          <a class="btn btn-primary btn-lg" href="#" id="mainBtn">메인화면</a>
+          <a class="btn btn-primary btn-lg" href="../main" id="mainBtn">메인화면</a>
         </span>
         <span id="rightBtnBox">
-          <a class="btn btn-primary btn-lg" href="#" id="loginBtn">로그인</a>
+          <a class="btn btn-primary btn-lg" href="../auth/form" id="loginBtn">로그인</a>
         </span>        
       </div><!-- #successButton -->
     </div><!-- #successBox -->

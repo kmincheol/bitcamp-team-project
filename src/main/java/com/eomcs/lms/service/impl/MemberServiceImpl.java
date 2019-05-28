@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MemberDao;
+import com.eomcs.lms.dao.TermsAgreeDao;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.MemberService;
 
 // 스프링 IoC 컨테이너가 관리하는 객체 중에서 
@@ -15,9 +17,11 @@ import com.eomcs.lms.service.MemberService;
 public class MemberServiceImpl implements MemberService {
   
   MemberDao memberDao;
+  TermsAgreeDao termsAgreeDao;
   
-  public MemberServiceImpl(MemberDao memberDao) {
+  public MemberServiceImpl(MemberDao memberDao, TermsAgreeDao termsAgreeDao) {
     this.memberDao = memberDao;
+    this.termsAgreeDao = termsAgreeDao;
   }
   
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
@@ -30,8 +34,17 @@ public class MemberServiceImpl implements MemberService {
   }
   
   @Override
-  public int add(Member member) {
-    return memberDao.insert(member);
+  public int add(Member member, TermsAgree termsAgree) {
+    
+    int memberSuccess = memberDao.insert(member);
+    termsAgree.setMemberNo(member.getNo());
+    int termsAgreeSuccess = termsAgreeDao.insert(termsAgree);
+    
+    if (memberSuccess == 0 ||  termsAgreeSuccess == 0) {
+      return 0;
+    }
+ 
+    return memberSuccess;
   }
   
   @Override
