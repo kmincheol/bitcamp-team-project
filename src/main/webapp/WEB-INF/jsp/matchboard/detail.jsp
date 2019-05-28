@@ -12,21 +12,25 @@
 <jsp:include page="../header.jsp" />
 
 <style>
-
-#detail_table {
-  text-align: center;
-  width:1100px;
-}
 #detail_background{
   text-align: center;
 }
-
+#detail_table {
+  background-color:#FDF7EF ;
+  text-align: center;
+  width:1000px;
+}
 th {
 width:70px;
 }
-
 td {
 width:70px;
+}
+#teamArea{
+text-align: right;
+}
+#btnsub2{
+width:300px;
 }
 </style>
 
@@ -39,33 +43,42 @@ width:70px;
       <h2>작성글 확인</h2>
     </div>
 
-    <div id=detail_background>
+    <div style="padding-left: 100px; padding-bottom: 10px; padding-top: 10px; ">
+      <a class="btn btn-primary" href='${contextRootPath}/app/matchboard'>목록</a> 
+    </div>
+    
+    
+    <div id="detail_background">
       <form action='update' method='post' enctype='multipart/form-data'>
    
-   <table id="detail_table">
+   <table class="table" id="detail_table">
   <tr>
-      <th>
+      <th scope="col">
           <label for="no">번호</label>
       </th>
       <td>
             <label id="no">${match.no}</label>
       </td>
-      <th>
+      <th scope="col">
           <label for="viewCount">조회수</label>
       </th>   
       <td>   
             <label id="viewCnt">${match.viewCount}</label>
       </td>
+      
+      <td scope="col" rowspan="3" colspan="1" style="text-align: center;">
+            <label for="후후사진">엠블럼자리입니다</label>
+      </td>   
   </tr>
 	  
   <tr>
-        <th>
+        <th scope="col">
           <label for="playdt">경기날짜</label>
         </th>
         <td>
             <label> ${match.playDate}</label>
         </td>
-        <th>
+        <th scope="col">
           <label for="location" id="loclab">지역</label>
           </th>
         <td>
@@ -81,13 +94,13 @@ width:70px;
         </div> --%>
 
 <tr>
-		<th>
+		<th scope="col">
           <label for="location" >경기장</label>
        </th>
        <td>  
           <label id="stadiumName">${match.stadiumName}</label>
        </td>      
-       <th>
+       <th scope="col">
           <label for="sportsType" id="typlab">종목</label>
        </th>
        <td>  
@@ -96,15 +109,16 @@ width:70px;
 </tr>
 
 <tr>
-	     <th>
-          <label for="teamName" >팀</label>
+	     <th id="teamArea" scope="col" colspan="4" rowspan="1" >
+          <label for="teamName">팀명</label>
          </th>
          <td>
             <label> ${match.team.teamName} </label>
 	     </td>
+	     
 </tr>
 <tr>
-     <th>
+     <th scope="col" colspan="1" >
           <label for="title">제목</label>
      </th>     
      <td>
@@ -114,23 +128,20 @@ width:70px;
 </tr>
 
 <tr>
-	<th>
+	<th scope="col" colspan="1" >
           <label for="contents">내용</label>
     </th>
-    <td>
+    <td colspan="4">
             <label class="form-control">${match.contents}</label>
 	 </td>
 </tr>	
 	</table>  
 
 
-        <div class="form-group row">
+        <div class="form-group row" style="padding-left:165px;">
           <div class="col-sm-10">
-            <a class="btn btn-primary" href='${contextRootPath}/app/matchboard'>목록</a> 
-
-              
               <c:if test="${!empty sessionScope.loginUser}">
-              <a href='${contextRootPath}/app/matchboard' id="btnsub2"
+              <a href='${contextRootPath}/app/matchboard' id="btnsub2" 
                class="btn btn-primary" role="button" aria-disabled="true">신청하기</a>
             </c:if>
             <!-- 로그인 한 사용자와 글을 작성한 팀장과 같다면 버튼을 가림 -->
@@ -138,11 +149,13 @@ width:70px;
 
             <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
              <c:if test="${!empty sessionScope.loginUser}">
+             <c:if test="${sessionScope.loginUser.name eq match.team.member.name}">
              <c:if test="${match.team.teamMember.team_leader == true}"> 
           <a id="delt" class="btn btn-primary" href='delete/${match.no}'>삭제</a>
           <a id="updt" class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
              </c:if>
             </c:if> 
+            </c:if>
           </div>
         </div>
       </form>

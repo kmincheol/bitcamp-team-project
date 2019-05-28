@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.LocationService;
 import com.eomcs.lms.service.MatchApplyService;
@@ -31,7 +32,7 @@ public class MatchBoardController {
   @Autowired MatchBoardService matchBoardService;
   @Autowired TeamService teamService;
   @Autowired MatchApplyService matchApplyService;
-  @Autowired LocationService locationService; // 사실상 사용하지 않음.
+  @Autowired LocationService locationService;
   @Autowired ServletContext servletContext;
 
   @GetMapping("form")
@@ -56,12 +57,12 @@ public class MatchBoardController {
   @GetMapping
   public String list(
         @RequestParam(defaultValue="1") int pageNo,
-        @RequestParam(defaultValue="7") int pageSize,
+        @RequestParam(defaultValue="8") int pageSize,
         HttpSession session,
         Model model) {
 
-      if (pageSize < 7 || pageSize > 8)
-        pageSize = 7;
+      if (pageSize < 8 || pageSize > 9)
+        pageSize = 8;
 
       int rowCount = matchBoardService.size();
       int totalPage = rowCount / pageSize;
@@ -79,6 +80,9 @@ public class MatchBoardController {
         model.addAttribute("myteam",teames);
         } else {
          }
+        
+        
+        
         List<Match> all = matchBoardService.search();
         List<Match> matches = matchBoardService.list(pageNo, pageSize);
         model.addAttribute("matches", matches);
@@ -163,18 +167,26 @@ public class MatchBoardController {
   }
   
   @GetMapping("{no}/submit")
-  public String submit(@PathVariable int no) {
+  public String submit(@PathVariable int no, Team team) {
     Match match = matchBoardService.get(no);
-    int writeTeamNo = match.getTeamNo();
 
     MatchApply matchApply = new MatchApply();
     
     matchApply.setMatchNo(match.getNo());
-    matchApply.setTeamNo(writeTeamNo);
+    matchApply.setTeamNo(team.getTeamId());
 
     matchApplyService.add(matchApply);
     return "redirect:../";
   }
+  
+  
+  
+  @GetMapping("test")
+  public String test(Match match) throws Exception {
+      return "matchboard/test";
+  }
+  
+  
   
 //  @GetMapping("sideBar")
 //  public String sideBar() {

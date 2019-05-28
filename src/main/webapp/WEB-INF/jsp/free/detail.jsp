@@ -70,10 +70,21 @@
           <br>
           <hr>
           <br>
-           <c:if test="${sessionScope.loginUser != null}">
-          <jsp:include page="../comment/form.jsp" />
-          </c:if>
+          
           <jsp:include page="../comment/list.jsp" />
+           <c:if test="${sessionScope.loginUser != null}">
+           <form action='../comment/add' method="post">
+    		<div id="comment">
+     	 <div class="form-group row">
+        <div class="col-sm-10">
+          <input class="cmtform form-control" name='contents' placeholder="댓글을 작성하세요.">${comment.contents}
+          <button class="a input-group-btn btn btn-dark" type='submit'>작성</button>
+        </div>
+      	 </div>
+          </div>
+		<br>
+			</form>
+          </c:if>
         </c:otherwise>
       </c:choose>
   </div>

@@ -27,6 +27,10 @@
     <p><b>매치</b> 글을 등록한 후</p>
     <p>다른 팀의<b>대결 신청을 받아</b>경기를 진행해 보세요.</p>
     
+    <div class="listbtn">
+    <a class="btn btn-primary" href='.'>목록</a>
+    </div>
+    
     <table id="match_table" class="table table-bordered">
   <thead>
     <tr>
@@ -141,7 +145,6 @@
 </table>
       <div class="form-group row">
         <div class="col-sm-10">
-          <a class="btn btn-primary" href='.'>목록</a>
           <button id="add" class="btn btn-primary">매치보드에 등록하기</button>
         </div>
       </div>

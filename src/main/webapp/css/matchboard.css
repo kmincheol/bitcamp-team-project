@@ -172,9 +172,15 @@ text-align: right;
   position: absolute; 
 }
 
-#add {
-  width: 200px;
+.col-sm-10 {
+  text-align: center;
 }
+
+#add {
+  width: 300px;
+  margin-left: 40px;
+}
+
 
 
 #ground_title {
@@ -202,10 +208,21 @@ text-align: right;
 /* popover 디자인 */
 .popover-body {
   width:200px;
-  height:120px;
-  display:block;
+  height:200px;
+  display:"";
   text-overflow:ellipsis;
   overflow:hidden;
   white-space:nowrap;
 }
+
+#detail_background{
+  text-align: center;
+}
+
+#detail_table {
+  background-color:#FFF8E7 ;
+  text-align: center;
+  width:1100px;
+}
+
 
