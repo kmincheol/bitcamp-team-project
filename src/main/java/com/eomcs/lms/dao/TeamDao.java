@@ -12,6 +12,7 @@ import com.eomcs.lms.domain.TeamTypeSports;
 
 public interface TeamDao {
   int insert(Team team);
+  int insertTeamLeader(TeamMember teamMember);
   Team findByNo(int no);
   List<Team> findAllTeam1();
   List<Team> findAllTeam2();

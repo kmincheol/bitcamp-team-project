@@ -2,6 +2,7 @@ package com.eomcs.lms.service;
 
 import java.util.List;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
 
 public interface TeamRecruitBoardService {
@@ -18,6 +19,8 @@ public interface TeamRecruitBoardService {
   TeamRecruit get(int no);
   
   List<Team> get2(int no);
+  
+  List<TeamMember> get3(int no);
   
   TeamRecruit getUpdate(int no);
 

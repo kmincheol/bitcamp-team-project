@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.TeamRecruitDao;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.TeamRecruitBoardService;
 
@@ -86,6 +87,17 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     }
     return teamRecruit;
   }
+  
+  @Override
+  public List<TeamMember> get3(int no) {
+    List<TeamMember> teamRecruit = teamRecruitDao.findByNo3(no);
+
+    if (teamRecruit != null) {
+      teamRecruitDao.increaseCount(no);
+    }
+    return teamRecruit;
+  }
+
 
 
 

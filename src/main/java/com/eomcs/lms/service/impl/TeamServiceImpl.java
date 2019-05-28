@@ -43,6 +43,11 @@ public class TeamServiceImpl implements TeamService {
   public int addTeam(Team team) {
     return teamDao.insert(team);
   }
+  
+  @Override
+  public int addTeamLeader(TeamMember teamMember) {
+    return teamDao.insertTeamLeader(teamMember);
+  }
 
   @Override
   public List<TeamType> teamTypeList() {

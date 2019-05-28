@@ -38,8 +38,13 @@ public class RecruitBoardController {
   @GetMapping("{no}")
   public String detail(@PathVariable int no, Model model) {
     TeamRecruit teamRecruit = recruitBoardService.get(no);
+
+    int b = teamRecruit.getTeamId();
+    List<TeamMember> teamMember = recruitBoardService.get3(b);
+
     model.addAttribute("teamRecruit", teamRecruit);
-    logger.info(teamRecruit);
+    model.addAttribute("teamMember", teamMember);
+
     return "recruit_board/detail";
   }
 
