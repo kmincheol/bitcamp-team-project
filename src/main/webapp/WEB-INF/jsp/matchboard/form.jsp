@@ -65,15 +65,22 @@
                 <select name='location' class="custom-select" id="sido" onchange="itemChange()">
             <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
             <option value="01">서울</option>
-            <!-- <option value="02">경기</option>
-            <option value="03">인천</option>  -->
                 </select>
               </div>
             </div>
 				  <div class="col-sm">
               <div class="input-group mb-2">
                 <select name='location' class="custom-select" id="gugun">
-            <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
+            <option value="" disabled selected hidden>지역선택</option> 
+              <!-- <option value="01">강남구</option> <option value="02">강동구</option> <option value="03">강북구</option>
+              <option value="04">강서구</option> <option value="05">관악구</option> <option value="06">광진구</option>
+              <option value="07">구로구</option> <option value="08">금천구</option> <option value="09">노원구</option>
+              <option value="10">도봉구</option> <option value="11">동대문구</option> <option value="12">동작구</option>
+              <option value="13">마포구</option> <option value="14">서대문구</option> <option value="15">서초구</option>
+              <option value="16">성동구</option> <option value="17">성북구</option> <option value="18">송파구</option>
+              <option value="19">양천구</option> <option value="20">영등포구</option> <option value="21">용산구</option>
+              <option value="22">은평구</option> <option value="23">종로구</option> <option value="24">중구</option>
+              <option value="25">중랑구</option> -->
                 </select>
               </div>
             </div>
@@ -169,28 +176,33 @@
 
 
 <script>
-function itemChange(){
-	var Seoul = [
-		'강남구','강동구','강북구','강서구','관악구','광진구',
-		'구로구','금천구','노원구','도봉구','동대문구','동작구',
-		'마포구','서대문구','서초구','성동구','성북구','송파구',
-		'양천구','영등포구','용산구','은평구','종로구','중구',
-		'중랑구'
-		];
-	 /* var Gyeonggi = [
-		'고양시 덕양구','고양시 일산동구','고양시 일산서구','과천시','광명시',
-		'광주시','구리시','군포시','김포시','남양주시','동두천시',
-		'부천시 소사구','부천시 오정구','부천시 원미구','성남시 분당구',
-		'성남시 수정구','성남시 중원구','수원시 권선구','수원시 영통구',
-		'수원시 장안구','수원시 팔달구','시흥시','안산시 단원구','안산시 상록구',
-		'안성시','안양시 동안구','안양시 만안구','양주시','오산시','용인시 기흥구',
-		'용인시 수지구','용인시 처인구','의왕시','의정부시','이천시','파주시',
-		'평택시','포천시','하남시','화성시','가평군','양평군','여주군','연천군'
-		];
-	var Incheon = [
-		'계양구','남구','남동구','동구','부평구','서구',
-		'연수구','중구','강화군','옹진군'
-		];  */
+function itemChange(){ 
+	var Seoul = new Array(); 
+	Seoul[0] = '강남구';
+	Seoul[1] = '강동구';
+	Seoul[2] = '강북구';
+	Seoul[3] = '강서구';
+	Seoul[4] = '관악구';
+	Seoul[5] = '광진구';
+	Seoul[6] = '구로구';
+	Seoul[7] = '금천구';
+	Seoul[8] = '노원구';
+	Seoul[9] = '도봉구';
+	Seoul[10] = '동대문구';
+	Seoul[11] = '동작구';
+	Seoul[12] = '마포구';
+	Seoul[13] = '서대문구';
+	Seoul[14] = '서초구';
+	Seoul[15] = '성동구';
+	Seoul[16] = '성북구';
+	Seoul[17] = '송파구';
+	Seoul[18] = '양천구';
+	Seoul[19] = '영등포구';
+	Seoul[20] = '용산구';
+	Seoul[21] = '은평구';
+	Seoul[22] = '종로구';
+	Seoul[23] = '중구';
+	Seoul[24] = '중랑구';
 	 
 	var selectItem = $("#sido").val();
 	 
@@ -199,113 +211,21 @@ function itemChange(){
 	if(selectItem == "01"){ // 서울
 	  changeItem = Seoul;
 	}
-	/*  else if(selectItem == "02"){ // 경기
-	  changeItem = Gyeonggi;
-	}
-	else if(selectItem == "03"){ // 인천
-	  changeItem =  Incheon;
-	}  */
-	 
 	$('#gugun').empty();
 	 
-	for(var count = 0; count < changeItem.length; count++){                
+	for(var count = 0; count < changeItem.length; count++){
 	    var option = $("<option>"+changeItem[count]+"</option>");
 	    $('#gugun').append(option);
 	            }
-	
 	}
+
+/* 	$("#gugun").find("option:selected").val();
+
+	var location = $("#sido").text() + $("#gugun").text(); */
 	
 </script>
 
 
-
-
-<!-- <script type="text/javascript">
-
-function js_select_region(select1,select2){
-	if(!select1){alert('error');return;}
-	if(!select2){alert('error');return;}
-	if(!js_select_region_select_sido(select1)){alert('error');return;}
-	if(!js_select_region_select_gugun(select1,select2)){alert('error');return;}	
-	select1.onchange=function(){
-		select2.value = '';
-		js_select_region_select_gugun(select1,select2)
-	}
-}
-
-function js_select_region_select_sido(select1){
-	if(!js_select_region_sido){return false;}
-	if(select1.tagName !='SELECT'){return false;}
-
-	var sido = js_select_region_sido;
-	var val = select1.value;
-	var opts = select1.options;
-	select1.length = 0;
-
-	var opt = new Option('시/도','',(val==''),(val==''));
-	opts.add(opt);
-	
-	for(var i=0,m=sido.length;i<m;i++){
-		var opt = new Option(sido[i],sido[i],(val==sido[i]),(val==sido[i]));
-		opts.add(opt);		
-	}
-	return true;
-}
-function js_select_region_select_gugun(select1,select2){
-	if(!js_select_region_gugun){return false;}
-	if(select1.tagName !='SELECT'){return false;}
-	if(select2.tagName !='SELECT'){return false;}
-	
-	var gugun = js_select_region_gugun;
-	var val = select2.value;
-	var opts = select2.options;
-	select2.length = 0;	
-	var opt = new Option('구/군','',(val==''),(val==''));
-	opts.add(opt);
-
-	if(!select1.value){		select2.disabled=true;			return true;	}
-	else{		select2.disabled=false;		}
-	
-	var list = gugun[select1.value];
-	if(!list){return false;}
-	   
-	for(var i=0,m=list.length;i<m;i++){
-		var opt = new Option(list[i],list[i],(val==list[i]),(val==list[i]));
-		opts.add(opt);		
-	}
-	return true;	
-}
-
-var js_select_region_sido = new Array(
-		'서울',
-		'인천',
-		'경기',
-		);
-
-		var js_select_region_gugun = new Object();
-		js_select_region_gugun['서울'] = new Array(
-		'강남구','강동구','강북구','강서구','관악구','광진구',
-		'구로구','금천구','노원구','도봉구','동대문구','동작구',
-		'마포구','서대문구','서초구','성동구','성북구','송파구',
-		'양천구','영등포구','용산구','은평구','종로구','중구',
-		'중랑구'			  
-		);
-		js_select_region_gugun['인천'] = new Array(
-		'계양구','남구','남동구','동구','부평구','서구',
-		'연수구','중구','강화군','옹진군'
-		);
-		js_select_region_gugun['경기'] = new Array(
-		'고양시 덕양구','고양시 일산동구','고양시 일산서구','과천시','광명시',
-		'광주시','구리시','군포시','김포시','남양주시','동두천시',
-		'부천시 소사구','부천시 오정구','부천시 원미구','성남시 분당구',
-		'성남시 수정구','성남시 중원구','수원시 권선구','수원시 영통구',
-		'수원시 장안구','수원시 팔달구','시흥시','안산시 단원구','안산시 상록구',
-		'안성시','안양시 동안구','안양시 만안구','양주시','오산시','용인시 기흥구',
-		'용인시 수지구','용인시 처인구','의왕시','의정부시','이천시','파주시',
-		'평택시','포천시','하남시','화성시','가평군','양평군','여주군','연천군'
-		);
-
-</script> -->
 	
 </body>
 </html>

@@ -34,6 +34,9 @@ body{
 .popover-body {
 height: 120px;
 }
+.odd {
+  colspan: 3;
+}
     </style>
 
 </head>
@@ -48,6 +51,9 @@ height: 120px;
     <p>원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나</p>
     <p><b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.</p>
 
+
+<jsp:include page="sideBar.jsp" />
+
 <br>
       <c:if test="${!match.team.teamMember.team_leader}">
         <div style="text-align:center;">
@@ -58,7 +64,7 @@ height: 120px;
        </div>
        </c:if>
 <br>
-       
+       <!-- style="display:none;" -->
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
   <thead>
     <tr>
@@ -95,25 +101,41 @@ height: 120px;
               경기날짜: ${match.playDate} <br>
               <br>
       </td>
-      <c:if test="${!empty sessionScope.loginUser}">
       <td>
+      <c:if test="${!empty sessionScope.loginUser}">
       
                     <div class="button3" style="padding-top: 40px;">
-                   <div class="form-group pos-relative" id="applybtn" style="top:50px;">
+                    <div class="form-group pos-relative" id="applybtn" style="top:50px;">
                 <a class="js-tooltip-trigger" id="ref" style="top:40px;">
                 <button id="btnsub"class="btn btn-primary btn-sm" aria-disabled="true">신청하기</button>
                 </a>
-                  <span class="js-tooltip" style="top:130px; display:block;width:80px;height:10px;text-overflow: ellipsis;overflow: hidden;white-space:nowrap;" >
+                  <span class="js-tooltip" style="text-overflow: ellipsis;white-space:nowrap;" >
                       <strong>제목:${match.title} </strong><br>
                       <strong>내용:${match.contents} </strong><br>
                       <strong>연락처:${match.telephone} </strong><br>
-                      <strong><a class="btn btn-primary btn-sm" href="#" role="button">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </a></strong>
+  	
+  	                    
+                      <select name='teamNo' class="custom-select" id="selectBox">
+                      <option selected>소속팀 선택</option>
+                      <c:forEach items="${myteam}" var="myteam">
+                      	<c:if test="${!myteam.team.teamMember.team_leader}">
+                      <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
+                      	</c:if>
+                      </c:forEach>
+                      </select>
+    
+    
+    					<c:if test=""></c:if>
+                      <a class="btn btn-primary btn-sm" onclick="javascript:btn()"
+                      href='${contextRootPath}/app/matchboard/${match.no}/submit' role="button">
+                      &nbsp &nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp &nbsp </a>
                   </span>
+                  
+                  
                     </div>
-               </div>
-      
-      </td>
+                    </div>
       </c:if>
+      </td>
     </tr>
 </tbody>
 </c:forEach>
@@ -181,9 +203,9 @@ $(function () {
         }).html('');
         
         $ele.popover({
-             trigger: 'click', 
               html: true,
-           /*  trigger: 'focus',    */
+            trigger: 'focus',
+/*             trigger: 'click',  */
             placement: 'right',
             container: '#'+rndID, 
             content: ttHtml
@@ -195,6 +217,20 @@ $(function () {
         });
 
 </script>
+
+<script>
+if {
+
+}
+
+else{
+function btn(){
+	alert('신청되었습니다!'); 
+	}
+}
+</script>
+
+
 
 <!-- <script>// 위치선택 할 때
 function itemChange(){ 
