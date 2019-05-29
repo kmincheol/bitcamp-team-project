@@ -33,7 +33,7 @@
           <a href="${contextRootPath}/app/auth/logout">로그아웃</a>
         </c:if>
         <c:if test="${sessionScope.loginUser == null}">
-          / <a href="${contextRootPath}/app/member/join">회원가입</a>
+          / <a href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
         </c:if>
         / <a href="#">고객센터</a>
       </div>
