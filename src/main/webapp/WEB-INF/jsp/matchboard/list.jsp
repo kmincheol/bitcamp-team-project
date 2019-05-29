@@ -6,85 +6,60 @@
 <head>
 <title>매치보드</title>
 <jsp:include page="../commonCss.jsp" />
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/matchboard.css"> 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
-
-<jsp:include page="../header.jsp" />
-<style>
-body {
-  padding: 20px 20px;
-}
-.results tr[visible='false'], .no-result {
-  display: none;
-}
-.results tr[visible='true'] {
-  display: table-row;
-}
-.counter {
-  padding: 8px;
-  color: #ccc;
-}
-.odd {
-  colspan: 3;
-}
-</style>
-
+<link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
 <body>
-	<div class="container">
-		<br>
-		<br>
-		<br>
-		<div id="match_content">
-			<h2>
-				등록된 <b>매치 글</b>을 검색하여 찾거나
-			</h2>
-			<h2>직접 매치글을 등록할 수 있습니다.</h2>
-			<br>
-			<p>
-				원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나
-			</p>
-			<p>
-				<b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.
-			</p>
-			<jsp:include page="sideBar.jsp" />
 
-			<br>
-			<c:if test="${!empty sessionScope.loginUser}">
-			<c:if test="${!match.team.teamMember.team_leader}">
-				<div style="text-align: center;">
-					<a href='${contextRootPath}/app/matchboard/form.jsp' id="newmat"
-						class="btn btn-primary" tabindex="-1" role="button"
-						aria-disabled="true" style="width: 300px;"> 매치 등록하기 </a>
-				</div>
-			</c:if>
-			</c:if>
-			<br>
+<jsp:include page="../header.jsp" />
+
+	<div class="container">
+		<div id="match_content">
+			<div>
+				<h2 class="match_content_title">
+					등록된 <b>매치 글</b>을 검색하여 찾거나
+				</h2>
+				<h2>직접 매치글을 등록할 수 있습니다.</h2>
+				<br>
+				<p>
+					원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나
+				</p>
+				<p>
+					<b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.
+				</p>
+
+			<!-- 사이드바 인클루드하기 -->
+
+				<c:if test="${!empty sessionScope.loginUser}">
+				<c:if test="${!match.team.teamMember.team_leader}">
+					<div style="text-align: center;">
+						<a href='${contextRootPath}/app/matchboard/form.jsp' id="formBtn"
+							class="btn btn-primary" tabindex="-1" role="button"
+							aria-disabled="true" style="width: 300px;"> 매치 등록하기 </a>
+					</div>
+				</c:if>
+				</c:if>
+			</div>
 				<!-- 테이블 시작지점 -->
 			<table id="dt" class="table table-striped table-bordered" cellspacing="0" width="100%">
 				<thead>
 				</thead>
 				
 				<c:forEach items="${matches}" var="match">
-					<tbody>
-						<tr>
-							<td id="teaminfo" class="th-sm sorting_asc" rowspan="1"
+				
+			
+				
+				<tbody>
+					<tr>
+						<td id="teaminfo" class="th-sm sorting_asc" rowspan="1"
 								align="center" style="cursor: pointer;"
 								onClick="location.href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'"
 								onMouseOver="this.style.backgroundColor='#f2fffd';"
 								onMouseOut="this.style.backgroundColor='' ">
-								${match.team.teamEmblemPhoto} 엠블럼자리 <!-- 엠블럼 들어갑니다. --> <br>
-								<br> <br> <br> ${match.team.teamName} <br>
-								아직 팀 페이지가 없습니다.
-							</td>
-
-
-
-							<td id="info" style="cursor: pointer;"
+								<img src='${match.team.teamEmblemPhoto}'>
+						<p>${match.team.teamName}</p>
+						아직 팀 페이지가 없습니다.
+						</td>
+						<td id="info" style="cursor: pointer;"
 								onClick="location.href='${contextRootPath}/app/matchboard/${match.no}'"
 								onMouseOver="this.style.backgroundColor='#f2fffd';"
 								onMouseOut="this.style.backgroundColor='' ">
@@ -102,39 +77,45 @@ body {
  						<c:if test="${!empty sessionScope.loginUser}">
 						<!-- <div class="button3" style="padding-top: 40px;"> -->
 						<div class="form-group pos-relative" id="applybtn" style="top: 50px;">
+						<div class="popoverContainer">
+
+
+
+							
+							
+						<a class="btn btn-lg btn-danger matchPopover" title="" data-original-title="popover Test">팝오버버튼</a>
+
+						<div class="js-tooltip" id='select-div'>
+								<strong>제목:${match.title} </strong><br>
+								<strong>내용:${match.contents}</strong><br> 
+								<strong>연락처:${match.telephone} </strong><br> 
+								<form action='${match.no}/submit'>
+									<select name='teamId' id="selectBox">
+										<option selected>소속팀 선택</option>
+										<c:forEach items="${myteam}" var="myteam">
+											<c:if test="${!myteam.team.teamMember.team_leader}">
+												<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
+											</c:if>
+										</c:forEach>
+									</select>
+									<button class="btn btn-primary btn-sm">신청하기3</button> 
+								</form> 
+							</div>	
+
+
+
+						</div>
 						
-<!-- 						<a class="js-tooltip-trigger" id="ref" style="top: 40px;">
-						<button id="btnsub" class="btn btn-primary btn-sm" 
-						data-toggle="popover" aria-disabled="true">신청하기</button>
-						</a>  
-						<div class="js-tooltip" >
-							<strong>제목:${match.title} </strong><br>
-						<strong>내용:${match.contents}</strong><br> 
-						<strong>연락처:${match.telephone} </strong><br> 
-										
-				<form action='${match.no}/submit'>
-							<select name='teamId' class="form-control" id="selectBox">
-								<option selected>소속팀 선택</option>
-									<c:forEach items="${myteam}" var="myteam">
-										<c:if test="${!myteam.team.teamMember.team_leader}">
-									<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
-										</c:if>
-									</c:forEach>
-							</select>
-								<button class="btn btn-primary btn-sm">&nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp</button> 
-				</form> 
+						<a class="js-tooltip-trigger" id="ref" style="top: 40px;">
+										<button id="btnsub" class="btn btn-primary btn-sm" 
+										data-toggle="popover" aria-disabled="true">신청하기1</button>
+										</a> 
+					
 									</div> <!-- js-tooltip 끝 --> 
 									
 				<form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
-							<select name='teamId' class="form-control" id="selectBox">
-								<option selected>소속팀 선택</option>
-									<c:forEach items="${myteam}" var="myteam">
-										<c:if test="${!myteam.team.teamMember.team_leader}">
-									<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
-										</c:if>
-									</c:forEach>
-							</select>
-								<button id="smtBtn" class="btn btn-primary btn-sm">&nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp</button> 
+
+								<button id="smtBtn" class="btn btn-primary btn-sm">신청하기2</button> 
 				</form>
 				
 				
@@ -174,79 +155,34 @@ body {
 	</div>
 	</div>
 	<!-- .container -->
-	<jsp:include page="../javascript.jsp" />
-	<!-- SCRIPTS -->
+
+<jsp:include page="../javascript.jsp" />
 	
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<!-- JQuery -->
-	<script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/jquery-3.4.0.min.js"></script>
-	<!-- Bootstrap tooltips -->
-	<script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/popper.min.js"></script>
-	<!-- Bootstrap core JavaScript -->
-	<script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/bootstrap.min.js"></script>
-	<!-- MDBootstrap Datatables  -->
-	<script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
+ <script>
 
-</body>
+$(document).ready(function () {
 
+	$('body').on('shown','.modal', function() {
+  $(document).off('focusin.modal')
+});
 
-
-
- <script> // 팝오버 관련 소스
-$(function () {
-      $('.js-tooltip-trigger').each(function(ind, ele){
-        
-        var $ele = $(ele),
-            $ttDiv = $ele.next('.js-tooltip'),
-            ttHtml = $ttDiv.html(),
-            rndID = 'ttid'+ String(Math.random()).substr(2)
-            isVisible = false;
-        
-        $ttDiv.attr({'id': rndID}).html('');
-        
-        var hideAllPopovers = function() {
-        	$('.popup-marker').each(function() {
-        		$(this).popover('hide');
-        	});
-        };
-        
-        $ele.popover({
-              html: true,
-            trigger: 'focus',
-            /* trigger: 'click',  */
-            placement: 'right',
-            container: '#'+rndID,
-            content: ttHtml
-          }).on('click', function(e) {
-        	  if(isVisible) {
-        		  hideAllPopovers();
-        	  }
-        	  
-        	  $(this).popover('show');
-        	  
-        	  $('.popover').off('click').on('click', function(e) {
-        		  e.stopPropagation();
-        	  });
-        	  
-        	  isVisible = true;
-        	  e.stopPropagation();
-          });
-        
-        $(document).on('click', function(e) {
-            hideAllPopovers();
-            isVisible = false;
+	$('.matchPopover').popover({
+		html: true,
+		content : function(){
+        var content = '';
+				content = $('#select-div').html();
+				console.log(content);
+				return content;
+            } 
+					}).on('shown.bs.popover', function(){
         });
-        
-      });
-    });
-</script>
 
+	$('#smtBtn').click(function() {
+		hohoho();
+	});	
+});
 
-<script>
-
-$(function() {
-	var save_bt = $('#smtBtn'); // 저장할 버튼을 변수에 선언
-	save_bt.click(function(e) {
+function hohoho() {
 		e.preventDefault();
 		var text = $('#selectBox').html(); // 전송할 내용이 있는 요소
 		var mtch = document.location.href.split("matchboard/");
@@ -265,18 +201,17 @@ $(function() {
 			      alert('Success'); // 성공시 코드
 			},
 			error : function(xhr) {
-                if(xhr.status == 200){
-                 alert('문제가 발생했습니다.\n상태코드 : ' + info.status+ '\n\n' + info.responseText);
-                }
-                if(xhr.status == 500){
-                     alert('이미 신청한 팀입니다.');
-                } else {
-                 alert('문제가 발생했습니다.\n잠시후 다시 시도해 주세요.\n 상태코드 : ' +info.status);
-                };
+        if(xhr.status == 200){
+          alert('문제가 발생했습니다.\n상태코드 : ' + info.status+ '\n\n' + info.responseText);
+        }
+        if(xhr.status == 500){
+          alert('이미 신청한 팀입니다.');
+        } else {
+          alert('문제가 발생했습니다.\n잠시후 다시 시도해 주세요.\n 상태코드 : ' +info.status);
+        };
 			}
 		});
-	});
-});
+	}
 
 </script>
 
@@ -339,5 +274,5 @@ function btn(){
 	}
 }
 </script> -->
-
+</body>
 </html>

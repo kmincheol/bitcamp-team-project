@@ -78,12 +78,11 @@ public class MatchBoardController {
         if (session.getAttribute("loginUser") != null) {
         Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
         List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
-        model.addAttribute("myteam",teames);
+        model.addAttribute("myteam", teames);
         } else {
-         }
-        
-        
-        
+          
+        }
+
         List<Match> all = matchBoardService.search();
         List<Match> matches = matchBoardService.list(pageNo, pageSize);
         model.addAttribute("matches", matches);

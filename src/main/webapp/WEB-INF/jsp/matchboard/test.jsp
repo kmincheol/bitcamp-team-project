@@ -13,29 +13,31 @@
 
 </style>
 <body>
+		<div class="hide" id="select-div">
+				<div class="col-sm-2 "  style="width:250px;">
+				<select class="form-control">
+				<option>Test</option>
+				<option>Test1</option>
+				</select>
+				</div>
+				<div class="clearfix col-sm-10" style="margin:8px 0;">
+				  <button type="button" class="btn btn-default btn-go">Go!</button>
+				  <button type="button" class="btn btn-default btn-cancel-option">Cancel</button>
+				</div>
+		</div>
+
 	<div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
        <h1>Dropdown in Popup</h1>
 		<div id="popover1" class="col-sm-12 col-xs-12 col-md-9">
 		
-		<a title="" class="btn btn-primary change-project" href="javascript:;"
+		<a title="" class="btn btn-primary change-project"
 		data-original-title="popover Test" >Popover Example</a>        
      
-      <div class="hide" id="select-div">
-            <div class="col-sm-2 "  style="width:250px;">
-			<select class="form-control">
-			<option>Test</option>
-			<option>Test1</option>
-			</select>
-			</div>
-			<div class="clearfix col-sm-10" style="margin:8px 0;">
-			  <button type="button" class="btn btn-default btn-go">Go!</button>
-			  <button type="button" class="btn btn-default btn-cancel-option">Cancel</button>
-			</div>
+
 	</div>
-	</div>
-	
+	<!--
 	<c:if test="${!empty sessionScope.loginUser}">
 						<div class="button3" style="padding-top: 40px;">
 						<div class="form-group pos-relative" id="applybtn" style="top: 50px;">
@@ -62,10 +64,11 @@
 							href='${contextRootPath}/app/matchboard/${match.no}/submit'role="button"> 
 							&nbsp &nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp &nbsp </a>  --%>
 									
-									</div> <!-- js-tooltip 끝 -->
-									</div> <!-- form-group pos-relative 끝 -->
+									</div> 
+									</div> 
 									</div>
 								</c:if>
+							-->
 	
        </div>
 </body>
@@ -109,6 +112,7 @@ $(window).trigger('ChangeView', {});
 
 
 <script> // 팝오버 관련 소스
+/*
 $(function () {
       $('.js-tooltip-trigger').each(function(ind, ele){
         
@@ -156,7 +160,7 @@ $(function () {
         
       });
     });
-
+*/
 </script>
 
 

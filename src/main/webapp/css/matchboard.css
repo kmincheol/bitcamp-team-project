@@ -4,6 +4,59 @@ h2 {
   text-align: center;
 }
 
+p {
+  text-align: center;
+}
+
+.container {
+  padding: 0
+}
+
+.match_content_title {
+  margin-top: 30px
+}
+
+div.button1 {
+  /* width: 200px;   */
+  /* position: absolute;  */
+    text-align: center;
+  left: 55%; 
+  }
+
+div.button2 {
+  width: 100px;  
+  right: 10%
+}
+
+.button3 {
+  top:60px;
+  height: 20px;
+  padding: 0px;
+}
+
+
+.pos-relative {
+  margin: 0px;
+}
+  
+.tableline {
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-bottom-color: rgb(200, 200, 200);
+}
+
+.col-sm-10 {
+  text-align: center;
+}
+
+/* popover 디자인 */
+.popover-body {
+  width:200px;
+  height:200px;
+  /* overflow:hidden; */
+}
+
 #info {
 /*     padding-right: 75px; */
   position: relative;
@@ -14,45 +67,20 @@ h2 {
   padding: 20px 20px 20px 20px;
 }
 
-p {
-  text-align: center;
-}
-
-div.button1 {
-/* width: 200px;   */
-/* position: absolute;  */
-  text-align: center;
-left: 55%; 
-}
-
-div.button2 {
-width: 100px;  
-rigth: 10%; 
-}
-
-.pos-relative {
-  margin: 0px;
-}
-
-.tableline {
-  border-width: 3px;
-  border-style: solid;
-  border-color: rgb(255, 255, 255);
-  border-bottom-color: rgb(200, 200, 200);
-}
-
-
 #applybtn{
-  top:60px;'
+  top:60px
+}
+
+#formBtn {
+  margin-bottom: 16px
 }
 
 
 #button3 {
-  position: absolute; /* /*  */ */
+  position: absolute;
   top: 60px;
   position: relative;
-  border-width: 0px;
-/*   float: right; */
+  border-width: 0px
 }
 
 #btnsub {
@@ -81,11 +109,7 @@ text-align: right;
 text-align: right;
 }
 
-.button3 {
-  top:60px;
-  height: 20px;
-  padding: 0px;
-}
+
 
 
 #match_table {
@@ -101,26 +125,6 @@ text-align: right;
   color: white;
 }
  
-/* .container {
-  position: absolute;
-  top: 600px;
-  width: 100%;
-  left: 0px;
-  right: 0px;
-}  */
-
-/* 
-#content {
-   width: 600px;
-   padding: 20px;
-   margin-bottom: 20px;
-   float: left;
-} */
-
-#match_content {
-    
-}
-
 #subtable {
   text-align: center;
   height :300px;
@@ -128,9 +132,6 @@ text-align: right;
 
 #selectType{
   padding-left: 0px;
-}
-
-#subtitle {
 }
 
 #matchform {
@@ -145,9 +146,6 @@ text-align: right;
 #detail_table {
   text-align: center;
 }
-
-
-
 
  #sidebar-right {
   background-color: black;
@@ -172,9 +170,6 @@ text-align: right;
   position: absolute; 
 }
 
-.col-sm-10 {
-  text-align: center;
-}
 
 #add {
   width: 300px;
@@ -205,15 +200,6 @@ text-align: right;
   width: 300px;
   }
 
-/* popover 디자인 */
-.popover-body {
-  width:200px;
-  height:200px;
-  display:"";
-  text-overflow:ellipsis;
-  /* overflow:hidden; */
-  white-space:nowrap;
-}
 
 #detail_background{
   text-align: center;
