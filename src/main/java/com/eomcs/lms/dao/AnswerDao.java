@@ -19,6 +19,8 @@ public interface AnswerDao {
 
   AnswerBoard findByNo(int no);
   
+  AnswerBoard findByNo2(int no);
+  
 }
 
 

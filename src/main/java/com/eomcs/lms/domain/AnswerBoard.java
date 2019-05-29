@@ -9,7 +9,9 @@ public class AnswerBoard {
       private String contents;
       private Date createdDate;
       private QuestionBoard questionBoard;
-    
+      
+      
+      
       
       @Override
       public String toString() {
@@ -53,7 +55,10 @@ public class AnswerBoard {
       public void setQuestionBoard(QuestionBoard questionBoard) {
         this.questionBoard = questionBoard;
       }
-        
-
+     
+     
+ 
+      
+       
 
 }

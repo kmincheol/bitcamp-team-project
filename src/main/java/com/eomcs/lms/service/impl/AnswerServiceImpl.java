@@ -37,10 +37,17 @@ public class AnswerServiceImpl implements AnswerBoardService {
   public AnswerBoard get(int no) {
       AnswerBoard answer = answerDao.findByNo(no);
     if (answer != null) {
-  //    questionDao.increaseCount(no);
     }
     return answer;
   }
+    
+    @Override
+    public AnswerBoard get2(int no) {
+        AnswerBoard answer = answerDao.findByNo2(no);
+      if (answer != null) {
+      }
+      return answer;
+    }
   
     @Override
     public int update(AnswerBoard answerBoard) {
@@ -57,13 +64,7 @@ public class AnswerServiceImpl implements AnswerBoardService {
   }
 
   
-//  
-//  @Override
-//  public QuestionBoard getUpdate(int no) {
-//    QuestionBoard questionBoard = questionDao.detailUpdate(no);
-//    return questionBoard;
-//  }
-//
+
 
 }
 

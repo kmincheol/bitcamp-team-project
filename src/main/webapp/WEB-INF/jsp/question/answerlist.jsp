@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div id="main-text">
-      <h2>내가 질문한 글</h2>
+      <h2>답변해야 할 게시물</h2>
     </div>
 
 
@@ -31,19 +31,14 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items="${question}" var="question">
+        <c:forEach items="${question}" var="question"> 
+               <c:if test="${question.questionStatus == 'false'}">
           <tr>
             <td>${question.questionNo}</td>
-             <td>
-               <c:choose>
-                <c:when test="${fn:length(question.password) > 0}">
-           <a href="${contextRootPath}/app/question/${question.questionNo}" onclick="pwdcheck()">${question.title}</a>
-            <img src="${contextRootPath}/images/lock.png" style = "width:20px">
-                </c:when>
-                  <c:otherwise>  <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a></c:otherwise>
-                  </c:choose>        
+             <td><a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a></td>
             <td>${question.member.id}</td>
             <td>${question.createdDate}</td>
+            
              <td>
               <c:choose>
                 <c:when test="${(question.questionStatus) == 'false'}"> <img src="${contextRootPath}/images/idea.png" 
@@ -52,23 +47,14 @@
                 style = "width:30px"></c:otherwise>
               </c:choose>
           </tr>
+              </c:if>
         </c:forEach>
       </tbody>
     </table>
     <div>
-        <a class="btn btn-dark" href="${contextRootPath}/app/question" >목록가기</a>
+          <a class="btn btn-dark" href="${contextRootPath}/app/question">목록</a>
     </div>
-    
   </div>
-    <jsp:include page="../javascript.jsp" />
-<script>
-
-function pwdcheck(){
-    prompt("작성할 때 입력한 비밀번호를 입력해 주세요","")
-    
-}
-
-</script>
 
 
 

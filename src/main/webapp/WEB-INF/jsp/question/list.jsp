@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <div id="main-text">
-      <h2>질문게시판</h2>
+      <h2>문의 내역</h2>
     </div>
 
 
@@ -34,7 +34,14 @@
         <c:forEach items="${question}" var="question">
           <tr>
             <td>${question.questionNo}</td>
-             <td><a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a></td>
+           <td > 
+            <c:choose>
+                <c:when test="${fn:length(question.password) > 0 }">
+           <a href="${contextRootPath}/app/question/${question.questionNo}" onclick="mbmcheck()">${question.title}</a>
+            <img src="${contextRootPath}/images/lock.png" style = "width:20px">
+                </c:when>
+                  <c:otherwise>  <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a></c:otherwise>
+                  </c:choose>                  
             <td>${question.member.id}</td>
             <td>${question.createdDate}</td>
             
@@ -60,18 +67,29 @@
       </ul>
     </nav>
     
-    
-    
+    <c:if test="${sessionScope.loginUser.no == 1}">      
+    <a class="btn btn-dark" href="${contextRootPath}/app/question/answerlist" > 답변달거보기</a>
+   </c:if>
     <div id="btnbtn">
-    <a class="btn btn-dark" href="${contextRootPath}/app/question/mylist/${aa.no}" > 답변달거보기</a>
-        <a class="btn btn-dark" href="${contextRootPath}/app/question/mylist/${aa.no}" > 내 글 보기</a>
+     <c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.no != 1}">      
+       <a class="btn btn-dark" href="${contextRootPath}/app/question/mylist/${member.no}" > 내 글 보기</a>
         <a class="btn btn-dark" href="${contextRootPath}/app/question/form" >글쓰기</a>
-    </div>
-    
-       
+   </c:if>
+     </div>
     
   </div>
+  
+    <jsp:include page="../javascript.jsp" />
+<script>
+function mbmcheck(){
+	 var a = '${question}';
+		  var b = 0;
+		   alert(); 
+	 
+}
 
+
+</script>
 
 
 </body>

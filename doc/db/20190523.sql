@@ -164,6 +164,8 @@ CREATE TABLE qstn (
 )
 COMMENT '질문';
 
+
+
 -- 질문
 ALTER TABLE qstn
   ADD CONSTRAINT PK_qstn -- 질문 기본키
@@ -174,6 +176,8 @@ ALTER TABLE qstn
 ALTER TABLE qstn
   MODIFY COLUMN qstn_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '질문게시판번호';
 
+  
+  
 -- 팀원모집
 CREATE TABLE rcrm (
   rcrm_id   INTEGER(30) NOT NULL COMMENT '팀원모집번호', -- 팀원모집번호

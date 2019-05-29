@@ -34,27 +34,27 @@
       <label for="title" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
         <textarea class="form-control col-sm-13" rows="5" name="contents" id="contents" />${question.contents}
-    </textarea>
+     </textarea>
       </div>
-    </div>
- <%-- 
+    </div> 
+    
  <hr class="hrr">
-    
-    <div class="form-group row">
-      <label for="file_upload" class="col-sm-2 col-form-label">파일업로드</label>
+      
+     <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">비밀번호</label>
       <div class="col-sm-10">
-        <textarea class="form-control col-sm-13" rows="5" name="file_upload" id="file_upload" value="${question.contents}" />
-    </textarea>
+        <input type="password" class="form-control col-sm-2"  name="password" id="password" />${question.password}
       </div>
-    </div> --%>
-    
-    
+    </div> 
+  
+  
       <div class="form-group row">
         <div class="col-sm-12">
           <a class="btn btn-dark" href='${contextRootPath}/app/question' >취소하기</a>
           <button  class="btn btn-dark">질문하기</button>
         </div>
       </div>
+   
     </form>
   </div>
   <!-- .container -->
@@ -65,6 +65,7 @@
 function check(){
     var title = $('#title').val(); 
     var content = $('#contents').val();
+    var password = $('#password').val();
    if(title == ""){
      alert("제목을 입력 하세요.") ;
       return false;
@@ -73,7 +74,14 @@ function check(){
 	     alert("내용을 입력 하세요.") ;
 	      return false;
 	   }
+   else if(password >10000){
+	   alert("1~9999 숫자만 입력가능합니다");
+	   return false;
+   }
 }
+
+
+
 
 </script>
 </body>

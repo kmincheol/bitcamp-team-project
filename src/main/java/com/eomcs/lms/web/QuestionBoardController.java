@@ -54,21 +54,22 @@ public class QuestionBoardController {
         
     List<QuestionBoard> question = questionBoardService.list(pageNo, pageSize);
     List<AnswerBoard> answer = answerBoardService.list();
-   
+
     model.addAttribute("question", question);
     model.addAttribute("answer", answer);
-    model.addAttribute("aa", member);
+    model.addAttribute("member", member);
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
     model.addAttribute("totalPage", totalPage);
-
     return "question/list";
   }
   
+  /* 질문 게시글 폼 */ 
   @GetMapping("form")
   public void form() {
   }
-  
+
+  /* 질문 게시글 작성 */
   @PostMapping("add")
   public String add(QuestionBoard questionBoard, HttpSession session) {
     
@@ -76,18 +77,15 @@ public class QuestionBoardController {
     
     questionBoard.setMember(member);
     questionBoard.setMemberNo(member.getNo());
-
-    System.out.println(questionBoard);
     
     questionBoardService.add(questionBoard);
     return "redirect:.";
   }
   
   
+  /* 답변 하기 */
   @PostMapping("add2")
-  public String add(AnswerBoard answerBoard, HttpSession session ,QuestionBoard question) {
-    
-    Member member = (Member) session.getAttribute("loginUser");
+  public String add(AnswerBoard answerBoard, QuestionBoard question) {
     
     question.setQuestionStatus(true);
     questionBoardService.update22(question);
@@ -97,15 +95,17 @@ public class QuestionBoardController {
     return "redirect:.";
   }
   
+  /* 답변 수정하기 */
   @PostMapping("update2")
   public String update(AnswerBoard answerBoard) {
     
-      System.out.println(answerBoard.toString());
     if (answerBoardService.update(answerBoard) == 0) {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     }
     return "redirect:./";
   }
+
+  /* 질문 게시글 삭제 */
   @GetMapping("delete/{no}") 
   public String delete(@PathVariable int no) {
      answerBoardService.deleteq(no);
@@ -113,12 +113,18 @@ public class QuestionBoardController {
     return "redirect:../";
   }
   
+  /* 답글 삭제 */
   @GetMapping("delete2/{no}") 
-  public String delete2(@PathVariable int no) {
+  public String delete2(@PathVariable int no, QuestionBoard question) {
+    answerBoardService.get2(no).getQuestionNo();
+    QuestionBoard question1 =  questionBoardService.get(answerBoardService.get2(no).getQuestionNo());
+    question1.setQuestionStatus(false);
+    questionBoardService.update(question1);
     if (answerBoardService.delete(no) == 0) throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     return "redirect:../";
   }
   
+  /* 질문 게시글 상세보기 */
   @GetMapping("{no}") 
   public String detail(@PathVariable int no, Model model ) { 
     QuestionBoard  question = questionBoardService.get(no); 
@@ -128,7 +134,9 @@ public class QuestionBoardController {
     
     return "question/detail"; 
   }
+
   
+  /* 내가 등록한 글만 보기 */
   @GetMapping("mylist/{no}") 
   public String mylist(@PathVariable int no, Model model ) { 
     List<QuestionBoard> question = questionBoardService.get2(no); 
@@ -137,6 +145,15 @@ public class QuestionBoardController {
   }
   
 
+  /* 내가 등록한 글만 보기 */
+  @GetMapping("answerlist") 
+  public String answerlist(Model model ) { 
+    List<QuestionBoard> question = questionBoardService.list(0, 0);
+    model.addAttribute("question", question);
+    return "question/answerlist"; 
+  }
+  
+      
   @GetMapping("update/{no}")
   public String detailUpdate(@PathVariable int no, Model model) {
     QuestionBoard question = questionBoardService.getUpdate(no);
