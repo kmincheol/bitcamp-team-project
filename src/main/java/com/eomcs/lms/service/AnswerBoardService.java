@@ -11,6 +11,7 @@ public interface AnswerBoardService {
 
   AnswerBoard get(int no);
   
+  AnswerBoard get2(int no);
 
  int delete(int no);
  

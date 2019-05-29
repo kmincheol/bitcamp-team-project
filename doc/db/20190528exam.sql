@@ -293,22 +293,14 @@ insert into cmt(cmt_id,free_id,mbr_id,pcd,lev,cont)
 values(18,2,1,3,2,'빠이');
 
 -- 질문데이터
-insert into qstn(qstn_id,mbr_id,titl,cont)
-values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.');
+insert into qstn(qstn_id,mbr_id,titl,cont,pwd)
+values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.','1111');
 insert into qstn(qstn_id,mbr_id,titl,cont)
 values(2,2,'상대팀이 안오네요','징계 좀 먹여줘요.');
-insert into qstn(qstn_id,mbr_id,titl,cont)
-values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.');
+insert into qstn(qstn_id,mbr_id,titl,cont,pwd)
+values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.','1111');
 insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont)
 values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.');
-
--- 답변데이터
-insert into ans(ans_id,qstn_id,titl,cont)
-values(1,1,'비밀번호변경문의','비밀번호변경에서 바꿀 수 있습니다.');
-insert into ans(ans_id,qstn_id,titl,cont)
-values(2,2,'경기불참문의','경고가 주어집니다.');
-insert into ans(ans_id,qstn_id,titl,cont)
-values(3,3,'사이트접속지연문의','인터넷을 바꾸면 빨라집니다.');
 
 
 -- 공지사항게시판데이터

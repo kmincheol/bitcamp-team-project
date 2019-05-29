@@ -27,10 +27,6 @@ public class TeamRecruit implements Cloneable, Serializable {
   private Member member;
   private TeamMember teamMember;
   
-  
-  
-  
-  
   @Override
   public String toString() {
     return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle

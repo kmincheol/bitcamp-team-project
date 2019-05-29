@@ -60,6 +60,22 @@
 
   </select>
   
+    <select id="findByNo2" resultMap="answerBoardMap" parameterType="int">
+ select
+    ans_id,
+    a.cont,
+    a.qstn_id
+ from
+    ans a 
+    left outer join  qstn q on a.qstn_id = q.qstn_id
+ where
+    ans_id =#{value};
+
+  </select>
+  
+  
+  
+  
   <update id="update" parameterType="answerBoard">
  update
     ans

@@ -21,14 +21,36 @@
       <result column="name" property="teamName" />
     </association>
 
-    <association property="teamTypeSports" javaType="teamTypeSports">
-      <id column="spt_clsf_id" property="teamSportsTypeId" />
-      <result column="spt_clsf_name" property="teamSportsType" />
+  <association property="teamTypeSports" javaType="teamTypeSports">
+    <id column="spt_clsf_id" property="teamSportsTypeId" />
+    <result column="spt_clsf_name" property="teamSportsType" />
+  </association>
+
+  <association property="teamMember" javaType="TeamMember">
+    <id column="tm_mbr_id" property="teamMemberNo" />
+    <result column="mbr_id" property="memberNo" />
+    <result column="tlead_wth" property="teamLeader" />
+  </association>
+
+  <association property="member" javaType="Member">
+    <id column="mbr_id" property="no" />
+    <result column="user_id" property="id" />
+  </association>
+  
+  </resultMap>
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
+  <resultMap type="Member" id="memberMap">
+    <id column="mbr_id" property="no" />
+    <result column="user_id" property="id" />
+
+    <association property="teamMember" javaType="TeamMember">
+      <id column="mbr_id" property="memberNo" />
+      <result column="tlead_wth" property="teamLeader" />
     </association>
 
   </resultMap>
 
-
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
   <resultMap type="Team" id="team">
     <id column="tm_id" property="teamId" />
     <result column="area" property="teamArea" />
@@ -40,7 +62,7 @@
     </association>
 
     <association property="teamMember" javaType="TeamMember">
-      <id column="tm_mbr_id" property="teamMember_id" />
+      <id column="tm_mbr_id" property="teamMemberNo" />
     </association>
 
     <association property="member" javaType="Member">
@@ -63,28 +85,41 @@
     <result column="tlead_wth" property="teamLeader" />
     </collection>
    -->
-  
+    <select id="findAll3" resultMap="memberMap" parameterType="map">
+    select
+    tmbr.mbr_id,
+    user_id,
+    tlead_wth
+    from
+    mbr m
+    left outer join tm_mbr tmbr on m.mbr_id = tmbr.mbr_id
+  </select>
   
 
-  <select id="findAll" resultMap="teamRecruitMap" parameterType="map">
+  <select id="findAll" resultMap="teamRecruitMap" >
     select
     rcrm_id,
     titl,
     area,
-    name,
     r.cdt,
     rcrm_stat,
     vw_cnt,
     s.spt_clsf_id,
-    spt_clsf_name
+    spt_clsf_name,
+    t.tm_id,
+    t.name,
+    tmbr.mbr_id,
+    user_id,
+    tlead_wth
     from
     rcrm r
     left outer join tm t on r.tm_id = t.tm_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
+    left outer join tm_mbr tmbr on t.tm_id = tmbr.tm_mbr_id
+    left outer join mbr m on tmbr.mbr_id = m.mbr_id
     order by rcrm_id
     desc
   </select>
-
 
 
   <select id="findByNo2" resultMap="team" parameterType="int">
@@ -111,11 +146,7 @@
      tm_mbr
    where
     tm_mbr_id = #{value};
-
   </select>
-  
-  
-  
   
 
   <select id="findByNo" resultMap="teamRecruitMap" parameterType="int">

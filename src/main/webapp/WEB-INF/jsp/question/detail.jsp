@@ -56,14 +56,19 @@
     <div id ="aa" class="form-group row">
       <div class="col-sm-10">
         <a class="btn btn-dark" href='.'>목록</a> 
+        <c:if test="${sessionScope.loginUser !=null || sessionScope.loginUser.no == 1 }">
         <a class="btn btn-dark" href='delete/${question.questionNo}'>삭제</a> 
+        </c:if>
+        <c:if test="${sessionScope.loginUser !=null && sessionScope.loginUser.no !=1}">
         <a class="btn btn-dark" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
+        </c:if>
       </div>
+       <c:if test="${sessionScope.loginUser.no == 1 }">
        <c:choose>
           <c:when test="${fn:length(answer.contents) == 0}"> <button id="answer_Btn" class="btn btn-dark" onclick="button1_click();">답변하기</button> </c:when>
           <c:otherwise> <button  class="btn btn-dark" id="answerModify_Btn" onclick="button2_click();">답변수정</button></c:otherwise>
         </c:choose>
-      
+      </c:if>
         
     </div> 
    <jsp:include page="alist.jsp"></jsp:include>

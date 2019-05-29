@@ -167,6 +167,7 @@ CREATE TABLE qstn (
 )
 COMMENT '질문';
 
+ALTER TABLE qstn ADD pwd VARCHAR(20);
 -- 질문
 ALTER TABLE qstn
   ADD CONSTRAINT PK_qstn -- 질문 기본키

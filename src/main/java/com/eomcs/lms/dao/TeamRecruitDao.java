@@ -1,7 +1,7 @@
 package com.eomcs.lms.dao;
 
 import java.util.List;
-import java.util.Map;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
@@ -11,9 +11,11 @@ public interface TeamRecruitDao {
 
   int insert2(Team team);
 
-  List<TeamRecruit> findAll(Map<String, Object> params);
+  List<TeamRecruit> findAll();
 
   List<TeamRecruit> findAll2();
+  
+  List<Member> findAll3();
 
   List<TeamRecruit> findByKeyword(String keyword);
 
