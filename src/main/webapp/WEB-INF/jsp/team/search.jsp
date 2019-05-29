@@ -46,7 +46,7 @@
     </select>
      
       <input type='search' name='keyword' style="height:38px; border:1px solid silver; text-align: center; "placeholder="팀명을 입력하세요">
-      <button type='button' class="searchbtn input-group-btn btn btn-dark">검색</button>
+      <button class="searchbtn input-group-btn btn btn-dark">검색</button>
     </form>
 
     <br>
@@ -152,7 +152,9 @@
     // 선택된 값과 팀의 종목이 맞을 시 해당 팀 출력
     if(ItemName == Type) {
       $('.Type').eq(i).parent().show();
-      }
+      }  else if (ItemName == "전체") {
+        $('.team_ul').show();
+      }  
     }
   }
   

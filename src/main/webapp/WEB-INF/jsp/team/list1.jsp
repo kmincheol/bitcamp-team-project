@@ -24,7 +24,7 @@
 
     <div id="main-text">
       <h3 style="text-align: center;">등록된 <b>팀의 정보</b>를 열람할 수 있습니다.</h3><br>
-      <h5 style="text-align: center;">검색기능을 사용하여 원하는 종목의 <br> 팀을 찾아 팀에 가입해 보세요.</h5>
+      <h5 style="text-align: center;">검색기능을 사용하여 원하는 종목의 <br> 팀을 찾아 조회 하세요.</h5>
     </div> 
 
     <c:if test="${sessionScope.loginUser != null}">
@@ -37,6 +37,7 @@
     <br>
      
      <select class="custom-select" id="teamSportsId" name='teamSportsId' onchange="changeItem()" style=" left: 35px; width:180px; position: absolute;"> 
+          <option>전체</option>
       <c:forEach items="${teamTypeSports}" var="typeSports">
            <option value="${typeSports.teamSportsTypeId}"
             ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>${typeSports.teamSportsType}
@@ -93,14 +94,14 @@
       </c:forEach>
     </div>
     <div class="col-lg-12" id="teamInfo"
-      style="font-size: 20px; border: 1px solid gray; width: 400px; padding: 30px; padding-left: 45px; display: none; left: 36px; top: 610px; position: absolute;"></div>
+      style="font-size: 20px;border: 2px solid black; width: 400px; padding: 30px; padding-left: 45px; display: none; left: 36px; top: 610px; position: absolute;"></div>
     <div class="col-lg-12" id="teamMemberInfo"
-      style="left: 430px; bottom: 600px; font-size: 25px; top: 0px; width: 450px; height: 675px; border: 1px solid gray; margin: 30px; display: none;">
+      style="left: 430px; bottom: 600px; font-size: 25px; top: 0px; width: 450px; height: 675px; border: 2px solid black; margin: 30px; display: none;">
       <div style="top: 25px; position: relative;">
         <h2 style="text-align: center;">팀원 정보</h2> 
         <div class="category" style="text-align: center; margin: 20px; position: relative;">
           <span style='margin: 60px; text-align: center;'><b>팀원</b></span> 
-          <span style='margin: 60px; text-align: center;'><b>포지션</b></span><br>
+          <span style='margin: 60px; text-align: center;'><b>포지션</b></span><br> 
           <hr>
         </div>
       </div>
@@ -138,7 +139,10 @@
     // 선택된 값과 팀의 종목이 맞을 시 해당 팀 출력
     if(ItemName == Type) {
       $('.Type').eq(i).parent().show();
-      }
+      } 
+     else if (ItemName == "전체") {
+        $('.team_ul').show();
+      }  
     }
   }
   
@@ -196,7 +200,7 @@
     var mbrName = li.eq(i).children('.mbrName').text();
     var mbrPosition = li.eq(i).children('.mbrPosition').text();
     
-    console.log(mbrName);
+    console.log(mbrName); 
     console.log(mbrPosition);
     li.each(function(i){   
       liArr.push(li.eq(i).text());

@@ -16,7 +16,7 @@
   <div class="container">
    <br><br>
     <h2>회원 정보를 <b>확인하고 수정</b>할 수 있습니다.</h2>
-  
+  <br><br>
     <c:choose>
       <c:when test="${empty member}">
         <meta http-equiv="Refresh" content="2;url=list">
@@ -25,9 +25,9 @@
       
       <c:otherwise>
       
-      <form action='update' method='post' enctype='multipart/form-data'>
+      <form action='update' method='post' enctype='multipart/form-data'> 
       
-        <div class="row">
+        <div class="row" style="margin-left: 100px;">  
           <%-- <div class="col-3 bit-photo">
           
             <c:if test="${empty member.photo}">
@@ -94,7 +94,7 @@
                 <button id="password-btn" type="button"> 비밀번호 변경</button>
                 <div class="updatepwd" style="display:none;">
                 <input type="password" class="newpwd form-control" id="newpwd" placeholder="변경할 비밀번호"/>
-                <input type="password" class="pwdcheck form-control" name="password" id="pwdcheck" placeholder="비밀번호 확인" value='${member.password}' />
+                <input type="password" class="pwdcheck form-control" name="password" id="pwdcheck" placeholder="비밀번호 확인" value='${member.password}'/>
                 <div class="updatepwdbtn">
                   <button id="updatebtn">저장</button> 
                   <button type="button" id="cancelbtn">취소</button>
