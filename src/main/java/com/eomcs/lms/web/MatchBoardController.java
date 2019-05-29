@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.eomcs.lms.domain.Match;
@@ -95,9 +96,16 @@ public class MatchBoardController {
   }
 
   
-  @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model) {
+  @RequestMapping("{no}")
+  public String detail(@PathVariable int no, HttpSession session, Model model) {
     Match match = matchBoardService.get(no);
+    
+    if (session.getAttribute("loginUser") != null) {
+    Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
+    List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+    model.addAttribute("myteam",teames);
+    } else {
+    }
     model.addAttribute("match", match);
     return "matchboard/detail";
   }
@@ -166,8 +174,8 @@ public class MatchBoardController {
     return "matchboard/sidebar";
   }
   
-  @GetMapping("{no}/submit")
-  public String submit(@PathVariable int no, Team team) {
+  @PostMapping("{no}/submit")
+  public String submit(@PathVariable int no, @RequestBody Team team) {
     Match match = matchBoardService.get(no);
 
     MatchApply matchApply = new MatchApply();

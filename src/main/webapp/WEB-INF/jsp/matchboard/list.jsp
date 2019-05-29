@@ -54,12 +54,14 @@ body {
 			<jsp:include page="sideBar.jsp" />
 
 			<br>
+			<c:if test="${!empty sessionScope.loginUser}">
 			<c:if test="${!match.team.teamMember.team_leader}">
 				<div style="text-align: center;">
-					<a href='${contextRootPath}/app/matchboard/form.jsp'
+					<a href='${contextRootPath}/app/matchboard/form.jsp' id="newmat"
 						class="btn btn-primary" tabindex="-1" role="button"
 						aria-disabled="true" style="width: 300px;"> 매치 등록하기 </a>
 				</div>
+			</c:if>
 			</c:if>
 			<br>
 				<!-- 테이블 시작지점 -->
@@ -98,13 +100,13 @@ body {
 								
  						<td>
  						<c:if test="${!empty sessionScope.loginUser}">
-						<div class="button3" style="padding-top: 40px;">
+						<!-- <div class="button3" style="padding-top: 40px;"> -->
 						<div class="form-group pos-relative" id="applybtn" style="top: 50px;">
 						
-						<a class="js-tooltip-trigger" id="ref" style="top: 40px;">
+<!-- 						<a class="js-tooltip-trigger" id="ref" style="top: 40px;">
 						<button id="btnsub" class="btn btn-primary btn-sm" 
 						data-toggle="popover" aria-disabled="true">신청하기</button>
-						</a> 
+						</a>  
 						<div class="js-tooltip" >
 							<strong>제목:${match.title} </strong><br>
 						<strong>내용:${match.contents}</strong><br> 
@@ -120,10 +122,10 @@ body {
 									</c:forEach>
 							</select>
 								<button class="btn btn-primary btn-sm">&nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp</button> 
-				</form>
-									</div> <!-- js-tooltip 끝 -->
+				</form> 
+									</div> <!-- js-tooltip 끝 --> 
 									
-				<form action='${match.no}/submit'>
+				<form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
 							<select name='teamId' class="form-control" id="selectBox">
 								<option selected>소속팀 선택</option>
 									<c:forEach items="${myteam}" var="myteam">
@@ -132,7 +134,7 @@ body {
 										</c:if>
 									</c:forEach>
 							</select>
-								<button class="btn btn-primary btn-sm">&nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp</button> 
+								<button id="smtBtn" class="btn btn-primary btn-sm">&nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp</button> 
 				</form>
 				
 				
@@ -211,9 +213,9 @@ $(function () {
         $ele.popover({
               html: true,
             trigger: 'focus',
-            trigger: 'click', 
+            /* trigger: 'click',  */
             placement: 'right',
-            container: '#'+rndID, 
+            container: '#'+rndID,
             content: ttHtml
           }).on('click', function(e) {
         	  if(isVisible) {
@@ -238,6 +240,86 @@ $(function () {
       });
     });
 </script>
+
+
+<script>
+
+$(function() {
+	var save_bt = $('#smtBtn'); // 저장할 버튼을 변수에 선언
+	save_bt.click(function(e) {
+		e.preventDefault();
+		var text = $('#selectBox').html(); // 전송할 내용이 있는 요소
+		var mtch = document.location.href.split("matchboard/");
+		console.log(mtch[1]);
+
+
+		$.ajax({
+			url: mtch[1], // 서버에 전달할 파일명
+			dataType: 'text',
+			type: 'post',
+			data: JSON.parse({
+				'teamId': teamId,
+			}),
+			dataType: "json",
+			success: function(data) {
+			      alert('Success'); // 성공시 코드
+			},
+			error : function(xhr) {
+                if(xhr.status == 200){
+                 alert('문제가 발생했습니다.\n상태코드 : ' + info.status+ '\n\n' + info.responseText);
+                }
+                if(xhr.status == 500){
+                     alert('이미 신청한 팀입니다.');
+                } else {
+                 alert('문제가 발생했습니다.\n잠시후 다시 시도해 주세요.\n 상태코드 : ' +info.status);
+                };
+			}
+		});
+	});
+});
+
+</script>
+
+
+
+
+<!-- <script>
+$("#mtaply").bind('ajax:complete', function() {
+	$(document).ready(function() {
+		$.ajax({
+            "url" : "list.jsp",
+            "type" : "get",
+            "dataType": "json",
+            data:{
+                name: $('#name1').val(), 
+                age: $('#age1').val(), 
+         		},
+            "success" : function(data){
+                alert("가져온 데이터 입니다 . "+data);
+                var str = "<select id='mainTableList'>";
+                str +="<tr>";
+                $.each(data,function(i,v){
+                    //데이터 인풋
+                  str +="<td>"+ v.mem_id+"</td>;  
+					});
+
+                str +="</tr>";
+                $("#tableList").html(str);
+                
+               },
+            "error" : function(info, xhr){
+                if(info.readyState == '4'){
+                 alert('문제가 발생했습니다.\n상태코드 : ' + info.status+ '\n\n' + info.responseText);
+                } else {
+                 alert('문제가 발생했습니다.\n잠시후 다시 시도해 주세요.\n 상태코드 : ' +info.status);
+                }
+               }
+        }); 
+	}); 
+});
+</script> -->
+
+
 
 <!--  <script>
 function btn(){
