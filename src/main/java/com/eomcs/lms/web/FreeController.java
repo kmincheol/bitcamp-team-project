@@ -82,8 +82,29 @@ public class FreeController {
   }
   
   @GetMapping("search")
-  public void search(String keyword, Model model) {
-    List<Free> free = freeService.search(keyword);
+  public void search(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="10") int pageSize,
+      String keyword, Model model) {
+    
+    if (pageSize < 10 || pageSize > 8) 
+      pageSize = 10;
+
+    int rowCount = freeService.size();
+    int totalPage = rowCount / pageSize;
+    if (rowCount % pageSize > 0)
+      totalPage++;
+
+    if (pageNo < 1) 
+      pageNo = 1;
+    else if (pageNo > totalPage)
+      pageNo = totalPage;
+
+    List<Free> free = freeService.search(keyword,pageNo, pageSize);
+    model.addAttribute("pageNo", pageNo);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("totalPage", totalPage);
+    model.addAttribute("rowCount", rowCount);
     model.addAttribute("search", free);
   }
   

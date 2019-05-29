@@ -18,7 +18,7 @@
 <body>
 
   <div class="container">
-
+<div class="freeList">
     <div id="main-text">
     <br><br>
       <h2>자유게시판</h2>
@@ -32,7 +32,7 @@
         <c:otherwise>
           <form action='update' method='post'>
             <div class="free-header">
-              <label for="no">게시물 번호</label> <label>${free.no}</label>
+              <label for="no" style="display:none;">게시물 번호</label> <label style="display:none;">${free.no}</label>
               <hr>
               <div class="title">
                 <div id="title">${free.title}</div>
@@ -70,8 +70,9 @@
           <br>
           <hr>
           <br>
-          
-          <jsp:include page="../comment/list.jsp" />
+          </c:otherwise>
+      </c:choose>
+          </div>
            <c:if test="${sessionScope.loginUser != null}">
            <form action='../comment/add' method="post">
     		<div id="comment">
@@ -84,9 +85,9 @@
           </div>
 		<br>
 			</form>
+          <jsp:include page="../comment/list.jsp" />
           </c:if>
-        </c:otherwise>
-      </c:choose>
+        
   </div>
 </body>
 </html>

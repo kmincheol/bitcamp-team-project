@@ -20,10 +20,11 @@
       <h2>자유게시판</h2>
     </div>
 
-    <div id="recruit-list-out">
+    <div id="freeForm">
       <c:if test="${sessionScope.loginUser != null}">
         <p>
-          <a href='${contextRootPath}/app/free/form' class="input-group-btn1 btn btn-dark">글쓰기</a>
+          <a href='${contextRootPath}/app/free/form' class="input-group-btn1 btn btn-dark" style="left:330px; position:relative;">글쓰기</a>
+          
         </p>
       </c:if>
       <br>
@@ -52,18 +53,50 @@
         </table>
       </div>
       <br><br><br><br>
-    <nav aria-label="목록 페이지 이동">
-      <ul class="pagination justify-content-center">
-        <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link"
-          href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">이전</a></li>
-        <li class="page-item active"><span class="page-link">${pageNo}</span></li>
-        <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}"><a class="page-link"
-          href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
-      </ul>
-    </nav>
+   <nav aria-label="목록 페이지 이동">
+  <ul class="pagination justify-content-center">
+    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link" 
+    href="?pageNo=${pageNo-1}&pageSize=${pageSize}">이전</a></li>
+    
+    <c:choose>
+    
+    <c:when test="${rowCount <= pageSize*3}">
+      <c:forEach var="no" begin="1" end="${totalPage}" step="1">
+        <li class="page-item"><a class="page-link" href="?pageNo=${no}&pageSize=${pageSize}">${no}</a></li>
+      </c:forEach>
+    </c:when>
+        
+    <c:otherwise>
+      <c:choose>
+        <c:when test="${pageNo == 1}">
+          <c:forEach var="no" begin="1" end="3" step="1">
+          <li class="page-item"><a class="page-link" href="?pageNo=${no}&pageSize=${pageSize}">${no}</a></li>
+          </c:forEach>
+        </c:when>
+        <c:when test="${pageNo == totalPage}">
+          <c:forEach var="no" begin="${totalPage-2}" end="${totalPage}" step="1">
+          <li class="page-item"><a class="page-link" href="?pageNo=${no}&pageSize=${pageSize}">${no}</a></li>
+          </c:forEach>
+        </c:when>
+      <c:otherwise>
+        <c:forEach var="no" begin="${pageNo-1}" end="${pageNo+1}" step="1">
+          <li class="page-item"><a class="page-link" href="?pageNo=${no}&pageSize=${pageSize}">${no}</a></li>
+        </c:forEach>
+      </c:otherwise>
+      </c:choose>
+    </c:otherwise>
+    
+    </c:choose>
+    
+    
+    
+    <li class="page-item ${pageNo == totalPage ? 'disabled' : ''}"><a class="page-link" 
+    href="?pageNo=${pageNo+1}&pageSize=${pageSize}">다음</a></li>
+  </ul>
+</nav>
 
     <form action='search'>
-      <input type='search' name='keyword' placeholder="검색어 입력">
+      <input type='${contextRootPath}/app/free/search' name='keyword' placeholder="검색어 입력">
       <button type='submit' class="input-group-btn btn btn-dark">검색</button>
     </form>
     </div>

@@ -47,10 +47,13 @@ public class FreeServiceImpl implements FreeService {
   }
   
   @Override
-  public List<Free> search(String keyword) {
-    if (keyword == null)
-      return freeDao.findAll(null);
-    else 
+  public List<Free> search(String keyword, int pageNo, int pageSize) {
+    /*
+     * if (keyword == null) return freeDao.findAll(null); else
+     */
+    HashMap<String,Object> params = new HashMap<>();
+    params.put("size", pageSize);
+    params.put("rowNo", (pageNo - 1) * pageSize);
       return freeDao.findByKeyword(keyword);
   }
   

@@ -1,7 +1,10 @@
 @charset "UTF-8";
 
 body {
-  text-align: center;
+}
+
+.freeList {
+	text-align: center;
 }
 
 div.container {

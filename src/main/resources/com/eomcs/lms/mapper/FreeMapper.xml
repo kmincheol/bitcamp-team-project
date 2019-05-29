@@ -65,7 +65,7 @@
     f.free_id = #{value}
   </select> 
   
-  <select id="findBykeyword" resultMap="freeMap" parameterType="string">
+  <select id="findByKeyword" resultMap="freeMap" parameterType="string">
     <bind name="pattern1" value="'%' + _parameter + '%'"/>
     select
     free_id,
@@ -80,7 +80,7 @@
     left outer join mbr m on f.mbr_id =
     m.mbr_id
     where 
-      titl like #{pattern1}
+    titl like #{pattern1}
      
   </select>
   
