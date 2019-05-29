@@ -71,7 +71,7 @@
       <div class="form-group row">
         <div class="col-sm-12 text-center">
           <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
-          <a class="btn btn-dark" id="update" >저장</a>
+          <a class="btn btn-dark" href='' id="update" >저장</a>
         </div>
       </div>
     </form>
@@ -94,8 +94,9 @@ $(document).ready(function() {
   $('#update').click((e) =>{
 	  e.preventDefault();
 	  if(confirm('변경 사항을 저장하시겠습니까?')) {
+		  alert('저장되었습니다.');
     submitAgree();
-    return false;		  
+    return false;
 	  } else {
 		  return false;
 		}

@@ -1,3 +1,5 @@
+<%@page import="javax.mail.Session"%>
+<%@page import="org.springframework.web.context.annotation.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -127,14 +129,15 @@ table.dataTable thead tr {
         </c:forEach>
       </tbody>
     </table>
-      <c:if test="${sessionScope.loginUser != null}">
-          <div id="in">
-            <div id="write-btn">
-              <a class="input-group-btn1 btn btn-dark"
-                href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
-            </div>
+    <c:forEach items="${member}" var="member">
+      <c:if test="${sessionScope.loginUser.id eq member.id && member.teamMember.teamLeader == 'true'}">
+        <div id="in">
+          <div id="write-btn">
+            <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
           </div>
-        </c:if>
+        </div>
+      </c:if>
+    </c:forEach>
   </div>
 
   <jsp:include page="../footer.jsp" />
@@ -159,7 +162,7 @@ table.dataTable thead tr {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
 				"zeroRecords" : "검색된 데이터가 없습니다.",
-				"searchPlaceholder": "검색어 입력",
+				"searchPlaceholder" : "검색어 입력",
 				"paginate" : {
 					"next" : "다음",
 					"previous" : "이전"
@@ -168,8 +171,7 @@ table.dataTable thead tr {
 
 			$(document).ready(function() {
 				$('#dtBasicExample').DataTable({
-					order:[[1,"desc"]],
-					
+					order : [ [ 1, "desc" ] ],
 					"info" : false,
 					language : lang_kor
 				});

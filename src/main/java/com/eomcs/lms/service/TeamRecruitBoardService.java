@@ -1,14 +1,17 @@
 package com.eomcs.lms.service;
 
 import java.util.List;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
 
 public interface TeamRecruitBoardService {
-  List<TeamRecruit> list(int pageNo, int pageSize);
+  List<TeamRecruit> list();
 
   List<TeamRecruit> list2();
+  
+  List<Member> list3();
 
   List<TeamRecruit> boardSearch(String keyword);
 

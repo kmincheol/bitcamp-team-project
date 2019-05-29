@@ -1,9 +1,9 @@
 package com.eomcs.lms.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.TeamRecruitDao;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
@@ -24,16 +24,11 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
   @Override
-  public List<TeamRecruit> list(int pageNo, int pageSize) {
+  public List<TeamRecruit> list() {
     // 게시물 목록을 가져오는 경우 서비스 객체에서 특별하게 할 일이 없다.
     // 그럼에도 불구하고 Command 객체와 DAO 사이에 Service 객체를 두기로 했으면
     // 일관성을 위해 Command 객체는 항상 Service 객체를 통해 데이터를 다뤄야 한다.
-    //
-    HashMap<String, Object> params = new HashMap<>();
-//    params.put("size", pageSize);
-//    params.put("rowNo", (pageNo - 1) * pageSize);
-
-    return teamRecruitDao.findAll(params);
+    return teamRecruitDao.findAll();
   }
 
   @Override
@@ -44,11 +39,17 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
 
     return teamRecruitDao.findAll2();
   }
+  
+  @Override
+  public List<Member> list3() {
+    // TODO Auto-generated method stub
+    return teamRecruitDao.findAll3();
+  }
 
   @Override
   public List<TeamRecruit> boardSearch(String keyword) {
     if (keyword == null)
-      return teamRecruitDao.findAll(null);
+      return teamRecruitDao.findAll();
     else
       return teamRecruitDao.findByKeyword(keyword);
   }
@@ -97,10 +98,7 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     }
     return teamRecruit;
   }
-
-
-
-
+  
   @Override
   public int update(TeamRecruit teamRecruit) {
     // 이 메서드도 별로 할 일이 없다.
