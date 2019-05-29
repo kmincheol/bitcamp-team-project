@@ -140,13 +140,7 @@ width:300px;
 
         <div class="form-group row" style="padding-left:165px;">
           <div class="col-sm-10">
-              <c:if test="${!empty sessionScope.loginUser}">
-              <a href='${contextRootPath}/app/matchboard' id="btnsub2" 
-               class="btn btn-primary" role="button" aria-disabled="true">신청하기</a>
-            </c:if>
             <!-- 로그인 한 사용자와 글을 작성한 팀장과 같다면 버튼을 가림 -->
-
-
             <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
              <c:if test="${!empty sessionScope.loginUser}">
              <c:if test="${sessionScope.loginUser.name eq match.team.member.name}">
@@ -159,6 +153,20 @@ width:300px;
           </div>
         </div>
       </form>
+      
+              <form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
+              <c:if test="${!empty sessionScope.loginUser}">
+					<select name='teamId' class="form-control" id="selectBox" style="width:150px;">
+					<option selected>소속팀 선택</option>
+					<c:forEach items="${myteam}" var="myteam">
+					<c:if test="${!myteam.team.teamMember.team_leader}">
+					<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
+					</c:if>
+					</c:forEach>
+					</select>
+              <button class="btn btn-primary" id="btnsub2">신청하기</button>
+            </c:if>
+				</form>
     </div>
   </div>
   <!-- .container -->

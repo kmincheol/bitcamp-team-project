@@ -211,7 +211,7 @@ text-align: right;
   height:200px;
   display:"";
   text-overflow:ellipsis;
-  overflow:hidden;
+  /* overflow:hidden; */
   white-space:nowrap;
 }
 
