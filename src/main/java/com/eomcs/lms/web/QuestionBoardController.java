@@ -55,6 +55,7 @@ public class QuestionBoardController {
     List<QuestionBoard> question = questionBoardService.list(pageNo, pageSize);
     List<AnswerBoard> answer = answerBoardService.list();
 
+    System.out.println(question.toString());
     model.addAttribute("question", question);
     model.addAttribute("answer", answer);
     model.addAttribute("member", member);
@@ -129,6 +130,7 @@ public class QuestionBoardController {
   public String detail(@PathVariable int no, Model model ) { 
     QuestionBoard  question = questionBoardService.get(no); 
     AnswerBoard  answer = answerBoardService.get(no); 
+    System.out.println(question.toString());
     model.addAttribute("question", question);
     model.addAttribute("answer", answer);
     

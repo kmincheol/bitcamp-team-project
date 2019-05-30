@@ -56,7 +56,9 @@
     <div id ="aa" class="form-group row">
       <div class="col-sm-10">
         <a class="btn btn-dark" href='.'>목록</a> 
-        <c:if test="${sessionScope.loginUser.no == 1 || sessionScope.loginUser.no == question.memberNo}">
+
+        <c:if test="${sessionScope.loginUser.no == 1  || sessionScope.loginUser.no == question.memberNo}">
+
         <a class="btn btn-dark" href='delete/${question.questionNo}'>삭제</a> 
         <a class="btn btn-dark" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
         </c:if>

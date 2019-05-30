@@ -16,7 +16,11 @@
 <body>
   <div class="container">
     <div id="main-text">
-      <h2>문의 내역</h2>
+        <br>
+        <br>
+        <br>
+       <a class="btn btn-danger" href="${contextRootPath}/app/question/mylist/${member.no}" > 1:1 문의하기</a>
+        <a class="btn btn-danger" href="${contextRootPath}/app/question/mylist/${member.no}" > 1:1 문의내역</a>
     </div>
 
 
@@ -36,11 +40,21 @@
             <td>${question.questionNo}</td>
            <td > 
             <c:choose>
-                <c:when test="${fn:length(question.password) > 0 }">
-           <a href="${contextRootPath}/app/question/${question.questionNo}" onclick="mbmcheck()">${question.title}</a>
-            <img src="${contextRootPath}/images/lock.png" style = "width:20px">
+                <c:when test="${member.no == question.memberNo || member.no == 1}">
+                   <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
+                    <c:if test="${question.password == 'true' }">
+                      <img src="${contextRootPath}/images/lock.png" style = "width:20px">
+                   </c:if> 
                 </c:when>
-                  <c:otherwise>  <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a></c:otherwise>
+               <c:otherwise>  
+                      <a href="${contextRootPath}/app/question/${question.questionNo}" onclick="return aa()">${question.title}</a>
+                      <c:if test="${question.password == true }">
+                              <img src="${contextRootPath}/images/lock.png" style = "width:20px">
+                    </c:if>
+               </c:otherwise>
+               
+               
+               
                   </c:choose>                  
             <td>${question.member.id}</td>
             <td>${question.createdDate}</td>
@@ -72,7 +86,6 @@
    </c:if>
     <div id="btnbtn">
      <c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.no != 1}">      
-       <a class="btn btn-dark" href="${contextRootPath}/app/question/mylist/${member.no}" > 내 글 보기</a>
         <a class="btn btn-dark" href="${contextRootPath}/app/question/form" >글쓰기</a>
    </c:if>
      </div>
@@ -81,11 +94,9 @@
   
     <jsp:include page="../javascript.jsp" />
 <script>
-function mbmcheck(){
-	 var a = '${question}';
-		  var b = 0;
-		   alert(); 
-	 
+function aa(){
+	 alert('작성자만 확인할 수 있습니다');
+	  return false;
 }
 
 
