@@ -60,15 +60,15 @@
     <nav aria-label="목록 페이지 이동">
       <ul class="pagination justify-content-center">
         <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}"><a class="page-link"
-          href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">이전</a></li>
-        <li class="page-item active"><span class="page-link">${pageNo}</span></li>
-        <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}"><a class="page-link"
-          href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
+          href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">이전</a></li> 
+        <li class="page-item active"><span class="page-link">${pageNo}</span></li> 
+        <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}"><a class="page-link" 
+          href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li> 
       </ul>
     </nav>
     
     <c:if test="${sessionScope.loginUser.no == 1}">      
-    <a class="btn btn-dark" href="${contextRootPath}/app/question/answerlist" > 답변달거보기</a>
+    <a class="btn btn-dark" href="${contextRootPath}/app/question/answerlist" >답변하세요</a>
    </c:if>
     <div id="btnbtn">
      <c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.no != 1}">      

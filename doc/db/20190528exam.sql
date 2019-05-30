@@ -17,6 +17,8 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_
 values(8,'kiwon',password('1111'),'test7','1967-01-01','여','010-1334-5255','test8@bot.com',33333,'인천','연수동','google');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
 values(9,'hoho',password('1111'),'test8','1967-01-01','여','010-1322-5255','test9@gmail.com',33333,'인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(10,'kmc',password('1111'),'kmc','1967-01-01','여','010-1322-5253','kmc@gmail.com',33333,'인천','연수동','google');
 
 -- 연령대데이터
 insert into age(age_id, ages)
@@ -105,6 +107,8 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(8,8,1,'프로게이머');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,8,1,'프로게이머');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(4,10,0,'공격수');
 
 
 -- 팀경고데이터
