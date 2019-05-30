@@ -293,15 +293,22 @@ insert into cmt(cmt_id,free_id,mbr_id,pcd,lev,cont)
 values(18,2,1,3,2,'빠이');
 
 -- 질문데이터
-insert into qstn(qstn_id,mbr_id,titl,cont,pwd)
-values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.','1111');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.');
 insert into qstn(qstn_id,mbr_id,titl,cont)
 values(2,2,'상대팀이 안오네요','징계 좀 먹여줘요.');
-insert into qstn(qstn_id,mbr_id,titl,cont,pwd)
-values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.','1111');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.');
 insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont)
 values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.');
-
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(6,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.',false);
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(7,true,2,'사이트가 느려요.','크롬에서 너무 느리네요.',false);
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(8,true,2,'사이트가 느려요.','크롬에서 너무 느리네요.',true);
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(9,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.',true);
 
 -- 공지사항게시판데이터
 insert into anunc(anunc_id, mbr_id, titl, cont)

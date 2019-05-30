@@ -12,7 +12,8 @@ public class QuestionBoard {
       private Date createdDate;
       private Member member;
       private AnswerBoard answerBoard;
-      private String password;
+      private boolean password;
+      
       
       
       @Override
@@ -76,14 +77,14 @@ public class QuestionBoard {
       public void setAnswerBoard(AnswerBoard answerBoard) {
         this.answerBoard = answerBoard;
       }
-      public String getPassword() {
+      public boolean isPassword() {
         return password;
       }
-      public void setPassword(String password) {
+      public void setPassword(boolean password) {
         this.password = password;
       }
       
-      
+   
         
      
 
