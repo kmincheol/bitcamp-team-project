@@ -119,8 +119,10 @@
             <span class="error" id="agreeMsg" style="display:none">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 동의에 모두 동의해주세요.</span>
           </div><!-- .terms_p -->
             <div class="btn_area">
-              <a class="btn btn-outline-secondary sunext" id="btnAgree"
-                 type="button" href="#">다음</a>
+              <a class="btn btn-primary btn-lg" id="btnRefuse"
+                 type="button" href="../main">비동의</a>
+              <a class="btn btn-primary btn-lg" id="btnAgree"
+                 type="button" href="#">동의</a>
             </div><!-- .btn_area -->
         </form>
       </div><!-- .join_form -->

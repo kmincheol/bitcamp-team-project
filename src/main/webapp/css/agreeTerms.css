@@ -11,7 +11,7 @@ body,html {
 #container {
   text-align: center;
   margin: 90px auto 0 auto;
-  width: 1000px;
+  width: 1080px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
@@ -221,4 +221,22 @@ li .input_chk {
   margin-top: 20px;
   border-radius: 0;
   font-weight: bold;
+}
+#btnAgree {
+	width: 150px;
+  height: 51px;
+  border: solid 1px black;
+  border-radius: 0;
+  margin: 19px 0 19px 20px;
+  background-color: #fff;
+  color: black
+}
+#btnRefuse {
+	width: 150px;
+  height: 51px;
+  border: solid 1px black;
+  border-radius: 0;
+  margin: 19px 20px 19px 0;
+  background-color: #fff;
+  color: black
 }
