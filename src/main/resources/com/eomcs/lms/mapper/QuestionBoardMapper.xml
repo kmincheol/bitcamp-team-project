@@ -55,7 +55,8 @@
     cont,
     ans_stat,
     q.cdt,
-    name
+    name,
+    q.mbr_id
  from
     qstn q
     left outer join mbr m on q.mbr_id = m.mbr_id

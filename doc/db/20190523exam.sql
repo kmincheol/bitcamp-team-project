@@ -111,6 +111,7 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(2,13,0,'프로게이머');
 
 
+
 -- 팀경고데이터
 insert into warn(warn_id,warn_res,tm_id)
 values(1,'불참',1);

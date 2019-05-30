@@ -30,10 +30,22 @@
           <a href="${contextRootPath}/app/auth/logout">로그아웃</a>
         </c:if>
         <c:if test="${sessionScope.loginUser == null}">
-          / <a href="${contextRootPath}/app/member/join">회원가입</a>
+          / <a href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
         </c:if>
-        / <a href="#">고객센터</a>
+        / <a href="${contextRootPath}/app/question">고객센터</a>
       </div>
+      <c:if test="${sessionScope.loginUser != null}">
+        <a href="#">
+          <div id="header-info">
+            <div class="profile">
+              <img id="userinfo" src="${contextRootPath}/images/user.png">
+            </div>
+            <div>
+              ${sessionScope.loginUser.name} 님<br>환영합니다.
+            </div>
+          </div>
+        </a>
+      </c:if>
     </div>
 
     <div id="header-cate">
@@ -51,9 +63,9 @@
         <div class="header-category">
           <li class="nav-item"><a class="nav-link" href="#">팀</a>
             <ul class="category">
-              <li class="nav-item"><a class="nav-link" href="#">팀생성</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">팀정보</a></li>
-              <li class="nav-item"><a class="nav-link"
+              <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/team/form">팀생성</a></li> 
+              <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/team">팀정보</a></li> 
+              <li class="nav-item"><a class="nav-link" 
                 href="${contextRootPath}/app/recruit_board">모집게시판</a></li>
             </ul></li>
         </div>

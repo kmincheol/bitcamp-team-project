@@ -54,9 +54,7 @@
         <div class="header-category">
           <li class="nav-item"><a class="nav-link" href="#">팀</a>
             <ul class="category">
-            <c:if test="${sessionScope.loginUser != null}">
               <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/team/form">팀생성</a></li>
-              </c:if>
               <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/team">팀정보</a></li>
               <li class="nav-item"><a class="nav-link"
                 href="${contextRootPath}/app/recruit_board">모집게시판</a></li>

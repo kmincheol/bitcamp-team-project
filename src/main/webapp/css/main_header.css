@@ -56,6 +56,32 @@ html, body {
 	color: rgba(255, 255, 255, .7);
 }
 
+#header-info {
+	position: absolute;
+	width: 100px;
+	right: 10px;
+	top: 50px;
+	color: white;
+	font-size: 12px;
+}
+
+.profile {
+	margin-right: 5px;
+	float: left;
+	width: 33px;
+	height: 33px;
+}
+
+#userinfo {
+	width: 33px;
+	height: 33px;
+}
+
+#header-info a {
+	text-decoration: none;
+	color: white;
+}
+
 #header-item>a {
 	color: rgba(255, 255, 255, .7);
 }

@@ -41,9 +41,9 @@
  <hr class="hrr">
       
      <div class="form-group row">
-      <label for="password" class="col-sm-2 col-form-label">비밀번호</label>
+      <label for="password" class="col-sm-2 col-form-label">비밀글 등록</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control col-sm-2"  name="password" id="password" />${question.password}
+        <input type="checkbox" class="form-control col-sm-2"  name="password" id="password" />${question.password}
       </div>
     </div> 
   

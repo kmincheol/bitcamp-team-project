@@ -17,6 +17,8 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_
 values(8,'kiwon',password('1111'),'test7','1967-01-01','여','010-1334-5255','test8@bot.com',33333,'인천','연수동','google');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
 values(9,'hoho',password('1111'),'test8','1967-01-01','여','010-1322-5255','test9@gmail.com',33333,'인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(10,'kmc',password('1111'),'kmc','1967-01-01','여','010-1322-5253','kmc@gmail.com',33333,'인천','연수동','google');
 
 -- 연령대데이터
 insert into age(age_id, ages)
@@ -105,6 +107,8 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(8,8,1,'프로게이머');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,8,1,'프로게이머');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(4,10,0,'공격수');
 
 
 -- 팀경고데이터
@@ -293,15 +297,22 @@ insert into cmt(cmt_id,free_id,mbr_id,pcd,lev,cont)
 values(18,2,1,3,2,'빠이');
 
 -- 질문데이터
-insert into qstn(qstn_id,mbr_id,titl,cont,pwd)
-values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.','1111');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(1,1,'비밀번호변경','비밀번호가 안 바뀌네요.');
 insert into qstn(qstn_id,mbr_id,titl,cont)
 values(2,2,'상대팀이 안오네요','징계 좀 먹여줘요.');
-insert into qstn(qstn_id,mbr_id,titl,cont,pwd)
-values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.','1111');
+insert into qstn(qstn_id,mbr_id,titl,cont)
+values(3,3,'사이트가 느려요.','크롬에서 너무 느리네요.');
 insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont)
 values(4,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.');
-
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(6,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.',false);
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(7,true,2,'사이트가 느려요.','크롬에서 너무 느리네요.',false);
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(8,true,2,'사이트가 느려요.','크롬에서 너무 느리네요.',true);
+insert into qstn(qstn_id,ans_stat,mbr_id,titl,cont,pwd)
+values(9,true,4,'사이트가 느려요.','크롬에서 너무 느리네요.',true);
 
 -- 공지사항게시판데이터
 insert into anunc(anunc_id, mbr_id, titl, cont)

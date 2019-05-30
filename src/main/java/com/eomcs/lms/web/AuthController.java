@@ -97,7 +97,7 @@ public class AuthController {
       return "redirect:/"; // 웹 애플리케이션 루트(컨텍스트 루트)를 의미한다.
       
     } else {
-      return "redirect:" + refererUrl;
+      return "redirect:" + "/app/main";
     }
   }
   
