@@ -51,6 +51,7 @@ public class AuthFilter implements Filter {
              pathInfo.endsWith("form"))) {
       // 로그인 되어 있어야 한다.
       Member loginUser = (Member) httpReq.getSession().getAttribute("loginUser");
+      System.out.println(loginUser.toString());
       if (loginUser == null) {
         // 클라이언트가 요청한 위치를 알 수 없기 때문에
         // 막연히 상대경로로 로그인 폼의 URL을 지정할 수 없다.
