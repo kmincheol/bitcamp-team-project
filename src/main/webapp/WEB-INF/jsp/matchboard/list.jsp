@@ -28,6 +28,11 @@
 				</p>
 
 			<!-- 사이드바 인클루드하기 -->
+      
+       <input class="search" placeholder="Search" />
+  <button class="sort" data-sort="name">
+    Sort by name
+  </button>
 
 				<c:if test="${!empty sessionScope.loginUser}">
 				<c:if test="${!match.team.teamMember.team_leader}">
@@ -40,6 +45,7 @@
 				</c:if>
 			</div>
 				<!-- 테이블 시작지점 -->
+                <div id="users">
 			<table id="dt" class="table table-striped table-bordered" cellspacing="0" width="100%">
 				<thead>
 				</thead>
@@ -63,16 +69,22 @@
 								onClick="location.href='${contextRootPath}/app/matchboard/${match.no}'"
 								onMouseOver="this.style.backgroundColor='#f2fffd';"
 								onMouseOut="this.style.backgroundColor='' ">
-								<br> 종목:
-								${match.teamTypeSports.teamSportsType} <br>
-								<br> 위치:
-							 	${match.location} <br> 	
-							 	<br> 경기장:
-								${match.stadiumName} <br>
-								<br> 경기날짜: 
-								${match.playDate}<br>
-								<br></td>
-								
+                <ul class="list">
+								<li> <h3>종목:</h3>
+								<p class="type">${match.teamTypeSports.teamSportsType}</p>
+                </li>
+                <li> <h3>위치:</h3>
+                <p class="location"> ${match.location}</p>
+                </li>
+                <li> <h3>경기장:</h3>
+                <p  class="stadium">${match.stadiumName}</p>
+                </li>
+                <li> <h3>경기날짜:</h3>
+                <p class="matchdate">${match.playDate}</p>
+                </li>
+                </ul>
+                </td>
+
  						<td>
  						<c:if test="${!empty sessionScope.loginUser}">
 						<!-- <div class="button3" style="padding-top: 40px;"> -->
@@ -83,9 +95,9 @@
 
 							
 							
-						<a class="btn btn-lg btn-danger matchPopover" title="" data-original-title="popover Test">팝오버버튼</a>
+						<a tabindex="0" role="button" class="btn btn-lg btn-danger matchPopover" title="" data-original-title="popover Test">팝오버버튼</a>
 
-						<div class="js-tooltip" id='select-div'>
+						<div class="js-tooltip select-div" >
 								<strong>제목:${match.title} </strong><br>
 								<strong>내용:${match.contents}</strong><br> 
 								<strong>연락처:${match.telephone} </strong><br> 
@@ -99,6 +111,9 @@
 										</c:forEach>
 									</select>
 									<button class="btn btn-primary btn-sm">신청하기3</button> 
+                  <a class="btn btn-primary btn-sm submitbtn" onclick="javascript:btn()"
+              href='${contextRootPath}/app/matchboard/${match.no}/submit'role="button"> 
+              &nbsp &nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp &nbsp </a>
 								</form> 
 							</div>	
 
@@ -106,23 +121,11 @@
 
 						</div>
 						
-						<a class="js-tooltip-trigger" id="ref" style="top: 40px;">
-										<button id="btnsub" class="btn btn-primary btn-sm" 
-										data-toggle="popover" aria-disabled="true">신청하기1</button>
-										</a> 
 					
 									</div> <!-- js-tooltip 끝 --> 
 									
-				<form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
 
-								<button id="smtBtn" class="btn btn-primary btn-sm">신청하기2</button> 
-				</form>
-				
-				
-<%-- 						<a class="btn btn-primary btn-sm" onclick="javascript:btn()" id="submitbtn"
-							href='${contextRootPath}/app/matchboard/${match.no}/submit'role="button"> 
-							&nbsp &nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp &nbsp </a>  --%>
-							
+
 									
 									</div> <!-- form-group pos-relative 끝 -->
 									</div>
@@ -133,6 +136,7 @@
 					</tbody>
 				</c:forEach>
 				</table>
+                        </div>
 			<nav aria-label="목록 페이지 이동" id="listnum">
   <ul class="pagination justify-content-center">
   
@@ -157,61 +161,22 @@
 	<!-- .container -->
 
 <jsp:include page="../javascript.jsp" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 	
  <script>
 
 $(document).ready(function () {
-
-	$('body').on('shown','.modal', function() {
-  $(document).off('focusin.modal')
-});
-
 	$('.matchPopover').popover({
 		html: true,
-		content : function(){
-        var content = '';
-				content = $('#select-div').html();
-				console.log(content);
-				return content;
-            } 
-					}).on('shown.bs.popover', function(){
-        });
-
-	$('#smtBtn').click(function() {
-		hohoho();
-	});	
+		content : $('.select-div')
+})
 });
 
-function hohoho() {
-		e.preventDefault();
-		var text = $('#selectBox').html(); // 전송할 내용이 있는 요소
-		var mtch = document.location.href.split("matchboard/");
-		console.log(mtch[1]);
+var options = {
+    valueNames: [ 'type', 'location', 'stadium', 'matchdate' ]
+  };
 
-
-		$.ajax({
-			url: mtch[1], // 서버에 전달할 파일명
-			dataType: 'text',
-			type: 'post',
-			data: JSON.parse({
-				'teamId': teamId,
-			}),
-			dataType: "json",
-			success: function(data) {
-			      alert('Success'); // 성공시 코드
-			},
-			error : function(xhr) {
-        if(xhr.status == 200){
-          alert('문제가 발생했습니다.\n상태코드 : ' + info.status+ '\n\n' + info.responseText);
-        }
-        if(xhr.status == 500){
-          alert('이미 신청한 팀입니다.');
-        } else {
-          alert('문제가 발생했습니다.\n잠시후 다시 시도해 주세요.\n 상태코드 : ' +info.status);
-        };
-			}
-		});
-	}
+  var userList = new List('users', options);
 
 </script>
 
