@@ -34,6 +34,18 @@
         </c:if>
         / <a href="${contextRootPath}/app/question">고객센터</a>
       </div>
+      <c:if test="${sessionScope.loginUser != null}">
+        <a href="#">
+          <div id="header-info">
+            <div class="profile">
+              <img id="userinfo" src="${contextRootPath}/images/user.png">
+            </div>
+            <div>
+              ${sessionScope.loginUser.name} 님<br>환영합니다.
+            </div>
+          </div>
+        </a>
+      </c:if>
     </div>
 
     <div id="header-cate">
