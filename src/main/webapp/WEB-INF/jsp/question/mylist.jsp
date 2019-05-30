@@ -36,8 +36,8 @@
             <td>${question.questionNo}</td>
              <td>
                <c:choose>
-                <c:when test="${fn:length(question.password) > 0}">
-           <a href="${contextRootPath}/app/question/${question.questionNo}" onclick="pwdcheck()">${question.title}</a>
+                <c:when test="${question.password == 'true'}">
+           <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a>
             <img src="${contextRootPath}/images/lock.png" style = "width:20px">
                 </c:when>
                   <c:otherwise>  <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a></c:otherwise>
@@ -63,10 +63,6 @@
     <jsp:include page="../javascript.jsp" />
 <script>
 
-function pwdcheck(){
-    prompt("작성할 때 입력한 비밀번호를 입력해 주세요","")
-    
-}
 
 </script>
 

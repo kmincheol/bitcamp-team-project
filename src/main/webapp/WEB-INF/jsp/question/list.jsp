@@ -47,10 +47,15 @@
                    </c:if> 
                 </c:when>
                <c:otherwise>  
+                 <c:choose>
+                      <c:when test="${question.password == true }">
                       <a href="${contextRootPath}/app/question/${question.questionNo}" onclick="return aa()">${question.title}</a>
-                      <c:if test="${question.password == true }">
                               <img src="${contextRootPath}/images/lock.png" style = "width:20px">
-                    </c:if>
+                    </c:when>
+                      <c:otherwise>
+                   <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
+                      </c:otherwise>
+                      </c:choose>  
                </c:otherwise>
                
                
