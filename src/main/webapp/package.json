@@ -10,6 +10,7 @@
   "dependencies": {
     "blueimp-file-upload": "^9.30.0",
     "bootstrap": "^4.3.1",
+    "filter.js": "^0.1.0",
     "handlebars-paginate": "^0.1.0",
     "jqeury": "^1.0.0",
     "jquery": "^3.4.1",

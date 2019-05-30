@@ -167,7 +167,6 @@ public class MatchBoardController {
       else if (pageNo > totalPage)
         pageNo = totalPage;
       
-      
     List<Match> matches = matchBoardService.list(pageNo, pageSize);
     model.addAttribute("matches", matches);
     return "matchboard/sidebar";
