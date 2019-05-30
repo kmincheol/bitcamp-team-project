@@ -50,8 +50,8 @@
   
       <div class="form-group row">
         <div class="col-sm-12">
-          <a class="btn btn-dark" href='${contextRootPath}/app/question' >취소하기</a>
-          <button  class="btn btn-dark">질문하기</button>
+          <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question' >취소하기</a>
+          <button  class="btn  btn-outline-dark">질문하기</button>
         </div>
       </div>
    
@@ -59,7 +59,7 @@
   </div>
   <!-- .container -->
  <jsp:include page="../javascript.jsp" />
- 
+ <jsp:include page="../footer.jsp" />
 <script>
 
 function check(){

@@ -30,8 +30,8 @@
     </div>
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="add" class="btn btn-dark" >등록</button>
-          <a class="btn btn-primary" href='${contextRootPath}/app/question'>목록</a>
+          <button id="add" class="btn  btn-outline-dark" >등록</button>
+          <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question'>목록</a>
         </div>
       </div>
     </form>

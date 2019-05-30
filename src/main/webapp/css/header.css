@@ -96,10 +96,10 @@ html, body {
 	background-color: rgba(64, 64, 64);
 }
 
-ul {
+/* ul {
 	list-style: none;
 	text-align: center;
-}
+} */
 
 .fixed {
 	position: fixed;

@@ -10,6 +10,7 @@
 <jsp:include page="../commonCss.jsp" />
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
 </head>
 
@@ -52,10 +53,11 @@
       </tbody>
     </table>
     <div>
-          <a class="btn btn-dark" href="${contextRootPath}/app/question">목록</a>
+          <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question">목록 이동</a>
     </div>
   </div>
 
+ <jsp:include page="../footer.jsp" />
 
 
 </body>

@@ -9,6 +9,7 @@
 <jsp:include page="../commonCss.jsp" />
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <link rel="stylesheet" href="${contextRootPath}/css/question_detail.css">
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
@@ -55,18 +56,18 @@
 
     <div id ="aa" class="form-group row">
       <div class="col-sm-10">
-        <a class="btn btn-dark" href='.'>목록</a> 
+        <a class="btn  btn-outline-dark" href='.'>목록</a> 
 
         <c:if test="${sessionScope.loginUser.no == 1  || sessionScope.loginUser.no == question.memberNo}">
 
-        <a class="btn btn-dark" href='delete/${question.questionNo}'>삭제</a> 
-        <a class="btn btn-dark" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
+        <a class="btn  btn-outline-dark" href='delete/${question.questionNo}'>삭제</a> 
+        <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question/update/${question.questionNo}'>변경</a>
         </c:if>
       </div>
        <c:if test="${sessionScope.loginUser.no == 1 }">
        <c:choose>
-          <c:when test="${fn:length(answer.contents) == 0}"> <button id="answer_Btn" class="btn btn-dark" onclick="button1_click();">답변하기</button> </c:when>
-          <c:otherwise> <button  class="btn btn-dark" id="answerModify_Btn" onclick="button2_click();">답변수정</button></c:otherwise>
+          <c:when test="${fn:length(answer.contents) == 0}"> <button id="answer_Btn" class="btn  btn-outline-dark" onclick="button1_click();">답변하기</button> </c:when>
+          <c:otherwise> <button  class="btn  btn-outline-dark" id="answerModify_Btn" onclick="button2_click();">답변수정</button></c:otherwise>
         </c:choose>
       </c:if>
         
@@ -88,8 +89,8 @@
     </div>
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="add_Answer_Btn" class="btn btn-dark" >등록</button>
-          <a class="btn btn-dark" href='${contextRootPath}/app/question'>목록</a>
+          <button id="add_Answer_Btn" class="btn  btn-outline-dark" >등록</button>
+          <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question'>목록</a>
         </div>
       </div>
     </form>
@@ -124,7 +125,7 @@
   <jsp:include page="../javascript.jsp" />
  
  
- 
+ <jsp:include page="../footer.jsp" />
  
 <script>
 

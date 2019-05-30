@@ -11,6 +11,7 @@
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 </head>
 
 <body>
@@ -56,10 +57,11 @@
       </tbody>
     </table>
     <div>
-        <a class="btn btn-dark" href="${contextRootPath}/app/question" >목록가기</a>
+        <a  id="btnbtn" class="btn  btn-outline-dark" href="${contextRootPath}/app/question" >목록 이동</a>
     </div>
     
   </div>
+   <jsp:include page="../footer.jsp" />
     <jsp:include page="../javascript.jsp" />
 <script>
 
