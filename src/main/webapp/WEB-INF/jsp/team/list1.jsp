@@ -16,9 +16,71 @@
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <link rel="stylesheet" href="${contextRootPath}/css/team.css">
 </head>
-<body>
+<style>
+ 
+.scrollbar {
+margin-left: 30px;
+float: left;
+height: 300px;
+width: 65px;
+background: #fff;
+overflow-y: scroll;
+margin-bottom: 25px;
+}
+.force-overflow {
+min-height: 450px;
+}
+ 
+.scrollbar-primary::-webkit-scrollbar {
+width: 6px; 
+background-color: #F5F5F5; }
 
-  <div class="container">
+.scrollbar-primary::-webkit-scrollbar-thumb {
+border-radius: 2px;
+-webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1); 
+background-color: black; }
+
+.contents {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.shiny {
+  margin: 30px auto;
+  background-color: #ffffff;
+  border-radius: 15px;
+  width: 640px;
+  height: 400px;
+  padding: 15px;
+  overflow:hidden;
+}
+
+.show-off {
+  width: 405px;
+  height: 605px;
+  position: relative;
+  top: -556px;
+  left: -550px;
+  transition: 1s;
+  transform: rotate(30deg);
+  background: linear-gradient(90deg, rgba(255,255,255, 0)50%, rgba(255,255,255,0.7)100%);
+}
+
+.shiny:hover .show-off {
+  transform: rotate(0);
+  left: 560px;
+  top: -445px;
+}
+
+</style> 
+<body>
+  <div class="container"> 
     <br>
     <br>
 
@@ -30,7 +92,7 @@
     <c:if test="${sessionScope.loginUser != null}">
       <p>
         <a href='${contextRootPath}/app/team/form' class="input-group-btn1 btn btn-dark"
-          style="left: 800px; width:100px; top:215px; position:absolute;">팀 생성</a>
+          style="left:700px; width:200px; position:absolute;">팀 생성</a>
       </p>
     </c:if>
     <br>
@@ -46,28 +108,30 @@
     </select>
      </span>
      <form action='${contextRootPath}/app/team/search' style="left: 230px; margin:10px; top:208px; position:absolute;">
-      <input type='search' name='keyword' style="height:50px; right:70px; bottom:3px; border:1px solid silver; text-align: center; position: relative; "placeholder="팀명을 입력하세요">
-      <span><button type='submit' class="searchbtn input-group-btn btn btn-dark" style="right:70px; width: 70px; height:50px; bottom:4px; position: relative;">검색</button></span>
-    </form>
+      <input type='search' class="rounded" id="keyword" name='keyword' style="height:50px; width: 198px; right:304px; top:50px; border:1px solid silver; text-align: center; position: relative; "placeholder="팀명을 입력하세요">
+      <!-- <span><button type='submit' class="searchbtn input-group-btn btn btn-dark" style="right:70px; width: 70px; height:50px; bottom:3px; float:right; position: relative;">검색</button></span> -->
+    </form> 
     <br>
-   
-    <div class="team-list"
-      style="border: 2px solid black; padding: 20px; margin: 20px; overflow: auto; box-sizing: border-box; width: 1100px; right:100px; height: 320px; position: relative;">
-      <c:forEach items="${teams}" var="team">  
-
-        <ul class="team_ul"> 
-          <li style="display: none;" id='teamId'>${team.teamId}</li>
+    
+    <div class="team-list rounded scrollbar scrollbar-primary"
+      style="border: 1px solid black; margin: 20px; top:40px;  box-sizing: border-box; width: 200px; right:100px; height: 500px; position: relative;">
+      <div class="force-overflow">
+      <c:forEach items="${teams}" var="team">   
+ 
+        <ul class="team_ul" style="width:180px; height:30px;">  
+          <li style="display: none;" id='teamId'>${team.teamId}</li> 
           <li>
             <div class="hover01 column">
               <figure id="picture">
                 <img src='${team.teamEmblemPhoto}'
-                  onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'" class="detailbtn"
-                  style="width: 100px; height: 100px;">
+                  onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'" class="photo"
+                  style="width: 20px; height: 20px;  right:70px; position: relative;">
               </figure>
             </div>
           </li>
-          <li style="text-align: center; margin: 5px;">${team.teamName}</li> 
-          <li class="Type" style="display: none;">${team.teamTypeSports.teamSportsType}</li>
+          <li class="detailbtn" style="cursor:pointer; text-align: center; margin: 5px; float: left; left:50px; bottom:42px; position: relative;">
+          <b>${team.teamName}</b></li> 
+          <li class="Type" style="display: none;" >${team.teamTypeSports.teamSportsType}</li>
           <li style="display: none;">${team.teamArea}</li>
           <li style="display: none;">${team.teamCreateDate}</li>
           <li style="display: none;">${team.teamAges.teamAges}</li>
@@ -97,32 +161,29 @@
                     </c:if></li>
                  <li class="mbrPosition" style="display: none;">${teamMember.position}</li>
               </ul>
-             </c:if> 
+             </c:if>   
           </c:forEach>
 
-        </ul>
-      </c:forEach>
+        </ul>  
+      </c:forEach> 
+      </div>
     </div>
-    <div class="col-lg-12" id="teamInfo"
-      style="font-size: 20px;border: 2px solid black; width: 400px; padding: 30px; padding-left: 45px; display: none; left: 36px; top: 637px; position: absolute;"></div>
-    <div class="col-lg-12" id="teamMemberInfo"
-      style="left: 430px; bottom: 600px; font-size: 25px; top: 0px; width: 450px; height: 675px; border: 2px solid black; margin: 30px; display: none;">
-      <div style="top: 25px; position: relative;">
-        <h2 style="text-align: center;">팀원 정보</h2> 
-        <div class="category" style="text-align: center; margin: 20px; position: relative;">
-          <span style='margin: 60px; text-align: center;'><b>팀원</b></span> 
-          <span style='margin: 60px; text-align: center;'><b>포지션</b></span><br>  
-          <hr>
-        </div>
+    <div class="detail rounded" style="left:130px; width:750px; bottom:50px; position:relative; border:1px solid; display:none;"> 
+    <div class="col-lg-12" id="teamInfo"  
+      style="font-size: 20px; bottom:50px; width: 300px; padding: 80px; padding-left: 45px; display: none; right: 200px; float:left; position: relative;"></div>
+    <div class="col-lg-12" id="teamMemberInfo" 
+      style="left: 295px; bottom: 770px; font-size: 20px; width: 450px; height: 677px;  margin: 30px; display: none;">
+      <div style="top: 25px; position: relative;"> 
+        <!-- <h2 style="text-align: center;">팀원 정보</h2>      -->
+        <div class="category" style="text-align: center; margin: 20px; position: relative;">  
+          <span style='margin: 60px; text-align: center;'><b>팀원</b></span>      
+          <span style='margin: 60px; text-align: center;'><b>포지션</b></span><br>    
+          <hr> 
+        </div>  
       </div>
       <div id="finallist" style="margin:30px;"></div>
     </div>
-
-
-    <br>
-    <br>
-    <br>
-    <br>
+</div>
   </div>
 
   <jsp:include page="../javascript.jsp" />
@@ -156,38 +217,31 @@
     }
   }
   
-  /* $('.searchbtn').on('click', function(){
-    
-   var sel = document.getElementById("teamSportsId");
-  var val;
-  for(i=0; i<sel.options.length; i++) {
-      if(sel.options[i].selected == true) {
-          val = sel.options[i].value;
-          break;
-      }
-  }
-
-  console.log(val);
-  })
- */
+  $("#keyword").on("keyup", function() {
+    var value = $(this).val().toLowerCase(); 
+    $(".team_ul").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
   
   
   $(".detailbtn").click(function(){ 
     
+    
     $("#teamInfo").show();
     $("#teamMemberInfo").show();
-    
+    $('.detail').show();
     var str = ""
     var str2 = ""  
     
     var liArr = new Array();  
     
     var detailbtn = $(this);
-    
-    var ul = detailbtn.parent().parent().parent().parent();
+     
+    var ul = detailbtn.parent();
     var li = ul.children();
-    
-    var photo = $(this).attr('src');
+     
+    var photo = $(this).prev().children().children().children().attr('src');
     
     var no = li.eq(0).text();
     var teamEmblemPhoto = photo;
@@ -214,20 +268,22 @@
      if (typeof leader !== "undefined") {   
      str2 +=    
      "<span style='padding:10px; display:inline-block; height:50px;'>" + 
-     leader + 
+     leader +  
      "</span>" + 
-     "<span style='padding:10px; display:inline-block; width:100px; margin-right:20px; height:50px;'>" + mbrName + "</span>" +
-     "<span style='padding:10px; display:inline-block; width:170px; height:50px; text-align:center;'>" + mbrPosition + "</span><br>";  
+     "<span style='padding:10px; display:inline-block; width:100px; margin-right:20px; height:50px;'>" + mbrName + "</span>" + 
+     "<span style='padding:10px; display:inline-block; width:170px; height:50px; text-align:center;'>" + mbrPosition + "</span><br>";   
      };
     };
     
      str +=  " <div style='display:none;'> <b>팀번호</b> : "+ no + "</div>" +
-        "<div><img src=" + teamEmblemPhoto + " style='width:300px; height:300px;'></div>" + 
-        "<hr><br>" +  
+     "<div class='contents'>" + 
+        "<div class='shiny' style='width:300px; height:280px; right:40px; position:relative;'> <img src=" + teamEmblemPhoto + " style='width:250px; height:250px; right:20px; bottom:10px; position:relative;'><div class='show-off' /> </div>" + 
+        "<hr><br>" +   
+        "</div>" +  
         "<div style='margin:5px;'> <b>팀명</b> :" + teamName + "</div>" + 
-        "<div style='margin:5px;'> <b>종목</b> :" + teamSprotsType + "</div>" +
-        "<div style='margin:5px;'> <b>지역</b> :" + teamArea + "</div>" +
-        "<div style='margin:5px;'> <b>창단일</b> :" + teamCreateDate + "</div>" +
+        "<div style='margin:5px;'> <b>종목</b> :" + teamSprotsType + "</div>" + 
+        "<div style='margin:5px;'> <b>지역</b> :" + teamArea + "</div>" +  
+        "<div style='margin:5px;'> <b>창단일</b> :<br> " + teamCreateDate + "</div>" +
         "<div style='margin:5px;'> <b>연령대</b> :" + teamAges + "</div>" +
         "<div style='margin:5px;'> <b>팀실력 </b> :" + teamLev + "</div>" +  
         "<div style='margin:5px;'> <b>팀소개 </b> :" + teamInfo + "</div>"; 
