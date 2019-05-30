@@ -101,7 +101,8 @@
   <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
     select 
       <include refid="default-columns"/>,
-      mgr
+      mgr,
+      prof_phot
     from 
       mbr
     where 
