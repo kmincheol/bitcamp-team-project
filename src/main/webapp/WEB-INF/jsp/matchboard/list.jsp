@@ -5,14 +5,14 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link href="${contextRootPath}/node_modules/test/assets/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
-    <%-- <link href="${contextRootPath}/node_modules/test/assets/css/jquery-ui-1.10.2.custom.min.css" media="screen" rel="stylesheet" type="text/css"> --%>
-    <link href="${contextRootPath}/node_modules/test/assets/css/stream.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="${contextRootPath}/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="${contextRootPath}/css/jquery-ui-1.10.2.custom.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="${contextRootPath}/css/stream.css"  media="screen" rel="stylesheet" type="text/css">
     
-    <script src="${contextRootPath}/node_modules/filter/filter.js" type="text/javascript"></script>
+    <script src="${contextRootPath}/node_modules/filter.js/filter.js" type="text/javascript"></script>
     
-<%--     <script src="${contextRootPath}/node_modules/test/assets/js/jquery-1.11.3.min.js" type="text/javascript"></script> --%>
-<%--     <script src="${contextRootPath}/node_modules/test/assets/js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script> --%>
+<%-- <script src="${contextRootPath}/node_modules/test/assets/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+         <script src="${contextRootPath}/node_modules/test/assets/js/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>  --%>
 <%--     <script src="${contextRootPath}/node_modules/test/data/movies.js" type="text/javascript"></script>     --%>
 <%--     <script src="${contextRootPath}/node_modules/test/pagination.js" type="text/javascript"></script>  --%>
   </head>
@@ -121,9 +121,7 @@
           
             <h3><a id="teaminfo" class="th-sm sorting_asc"
                 style="cursor: pointer;"
-                onClick="location.href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'"
-                onMouseOver="this.style.backgroundColor='#f2fffd';"
-                onMouseOut="this.style.backgroundColor='' ">
+                onClick="location.href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'">
                 <img src='${match.team.teamEmblemPhoto}'>
                 ${match.team.teamName}
             </a></h3>
@@ -133,7 +131,6 @@
               제목:${match.title}<br>
               내용:${match.contents}<br>
               <span class="runtime">
-                <i class="glyphicon glyphicon-time"></i>
                 연락처:${match.telephone}
               </span>
             </div>

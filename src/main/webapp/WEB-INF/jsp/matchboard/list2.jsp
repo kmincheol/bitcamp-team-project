@@ -13,19 +13,7 @@
 <jsp:include page="../header.jsp" />
 </head>
 <body class="dark-edition">
-	<div class="container">
-		<div id="match_content">
-			<h2>
-				등록된 <b>매치 글</b>을 검색하여 찾거나
-			</h2>
-			<h2>직접 매치글을 등록할 수 있습니다.</h2>
-			<br>
-			<p>
-				원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나
-			</p>
-			<p>
-				<b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.
-			</p>
+
 			<jsp:include page="sideBar.jsp" />
   <div class="container">
     <div id="match_content">
@@ -132,46 +120,7 @@
                   
 
 
-							<td id="info" style="cursor: pointer;"
-								onClick="location.href='${contextRootPath}/app/matchboard/${match.no}'"
-								onMouseOver="this.style.backgroundColor='#f2fffd';"
-								onMouseOut="this.style.backgroundColor='' ">
-								<br> 종목:
-								${match.teamTypeSports.teamSportsType} <br>
-								<br> 위치:
-							 	${match.location} <br> 	
-							 	<br> 경기장:
-								${match.stadiumName} <br>
-								<br> 경기날짜: 
-								${match.playDate}<br>
-								<br></td>
-								
- 						<td>
- 						<c:if test="${!empty sessionScope.loginUser}">
-						<!-- <div class="button3" style="padding-top: 40px;"> -->
-						<div class="form-group pos-relative" id="applybtn" style="top: 50px;">
-						
- 							<a class="js-tooltip-trigger" id="ref" style="top: 40px;">
-						<button id="btnsub" class="btn btn-primary btn-sm" 
-						data-toggle="popover" aria-disabled="true">신청하기</button>
-						</a>  
-						<div class="js-tooltip" >
-							<strong>제목:${match.title} </strong><br>
-						<strong>내용:${match.contents}</strong><br> 
-						<strong>연락처:${match.telephone} </strong><br> 
-										
-				<form action='${match.no}/submit'>
-							<select name='teamId' class="form-control" id="selectBox">
-								<option selected>소속팀 선택</option>
-									<c:forEach items="${myteam}" var="myteam">
-										<c:if test="${!myteam.team.teamMember.team_leader}">
-									<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
-										</c:if>
-									</c:forEach>
-							</select>
-								<button class="btn btn-primary btn-sm">&nbsp &nbsp &nbsp &nbsp 신청하기 &nbsp &nbsp &nbsp &nbsp</button> 
-				</form> 
-									</div> <!-- js-tooltip 끝 --> 
+							
 									
 				<form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
 							<select name='teamId' class="form-control" id="selectBox">
@@ -194,7 +143,6 @@
 									</div> <!-- form-group pos-relative 끝 -->
 									</div>
 							
-						</c:if>
 						</td>
 						</tr>
 					</tbody>
