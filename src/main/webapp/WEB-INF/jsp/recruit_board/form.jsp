@@ -82,6 +82,7 @@
   <jsp:include page="../footer.jsp" />
   <jsp:include page="../javascript.jsp" />
   <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+ 
   <script>
 "use strict"
 

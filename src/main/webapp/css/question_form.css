@@ -1,4 +1,4 @@
-* {
+*{
   margin: 0px;
   padding: 0px;
 }
@@ -9,71 +9,34 @@ body, html {
   margin: 0px;
   padding: 0px;
 }
-
+div.container{
+	width: 1080px;
+}
 .container {
  width: auto;
   height: auto;
   min-height: 100%;
   padding: 0px;
   margin: 0 auto;
+   
 }
 
-.col-sm-2 {
-	text-align: center;
-	 
-	
-}
-
-#main_title{
-	 position:relative;
-  height : 230px;
+th{
 	text-align: center;
 }
-
-#main_title > h2{
-   position:relative; 
-	 top:180px;
-  text-align: center;
+#main-textfield{
+	  position: relative;
+  top: 90px;
 }
 
-
-#add_form{
-	position:relative;
-top:30px;
-border-top: solid;
-}
-
-#add{
-	margin-right: 10px;
-}
-.form-group{
-	margin-top: 30px;
-	
-}
-
-/*글씨 진하게  */
-.col-sm-2{
-font-weight:bold;
-	
-}
-
-.hrr{
-	 border: 0;
-    height: 2px;
-    background: #ccc;
-}
-
-.btn{
-	
-	float: right;
-}
 #btnbtn{
-  float: right; 
-  
+	float:right;
 }
-
-
-
-
-
-
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
