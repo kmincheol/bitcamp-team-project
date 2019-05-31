@@ -125,7 +125,7 @@ h1 {
               <figure id="picture">
                 <img src='${team.teamEmblemPhoto}'
                   onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'" class="photo"
-                  style="width: 20px; height: 20px;  right:70px; position: relative;">
+                  style="width: 20px; height: 20px;  left:20px; position: relative;">
               </figure>
             </div>
           </li>
