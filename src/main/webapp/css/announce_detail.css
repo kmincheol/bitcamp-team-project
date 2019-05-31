@@ -1,0 +1,105 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.container {
+	width: auto;
+	height: auto;
+	min-height: 100%;
+	padding: 0px;
+	margin: 0 auto;
+}
+
+h3 {
+	margin: 30px 0px 45px 20px;
+	text-decoration: underline;
+}
+
+#main-text {
+	position: relative;
+	text-align: center;
+	width: 100%;
+	height: 230px;
+	border-bottom: 2px solid black;
+}
+
+#main-text>h2 {
+	position: relative;
+	top: 90px;
+	color: black;
+}
+
+form {
+  width: 688pxpx;
+  margin: 0 auto;
+}
+
+#title-wrap {
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	border-bottom: 1px solid gray;
+}
+
+#title {
+	font-size: 35px;
+}
+
+#contents-wrap {
+	margin-top: 50px;
+}
+
+table.info-table {
+	text-align: center;
+	line-height: 1.5;
+	width: 100%;
+	border-top: 1px solid #ccc;
+}
+
+table.info-table th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+}
+
+table.info-table td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+.contents-section-head {
+	width: 100%;
+	display: inline-block;
+	height: 45px;
+	text-align: center;
+	padding: 10px;
+	background: #efefef;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+.contents-section-body {
+	width: 100%;
+	height: auto;
+	padding: 50px;
+}
+
+#contents-section {
+	margin-bottom: 50px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 100px;
+}

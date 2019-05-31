@@ -8,25 +8,23 @@
 <title>공지사항 게시판</title>
 <jsp:include page="../commonCss.jsp" />
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/announce.css">
+<link rel="stylesheet" href="${contextRootPath}/css/announce_list.css">
 </head>
 
 <body>
 
 <jsp:include page="../header.jsp" />
-<br><br><br>
   <div class="container">
-    <h3>공지사항</h3>
-    
+    <div id="main-text">
+      <h2>공지사항</h2>
+    </div>
 <c:if test="${!empty sessionScope.loginUser}">
 <c:if test="${sessionScope.loginUser.manager}">
     <p>
-      <a href='${contextRootPath}/app/announce/form' class="btn btn-primary btn-sm" >새 글</a>
+      <a href='${contextRootPath}/app/announce/form' class="btn btn-dark">새 글</a>
     </p>
 </c:if>    
 </c:if>
-    
-    <br>
     <div class="announce-list">
       <table class="table table-hover">
         <thead>
