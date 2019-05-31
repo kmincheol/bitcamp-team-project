@@ -74,7 +74,7 @@ table.dataTable thead tr {
   <div class="container">
 
     <div id="main-text">
-      <h2>모집게시판</h2>
+      <h1>모집게시판</h1>
     </div>
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">

@@ -39,7 +39,7 @@
                <c:choose>
                 <c:when test="${question.password == 'true'}">
            <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a>
-            <img src="${contextRootPath}/images/lock.png" style = "width:20px">
+            <img src="${contextRootPath}/images/locked.png" style = "width:20px">
                 </c:when>
                   <c:otherwise>  <a href="${contextRootPath}/app/question/${question.questionNo}" >${question.title}</a></c:otherwise>
                   </c:choose>        

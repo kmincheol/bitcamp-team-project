@@ -33,6 +33,8 @@
 .pagination {
   display: inline-flex;
 }
+
+
 #dtBasicExample_length{
     float : left;
 }
@@ -43,7 +45,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 /* 테이블 헤더 색상 변경 */
 table.dataTable thead tr {
-  /* background-color: gray; */
+background-color: #e5ebee; 
   
 }
 /* 테이블 목록 색상 변경 */
@@ -71,13 +73,19 @@ table.dataTable thead tr {
 </head>
 
 <body>
+<%-- <div>
+ <a class="btn btn-outline-dark btn-block"  style =" width:500px" href="${contextRootPath}/app/question/form" >FAQ</a>
+        <a class="btn  btn-outline-dark btn-block"  style =" width:500px" href="${contextRootPath}/app/question/"> 1:1 문의</a>
+    <br><br>    
+</div> --%>
 
   <div  class="container">
       <div id="main-text">
-      <br> <br> <br> 
+         <h1 >고객 센터</h1>   
     </div>
 
-
+<div id="divdiv">
+<br>  
   <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>
         <tr>
@@ -96,7 +104,7 @@ table.dataTable thead tr {
                 <c:when test="${member.no == question.memberNo || member.no == 1}">
                   <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
                   <c:if test="${question.password == 'true' }">
-                    <img src="${contextRootPath}/images/lock.png" style="width: 20px">
+                    <img src="${contextRootPath}/images/locked.png" style="width: 20px">
                   </c:if>
                 </c:when>
                 <c:otherwise>
@@ -104,7 +112,7 @@ table.dataTable thead tr {
                     <c:when test="${question.password == true }">
                       <a href="${contextRootPath}/app/question/${question.questionNo}"
                         onclick="return aa()">${question.title}</a>
-                      <img src="${contextRootPath}/images/lock.png" style="width: 20px">
+                      <img src="${contextRootPath}/images/locked.png" style="width: 20px">
                     </c:when>
                     <c:otherwise>
                       <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
@@ -117,16 +125,17 @@ table.dataTable thead tr {
 
             <td><c:choose>
                 <c:when test="${(question.questionStatus) == 'false'}">
-                  <img src="${contextRootPath}/images/idea.png" style="width: 30px">
-                </c:when>
+                     <button type="button" class="btn btn-outline-dark btn-sm" >답변대기</button>
+                 </c:when>
                 <c:otherwise>
-                  <img src="${contextRootPath}/images/idea2.png" style="width: 30px">
+               <button type="button" class="btn btn-outline-danger btn-sm">답변완료</button>
                 </c:otherwise>
               </c:choose>
           </tr>
         </c:forEach>
       </tbody>
     </table>
+</div>
 
 
     <c:if test="${sessionScope.loginUser.no == 1}">
@@ -174,7 +183,7 @@ table.dataTable thead tr {
 
       $(document).ready(function() {
         $('#dtBasicExample').DataTable({
-          order : [ [ 1, "desc" ] ],
+          order : [ [ 0, "desc" ] ],
           "info" : false,
           "paging": true,
           language : lang_kor
