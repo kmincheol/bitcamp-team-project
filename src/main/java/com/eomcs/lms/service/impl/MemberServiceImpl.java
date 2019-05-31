@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MemberDao;
 import com.eomcs.lms.dao.TermsAgreeDao;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.MemberService;
 
@@ -51,6 +52,12 @@ public class MemberServiceImpl implements MemberService {
   public Member get(int no) {
     return memberDao.findByNo(no);
   }
+  
+  @Override
+  public List<Team> get2(int no) {
+    return memberDao.findByteam(no);
+  }
+  
   
   @Override
   public Member get(String email) {
