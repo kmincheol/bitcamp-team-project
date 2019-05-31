@@ -3,8 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+  id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <head>
+
+<link rel="stylesheet" href="${contextRootPath}/css/mainpage3.css">
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,124 +35,137 @@
     <nav id="sidebar" class="sidebar-wrapper">
       <div class="sidebar-content">
         <div class="sidebar-brand">
-          <img src="${contextRootPath}/images/logo.png" class="side-logo">      
+          <img src="${contextRootPath}/images/logo.png" class="side-logo">
           <div id="close-sidebar">
             <i class="fas fa-times"></i>
           </div>
         </div>
         <div class="sidebar-header">
-          <div class="user-pic">
-            <img class="img-responsive img-rounded" src="${sessionScope.loginUser.photo }">
-          </div>
-          <div class="user-info">
-            <span class="user-name">${sessionScope.loginUser.name}</span> 
-            <span class="user-team"><select class="custom-select" id="select2" name='team.teamId'>
-                  <option selected>팀을 선택해주세요.</option>
-                  <c:forEach items="${team}" var="team">
-                    <option value='${team.teamId}'>${team.teamName}</option>
+          <c:choose>
+            <c:when test="${sessionScope.loginUser != null }">
+              <div class="user-pic">
+                <img class="img-responsive img-rounded" src="${sessionScope.loginUser.photo }">
+              </div>
+              <div class="user-info">
+                <span class="user-name">${sessionScope.loginUser.name}</span> <span> <c:forEach
+                    items="${team}" var="team">
+                    <span class="user-team">${team.teamName}</span>
                   </c:forEach>
-              </select></span> 
-          </div>
-        </div>
-        <!-- sidebar-header  -->
-        <div class="sidebar-search">
-          <div>
-            <div class="input-group">
-              <input type="text" class="form-control search-menu" placeholder="Search...">
-              <div class="input-group-append">
-                <span class="input-group-text"> <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
               </div>
-            </div>
-          </div>
+            </c:when>
+
+            <c:otherwise>
+              <form action='auth/login' method='post'>
+                <div class="form-group" style="line-height: 10px; margin-bottom: 10px;">
+                  <label for="id" style="font-size: 13px; color: white;">아이디</label> <input
+                    autocomplete=off
+                    style="background: #3a3f48; border: none; color: white; box-shadow: none;"
+                    type="text" class="form-control" id="id" name="id" aria-describedby="emailHelp"
+                    value='${cookie.id.value}' placeholder="아이디를 입력하세요.">
+                </div>
+                <div class="form-group" style="line-height: 10px; margin-bottom: 10px;">
+                  <label for="password" style="font-size: 13px; color: white;">패스워드</label> <input
+                    style="background: #3a3f48; border: none; color: white; box-shadow: none;"
+                    type="password" class="form-control" id="password" name="password"
+                    placeholder="암호를 입력하세요.">
+                </div>
+                <div class="form-group form-check" style="margin-bottom: 0;">
+                  <input type="checkbox" class="form-check-input" id="saveId" name="saveId">
+                  <label style="color: white; font-size: 13px;" class="saveId" for="exampleCheck1">아이디
+                    저장</label>
+                  <lable style="color:white; font-size:13px;"> / </lable>
+                  <a style="color: white; font-size: 13px;"
+                    href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
+                </div>
+                <button style="display: block; width: 100%;" type="submit" class="btn btn-dark">로그인</button>
+              </form>
+            </c:otherwise>
+          </c:choose>
+        </div>
+        <!-- sidebar-header  -->
+        <div class="sidebar-menu" style="padding: 0px;">
+          <ul>
+            <li class="sidebar"><a href="${contextRootPath}/app/main"> <i
+                class="fa fa-home"></i> <span>Home</span>
+            </a></li>
+          </ul>
         </div>
         <!-- sidebar-search  -->
         <div class="sidebar-menu">
           <ul>
-            <li class="header-menu"><span>General</span></li>
-            <li class="sidebar-dropdown"><a href="#"> <i class="fa fa-tachometer-alt"></i>
-                <span>Dashboard</span> <span class="badge badge-pill badge-warning">New</span>
+            <li class="header-menu"><span>Category</span></li>
+            <li class="sidebar-dropdown"><a href="#"><i class="fab fa-maxcdn"></i> <span>매치</span>
             </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li><a href="#">Dashboard 1 <span class="badge badge-pill badge-success">Pro</span>
-                  </a></li>
-                  <li><a href="#">Dashboard 2</a></li>
-                  <li><a href="#">Dashboard 3</a></li>
+                  <li><a href="${contextRootPath}/app/matchboard">매치보드 </a></li>
+                  <li><a href="#">매치등록</a></li>
                 </ul>
               </div></li>
-            <li class="sidebar-dropdown"><a href="#"> <i class="fa fa-shopping-cart"></i> <span>E-commerce</span>
-                <span class="badge badge-pill badge-danger">3</span>
+            <li class="sidebar-dropdown"><a href="#"><i class="fas fa-users"></i> <span>팀</span>
             </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li><a href="#">Products </a></li>
-                  <li><a href="#">Orders</a></li>
-                  <li><a href="#">Credit cart</a></li>
+                  <li><a href="${contextRootPath}/app/team/form">팀생성 </a></li>
+                  <li><a href="${contextRootPath}/app/team">팀정보</a></li>
+                  <li><a href="${contextRootPath}/app/recruit_board">모집게시판</a></li>
                 </ul>
               </div></li>
-            <li class="sidebar-dropdown"><a href="#"> <i class="far fa-gem"></i> <span>Components</span>
+            <li class="sidebar-dropdown"><a href="#"> <i class="fas fa-comments"></i> <span>커뮤니티</span>
             </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li><a href="#">General</a></li>
-                  <li><a href="#">Panels</a></li>
-                  <li><a href="#">Tables</a></li>
-                  <li><a href="#">Icons</a></li>
-                  <li><a href="#">Forms</a></li>
+                  <li><a href="${contextRootPath}/app/announce">공지사항</a></li>
+                  <li><a href="${contextRootPath}/app/free">자유게시판</a></li>
+                  <li><a href="${contextRootPath}/app/question">고객센터</a></li>
                 </ul>
               </div></li>
-            <li class="sidebar-dropdown"><a href="#"> <i class="fa fa-chart-line"></i> <span>Charts</span>
+            <li class="sidebar-dropdown"><a href="#"> <i class="fas fa-address-card"></i> <span>마이페이지</span>
             </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li><a href="#">Pie chart</a></li>
-                  <li><a href="#">Line chart</a></li>
-                  <li><a href="#">Bar chart</a></li>
-                  <li><a href="#">Histogram</a></li>
+                  <li><a href="${contextRootPath}/app/member/${sessionScope.loginUser.no}">개인정보</a></li>
+                  <li><a href="#">나의 팀정보</a></li>
                 </ul>
               </div></li>
-            <li class="sidebar-dropdown"><a href="#"> <i class="fa fa-globe"></i> <span>Maps</span>
-            </a>
-              <div class="sidebar-submenu">
-                <ul>
-                  <li><a href="#">Google maps</a></li>
-                  <li><a href="#">Open street map</a></li>
-                </ul>
-              </div></li>
-            <li class="header-menu"><span>Extra</span></li>
-            <li><a href="#"> <i class="fa fa-book"></i> <span>Documentation</span> <span
-                class="badge badge-pill badge-primary">Beta</span>
-            </a></li>
-            <li><a href="#"> <i class="fa fa-calendar"></i> <span>Calendar</span>
-            </a></li>
-            <li><a href="#"> <i class="fa fa-folder"></i> <span>Examples</span>
-            </a></li>
           </ul>
         </div>
         <!-- sidebar-menu  -->
       </div>
       <!-- sidebar-content  -->
       <div class="sidebar-footer">
-        <a href="#"> <i class="fa fa-bell"></i> <span
-          class="badge badge-pill badge-warning notification">3</span>
-        </a> <a href="#"> <i class="fa fa-envelope"></i> <span
-          class="badge badge-pill badge-success notification">7</span>
-        </a> <a href="#"> <i class="fa fa-cog"></i> <span class="badge-sonar"></span>
-        </a> <a href="#"> <i class="fa fa-power-off"></i>
+        <a href="#"> <i class="fa fa-bell"></i>
+        </a> <a href="#"> <i class="fa fa-envelope"></i>
+        </a> <a href="#"> <i class="fa fa-cog"></i>
+        </a> <a href="${contextRootPath}/app/auth/logout"> <i class="fa fa-power-off"></i>
         </a>
       </div>
     </nav>
     <!-- sidebar-wrapper  -->
-    <main class="page-content">
-    
     <!-- 본문 영역 -->
-    <div class="container-fluid">
+    <main class="page-content">
+    <div class="wrapper">
+      <header>
+        <nav class="header-nav">
+            <img src="${contextRootPath}/images/logo.png" class="logo">
+          <div class="menu">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
     </div>
-
-    </main>
-    <!-- page-content" -->
   </div>
+
+  </main>
+  <!-- page-content" -->
+  </div>
+
+
   <!-- page-wrapper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -154,7 +177,6 @@
 
   <script type="text/javascript">
 			jQuery(function($) {
-
 				$(".sidebar-dropdown > a").click(function() {
 					$(".sidebar-submenu").slideUp(200);
 					if ($(this).parent().hasClass("active")) {
@@ -174,6 +196,24 @@
 					$(".page-wrapper").addClass("toggled");
 				});
 			});
+
+			$(document).ready(function() {
+				$(".menu-icon").on("click", function() {
+					$("nav ul").toggleClass("showing");
+				});
+			});
+
+			// Scrolling Effect
+
+			$(window).on("scroll", function() {
+				if ($(window).scrollTop()) {
+					$('nav').addClass('black');
+				}
+
+				else {
+					$('nav').removeClass('black');
+				}
+			})
 		</script>
 
 </body>

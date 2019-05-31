@@ -5,26 +5,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.eomcs.lms.dao.MemberDao">
-  
+
   <resultMap type="member" id="memberMap">
-    <id column="mbr_id"  property="no"/>
-    <result column="user_id"   property="id"/>
-    <result column="pwd"    property="password"/>
-    <result column="name"    property="name"/>
-    <result column="bth_dt"    property="birthDay"/>
-    <result column="gndr"  property="gender"/>
-    <result column="tel"  property="tel"/>
-    <result column="email"   property="email"/>
-    <result column="post" property="post"/>
-    <result column="bas_addr"  property="baseAddress"/>
-    <result column="det_addr"    property="detailAddress"/>
-    <result column="prof_phot"    property="photo"/>
-    <result column="s_intd"    property="selfIntroduce"/>
-    <result column="login_type"  property="loginType"/>
-    <result column="stat"   property="status"/>
-    <result column="cdt"  property="createdDate"/>
-    <result column="lcd"    property="latestDate"/>
-    <result column="mgr"  property="manager"/>
+    <id column="mbr_id" property="no" />
+    <result column="user_id" property="id" />
+    <result column="pwd" property="password" />
+    <result column="name" property="name" />
+    <result column="bth_dt" property="birthDay" />
+    <result column="gndr" property="gender" />
+    <result column="tel" property="tel" />
+    <result column="email" property="email" />
+    <result column="post" property="post" />
+    <result column="bas_addr" property="baseAddress" />
+    <result column="det_addr" property="detailAddress" />
+    <result column="prof_phot" property="photo" />
+    <result column="s_intd" property="selfIntroduce" />
+    <result column="login_type" property="loginType" />
+    <result column="stat" property="status" />
+    <result column="cdt" property="createdDate" />
+    <result column="lcd" property="latestDate" />
+    <result column="mgr" property="manager" />
+
   </resultMap>
   
   <sql id="select1">  

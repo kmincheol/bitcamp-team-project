@@ -10,49 +10,49 @@
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-<link rel="stylesheet" href="${contextRootPath}/css/question_detail.css">
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_detail.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="form-group row">
-      <label for="no" class="col-sm-2 col-form-label">번호</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="questionType" id="type" value="${question.questionNo}"
-          readonly />
-      </div>
+ <div class="container">
+
+    <div id="main-text">
+      <h2>게시글</h2>
     </div>
 
-    <div class="form-group row">
-      <label for="contents" class="col-sm-2 col-form-label">작성일</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="createdDate" id="createdDate"
-          value="${question.createdDate}" readonly />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="title" class="col-sm-2 col-form-label">작성자</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="member" id="member" value="${question.member.id}" readonly />
-      </div>
-    </div>
+      <form action='update' method='post' name="remove" enctype='multipart/form-data'>
+        <div id="title-wrap" class="form-group row">
+          <div id="title-row" class="col-sm-12">
+            <div id="title" name="title">${question.title}</div>
+          </div>
+          <div id="teamName-row" class="col-sm-12">
+            <span id="teamName" name="member">${question.member.id}</span> 
+            <span>|</span>
+            <span id="createdDate" name="createdDate">${question.createdDate}</span> 
+          </div>
+        </div>
+        
+      <div id="contents-wrap">
+        <div id="info-wrap">
+          <table class="info-table">
+            <tr>
+          </table>
+        </div>
 
+        <div id="contents-section">
+          <div class="contents-section-head">
+            <div>내용</div>
+          </div>
+          <div class="contents-section-body">
+            <div class="contents">${question.contents}</div>
+          </div>
+        </div>
+    
+      </div>
+    </form>
+  </div>
 
-    <div class="form-group row">
-      <label for="title" class="col-sm-2 col-form-label">제목</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="title" id="title" value="${question.title}" readonly />
-      </div>
-    </div>
-       <div class="form-group row">
-      <label for="contents" class="col-sm-2 col-form-label">내용</label>
-      <div class="col-sm-10">
-        <textarea class="form-control col-sm-13" name="contents" id="contents"
-          readonly>${question.contents}</textarea> 
-          
-      </div>
-    </div>
 
     <div id ="aa" class="form-group row">
       <div class="col-sm-10">

@@ -27,7 +27,7 @@ body, html {
 	margin-bottom: 15px;
 }
 
-#main-text>h1 {
+#main-text>h2 {
 	position: relative;
 	top: 90px;
 	color: black;
@@ -78,4 +78,3 @@ img {
 #write-btn{
 	float: right;
 }
-

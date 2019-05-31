@@ -85,7 +85,8 @@ body {
 
 @media screen and (min-width: 768px) {
   .page-wrapper.toggled .page-content {
-    padding-left: 300px;
+    padding-left: 260px;
+    padding-top: 0px;
   }
 }
 /*----------------show sidebar button----------------*/
@@ -96,6 +97,7 @@ body {
   border-radius: 0 4px 4px 0px;
   width: 35px;
   transition-delay: 0.3s;
+  z-index: 999;
 }
 .page-wrapper.toggled #show-sidebar {
   left: -40px;
@@ -255,7 +257,7 @@ body {
   background: 0 0;
   position: absolute;
   right: 15px;
-  top: 14px;
+  top:10px;
 }
 
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu ul {
@@ -358,11 +360,12 @@ body {
 }
 
 .page-wrapper .page-content > div {
-  padding: 20px 40px;
+  padding: 0px;
 }
 
 .page-wrapper .page-content {
   overflow-x: hidden;
+  padding-top: 0px;
 }
 
 /*------scroll bar---------------------*/
@@ -427,7 +430,7 @@ body {
 .chiller-theme .sidebar-wrapper .sidebar-brand>a,
 .chiller-theme .sidebar-wrapper .sidebar-menu ul li a,
 .chiller-theme .sidebar-footer>a {
-    color: #818896;
+    color: white;
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
@@ -484,4 +487,12 @@ body {
 	height: 50px;
 	margin-left: 20px;
 	margin-right: 40px;
+}
+
+.sidebar-dropdown{
+	margin:10px 0px;
+}
+
+.sidebar{
+	margin:10px 0px;
 }
