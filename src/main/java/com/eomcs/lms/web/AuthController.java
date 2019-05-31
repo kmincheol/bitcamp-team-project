@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.MemberService;
+import com.eomcs.lms.service.TeamService;
 
 @Controller
 @RequestMapping("/auth")
@@ -23,6 +24,7 @@ public class AuthController {
   static final String REFERER_URL = "refererUrl";
 
   @Autowired MemberService memberService;
+  @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   
   
@@ -68,7 +70,8 @@ public class AuthController {
       String password,
       String saveId,
       HttpSession session,
-      HttpServletResponse response) {
+      HttpServletResponse response
+     ) {
 
     Cookie cookie;
     if (saveId != null) {
@@ -82,7 +85,7 @@ public class AuthController {
     response.addCookie(cookie); 
 
     Member member = memberService.get(id, password);
-    System.out.println(member);
+      
     if (member == null) {
       return "auth/fail";
     }

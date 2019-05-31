@@ -23,7 +23,7 @@ public interface TeamService {
   List<TeamMember> teamMemberList();
   List<TeamMember> getTeamMember(int no);
   List<Team> search(String keyword);
-  
+ 
   int addTeam(Team team);
   int addTeamLeader(TeamMember teamMember);
   int addMember(Member member);

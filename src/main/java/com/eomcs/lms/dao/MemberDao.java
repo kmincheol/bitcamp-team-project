@@ -4,6 +4,7 @@ package com.eomcs.lms.dao;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Team;
 
 public interface MemberDao {
   int insert(Member member);
@@ -17,6 +18,7 @@ public interface MemberDao {
   int update(Member member);
   int updatePassword(Member member);
   int delete(int no);
+  List<Team> findByteam(int no);
 }
 
 
