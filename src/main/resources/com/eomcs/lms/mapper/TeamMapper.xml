@@ -249,6 +249,7 @@
     tm_mbr tmb
     left outer join tm t on tmb.tm_mbr_id = t.tm_id
     left outer join mbr m on tmb.mbr_id = m.mbr_id
+     order by (case when tlead_wth then 1 when tlead_wth then 2 end) desc
   </select>
   
   <select id="findByNoWithTeamMember" resultMap="teamMemberMap2" parameterType="int">
