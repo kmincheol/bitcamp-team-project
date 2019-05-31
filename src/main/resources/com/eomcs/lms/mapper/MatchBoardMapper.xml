@@ -23,6 +23,11 @@
     <result column="tel" property="telephone" />
     <result column="cost" property="cost" />
 
+        <!-- 종목유형 테이블 -->
+    <association property="teamTypeSports" javaType="TeamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
     
     <association property="team" javaType="Team">
       <id column="tm_id" property="teamId" />
@@ -30,20 +35,14 @@
       <result column="tm_ambl_phot" property="teamEmblemPhoto"/>
       <result column="area" property="teamArea" />
     </association>
-    
-        <!-- 종목유형 테이블 -->
-    <association property="teamTypeSports" javaType="TeamTypeSports">
-      <id column="spt_clsf_id" property="teamSportsTypeId" />
-      <result column="spt_clsf_name" property="teamSportsType" />
-    </association>
 
     <!-- 매치신청테이블 -->
-   <association property="matchApply" javaType="MatchApply">
+   <collection property="matchApply" ofType="MatchApply">
       <id column="tm_id" property="teamNo" />
       <result column="aply_stat" property="applyStatus" />
       <result column="aply_dt" property="applyDate" />
-    </association>
-
+    </collection>
+    
     <!-- 태그테이블  -->
     <collection property="tags" ofType="Tag">
       <id column="mtch_id"  property="matchNo"/>
@@ -62,6 +61,7 @@
       <result column="age_id" property="teamAgeId" />
       <result column="tm_ambl_phot" property="teamEmblemPhoto" />
       <result column="spt_clsf_id" property="teamSportsId" />
+      <result column="tm_lev_id" property="teamLevelId" />
 
 	<!-- 종목테이블 -->
     <association property="teamTypeSports" javaType="TeamTypeSports">
@@ -85,6 +85,12 @@
       <id column="tm_id" property="teamNo" />
       <result column="aply_stat" property="applyStatus" />
       <result column="aply_dt" property="applyDate" />
+    </association>
+
+    <!-- 팀실력테이블 -->
+   <association property="tm_lev" javaType="TeamLevel">
+      <id column="tm_lev_id" property="teamLevelId" />
+      <result column="levs" property="teamLevel" />
     </association>
 
     <!-- 팀나이 -->
@@ -151,23 +157,17 @@
     tel,
     cost,
     t.name,
+    t.tm_lev_id,
     t.age_id,
     t.tm_ambl_phot
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
+    left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
   </sql>
-  
-  <!-- 정보 팀 종목 출력 실패...
-  mtch m
-    join tm t on
-  m.spt_clsf_id = t.spt_clsf_id
-    join spt_clsf s on
-  m.spt_clsf_id = s.spt_clsf_id -->
-  
   
 <sql id="select2"> <!-- apply를 위한 select 아직 미완 -->
   select

@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
@@ -36,6 +38,24 @@ public class MatchBoardController {
   @Autowired LocationService locationService;
   @Autowired ServletContext servletContext;
 
+  // filter.js test
+  @GetMapping("listAll")
+  @ResponseBody
+  public Object listAll(HttpSession session) {
+    ArrayList<Match> matches = new ArrayList<>();
+    
+    List<Match> all = matchBoardService.search();
+    for (Match m : all) {
+      matches.add(m);
+    }
+    return matches;
+  }
+  
+  @GetMapping("list3")
+  public void list3() {
+  }
+  
+  
   @GetMapping("form")
   public void form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
     Member member = (Member) session.getAttribute("loginUser");
@@ -191,7 +211,6 @@ public class MatchBoardController {
   public String test(Match match) throws Exception {
       return "matchboard/test";
   }
-  
   
   
 //  @GetMapping("sideBar")
