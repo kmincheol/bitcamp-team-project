@@ -55,6 +55,14 @@ public class MatchBoardController {
   public void list3() {
   }
   
+  @GetMapping("list4")
+  public void list4() {
+  }
+  
+  @GetMapping("list5")
+  public void list5() {
+  }
+  
   
   @GetMapping("form")
   public void form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
