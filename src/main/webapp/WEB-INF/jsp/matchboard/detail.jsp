@@ -140,15 +140,14 @@ width:300px;
 
         <div class="form-group row" style="padding-left:165px;">
           <div class="col-sm-10">
-            <!-- 로그인 한 사용자와 글을 작성한 팀장과 같다면 버튼을 가림 -->
-            <!-- 팀장이 매칭글을 적고 나서 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
+            <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
              <c:if test="${!empty sessionScope.loginUser}">
-             <c:if test="${sessionScope.loginUser.name eq match.team.member.name}">
-             <c:if test="${match.team.teamMember.team_leader == true}"> 
+             <c:if test="${sessionScope.loginUser.no eq match.team.teamMember.memberNo}">
+             <c:if test="${match.team.teamMember.teamLeader == 'true'}">
           <a id="delt" class="btn btn-primary" href='delete/${match.no}'>삭제</a>
           <a id="updt" class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
-             </c:if>
             </c:if> 
+            </c:if>
             </c:if>
           </div>
         </div>

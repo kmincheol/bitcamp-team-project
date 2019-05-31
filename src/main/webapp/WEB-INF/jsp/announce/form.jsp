@@ -20,8 +20,8 @@
     <form id='add_form' action='add' method='post'>
 
       <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label">제목</label>
-        <div class="col-sm-2">
+        <label for="title" class="col-sm-2 col-form-label" style="text-align:center;">제목</label>
+        <div class="col-sm-10">
           <input class="form-control" id="title" name='title'>
         </div>
       </div>
@@ -30,10 +30,10 @@
         <textarea id="summernote" name="contents"></textarea>
       </div>
 
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button id="add" class="btn btn-primary">등록</button>
-          <a class="btn btn-primary" href='.'>목록</a>
+      <div class="form-group row" id="buttonRow">
+        <div class="col-sm-10" >
+          <button id="add" class="btn btn-dark">등록</button>
+          <a class="btn btn-dark" href='.'>목록</a>
         </div>
       </div>
     </form>
