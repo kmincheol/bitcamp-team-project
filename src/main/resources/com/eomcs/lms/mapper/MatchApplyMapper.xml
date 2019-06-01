@@ -26,7 +26,7 @@
 <sql id="select1"> <!-- 모든 팀의 신청 정보를 다가져옴 -->
    select
     a.mtch_id,
-    t.tm_id, 
+    a.tm_id,
     t.name,
     aply_dt,
     aply_stat
@@ -35,6 +35,8 @@
     left outer join tm t on a.tm_id = t.tm_id
     left outer join mtch m on a.mtch_id = m.mtch_id
   </sql>
+  
+
   
   <!-- 다른팀에게 매치를 신청할 때 저장하는 용도. -->
   <insert id="add" parameterType="matchApply">
@@ -51,11 +53,24 @@
   </insert>
   
   
-  <!-- 하나의 팀에서 모든 신청 정보를 가져올때 -->
+  <!-- 팀번호를 받아 신청 정보가 있는거 확인용  -->
+    <select id="check" resultMap="matchApplyMap" parameterType="int">
+  select
+    a.mtch_id,
+    a.tm_id
+  from
+    mtchaply a
+    left outer join mtch m on a.mtch_id = m.mtch_id
+  where
+    a.tm_id = #{value}
+  </select>
+
+  
+  <!-- 매치글 번호로 신청 정보를 얻어올 때-->
   <select id="findAll" resultMap="matchApplyMap" parameterType="int">
     <include refid="select1"/>
     where
-    mtch_id = #{value}
+    a.mtch_id = #{value}
   </select>
   
   

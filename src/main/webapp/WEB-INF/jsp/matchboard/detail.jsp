@@ -136,8 +136,6 @@ width:300px;
 	 </td>
 </tr>	
 	</table>  
-
-
         <div class="form-group row" style="padding-left:165px;">
           <div class="col-sm-10">
             <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
@@ -152,15 +150,14 @@ width:300px;
           </div>
         </div>
       </form>
-      
               <form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
               <c:if test="${!empty sessionScope.loginUser}">
 					<select name='teamId' class="form-control" id="selectBox" style="width:150px;">
 					<option selected>소속팀 선택</option>
 					<c:forEach items="${myteam}" var="myteam">
 					<c:if test="${!myteam.team.teamMember.team_leader}">
-					<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
-					</c:if>
+					<option value='${check.team.teamId}'>${check.team.teamName}</option>
+                    </c:if>
 					</c:forEach>
 					</select>
               <button class="btn btn-primary" id="btnsub2">신청하기</button>
@@ -172,6 +169,44 @@ width:300px;
 
   <jsp:include page="../javascript.jsp" />
 
-</body>
 
+<script>
+var ajaxSend = (function() {
+
+  if (!isSubmitted) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          
+	alert("신청되었습니다.")
+          
+	    isSubmitted = true;
+      location.href = '../'
+          
+    // 버튼 요소의 disabled 속성 추가
+    ajaxButton.setAttribute('disabled', 'disabled');
+  
+        } else {
+          alert("이미 매칭 신청을 보냈습니다.");
+          location.href = ''
+        }
+      }
+    };
+
+  }
+});
+// Ajax 전송 버튼 이벤트
+ajaxButton.addEventListener('click', ajaxSend);
+
+</script>
+
+
+
+
+
+</body>
 </html>
+
+

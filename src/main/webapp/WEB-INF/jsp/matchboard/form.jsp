@@ -141,7 +141,6 @@
 
     
   </tbody>
-     <jsp:include page="createSideBar.jsp"/> 
 </table>
       <div class="form-group row">
         <div class="col-sm-10">
@@ -221,6 +220,9 @@ function itemChange(){
 	    $('#gugun').append(option);
 	            }
 	}
+
+
+
 
 /* 	$("#gugun").find("option:selected").val();
 

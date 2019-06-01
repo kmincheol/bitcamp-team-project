@@ -39,6 +39,11 @@ public class MatchApplyServiceImpl implements MatchApplyService {
   }
 
   @Override
+  public List<MatchApply> check(int no) {
+    return matchApplyDao.check(no);
+  }
+  
+  @Override
   public int delete(int no) {
     matchApplyDao.deleteAll(no);
     return matchApplyDao.delete(no);

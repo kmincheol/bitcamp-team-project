@@ -39,6 +39,7 @@
     <!-- 매치신청테이블 -->
    <collection property="matchApply" ofType="MatchApply">
       <id column="tm_id" property="teamNo" />
+      <result column="mtch_id" property="matchNo" />
       <result column="aply_stat" property="applyStatus" />
       <result column="aply_dt" property="applyDate" />
     </collection>
@@ -169,20 +170,7 @@
     left outer join age a on t.age_id = a.age_id
   </sql>
   
-<sql id="select2"> <!-- apply를 위한 select 아직 미완 -->
-  select
-    m.mtch_id,
-    t.tm_id,
-    m.tm_id2,
-    t.name,
-    t.tm_ambl_phot,
-    aply_stat,
-    aply_dt
-  from
-    mtch m
-    left outer join tm t on m.tm_id = t.tm_id
-    left outer join mtchaply a on m.tm_id = a.tm_id
-</sql>
+
 
 <sql id="select3">
   select

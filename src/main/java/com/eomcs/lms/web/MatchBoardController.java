@@ -51,6 +51,8 @@ public class MatchBoardController {
     return matches;
   }
   
+  
+  
   @GetMapping("list3")
   public void list3() {
   }
@@ -62,6 +64,7 @@ public class MatchBoardController {
   @GetMapping("list5")
   public void list5() {
   }
+  
   
   
   @GetMapping("form")
@@ -82,6 +85,8 @@ public class MatchBoardController {
     model.addAttribute("member", member); 
     model.addAttribute("match",match); 
   }
+  
+  
   
   @GetMapping
   public String list(
@@ -121,23 +126,63 @@ public class MatchBoardController {
         
         return "matchboard/list";
   }
-
+  
+  
   
   @RequestMapping("{no}")
   public String detail(@PathVariable int no, HttpSession session, Model model) {
     Match match = matchBoardService.get(no);
     
+    // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
     if (session.getAttribute("loginUser") != null) {
-    Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
-    List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
-    model.addAttribute("myteam",teames);
+    Member member = (Member) session.getAttribute("loginUser"); 
+    List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+
+  
+    //로그인한 유저의 팀 목록을 가져오고, 매치글에 신청한 팀의 목록을 가져온다음.
+    //로그인한 유저의 팀 번호와 매치글에 신청한 팀의 번호가 같다면 출력을 막기위해 해봤지만 실패...
+    
+    int[] teamNumArray = new int[teams.size()]; //(자기가 리더인)팀의 수만큼 배열을 만들고,
+
+    for (int i = 0; i < teamNumArray.length; i++) {
+      Match mat = teams.get(i); 
+      teamNumArray[i] = mat.getTeamNo(); // 배열에 (자기가 리더인)팀의 번호를 담아준다.
+   }
+ 
+  List<MatchApply> matchApplies = matchApplyService.list(no); // 해당 매치의 신청 목록을 List 객체에 담았다.
+  int[] matchTeamNumArray = new int[matchApplies.size()]; 
+ 
+   for(int i = 0; i < matchApplies.size(); i++) {
+     MatchApply matchApply = matchApplies.get(i);
+    matchTeamNumArray[i] = matchApply.getTeamNo(); // int 배열에 현 매치글에 신청한 팀의 모든 번호를 담았다.
+   }
+ 
+   for (int i = 0; i < teamNumArray.length; i++) {
+     for (int j = 0; j < matchTeamNumArray.length; j++) {
+         if(teamNumArray[i] == matchTeamNumArray[j]) { // 현 매치글에 신청된 팀의 번호와 유저의 팀 번호가 같다면 
+            teamNumArray[i] = teamNumArray[i+1];  // 현 유저의 팀번호를 없앤다.
+         }
+     }
+   }
+
+   List<Team> teams2 = new ArrayList<>();
+
+   for (int i = 0; i < teamNumArray.length; i++) {
+     Team t = teamService.getTeam(teamNumArray[i]);
+     teams2.add(t);
+   }
+   ///////////
+    
+    model.addAttribute("myteam",teams);
     } else {
     }
+    
     model.addAttribute("match", match);
     return "matchboard/detail";
   }
   
- 
+  
+  
   @GetMapping("update/{no}")
   public String detailUpdate(@PathVariable int no, Model model) {
     Match match = matchBoardService.get(no);
@@ -145,13 +190,18 @@ public class MatchBoardController {
    return "matchboard/update";
   }
   
+  
+  
   @PostMapping("add")
   public String add(Match match) throws Exception {
+    System.out.println("BBBBBBB");
     logger.debug(match);
     
     matchBoardService.add(match);
       return "redirect:.";
   }
+  
+  
   
   @PostMapping("update")
   public String update(Match match) {
@@ -161,11 +211,11 @@ public class MatchBoardController {
     return "redirect:.";
   }
   
+  
+  
   // 키 참조때문에 삭제 안되면 matchtb_revise.sql 파일 참조. --임시
-  // 경기신청 데이터 지우고,
-  // 후기게시판 데이터 지우고,
-  // 태그 데이터 지우고
-  // 그리고 나서 매치보드 번호 삭제. 
+  // 경기신청 데이터 지우고, 후기게시판 데이터 지우고,
+  // 태그 데이터 지우고 그리고 나서 매치보드 번호 삭제. 
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no) {
     
@@ -174,6 +224,7 @@ public class MatchBoardController {
 
     return "redirect:../";
   }
+  
   
   
   @GetMapping("sideBar")
@@ -200,8 +251,10 @@ public class MatchBoardController {
     return "matchboard/sidebar";
   }
   
+  
+  
   @PostMapping("{no}/submit")
-  public String submit(@PathVariable int no, @RequestBody Team team) {
+  public String submit(@PathVariable int no, Team team) {
     Match match = matchBoardService.get(no);
 
     MatchApply matchApply = new MatchApply();
