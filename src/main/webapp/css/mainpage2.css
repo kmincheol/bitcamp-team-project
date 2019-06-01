@@ -92,15 +92,14 @@ body {
 /*----------------show sidebar button----------------*/
 #show-sidebar {
   position: fixed;
-  left: 0;
-  top: 10px;
-  border-radius: 0 4px 4px 0px;
-  width: 35px;
-  transition-delay: 0.3s;
-  z-index: 999;
+    left: 13px;
+    top: 11px;
+    color: white;
+    transition-delay: 0.3s;
+    z-index: 999;
 }
 .page-wrapper.toggled #show-sidebar {
-  left: -40px;
+  left: -250px;
 }
 /*----------------sidebar-wrapper----------------*/
 
@@ -489,10 +488,26 @@ body {
 	margin-right: 40px;
 }
 
+.header-side-logo {
+  width: 140px;
+  height: 50px;
+  margin-top:3px;
+  margin-left: 20px;
+  margin-right: 40px;
+}
+
 .sidebar-dropdown{
-	margin:10px 0px;
+	margin:15px 0px;
 }
 
 .sidebar{
 	margin:10px 0px;
+}
+
+.sidebar-header{
+	height: 240px;
+}
+
+.sidebar-brand{
+	height: 92px;
 }

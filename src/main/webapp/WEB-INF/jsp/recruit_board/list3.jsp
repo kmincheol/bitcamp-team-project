@@ -1,4 +1,3 @@
-<%@page import="org.springframework.web.context.annotation.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,14 +5,8 @@
 <html>
 
 <head>
+<jsp:include page="../sidebar/commonSidebarCss.jsp" />
 
-<title>모집게시판_list</title>
-<!-- include header.jsp -->
-<jsp:include page="../header.jsp" />
-<!-- header.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
-<!-- footer.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <!-- recruit_board_list.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 <!-- Font Awesome -->
@@ -66,14 +59,15 @@ table.dataTable thead tr {
 	
 }
 </style>
-
 </head>
 
 <body>
+  <jsp:include page="../sidebar/sidebarTop.jsp"></jsp:include>
+  <!-- 본문 영역 -->
   <div class="container">
 
     <div id="main-text">
-      <h2>모집게시판</h2>
+      <h1>모집게시판</h1>
     </div>
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
@@ -126,22 +120,23 @@ table.dataTable thead tr {
             <td>${list.teamViewCount}</td>
           </tr>
         </c:forEach>
-      </tbody>
-    </table>
+      </tbody> 
+    </table> 
     <c:forEach items="${member}" var="member">
-      <c:if test="${sessionScope.loginUser.id eq member.id && member.teamMember.teamLeader == 'true'}">
+      <c:if
+        test="${sessionScope.loginUser.id eq member.id && member.teamMember.teamLeader == 'true'}">
         <div id="in">
           <div id="write-btn">
-            <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
+            <a class="input-group-btn1 btn btn-dark"
+              href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
           </div>
         </div>
       </c:if>
     </c:forEach>
   </div>
-
-  <jsp:include page="../footer.jsp" />
-
-  <!-- SCRIPTS -->
+  
+  <jsp:include page="../sidebar/sidebarBottom.jsp"/>  
+ 
   <!-- JQuery -->
   <script type="text/javascript"
     src="${contextRootPath}/node_modules/mdbootstrap/js/jquery-3.4.0.min.js"></script>
@@ -156,7 +151,7 @@ table.dataTable thead tr {
   <script type="text/javascript"
     src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
 
-  <script>
+  <script type="text/javascript">
 			var lang_kor = {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
@@ -177,5 +172,6 @@ table.dataTable thead tr {
 				$('.dataTables_length').addClass('bs-select');
 			});
 		</script>
+
 </body>
 </html>
