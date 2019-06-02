@@ -81,6 +81,8 @@ insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(7,'비트농구단','030101','40','3','3','3');
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
 values(8,'롤게임','030101','40','3','3','3');
+insert into tm(tm_id,name,tm_intd,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id,cdt)
+values(9,'테스트팀','우리팀은 테스트하는 팀입니다','010','30','3','3','3','2014-05-02');
 
 -- 팀원데이터
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
@@ -109,6 +111,8 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,8,1,'프로게이머');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,10,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(9,8,0,'테스트');
 
 
 -- 팀경고데이터

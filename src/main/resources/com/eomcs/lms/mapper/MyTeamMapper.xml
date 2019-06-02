@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.MyTeamDao">
+
+  <resultMap type="Team" id="teamMap">
+    <id column="tm_id" property="teamId" />
+    <result column="name" property="teamName" />
+    <result column="tm_intd" property="teamInfo" />
+    <result column="area" property="teamArea" />
+    <result column="age_id" property="teamAgeId" />
+    <result column="tm_type_id" property="teamTypeId" />
+    <result column="tm_lev_id" property="teamLevelId" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="tm_ambl_phot" property="teamEmblemPhoto" />
+    <result column="tm_unf_wth" property="teamUniform" />
+    <result column="tm_unf_phot" property="teamUniformPhoto" />
+    <result column="cdt" property="teamCreateDate" />
+    <result column="mdt" property="teamInfoModifieDate" />
+    
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMemberNo" />
+      <result column="mbr_id" property="memberNo" />
+    </association>
+
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+    </association>
+
+      <association property="teamType" javaType="teamType">
+      <id column="tm_type_id" property="teamTypeId" />
+       <result column="types" property="teamType" />
+    </association>
+
+      <association property="teamAges" javaType="TeamAges">
+      <id column="age_id" property="teamAgeId" />
+       <result column="ages" property="teamAges" />
+    </association>
+  
+     <association property="teamLevel" javaType="TeamLevel">
+      <id column="tm_lev_id" property="teamLevelId" />
+       <result column="levs" property="teamLevel" />
+    </association>
+  
+   <association property="teamTypeSports" javaType="TeamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+       <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
+
+
+  </resultMap>
+  
+  
+   <select id="findByMyTeam" resultMap="teamMap" parameterType="int">
+    select
+      tm_id,
+      t.name,
+      tm_intd,
+      tm_ambl_phot,
+      tm_unf_phot,
+      area,
+     t.cdt,
+     types,
+    levs,
+    spt_clsf_name,
+    ages
+    from
+         tm t
+    left outer join tm_mbr tmbr on t.tm_id = tmbr.tm_mbr_id
+    left outer join mbr m on tmbr.mbr_id = m.mbr_id
+       left outer join age a on t.age_id = a.age_id
+        left outer join tm_type tp on t.tm_type_id = tp.tm_type_id
+         left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+          left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+         
+       where m.mbr_id = ${value}
+  </select> 
+
+
+
+</mapper>

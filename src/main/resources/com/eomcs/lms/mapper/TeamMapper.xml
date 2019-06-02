@@ -141,7 +141,7 @@
     spt_clsf_name,
     t.cdt
     from
-    tm t
+      tm t
     left outer join age a on t.age_id = a.age_id
     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
