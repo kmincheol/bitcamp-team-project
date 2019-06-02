@@ -8,25 +8,22 @@
 <head>
 
 <title>모집게시판_list</title>
-<!-- include header.jsp -->
-<jsp:include page="../header.jsp" />
-<!-- header.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- sidebar css -->
+<jsp:include page="../sidebar/commonSidebarCss.jsp" />
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <!-- recruit_board_list.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <!-- Bootstrap core CSS -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 <!-- MDBootstrap Datatables  -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
-  rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
 
 
 <style>
@@ -70,6 +67,7 @@ table.dataTable thead tr {
 </head>
 
 <body>
+<jsp:include page="../sidebar/commonSidebarTop.jsp"/>
   <div class="container">
 
     <div id="main-text">
@@ -138,23 +136,22 @@ table.dataTable thead tr {
       </c:if>
     </c:forEach>
   </div>
+  
+<jsp:include page="../sidebar/commonSidebarBottom.jsp"/>
 
   <jsp:include page="../footer.jsp" />
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
-  <script type="text/javascript"
-    src="${contextRootPath}/node_modules/mdbootstrap/js/jquery-3.4.0.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript"
-    src="${contextRootPath}/node_modules/mdbootstrap/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/mdb.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
   <!-- MDBootstrap Datatables  -->
-  <script type="text/javascript"
-    src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
+<script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
 
   <script>
 			var lang_kor = {
