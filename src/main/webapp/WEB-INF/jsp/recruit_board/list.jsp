@@ -8,26 +8,31 @@
 <head>
 
 <title>모집게시판_list</title>
-<!-- sidebar css -->
-<jsp:include page="../sidebar/commonSidebarCss.jsp" />
+
 <!-- header -->
 <link rel="stylesheet" href="${contextRootPath}/css/mainpage-header.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
 <!-- recruit_board_list.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
 <!-- Bootstrap core CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
-
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
@@ -70,7 +75,7 @@ table.dataTable thead tr {
 </head>
 
 <body>
-<jsp:include page="../sidebar/commonSidebarTop.jsp"/>
+<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
 
   <div class="container">
 
@@ -153,7 +158,7 @@ table.dataTable thead tr {
     </c:forEach>
   </div>
   
-<jsp:include page="../sidebar/commonSidebarBottom.jsp"/>
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
 
   <jsp:include page="../footer.jsp" />
 
@@ -164,8 +169,6 @@ table.dataTable thead tr {
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
   <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
 
