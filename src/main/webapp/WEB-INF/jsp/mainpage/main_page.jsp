@@ -15,11 +15,11 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<jsp:include page="../sidebar/commonSidebarCss.jsp" />
+<jsp:include page="../mainSidebar/commonSidebarCss.jsp" />
 </head>
 
 <body>
-	<jsp:include page="../sidebar/commonSidebarTop.jsp" />
+	<jsp:include page="../mainSidebar/commonSidebarTop.jsp" />
 	<!-- 본문 영역 -->
 	<div class="container-fluid">
 		<header>
@@ -34,7 +34,7 @@
 			</nav>
 		</header>
 	</div>
-	<jsp:include page="../sidebar/commonSidebarBottom.jsp" />
+	<jsp:include page="../mainSidebar/commonSidebarBottom.jsp" />
 	
 	<script type="text/javascript">
 		// Scrolling Effect
