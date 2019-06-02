@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-  <div class="page-wrapper chiller-theme">
-    <a id="show-sidebar" class="btn btn-lg"> 
+ 
+  <div class="page-wrapper chiller-theme"> 
+    <a id="show-sidebar" class="btn btn-lg">  
     <i class="fas fa-bars"><img src="${contextRootPath}/images/logo.png" class="header-side-logo"></i>
-    </a>
-    <nav id="sidebar" class="sidebar-wrapper">
-      <div class="sidebar-content">
-        <div class="sidebar-brand">
+    </a> 
+    <nav id="sidebar" class="sidebar-wrapper"> 
+      <div class="sidebar-content"> 
+        <div class="sidebar-brand"> 
           <img src="${contextRootPath}/images/logo.png" class="side-logo">
           <div id="close-sidebar">
             <i class="fas fa-times"></i>

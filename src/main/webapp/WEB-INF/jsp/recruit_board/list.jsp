@@ -10,6 +10,9 @@
 <title>모집게시판_list</title>
 <!-- sidebar css -->
 <jsp:include page="../sidebar/commonSidebarCss.jsp" />
+<!-- header -->
+<link rel="stylesheet" href="${contextRootPath}/css/mainpage-header.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <!-- recruit_board_list.css -->
@@ -68,9 +71,22 @@ table.dataTable thead tr {
 
 <body>
 <jsp:include page="../sidebar/commonSidebarTop.jsp"/>
+
   <div class="container">
 
-    <div id="main-text">
+		<header>
+			<nav class="header-nav">
+				<div class="menu">
+					<ul> 
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Blog</a></li>
+					</ul>
+				</div> 
+			</nav>
+		</header>
+
+		<div id="main-text">
       <h2>모집게시판</h2>
     </div>
 
@@ -174,5 +190,17 @@ table.dataTable thead tr {
 				$('.dataTables_length').addClass('bs-select');
 			});
 		</script>
+		
+		<script type="text/javascript">
+    // Scrolling Effect
+
+    $(window).on("scroll", function() {
+      if ($(window).scrollTop()) {
+        $('nav').addClass('black');
+      } else {
+        $('nav').removeClass('black');
+      }
+    })
+  </script>
 </body>
 </html>
