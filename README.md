@@ -4,3 +4,4 @@
 - npm install
 - npm install mdbootstrap
 - npm install summernote
+- npm install materialize-css

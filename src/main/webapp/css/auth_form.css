@@ -1,0 +1,31 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#all {
+	height: 100vh;
+	padding: 0px;
+	margin: 0px;
+}
+
+.md-form {
+	width: 400px;
+	margin: 15px auto;
+}
+
+.info-search {
+	border-top: 1px solid #757575;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.info-search a {
+	color: #757575;
+	font-size: 11px;
+}
+
+.info-search a:hover {
+	color: #757575;
+}
