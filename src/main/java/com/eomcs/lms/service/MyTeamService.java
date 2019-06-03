@@ -11,6 +11,8 @@ import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TeamTypeSports;
 
 public interface MyTeamService {
-  
+  List<Member> list();
  List<Team> teamList(int no); // 관리자 팀조회
+ List<TeamMember> teamMemberList(int no); // 관리자 팀조회
+ List<TeamMember> teamMemberList2();
 }

@@ -1,10 +1,8 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.eomcs.lms.domain.AnswerBoard;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.QuestionBoard;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.service.AnswerBoardService;
 import com.eomcs.lms.service.MyTeamService;
 import com.eomcs.lms.service.QuestionBoardService;
@@ -47,17 +45,25 @@ public class MyTeamController {
 	  ObjectMapper om = new ObjectMapper();
 	  Member member = (Member)session.getAttribute("loginUser");
 	
-	  int a =	member.getNo();
-
-	  List<Team> team = myTeamService.teamList(a);  
-
+	  int a =	member.getNo(); //회원번호
+	  List<Team> team = myTeamService.teamList(a); //팀목록  
+	
+	  List<TeamMember> tm = myTeamService.teamMemberList2();
 	  
-	  String json = om.writeValueAsString(team);
-	  System.out.println(json);
+	      for(TeamMember t : tm) {
+	        System.out.println(t.getMember().getPhoto());
+	      }
+	  /*
+     * String json = om.writeValueAsString(team); 
+     * System.out.println(json);
+	  model.addAttribute("json",json);
+     */
+	  
 	  session.setAttribute("member",member);
 	  model.addAttribute("team",team);
-	  model.addAttribute("json",json);
-	  
+	  model.addAttribute("tm",tm);
+
+      
 	  
     return "myteam/list";
   }

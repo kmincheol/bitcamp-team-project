@@ -28,6 +28,24 @@
 
     <association property="member" javaType="Member">
       <id column="mbr_id" property="no" />
+       <result column="user_id" property="id" />
+      <result column="pwd" property="password" />
+      <result column="name" property="name" />
+      <result column="bth_dt" property="birthDay" />
+      <result column="gndr" property="gender" />
+      <result column="tel" property="tel" />
+    <result column="email" property="email" />
+    <result column="post" property="post" />
+    <result column="bas_addr" property="baseAddress" />
+    <result column="det_addr" property="detailAddress" />
+    <result column="prof_phot" property="photo" />
+    <result column="s_intd" property="selfIntroduce" />
+    <result column="login_type" property="loginType" />
+    <result column="stat" property="status" />
+    <result column="cdt" property="createdDate" />
+    <result column="lcd" property="latestDate" />
+    <result column="mgr" property="manager" />
+      
     </association>
 
       <association property="teamType" javaType="teamType">
@@ -49,9 +67,37 @@
       <id column="spt_clsf_id" property="teamSportsTypeId" />
        <result column="spt_clsf_name" property="teamSportsType" />
     </association>
-
-
+  
   </resultMap>
+  
+  
+  
+    <resultMap type="TeamMember" id="teamMemberMap">
+    <id column="tm_mbr_id" property="teamMemberNo" />
+    <id column="mbr_id" property="memberNo"/>
+    <id column="pstn" property="position" />
+    <id column="tlead_wth" property="teamLeader" />
+    
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+      <result column="name" property="name" />
+    </association>
+    
+     <association property="team" javaType="Team">
+       <id column="tm_id" property="teamId" />
+    <result column="name" property="teamName" />
+    </association>
+  </resultMap>
+  
+    <sql id="default-columns">
+      mbr_id, 
+      name, 
+      user_id,
+      email, 
+      tel,
+      cdt
+  </sql>
   
   
    <select id="findByMyTeam" resultMap="teamMap" parameterType="int">
@@ -66,9 +112,10 @@
      types,
     levs,
     spt_clsf_name,
-    ages
+    ages,
+    m.name
     from
-         tm t
+      tm t
     left outer join tm_mbr tmbr on t.tm_id = tmbr.tm_mbr_id
     left outer join mbr m on tmbr.mbr_id = m.mbr_id
        left outer join age a on t.age_id = a.age_id
@@ -78,6 +125,41 @@
          
        where m.mbr_id = ${value}
   </select> 
+
+  
+   <select id="findByMyTeamMember" resultMap="teamMemberMap" parameterType="int">
+    select
+    tmb.mbr_id,
+    m.name,    
+    pstn,
+    tlead_wth
+    from
+    tm_mbr tmb
+    left outer join tm t on tmb.tm_mbr_id = t.tm_id
+    left outer join mbr m on tmb.mbr_id = m.mbr_id
+         
+       where t.tm_id = ${value}
+  </select> 
+
+     <select id="findByMyTeamMember2" resultMap="teamMemberMap" >
+   
+    select
+    tmb.mbr_id,
+    m.name,    
+    pstn,
+    tlead_wth,
+    tm_mbr_id,
+    prof_phot
+    from
+    tm_mbr tmb
+    left outer join tm t on tmb.tm_mbr_id = t.tm_id
+    left outer join mbr m on tmb.mbr_id = m.mbr_id
+         
+  </select> 
+  
+
+
+
 
 
 

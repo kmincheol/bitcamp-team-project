@@ -113,6 +113,8 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,10,0,'공격수');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(9,8,0,'테스트');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,10,0,'호랑이');
 
 
 -- 팀경고데이터

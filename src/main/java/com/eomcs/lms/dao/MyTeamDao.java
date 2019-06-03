@@ -14,9 +14,11 @@ import com.eomcs.lms.domain.TeamTypeSports;
 public interface MyTeamDao {
  
    List<Team> findByMyTeam(int no);
- 
-// 더 추가해야 할거 추가하기
-
+  List<TeamMember> findByMyTeamMember(int no);
+  List<Member> findAll();
+  List<TeamMember> findByMyTeamMember2();
+    
+  
 }
 
 
