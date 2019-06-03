@@ -206,14 +206,14 @@
      
   </select>
 
- <select id="findByTeamName" resultMap="teamMap1" parameterType="string">
+ <select id="findByTeamName" resultType="Integer" resultMap="teamMap1" parameterType="string">
     select
       tm_id, 
       name
     from 
       tm
     where 
-      name_id = #{value}
+      name = #{value}
   </select>
 
   <select id="findTeamType" resultMap="typeMap" parameterType="map">

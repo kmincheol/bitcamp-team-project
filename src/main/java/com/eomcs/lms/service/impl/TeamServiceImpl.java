@@ -39,10 +39,6 @@ public class TeamServiceImpl implements TeamService {
     return null;
   }
   
-  @Override
-  public Team checkId(String teamName) {
-    return teamDao.findByTeamName(teamName);
-  }
   
   @Override
   public List<Team> search(String keyword) {
@@ -84,6 +80,12 @@ public class TeamServiceImpl implements TeamService {
   public List<TeamMember> teamMemberList() {
     
     return teamDao.findTeamMember();
+  }
+  
+  @Override
+  public Team checkName(String teamName) {
+    // TODO Auto-generated method stub
+    return teamDao.findByTeamName(teamName);
   }
   
   @Override

@@ -25,7 +25,7 @@
 <form id='add_form' action='add' method='post'>
       
         <div class="join_form" style="height:1500px;">
-          <div class="join_form_left"style="height:1260px;"> 
+          <div class="join_form_left"style="height:1150px;"> 
             <!-- id, password --> 
             <div class="row_group"> 
               <div class="join_row"> 
@@ -33,7 +33,7 @@
                   <label for="id">팀명</label>
                 </h3>
                 <span class="ps_box int_pass" id="idImg">
-                  <input type="text" id="teamName" name="teamName" class="int" title="ID" maxlength="20" placeholder="ex)FC비트캠프">
+                  <input type="text" id="id" name="teamName" class="int" title="ID" maxlength="20" placeholder="ex)FC비트캠프">
                 </span>
                 <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
               </div>
@@ -57,7 +57,7 @@
                 <h3 class="join_title">
                   <label for="teamSportsId">종목</label>
                 </h3>
-                <div class="ps_box" id="genderBox">
+                <div class="ps_box" id="teamSportsIdBox">
                   <select id="teamSportsId" name="teamSportsId" class="sel" aria-label="종목">
                     <option value="" selected>종목 선택</option>
                     <c:forEach items="${teamTypeSports}" var="typeSports">
@@ -67,14 +67,14 @@
                     </c:forEach>
                   </select>
                 </div>
-                <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
+                <span class="error_next_box" id="teamSportsIdMsg" style="display:none" role="alert"></span>
               </div>
               
                <div class="join_row join_sex">
                 <h3 class="join_title">
                   <label for="teamAgeId">연령대</label>
                 </h3>
-                <div class="ps_box" id="genderBox">
+                <div class="ps_box" id="teamAgeIdBox">
                   <select id="teamAgeId" name="teamAgeId" class="sel" aria-label="연령대">
                     <option value="" selected>연령대 선택</option>
                     <c:forEach items="${teamAges}" var="teamAge">
@@ -84,14 +84,14 @@
             </c:forEach>
                   </select>
                 </div>
-                <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
+                <span class="error_next_box" id="teamAgeIdMsg" style="display:none" role="alert"></span>
               </div>
               
                <div class="join_row join_sex">
                 <h3 class="join_title">
                   <label for="teamType">팀유형</label>
                 </h3>
-                <div class="ps_box" id="genderBox">
+                <div class="ps_box" id="teamTypeIdBox">
                   <select id="teamTypeId" name="teamTypeId" class="sel" aria-label="팀유형">
                     <option value="" selected>유형 선택</option>
                    <c:forEach items="${teamTypes}" var="teamType">
@@ -101,14 +101,14 @@
             </c:forEach>
                   </select>
                 </div>
-                <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
+                <span class="error_next_box" id="teamTypeIdMsg" style="display:none" role="alert"></span>
               </div>
               
                <div class="join_row join_sex"> 
                 <h3 class="join_title"> 
                   <label for="teamLevel">팀실력</label>
                 </h3>
-                <div class="ps_box" id="genderBox">
+                <div class="ps_box" id="teamLevelIdBox">
                   <select id="teamLevelId" name="teamLevelId" class="sel" aria-label="팀실력">
                     <option value="" selected>팀실력 선택</option>
                   <c:forEach items="${teamLevels}" var="teamLevel">
@@ -118,7 +118,7 @@
             </c:forEach>
                   </select>
                 </div>
-                <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
+                <span class="error_next_box" id="teamLevelIdMsg" style="display:none" role="alert"></span>
               </div>
 
             </div><!-- .row_group -->
@@ -206,8 +206,8 @@
           </div><!-- .join_form_right -->   
         </div><!-- .join_form -->
         </div>
-           <div class="btn_area" style="position:relative; bottom: 200px;">
-          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin">가입하기</button>
+           <div class="btn_area" style="position:relative; bottom: 390px;">
+          <button class="btn btn_type btn-outline-secondary sunext" id="btnCreate" type="button">생성하기</button>
         </div><!-- .btn_area -->
       </form><!-- #join_form--> 
     </div><!-- .join_content -->
@@ -284,47 +284,44 @@ $('#fileupload2').fileupload(
       }
     }); 
     
-/*     $('#id').keyup(debounce(function() {
-      idFlag = false;
-      checkId("first");
-     }, 500));
     
-    $('#teamSportsId').keyup(debounce(function() {
-      teamSportsIdFlag = false;
-      checkTeamSprots("first");
-     }, 500));
+var idFlag = false;
+var pwFlag = false;
 
-    $('#teamAgeId').change(function() {
-      checkTeamAge();
-    });
+$(document).ready(function() {
+  defaultScript();
 
-    $('#teamTypeId').change(function() {
-      checkTeamType();
-    });
-    
-    $('#teamLevelId').change(function() {
-      checkLevel();
-    });
-    
-    $('#teamInfo').keyup(function() {
-      checkTeamInfo();
-    });
-    
-    $('#btnJoin').click(function(event) {
-      submitClose();
-     
-      if (idFlag) {
-        mainSubmit();
-      } else {
-        setTimeout(function() {
-        mainSubmit();
-        }, 700);
-      }
-    });
-    
+  
+  $('#teamSportsId').change(function() {
+    checkteamSportsId();
   });
   
-  function mainSubmit() {
+  $('#teamAgeId').change(function() {
+    checkteamAgeId();
+  });
+  
+  $('#teamTypeId').change(function() {
+    checkteamTypeId();
+  });
+  
+  $('#teamLevelId').change(function() {
+    checkteamLevelId();
+  });
+  
+  $('#btnCreate').click(function(event) {
+    submitClose();
+   
+    if (idFlag) {
+      mainSubmit();
+    } else {
+      setTimeout(function() {
+      mainSubmit();
+      }, 700);
+    }
+  });
+});
+  
+  function mainSubmit() { 
     if (!checkUnrealInput()) {
       submitOpen();
       return false;
@@ -340,19 +337,19 @@ $('#fileupload2').fileupload(
   function submitClose() {
     $('#btnJoin').attr("disabled", true);
   }
-
+  
   function submitOpen() {
     $('#btnJoin').attr("disabled", false);
   }
   
+  
   function checkUnrealInput() {
 
-    if (checkId('join') &
-        checkId() &
-        checkTeamSprots() &
-        checkTeamAge() &
-        checkLevel() &
-        checkTeamInfo() 
+    if (checkId() &
+        checkteamSportsId() &
+        checkteamAgeId() &
+        checkteamTypeId() &
+        checkteamLevelId()
         ) {
           return true;
         } else {
@@ -360,67 +357,202 @@ $('#fileupload2').fileupload(
         }
   }
   
-  function showErrorMsg(obj, msg) {
-    obj.attr("class", "error_next_box");
-    obj.html(msg);
-    obj.show();
+
+  $('#id').keyup(debounce(function() {
+   idFlag = false;
+   checkId("first");
+  }, 500));
+
+
+function defaultScript() {
+  $('.ps_box').click(function() {
+    $(this).children('input').focus();
+    $(this).addClass('focus');
+  }).focusout(function() {
+    var welInputText = $('.ps_box');
+    welInputText.removeClass('focus');
+  });
+};
+
+function showErrorMsg(obj, msg) {
+  obj.attr("class", "error_next_box");
+  obj.html(msg);
+  obj.show();
+}
+
+function showSuccessMsg(obj, msg) {
+  obj.attr("class", "error_next_box green");
+  obj.html(msg);
+  obj.show();
+}
+
+function showDefaultBox(oBox) {
+  oBox.attr("class", "ps_box");
+}
+
+function showErrorBox(oBox) {
+  oBox.attr("class", "ps_box discord");
+}
+
+function showDefaultBoxByPen(oBox) {
+  oBox.attr("class", "ps_box int_pass");
+}
+
+function showSuccessBoxBySuccess(oBox) {
+  oBox.attr("class", "ps_box int_pass_check accord");
+}
+
+function showErrorBoxByError(oBox) {
+  oBox.attr("class", "ps_box int_pass_check2 discord");
+}
+
+function showDefaultBoxByOK(oBox) {
+  oBox.attr("class", "ps_box int_pass_check");
+}
+
+function hideMsg(obj) {
+  obj.hide();
+}
+
+
+// 팀이름 체크
+function checkId(event) {
+  if (idFlag) {
+    return true;
   }
 
-  function showSuccessMsg(obj, msg) {
-    obj.attr("class", "error_next_box green");
-    obj.html(msg);
-    obj.show();
-  }
+  var id = $('#id').val();
+  var oMsg = $('#idMsg');
+  var oImg = $('#idImg');
 
-  function hideMsg(obj) {
-    obj.hide();
+  if (id == "") {
+    showErrorMsg(oMsg, "팀명을 입력해주세요.");
+    showErrorBoxByError(oImg);
+    return false;
   }
   
-  function checkId(event) {
-    if (idFlag) {
-      return true;
-    }
+  var isId =   /^[a-zA-Z0-9가-힣][a-zA-Z0-9가-힣]{3,14}$/; // 15자까지
+  if (!isId.test(id)) {
+    showErrorMsg(oMsg, "한글과 알파벳 대 소문자를 사용하세요.<br>특수기호와 공백은 사용할 수 없습니다.");
+    showErrorBoxByError(oImg);
+    return false; 
+  }
+ 
+  idFlag = false;
+  
+  $.ajax({
+    type: "GET",
+    url: "checkId?teamName=" + id,
+    success : function(data) {
+      var result = data.substr(7);
 
-    var id = $('#id').val();
-    var oMsg = $('#idMsg');
-    var oImg = $('#idImg');
-
-    if (id == "") {
-      showErrorMsg(oMsg, "팀명을 입력해주세요.");
-      showErrorBoxByError(oImg);
-      return false;
-    }
-    
-    var isId = /^[a-z0-9][A-Z0-9][a-z0-9_\-][ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{4,14}$/; // 15자까지
-    if (!isId.test(id)) {
-      showErrorMsg(oMsg, "5~15자의 한글,영문, 숫자와 특수기호(_),(-)만 사용할 수 있습니다.");
-      showErrorBoxByError(oImg);
-      return false;
-    }
-
-    idFlag = false;
-    
-    $.ajax({
-      type: "GET",
-      url: "checkId?name=" + id,
-      success : function(data) {
-        var result = data.substr(7);
-
-        if (result == "1") {
-          if (event == "first") {
-            showSuccessMsg(oMsg, "사용 가능한 팀명입니다!");
-            showDefaultBoxByOK(oImg);
-          } else {
-            showDefaultBoxByOK(oImg);
-            hideMsg(oMsg);
-          }
-          idFlag = true;
+      if (result == "1") {
+        if (event == "first") {
+          showSuccessMsg(oMsg, "사용가능한 팀명 입니다!");
+          showDefaultBoxByOK(oImg);
         } else {
-          showErrorMsg(oMsg, "이미 사용중인 팀명입니다.");
-          showErrorBoxByError(oImg);
+          showDefaultBoxByOK(oImg);
+          hideMsg(oMsg);
         }
+        idFlag = true;
+      } else {
+        showErrorMsg(oMsg, "이미 사용중인 팀명 입니다.");
+        showErrorBoxByError(oImg);
       }
-    }); */
+    }
+  });
+  
+  return true;
+}
+
+// 종목 체크
+function checkteamSportsId() {
+  var sports = $('#teamSportsId').val();
+  var oMsg = $('#teamSportsIdMsg');
+  var oBox = $('#teamSportsIdBox');
+
+  if (sports == "") {
+    showErrorMsg(oMsg, "종목을 선택해주세요.");
+    showErrorBox(oBox);
+    return false;
+  }
+  showDefaultBox(oBox);
+  hideMsg(oMsg);
+  return true;
+}
+
+// 연령대 체크
+function checkteamAgeId() {
+  var ages = $('#teamAgeId').val();
+  var oMsg = $('#teamAgeIdMsg');
+  var oBox = $('#teamAgeIdBox');
+
+  if (ages == "") {
+    showErrorMsg(oMsg, "연령대를 선택해주세요.");
+    showErrorBox(oBox);
+    return false;
+  }
+  showDefaultBox(oBox);
+  hideMsg(oMsg);
+  return true;
+}
+
+// 팀유형 체크
+function checkteamTypeId() {
+  var type = $('#teamTypeId').val();
+  var oMsg = $('#teamTypeIdMsg');
+  var oBox = $('#teamTypeIdBox');
+
+  if (type == "") {
+    showErrorMsg(oMsg, "팀유형을 선택해주세요.");
+    showErrorBox(oBox);
+    return false;
+  }
+  showDefaultBox(oBox);
+  hideMsg(oMsg);
+  return true;
+}
+
+// 팀 실력 체크
+function checkteamLevelId() {
+  var level = $('#teamLevelId').val();
+  var oMsg = $('#teamLevelIdMsg');
+  var oBox = $('#teamLevelIdBox');
+
+  if (level == "") {
+    showErrorMsg(oMsg, "팀실력을 선택해주세요.");
+    showErrorBox(oBox);
+    return false;
+  }
+  showDefaultBox(oBox);
+  hideMsg(oMsg);
+  return true;
+}
+
+
+
+function debounce(func, wait, immediate) {
+  var timeout;
+
+  return function executedFunction() {
+    var context = this;
+    var args = arguments;
+      
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+  
+    clearTimeout(timeout);
+
+    timeout = setTimeout(later, wait);
+  
+    if (callNow) func.apply(context, args);
+  };
+};
+
 
 
 </script>
