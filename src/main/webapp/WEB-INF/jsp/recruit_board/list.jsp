@@ -8,10 +8,11 @@
 <head>
 
 <title>모집게시판_list</title>
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
 <!-- header -->
-<link rel="stylesheet" href="${contextRootPath}/css/mainpage-header.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
 
 <!-- commonSidebar css -->
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
@@ -20,7 +21,7 @@
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
 <!-- recruit_board_list.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_list.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -75,22 +76,13 @@ table.dataTable thead tr {
 </head>
 
 <body>
-<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
 
-  <div class="container">
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
 
-		<header>
-			<nav class="header-nav">
-				<div class="menu">
-					<ul> 
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Blog</a></li>
-					</ul>
-				</div> 
-			</nav>
-		</header>
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
 
+  <div id="main-wrap" class="container">
+  
 		<div id="main-text">
       <h2>모집게시판</h2>
     </div>
@@ -153,24 +145,16 @@ table.dataTable thead tr {
           <div id="write-btn">
             <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
           </div>
-        </div>
-      </c:if>
-    </c:forEach>
-  </div>
+        </div> 
+      </c:if> 
+    </c:forEach>  
+  </div>   
+   
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
   
-<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
-
-  <jsp:include page="../footer.jsp" />
-
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!-- MDBootstrap Datatables  -->
-<script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
+    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
 
   <script>
 			var lang_kor = {
@@ -194,16 +178,5 @@ table.dataTable thead tr {
 			});
 		</script>
 		
-		<script type="text/javascript">
-    // Scrolling Effect
-
-    $(window).on("scroll", function() {
-      if ($(window).scrollTop()) {
-        $('nav').addClass('black');
-      } else {
-        $('nav').removeClass('black');
-      }
-    })
-  </script>
 </body>
 </html>
