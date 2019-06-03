@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
@@ -60,6 +61,17 @@ public class TeamController {
     map.put("teamMembers", teamMembers);
   }
 
+  @GetMapping(value="checkId", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  private String checkId(String teamName) {
+    logger.info("checkId >>> " + teamName);
+    if (teamService.checkId(teamName) != null) {
+      return "checkId" + 0;
+    } else {
+      return "checkId" + 1;
+    }
+  }
+  
   @PostMapping("add")
   public String add(Team team, HttpSession session, TeamMember teamMember) {
 

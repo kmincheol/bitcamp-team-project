@@ -24,16 +24,16 @@
     <div class="join_content">
 <form id='add_form' action='add' method='post'>
       
-        <div class="join_form" style="height:850px;">
-          <div class="join_form_left" style="height:750px;">
-            <!-- id, password -->
-            <div class="row_group">
-              <div class="join_row">
-                <h3 class="join_title">
+        <div class="join_form" style="height:1500px;">
+          <div class="join_form_left"style="height:1260px;"> 
+            <!-- id, password --> 
+            <div class="row_group"> 
+              <div class="join_row"> 
+                <h3 class="join_title"> 
                   <label for="id">팀명</label>
                 </h3>
                 <span class="ps_box int_pass" id="idImg">
-                  <input type="text" id="teamName" name="teamName" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
+                  <input type="text" id="teamName" name="teamName" class="int" title="ID" maxlength="20" placeholder="ex)FC비트캠프">
                 </span>
                 <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
               </div>
@@ -124,89 +124,90 @@
             </div><!-- .row_group -->
             <!-- mobile -->
             
-          </div><!-- .join_form_left -->
-
-          <div class="join_form_right" style="height:750px;">
-           
+          </div><!-- .join_form_left --> 
+ 
+          <div class="join_form_right">
+             
              <div class="row_group join_photo">
               <div class="join_row join_photo_title">
-                <h3 class="join_title" id="photo_title">
-                  <label for="fileupload">앰블럼 사진<span class="terms_choice">(선택)</span></label>
+                <h3 class="join_title" id="photo_title"> 
+                  <label for="fileupload">앰블럼 사진<span class="terms_choice">(선택하지 않으면 기본사진이 들어갑니다.)</span></label>
                   <div class="file_input">
                   <input type="hidden" id="photo1" name="teamEmblemPhoto" value="${contextRootPath}/upload/emblem/vs.jpg">
                     <input type="text" readonly="readonly" title="File Route" id="file_route">
                     <label>
                        사진올리기
-                      <input type="file" id="fileupload" name="files">
-                    </label>
-                  </div>
-                </h3>
-              </div>
-              <div class="join_photo_view">
-                <span class="photoView">
-                  <label for="photo">
+                      <input type="file" id="fileupload" name="files">   
+                    </label>  
+                  </div>     
+                </h3> 
+              </div>  
+              <div class="join_photo_view"> 
+                <span class="photoView"> 
+                  <label for="photo"> 
                     <img id="images-div1" src="${contextRootPath}/upload/emblem/vs.jpg" style="width: 200px; height: 200px;">
                   </label>
                 </span>
               </div>
             </div><!-- .join_photo -->
+       <br><br> 
        
-       
-       <!-- <div class="uniformPhoto">
-        <div class="custom-control custom-radio">
-        <label for="photo" class="col-sm-5 col-form-label" style="font-size:30px;"><b>팀 유니폼</b></label>
+        <div class="uniformPhoto">
+        <label for="photo" class="col-sm-5 col-form-label"><b>팀 유니폼</b></label>
           <br><br> 
+          <div class="radiobtn" style="position:relative; left:170px;">
+        <span class="custom-control custom-radio" style="position:relative; right:50px; width:60px;">
           <input type="radio" class="uniformtrue custom-control-input" id="defaultUnchecked" name="teamUniform">
-          <label class="custom-control-label" for="defaultUnchecked">있음</label>
-        </div>
+          <label class="custom-control-label" for="defaultUnchecked">있음</label> 
+        </span>
  
-        <div class="custom-control custom-radio">
+        <span class="custom-control custom-radio" style="position:relative; left:40px; bottom:24px; width:60px;"> 
           <input type="radio" class="uniformfalse custom-control-input" id="defaultChecked" name="teamUniform"
             checked> <label class="custom-control-label" for="defaultChecked">없음</label>
+        </span>
         </div>
-      <br><br>
-        <div class="uniform" style="display:none;">
-          <div class="join_photo_title">
-            <h3 class="join_title">
-              <label for="photo">유니폼 사진 등록<span class="terms_choice"></span></label> 
-              <input type="hidden" id="photo2" name="teamUniformPhoto" value=" ">
-            </h3>
-
-            <input id="fileupload2" type="file" name="files" value="파일첨부"><br>
-          </div>
-          <div class="join_photo_view">
-            <span class="photoView"> <label for="photo"> 파일 이미지 보이게하기 - 배우면 적용
-                <img id="images-div2" src="../../images/default.jpg"
-                style="width: 200px; height: 200px;">
-            </label>
-            </span>
-          </div>
-        </div>
-        </div> -->
-      
-                      
+      <br><br> 
+        
+        
+          <div class="uniform" style="display:none;">
+              <div class="join_row join_photo_title">
+                <h3 class="join_title" id="photo_title"> 
+                  <label for="fileupload2">유니폼 사진 등록<span class="terms_choice"></span></label>
+                  <div class="file_input">
+                  <input type="hidden" id="photo2" name="teamUniformPhoto" value="">
+                    <input type="text" readonly="readonly" title="File Route" id="file_route">
+                    <label> 
+                       사진올리기
+                      <input type="file" id="fileupload2" name="files"> 
+                    </label>
+                  </div> 
+                </h3>
+              </div>
+              <div class="join_photo_view">
+                <span class="photoView"> 
+                  <label for="photo"> 
+                    <img id="images-div2" src="../../images/default.jpg"
+                style="width: 150px; height: 150px;">
+                  </label>
+                </span>
+              </div>
+            </div><!-- .join_photo -->
+        
             <div class="row_group">
-              
-             
               <div class="join_row">
                 <h3 class="join_title">
                   <label for="teamInfo">팀 소개<span class="terms_choice">(선택)</span></label>
                 </h3>
                 <div class="self_introduce_area">
-                  <textarea class="ps_box self_introduce" id="teamInfo" name="teamInfo" placeholder="간단한 팀소개를 입력해주세요." rows="20" cols="30" style="height:180px;"></textarea>
-                </div>
-              </div> 
+                  <textarea class="ps_box self_introduce" id="teamInfo" name="teamInfo" placeholder="간단한 팀소개를 입력해주세요." rows="20" cols="30" style="height:90px;"></textarea>
+                </div> 
+              </div>  
             </div><!-- .row_group -->  
-          </div><!-- .join_form_right -->  
+          </div><!-- .join_form_right -->   
         </div><!-- .join_form -->
-        <div class="btn_area">
-                 <!-- 버튼과 관련된 영역 --> 
-        <div class="form-group row" style="position:relative; left:330px; bottom:180px;">
-          <div class="col-sm-10">
-            <button class="input-group-btn btn btn-dark" id="add" style="width:300px;">생성하기</button>
-            <a class="input-group-btn btn btn-dark" href='./'>취소</a>
-          </div>
-        </div> 
+        </div>
+           <div class="btn_area" style="position:relative; bottom: 200px;">
+          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin">가입하기</button>
         </div><!-- .btn_area -->
       </form><!-- #join_form--> 
     </div><!-- .join_content -->
@@ -250,11 +251,11 @@ $('#fileupload').fileupload({
   }
 });
 
-/* $('.uniformtrue').on('click', function(){
-  $(this).parent().parent().children('.uniform').show();
+ $('.uniformtrue').on('click', function(){
+  $(this).parent().parent().parent().children('.uniform').show();
 });
 $('.uniformfalse').on('click', function(){
-  $(this).parent().parent().children('.uniform').hide();
+  $(this).parent().parent().parent().children('.uniform').hide();
 });
 
 $('#fileupload2').fileupload(
@@ -279,6 +280,144 @@ $('#fileupload2').fileupload(
             }
           } catch (err) {
           }
+        }
+      }
+    }); 
+    
+/*     $('#id').keyup(debounce(function() {
+      idFlag = false;
+      checkId("first");
+     }, 500));
+    
+    $('#teamSportsId').keyup(debounce(function() {
+      teamSportsIdFlag = false;
+      checkTeamSprots("first");
+     }, 500));
+
+    $('#teamAgeId').change(function() {
+      checkTeamAge();
+    });
+
+    $('#teamTypeId').change(function() {
+      checkTeamType();
+    });
+    
+    $('#teamLevelId').change(function() {
+      checkLevel();
+    });
+    
+    $('#teamInfo').keyup(function() {
+      checkTeamInfo();
+    });
+    
+    $('#btnJoin').click(function(event) {
+      submitClose();
+     
+      if (idFlag) {
+        mainSubmit();
+      } else {
+        setTimeout(function() {
+        mainSubmit();
+        }, 700);
+      }
+    });
+    
+  });
+  
+  function mainSubmit() {
+    if (!checkUnrealInput()) {
+      submitOpen();
+      return false;
+    }
+    if (idFlag) {
+      $('#add_form').submit();
+    } else {
+      submitOpen();
+      return false;
+    }
+  }
+  
+  function submitClose() {
+    $('#btnJoin').attr("disabled", true);
+  }
+
+  function submitOpen() {
+    $('#btnJoin').attr("disabled", false);
+  }
+  
+  function checkUnrealInput() {
+
+    if (checkId('join') &
+        checkId() &
+        checkTeamSprots() &
+        checkTeamAge() &
+        checkLevel() &
+        checkTeamInfo() 
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+  }
+  
+  function showErrorMsg(obj, msg) {
+    obj.attr("class", "error_next_box");
+    obj.html(msg);
+    obj.show();
+  }
+
+  function showSuccessMsg(obj, msg) {
+    obj.attr("class", "error_next_box green");
+    obj.html(msg);
+    obj.show();
+  }
+
+  function hideMsg(obj) {
+    obj.hide();
+  }
+  
+  function checkId(event) {
+    if (idFlag) {
+      return true;
+    }
+
+    var id = $('#id').val();
+    var oMsg = $('#idMsg');
+    var oImg = $('#idImg');
+
+    if (id == "") {
+      showErrorMsg(oMsg, "팀명을 입력해주세요.");
+      showErrorBoxByError(oImg);
+      return false;
+    }
+    
+    var isId = /^[a-z0-9][A-Z0-9][a-z0-9_\-][ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{4,14}$/; // 15자까지
+    if (!isId.test(id)) {
+      showErrorMsg(oMsg, "5~15자의 한글,영문, 숫자와 특수기호(_),(-)만 사용할 수 있습니다.");
+      showErrorBoxByError(oImg);
+      return false;
+    }
+
+    idFlag = false;
+    
+    $.ajax({
+      type: "GET",
+      url: "checkId?name=" + id,
+      success : function(data) {
+        var result = data.substr(7);
+
+        if (result == "1") {
+          if (event == "first") {
+            showSuccessMsg(oMsg, "사용 가능한 팀명입니다!");
+            showDefaultBoxByOK(oImg);
+          } else {
+            showDefaultBoxByOK(oImg);
+            hideMsg(oMsg);
+          }
+          idFlag = true;
+        } else {
+          showErrorMsg(oMsg, "이미 사용중인 팀명입니다.");
+          showErrorBoxByError(oImg);
         }
       }
     }); */

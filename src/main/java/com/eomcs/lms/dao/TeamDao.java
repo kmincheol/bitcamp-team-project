@@ -28,6 +28,7 @@ public interface TeamDao {
   int update(Team teamO);
   int delete(int no);
   int countAll();
+  Team findByTeamName(String teamName);
 
 // 더 추가해야 할거 추가하기
 

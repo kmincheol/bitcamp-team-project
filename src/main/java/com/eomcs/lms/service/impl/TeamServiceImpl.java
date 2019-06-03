@@ -40,6 +40,11 @@ public class TeamServiceImpl implements TeamService {
   }
   
   @Override
+  public Team checkId(String teamName) {
+    return teamDao.findByTeamName(teamName);
+  }
+  
+  @Override
   public List<Team> search(String keyword) {
     
     return teamDao.findBykeyword(keyword);

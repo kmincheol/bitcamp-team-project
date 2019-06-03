@@ -206,6 +206,16 @@
      
   </select>
 
+ <select id="findByTeamName" resultMap="teamMap1" parameterType="string">
+    select
+      tm_id, 
+      name
+    from 
+      tm
+    where 
+      name_id = #{value}
+  </select>
+
   <select id="findTeamType" resultMap="typeMap" parameterType="map">
     select
     tm_type_id,
