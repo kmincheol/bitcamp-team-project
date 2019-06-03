@@ -13,7 +13,7 @@ public class EmailConfig {
   public JavaMailSender mailSender() {
     
     // SMTP 서버 설정
-    final String host = "smtp.gmail.com"; // 사용할 smtp host, naver라면 smtp.naver.com
+    final String host = "smtp.gmail.com";
     final String userName = "gwanghosongT@gmail.com";
     final String password = "thosong!@";
     final int port = 587; // SMTP 포트
@@ -21,7 +21,6 @@ public class EmailConfig {
     Properties props = System.getProperties();
     props.put("mail.smtp.auth", "true");
     props.put("mail.smtp.starttls.enable", "true");
-
     
     JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
     mailSender.setHost(host);

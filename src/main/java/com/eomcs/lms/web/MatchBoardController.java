@@ -65,6 +65,20 @@ public class MatchBoardController {
   public void list5() {
   }
   
+  @GetMapping("list6")
+  public void list6(Model model) {
+    List<Match> all = matchBoardService.search();
+    model.addAttribute("all", all);
+  }
+  @GetMapping("list7")
+  public void list7(Model model) {
+    List<Match> all = matchBoardService.search();
+    for (Match m : all) {
+      logger.info(m.getPlayDate());
+      logger.info(m.getPlayDate().getTime());
+    }
+    model.addAttribute("all", all);
+  }
   
   
   @GetMapping("form")
