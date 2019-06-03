@@ -1,14 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>footer</title>
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+  trimDirectiveWhitespaces="true"%>
+  
   <div class="footer">
     <p>footer</p>
   </div>
-</body>
-</html>

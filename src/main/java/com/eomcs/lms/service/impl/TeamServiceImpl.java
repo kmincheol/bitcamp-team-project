@@ -39,6 +39,7 @@ public class TeamServiceImpl implements TeamService {
     return null;
   }
   
+  
   @Override
   public List<Team> search(String keyword) {
     
@@ -79,6 +80,12 @@ public class TeamServiceImpl implements TeamService {
   public List<TeamMember> teamMemberList() {
     
     return teamDao.findTeamMember();
+  }
+  
+  @Override
+  public Team checkName(String teamName) {
+    // TODO Auto-generated method stub
+    return teamDao.findByTeamName(teamName);
   }
   
   @Override

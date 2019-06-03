@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
@@ -12,8 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.eomcs.lms.domain.Free;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
@@ -60,6 +62,18 @@ public class TeamController {
     map.put("teamMembers", teamMembers);
   }
 
+
+  @GetMapping(value="checkId", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  private String checkId(String teamName) {
+    logger.info("checkId >>> " + teamName);
+    if (teamService.checkName(teamName) != null) {
+      return "checkId" + 0;
+    } else {
+      return "checkId" + 1;
+    }
+  }
+  
   @PostMapping("add")
   public String add(Team team, HttpSession session, TeamMember teamMember) {
 

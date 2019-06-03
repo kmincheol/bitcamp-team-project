@@ -35,4 +35,5 @@ public interface TeamService {
   int teamSize();
   int memberSize();
   int size();
+  Team checkName(String teamName);
 }
