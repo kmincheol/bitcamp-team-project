@@ -22,7 +22,7 @@ values(10,'kmc',password('1111'),'kmc','1967-01-01','여','010-1322-5253','kmc@g
 
 -- 연령대데이터
 insert into age(age_id, ages)
-values(1,'10세미만');
+values(1,'under');
 insert into age(age_id, ages)
 values(10,'10대');
 insert into age(age_id, ages)
@@ -48,21 +48,21 @@ values(3,'회사소모임');
 
 -- 팀수준데이터
 insert into tm_lev(tm_lev_id,levs)
-values(1,'상');
+values(1,'high');
 insert into tm_lev(tm_lev_id,levs)
-values(2,'중');
+values(2,'mid');
 insert into tm_lev(tm_lev_id,levs)
-values(3,'하');
+values(3,'low');
 
 -- 종목유형데이터
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(1,'축구');
+values(1,'soccer');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(2,'야구');
+values(2,'baseball');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(3,'농구');
+values(3,'basketball');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(4,'탁구');
+values(4,'pingpong');
 
 -- 팀데이터
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)

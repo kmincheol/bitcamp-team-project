@@ -35,6 +35,13 @@
       <result column="tm_ambl_phot" property="teamEmblemPhoto"/>
       <result column="area" property="teamArea" />
     </association>
+    
+    
+    <!-- 팀실력테이블 -->
+   <association property="teamLevel" javaType="TeamLevel">
+      <id column="tm_lev_id" property="teamLevelId" />
+      <result column="levs" property="teamLevel" />
+    </association>
 
     <!-- 매치신청테이블 -->
    <collection property="matchApply" ofType="MatchApply">
@@ -89,7 +96,7 @@
     </association>
 
     <!-- 팀실력테이블 -->
-   <association property="tm_lev" javaType="TeamLevel">
+   <association property="teamLevel" javaType="TeamLevel">
       <id column="tm_lev_id" property="teamLevelId" />
       <result column="levs" property="teamLevel" />
     </association>
@@ -160,7 +167,8 @@
     t.name,
     t.tm_lev_id,
     t.age_id,
-    t.tm_ambl_phot
+    t.tm_ambl_phot,
+    l.levs
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
