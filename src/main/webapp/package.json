@@ -13,11 +13,8 @@
     "handlebars-paginate": "^0.1.0",
     "jplist-es6": "^1.2.0",
     "jquery": "^3.4.1",
-<<<<<<< HEAD
     "materialize-css": "^1.0.0",
     "mdbootstrap": "^4.8.1",
-=======
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
     "popper.js": "^1.15.0",
     "summernote": "^0.8.12"
   },

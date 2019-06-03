@@ -160,6 +160,23 @@
         하
         </button>
         
+        <p>Date: <input type="text" id="datepicker"></p>
+        
+<div style="display: none;">
+    <input
+         id="textbox-filter"
+         data-jplist-control="textbox-filter"
+         data-group="group1"
+         data-name="my-filter-1"
+         data-path=".playDate"
+         name="playDate"
+         type="text"
+         value=""
+         data-clear-btn-id="name-clear-btn"
+         placeholder="Filter by Name" />
+
+    <button type="button" id="name-clear-btn">Clear</button>
+</div>
         
         <!-- pagination control -->
         <div
@@ -202,10 +219,26 @@
         </div>
 
 <jsp:include page="../javascript.jsp"/>
+<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
+<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/datepicker-ko.js"></script>
         <!-- jPList Library -->
         <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
         <script>
             jplist.init();
+            
+            $( "#datepicker" ).datepicker({
+              onSelect: function(value, props) {
+                      
+                     var tb = document.getElementById('textbox-filter');
+                     tb.value = value;
+                     let keyupEvent = new Event('keyup');
+                     tb.dispatchEvent(keyupEvent);
+                   },
+                   //selectWeek: true,
+                   //inline: true,
+                   //startDate: '01/01/2000',
+                   //firstDay: 1
+           });
         </script>
         
         
