@@ -5,19 +5,30 @@
 <html>
 
 <head>
-<!-- include header.jsp -->
-<jsp:include page="../header.jsp" />
-<!-- header.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- recruit_board_update.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_update.css">
+
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_update.css">
 </head>
 
 <body>
-
-  <div class="container">
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
+  
+  <div id="main-wrap" class="container">
 
     <div id="main-text">
       <div class="text-field">
@@ -77,9 +88,15 @@
     </form>
   </div>
   <!-- .container -->
-  <jsp:include page="../footer.jsp" />
   <jsp:include page="../javascript.jsp" />
+    
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+  
   <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
   <script>
 "use strict"
 

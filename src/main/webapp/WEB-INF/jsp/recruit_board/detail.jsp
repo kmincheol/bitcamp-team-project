@@ -1,3 +1,4 @@
+<%@page import="org.springframework.web.context.annotation.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,24 +7,33 @@
 
 <head>
 <title>모집게시판_detail</title>
-<!-- include header.jsp -->
-<jsp:include page="../header.jsp" />
-<!-- header.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- detail css -->
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_detail.css">
+              
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_detail.css">
 </head>
 
 <body>
-
-  <div class="container">
-
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
+  
+  <div id="main-wrap" class="container">
     <div id="main-text">
       <h2>게시글</h2>
     </div>
-
       <form action='update' method='post' name="remove" enctype='multipart/form-data'>
         <div id="title-wrap" class="form-group row">
           <div id="title-row" class="col-sm-12">
@@ -42,9 +52,7 @@
           <table class="info-table">
             <tr>
               <th>
-
                 <div>종목</div>
-             
               </th>
               <td>
                 <div id="sportsType" name="teamSportsType">${teamRecruit.teamTypeSports.teamSportsType}</div>
@@ -84,8 +92,15 @@
     </form>
   </div>
   <!-- .container -->
- <jsp:include page="../footer.jsp" />
+  
   <jsp:include page="../javascript.jsp" />
+    
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  
+    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+  
   <script>
 			function removeCheck() {
 				if (confirm("정말 삭제하시겠습니까??") == true) { //확인
@@ -96,6 +111,7 @@
 				}
 			}
 		</script>
+    
 </body>
 
 </html>

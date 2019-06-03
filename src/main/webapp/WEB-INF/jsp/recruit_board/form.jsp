@@ -6,12 +6,22 @@
 <html>
 <head>
 <title>게시글 등록</title>
-<!-- include header.jsp -->
-<jsp:include page="../header.jsp" />
-<!-- header.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- recruit_board_form.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_form.css">
+
+<!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board_form.css">
 
@@ -21,12 +31,17 @@
 </head>
 
 <body>
-  <div class="container">
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
+  
+  <div id="main-wrap" class="container">
 
     <div id="main-text">
       <div class="text-field">
-        <span style="font-weight: bold; font-size: 2.0em;">팀원을 모집 </span> <span
-          style="font-size: 2.0em;"> 하는 글을 간편하게</span>
+        <span style="font-weight: bold; font-size: 2.0em;">팀원을 모집 </span> 
+        <span style="font-size: 2.0em;"> 하는 글을 간편하게</span>
         <div style="font-size: 2.0em;">등록할 수 있습니다.</div>
         <br> <span>종목과 지역을 설정하고 <span style="font-weight: bold;">팀원</span>을 구해보세요.
         </span>
@@ -78,13 +93,18 @@
       </div>
     </form>
   </div>
-  <!-- .container -->
-  <jsp:include page="../footer.jsp" />
+  
   <jsp:include page="../javascript.jsp" />
+    
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+  
   <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
- 
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+   
   <script>
-"use strict"
 
 $(document).ready(function() {
   $('#summernote').summernote({

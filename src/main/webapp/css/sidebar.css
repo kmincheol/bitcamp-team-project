@@ -91,7 +91,8 @@ body {
 }
 /*----------------show sidebar button----------------*/
 #show-sidebar {
-  position: fixed;
+	  cursor: pointer;
+    position: fixed;
     left: 13px;
     top: 11px;
     color: white;
@@ -493,7 +494,6 @@ body {
   height: 50px;
   margin-top:3px;
   margin-left: 20px;
-  margin-right: 40px;
 }
 
 .sidebar-dropdown{
