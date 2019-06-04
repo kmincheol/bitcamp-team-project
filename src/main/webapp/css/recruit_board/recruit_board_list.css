@@ -7,10 +7,15 @@
 	margin-bottom: 15px;
 }
 
-#main-text>h1 {
-	position: relative;
-	top: 90px;
-	color: black;
+#main-text h2 {
+	position: absolute;
+	text-align: left;
+	bottom: 0;
+}
+
+#main-text h2 img {
+	margin-bottom: 25px;
+	margin-right: 5px;
 }
 
 #recruit-list-out {
@@ -52,10 +57,9 @@ img {
 #in {
 	width: 100%;
 	position: relative;
-	top:-78px;
+	top: -78px;
 }
 
-#write-btn{
+#write-btn {
 	float: right;
 }
-

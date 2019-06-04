@@ -26,9 +26,9 @@
 			<nav class="header-nav">
 				<div class="menu">
 					<ul>
-						<li><a href="${contextRootPath}/app/auth/form">로그인</a></li>
-						<li><a href="#">About</a></li>
+						<li><a href="${contextRootPath}/app/main">Home</a></li>
 						<li><a href="#">Blog</a></li>
+            <li><a href="${contextRootPath}/app/auth/form">Login</a></li>
 					</ul>
 				</div>
 			</nav>

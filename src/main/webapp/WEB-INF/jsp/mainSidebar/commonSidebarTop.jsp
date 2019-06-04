@@ -54,11 +54,18 @@
                     name="saveId"> <label
                     style="color: white; font-size: 13px;" class="saveId"
                     for="exampleCheck1">아이디 저장</label>
-                  <lable style="color:white; font-size:13px;"> / </lable>
-                  <a style="color: white; font-size: 13px; text-decoration: none;"
-                    href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
                 </div>
                 <button type="submit" class="login-btn">로그인</button>
+                <div class="form-group form-check" style="margin-bottom: 0;">
+                <a style="color: white; font-size: 10px; text-decoration: none;"
+                    href="${contextRootPath}/app/member/findUserId">아이디찾기</a>
+                 <lable style="color:white; font-size:10px;"> / </lable>
+                <a style="color: white; font-size: 10px; text-decoration: none;"
+                    href="${contextRootPath}/app/member/findPassword">비밀번호찾기</a>
+                  <lable style="color:white; font-size:10px;"> / </lable>
+                  <a style="color: white; font-size: 10px; text-decoration: none;"
+                    href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
+                </div>
               </form>
             </c:otherwise> 
           </c:choose>
