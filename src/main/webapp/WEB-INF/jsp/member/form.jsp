@@ -9,11 +9,11 @@
   <title>회원정보입력</title>
   <jsp:include page="../commonCss.jsp"/>
   <link rel="stylesheet" href="${contextRootPath}/css/member_form.css">
+  
 </head>
-<body>
-
-<jsp:include page="../header.jsp"/>
-
+<body style="background:white">
+ 
+ 
 <div id="container">
   <div id="content">
   <h1>스포츠 매칭 <strong>홈페이지</strong> 방문을 환영합니다.</h1>
@@ -40,7 +40,7 @@
                   <label for="id">아이디</label>
                 </h3>
                 <span class="ps_box int_pass" id="idImg">
-                  <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
+                     <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
                 </span>
                 <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
               </div>

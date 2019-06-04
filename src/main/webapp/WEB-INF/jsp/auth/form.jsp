@@ -32,9 +32,6 @@
 	border-color: #262626;
 	background-color: #262626;
 }
-sidebar-wrapper{
-    background: #31353D !important;
-}
 </style>
 </head>
 <body>
@@ -44,14 +41,19 @@ sidebar-wrapper{
   
   <div class="container-fluid" id="all">
     <form action='login' method='post'>
-    
+    <div style="height: 500px;
+    width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 5%;
+    padding-top: 50px;">
       <div class="md-form">
         <i class="fas fa-user prefix"></i> <input autocomplete=off type="text" id="inputIconEx2"
           class="form-control" aria-describedby="emailHelp" name='id' value='${cookie.id.value}'>
         <label for="inputIconEx2">Username</label> <small id="idHelp" class="form-text text-muted">당신의
           정보를 다른 사이트와 공유하지 않습니다.</small>
       </div>
-
+      
       <div class="md-form">
         <i class="fas fa-lock prefix"></i> <input type="password" id="inputValidationEx2"
           class="form-control validate" name='password'> <label for="inputValidationEx2"
@@ -75,10 +77,10 @@ sidebar-wrapper{
           <a>/</a> 
           <a href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
         </div>
+        </div>
       </div>
-
-
     </form>
+    
   </div>
   <!-- JQuery -->
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>

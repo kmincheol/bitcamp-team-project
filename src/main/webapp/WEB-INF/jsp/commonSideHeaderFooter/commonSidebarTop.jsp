@@ -31,7 +31,7 @@
             </c:when>
 
             <c:otherwise>
-              <form action='auth/login' method='post'>
+              <form action='${contextRootPath}/app/auth/login' method='post'>
                 <div class="form-group"
                   style="line-height: 10px; margin-bottom: 10px;">
                   <label for="id" style="font-size: 13px; color: white;">아이디</label>
