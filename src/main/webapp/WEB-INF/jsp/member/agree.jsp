@@ -12,30 +12,27 @@
 </head>
 <body>
 
-<div id="container">
-  <div id="content">
-
-    <div class="join_content">
-      <div class="join_form">
-        <form id="join_form" method="POST" action="checkTerms.jsp">
           <div class="terms_p">
-            <p class="terms_chk_all">
-              <span class="input_chk">
-                <input type="checkbox" id="chk_all" name="chk_all">
-                <label for="chk_all">
-                  <span class="chk_all_txt">서비스 이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공,<br>마케팅 및 광고에의 활용(선택) 등 모든 약관에 동의합니다.
-                  </span>
-                </label>
-              </span>
-            </p>
-            
+
             <ul class="terms_bx_list">
             
               <li class="terms_bx">
-                <div>
-                  <h2 class="terms_bx_header">서비스 이용약관</h2>
-                  <button id="collapseBtn1" type="button" class="btn btn-sm" data-toggle="collapse" data-target="#dirService">상세보기</button>
-                </div>
+                  <span class="input_chk">
+                    <input type="checkbox" id="chk_all" name="chk_all">
+                    <label for="chk_all">
+                      <span class="chk_all_txt"><strong style="color:#08a600;">모든 약관</strong>에 동의합니다.</span>
+                    </label>
+                  </span>
+              </li>
+            
+              <li class="terms_bx">
+               <span class="input_chk">
+                  <input type="checkbox" id="termsService" name="termsService" class="chk">
+                  <label for="termsService"><strong>서비스 이용약관</strong>에 동의합니다.
+                    <span class="terms_necessary">(필수)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirService">상세보기</button>
+                </span>
                 <div class="terms_box collapse in" tabindex="0" id="dirService">
                   <!-- 서비스 이용약관 -->
                   <div class="article">
@@ -43,62 +40,49 @@
                     <p class="article_text">서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.</p>
                   </div>
                 </div>
-                <span class="input_chk">
-                  <input type="checkbox" id="termsService" name="termsService" class="chk">
-                  <label for="termsService"><strong>서비스 이용약관</strong>에 동의합니다.
-                    <span class="terms_necessary">(필수)</span>
-                  </label>
-                </span>
               </li>
               
               <li class="terms_bx">
-                <h2 class="terms_bx_header">개인정보 수집 및 이용 동의</h2>
-                <div class="terms_box" tabindex="0" id="dirPrivacy">
+                <span class="input_chk">
+                  <input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk">
+                  <label for="termsPrivacy"><strong>개인정보 수집 및 이용</strong>에 동의합니다.
+                    <span class="terms_necessary">(필수)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirPrivacy">상세보기</button>
+                </span>
+                <div class="terms_box collapse in" tabindex="0" id="dirPrivacy">
                   <!-- 개인정보 수집 및 이용 동의 -->
                   <div class="article">
                     <h3 class="article_title">개인정보 수집 제목입니다.</h3>
                     <p class="article_text">개인정보 수집 내용입니다.</p>
                   </div>
                 </div>
-                <span class="input_chk">
-                  <input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk">
-                  <label for="termsPrivacy">개인정보 수집 및 이용에 동의합니다.
-                    <span class="terms_necessary">(필수)</span>
-                  </label>
-                </span>
               </li>
               
               <li class="terms_bx">
-                <h2 class="terms_bx_header">개인정보 제3자 제공 동의</h2>
-                <div class="terms_box" tabindex="0" id="dirThirdParty">
+                <span class="input_chk">
+                  <input type="checkbox" id="termsThirdParty" name="termsThirdParty" class="chk">
+                  <label for="termsThirdParty"><strong>개인정보 제3자 제공</strong>에 동의합니다.
+                    <span class="terms_necessary">(필수)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirThirdParty">상세보기</button>
+                </span>
+                <div class="terms_box collapse in" tabindex="0" id="dirThirdParty">
                   <!-- 개인정보 제3자 제공 동의 -->
                   <div class="article">
                     <h3 class="article_title">제목입니다.</h3>
                     <p class="article_text">내용입니다.</p>
                   </div>
                 </div>
-                <span class="input_chk">
-                  <input type="checkbox" id="termsThirdParty" name="termsThirdParty" class="chk">
-                  <label for="termsThirdParty">개인정보 제3자 제공에 동의합니다.
-                    <span class="terms_necessary">(필수)</span>
-                  </label>
-                </span>
               </li>
               
               <li class="terms_bx">
-                <h2 class="terms_bx_header">마케팅 및 광고에의 활용</h2>
-                <div class="terms_box" tabindex="0" id="dirMarketing">
-                  <!-- 마케팅 및 광고에의 활용 -->
-                  <div class="article">
-                    <h3 class="article_title">제목입니다.</h3>
-                    <p class="article_text">내용입니다.</p>
-                  </div>
-                </div>
                 <span class="input_chk">
                   <input type="checkbox" id="termsMarketing" name="termsMarketing" class="chk">
                   <label for="termsMarketing">마케팅 및 광고에의 활용에 동의합니다.
-                    <span class="terms_choice">(선택-체크하지 않을 경우 동의 안함으로 간주합니다.)</span>
-                  </label><br>
+                    <span class="terms_choice">(선택)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirMarketing">상세보기</button>
                 </span>
                 <span class="input_chk">
                   <input type="checkbox" id="termsEmail" name="termsEmail" class="chk">
@@ -110,22 +94,18 @@
                     <span class="terms_choice">(선택)</span>
                   </label>
                 </span>
+                <div class="terms_box collapse in" tabindex="0" id="dirMarketing">
+                  <!-- 마케팅 및 광고에의 활용 -->
+                  <div class="article">
+                    <h3 class="article_title">제목입니다.</h3>
+                    <p class="article_text">내용입니다.</p>
+                  </div>
+                </div>
               </li>
               
             </ul>
             <span class="error" id="agreeMsg" style="display:none">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 동의에 모두 동의해주세요.</span>
           </div><!-- .terms_p -->
-            <div class="btn_area">
-              <a class="btn btn-primary btn-lg" id="btnRefuse"
-                 type="button" href="../main">비동의</a>
-              <a class="btn btn-primary btn-lg" id="btnAgree"
-                 type="button" href="#">동의</a>
-            </div><!-- .btn_area -->
-        </form>
-      </div><!-- .join_form -->
-    </div><!-- .join_content -->
-  </div><!-- .content -->
-</div><!-- .container -->
 
 <jsp:include page="../javascript.jsp"/>
 <script>
