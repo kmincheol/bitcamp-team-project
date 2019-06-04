@@ -106,15 +106,29 @@ values(1,7,1,'격수');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(2,7,1,'유격수');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
-values(8,8,1,'프로게이머');
-insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
-values(4,8,1,'프로게이머');
-insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(4,10,0,'공격수');
+-- 8번팀 팀원
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
-values(9,8,0,'테스트');
+values(8,1,0,'테스트');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
-values(8,10,0,'호랑이');
+values(8,2,0,'호랑이');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,3,0,'포워드');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,4,1,'프로게이머');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,5,1,'프로게이머');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,6,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,7,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,8,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,9,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(8,10,0,'공격수');
+
 
 
 -- 팀경고데이터
