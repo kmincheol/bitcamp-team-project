@@ -59,14 +59,12 @@ ${team.teamUniformPhoto}
 
 <div id ="teamName" style="border:1px solid black; width:200px; height:50px; float:left;margin-top:22px">
 </div>
-<div id ="teamdetail" style="border:1px solid black; width:400px; height:290px;float:left; margin-top:80px; margin-left:-200px">
+<div id ="teamtype" style="border:1px solid black; width:400px; height:50px;float:left; margin-top:80px; margin-left:-200px">
+</div>
+<div id ="teamarea" style="border:1px solid black; width:400px; height:50px;float:left;  margin-top:5px; ">
 </div>
 
-<div id ="teamUniform" style="border:1px solid black; width:250px; height:350px;float:left;margin-top:22px; margin-left:17px;">
-</div>
 
-<div id ="teamUniform2  style="border:1px solid black; width:250px; height:350px;float:left;margin-top:22px; margin-left:17px;">
-</div>
 
 </div>
 
@@ -75,7 +73,7 @@ ${team.teamUniformPhoto}
 
 </div> <!-- containner -->
 
-
+<jsp:include page="../footer.jsp" />
 <script type="text/javascript">
 function aa(){
    var arr = new Array();  //${teamMember.teamMemberNo}
@@ -93,7 +91,6 @@ function aa(){
  var teamMark = document.getElementById("teamMark");
 	var teamName= document.getElementById("teamName");
 	 var teamDetail = document.getElementById("teamdetail");
-	 var teamUniform = document.getElementById("teamUniform");
 	if (a.length > 11){
   teamMark.innerHTML ='<img src ="' + a[9] +',' + a[10] + '" width = "340px" height = "340px">'
 	teamName.innerHTML = '<h3>'+ a[0] + '</h3>';
@@ -108,17 +105,16 @@ teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
 	 }else {
 		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "340px" height = "340px" >'
 		  teamName.innerHTML = '<h3>'+ a[0] + '</h3>';
-		  teamDetail.innerHTML = '종목 : ' + a[8] + '<br>' + 
-		                            '지역 : ' + a[2] + '<br>' + 
+		  teamtype.innerHTML = '종목 ' +a[8]+ '<br> ' 
+		  teamarea.innerHTML = '지역  ' +a[2]+ '<br> ' /* teamarea
 		                            '창단일 : ' + a[6] + '<br>' +
 		                            '평균 연령 : ' +a[3] + '<br>' +
 		                            '팀 유형 : ' +a[4] + '<br>' +
 		                            '팀 실력 : ' +a[5] + '<br>' +
 		                            '팀 소개 : ' +a[7] + '<br>';
-		teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
-	 }
-
-	
+ */	 }
+ 
+	  
 	<c:forEach items="${tm}" var="teamMember">
 	 arr.push("${teamMember.teamMemberNo}");
 	 arrb.push("${teamMember.member.name}");
@@ -151,6 +147,7 @@ teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
         document.getElementById('aaaa').appendChild(div);
     }
 }
+
 </script>
 
 
