@@ -135,6 +135,7 @@
     tm_ambl_phot,
     t.name,
     tm_intd,
+    tt.types,
     area,
     tl.levs,
     a.ages,
@@ -144,6 +145,7 @@
       tm t
     left outer join age a on t.age_id = a.age_id
     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+    left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
   </select> 
 
