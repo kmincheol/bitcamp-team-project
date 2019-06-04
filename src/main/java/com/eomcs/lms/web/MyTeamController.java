@@ -51,7 +51,7 @@ public class MyTeamController {
 	  List<TeamMember> tm = myTeamService.teamMemberList2();
 	  
 	      for(TeamMember t : tm) {
-	        System.out.println(t.getMember().getPhoto());
+	        System.out.println(t.toString());
 	      }
 	  /*
      * String json = om.writeValueAsString(team); 

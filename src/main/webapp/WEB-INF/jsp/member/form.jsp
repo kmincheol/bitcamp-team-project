@@ -321,10 +321,10 @@ $(document).ready(function() {
     checkGender();
   });
 
-  $('#email').keyup(debounce(function() {
+/*   $('#email').keyup(debounce(function() {
     checkEmail();
   }, 500));
-
+ */
   $('#btnSend').click(function() {
     sendEmail();
     return false;
@@ -392,7 +392,7 @@ function checkUnrealInput() {
       checkName() &
       checkBirthday() &
       checkGender() &
-      checkEmailText($('#email').val()) &
+   /*    checkEmailText($('#email').val()) & */
       checkPhoneNo() & 
       checkAuthNo() &
       checkAddress()
@@ -1031,20 +1031,18 @@ function sendEmail() {
   return false;
 };
 
-
-
 function checkAuthNo() {
   var authNo = $('#authNo').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');
   var isNum = /^[0-9]+$/;
 
-  if (authNo == "") {
+/*   if (authNo == "") {
     showErrorMsg(oMsg, "인증번호를 입력해주세요.");
     showErrorBoxByError(oBox);
     return false;
   }
-  
+   */
   if (!isNum.test(authNo)) {
     showErrorMsg(oMsg, "숫자만 입력할 수 있습니다.");
     showErrorBoxByError(oBox);

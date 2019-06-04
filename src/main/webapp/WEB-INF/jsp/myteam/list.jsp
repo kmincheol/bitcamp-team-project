@@ -6,13 +6,14 @@
 <html>
 <head>
 <jsp:include page="../header.jsp" />
+<link href="${contextRootPath}/css/common.css" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
 
 
-<div class="container">
+<div id="main-wrap" class="container">
 
 <div id="teamSelect">
 <select id="cc" onchange="aa();">
@@ -67,9 +68,10 @@ ${team.teamUniformPhoto}
 <div id ="teamUniform2  style="border:1px solid black; width:250px; height:350px;float:left;margin-top:22px; margin-left:17px;">
 </div>
 
-
 </div>
 
+<div id ="aaaa"  style="width:1100px; height:350px;float:left;margin-top:22px; ">
+</div>
 
 </div> <!-- containner -->
 
@@ -80,6 +82,7 @@ function aa(){
    var arrb = new Array(); //${teamMember.member.name}
    var arrc = new Array(); 
    var arrd = new Array(); //${teamMember.member.photo}
+   var arre = new Array(); //${teamMember.position}
    var arrdd = new Array();
 	 var target1 = $('#teamm').val();
 	 
@@ -103,7 +106,7 @@ function aa(){
 	                          '팀 소개 : ' +a[7] + '<br>';
 teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
 	 }else {
-		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "340px" height = "340px">'
+		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "340px" height = "340px" >'
 		  teamName.innerHTML = '<h3>'+ a[0] + '</h3>';
 		  teamDetail.innerHTML = '종목 : ' + a[8] + '<br>' + 
 		                            '지역 : ' + a[2] + '<br>' + 
@@ -120,7 +123,7 @@ teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
 	 arr.push("${teamMember.teamMemberNo}");
 	 arrb.push("${teamMember.member.name}");
 	 arrd.push("${teamMember.member.photo}");
-
+	 arre.push("${teamMember.position}");
 	 </c:forEach>
 	for (var i = 0; i < arr.length; i++) {
 	    if(arr[i] == parseInt(a[1])){
@@ -129,7 +132,7 @@ teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
 	    }
 	}
 	
-        for(var j=0; j< 10000; j++){
+        for(var j=0; j< 30; j++){
         	$("#abcd").remove()
         }      
     
@@ -137,22 +140,19 @@ teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
         //div 객체 생성
         var div = document.createElement("div");
         div.id = "abcd"
-        div.innerText= arrc[i] ;
-        div.innerHTML ='<img src ="' + arrdd[i] +  '" width = "340px" height = "340px">'
+        div.innerHTML ='<img src ="' + arrdd[i] +  '" width = "256px" height = "250px" style = "float :right">' + 
+        arre[i] + arrc[i]
         //css설정
         div.style.border= "1px solid black";
         div.style.margin= "5px";
-        div.style.width= "280px";
-        div.style.height= "280px";
+        div.style.width= "260px";
+        div.style.height= "300px";
         div.style.float= "left";
-        document.body.appendChild(div);
-        
+        document.getElementById('aaaa').appendChild(div);
     }
 }
-
-
 </script>
 
-<%-- <jsp:include page="../footer.jsp" /> --%>
+
 </body>
 </html>

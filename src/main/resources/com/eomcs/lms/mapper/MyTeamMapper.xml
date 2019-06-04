@@ -82,6 +82,7 @@
       <id column="mbr_id" property="no" />
       <result column="user_id" property="id" />
       <result column="name" property="name" />
+            <result column="prof_phot" property="photo" />
     </association>
     
      <association property="team" javaType="Team">
