@@ -63,13 +63,21 @@ table.dataTable thead tr {
 }
 /* 테이블 목록 hover 색상 변경 */
 #dtBasicExample tbody tr:hover {
-	/* background-color: #ffa; */
+	 background-color: #f7f4f4;
 	
 }
 /* 테이블 목록 hover 색상 변경 */
 #dtBasicExample tbody tr:hover>.sorting_1 {
 	/* background-color: #ffa; */
 	
+}
+table tbody tr{
+height:80px;
+vertical-align: center;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
 }
 </style>
 
@@ -84,7 +92,7 @@ table.dataTable thead tr {
   <div id="main-wrap" class="container">
   
 		<div id="main-text">
-      <h2>모집게시판</h2>
+      <h2><img src="${contextRootPath}/images/edit.png">모집게시판</h2>
     </div>
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
@@ -172,11 +180,12 @@ table.dataTable thead tr {
 				$('#dtBasicExample').DataTable({
 					order : [ [ 1, "desc" ] ],
 					"info" : false,
+					"paging" : true,
 					language : lang_kor
 				});
 				$('.dataTables_length').addClass('bs-select');
 			});
 		</script>
-		
+
 </body>
 </html>
