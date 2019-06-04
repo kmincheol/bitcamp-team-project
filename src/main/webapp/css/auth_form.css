@@ -3,11 +3,16 @@
 	padding: 0px;
 }
 
-#all {
-	height: 100vh;
-	padding: 0px;
-	margin: 0px;
+/* form{
+	padding-top:120px;
 }
+
+#all {
+	height: 120vh;
+	padding: 0px;
+	margin-top: 0px;
+	background: url("../images/mainpage1.jpg") no-repeat 60% 70%;
+} */
 
 .md-form {
 	width: 400px;
@@ -16,9 +21,9 @@
 
 .info-search {
 	border-top: 1px solid #757575;
-    margin-top: 15px;
-    padding-top: 15px;
-    text-align: center;
+	margin-top: 15px;
+	padding-top: 15px;
+	text-align: center;
 }
 
 .info-search a {
@@ -29,3 +34,7 @@
 .info-search a:hover {
 	color: #757575;
 }
+
+/* .footer{
+	margin-top:-7px;
+} */

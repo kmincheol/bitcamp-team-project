@@ -1,6 +1,5 @@
 package com.eomcs.lms.web;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Member;
@@ -41,9 +39,14 @@ public class TeamController {
     List<Team> teams = teamService.teamList1();
     List<TeamMember> teamMembers = teamService.teamMemberList();
     List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
+    List<TeamType> teamTypes = teamService.teamTypeList();
+    List<TeamAges> teamAges = teamService.teamAgeList();
+    
     model.addAttribute("teamTypeSports", teamTypeSports);
     model.addAttribute("teams", teams);
-     model.addAttribute("teamMembers", teamMembers); 
+    model.addAttribute("teamTypes", teamTypes);
+    model.addAttribute("teamAges", teamAges);
+    model.addAttribute("teamMembers", teamMembers); 
      
     return "team/list1";
   }

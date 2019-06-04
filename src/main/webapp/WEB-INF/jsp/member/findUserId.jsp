@@ -10,8 +10,6 @@
 </head>
 <body>
 
-<jsp:include page="../header.jsp"/>
-
 <div id="container">
   <div id="content">
     <input type="hidden" id="authType" name="authType" value="email"> 
