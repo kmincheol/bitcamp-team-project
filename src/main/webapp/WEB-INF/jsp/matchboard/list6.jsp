@@ -10,12 +10,15 @@
         <jsp:include page="../commonCss.jsp"/>
         <!-- jPList CSS -->
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
+        <link rel="stylesheet" href="${contextRootPath}/css/list6.css" />
         
     </head>
     <body>
     
+    
     <jsp:include page="../header.jsp"/>
     
+  <div class="container">
        <!-- hidden sort control -->
         <div
             style="display: none"
@@ -48,9 +51,14 @@
             
             data-path-5=".playDate"
             data-order="asc"
+            data-type="text"
+            
+            data-path-6=".teamAges"
+            data-order="asc"
             data-type="text">
         </div>
 
+    <div class="content">
         <!-- text filter control -->
         <div>
             <input
@@ -160,6 +168,98 @@
         하
         </button>
         
+        <!-- filter control -->
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path="default"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-selected="true">
+         연령대
+         </button>
+        
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="under"
+            >
+        10세이하
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="10"
+            >
+        10대
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="20"
+            >
+        20대
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="30"
+            >
+        30대
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="40"
+            >
+        40대
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="50"
+            >
+        50대
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="60"
+            >
+        60대
+        </button>
+        <button
+            data-jplist-control="buttons-text-filter"
+            data-path=".teamAges"
+            data-mode="radio"
+            data-group="group1"
+            name="teamAges"
+            data-text="70"
+            >
+        70세이상
+        </button>
+      
         <p>Date: <input type="text" id="datepicker"></p>
         
 <div style="display: none;">
@@ -209,14 +309,16 @@
                     <div class="playDate">playDate : ${match.playDate}</div>
                     <div class="sportsType">sportsType : ${match.teamTypeSports.teamSportsType}</div>
                     <div class="teamLevel">teamLevel : ${match.teamLevel.teamLevel}</div>
+                    <div class="teamAges">ages : ${match.teamAges.teamAges}</div>
                 </div>
                 </c:forEach>
                 
                     <!-- no results control -->               
                 <div data-jplist-control="no-results" data-group="group1" data-name="no-results">No Results Found</div>
                 
-
         </div>
+    </div><!-- .content -->      
+  </div><!-- .container -->
 
 <jsp:include page="../javascript.jsp"/>
 <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>

@@ -40,6 +40,11 @@ public class MemberController {
   @Autowired EmailService emailService;
   @Autowired ServletContext servletContext;
   
+  @GetMapping("agree")
+  public void agree() {
+  }
+  
+  
   @GetMapping("agreeTerms")
   public void agreeTerms() {
   }

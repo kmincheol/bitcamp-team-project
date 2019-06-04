@@ -42,6 +42,11 @@
       <id column="tm_lev_id" property="teamLevelId" />
       <result column="levs" property="teamLevel" />
     </association>
+    
+    <association property="teamAges" javaType="TeamAges">
+      <id column="age_id" property="teamAgeId" />
+      <result column="ages" property="teamAges" />
+    </association>
 
     <!-- 매치신청테이블 -->
    <collection property="matchApply" ofType="MatchApply">
@@ -168,7 +173,8 @@
     t.tm_lev_id,
     t.age_id,
     t.tm_ambl_phot,
-    l.levs
+    l.levs,
+    a.ages
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
