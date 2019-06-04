@@ -20,3 +20,4 @@
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript"
   src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
+  
