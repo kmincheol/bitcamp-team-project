@@ -50,6 +50,23 @@ public class TeamController {
      
     return "team/list1";
   }
+  
+  @GetMapping("list3")
+  public String list3(Model model) {
+    List<Team> teams = teamService.teamList1();
+    List<TeamMember> teamMembers = teamService.teamMemberList();
+    List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
+    List<TeamType> teamTypes = teamService.teamTypeList();
+    List<TeamAges> teamAges = teamService.teamAgeList();
+    
+    model.addAttribute("teamTypeSports", teamTypeSports);
+    model.addAttribute("teams", teams);
+    model.addAttribute("teamTypes", teamTypes);
+    model.addAttribute("teamAges", teamAges);
+    model.addAttribute("teamMembers", teamMembers); 
+     
+    return "team/list3";
+  }
 
   @GetMapping("form")
   public void form(Map<String,Object> map) {
@@ -118,39 +135,7 @@ public class TeamController {
     model.addAttribute("search", team);
   }
   
-//
-//  @GetMapping("update/{no}")
-//  public String detailUpdate(@PathVariable int no, Model model) {
-//    Free free = freeService.getUpdate(no);
-//    model.addAttribute("free", free);
-//    return "free/update";
-//  }
-//  
-//  @GetMapping("search")
-//  public void search(String keyword, Model model) {
-//    List<Free> free = freeService.search(keyword);
-//    model.addAttribute("search", free);
-//  }
-//  
 
-//
-//
-//  @PostMapping("update")
-//  public String update(Free free) {
-//
-//    freeService.update(free); 
-//    
-//    return "redirect:.";
-//  }
-//
-//  @GetMapping("delete/{no}")
-//  public String delete(@PathVariable int no) {
-//
-//    if (freeService.delete(no) == 0) 
-//      throw new RuntimeException("해당 번호의 게시물이 없습니다.");
-//
-//    return "redirect:../";
-//  }
 }
 
 

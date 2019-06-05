@@ -6,17 +6,22 @@
 }
 
 #keyword {
-	height: 50px;
+	height: 40px; 
 	width: 198px;
-	right: 283px;
+	right: 283px; 
 	border: 1px solid silver;
-	text-align: center;
+	text-align: center; 
 	position: relative;
-	top: 55px;
+	top: 50px;
 }
-
-.custom-select {
-	height: 50px;
+ 
+.md-form {
+  width: 200px;
+  right: 80px;
+} 
+ 
+.select {
+	height: 40px;
 	width: 200px;
 	position: relative;
 	right: 80px;
