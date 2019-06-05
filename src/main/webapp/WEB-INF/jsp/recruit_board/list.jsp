@@ -35,6 +35,8 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
@@ -44,6 +46,10 @@
 div.dataTables_wrapper div.dataTables_paginate {
 	text-align: left;
 	width: 100%;
+}     
+
+.th-sm{
+text-align: center;
 }
 
 /* 테이블 헤더 색상 변경 */
@@ -79,6 +85,8 @@ vertical-align: center;
 .table > tbody > tr > td {
      vertical-align: middle;
 }
+
+
 </style>
 
 </head>
@@ -125,16 +133,20 @@ vertical-align: center;
                   <img src="${contextRootPath}/images/baseball_list.png">
                 </c:when>
                 <c:when test="${list.teamTypeSports.teamSportsType eq '탁구'}">
-                  <img src="${contextRootPath}/images/pingpong_list.png">
+                  <img src="${contextRootPath}/images/pingpong_list.png">    
                 </c:when>
               </c:choose></td>
             <!-- 제목 -->
             <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
-            <!-- 팀명 -->
-            <td>${list.team.teamName }</td>
-            <!-- 지역 -->
+            <!-- 팀명 -->     
+            <td><a tabindex="0" role="button"
+              data-toggle="popover" data-trigger="focus" title="팀명 : ${list.team.teamName }"
+              data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>
+              <a href='#' title='test add link'>상세정보</a>">${list.team.teamName }</a>
+              </td>
+            <!-- 지역 -->     
             <td>${list.team.teamArea }</td>
-            <!-- 게시글 상태(모집중, 모집완료) -->
+            <!-- 게시글 상태(모집중, 모집완료) -->      
             <td><c:choose>
                 <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
                 <c:otherwise>모집마감</c:otherwise>
@@ -152,7 +164,7 @@ vertical-align: center;
         <div id="in">
           <div id="write-btn">
             <a class="input-group-btn1 btn btn-dark" href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
-          </div>
+          </div>    
         </div> 
       </c:if> 
     </c:forEach>  
@@ -162,7 +174,16 @@ vertical-align: center;
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
   
-    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+      
+  <script>
+  $(function () {
+	  $('[data-toggle="popover"]').popover({html:true})
+	})
+</script>
 
   <script>
 			var lang_kor = {
