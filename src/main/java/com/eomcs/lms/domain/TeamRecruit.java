@@ -26,6 +26,7 @@ public class TeamRecruit implements Cloneable, Serializable {
   private TeamTypeSports teamTypeSports;
   private Member member;
   private TeamMember teamMember;
+  private TeamAges teamAges;
   
   @Override
   public String toString() {
@@ -34,7 +35,7 @@ public class TeamRecruit implements Cloneable, Serializable {
         + ", teamCreatedDate=" + teamCreatedDate + ", teamModifyDate=" + teamModifyDate
         + ", teamRcrmStatus=" + teamRcrmStatus + ", teamRcrmPerson=" + teamRcrmPerson + ", team="
         + team + ", teamTypeSports=" + teamTypeSports + ", member=" + member + ", teamMember="
-        + teamMember + "]";
+        + teamMember + ", teamAges=" + teamAges + "]";
   }
   public int getTeamNo() {
     return teamNo;
@@ -114,9 +115,12 @@ public class TeamRecruit implements Cloneable, Serializable {
   public void setTeamMember(TeamMember teamMember) {
     this.teamMember = teamMember;
   }
-  
-  
-  
+  public TeamAges getTeamAges() {
+    return teamAges;
+  }
+  public void setTeamAges(TeamAges teamAges) {
+    this.teamAges = teamAges;
+  }
  
-
+  
 }

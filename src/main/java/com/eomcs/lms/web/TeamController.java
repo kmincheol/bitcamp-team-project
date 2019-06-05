@@ -67,6 +67,23 @@ public class TeamController {
      
     return "team/list3";
   }
+  
+  @GetMapping("list4")
+  public String list4(Model model) {
+    List<Team> teams = teamService.teamList1();
+    List<TeamMember> teamMembers = teamService.teamMemberList();
+    List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
+    List<TeamType> teamTypes = teamService.teamTypeList();
+    List<TeamAges> teamAges = teamService.teamAgeList();
+    
+    model.addAttribute("teamTypeSports", teamTypeSports);
+    model.addAttribute("teams", teams);
+    model.addAttribute("teamTypes", teamTypes);
+    model.addAttribute("teamAges", teamAges);
+    model.addAttribute("teamMembers", teamMembers); 
+     
+    return "team/list4";
+  }
 
   @GetMapping("form")
   public void form(Map<String,Object> map) {
