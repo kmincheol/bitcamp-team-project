@@ -98,7 +98,7 @@ width:300px;
           <label for="location" >경기장</label>
        </th>
        <td>  
-          <label id="stadiumName">${match.stadiumName}</label>
+          <input id="stadiumName" value="${match.stadiumName}" style="border:none;"readonly> <button id="map" type="button" onclick="openMap()">위치보기</button>
        </td>      
        <th scope="col">
           <label for="sportsType" id="typlab">종목</label>
@@ -171,6 +171,19 @@ width:300px;
 
 
 <script>
+
+var openWin;
+
+
+function openMap()
+{
+    // window.name = "부모창 이름"; 
+    window.name = "parentForm";
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+    window.open("${contextRootPath}/app/matchboard/map2.jsp",
+            "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
+}
+
 var ajaxSend = (function() {
 
   if (!isSubmitted) {

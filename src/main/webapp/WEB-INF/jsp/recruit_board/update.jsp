@@ -20,6 +20,19 @@
 <!-- recruit_board_update.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_update.css">
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+
+<!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 </head>
 
@@ -98,8 +111,7 @@
   
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
   <script>
-"use strict"
-
+  
 $(document).ready(function() {
   $('#summernote').summernote({
     height: 300,
@@ -137,9 +149,9 @@ function checkTerms() {
 }
 
 function submitAgree() {
-  if (checkTerms() != true) {
+  if (checkTerms() != true) {  
     return false;
-  }
+  }  
 
   $("#update_form").submit();
   return true;

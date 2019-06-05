@@ -17,6 +17,7 @@
 
     <association property="team" javaType="Team">
       <id column="tm_id" property="teamId" />
+      <result column="age_id" property="teamAgeId" />
       <result column="area" property="teamArea" />
       <result column="name" property="teamName" />
     </association>
@@ -35,6 +36,11 @@
   <association property="member" javaType="Member">
     <id column="mbr_id" property="no" />
     <result column="user_id" property="id" />
+  </association>
+  
+   <association property="teamAges" javaType="TeamAges">
+    <id column="age_id" property="teamAgeId" />
+    <result column="ages" property="ages" />
   </association>
   
   </resultMap>
@@ -105,6 +111,7 @@
     rcrm_stat,
     vw_cnt,
     s.spt_clsf_id,
+    ages,
     spt_clsf_name,
     t.tm_id,
     t.name,
@@ -114,6 +121,7 @@
     from
     rcrm r
     left outer join tm t on r.tm_id = t.tm_id
+    left outer join age a on t.age_id = a.age_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     left outer join tm_mbr tmbr on t.tm_id = tmbr.tm_mbr_id
     left outer join mbr m on tmbr.mbr_id = m.mbr_id

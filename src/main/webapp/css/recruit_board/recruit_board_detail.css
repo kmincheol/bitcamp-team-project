@@ -7,13 +7,21 @@
 	margin-bottom: 15px;
 }
 
-#main-text>h2 {
-	position: relative;
-	color: black;
+#main-text h2 {
+	position: absolute;
+	text-align: left; 
+	bottom: 0;
+}
+
+#main-text h2 img {
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	margin-bottom: 25px;
 }
 
 form {
-  margin: 0 auto;
+	margin: 0 auto;
 }
 
 #title-wrap {

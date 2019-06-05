@@ -9,72 +9,133 @@
 <link href="${contextRootPath}/css/common.css" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<style>
+.select-wrapper input.select-dropdown {
+	height: 2em;
+	font-size: 40px;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 256px;
+  height: 250px;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+ /*  background-color: #bbb;
+  color: black; */
+}
+
+.flip-card-back {
+ /*  background-color: #2980b9;
+  color: white;
+  */
+  transform: rotateY(180deg);
+}
+</style>
 </head>
 <body>
 
 
-<div id="main-wrap" class="container">
+  <div id="main-wrap" class="container">
 
-<div id="teamSelect">
-<select id="cc" onchange="aa();">
-<option>나의 팀을 고르세요</option>
-<c:forEach items="${team}" var="team">
+    <div id="teamInfo"
+      style="border: 1px solid black; width: 1080px; height: 400px; margin-top: 100px">
 
-<option value=
-"${team.teamName},
-${team.teamId},
-${team.teamArea},
-${team.teamAges.teamAges},
-${team.teamType.teamType},
-${team.teamLevel.teamLevel},
-${team.teamCreateDate},
-${team.teamInfo},
-${team.teamTypeSports.teamSportsType},
-${team.teamEmblemPhoto},
-${team.teamUniformPhoto}
-"
->${team.teamName}</option>
+      <div id="teamMark"
+        style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">
+      </div>
 
+      <div id="teamName"
+        style="width: 600px; height: 100px; float: left; margin-top: 22px; font-size: 50px; text-align: left;">
+
+
+        <div class="input-field col s12 m6" id="teamSelect">
+          <select class="icons" id="cc" onchange="aa();">
+            <c:forEach items="${team}" var="team">
+              <option
+                value="${team.teamName},
+                         ${team.teamId},
+                       ${team.teamArea},
+              ${team.teamAges.teamAges},
+              ${team.teamType.teamType},
+            ${team.teamLevel.teamLevel},
+                 ${team.teamCreateDate},
+                       ${team.teamInfo},
+  ${team.teamTypeSports.teamSportsType},
+                ${team.teamEmblemPhoto},
+               ${team.teamUniformPhoto}"
+                data-icon="${team.teamEmblemPhoto}" >${team.teamName}</option>
+            </c:forEach>
+          </select>
+        </div>
+      </div>
+
+
+      <div id="row1" style="width: 660px; height: 50px; float: left; margin-top: 20px;"></div>
+
+      <div id="row2" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
+
+      <div id="row3" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
+
+      <div id="row4" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
+
+
+
+    </div>
+
+    <div id="aaaa" style="width: 1100px; height: 350px; float: left; margin-top: 22px;"></div>
+
+  </div>
+  <!-- containner -->
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script type="text/javascript">
  
- </c:forEach>
-
- <c:forEach items="${tm}" var="teamMember" >
-        <input id = "teamNo" type ="hidden" value=" ${teamMember.teamMemberNo}">
-        <input id = "teamm" type ="hidden" value=" ${teamMember.member.name}">
-
-</c:forEach>
+  window.onload= aa;
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
 
+  // Or with jQuery
 
-</select>
-</div>
-<div>
-</div>
-
-<div id ="teamInfo" style="border:1px solid black; width:1080px; height:400px; ">
-
-<div id ="teamMark" style="border:1px solid black; width:350px; height:350px; margin:22px; float:left; ">
-</div>
-
-<div id ="teamName" style="border:1px solid black; width:200px; height:50px; float:left;margin-top:22px">
-</div>
-<div id ="teamtype" style="border:1px solid black; width:400px; height:50px;float:left; margin-top:80px; margin-left:-200px">
-</div>
-<div id ="teamarea" style="border:1px solid black; width:400px; height:50px;float:left;  margin-top:5px; ">
-</div>
-
-
-
-</div>
-
-<div id ="aaaa"  style="width:1100px; height:350px;float:left;margin-top:22px; ">
-</div>
-
-</div> <!-- containner -->
-
-<jsp:include page="../footer.jsp" />
-<script type="text/javascript">
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+        
 function aa(){
    var arr = new Array();  //${teamMember.teamMemberNo}
    var arrb = new Array(); //${teamMember.member.name}
@@ -82,7 +143,6 @@ function aa(){
    var arrd = new Array(); //${teamMember.member.photo}
    var arre = new Array(); //${teamMember.position}
    var arrdd = new Array();
-	 var target1 = $('#teamm').val();
 	 
 	 
 	 var target = document.getElementById("cc");
@@ -91,28 +151,48 @@ function aa(){
  var teamMark = document.getElementById("teamMark");
 	var teamName= document.getElementById("teamName");
 	 var teamDetail = document.getElementById("teamdetail");
-	if (a.length > 11){
-  teamMark.innerHTML ='<img src ="' + a[9] +',' + a[10] + '" width = "340px" height = "340px">'
-	teamName.innerHTML = '<h3>'+ a[0] + '</h3>';
-	teamDetail.innerHTML = '종목 : ' + a[8] + '<br>' + 
-		                        '지역 : ' + a[2] + '<br>' + 
-	                          '창단일 : ' + a[6] + '<br>' +
-	                          '평균 연령 : ' +a[3] + '<br>' +
-	                          '팀 유형 : ' +a[4] + '<br>' +
-	                          '팀 실력 : ' +a[5] + '<br>' +
-	                          '팀 소개 : ' +a[7] + '<br>';
-teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
+
+	 if (a.length > 11){
+  teamMark.innerHTML ='<img src ="' + a[9] +',' +a[10] +'" width = "250px" height = "250px" >'
+  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">종 목</div></span> ' + 
+  '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[8]+'</U></I></B></span>' + 
+  '<span style="display: inline-block;font-size:20px; width: 150px;">지 역</span> ' + 
+  '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
+  
+  
+row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">창단일</span> ' + 
+'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[6]+'</U></I></B></span>' + 
+'<span style="display: inline-block;font-size:20px; width: 150px;">평균연령</span> ' + 
+'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[3]+'</U></I></B></span>' 
+
+row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 유형</span> ' + 
+'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[4]+'</U></I></B></span>' + 
+'<span style="display: inline-block;font-size:20px; width: 150px;">팀 실력</span> ' + 
+'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[5]+'</U></I></B></span>' 
+
+row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 소개</span> ' + 
+'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[7]+'</U></I></B></span>' 
 	 }else {
-		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "340px" height = "340px" >'
-		  teamName.innerHTML = '<h3>'+ a[0] + '</h3>';
-		  teamtype.innerHTML = '종목 ' +a[8]+ '<br> ' 
-		  teamarea.innerHTML = '지역  ' +a[2]+ '<br> ' /* teamarea
-		                            '창단일 : ' + a[6] + '<br>' +
-		                            '평균 연령 : ' +a[3] + '<br>' +
-		                            '팀 유형 : ' +a[4] + '<br>' +
-		                            '팀 실력 : ' +a[5] + '<br>' +
-		                            '팀 소개 : ' +a[7] + '<br>';
- */	 }
+		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "250px" height = "250px" >'
+		  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">종 목</div></span> ' + 
+		                       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[8]+'</U></I></B></span>' + 
+		                       '<span style="display: inline-block;font-size:20px; width: 150px;">지 역</span> ' + 
+		                       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
+		                       
+		                       
+       row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">창단일</span> ' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[6]+'</U></I></B></span>' + 
+       '<span style="display: inline-block;font-size:20px; width: 150px;">평균연령</span> ' + 
+       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[3]+'</U></I></B></span>' 
+       
+       row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 유형</span> ' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[4]+'</U></I></B></span>' + 
+       '<span style="display: inline-block;font-size:20px; width: 150px;">팀 실력</span> ' + 
+       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[5]+'</U></I></B></span>' 
+       
+       row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 소개</span> ' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[7]+'</U></I></B></span>' 
+   }
  
 	  
 	<c:forEach items="${tm}" var="teamMember">
@@ -136,12 +216,16 @@ teamUniform.innerHTML ='<img src ="' + a[11] +',' + a[12] + '">'
         //div 객체 생성
         var div = document.createElement("div");
         div.id = "abcd"
-        div.innerHTML ='<img src ="' + arrdd[i] +  '" width = "256px" height = "250px" style = "float :right">' + 
-        arre[i] + arrc[i]
+        div.innerHTML =
+        	'<div class="flip-card"> <div class="flip-card-inner"> <div class="flip-card-front">' +
+         '<img src ="' + arrdd[i] +  '" width = "259px" height = "250px">' + 
+         '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">' + arrc[i] + '</span></div>' +
+          '<div class="flip-card-back"><h3>공격수</h3> <p>1991-03-07</p>  <p>김민철</p><p>20살</p> ' + 
+   ' </div></div></div>'
         //css설정
         div.style.border= "1px solid black";
         div.style.margin= "5px";
-        div.style.width= "260px";
+        div.style.width= "261px";
         div.style.height= "300px";
         div.style.float= "left";
         document.getElementById('aaaa').appendChild(div);
