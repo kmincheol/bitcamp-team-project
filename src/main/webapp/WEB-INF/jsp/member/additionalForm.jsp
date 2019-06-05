@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <title>BATTLE MATCHING :: 상세정보입력</title>
   <jsp:include page="../commonCss.jsp"/>
-  <link rel="stylesheet" href="${contextRootPath}/css/member_optionalform.css">
+  <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css">
   
 </head>
 <body style="background:white">
@@ -22,9 +22,8 @@
     </div>
 
     <div class="join_content">
-      <form id="join_form" action="updateOption" method='POST'>
+      <form id="join_form" action="option-update" method='POST'>
         <input type="hidden" id="birthday" name="birthDay" value="">
-        <input type="hidden" id="post" name="post" value="99999">
         <input type="hidden" id="photo" name="photo" value="">
       
         <div class="join_form">
@@ -43,7 +42,7 @@
                   <div class="bir_mm">
                     <span class="ps_box" id="birmm">
                       <select id="mm" class="sel" aria-label="월">
-                        <option value="">월</option>
+                        <option value="month">월</option>
                           <option value="01">1</option>
                           <option value="02">2</option>
                           <option value="03">3</option>
@@ -115,9 +114,9 @@
                 </h3>
                 <div class="address_area">
                   <span class="ps_box" id="postBox">
-                    <input class="int" placeholder="우편번호" id="addr1" type="text" readonly="readonly" maxlength="6">
+                    <input class="int" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" maxlength="5">
                   </span>
-                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호검색"> 
+                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호찾기"> 
                 </div>
                 <div>
                   <span class="ps_box" id="baseAddr">
@@ -198,6 +197,10 @@ $('.file_input input[type=file]').change(function() {
 $(document).ready(function() {
   defaultScript();
 
+  if ($('#yy').val() != "") {
+    checkBirthday();
+  }
+
   $('#yy').keyup(debounce(function() {
     checkBirthday();
   }, 500));
@@ -210,6 +213,10 @@ $(document).ready(function() {
    checkBirthday();
   }, 500));
 
+  $('#gender').change(function() {
+    checkGender();
+  });
+
   $('#addressBtn').click(function() {
    execPostCode();
    return false;
@@ -217,25 +224,36 @@ $(document).ready(function() {
   
   $('#uploadCancel').click(function() {
     $('#images-div').attr('src', "../../images/profile.png");
-    $('#photo').empty();
+    $('#photo').val('');
+    console.log($('#photo').val());
+    $('.file_input input[type=text]').val('');
     return false;
   });
 
   $('#btnJoin').click(function(event) {
-    checkErrorInput();
-    $('#join_form').submit();
+    submitClose();
+    mainSubmit();
+
   });
   
 });
 
-function checkErrorInput() {
+
+function mainSubmit() {
+  if (!checkUnrealInput()) {
+    submitOpen();
+    return false;
+  }
   
-  if ($('#birthday').val() == "") {
-    $('#birthday').val("1000-01-01");
-  }
-  if ($('#addr1').val() != "") {
-    $('#post').val($('#addr1').val());
-  }
+  $('#join_form').submit();
+}
+
+function submitClose() {
+  $('#btnJoin').attr("disabled", true);
+}
+
+function submitOpen() {
+  $('#btnJoin').attr("disabled", false);
 }
 
 function defaultScript() {
@@ -248,11 +266,24 @@ function defaultScript() {
   });
 };
 
+function checkUnrealInput() {
+
+  if (checkBirthday() &
+      checkGender() &
+      checkAddress()
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+}
+
 function showErrorMsg(obj, msg) {
   obj.attr("class", "error_next_box");
   obj.html(msg);
   obj.show();
 }
+
 
 function showDefaultBox(oBox) {
   oBox.attr("class", "ps_box");
@@ -291,12 +322,35 @@ function execPostCode() {
           fullRoadAddr += extraRoadAddr;
         }
                 
-        $("#addr1").val(data.zonecode);
-        $("#addr2").val(fullRoadAddr);
+        $("[name=post]").val(data.zonecode);
+        $("[name=baseAddress]").val(fullRoadAddr);
                 
+        checkAddress();
       }
     }).open();
   });
+}
+
+function checkAddress() {
+  var post = $('#addr1').val();
+  var postBox = $('#postBox');
+  var baseAddrBox = $('#baseAddr');
+  var detailAddrBox = $('#detailAddr');
+  var oMsg = $('#addressMsg');
+  
+  if (post == "") {
+    showErrorMsg(oMsg, "우편번호찾기를 눌러 주소를 검색하신 후 입력해주세요.");
+    showErrorBox(postBox);
+    showErrorBox(baseAddrBox);
+    showErrorBox(detailAddrBox);
+    return false;
+  }
+
+  showDefaultBox(postBox);
+  showDefaultBox(baseAddrBox);
+  showDefaultBox(detailAddrBox);
+  hideMsg(oMsg);
+  return true;
 }
 
 function checkBirthday() {
@@ -315,6 +369,14 @@ function checkBirthday() {
   showDefaultBox(birmm);
   showDefaultBox(birdd);
 
+  if (yy == "" && mm == "month" && dd == "") {
+    showErrorMsg(oMsg, "생년월일을 정확하게 입력하세요.");
+    showErrorBox(biryy);
+    showErrorBox(birmm);
+    showErrorBox(birdd);
+    return false;
+  }
+
   if (mm.length == 1) {
     mm = "0" + mm;
   }
@@ -323,24 +385,26 @@ function checkBirthday() {
     dd = "0" + dd;
   }
 
+  if (yy == "") {
+    showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
+    showErrorBox(biryy);
+    return false;
+  }
   if (yy.length != 4 || yy.indexOf('e') != -1 || yy.indexOf('E') != -1 ) {
     showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
     showErrorBox(biryy);
     return false;
   }
-  
-  if (mm == "") {
+  if (mm == "month") {
     showErrorMsg(oMsg, "태어난 월을 선택하세요.");
     showErrorBox(birmm);
     return false;
   }
-  
   if (dd == "") {
-    showErrorMsg(oMsg, "태어난 날짜를 선택하세요.");
+    showErrorMsg(oMsg, "태어난 일(날짜) 2자리를 정확하게 입력하세요.");
     showErrorBox(birdd);
     return false;
   }
-  
   if (dd.length != 2 || dd.indexOf('e') != -1 || dd.indexOf('E') != -1) {
     showErrorMsg(oMsg, "태어난 일(날짜) 2자리를 정확하게 입력하세요.");
     showErrorBox(birdd);
@@ -356,6 +420,7 @@ function checkBirthday() {
     return false;
   }
   birthdaySave = yy + "-" + mm + "-" + dd;
+  $("#birthday").val(birthdaySave);
 
   var age = calcAge(birthday);
   if (age < 0) {
@@ -364,8 +429,14 @@ function checkBirthday() {
     showErrorBox(birmm);
     showErrorBox(birdd);
     return false;
-  } else if (age >= 120) {
+  } else if (age >= 100) {
     showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
+    showErrorBox(biryy);
+    showErrorBox(birmm);
+    showErrorBox(birdd);
+    return false;
+  } else if (age < 14) {
+    showErrorMsg(oMsg, "14세미만 회원에게는 서비스를 제공하지 않습니다.");
     showErrorBox(biryy);
     showErrorBox(birmm);
     showErrorBox(birdd);
@@ -375,7 +446,6 @@ function checkBirthday() {
     showDefaultBox(birmm);
     showDefaultBox(birdd);
     hideMsg(oMsg);
-    $("#birthday").val(birthdaySave);
     return true;
   }
   return true;
@@ -436,6 +506,20 @@ function calcAge(birth) {
   return age;
 }
 
+function checkGender() {
+  var gender = $('#gender').val();
+  var oMsg = $('#genderMsg');
+  var oBox = $('#genderBox');
+
+  if (gender == "") {
+    showErrorMsg(oMsg, "성별을 선택해주세요.");
+    showErrorBox(oBox);
+    return false;
+  }
+  showDefaultBox(oBox);
+  hideMsg(oMsg);
+  return true;
+}
 
 function debounce(func, wait, immediate) {
   var timeout;

@@ -180,12 +180,11 @@
   <update id="updateOption" parameterType="member">
     update mbr
     <set>
-      mbr_id = #{no},
-      <if test="birthDay != null">bth_dt = #{birthDay},</if>
-      <if test="gender != null and gender != ''">gndr = #{gender},</if>
+      bth_dt = #{birthDay},
+      gndr = #{gender},
+      post = #{post},
+      bas_addr = #{baseAddress},
       <if test="photo != null and photo != ''">prof_phot = #{photo},</if>
-      <if test="post != null and post != 0">post = #{post},</if>
-      <if test="baseAddress != null and baseAddress != ''">bas_addr = #{baseAddress},</if>
       <if test="detailAddress != null and detailAddress != ''">det_addr = #{detailAddress},</if>
       <if test="selfIntroduce != null and selfIntroduce != ''">s_intd = #{selfIntroduce}</if>
     </set>  

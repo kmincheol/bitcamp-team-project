@@ -27,7 +27,7 @@
           <p>상세정보를 입력하시면<br> <strong>개인 맞춤 서비스</strong>를 제공 받을 수 있습니다.</p>
         </div>
         <div id="addBtnArea">
-          <a class="btn btn-primary btn-lg" href="optionalForm" id="addBtn">상세정보 입력하기</a>
+          <a class="btn btn-primary btn-lg" href="additional-form" id="addBtn">상세정보 입력하기</a>
         </div><!-- #successButton -->
         <div id="mainBtnArea">
           <a class="btn btn-primary btn-lg" href="../main" id="mainBtn">메인화면</a>

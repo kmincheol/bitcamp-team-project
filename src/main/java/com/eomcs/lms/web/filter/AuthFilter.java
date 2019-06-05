@@ -46,9 +46,8 @@ public class AuthFilter implements Filter {
         || pathInfo.endsWith("update")
         || pathInfo.endsWith("delete")
         || pathInfo.endsWith("member")
-        || pathInfo.endsWith("optionalForm")
         || pathInfo.substring(pathInfo.lastIndexOf("/")+ 1, pathInfo.length()).matches("(^[0-9]*$)")
-        || (!pathInfo.endsWith("/auth/form") && 
+        || (!pathInfo.endsWith("/member/form") && 
              pathInfo.endsWith("form"))) {
       // 로그인 되어 있어야 한다.
       Member loginUser = (Member) httpReq.getSession().getAttribute("loginUser");

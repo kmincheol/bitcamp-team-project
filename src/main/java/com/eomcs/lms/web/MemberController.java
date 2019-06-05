@@ -39,14 +39,6 @@ public class MemberController {
   @Autowired EmailService emailService;
   @Autowired ServletContext servletContext;
   
-  @GetMapping("agree")
-  public void agree() {
-  }
-  
-  @GetMapping("agreeTerms")
-  public void agreeTerms() {
-  }
-  
   @GetMapping("invalid")
   public void invalid() {
   }
@@ -55,16 +47,13 @@ public class MemberController {
   public void complete() {
   }
   
-  @GetMapping("newForm")
-  public void newForm() {
-  }
-  
-  @GetMapping("optionalForm")
-  public void optionalForm() {
-  }
-
   @GetMapping("form")
   public void form() {
+  }
+  
+  @GetMapping("additional-form")
+  public String additionalForm() {
+    return "member/additionalForm";
   }
   
   @GetMapping("signUpCompletion")
@@ -268,24 +257,13 @@ public class MemberController {
     return "redirect:signUpCompletion";
   }
   
-  @PostMapping("updateOption")
+  @PostMapping("option-update")
   public String updateOption(
       Member member, 
       HttpSession session) throws Exception {
    
     Member loginMember = (Member) session.getAttribute("loginUser");
 
-    String compareValue = member.getBirthDay().toString().replace("-", "");
-    logger.info("birthDayValue >>" + compareValue);
-    if (compareValue.equals("10000101")) {
-      member.setBirthDay(loginMember.getBirthDay());
-    }
-        
-    int postValue = member.getPost();
-    if (postValue == 99999) {
-      member.setPost(0);
-    }
-    
     member.setNo(loginMember.getNo());
     
     memberService.updateOption(member);

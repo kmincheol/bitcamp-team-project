@@ -16,7 +16,7 @@ public class Member implements Cloneable, Serializable {
   private String gender;
   private String tel;
   private String email;
-  private int post;
+  private String post;
   private String baseAddress;
   private String detailAddress;
   private String photo;
@@ -126,12 +126,12 @@ public class Member implements Cloneable, Serializable {
   }
 
 
-  public int getPost() {
+  public String getPost() {
     return post;
   }
 
 
-  public void setPost(int post) {
+  public void setPost(String post) {
     this.post = post;
   }
 

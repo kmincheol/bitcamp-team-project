@@ -6,38 +6,29 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>회원정보입력</title>
+  <title>BATTLE MATCHING :: 회원가입</title>
   <jsp:include page="../commonCss.jsp"/>
   <link rel="stylesheet" href="${contextRootPath}/css/member_form.css">
-  <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+  
 </head>
 <body style="background:white">
  
  
 <div id="container">
   <div id="content">
-  <h1>스포츠 매칭 <strong>홈페이지</strong> 방문을 환영합니다.</h1>
             
     <div class="join_step">
-      <img src="../../images/signUp2.png">
+      <img src="${contextRootPath}/images/logo.png" class="joinImg">
     </div>
-
-  <hr class="hrblack"/>
 
     <div class="join_content">
       <form id="join_form" action="enter" method='POST'>
-        <input type="hidden" id="birthday" name="birthDay" value="">
-        <input type="hidden" id="photo" name="photo" value="">
         <input type="hidden" id="loginType" name="loginType" value="homepage"> 
         <input type="hidden" id="authType" name="authType" value="join"> 
       
         <div class="join_form">
-          <div class="join_form_left">
+          <div class="join_form_input">
+          
             <!-- id, password -->
             <div class="row_group">
               <div class="join_row">
@@ -66,69 +57,18 @@
                 <span class="error_next_box" id="pswd2Msg" style="display:none" role="alert"></span>
               </div>
             </div><!-- .row_group -->
-            <!-- name, birthday -->
+            
             <div class="row_group">
               <div class="join_row">
                 <h3 class="join_title">
                   <label for="name">이름</label>
-                </h3>    
+                </h3>
                 <span class="ps_box int_pass"  id="nameImg">
                   <input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
                 </span>
                 <span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>
               </div>
-              <div class="join_row join_birthday">
-                <h3 class="join_title">
-                  <label for="yy">생년월일</label>
-                </h3>
-                <div class="bir_wrap">
-                  <div class="bir_yy">
-                    <span class="ps_box" id="biryy">
-                      <input type="text" id="yy" placeholder="년(4자)" aria-label="년(4자)" class="int" maxlength="4">
-                    </span>
-                  </div>
-                  <div class="bir_mm">
-                    <span class="ps_box" id="birmm">
-                      <select id="mm" class="sel" aria-label="월">
-                        <option value="month">월</option>
-                          <option value="01">1</option>
-                          <option value="02">2</option>
-                          <option value="03">3</option>
-                          <option value="04">4</option>
-                          <option value="05">5</option>
-                          <option value="06">6</option>
-                          <option value="07">7</option>
-                          <option value="08">8</option>
-                          <option value="09">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                      </select>
-                    </span>
-                  </div>
-                  <div class="bir_dd">
-                    <span class="ps_box" id="birdd">
-                      <input type="text" id="dd" placeholder="일" aria-label="일" class="int" maxlength="2">
-                      <label for="dd" class="lbl"></label>
-                    </span>
-                  </div>
-                </div>
-                <span class="error_next_box" id="birthdayMsg" style="display:none" role="alert"></span>
-              </div>
-              <div class="join_row join_sex">
-                <h3 class="join_title">
-                  <label for="gender">성별</label>
-                </h3>
-                <div class="ps_box" id="genderBox">
-                  <select id="gender" name="gender" class="sel" aria-label="성별">
-                    <option value="" selected>성별</option>
-                    <option value="남자">남자</option>
-                    <option value="여자">여자</option>
-                  </select>
-                </div>
-                <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
-              </div>
-
+              
               <div class="join_row join_email">
                 <h3 class="join_title">
                   <label for="email">이메일 인증</label>
@@ -142,12 +82,13 @@
               </div>
               <div class="join_row join_email join_authNo_confirm">
                 <span class="ps_box int_pass" id="authNoBox">
-                  <input type="tel" id="authNo" placeholder="인증번호 입력하세요"  class="int" maxlength="6" disabled>
+                  <input type="tel" id="authNo" placeholder="인증번호를 입력하세요"  class="int" maxlength="6" disabled>
                 </span>
                 <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn">
                 <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               </div>
             </div><!-- .row_group -->
+            
             <!-- mobile -->
             <div class="join_row join_mobile">
               <h3 class="join_title">
@@ -155,68 +96,98 @@
               </h3>
               <div class="int_mobile_area">
                 <span class="ps_box int_pass" id="telImg">
-                  <input type="tel" id="phoneNo" name="tel" placeholder="전화번호 입력" aria-label="전화번호 입력" class="int" maxlength="16">          
+                  <input type="tel" id="phoneNo" name="tel" placeholder="전화번호를 입력하세요." aria-label="전화번호를 입력하세요." class="int" maxlength="16">          
                 </span>
               </div>
               <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
-            </div><!-- .join_row .join_mobile-->
-          </div><!-- .join_form_left -->
+            </div><!-- .join_row-->
+          </div><!-- .join_form_input -->
+          
+          <div class="terms_p">
+          
+            <h3 class="join_title agree_title">약관 동의</h3>
 
-          <div class="join_form_right">
-            <div class="row_group join_photo">
-              <div class="join_row join_photo_title">
-                <h3 class="join_title" id="photo_title">
-                  <label for="fileupload">프로필 사진<span class="terms_choice">(선택)</span></label>
-                  <div class="file_input">
-                    <input type="text" readonly="readonly" title="File Route" id="file_route">
-                    <label>
-                       사진올리기
-                      <input type="file" id="fileupload" name="files">
+            <ul class="terms_bx_list">
+              <li class="terms_bx">
+                  <span class="input_chk">
+                    <input type="checkbox" id="chk_all" name="chk_all">
+                    <label for="chk_all">
+                      <span class="chk_all_txt"><strong style="color:#08a600;">모든 약관</strong>에 동의합니다.</span>
                     </label>
-                  </div>
-                </h3>
-              </div>
-              <div class="join_photo_view">
-                <span class="photoView">
-                  <label for="photo">
-                    <img id="images-div" src="../../images/profile.png">
+                  </span>
+              </li>
+            
+              <li class="terms_bx">
+               <span class="input_chk">
+                  <input type="checkbox" id="termsService" name="termsService" class="chk">
+                  <label for="termsService"><strong>서비스 이용약관</strong>에 동의합니다.
+                    <span class="terms_necessary">(필수)</span>
                   </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirService">상세보기</button>
                 </span>
-              </div>
-            </div><!-- .join_photo -->
-            <div class="row_group">
-              <div class="join_row">
-                <h3 class="join_title">
-                  <label for="addressBtn">주소/상세주소</label>
-                </h3>
-                <div class="address_area">
-                  <span class="ps_box" id="postBox">
-                    <input class="int" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" maxlength="6">
-                  </span>
-                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호찾기"> 
+                <div class="terms_box collapse in" tabindex="0" id="dirService">
+                  <!-- 서비스 이용약관 -->
+                  <div class="article">
+                    <h3 class="article_title">서비스 이용약관 제목입니다.</h3>
+                    <p class="article_text">서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.서비스 이용약관 내용입니다.</p>
+                  </div>
                 </div>
-                <div>
-                  <span class="ps_box" id="baseAddr">
-                    <input class="int" placeholder="도로명 주소" name="baseAddress" id="addr2" type="text" readonly="readonly" />
-                  </span>
+              </li>
+              
+              <li class="terms_bx">
+                <span class="input_chk">
+                  <input type="checkbox" id="termsPrivacy" name="termsPrivacy" class="chk">
+                  <label for="termsPrivacy"><strong>개인정보 수집 및 이용</strong>에 동의합니다.
+                    <span class="terms_necessary">(필수)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirPrivacy">상세보기</button>
+                </span>
+                <div class="terms_box collapse in" tabindex="0" id="dirPrivacy">
+                  <!-- 개인정보 수집 및 이용 동의 -->
+                  <div class="article">
+                    <h3 class="article_title">개인정보 수집 제목입니다.</h3>
+                    <p class="article_text">개인정보 수집 내용입니다.</p>
+                  </div>
                 </div>
-                <div>
-                  <span class="ps_box" id="detailAddr">
-                    <input class="int" placeholder="상세주소" name="detailAddress" id="addr3" type="text"/>
-                  </span>
+              </li>
+              
+              <li class="terms_bx">
+                <span class="input_chk">
+                  <input type="checkbox" id="termsThirdParty" name="termsThirdParty" class="chk">
+                  <label for="termsThirdParty"><strong>개인정보 제3자 제공</strong>에 동의합니다.
+                    <span class="terms_necessary">(필수)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirThirdParty">상세보기</button>
+                </span>
+                <div class="terms_box collapse in" tabindex="0" id="dirThirdParty">
+                  <!-- 개인정보 제3자 제공 동의 -->
+                  <div class="article">
+                    <h3 class="article_title">제목입니다.</h3>
+                    <p class="article_text">내용입니다.</p>
+                  </div>
                 </div>
-                <span class="error_next_box" id="addressMsg" style="display:none" role="alert"></span>
-              </div>
-              <div class="join_row">
-                <h3 class="join_title">
-                  <label for="self_introduce">자기소개<span class="terms_choice">(선택)</span></label>
-                </h3>
-                <div class="self_introduce_area">
-                  <textarea class="ps_box self_introduce" id="self_introduce" name="selfIntroduce" placeholder="간단한 자기소개를 입력해주세요." rows="5" cols="30"></textarea>
+              </li>
+              
+              <li class="terms_bx">
+                <span class="input_chk">
+                  <input type="checkbox" id="termsMarketing" name="termsMarketing" class="chk">
+                  <label for="termsMarketing">마케팅 및 광고에의 활용에 동의합니다.
+                    <span class="terms_choice">(선택)</span>
+                  </label>
+                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirMarketing">상세보기</button>
+                </span>
+                <div class="terms_box collapse in" tabindex="0" id="dirMarketing">
+                  <!-- 마케팅 및 광고에의 활용 -->
+                  <div class="article">
+                    <h3 class="article_title">제목입니다.</h3>
+                    <p class="article_text">내용입니다.</p>
+                  </div>
                 </div>
-              </div>
-            </div><!-- .row_group -->
-          </div><!-- .join_form_right -->
+              </li>
+            </ul>
+            <span class="error" id="agreeMsg" style="display:none">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 동의에 모두 동의해주세요.</span>
+          </div><!-- .terms_p -->
+          
         </div><!-- .join_form -->
         <div class="btn_area">
           <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin" type="button">가입하기</button>
@@ -227,54 +198,9 @@
 </div><!-- .container -->
 
 <jsp:include page="../javascript.jsp"/>
-<!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
-<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="${contextRootPath}/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
-<script src="${contextRootPath}/node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
-<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
-<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
-<script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 
 <script>
 "use strict"
-
-$('#fileupload').fileupload({
-  autoUpload: false,
-  disableImageResize: /Android(?!.*Chrome)|Opera/
-        .test(window.navigator && navigator.userAgent),
-  previewMaxWidth: 200,
-  previewMaxHeight: 200,
-  previewCrop: false,
-  processalways: function(e, data) {
-    var photo;
-    for (var i = 0; i < data.files.length; i++) {
-      try {
-        if (data.files[i].preview.toDataURL) {
-          photo = data.files[i].preview.toDataURL();
-          $('#images-div')
-          .attr('src', data.files[i]
-          .preview.toDataURL())
-          $('#photo').val(photo);
-        }
-      } catch (err) {
-      }
-    }
-  }
-});
-
-$('.file_input input[type=file]').change(function() {
-  var filename = $(this).val().replace(/c:\\fakepath\\/i, '');
-  $('.file_input input[type=text]').val(filename);
-});
 
 var idFlag = false;
 var pwFlag = false;
@@ -283,10 +209,6 @@ var emailFlag = false;
 
 $(document).ready(function() {
   defaultScript();
-
-  if ($('#yy').val() != "") {
-    checkBirthday();
-  }
 
   $('#id').keyup(debounce(function() {
    idFlag = false;
@@ -318,26 +240,10 @@ $(document).ready(function() {
     checkName();
   }, 500));
 
-  $('#yy').keyup(debounce(function() {
-    checkBirthday();
-  }, 500));
-
-  $('#mm').change(function() {
-    checkBirthday();
-  });
-
-  $('#dd').keyup(debounce(function() {
-   checkBirthday();
-  }, 500));
-
-  $('#gender').change(function() {
-    checkGender();
-  });
-
-/*   $('#email').keyup(debounce(function() {
+  $('#email').keyup(debounce(function() {
     checkEmail();
   }, 500));
- */
+
   $('#btnSend').click(function() {
     sendEmail();
     return false;
@@ -356,11 +262,36 @@ $(document).ready(function() {
   $('#phoneNo').keyup(debounce(function() {
     checkPhoneNo();
   }, 500));
-
-  $('#addressBtn').click(function() {
-   execPostCode();
-   return false;
-  });
+  
+  $("#chk_all").prop("checked",false);
+  setTerms();
+  
+  $("#chk_all").click(function() {
+    setTerms();
+    location.hash = '#btnAgree';
+  })
+  
+  $("#termsService").click(function() {
+    viewTerms();
+  })
+  
+  $("#termsPrivacy").click(function() {
+    viewTerms();
+  })
+  
+  $("#termsThirdParty").click(function() {
+    viewTerms();
+  })
+  
+  $("#termsMarketing").click(function() {
+    setMarketingTerms();
+    viewTerms();
+  })
+  
+  $("#btnAgree").click(function(event) {
+    submitAgree();
+    return false;
+  })
 
   $('#btnJoin').click(function(event) {
     submitClose();
@@ -382,6 +313,12 @@ function mainSubmit() {
     return false;
   }
   if (idFlag && pwFlag && authFlag) {
+    
+    if (checkTerms() != true) {
+      submitOpen();
+      return false;
+    }
+    
     $('#join_form').submit();
   } else {
     submitOpen();
@@ -403,12 +340,9 @@ function checkUnrealInput() {
       checkPswd1() &
       checkPswd2() &
       checkName() &
-      checkBirthday() &
-      checkGender() &
-   /*    checkEmailText($('#email').val()) & */
+      checkEmailText($('#email').val()) & 
       checkPhoneNo() & 
-      checkAuthNo() &
-      checkAddress()
+      checkAuthNo()
       ) {
         return true;
       } else {
@@ -464,215 +398,6 @@ function showDefaultBoxByOK(oBox) {
 
 function hideMsg(obj) {
   obj.hide();
-}
-
-function execPostCode() {
-  
-  daum.postcode.load(function(){
-    new daum.Postcode({
-      oncomplete: function(data) {
-
-        var fullRoadAddr = data.roadAddress;
-        var extraRoadAddr = ''; 
-
-        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-          extraRoadAddr += data.bname;
-        }
-                
-        if(data.buildingName !== '' && data.apartment === 'Y'){
-          extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-        }
-                
-        if(extraRoadAddr !== ''){
-          extraRoadAddr = ' (' + extraRoadAddr + ')';
-        }
-                
-        if(fullRoadAddr !== ''){
-          fullRoadAddr += extraRoadAddr;
-        }
-                
-        $("[name=post]").val(data.zonecode);
-        $("[name=baseAddress]").val(fullRoadAddr);
-                
-        checkAddress();
-      }
-    }).open();
-  });
-}
-
-function checkAddress() {
-  var post = $('#addr1').val();
-  var postBox = $('#postBox');
-  var baseAddrBox = $('#baseAddr');
-  var detailAddrBox = $('#detailAddr');
-  var oMsg = $('#addressMsg');
-  
-  if (post == "") {
-    showErrorMsg(oMsg, "우편번호찾기를 눌러 주소를 검색하신 후 입력해주세요.");
-    showErrorBox(postBox);
-    showErrorBox(baseAddrBox);
-    showErrorBox(detailAddrBox);
-    return false;
-  }
-
-  showDefaultBox(postBox);
-  showDefaultBox(baseAddrBox);
-  showDefaultBox(detailAddrBox);
-  hideMsg(oMsg);
-  return true;
-}
-
-function checkBirthday() {
-  var birthday;
-  var birthdaySave;
-  var yy = $('#yy').val();
-  var mm = $('#mm').val();
-  var dd = $('#dd').val();
-  var oMsg = $('#birthdayMsg');
-  var lang = "ko_KR";
-  var biryy = $('#biryy');
-  var birmm = $('#birmm');
-  var birdd = $('#birdd');
-
-  showDefaultBox(biryy);
-  showDefaultBox(birmm);
-  showDefaultBox(birdd);
-
-  if (yy == "" && mm == "month" && dd == "") {
-    showErrorMsg(oMsg, "생년월일을 정확하게 입력하세요.");
-    showErrorBox(biryy);
-    showErrorBox(birmm);
-    showErrorBox(birdd);
-    return false;
-  }
-
-  if (mm.length == 1) {
-    mm = "0" + mm;
-  }
-
-  if (dd.length == 1) {
-    dd = "0" + dd;
-  }
-
-  if (yy == "") {
-    showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
-    showErrorBox(biryy);
-    return false;
-  }
-  if (yy.length != 4 || yy.indexOf('e') != -1 || yy.indexOf('E') != -1 ) {
-    showErrorMsg(oMsg, "출생년도 4자리를 정확하게 입력하세요.");
-    showErrorBox(biryy);
-    return false;
-  }
-  if (mm == "month") {
-    showErrorMsg(oMsg, "태어난 월을 선택하세요.");
-    showErrorBox(birmm);
-    return false;
-  }
-  if (dd == "") {
-    showErrorMsg(oMsg, "태어난 일(날짜) 2자리를 정확하게 입력하세요.");
-    showErrorBox(birdd);
-    return false;
-  }
-  if (dd.length != 2 || dd.indexOf('e') != -1 || dd.indexOf('E') != -1) {
-    showErrorMsg(oMsg, "태어난 일(날짜) 2자리를 정확하게 입력하세요.");
-    showErrorBox(birdd);
-    return false;
-  }
-
-  birthday = yy + mm + dd;
-  if (!isValidDate(birthday)) {
-    showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
-    showErrorBox(biryy);
-    showErrorBox(birmm);
-    showErrorBox(birdd);
-    return false;
-  }
-  birthdaySave = yy + "-" + mm + "-" + dd;
-  $("#birthday").val(birthdaySave);
-
-  var age = calcAge(birthday);
-  if (age < 0) {
-    showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
-    showErrorBox(biryy);
-    showErrorBox(birmm);
-    showErrorBox(birdd);
-    return false;
-  } else if (age >= 100) {
-    showErrorMsg(oMsg, "생년월일을 다시 확인해주세요.");
-    showErrorBox(biryy);
-    showErrorBox(birmm);
-    showErrorBox(birdd);
-    return false;
-  } else if (age < 14) {
-    showErrorMsg(oMsg, "14세미만 회원에게는 서비스를 제공하지 않습니다.");
-    showErrorBox(biryy);
-    showErrorBox(birmm);
-    showErrorBox(birdd);
-    return false;
-  } else {
-    showDefaultBox(biryy);
-    showDefaultBox(birmm);
-    showDefaultBox(birdd);
-    hideMsg(oMsg);
-    return true;
-  }
-  return true;
-}
-
-function isValidDate(param) {
-  try {
-    param = param.replace(/-/g, '');
-
-    if (isNaN(param) || param.length != 8) {
-      return false;
-    }
-
-    var year = Number(param.substring(0, 4));
-    var month = Number(param.substring(4, 6));
-    var day = Number(param.substring(6, 8));
-
-    if (month < 1 || month > 12) {
-      return false;
-    }
-
-    var maxDaysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    var maxDay = maxDaysInMonth[month - 1];
-
-    // 윤년 체크
-    if (month == 2 && (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)) {
-      maxDay = 29;
-    }
-    
-    if (day <= 0 || day > maxDay) {
-      return false;
-    }
-
-    return true;
-  } catch (err) {
-    return false;
-  }
-}
-
-function calcAge(birth) {
-  var date = new Date();
-  var year = date.getFullYear();
-  var month = (date.getMonth() + 1);
-  var day = date.getDate();
-  if (month < 10) {
-    month = '0' + month;
-  }
-  if (day < 10) {
-    day = '0' + day;
-  }
-  var monthDay = month + '' + day;
-
-  birth = birth.replace('-', '').replace('-', '');
-
-  var birthdayy = birth.substr(0, 4);
-  var birthdaymd = birth.substr(4, 8);
-  var age = monthDay < birthdaymd ? year -birthdayy - 1 : year - birthdayy;
-  return age;
 }
 
 function checkId(event) {
@@ -872,7 +597,7 @@ function checkPswd2() {
 
 function checkName() {
   var oMsg = $('#nameMsg');
-  var nonchar = /[^가-힣a-zA-Z0-9]/gi;
+  var nonchar = /[^가-힣a-zA-Z]/gi;
   var oImg = $('#nameImg');
   var name = $('#name').val();
 
@@ -888,21 +613,6 @@ function checkName() {
   }
 
   showDefaultBoxByOK(oImg);
-  hideMsg(oMsg);
-  return true;
-}
-
-function checkGender() {
-  var gender = $('#gender').val();
-  var oMsg = $('#genderMsg');
-  var oBox = $('#genderBox');
-
-  if (gender == "") {
-    showErrorMsg(oMsg, "성별을 선택해주세요.");
-    showErrorBox(oBox);
-    return false;
-  }
-  showDefaultBox(oBox);
   hideMsg(oMsg);
   return true;
 }
@@ -1050,12 +760,12 @@ function checkAuthNo() {
   var oBox = $('#authNoBox');
   var isNum = /^[0-9]+$/;
 
-/*   if (authNo == "") {
+  if (authNo == "") {
     showErrorMsg(oMsg, "인증번호를 입력해주세요.");
     showErrorBoxByError(oBox);
     return false;
   }
-   */
+  
   if (!isNum.test(authNo)) {
     showErrorMsg(oMsg, "숫자만 입력할 수 있습니다.");
     showErrorBoxByError(oBox);
@@ -1136,6 +846,62 @@ function debounce(func, wait, immediate) {
     if (callNow) func.apply(context, args);
   };
 };
+
+
+
+function setTerms() {
+  if ($("#chk_all").is(":checked")) {
+    $("#termsService").prop("checked",true);
+    $("#termsPrivacy").prop("checked",true);
+    $("#termsThirdParty").prop("checked",true);
+    $("#termsMarketing").prop("checked",true);
+  } else {
+    $("#termsService").prop("checked",false);
+    $("#termsPrivacy").prop("checked",false);
+    $("#termsThirdParty").prop("checked",false);
+    $("#termsMarketing").prop("checked",false);
+  }
+
+  return true;
+}
+
+function viewTerms() {
+
+  if( !$("#termsService").is(":checked") ||
+      !$("#termsPrivacy").is(":checked") ||
+      !$("#termsThirdParty").is(":checked") ||
+      !$("#termsMarketing").is(":checked")) {
+    
+    $("#chk_all").prop("checked",false);
+  }
+
+  if( $("#termsService").is(":checked") &&
+      $("#termsPrivacy").is(":checked") &&
+      $("#termsThirdParty").is(":checked") &&
+      $("#termsMarketing").is(":checked")) {
+    
+    $("#chk_all").prop("checked",true);
+  }
+
+  return true;
+}
+
+function checkTerms() {
+  var res = true;
+
+  if ($("#termsService").is(":checked") == false ||
+      $("#termsPrivacy").is(":checked") == false ||
+      $("#termsThirdParty").is(":checked") == false) {
+    
+    $('#agreeMsg').show();
+    res = false;
+  } else {
+    $('#agreeMsg').hide();
+  }
+
+  return res;
+}
+
 
 
 </script>

@@ -212,13 +212,13 @@ CREATE TABLE mbr (
   gndr       CHAR(2)      NULL     DEFAULT "무" COMMENT '성별', -- 성별
   tel        VARCHAR(30)  NOT NULL COMMENT '휴대폰번호', -- 휴대폰번호
   email      VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
-  post       INTEGER      NULL     COMMENT '우편번호', -- 우편번호
+  post       CHAR(5)      NULL     COMMENT '우편번호', -- 우편번호
   bas_addr   VARCHAR(255) NULL     COMMENT '기본주소', -- 기본주소
   det_addr   VARCHAR(255) NULL     COMMENT '상세주소', -- 상세주소
   prof_phot  MEDIUMTEXT   NULL     COMMENT '프로필사진', -- 프로필사진
   s_intd     TEXT         NULL     COMMENT '자기소개', -- 자기소개
-  login_type VARCHAR(255) NOT NULL COMMENT '로그인유형', -- 로그인유형
-  stat       VARCHAR(255) NULL     DEFAULT "정상" COMMENT '상태', -- 상태
+  login_type VARCHAR(20)  NOT NULL COMMENT '로그인유형', -- 로그인유형
+  stat       VARCHAR(20)  NULL     DEFAULT "정상" COMMENT '상태', -- 상태
   cdt        DATETIME     NULL     DEFAULT now() COMMENT '가입일', -- 가입일
   lcd        DATETIME     NULL     DEFAULT now() COMMENT '최근접속일', -- 최근접속일
   mgr        BOOLEAN      NULL     DEFAULT 0 COMMENT '관리자여부' -- 관리자여부
