@@ -13,6 +13,8 @@
 <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
 <!-- commonSidebar css -->
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+<!-- footer.css --> 
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <!-- Bootstrap core CSS --> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">  
@@ -24,14 +26,12 @@
 <link rel="stylesheet" href="${contextRootPath}/css/team.css">
  <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
  <link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
-
-
-</head>  
+</head>   
+  
  
-
 <body> 
-<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
-
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/> 
+ 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
   <div class="container">   
     <br>
@@ -42,10 +42,8 @@
       <h5 >검색기능을 사용하여 원하는 종목의 <br> 팀을 찾아 조회 하세요.</h5> 
     </div> 
  
-
-
      <span class="category1">
-     <select class="select" id="teamSportsId" name='teamSportsId' onchange="changeItem()"> 
+     <select class="form-control select" id="teamSportsId" name='teamSportsId' onchange="changeItem()"> 
           <option>전체</option>
       <c:forEach items="${teamTypeSports}" var="typeSports">
            <option value="${typeSports.teamSportsTypeId}"
@@ -53,20 +51,15 @@
           </option>
       </c:forEach> 
     </select> 
-    
-
-    
- 
-    
      </span>
-     
+      
       <div>
       <div class="md-form">
        <input autocomplete=off type="text" id="inputIconEx2"
-          class="form-control" aria-describedby="emailHelp" name='keyword' autocomplete=off>
+          class="form-control" aria-describedby="emailHelp" name='keyword' autocomplete=off> 
         <label for="inputIconEx2">키워드 검색</label> 
-      </div> 
-    </div> 
+      </div>  
+    </div>  
      
       <!-- <input type='search' id="keyword" name='keyword' placeholder="키워드를 입력하세요" autocomplete=off> -->
      <br>
@@ -98,7 +91,7 @@
           <c:forEach items="${teamMembers}" var="teamMember">
              <c:if test="${team.teamId eq teamMember.teamMemberNo}">
               <ul class="mbrlist">
-              <li class="mbrNo" id="mbrNo">
+              <li class="mbrNo" id="mbrNo">   
               ${teamMember.teamMemberNo}
               </li>
                 <li class="mbrName" id="mbrName">
@@ -121,10 +114,10 @@
       </div> 
     </div> 
     <div class="detail"> 
-    <div class="suvdetail"><h1 class="detailText">팀 상세 정보</h1></div> 
+    <div class="suvdetail"><h1 class="detailText"><b>팀 상세 정보</b></h1></div> 
     <div class="col-lg-12" id="teamInfo"></div>
-    <div class="col-lg-12" id="teamMemberInfo">
-      <div class="infoText"> 
+    <div class="col-lg-12" id="teamMemberInfo"> 
+      <div class="infoText">  
         <div class="tmcategory">  
           <span><b>팀원</b></span>      
           <span><b>포지션</b></span><br>    
@@ -132,25 +125,32 @@
         </div>  
       </div>
       <div id="finallist"></div>
+
     </div>
 </div>
   </div>
-  
   <!-- JQuery -->
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/> 
   
   <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
 
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/> 
+
   <jsp:include page="../javascript.jsp" />
   <!-- jPList Library -->
-        <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
+        <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script> 
         <script>
-            jplist.init();
+            jplist.init();  
         </script>
-        
+         
+
   <script type="text/javascript">
- 
+  
+  $(document).ready(function() {
+    $('.mdb-select').materialSelect();
+    });
   
   function changeItem(){
     // 종목 선택시 콘솔 출력 
