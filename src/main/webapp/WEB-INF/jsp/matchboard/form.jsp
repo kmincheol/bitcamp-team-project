@@ -94,7 +94,7 @@
     <tr>
       <th scope="row">경기장</th>
       <td>
-        <input type="text" class="form-control-sm" name="stadiumName">
+        <input id="pInput" type="text" class="form-control-sm" name="stadiumName" readonly> <button type="button" onclick="openMap()">검색</button>
       </td>
     </tr>
     
@@ -153,7 +153,18 @@
 </form>
   </div> <!-- .container -->
     <script type="text/javascript">
-
+    
+    var openWin;
+    
+    function openMap()
+    {
+        // window.name = "부모창 이름"; 
+        window.name = "parentForm";
+        // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+        openWin = window.open("${contextRootPath}/app/matchboard/map.jsp",
+                "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
+    }
+    
     	function getDate() {
     	  var today = new Date();
     	  var dd = today.getDate();

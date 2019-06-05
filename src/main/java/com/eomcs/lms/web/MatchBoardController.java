@@ -52,6 +52,14 @@ public class MatchBoardController {
   }
   
   
+  @GetMapping("map")
+  public void map() {
+  }
+  
+  @GetMapping("map2")
+  public void map2() {
+  }
+  
   
   @GetMapping("list3")
   public void list3() {
