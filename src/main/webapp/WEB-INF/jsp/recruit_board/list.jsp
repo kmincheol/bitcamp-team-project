@@ -139,10 +139,10 @@ vertical-align: center;
             <!-- 제목 -->
             <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
             <!-- 팀명 -->     
-            <td><a tabindex="0" role="button"
+            <td><a id="openTm" tabindex="0" role="button"
               data-toggle="popover" data-trigger="focus" title="팀명 : ${list.team.teamName }"
               data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>
-              <a href='#' title='test add link'>상세정보</a>">${list.team.teamName }</a>
+              <a title='test add link'>상세정보</a>">${list.team.teamName }</a>
               </td>
             <!-- 지역 -->     
             <td>${list.team.teamArea }</td>
@@ -185,7 +185,20 @@ vertical-align: center;
 	})
 </script>
 
+
   <script>
+  
+ var openWin; 
+$('#openTm').on('click', function(){ 
+	 // window.name = "부모창 이름"; 
+    window.name = "parentForm";
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+    window.open("${contextRootPath}/app/team",
+            "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
+}); 
+
+
+
 			var lang_kor = {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
