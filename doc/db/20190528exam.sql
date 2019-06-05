@@ -19,7 +19,8 @@ insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_
 values(9,'hoho',password('1111'),'test8','1967-01-01','여','010-1322-5255','test9@gmail.com',33333,'인천','연수동','google');
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
 values(10,'kmc',password('1111'),'kmc','1967-01-01','여','010-1322-5253','kmc@gmail.com',33333,'인천','연수동','google');
-
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values(11,'ho5ho',password('1111'),'마동석','1967-01-01','남','010-1322-5253','km2c@gmail.com',33333,'인천','연수동','google');
 -- 연령대데이터
 insert into age(age_id, ages)
 values(1,'under');
@@ -128,6 +129,30 @@ insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(8,9,0,'공격수');
 insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
 values(8,10,0,'공격수');
+
+-- 11번팀 팀원
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,1,0,'테스트');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,2,0,'호랑이');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,3,0,'포워드');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,4,0,'프로게이머');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,5,1,'프로게이머');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,6,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,7,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,8,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,9,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,10,0,'공격수');
+insert into tm_mbr(tm_mbr_id,mbr_id,tlead_wth,pstn)
+values(11,11,0,'공격수');
 
 
 
