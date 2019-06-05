@@ -10,24 +10,19 @@
     <id column="terms_optn_id" property="no"/>
     <result column="mbr_id"  property="memberNo"/>
     <result column="terms_req"   property="termsRequired"/>
-    <result column="mkt_email"  property="termsEmail"/>
-    <result column="mkt_sms"  property="termsSms"/>
+    <result column="mkt"  property="termsMarketing"/>
     <result column="agr_dt" property="agreeDate"/>
   </resultMap>
-  
-  
   
   <insert id="insert" parameterType="termsAgree">
     insert into terms_optn(
       mbr_id,
       terms_req,
-      mkt_email,
-      mkt_sms
+      mkt
     ) values (
       #{memberNo},
       #{termsRequired},
-      #{termsEmail},
-      #{termsSms}
+      #{termsMarketing}
     )
   </insert>
   

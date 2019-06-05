@@ -17,6 +17,7 @@ public interface MemberDao {
   Member findByNameWithEmail(Member member);
   int update(Member member);
   int updatePassword(Member member);
+  int updateOption(Member member);
   int delete(int no);
   List<Team> findByteam(int no);
 }

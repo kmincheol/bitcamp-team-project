@@ -11,8 +11,7 @@ public class TermsAgree implements Cloneable, Serializable {
   int no;
   int memberNo;
   boolean termsRequired;
-  boolean termsEmail;
-  boolean termsSms;
+  boolean termsMarketing;
   
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   Date agreeDate;
@@ -20,8 +19,7 @@ public class TermsAgree implements Cloneable, Serializable {
   @Override
   public String toString() {
     return "TermsAgree [no=" + no + ", memberNo=" + memberNo + ", termsRequired=" + termsRequired
-        + ", termsEmail=" + termsEmail + ", termsSms=" + termsSms + ", agreeDate=" + agreeDate
-        + "]";
+        + ", termsMarketing=" + termsMarketing + ", agreeDate=" + agreeDate + "]";
   }
 
   public int getNo() {
@@ -48,20 +46,12 @@ public class TermsAgree implements Cloneable, Serializable {
     this.termsRequired = termsRequired;
   }
 
-  public boolean isTermsEmail() {
-    return termsEmail;
+  public boolean isTermsMarketing() {
+    return termsMarketing;
   }
 
-  public void setTermsEmail(boolean termsEmail) {
-    this.termsEmail = termsEmail;
-  }
-
-  public boolean isTermsSms() {
-    return termsSms;
-  }
-
-  public void setTermsSms(boolean termsSms) {
-    this.termsSms = termsSms;
+  public void setTermsMarketing(boolean termsMarketing) {
+    this.termsMarketing = termsMarketing;
   }
 
   public Date getAgreeDate() {
@@ -71,4 +61,5 @@ public class TermsAgree implements Cloneable, Serializable {
   public void setAgreeDate(Date agreeDate) {
     this.agreeDate = agreeDate;
   }
+
 }

@@ -15,6 +15,7 @@ public interface MemberService {
   Member checkId(String userId);
   int update(Member member);
   int updatePassword(Member member);
+  int updateOption(Member member);
   int delete(int no);
   List<Team> get2(int no); 
 }

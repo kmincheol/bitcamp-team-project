@@ -140,30 +140,16 @@
       user_id,
       pwd,
       name,
-      bth_dt,
-      gndr,
       tel,
       email,
-      post,
-      bas_addr,
-      det_addr,
       login_type
-      <if test="photo != null">,prof_phot</if>
-      <if test="selfIntroduce != null">,s_intd</if>
       ) values(
       #{id},
       password(#{password}),
       #{name},
-      #{birthDay},
-      #{gender},
       #{tel},
       #{email},
-      #{post},
-      #{baseAddress},
-      #{detailAddress},
       #{loginType}
-      <if test="photo != null">,#{photo}</if>
-      <if test="selfIntroduce != null">,#{selfIntroduce}</if>
       )
   </insert>
   
@@ -186,6 +172,22 @@
     update mbr
     <set>
       <if test="password != null">pwd = password(#{password})</if>
+    </set>  
+    where 
+      mbr_id = #{no}
+  </update>
+  
+  <update id="updateOption" parameterType="member">
+    update mbr
+    <set>
+      mbr_id = #{no},
+      <if test="birthDay != null">bth_dt = #{birthDay},</if>
+      <if test="gender != null and gender != ''">gndr = #{gender},</if>
+      <if test="photo != null and photo != ''">prof_phot = #{photo},</if>
+      <if test="post != null and post != 0">post = #{post},</if>
+      <if test="baseAddress != null and baseAddress != ''">bas_addr = #{baseAddress},</if>
+      <if test="detailAddress != null and detailAddress != ''">det_addr = #{detailAddress},</if>
+      <if test="selfIntroduce != null and selfIntroduce != ''">s_intd = #{selfIntroduce}</if>
     </set>  
     where 
       mbr_id = #{no}

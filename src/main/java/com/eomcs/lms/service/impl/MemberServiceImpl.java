@@ -80,6 +80,11 @@ public class MemberServiceImpl implements MemberService {
   }
   
   @Override
+  public int updateOption(Member member) {
+    return memberDao.updateOption(member);
+  }
+  
+  @Override
   public int delete(int no) {
     return memberDao.delete(no);
   }

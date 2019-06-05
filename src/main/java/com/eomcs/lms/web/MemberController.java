@@ -1,13 +1,12 @@
 package com.eomcs.lms.web;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.AuthKey;
 import com.eomcs.lms.domain.Member;
@@ -44,7 +43,6 @@ public class MemberController {
   public void agree() {
   }
   
-  
   @GetMapping("agreeTerms")
   public void agreeTerms() {
   }
@@ -53,52 +51,18 @@ public class MemberController {
   public void invalid() {
   }
   
-  @PostMapping("checkTerms")
-  public String checkTerms(
-      Boolean termsService,
-      Boolean termsPrivacy,
-      Boolean termsThirdParty,
-      Boolean termsEmail,
-      Boolean termsSms,
-      HttpSession session,
-      HttpServletRequest request,
-      HttpServletResponse response,
-      Model model) throws Exception {
-    
-    TermsAgree termsAgree = new TermsAgree();
-
-    if (termsService == null ||
-        termsPrivacy == null ||
-        termsThirdParty == null) {
-      
-      throw new RuntimeException("회원가입약관의 필수사항에 동의하지 않으시면 가입하실 수 없습니다.");
-    } else {
-      termsAgree.setTermsRequired(true);
-    }
-      
-    if (termsEmail == null) {
-      termsAgree.setTermsEmail(false);
-    } else {
-      termsAgree.setTermsEmail(true);
-    }
-    
-    if (termsSms == null) {
-      termsAgree.setTermsSms(false);
-    } else {
-      termsAgree.setTermsSms(true);
-    }
-    
-    // 약관정보 다시 설정시 재발급
-    if (session.getAttribute("termsAgree") != null) {
-      session.removeAttribute("termsAgree");
-    }
-    
-    // 톰캣 기본 유지시간 30분 이용
-    session.setAttribute("termsAgree", termsAgree);
-    
-    return "redirect:form";
+  @GetMapping("complete")
+  public void complete() {
   }
   
+  @GetMapping("newForm")
+  public void newForm() {
+  }
+  
+  @GetMapping("optionalForm")
+  public void optionalForm() {
+  }
+
   @GetMapping("form")
   public void form() {
   }
@@ -278,14 +242,57 @@ public class MemberController {
   }
 
   @PostMapping("enter")
-  public String add(Member member, HttpSession session) throws Exception {
+  public String add(
+      Member member, 
+      TermsAgree termsAgree,
+      Boolean termsService,
+      Boolean termsPrivacy,
+      Boolean termsThirdParty,
+      HttpSession session) throws Exception {
     
-    TermsAgree termsAgree = (TermsAgree) session.getAttribute("termsAgree");
+    if (termsService && termsPrivacy && termsThirdParty) {
+      termsAgree.setTermsRequired(true);
+    }
+    
     memberService.add(member, termsAgree);
     
-    session.invalidate();
-
+    // 회원가입 후 자동로그인처리
+    Member newMember = memberService.get(member.getNo());
+      
+    if (newMember == null) {
+      return "invalid";
+    }
+    
+    session.setAttribute("loginUser", newMember);
+    
     return "redirect:signUpCompletion";
+  }
+  
+  @PostMapping("updateOption")
+  public String updateOption(
+      Member member, 
+      HttpSession session) throws Exception {
+   
+    Member loginMember = (Member) session.getAttribute("loginUser");
+
+    String compareValue = member.getBirthDay().toString().replace("-", "");
+    logger.info("birthDayValue >>" + compareValue);
+    if (compareValue.equals("10000101")) {
+      member.setBirthDay(loginMember.getBirthDay());
+    }
+        
+    int postValue = member.getPost();
+    if (postValue == 99999) {
+      member.setPost(0);
+    }
+    
+    member.setNo(loginMember.getNo());
+    
+    memberService.updateOption(member);
+    
+    session.invalidate();
+    
+    return "redirect:complete";
   }
 
   @GetMapping("delete/{no}")
