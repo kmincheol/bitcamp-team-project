@@ -1,24 +1,3 @@
-*{
-  margin: 0px;
-  padding: 0px;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
-.container {
- width: auto;
-  height: auto;
-  min-height: 100%;
-  padding: 0px;
-  margin: 0 auto;
-   text-align: center;
-}
-
 #main-text {
   position: relative;
   text-align: center;
@@ -28,16 +7,24 @@ body, html {
   margin-bottom: 15px;
 }
 
+#main-text h2 {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+} 
 
-#main-text>h1 {
-  position: relative;
-  top: 90px;
-  color: black;
+#main-text h2 img {
+	 width: 30px;
+  height: 30px;
+  margin-bottom: 25px;
+  margin-right: 5px;
 }
 
-#btnbtn{
+
+#btnbtn{ 
 	 float: right; 
 }
 
 
 
+   

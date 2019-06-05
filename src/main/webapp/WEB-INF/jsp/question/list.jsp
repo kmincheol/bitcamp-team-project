@@ -7,25 +7,28 @@
 <html>
 
 <head>
-<jsp:include page="../header.jsp" />
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
-<!-- header.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
 <!-- footer.css -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
-<!-- Your custom styles (optional) -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
-<!-- MDBootstrap Datatables  -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
-
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
 <link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
-<!-- recruit_board_list.css -->
+
 <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+
 
 
 <style>
@@ -73,96 +76,87 @@ background-color: #e5ebee;
 </head>
 
 <body>
-<%-- <div>
- <a class="btn btn-outline-dark btn-block"  style =" width:500px" href="${contextRootPath}/app/question/form" >FAQ</a>
-        <a class="btn  btn-outline-dark btn-block"  style =" width:500px" href="${contextRootPath}/app/question/"> 1:1 문의</a>
-    <br><br>    
-</div> --%>
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
 
-  <div  class="container">
-      <div id="main-text">
-         <h1 >고객 센터</h1>   
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
+
+  <div id="main-wrap" class="container">
+  
+    <div id="main-text">
+      <h2><img src="${contextRootPath}/images/headset.png">고객 센터</h2>
     </div>
-
-<div id="divdiv">
-<br>  
-  <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
-      <thead>
-        <tr>
-          <th scope="col">번호</th>
-          <th scope="col">제목</th>
-          <th scope="col">작성자</th>
-          <th scope="col">작성일</th>
-          <th scope="col">답변상태</th>
-        </tr>
-      </thead>
-      <tbody>
-        <c:forEach items="${question}" var="question">
+      
+      <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
+        <thead>
           <tr>
-            <td>${question.questionNo}</td>
-            <td><c:choose>
-                <c:when test="${member.no == question.memberNo || member.no == 1}">
-                  <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
-                  <c:if test="${question.password == 'true' }">
-                    <img src="${contextRootPath}/images/locked.png" style="width: 20px">
-                  </c:if>
-                </c:when>
-                <c:otherwise>
-                  <c:choose>
-                    <c:when test="${question.password == true }">
-                      <a href="${contextRootPath}/app/question/${question.questionNo}"
-                        onclick="return aa()">${question.title}</a>
-                      <img src="${contextRootPath}/images/locked.png" style="width: 20px">
-                    </c:when>
-                    <c:otherwise>
-                      <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
-                    </c:otherwise>
-                  </c:choose>
-                </c:otherwise>
-              </c:choose>
-            <td>${question.member.id}</td>
-            <td>${question.createdDate}</td>
-
-            <td><c:choose>
-                <c:when test="${(question.questionStatus) == 'false'}">
-                     <button type="button" class="btn btn-outline-dark btn-sm" >답변대기</button>
-                 </c:when>
-                <c:otherwise>
-               <button type="button" class="btn btn-outline-danger btn-sm">답변완료</button>
-                </c:otherwise>
-              </c:choose>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">작성일</th>
+            <th scope="col">답변상태</th>
           </tr>
-        </c:forEach>
-      </tbody>
-    </table>
-</div>
+        </thead>
+        <tbody>
+          <c:forEach items="${question}" var="question">
+            <tr>
+              <td>${question.questionNo}</td>
+              <td><c:choose>
+                  <c:when test="${member.no == question.memberNo || member.no == 1}">
+                    <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
+                    <c:if test="${question.password == 'true' }">
+                      <img src="${contextRootPath}/images/locked.png" style="width: 20px">
+                    </c:if>
+                  </c:when>
+                  <c:otherwise>
+                    <c:choose>
+                      <c:when test="${question.password == true }">
+                        <a href="${contextRootPath}/app/question/${question.questionNo}"
+                          onclick="return aa()">${question.title}</a>
+                        <img src="${contextRootPath}/images/locked.png" style="width: 20px">
+                      </c:when>
+                      <c:otherwise>
+                        <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
+                      </c:otherwise>
+                    </c:choose>
+                  </c:otherwise>
+                </c:choose>
+              <td>${question.member.id}</td>
+              <td>${question.createdDate}</td>
+
+              <td><c:choose>
+                  <c:when test="${(question.questionStatus) == 'false'}">
+                    <button type="button" class="btn btn-outline-dark btn-sm">답변대기</button>
+                  </c:when>
+                  <c:otherwise>
+                    <button type="button" class="btn btn-outline-danger btn-sm">답변완료</button>
+                  </c:otherwise>
+                </c:choose>
+            </tr>
+          </c:forEach>
+        </tbody>
+      </table>
+    </div>
 
 
     <c:if test="${sessionScope.loginUser.no == 1}">
-      <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question/answerlist">답변 목록</a>
+      <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question/answerlist">답변
+        목록</a>
     </c:if>
     <div id="btnbtn">
       <c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.no != 1}">
-        <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question/form" >문의 하기</a>
-        <a class="btn  btn-outline-dark" href="${contextRootPath}/app/question/mylist/${member.no}"> 나의 문의내역</a>
+        <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question/form">문의
+          하기</a>
+        <a class="btn  btn-outline-dark" href="${contextRootPath}/app/question/mylist/${member.no}">
+          나의 문의내역</a>
       </c:if>
     </div>
 
-  </div>
-<jsp:include page="../footer.jsp" />
 
- <script type="text/javascript"
-    src="${contextRootPath}/node_modules/mdbootstrap/js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript"
-    src="${contextRootPath}/node_modules/mdbootstrap/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="${contextRootPath}/node_modules/mdbootstrap/js/mdb.min.js"></script>
-  <!-- MDBootstrap Datatables  -->
-  <script type="text/javascript"
-    src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  
+    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
 
   <script>
 			function aa() {
