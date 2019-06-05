@@ -12,22 +12,31 @@
 <!-- header -->
 <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
 
-<!-- footer.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-
 <!-- commonSidebar css -->
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
 <!-- recruit_board_form.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_form.css">
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_form.css">
+      
 
-<style>
-
-</style>
 </head>
 
 <body>
@@ -98,7 +107,7 @@
     
    <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
   
-  <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+   <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
   
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
   

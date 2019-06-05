@@ -22,7 +22,10 @@
 <!-- detail css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_detail.css">
               
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -32,7 +35,7 @@
   
   <div id="main-wrap" class="container">
     <div id="main-text">
-      <h2>게시글</h2>
+      <h2><img src="${contextRootPath}/images/open-book.png">게시글</h2>
     </div>
       <form action='update' method='post' name="remove" enctype='multipart/form-data'>
         <div id="title-wrap" class="form-group row">
