@@ -91,10 +91,6 @@ public class RecruitBoardController {
     
     model.addAttribute("list", teamRecruits);
     model.addAttribute("member", member);
-
-    for(TeamRecruit t : teamRecruits) {
-       System.out.println(t.getTeamAges().getAges());
-    }
     
     return "recruit_board/list";
   }

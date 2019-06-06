@@ -141,7 +141,7 @@ table tbody tr {
             <!-- 팀명 -->
             <td><a tabindex="0" class="btn popovers" role="button" data-toggle="popover" data-trigger="focus"
               title="팀명 : ${list.team.teamName }"
-              data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>연령대 : ${list.teamAges.ages}<br>
+              data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>연령대 : ${list.teamAges.teamAges}<br>
               <a href='' title='test add link'>상세정보</a>" style="cursor: pointer">${list.team.teamName }</a>
             </td>
             <!-- 상세정보검색 -->

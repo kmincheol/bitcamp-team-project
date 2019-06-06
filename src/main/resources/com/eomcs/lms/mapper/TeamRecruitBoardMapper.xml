@@ -40,7 +40,7 @@
   
    <association property="teamAges" javaType="TeamAges">
     <id column="age_id" property="teamAgeId" />
-    <result column="ages" property="ages" />
+    <result column="ages" property="teamAges" />
   </association>
   
   </resultMap>
