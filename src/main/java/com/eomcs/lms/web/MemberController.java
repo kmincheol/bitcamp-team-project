@@ -1,12 +1,11 @@
 package com.eomcs.lms.web;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
@@ -19,13 +18,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.AuthKey;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.AuthKeyService;
 import com.eomcs.lms.service.EmailService;
+import com.eomcs.lms.service.FacebookService;
 import com.eomcs.lms.service.MemberService;
 
 @Controller
@@ -37,6 +36,7 @@ public class MemberController {
   @Autowired MemberService memberService;
   @Autowired AuthKeyService authKeyService;
   @Autowired EmailService emailService;
+  @Autowired FacebookService facebookService;
   @Autowired ServletContext servletContext;
   
   @GetMapping("invalid")
@@ -66,6 +66,11 @@ public class MemberController {
   
   @GetMapping("findPassword")
   public void findPassword() {
+  }
+  
+  @GetMapping("fbJoin")
+  public void fbJoin(String accessToken, HttpSession session) {
+    session.setAttribute("accessToken", accessToken);
   }
 
   @RequestMapping(value="checkEmail", produces="text/plain;charset=UTF-8")
@@ -255,6 +260,50 @@ public class MemberController {
     session.setAttribute("loginUser", newMember);
     
     return "redirect:signUpCompletion";
+  }
+  
+  @SuppressWarnings("rawtypes")
+  @GetMapping("snsEnter")
+  public Object snsEnter(
+      Member member, 
+      TermsAgree termsAgree,
+      String accessToken,
+      HttpSession session) {
+    
+    HashMap<String,Object> content = new HashMap<>();
+    
+    if (member.getLoginType() == "facebook") {
+    Map fbLoginUser = facebookService.getLoginUser(accessToken);
+    
+    if ((String)fbLoginUser.get("email") == null ||
+        (String)fbLoginUser.get("email") == "") {
+      content.put("status", "notEmail");
+      
+      return content;
+    }
+    
+    member.setId("facebook-" + UUID.randomUUID().toString());
+    member.setName((String)fbLoginUser.get("name"));
+    member.setEmail((String)fbLoginUser.get("email"));
+    member.setPassword(UUID.randomUUID().toString());
+    }
+    
+    memberService.add(member, termsAgree);
+    
+    // 회원가입 후 자동로그인처리
+    Member newMember = memberService.get(member.getNo());
+      
+    if (newMember == null) {
+      content.put("status", "fail");
+      
+      return content;
+    }
+    
+    session.setAttribute("loginUser", newMember);
+    
+    content.put("status", "success");
+    
+    return content;
   }
   
   @PostMapping("option-update")

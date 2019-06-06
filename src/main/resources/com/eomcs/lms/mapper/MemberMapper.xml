@@ -140,14 +140,12 @@
       user_id,
       pwd,
       name,
-      tel,
       email,
       login_type
       ) values(
       #{id},
       password(#{password}),
       #{name},
-      #{tel},
       #{email},
       #{loginType}
       )
@@ -182,6 +180,7 @@
     <set>
       bth_dt = #{birthDay},
       gndr = #{gender},
+      tel = #{tel},
       post = #{post},
       bas_addr = #{baseAddress},
       <if test="photo != null and photo != ''">prof_phot = #{photo},</if>

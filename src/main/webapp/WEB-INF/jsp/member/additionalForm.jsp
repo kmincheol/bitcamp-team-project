@@ -82,6 +82,19 @@
                 <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
               </div>
               
+              <!-- mobile -->
+              <div class="join_row">
+                <h3 class="join_title">
+                  <label for="phoneNo">휴대전화</label>
+                </h3>
+                <div class="int_mobile_area">
+                  <span class="ps_box int_pass" id="telImg">
+                    <input type="tel" id="phoneNo" name="tel" placeholder="전화번호를 입력하세요." aria-label="전화번호를 입력하세요." class="int" maxlength="16">          
+                  </span>
+                </div>
+                <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
+              </div><!-- .join_row-->
+              
               <div class="row_group join_photo">
               <div class="join_row join_photo_title">
                 <h3 class="join_title" id="photo_title">
@@ -216,6 +229,10 @@ $(document).ready(function() {
   $('#gender').change(function() {
     checkGender();
   });
+  
+  $('#phoneNo').keyup(debounce(function() {
+    checkPhoneNo();
+  }, 500));
 
   $('#addressBtn').click(function() {
    execPostCode();
@@ -270,6 +287,7 @@ function checkUnrealInput() {
 
   if (checkBirthday() &
       checkGender() &
+      checkPhoneNo() & 
       checkAddress()
       ) {
         return true;
@@ -519,6 +537,35 @@ function checkGender() {
   showDefaultBox(oBox);
   hideMsg(oMsg);
   return true;
+}
+
+function checkPhoneNo() {
+  var phoneNo = $('#phoneNo').val();
+  var oMsg = $('#phoneNoMsg');
+  var oImg = $('#telImg');
+
+  if (phoneNo == "") {
+    showErrorMsg(oMsg, "전화번호를 입력해주세요.");
+    showErrorBoxByError(oImg);
+    return false;
+  }
+
+  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
+  
+  if (!isCellPhone(phoneNo)) {
+    showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
+    showErrorBoxByError(oImg);
+    return false;
+  }
+
+  hideMsg(oMsg);
+  showDefaultBoxByOK(oImg);
+  return true;
+}
+
+function isCellPhone(p) {
+  var regPhone = /^((01[1|6|7|8|9])[1-9][0-9]{6,7})$|(010[1-9][0-9]{7})$/;
+  return regPhone.test(p);
 }
 
 function debounce(func, wait, immediate) {

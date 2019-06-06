@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.eomcs.lms.dao.SnsLoginDao">
+
+  <resultMap type="snsLogin" id="snsLoginMap">
+    <id column="sns_login_id" property="no" />
+    <result column="sns_login_name" property="name" />
+    <result column="sns_login_user_id" property="id" />
+    <result column="sns_login_type" property="loginType" />
+  </resultMap>
+  
+  <select id="findBySnsLogin" resultMap="snsLoginMap" parameterType="snsLogin">
+    select 
+      sns_login_id,
+      sns_login_name,
+      sns_login_user_id,
+      sns_login_type
+    from 
+      sns_login
+    where 
+      sns_login_name = #{name}
+      and sns_login_user_id = #{id}
+      and sns_login_type = #{loginType}
+  </select>
+
+  <insert id="insert" parameterType="snsLogin"
+    useGeneratedKeys="true" keyColumn="sns_login_id" keyProperty="no">
+    insert into sns_login(
+      sns_login_name,
+      sns_login_user_id,
+      sns_login_type
+      ) values(
+      #{name},
+      #{id},
+      #{loginType}
+      )
+  </insert>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+

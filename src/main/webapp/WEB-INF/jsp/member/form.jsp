@@ -88,19 +88,6 @@
                 <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               </div>
             </div><!-- .row_group -->
-            
-            <!-- mobile -->
-            <div class="join_row join_mobile">
-              <h3 class="join_title">
-                <label for="phoneNo">휴대전화</label>
-              </h3>
-              <div class="int_mobile_area">
-                <span class="ps_box int_pass" id="telImg">
-                  <input type="tel" id="phoneNo" name="tel" placeholder="전화번호를 입력하세요." aria-label="전화번호를 입력하세요." class="int" maxlength="16">          
-                </span>
-              </div>
-              <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
-            </div><!-- .join_row-->
           </div><!-- .join_form_input -->
           
           <div class="terms_p">
@@ -258,10 +245,6 @@ $(document).ready(function() {
     checkAuthnoByAjax();
     return false;
   });
-
-  $('#phoneNo').keyup(debounce(function() {
-    checkPhoneNo();
-  }, 500));
   
   $("#chk_all").prop("checked",false);
   setTerms();
@@ -341,7 +324,6 @@ function checkUnrealInput() {
       checkPswd2() &
       checkName() &
       checkEmailText($('#email').val()) & 
-      checkPhoneNo() & 
       checkAuthNo()
       ) {
         return true;
@@ -615,35 +597,6 @@ function checkName() {
   showDefaultBoxByOK(oImg);
   hideMsg(oMsg);
   return true;
-}
-
-function checkPhoneNo() {
-  var phoneNo = $('#phoneNo').val();
-  var oMsg = $('#phoneNoMsg');
-  var oImg = $('#telImg');
-
-  if (phoneNo == "") {
-    showErrorMsg(oMsg, "전화번호를 입력해주세요.");
-    showErrorBoxByError(oImg);
-    return false;
-  }
-
-  phoneNo = phoneNo.replace(/ /gi, "").replace(/-/gi, "");
-  
-  if (!isCellPhone(phoneNo)) {
-    showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
-    showErrorBoxByError(oImg);
-    return false;
-  }
-
-  hideMsg(oMsg);
-  showDefaultBoxByOK(oImg);
-  return true;
-}
-
-function isCellPhone(p) {
-  var regPhone = /^((01[1|6|7|8|9])[1-9][0-9]{6,7})$|(010[1-9][0-9]{7})$/;
-  return regPhone.test(p);
 }
 
 function checkEmail() {
