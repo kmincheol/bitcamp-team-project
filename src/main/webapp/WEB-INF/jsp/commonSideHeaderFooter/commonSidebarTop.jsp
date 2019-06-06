@@ -59,6 +59,16 @@
                     href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
                 </div>
                 <button type="submit" class="login-btn">로그인</button>
+                <div class="form-group form-check" style="margin-bottom: 0;">
+                <a style="color: white; font-size: 10px; text-decoration: none;"
+                    href="${contextRootPath}/app/member/findUserId">아이디찾기</a>
+                 <lable style="color:white; font-size:10px;"> / </lable>
+                <a style="color: white; font-size: 10px; text-decoration: none;"
+                    href="${contextRootPath}/app/member/findPassword">비밀번호찾기</a>
+                  <lable style="color:white; font-size:10px;"> / </lable>
+                  <a style="color: white; font-size: 10px; text-decoration: none;"
+                    href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
+                </div> 
               </form>
             </c:otherwise> 
           </c:choose>
@@ -117,14 +127,13 @@
         <!-- sidebar-menu  -->
       </div>
       <!-- sidebar-content  -->
-      <div class="sidebar-footer">
+      <div class="sidebar-footer"> 
         <a href="#"> <i class="fa fa-bell"></i>
         </a> <a href="#"> <i class="fa fa-envelope"></i>
         </a> <a href="#"> <i class="fa fa-cog"></i>
-        </a> <a href="${contextRootPath}/app/auth/logout"> <i
-          class="fa fa-power-off"></i>
-        </a>
-      </div>
+        <a href="${contextRootPath}/app/auth/logout"> <i
+          class="fa fa-power-off"></i></a>
+        </c>
     </nav> 
     <!-- sidebar-wrapper  -->
     <!-- 본문 영역 -->
