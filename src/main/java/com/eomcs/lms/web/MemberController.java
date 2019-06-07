@@ -1,6 +1,5 @@
 package com.eomcs.lms.web;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -261,51 +260,7 @@ public class MemberController {
     
     return "redirect:signUpCompletion";
   }
-  
-  @SuppressWarnings("rawtypes")
-  @GetMapping("snsEnter")
-  public Object snsEnter(
-      Member member, 
-      TermsAgree termsAgree,
-      String accessToken,
-      HttpSession session) {
-    
-    HashMap<String,Object> content = new HashMap<>();
-    
-    if (member.getLoginType() == "facebook") {
-    Map fbLoginUser = facebookService.getLoginUser(accessToken);
-    
-    if ((String)fbLoginUser.get("email") == null ||
-        (String)fbLoginUser.get("email") == "") {
-      content.put("status", "notEmail");
-      
-      return content;
-    }
-    
-    member.setId("facebook-" + UUID.randomUUID().toString());
-    member.setName((String)fbLoginUser.get("name"));
-    member.setEmail((String)fbLoginUser.get("email"));
-    member.setPassword(UUID.randomUUID().toString());
-    }
-    
-    memberService.add(member, termsAgree);
-    
-    // 회원가입 후 자동로그인처리
-    Member newMember = memberService.get(member.getNo());
-      
-    if (newMember == null) {
-      content.put("status", "fail");
-      
-      return content;
-    }
-    
-    session.setAttribute("loginUser", newMember);
-    
-    content.put("status", "success");
-    
-    return content;
-  }
-  
+
   @PostMapping("option-update")
   public String updateOption(
       Member member, 

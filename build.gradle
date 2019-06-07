@@ -52,6 +52,12 @@ dependencies {
     // javax.activation - 메일전송
     compile group: 'javax.activation', name: 'activation', version: '1.1.1'
     
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.8'
+    
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    
     implementation 'com.google.guava:guava:26.0-jre'
     testImplementation 'junit:junit:4.12'
 }

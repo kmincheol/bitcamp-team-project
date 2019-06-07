@@ -1,6 +1,5 @@
 package com.eomcs.lms.web;
 import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.FacebookService;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.TeamService;
@@ -31,25 +31,22 @@ public class AuthController {
   @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   @Autowired FacebookService facebookService;
-  
-  @GetMapping("signUp2")
-  public void signUp2() {
+    
+  @GetMapping("test")
+  public void test() {
     
   }
   
-  @GetMapping("signUp3")
-  public void signUp3() {
-    
+  @GetMapping("facebookEnter")
+  public void facebookEnter() {
   }
   
-  @GetMapping("findId1")
-  public void findId1() {
-    
+  @GetMapping("facebookLoginSuccess")
+  public void facebookLoginSuccess() {
   }
   
-  @GetMapping("findPwd1")
-  public void findPwd1() {
-    
+  @GetMapping("facebookLoginFail")
+  public void facebookLoginFail() {
   }
   
   @GetMapping("form")
@@ -130,35 +127,42 @@ public class AuthController {
     return "redirect:/app/main";
   }
   
-  @SuppressWarnings("rawtypes")
-  @GetMapping("fblogin")
+  @RequestMapping("facebookSignin")
+  public String getfacebookSigninCode(HttpSession session) {
+    logger.debug("facebookSignin");
+
+    String facebookUrl = "https://www.facebook.com/v3.3/dialog/oauth?"+
+            "client_id="+ "564771240719772" +
+            "&redirect_uri=http://localhost:8080/bitcamp-team-project/app/auth/facebookAccessToken"+
+            "&scope=public_profile,email";
+
+    return "redirect:"+facebookUrl;
+  }
+  
+  @RequestMapping("facebookAccessToken")
+  public String getFacebookSignIn(String code, HttpSession session, String state) throws Exception {
+    logger.debug("facebookAccessToken / code : "+ code);
+    
+    // accessToken을 받아오고 세션에 토큰을 저장함.
+    String accessToken = facebookService.requesFaceBooktAccesToken(session, code);
+    
+    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
+    String url = facebookService.facebookUserDataLoadAndCheck(accessToken, session);
+    
+    return url;
+  }
+  
+  @RequestMapping("facebookEnter")
   @ResponseBody
-  public Object fblogin(
-      String accessToken,
-      HttpSession session) throws Exception {
-
-    // accessToken을 가지고 페이스북 서버에 로그인 사용자의 정보를 요청한다.
-
-    Map fbLoginUser = facebookService.getLoginUser(accessToken);
-    logger.info("fbLoginUser >>" + fbLoginUser);
-    // 페이스북에서 받은 사용자 정보 중에서 이메일을 가지고 회원 정보를 찾는다.
-    Member member = memberService.get((String)fbLoginUser.get("email"));
-    logger.info("member >>" + member);
+  public Object getFacebookEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
+    String accessToken = (String) session.getAttribute("faceBookAccessToken");
+    
+    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
+    String status = facebookService.facebookUserDataLoadAndSave(accessToken, session, termsAgree);
+    
     HashMap<String,Object> content = new HashMap<>();
+    content.put("status", status);
     
-    // 만약 소셜 사용자가 현재 사이트에 가입된 상태가 아니라면 가입시킨다.
-    if (member == null) {
-      // 토큰과 함께 필수 동의정보 확인하는 페이지로 보내기 위해 content 세팅함.
-      content.put("status", "success");
-      content.put("type", "join");
-      
-      return content;
-    }
-
-    session.setAttribute("loginUser", member);
-    
-    content.put("status", "success");
-
     return content;
   }
 }

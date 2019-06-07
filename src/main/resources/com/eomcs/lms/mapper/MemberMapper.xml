@@ -80,9 +80,10 @@
   
   <select id="findByEmail" resultMap="memberMap" parameterType="string">
     select
-      mbr_id,
-      user_id,
-      email
+      <include refid="default-columns"/>,
+      mgr,
+      prof_phot,
+      login_type
     from 
       mbr
     where 
