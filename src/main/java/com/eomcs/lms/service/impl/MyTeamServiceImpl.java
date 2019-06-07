@@ -44,6 +44,12 @@ public class MyTeamServiceImpl implements MyTeamService {
     return myteamDao.findByMyTeamMember2();
   }
 
+@Override
+public int delete(int tno, int mno) {
+	// TODO Auto-generated method stub
+	return myteamDao.delete(tno,mno);
+}
+
 
  
 }

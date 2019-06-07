@@ -82,7 +82,11 @@
       <id column="mbr_id" property="no" />
       <result column="user_id" property="id" />
       <result column="name" property="name" />
-            <result column="prof_phot" property="photo" />
+        <result column="bth_dt" property="birthDay" />
+          <result column="gndr" property="gender" />
+            <result column="tel" property="tel" />
+              <result column="email" property="email" />
+      <result column="prof_phot" property="photo" />
     </association>
     
      <association property="team" javaType="Team">
@@ -130,16 +134,22 @@
   
    <select id="findByMyTeamMember" resultMap="teamMemberMap" parameterType="int">
     select
+    tmb.tm_mbr_id,
     tmb.mbr_id,
     m.name,    
     pstn,
-    tlead_wth
+    tlead_wth,
+    m.bth_dt,
+    m.gndr,
+    m.tel,
+    m.email,
+    m.prof_phot
     from
     tm_mbr tmb
     left outer join tm t on tmb.tm_mbr_id = t.tm_id
     left outer join mbr m on tmb.mbr_id = m.mbr_id
          
-       where t.tm_id = ${value}
+       where tmb.mbr_id = ${value}
   </select> 
 
      <select id="findByMyTeamMember2" resultMap="teamMemberMap" >
@@ -158,8 +168,7 @@
          
   </select> 
   
-
-
+ 
 
 
 

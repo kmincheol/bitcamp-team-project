@@ -19,7 +19,7 @@
 	font-size: 40px;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+/*   font-family: Arial, Helvetica, sans-serif; */
 }
 
 .flip-card {
@@ -60,15 +60,16 @@ body {
   */
   transform: rotateY(180deg);
 }
-</style>
+<!-- </style> -->
 </head>
 <body>
 
-
   <div id="main-wrap" class="container">
-
+    <div style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
+    <span style="width: 100px"> </span>
+    </div>
     <div id="teamInfo"
-      style="border: 1px solid black; width: 1080px; height: 400px; margin-top: 100px">
+      style="border: 1px solid black; width: 1080px; height: 400px;">
 
       <div id="teamMark"
         style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">
@@ -76,7 +77,6 @@ body {
 
       <div id="teamName"
         style="width: 600px; height: 100px; float: left; margin-top: 22px; font-size: 50px; text-align: left;">
-
 
         <div class="input-field col s12 m6" id="teamSelect">
           <select class="icons" id="cc" onchange="aa();">
@@ -99,16 +99,10 @@ body {
         </div>
       </div>
 
-
       <div id="row1" style="width: 660px; height: 50px; float: left; margin-top: 20px;"></div>
-
       <div id="row2" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
-
       <div id="row3" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
-
       <div id="row4" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
-
-
 
     </div>
 
@@ -138,12 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
 function aa(){
    var arr = new Array();  //${teamMember.teamMemberNo}
+   var arrr = new Array();  
    var arrb = new Array(); //${teamMember.member.name}
    var arrc = new Array(); 
    var arrd = new Array(); //${teamMember.member.photo}
    var arre = new Array(); //${teamMember.position}
    var arrdd = new Array();
-	 
+   var arrf = new Array();//${teamMember.member.no}
+   var arrff = new Array();
 	 
 	 var target = document.getElementById("cc");
 	var a = String(target.options[target.selectedIndex].value).split(',');
@@ -154,43 +150,43 @@ function aa(){
 
 	 if (a.length > 11){
   teamMark.innerHTML ='<img src ="' + a[9] +',' +a[10] +'" width = "250px" height = "250px" >'
-  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">종 목</div></span> ' + 
+  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
   '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[8]+'</U></I></B></span>' + 
-  '<span style="display: inline-block;font-size:20px; width: 150px;">지 역</span> ' + 
+  '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
   '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
   
   
-row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">창단일</span> ' + 
+row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
 '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[6]+'</U></I></B></span>' + 
-'<span style="display: inline-block;font-size:20px; width: 150px;">평균연령</span> ' + 
+'<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
 '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[3]+'</U></I></B></span>' 
 
-row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 유형</span> ' + 
+row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 유형</span> ' + 
 '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[4]+'</U></I></B></span>' + 
-'<span style="display: inline-block;font-size:20px; width: 150px;">팀 실력</span> ' + 
+'<span style="display: inline-block;font-size:20px; width: 100px;">팀 실력</span> ' + 
 '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[5]+'</U></I></B></span>' 
 
-row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 소개</span> ' + 
+row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' +   
 '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[7]+'</U></I></B></span>' 
 	 }else {
 		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "250px" height = "250px" >'
-		  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">종 목</div></span> ' + 
+		  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
 		                       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[8]+'</U></I></B></span>' + 
-		                       '<span style="display: inline-block;font-size:20px; width: 150px;">지 역</span> ' + 
+		                       '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
 		                       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
 		                       
 		                       
-       row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">창단일</span> ' + 
+       row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
        '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[6]+'</U></I></B></span>' + 
-       '<span style="display: inline-block;font-size:20px; width: 150px;">평균연령</span> ' + 
+       '<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
        '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[3]+'</U></I></B></span>' 
        
-       row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 유형</span> ' + 
+       row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 유형</span> ' + 
        '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[4]+'</U></I></B></span>' + 
-       '<span style="display: inline-block;font-size:20px; width: 150px;">팀 실력</span> ' + 
+       '<span style="display: inline-block;font-size:20px; width: 100px;">팀 실력</span> ' + 
        '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[5]+'</U></I></B></span>' 
        
-       row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150px;">팀 소개</span> ' + 
+       row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' + 
        '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[7]+'</U></I></B></span>' 
    }
  
@@ -200,14 +196,18 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150p
 	 arrb.push("${teamMember.member.name}");
 	 arrd.push("${teamMember.member.photo}");
 	 arre.push("${teamMember.position}");
+	 arrf.push("${teamMember.member.no}");
 	 </c:forEach>
 	for (var i = 0; i < arr.length; i++) {
 	    if(arr[i] == parseInt(a[1])){
 	    	 arrc.push(arrb[i])
 	    	 arrdd.push(arrd[i])
+	    	 arrff.push(arrf[i])
+	    	 arrr.push(arr[i])
 	    }
 	}
 	
+	   //append div 삭제
         for(var j=0; j< 30; j++){
         	$("#abcd").remove()
         }      
@@ -217,11 +217,12 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150p
         var div = document.createElement("div");
         div.id = "abcd"
         div.innerHTML =
-        	'<div class="flip-card"> <div class="flip-card-inner"> <div class="flip-card-front">' +
+        	'<div class="flip-card"><a href="${contextRootPath}/app/myteam/' + arrr[i] +'/' + arrff[i] + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
          '<img src ="' + arrdd[i] +  '" width = "259px" height = "250px">' + 
-         '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">' + arrc[i] + '</span></div>' +
+         '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
+          arrc[i] + '</span></div>' +
           '<div class="flip-card-back"><h3>공격수</h3> <p>1991-03-07</p>  <p>김민철</p><p>20살</p> ' + 
-   ' </div></div></div>'
+   ' </div></div></a></div>'
         //css설정
         div.style.border= "1px solid black";
         div.style.margin= "5px";
@@ -231,7 +232,6 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 150p
         document.getElementById('aaaa').appendChild(div);
     }
 }
-
 </script>
 
 

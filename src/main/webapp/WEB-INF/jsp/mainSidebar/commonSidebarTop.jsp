@@ -116,7 +116,7 @@
                 <ul>
                   <li><a
                     href="${contextRootPath}/app/member/${sessionScope.loginUser.no}">개인정보</a></li>
-                  <li><a href="#">나의 팀정보</a></li>
+                  <li><a href="${contextRootPath}/app/myteam">나의 팀정보</a></li>
                 </ul>
               </div></li>
           </ul>

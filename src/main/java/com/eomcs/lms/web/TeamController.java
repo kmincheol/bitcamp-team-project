@@ -48,7 +48,7 @@ public class TeamController {
     model.addAttribute("teamAges", teamAges);
     model.addAttribute("teamMembers", teamMembers); 
      
-    return "team/list1";
+    return "team/list3";
   }
   
   @GetMapping("list3")

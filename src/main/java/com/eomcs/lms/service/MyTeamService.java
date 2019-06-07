@@ -13,6 +13,7 @@ import com.eomcs.lms.domain.TeamTypeSports;
 public interface MyTeamService {
   List<Member> list();
  List<Team> teamList(int no); // 관리자 팀조회
- List<TeamMember> teamMemberList(int no); // 관리자 팀조회
+ List<TeamMember> teamMemberList(int no); 
  List<TeamMember> teamMemberList2();
+ int delete(int tno,int mno);
 }
