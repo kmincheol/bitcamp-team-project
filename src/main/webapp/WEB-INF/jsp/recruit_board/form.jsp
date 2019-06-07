@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
 <title>게시글 등록</title>
 <!-- common.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/common.css">
@@ -35,7 +36,6 @@
 
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-      
 
 </head>
 
@@ -63,12 +63,12 @@
           <tbody>
             <tr>
               <th id="table-header" scope="row">지역</th>
-              <td><select id="area_select" class="custom-select">
+              <td><select id="area_select" class="custom-select" style="box-shadow: 0 0 0px 0px;">
                   <option selected>oo시</option>
                   <option value="1">서울</option>
                   <option value="2">부산</option>
                   <option value="3">대전</option>
-              </select> <select id="local_select" class="custom-select">
+              </select> <select id="local_select" class="custom-select" style="box-shadow: 0 0 0px 0px;">
                   <option selected>oo구</option>
                   <option value="1">강동</option>
                   <option value="2">강남</option>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
               <th id="table-header" scope="row">소속팀</th>
-              <td><select class="custom-select" id="select2" name='team.teamId'>
+              <td><select class="custom-select" id="select2" name='team.teamId' style="box-shadow: 0 0 0px 0px;">
                   <option selected>팀을 선택해주세요.</option>
                   <c:forEach items="${team}" var="team">
                     <option value='${team.teamId}'>${team.teamName}</option>
