@@ -1,26 +1,30 @@
 @charset "UTF-8";
 
+.container {
+	font-family: 'Jua', sans-serif;
+}
+
 #main-text {
 	margin-bottom: 30px;
 	text-align: center;
 }
 
 #keyword {
-	height: 40px; 
+	height: 40px;
 	width: 198px;
-	right: 283px; 
+	right: 283px;
 	border: 1px solid silver;
-	text-align: center; 
+	text-align: center;
 	position: relative;
 	top: 50px;
 }
- 
+
 .md-form {
-  width: 200px;
-  right: 80px;
-  top: 95px; 
-} 
- 
+	width: 200px;
+	right: 80px;
+	top: 60px;
+}
+
 .select {
 	height: 40px;
 	width: 200px;
@@ -29,14 +33,36 @@
 	top: 105px;
 }
 
+#triangle-topleft {
+	width: 0;
+	height: 0;
+	border-top: 50px solid darkred;
+	border-right: 150px solid transparent;
+	z-index: 10;
+	position: relative;
+	left: 130px;
+	top: 1px;
+}
+
+#triangle-bottomright {
+	width: 0;
+	height: 0;
+	border-bottom: 50px solid darkred;
+	border-left: 150px solid transparent;
+	z-index: 9;
+	position: relative;
+	bottom: 50px;
+	left: 730px;
+}
+
 .team_list {
 	border: 1px solid silver;
 	margin: 20px;
-	top: 40px;
+	top: 10px;
 	box-sizing: border-box;
 	width: 200px;
 	right: 100px;
-	height: 640px; 
+	height: 640px;
 	position: relative;
 }
 
@@ -50,7 +76,7 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
-} 
+}
 
 .photo {
 	width: 20px;
@@ -114,7 +140,7 @@ label {
 
 .scrollbar {
 	float: left;
-	height: 640px;
+	height: 690px;
 	width: 200px;
 	background: #fff;
 	overflow-y: scroll;
@@ -175,10 +201,16 @@ h1 {
 	top: -445px;
 }
 
+.detailForm{
+	position: relative;
+	bottom: 30px;
+	left:60px;
+}
+ 
 .detail {
 	left: 130px;
 	width: 750px;
-	bottom: 130px;
+	bottom: 180px;
 	position: relative;
 	display: none;
 	border-left: 1px solid silver;
@@ -190,7 +222,7 @@ h1 {
 .suvdetail {
 	width: 750px;
 	height: 50px;
-	background: gray;
+	background: black;
 	color: white;
 }
 
@@ -235,8 +267,12 @@ h1 {
 .tmcategory span {
 	margin: 60px;
 	text-align: center;
+	font-size: 30px;
+	color: black; 
 }
 
 #finallist {
 	margin: 30px;
+	overflow: auto;
+	height: 500px;
 }

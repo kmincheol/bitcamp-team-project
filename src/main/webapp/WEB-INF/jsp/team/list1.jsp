@@ -71,7 +71,7 @@
           <li class="Type">${team.teamTypeSports.teamSportsType}</li>
           <li>${team.teamArea}</li>
           <li>${team.teamCreateDate}</li>
-          <li class="Ages">${team.teamAges.teamAges}</li>
+          <li class="Ages">${team.teamAges.teamAges}</li> 
           <li>${team.teamLevel.teamLevel}</li>
           <li>${team.teamInfo}</li>
           <li class="teamType">${team.teamType}</li>
