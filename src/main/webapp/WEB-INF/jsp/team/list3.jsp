@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="${contextRootPath}/css/team.css">
  <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
  <link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
 </head>   
   
  
@@ -38,11 +39,12 @@
     <br> 
  
     <div id="main-text">
-      <h3>등록된 <b>팀의 정보</b>를 열람할 수 있습니다.</h3><br>
+      <h2>등록된 <b>팀의 정보</b>를 열람할 수 있습니다.</h2><br>
       <h5 >검색기능을 사용하여 원하는 종목의 <br> 팀을 찾아 조회 하세요.</h5> 
     </div> 
  
-     <span class="category1">
+  <!-- 종목 선택 select -->
+    <%--  <span class="category1">
      <select class="form-control select" id="teamSportsId" name='teamSportsId' onchange="changeItem()"> 
           <option>전체</option>
       <c:forEach items="${teamTypeSports}" var="typeSports">
@@ -51,20 +53,18 @@
           </option>
       </c:forEach> 
     </select> 
-     </span>
+     </span> --%>
       
-      <div>
       <div class="md-form">
        <input autocomplete=off type="text" id="inputIconEx2"
           class="form-control" aria-describedby="emailHelp" name='keyword' autocomplete=off> 
         <label for="inputIconEx2">키워드 검색</label> 
       </div>  
-    </div>  
      
       <!-- <input type='search' id="keyword" name='keyword' placeholder="키워드를 입력하세요" autocomplete=off> -->
      <br>
-     
-    <div class="team_list scrollbar scrollbar-primary"> 
+      
+    <div class="team_list scrollbar scrollbar-primary">  
       <div class="force-overflow"> 
       <c:forEach items="${teams}" var="team">     
   
@@ -80,11 +80,40 @@
           </li>
           <li class="detailbtn">
           <b>${team.teamName}</b></li> 
-          <li class="Type">${team.teamTypeSports.teamSportsType}</li>
+          <li class="Type">
+          <c:choose>
+                <c:when test="${team.teamTypeSports.teamSportsType eq 'soccer'}">
+                  축구
+                </c:when>
+                <c:when test="${team.teamTypeSports.teamSportsType eq 'basketball'}">
+                  농구
+                </c:when>
+                <c:when test="${team.teamTypeSports.teamSportsType eq 'baseball'}">
+                  야구
+                </c:when>
+                <c:when test="${team.teamTypeSports.teamSportsType eq 'pingpong'}">
+                  탁구
+                </c:when>
+              </c:choose>
+          
+          </li> 
           <li>${team.teamArea}</li>
           <li>${team.teamCreateDate}</li>
           <li class="Ages">${team.teamAges.teamAges}</li>
-          <li>${team.teamLevel.teamLevel}</li>
+          <li>
+          <c:choose>
+                <c:when test="${team.teamLevel.teamLevel eq 'high'}">
+                  상
+                </c:when>
+                <c:when test="${team.teamLevel.teamLevel eq 'mid'}">
+                  중
+                </c:when>
+                <c:when test="${team.teamLevel.teamLevel eq 'low'}">
+                  하
+                </c:when>
+              </c:choose>
+          
+          </li>
           <li>${team.teamInfo}</li>
           <li class="teamType">${team.teamType}</li>
 
@@ -111,9 +140,13 @@
 
         </ul>   
       </c:forEach> 
-      </div> 
+      </div>  
     </div> 
-    <div class="detail"> 
+    <div class="detailForm">
+    <div class="detail" id="triangle-topleft"></div> 
+    <div class="detail" id="triangle-bottomright"></div>
+    <div class="detail">  
+      
     <div class="suvdetail"><h1 class="detailText"><b>팀 상세 정보</b></h1></div> 
     <div class="col-lg-12" id="teamInfo"></div>
     <div class="col-lg-12" id="teamMemberInfo"> 
@@ -128,6 +161,7 @@
 
     </div>
 </div>
+  </div>
   </div>
   <!-- JQuery -->
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/> 
@@ -148,10 +182,6 @@
 
   <script type="text/javascript">
   
-  $(document).ready(function() {
-    $('.mdb-select').materialSelect();
-    });
-  
   function changeItem(){
     // 종목 선택시 콘솔 출력 
     var ItemTypeSelect = document.getElementById('teamSportsId');
@@ -170,8 +200,8 @@
 
     // 선택된 값과 팀의 종목이 맞을 시 해당 팀 출력
     if(ItemName == Type) {
-      $('.Type').eq(i).parent().show();
-      } 
+      $('.Type').eq(i).parent().show(); 
+      }   
      else if (ItemName == "전체") {
         $('.team_ul').show();
       }  
@@ -269,17 +299,17 @@
         "<hr style='position:relative; bottom:70px; right:30px; width:250px;'><br>" +   
         "</div>" +
         "<div style='position:relative; right:30px; bottom:10px;'>" +   
-        "<div style='margin:10px;'> <b style='font-size:30px;'>팀명</b><br>" + teamName + "</div>" + 
-        "<div class='area' style='margin:10px;'> <b style='font-size:30px;'>지역</b><br>" + teamArea + "</div>" +    
-        "<div class='lev' style='margin:10px;'> <b  style='font-size:30px;'>팀실력 </b><br>" + teamLev + "</div>" +  
+        "<div style='margin:10px;'> <b style='font-size:30px; color:darkred;'>팀명</b><br>" + teamName + "</div>" + 
+        "<div class='area' style='margin:10px;'> <b style='font-size:30px; color:darkred;'>지역</b><br>" + teamArea + "</div>" +    
+        "<div class='lev' style='margin:10px;'> <b  style='font-size:30px; color:darkred'>팀실력 </b><br>" + teamLev + "</div>" +  
         "</div>" +   
         "<div style='position:relative; left:120px; bottom:267px;'>" +   
-        "<div class='sportsTypes' style='margin:10px;'> <b  style='font-size:30px;'>종목</b><br>" + teamSprotsType + "</div>" + 
-        "<div style='margin:10px;'> <b  style='font-size:30px;'>연령대</b><br>" + teamAges + "</div>" + 
-        "<div style='margin:10px;'> <b  style='font-size:30px;'>창단일</b><br> " + teamCreateDate + "</div>" +  
+        "<div class='sportsTypes' style='margin:10px;'> <b  style='font-size:30px; color:darkred'>종목</b><br>" + teamSprotsType + "</div>" + 
+        "<div style='margin:10px;'> <b  style='font-size:30px; color:darkred'>연령대</b><br>" + teamAges + "</div>" + 
+        "<div style='margin:10px;'> <b  style='font-size:30px; color:darkred'>창단일</b><br> " + teamCreateDate + "</div>" +  
         "</div>" +    
-        "<div style='position:relative; margin:10px; right:30px; bottom: 260px;'> <b  style='font-size:30px;'>팀소개 </b><br>" + teamInfo + "</div>";  
-         
+        "<div style='position:relative; margin:10px; right:30px; bottom: 260px; width:300px; overflow:auto;'> <b  style='font-size:30px; color:darkred'>팀소개 </b><br>" + teamInfo + "</div>";  
+           
     $("#teamInfo").html(str);  
     $('#finallist').html(str2); 
   });
