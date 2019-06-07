@@ -1,6 +1,7 @@
 package com.eomcs.lms.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -12,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -62,11 +62,24 @@ public class MatchBoardController {
   
   
   @GetMapping("list3")
-  public void list3() {
+  public void list3(Model model) {
+    List<Match> all = matchBoardService.search();
+    model.addAttribute("all", all);
   }
   
   @GetMapping("list4")
-  public void list4() {
+  public void list4(Model model, HttpSession session) {
+    List<Match> all = matchBoardService.search();
+    
+    if (session.getAttribute("loginUser") != null) {
+      Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
+      List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+      model.addAttribute("myteam", teames);
+      logger.info(teames);
+      } else {
+      }
+    
+    model.addAttribute("all", all);
   }
   
   @GetMapping("list5")
@@ -113,12 +126,12 @@ public class MatchBoardController {
   @GetMapping
   public String list(
         @RequestParam(defaultValue="1") int pageNo,
-        @RequestParam(defaultValue="8") int pageSize,
+        @RequestParam(defaultValue="1000") int pageSize,
         HttpSession session,
         Model model) {
 
-      if (pageSize < 8 || pageSize > 9)
-        pageSize = 8;
+      if (pageSize < 1000 || pageSize > 1000)
+        pageSize = 1000;
 
       int rowCount = matchBoardService.size();
       int totalPage = rowCount / pageSize;
@@ -160,47 +173,33 @@ public class MatchBoardController {
     Member member = (Member) session.getAttribute("loginUser"); 
     List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
 
-  
-    //로그인한 유저의 팀 목록을 가져오고, 매치글에 신청한 팀의 목록을 가져온다음.
-    //로그인한 유저의 팀 번호와 매치글에 신청한 팀의 번호가 같다면 출력을 막기위해 해봤지만 실패...
-    
-    int[] teamNumArray = new int[teams.size()]; //(자기가 리더인)팀의 수만큼 배열을 만들고,
-
-    for (int i = 0; i < teamNumArray.length; i++) {
-      Match mat = teams.get(i); 
-      teamNumArray[i] = mat.getTeamNo(); // 배열에 (자기가 리더인)팀의 번호를 담아준다.
-   }
- 
-  List<MatchApply> matchApplies = matchApplyService.list(no); // 해당 매치의 신청 목록을 List 객체에 담았다.
-  int[] matchTeamNumArray = new int[matchApplies.size()]; 
- 
-   for(int i = 0; i < matchApplies.size(); i++) {
-     MatchApply matchApply = matchApplies.get(i);
-    matchTeamNumArray[i] = matchApply.getTeamNo(); // int 배열에 현 매치글에 신청한 팀의 모든 번호를 담았다.
-   }
- 
-   for (int i = 0; i < teamNumArray.length; i++) {
-     for (int j = 0; j < matchTeamNumArray.length; j++) {
-         if(teamNumArray[i] == matchTeamNumArray[j]) { // 현 매치글에 신청된 팀의 번호와 유저의 팀 번호가 같다면 
-            teamNumArray[i] = teamNumArray[i+1];  // 현 유저의 팀번호를 없앤다.
-         }
-     }
-   }
-
-   List<Team> teams2 = new ArrayList<>();
-
-   for (int i = 0; i < teamNumArray.length; i++) {
-     Team t = teamService.getTeam(teamNumArray[i]);
-     teams2.add(t);
-   }
-   ///////////
-    
     model.addAttribute("myteam",teams);
     } else {
     }
-    
     model.addAttribute("match", match);
     return "matchboard/detail";
+  }
+  
+  
+  @RequestMapping("data")
+  @ResponseBody
+  public Object detailData(int no, HttpSession session) {
+    Match match = matchBoardService.get(no);
+    HashMap<String,Object> matchMap = new HashMap<>();
+    
+    // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
+    if (session.getAttribute("loginUser") != null) {
+    Member member = (Member) session.getAttribute("loginUser"); 
+    List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+
+    matchMap.put("myteam",teams);
+    } else {
+    }
+    
+    matchMap.put("match", match);
+    
+    return matchMap;
+
   }
   
   

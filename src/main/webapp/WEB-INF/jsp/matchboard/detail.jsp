@@ -155,8 +155,8 @@ width:300px;
 					<select name='teamId' class="form-control" id="selectBox" style="width:150px;">
 					<option selected>소속팀 선택</option>
 					<c:forEach items="${myteam}" var="myteam">
-					<c:if test="${!myteam.team.teamMember.team_leader}">
-					<option value='${check.team.teamId}'>${check.team.teamName}</option>
+					<c:if test="${myteam.team.teamMember.teamleader}">  <!--!!!!! 왜 적용이 안될까... !!!!!-->
+					<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
                     </c:if>
 					</c:forEach>
 					</select>

@@ -48,6 +48,12 @@
       <result column="ages" property="teamAges" />
     </association>
 
+      <!-- 팀원테이블 -->
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMember_id" />
+      <id column="tlead_wth" property="teamLeader" />
+    </association>
+    
     <!-- 매치신청테이블 -->
    <collection property="matchApply" ofType="MatchApply">
       <id column="tm_id" property="teamNo" />
@@ -56,6 +62,7 @@
       <result column="aply_dt" property="applyDate" />
     </collection>
     
+    
     <!-- 태그테이블  -->
     <collection property="tags" ofType="Tag">
       <id column="mtch_id"  property="matchNo"/>
@@ -63,7 +70,7 @@
     </collection>
     
  </resultMap>
- 
+
 
 
    <resultMap type="Team" id="team">
@@ -85,6 +92,7 @@
 	<!-- 팀원테이블 -->
     <association property="teamMember" javaType="TeamMember">
       <id column="tm_mbr_id" property="teamMember_id" />
+      <id column="tlead_wth" property="teamLeader" />
     </association>
 
 	<!-- 회원테이블 -->
@@ -183,19 +191,6 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
   </sql>
-  
-
-
-<sql id="select3">
-  select
-    m.mtch_id,
-    tag_name
-  from
-    mtch m
-    left outer join mtch_tag t on m.mtch_id = t.mtch_id
-</sql>
-
-
 
 <!-- js로 처리할거라 모든 데이터 가져옴 -->
    <select id="search" resultMap="matchMap">
@@ -203,10 +198,6 @@
     order by
     mtch_id desc
    </select>
-   
-   
-   
-   
    
   <select id="findAll" resultMap="matchMap" parameterType="map">
 	<include refid="select1"/>  

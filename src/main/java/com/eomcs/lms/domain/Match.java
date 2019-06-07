@@ -29,6 +29,7 @@ public class Match implements Cloneable, Serializable {
   private int cost;
   
   private Team team;
+  private TeamMember teamMember;
   private Team otherTeam;
   private TeamTypeSports teamTypeSports;
   private List<MatchApply> matchApply;
@@ -36,6 +37,8 @@ public class Match implements Cloneable, Serializable {
   private TeamLevel teamLevel;
   private List<Tag> tags;
   
+  
+
   @Override
   public String toString() {
     return "Match [no=" + no + ", teamNo=" + teamNo + ", otherTeamNo=" + otherTeamNo
@@ -44,10 +47,9 @@ public class Match implements Cloneable, Serializable {
         + modifierDate + ", playDate=" + playDate + ", location=" + location + ", stadiumName="
         + stadiumName + ", stadiumLatitude=" + stadiumLatitude + ", stadiumLongitude="
         + stadiumLongitude + ", telephone=" + telephone + ", cost=" + cost + ", team=" + team
-        + ", otherTeam=" + otherTeam + ", teamTypeSports=" + teamTypeSports + ", matchApply="
-        + matchApply + ", teamAges=" + teamAges + ", teamLevel=" + teamLevel + ", tags=" + tags
-        + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-        + super.toString() + "]";
+        + ", teamMember=" + teamMember + ", otherTeam=" + otherTeam + ", teamTypeSports="
+        + teamTypeSports + ", matchApply=" + matchApply + ", teamAges=" + teamAges + ", teamLevel="
+        + teamLevel + ", tags=" + tags + "]";
   }
 
   public int getNo() {
@@ -232,6 +234,14 @@ public class Match implements Cloneable, Serializable {
 
   public void setTeamLevel(TeamLevel teamLevel) {
     this.teamLevel = teamLevel;
+  }
+
+  public TeamMember getTeamMember() {
+    return teamMember;
+  }
+
+  public void setTeamMember(TeamMember teamMember) {
+    this.teamMember = teamMember;
   }
   
 }

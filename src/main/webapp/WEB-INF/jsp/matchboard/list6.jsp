@@ -126,6 +126,8 @@
         탁구
         </button>
         
+         <br>
+         
          <!-- filter control -->
         <button
             data-jplist-control="buttons-text-filter"
@@ -136,7 +138,7 @@
             data-selected="true">
          실력
          </button>
-        
+
         <button
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
@@ -167,6 +169,8 @@
             data-text="low">
         하
         </button>
+        
+        <br>
         
         <!-- filter control -->
         <button
@@ -260,6 +264,8 @@
         70세이상
         </button>
       
+      <br>
+      
         <p>Date: <input type="text" id="datepicker"></p>
         
 <div style="display: none;">
@@ -315,7 +321,6 @@
                 
                     <!-- no results control -->               
                 <div data-jplist-control="no-results" data-group="group1" data-name="no-results">No Results Found</div>
-                
         </div>
     </div><!-- .content -->      
   </div><!-- .container -->
