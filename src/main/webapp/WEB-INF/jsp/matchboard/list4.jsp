@@ -43,7 +43,7 @@
           placeholder="검색어를 입력하세요." style="witdh: 30px;">
       </div>
 
-      <c:if test="${match.team.teamMember.teamLeader}"> <!--!!!!! 왜 적용이 안될까... !!!!!-->
+      <c:if test="${!match.team.teamMember.teamLeader}"> <!--!!!!! 왜 적용이 안될까... !!!!!-->
         <div style="text-align: center;">
           <a href='${contextRootPath}/app/matchboard/form.jsp'
             class="btn btn-primary btn-sm" tabindex="-1" role="button"
@@ -150,12 +150,12 @@ $(document).ready(function() {
 	    var searchTerm = $(".search").val();
 	    var listItem = $('.results tbody').children('tr');
 	    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-	    
+    
 	  $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
 	        return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
 	    }
 	  });
-	    
+            
 	  $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
 	    $(this).attr('visible','false'); 
 	  });
@@ -171,20 +171,22 @@ $(document).ready(function() {
 	  if(jobCount == '0') {$('.no-result').show();}
 	    else {$('.no-result').hide();}
 			  });
-	  
-	  
+  
+  
+    
 	 /* 위에랑 똑같은거.
 	$(".detail").click(
-			function() {	
+			function() {
 	var no =  .attr('id');
 	console.log(no);
-	
+
+// 똑같음
 	$.getJSON("data", {"no" : no}, function(data) {
 		console.log(data);
 	  	$('.modal-body').append(data.match.title);
 	  	$('.modal-body').append(data.match.contents);
 	});
-	
+
 	 var xhr = new XMLHttpRequest();
 	  var no = $(".detail").attr('id');
 	  xhr.onreadystatechange = () => {
@@ -198,12 +200,12 @@ $(document).ready(function() {
 	  };
 	  xhr.open("GET", "data?no=" + no, true);
 	  xhr.send(); 
-	 
-	});*/
-	
-	
+  
+	});*/          
+  
+  
 	});
-	
+
 function modalEvent(number) {
 	var no;
 	var nocom;
@@ -214,20 +216,27 @@ function modalEvent(number) {
 		}
 	})
 	console.log(no);
-	
+
 	$.getJSON("data", {"no" : no}, function(data) {
 		console.log(data);
 	  	$('.modal-title').text(data.match.team.teamName);
-	  	$('.modal-body').text(data.match.contents);
+      $('.modal-title').append("<h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6> ");
+	  	$('.modal-body').append("<br>경기날짜 : "+data.match.playDate);
+	  	$('.modal-body').text("제목 : "+data.match.title);
+	  	$('.modal-body').append("<br>내용 : "+data.match.contents);
+	    $('.modal-body').append("<br>종목 : "+data.match.teamTypeSports.teamSportsType);
+	  	$('.modal-body').append("<br>지역 : "+data.match.location);
+    	$('.modal-body').append("<br>경기장 : "+data.match.stadiumName);
+      
 	});
 }
-  	
 
 
-	
-	
-	
-	
+
+
+
+
+
 </script>
 
 </body>
