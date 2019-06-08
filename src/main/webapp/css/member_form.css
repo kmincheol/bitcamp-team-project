@@ -148,13 +148,6 @@ body {
 .green{
 	color:#08A600
 }
-.error{
-	display:block;
-	margin:8px 0 -1px;
-	font-size:12px;
-	line-height:14px;
-	color:red
-}
 .error_next_box{
 	display:block;
 	margin:9px 0 -2px;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Facebook 로그인 실패</title>
+<title>Naver 로그인 실패</title>
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
@@ -18,8 +18,8 @@ function alertMsg() {
           
   if (type == "noEmail") {
     alert('회원가입 및 로그인에 이메일 정보가 반드시 필요합니다. \n' + 
-        '페이스북 설정 - 앱 및 웹사이트 - BATTLE MATCHING을 \n' + 
-        '삭제하신 후 다시 회원가입 및 로그인을 시도해주시고, \n' + 
+        '네이버 - 내정보 - 보안설정 - 외부사이트 연결에서\n' + 
+        'BATTLE MATCHING 연결을 해제하신후에 다시 시도해주시고, \n' + 
         '정보제공설정에서 이메일 정보 제공에 동의해주세요.');
     self.close();
   } else if (type == "cancel") {

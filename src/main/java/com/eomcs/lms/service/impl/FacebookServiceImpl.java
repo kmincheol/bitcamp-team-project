@@ -28,7 +28,7 @@ public class FacebookServiceImpl implements FacebookService {
     this.memberService = memberService;
   }
   
-  public String requesFaceBooktAccesToken(HttpSession session, String code) throws Exception {
+  public String requestFaceBookAccessToken(HttpSession session, String code) throws Exception {
 
     String facebookUrl = 
         "https://graph.facebook.com/v3.3/oauth/access_token?"+
@@ -81,7 +81,7 @@ public class FacebookServiceImpl implements FacebookService {
     
     // 해당 이메일로 가입된 유저가 없으면 신규가입으로 보낸다.
     if (member == null) {
-      return "redirect:facebookEnter";
+      return "redirect:facebookJoin";
     }
     
     // 해당 이메일로 가입되어있지만, 로그인 타입이 페이스북이 아니라면, alert창을 띄우게 한다.
@@ -93,7 +93,7 @@ public class FacebookServiceImpl implements FacebookService {
     // 해당 이메일로 가입되어있고, 로그인 타입이 페이스북이라면 자동로그인 처리한 후 메인으로 보낸다.
     session.setAttribute("loginUser", member);
 
-    return "redirect:facebookLoginSuccess";
+    return "redirect:loginSuccess";
 }
   
   public String facebookUserDataLoadAndSave(
