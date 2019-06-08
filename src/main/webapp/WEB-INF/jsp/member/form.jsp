@@ -94,7 +94,7 @@
           
             <h3 class="join_title agree_title">약관 동의</h3>
 
-            <ul class="terms_bx_list">
+            <ul class="terms_bx_list" id="termsBox">
               <li class="terms_bx">
                   <span class="input_chk">
                     <input type="checkbox" id="chk_all" name="chk_all">
@@ -172,7 +172,7 @@
                 </div>
               </li>
             </ul>
-            <span class="error" id="agreeMsg" style="display:none">이용약관, 개인정보 수집 및 이용, 개인정보 제3자 제공 동의에 모두 동의해주세요.</span>
+            <span class="error_next_box" id="termsErrorMsg" style="display:none" role="alert">(필수)로 표시된 약관에 모두 동의해주세요.</span>
           </div><!-- .terms_p -->
           
         </div><!-- .join_form -->
@@ -267,7 +267,6 @@ $(document).ready(function() {
   })
   
   $("#termsMarketing").click(function() {
-    setMarketingTerms();
     viewTerms();
   })
   
@@ -297,11 +296,6 @@ function mainSubmit() {
   }
   if (idFlag && pwFlag && authFlag) {
     
-    if (checkTerms() != true) {
-      submitOpen();
-      return false;
-    }
-    
     $('#join_form').submit();
   } else {
     submitOpen();
@@ -324,7 +318,8 @@ function checkUnrealInput() {
       checkPswd2() &
       checkName() &
       checkEmailText($('#email').val()) & 
-      checkAuthNo()
+      checkAuthNo() &
+      checkTerms()
       ) {
         return true;
       } else {
@@ -841,15 +836,33 @@ function viewTerms() {
 
 function checkTerms() {
   var res = true;
+  var oBox = $('#termsBox');
+  var oMsg = $('#termsErrorMsg');
 
   if ($("#termsService").is(":checked") == false ||
       $("#termsPrivacy").is(":checked") == false ||
       $("#termsThirdParty").is(":checked") == false) {
-    
-    $('#agreeMsg').show();
+
+    var arr = $('.input_chk');
+    arr.each(function(index, item) {
+      $(item).css('border-left', '0');
+      $(item).css('border-right', '0');
+    });
+    $('.input_chk:first').css('border-top', '0');
+    $('.input_chk:last').css('border-bottom', '0');
+    oBox.css("border", "solid 1px red");
+    oMsg.show();
     res = false;
   } else {
-    $('#agreeMsg').hide();
+    oBox.css("border", "0");
+    var arr = $('.input_chk');
+    arr.each(function(index, item) {
+      $(item).css('border-left', '1px solid rgb(218, 218, 218)');
+      $(item).css('border-right', '1px solid rgb(218, 218, 218)');
+    });
+    $('.input_chk:first').css('border-top', '1px solid rgb(218, 218, 218)');
+    $('.input_chk:last').css('border-bottom', '1px solid rgb(218, 218, 218)');
+    oMsg.hide();
   }
 
   return res;

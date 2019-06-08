@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Facebook 로그인</title>
 <style>
 .fbBtn {
   border-radius: 4px;
@@ -15,6 +15,8 @@
   display: inline-block;
   vertical-align: top;
   font-size: 11px;
+  width: 220px;
+  height: 40px
 }
 .fbTable {
   table-layout: fixed;

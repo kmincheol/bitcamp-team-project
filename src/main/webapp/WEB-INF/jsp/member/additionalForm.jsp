@@ -546,7 +546,7 @@ function checkPhoneNo() {
 
   if (phoneNo == "") {
     showErrorMsg(oMsg, "전화번호를 입력해주세요.");
-    showErrorBoxByError(oImg);
+    showErrorBox(oImg);
     return false;
   }
 
@@ -554,7 +554,7 @@ function checkPhoneNo() {
   
   if (!isCellPhone(phoneNo)) {
     showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
-    showErrorBoxByError(oImg);
+    showErrorBox(oImg);
     return false;
   }
 

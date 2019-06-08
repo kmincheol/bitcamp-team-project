@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 import java.util.HashMap;
+import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.FacebookService;
 import com.eomcs.lms.service.MemberService;
+import com.eomcs.lms.service.NaverService;
 import com.eomcs.lms.service.TeamService;
 
 @Controller
@@ -31,22 +33,90 @@ public class AuthController {
   @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   @Autowired FacebookService facebookService;
-    
-  @GetMapping("test")
-  public void test() {
-    
+  @Autowired NaverService naverService;
+  
+  @GetMapping("naver")
+  public void naver() {
   }
   
-  @GetMapping("facebookEnter")
-  public void facebookEnter() {
+  @GetMapping("naverJoin")
+  public void naverJoin() {
   }
   
-  @GetMapping("facebookLoginSuccess")
-  public void facebookLoginSuccess() {
+  @GetMapping("naverLoginFail")
+  public void naverLoginFail() {
+  }
+  
+  @RequestMapping("naverSignin")
+  public String getNaverSigninCode(HttpSession session) throws Exception {
+    logger.debug("naverSignin");
+
+    String state = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
+    logger.info(state);
+    
+    String redirectUri = 
+        "http://localhost:8080/bitcamp-team-project/app/auth/naverAccessToken";
+    
+    String naverUrl = "https://nid.naver.com/oauth2.0/authorize?"
+        + "response_type=code&"
+        + "client_id=I7CsLJrBpKo8Qc1BsyOn&"
+        + "redirect_uri="
+        + redirectUri
+        + "&state="
+        + state;
+    
+    //session.setAttribute("state", state);
+    
+    return "redirect:" + naverUrl;
+  }
+  
+  @RequestMapping("naverAccessToken")
+  public String getNaverSignIn(String code, HttpSession session, String state) throws Exception {
+    logger.debug("naverAccessToken / code : "+ code);
+    logger.info("state >>" + state);
+    
+    if (code == null || code.length() == 0) {
+      session.setAttribute("login_type", "cancel");
+      return "auth/naverLoginFail";
+    }
+    
+    // accessToken을 받아오고 세션에 토큰을 저장함.
+    String accessToken = naverService.requestNaverAccessToken(session, code, state);
+    
+    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
+    String url = naverService.naverUserDataLoadAndCheck(accessToken, session);
+    
+    return url;
+  }
+  
+  @RequestMapping("naverEnter")
+  @ResponseBody
+  public Object getNaverEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
+    String accessToken = (String) session.getAttribute("naverAccessToken");
+    
+    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
+    String status = naverService.naverUserDataLoadAndSave(accessToken, session, termsAgree);
+    
+    HashMap<String,Object> content = new HashMap<>();
+    content.put("status", status);
+    
+    return content;
+  }
+    
+  @GetMapping("facebook")
+  public void facebook() {
+  }
+  
+  @GetMapping("facebookJoin")
+  public void facebookJoin() {
   }
   
   @GetMapping("facebookLoginFail")
   public void facebookLoginFail() {
+  }
+  
+  @GetMapping("loginSuccess")
+  public void loginSuccess() {
   }
   
   @GetMapping("form")
@@ -136,15 +206,20 @@ public class AuthController {
             "&redirect_uri=http://localhost:8080/bitcamp-team-project/app/auth/facebookAccessToken"+
             "&scope=public_profile,email";
 
-    return "redirect:"+facebookUrl;
+    return "redirect:" + facebookUrl;
   }
   
   @RequestMapping("facebookAccessToken")
   public String getFacebookSignIn(String code, HttpSession session, String state) throws Exception {
     logger.debug("facebookAccessToken / code : "+ code);
     
+    if (code == null || code.length() == 0) {
+      session.setAttribute("login_type", "cancel");
+      return "auth/facebookLoginFail";
+    }
+    
     // accessToken을 받아오고 세션에 토큰을 저장함.
-    String accessToken = facebookService.requesFaceBooktAccesToken(session, code);
+    String accessToken = facebookService.requestFaceBookAccessToken(session, code);
     
     // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
     String url = facebookService.facebookUserDataLoadAndCheck(accessToken, session);
