@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.FacebookService;
+import com.eomcs.lms.service.GoogleService;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.NaverService;
 import com.eomcs.lms.service.TeamService;
@@ -34,6 +35,70 @@ public class AuthController {
   @Autowired ServletContext servletContext;
   @Autowired FacebookService facebookService;
   @Autowired NaverService naverService;
+  @Autowired GoogleService googleService;
+  
+  @GetMapping("google")
+  public void google() {
+  }
+  
+  @GetMapping("googleJoin")
+  public void googleJoin() {
+  }
+  
+  @GetMapping("googleLoginFail")
+  public void googleLoginFail() {
+  }
+  
+  @RequestMapping("googleSignin")
+  public String getGoogleSigninCode(HttpSession session) throws Exception {
+    logger.debug("googleSignin");
+
+    String state = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
+    logger.info(state);
+    
+    // idToken을 발급받기 위해 scope를 지정해준다.
+    String googleUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + 
+        "scope=email%20profile&" + 
+        "response_type=code&" + 
+        "state=" + state + 
+        "&redirect_uri=http://localhost:8080/bitcamp-team-project/app/auth/googleAccessToken&" + 
+        "client_id=867895829996-k3o07c2lj7odqm2p8flo9u95qgcv59lj.apps.googleusercontent.com";
+      
+    return "redirect:" + googleUrl;
+  }
+  
+  @RequestMapping("googleAccessToken")
+  public String getGoogleSignIn(String code, HttpSession session, String error) throws Exception {
+    logger.debug("googleAccessToken / code : "+ code);
+    logger.info("error >>" + error);
+    
+    if (code == null || code.length() == 0) {
+      session.setAttribute("login_type", "cancel");
+      return "auth/googleLoginFail";
+    }
+    
+    // idToken을 받아오고 세션에 토큰을 저장함.
+    String googleIdToken = googleService.requestGoogleAccessToken(session, code);
+    
+    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
+    String url = googleService.googleUserDataLoadAndCheck(googleIdToken, session);
+    
+    return url;
+  }
+  
+  @RequestMapping("googleEnter")
+  @ResponseBody
+  public Object getGoogleEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
+    String idToken = (String) session.getAttribute("googleIdToken");
+    
+    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
+    String status = googleService.googleUserDataLoadAndSave(idToken, session, termsAgree);
+    
+    HashMap<String,Object> content = new HashMap<>();
+    content.put("status", status);
+    
+    return content;
+  }
   
   @GetMapping("naver")
   public void naver() {
@@ -64,8 +129,6 @@ public class AuthController {
         + redirectUri
         + "&state="
         + state;
-    
-    //session.setAttribute("state", state);
     
     return "redirect:" + naverUrl;
   }

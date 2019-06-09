@@ -19,13 +19,13 @@ import com.eomcs.lms.service.NaverService;
 
 
 @Service
-public class naverServiceImpl implements NaverService {
+public class NaverServiceImpl implements NaverService {
   
-  final static Logger logger = LogManager.getLogger(naverServiceImpl.class);
+  final static Logger logger = LogManager.getLogger(NaverServiceImpl.class);
   
   MemberService memberService;
   
-  public naverServiceImpl(MemberService memberService) {
+  public NaverServiceImpl(MemberService memberService) {
     this.memberService = memberService;
   }
   
@@ -95,7 +95,7 @@ public class naverServiceImpl implements NaverService {
       return "redirect:naverLoginFail";
     }
     
-    // 해당 이메일로 가입되어있고, 로그인 타입이 페이스북이라면 자동로그인 처리한 후 메인으로 보낸다.
+    // 해당 이메일로 가입되어있고, 로그인 타입이 네이버라면 자동로그인 처리한 후 메인으로 보낸다.
     session.setAttribute("loginUser", member);
 
     return "redirect:loginSuccess";
