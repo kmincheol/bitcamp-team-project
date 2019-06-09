@@ -18,6 +18,7 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.FacebookService;
 import com.eomcs.lms.service.GoogleService;
+import com.eomcs.lms.service.KakaoService;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.NaverService;
 import com.eomcs.lms.service.TeamService;
@@ -36,6 +37,72 @@ public class AuthController {
   @Autowired FacebookService facebookService;
   @Autowired NaverService naverService;
   @Autowired GoogleService googleService;
+  @Autowired KakaoService kakaoService;
+  
+  @GetMapping("kakao")
+  public void kakao() {
+  }
+  
+  @GetMapping("kakaoJoin")
+  public void kakaoJoin() {
+  }
+  
+  @GetMapping("kakaoLoginFail")
+  public void kakaoLoginFail() {
+  }
+  
+  @RequestMapping("kakaoSignin")
+  public String getKakaoSigninCode(HttpSession session) throws Exception {
+    logger.debug("kakaoSignin");
+
+    String state = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
+    logger.info(state);
+    
+    String redirectUri = 
+        "http://localhost:8080/bitcamp-team-project/app/auth/kakaoAccessToken";
+    
+    String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?"
+        + "client_id=43ee012e7eba5344ec3ae793e76332f5"
+        + "&redirect_uri=" + redirectUri
+        + "&response_type=code"
+        + "&state="
+        + state;
+    
+    return "redirect:" + kakaoUrl;
+  }
+  
+  @RequestMapping("kakaoAccessToken")
+  public String getKakaoSignIn(String code, HttpSession session, String state) throws Exception {
+    logger.debug("kakaoAccessToken / code : "+ code);
+    logger.info("state >>" + state); // csrf
+    
+    if (code == null || code.length() == 0) {
+      session.setAttribute("login_type", "cancel");
+      return "auth/kakaoLoginFail";
+    }
+    
+    // accessToken을 받아오고 세션에 토큰을 저장함.
+    String accessToken = kakaoService.requestKakaoAccessToken(session, code);
+    
+    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
+    String url = kakaoService.kakaoUserDataLoadAndCheck(accessToken, session);
+    
+    return url;
+  }
+  
+  @RequestMapping("kakaoEnter")
+  @ResponseBody
+  public Object getKakaoEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
+    String accessToken = (String) session.getAttribute("kakaoAccessToken");
+    
+    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
+    String status = kakaoService.kakaoUserDataLoadAndSave(accessToken, session, termsAgree);
+    
+    HashMap<String,Object> content = new HashMap<>();
+    content.put("status", status);
+    
+    return content;
+  }
   
   @GetMapping("google")
   public void google() {
