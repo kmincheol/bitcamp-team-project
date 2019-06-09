@@ -5,14 +5,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Kakao 로그인</title>
+<style>
+#customBtn {
+  display: inline-block;
+  background: #fef01b;
+  color: #444;
+  width: 190px;
+  border-radius: 5px;
+  border: thin solid #fef01b;
+  box-shadow: 0.4px 0.4px 0.4px lightgrey;
+  white-space: nowrap;
+}
+#customBtn:hover {
+  cursor: pointer;
+}
+span.label {
+  font-family: serif;
+  font-weight: normal;
+}
+span.icon {
+  background: url('${contextRootPath}/images/kakao.png') transparent 5px 50% no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 42px;
+  height: 42px;
+}
+span.buttonText {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  padding-left:   
+}
+</style>
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
 
-<img id="kakaoBtn" role="button" tabindex="0" 
-onClick="windowopenPopup()" 
-src="${contextRootPath}/images/kakao.png" 
-style="width: 220px; height: 40px;">
+<div id="customBtn" class="customGPlusSignIn" onClick="windowopenPopup()">
+  <span class="icon"></span>
+  <span class="buttonText">Kakao로 계속하기</span>
+</div>
 
 <script>
 
