@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Kakao 로그인</title>
 <style>
-#customBtn {
+#kakaoBtn {
   display: inline-block;
   background: #fef01b;
   color: #444;
@@ -16,7 +16,7 @@
   box-shadow: 0.4px 0.4px 0.4px lightgrey;
   white-space: nowrap;
 }
-#customBtn:hover {
+#kakaoBtn:hover {
   cursor: pointer;
 }
 span.label {
@@ -43,21 +43,29 @@ span.buttonText {
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
 
-<div id="customBtn" class="customGPlusSignIn" onClick="windowopenPopup()">
+<div id="kakaoBtn" class="kakaoSignIn">
   <span class="icon"></span>
   <span class="buttonText">Kakao로 계속하기</span>
 </div>
 
 <script>
+$(function() {
+  
+  var kakao = 'kakao';
+  var naver = 'naver';
+  var google = 'google';
+  var facebook = 'facebook';
+  
+  $('#kakaoBtn').click(function() {windowopenPopup(kakao);});
+});
 
-function windowopenPopup() {
-
+function windowopenPopup(type) {
   var popupX = (window.screen.width / 2) - (600 / 2);
   var popupY= (window.screen.height / 2) - (600 / 2);
   
   window.open(
-      'kakaoSignin', 
-      'Kakao 로그인', 
+      type +'Signin', 
+      type +' 로그인', 
       'width=600, height=600, left=' + popupX +
       ', top=' + popupY + ', toolbar=no, menubar=no, location=no, status=no'
       );
