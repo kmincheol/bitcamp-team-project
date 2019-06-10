@@ -48,7 +48,6 @@
     </tbody>
 </table>                  
              </div>
-             
              </div>
       <div style="width: 450px;height: 100%; float:left;">
           <img src="${teamMember.member.photo}" style="width:100%; height:100%">           

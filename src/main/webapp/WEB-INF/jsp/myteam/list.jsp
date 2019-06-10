@@ -65,10 +65,8 @@ body {
 <body>
 
   <div id="main-wrap" class="container">
-    <div style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
-    <span style="width: 100px">
-      <button type="button" class="btn btn-outline-dark btn-sm" onclick="dd()">요청경기목록</button>
-     </span>
+    <div id="cdcd"style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
+     <!--  <button type="button" class="btn btn-outline-dark btn-sm" id="kaka" onclick="dd()">요청경기목록</button> -->
     </div>
     <div id="teamInfo"
       style="border: 1px solid black; width: 1080px; height: 400px;">
@@ -80,7 +78,7 @@ body {
         style="width: 600px; height: 100px; float: left; margin-top: 22px; font-size: 50px; text-align: left;">
 
         <div class="input-field col s12 m6" id="teamSelect">
-          <select class="icons" id="cc" onchange="aa();">
+          <select class="icons" id="select_k" onchange="select_onchange();">
             <c:forEach items="${team}" var="team">
               <option
                 value="
@@ -116,22 +114,25 @@ body {
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+ 
+ <!-- ------------------------------- 스크립트 시작  -->
   <script type="text/javascript">
  
-  window.onload= aa;
-
+  window.onload= select_onchange;
+ 
+  // 셀렉문 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, options);
   });
 
-  // Or with jQuery
-
   $(document).ready(function(){
     $('select').formSelect();
   });
-        
-function aa(){
+//셀렉문 
+
+// 셀렉문 onchange
+function select_onchange(){
    var arr = new Array();  //${teamMember.teamMemberNo}
    var arrr = new Array();  
    var arrb = new Array(); //${teamMember.member.name}
@@ -145,53 +146,52 @@ function aa(){
    var arrg = new Array(); //${teamMember.member.birthDay}
    var arrgg = new Array();
    
-	 var target = document.getElementById("cc");
-	var a = String(target.options[target.selectedIndex].value).split(',');
-
- var teamMark = document.getElementById("teamMark");
+	 var target = document.getElementById("select_k");
+	 var bbb = String(target.options[target.selectedIndex].value).split(',');
+  var teamMark = document.getElementById("teamMark");
 	var teamName= document.getElementById("teamName");
 	 var teamDetail = document.getElementById("teamdetail");
 
-	 if (a.length > 11){
-  teamMark.innerHTML ='<img src ="' + a[9] +',' +a[10] +'" width = "250px" height = "250px" >'
+	 if (bbb.length > 11){
+  teamMark.innerHTML ='<img src ="' + bbb[9] +',' +bbb[10] +'" width = "250px" height = "250px" >'
   row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
-  '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[8]+'</U></I></B></span>' + 
+  '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
   '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
   '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
   
   
 row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
-'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[6]+'</U></I></B></span>' + 
+'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[6]+'</U></I></B></span>' + 
 '<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
-'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[3]+'</U></I></B></span>' 
+'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[3]+'</U></I></B></span>' 
 
 row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 유형</span> ' + 
-'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[4]+'</U></I></B></span>' + 
+'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[4]+'</U></I></B></span>' + 
 '<span style="display: inline-block;font-size:20px; width: 100px;">팀 실력</span> ' + 
-'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[5]+'</U></I></B></span>' 
+'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[5]+'</U></I></B></span>' 
 
 row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' +   
-'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[7]+'</U></I></B></span>' 
+'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[7]+'</U></I></B></span>' 
 	 }else {
-		  teamMark.innerHTML ='<img src ="' + a[9] +  '" width = "250px" height = "250px" >'
+		  teamMark.innerHTML ='<img src ="' + bbb[9] +  '" width = "250px" height = "250px" >'
 		  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
-		                       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[8]+'</U></I></B></span>' + 
+		                       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
 		                       '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
 		                       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
 		                       
 		                       
        row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
-       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[6]+'</U></I></B></span>' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[6]+'</U></I></B></span>' + 
        '<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
-       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[3]+'</U></I></B></span>' 
+       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[3]+'</U></I></B></span>' 
        
        row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 유형</span> ' + 
-       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[4]+'</U></I></B></span>' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[4]+'</U></I></B></span>' + 
        '<span style="display: inline-block;font-size:20px; width: 100px;">팀 실력</span> ' + 
-       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+a[5]+'</U></I></B></span>' 
+       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[5]+'</U></I></B></span>' 
        
        row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' + 
-       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+a[7]+'</U></I></B></span>' 
+       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[7]+'</U></I></B></span>' 
    }
  
 	  
@@ -205,7 +205,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
 	 </c:forEach>
 
 	 for (var i = 0; i < arr.length; i++) {
-	    if(arr[i] == parseInt(a[1])){
+	    if(arr[i] == parseInt(bbb[1])){
 	    	 arrc.push(arrb[i])
 	    	 arrdd.push(arrd[i])
 	    	 arrff.push(arrf[i])
@@ -214,13 +214,13 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
 	    }
 	}
 	
-	   //append div 삭제
+	     //append div 삭제
         for(var j=0; j< 30; j++){
         	$("#abcd").remove()
         }      
     
-    for (var i = 0; i < arrc.length; i++) {
-        //div 객체 생성
+	   // div append for문 (팀원들)
+    for (var i = 0; i < arrc.length; i++) { 
         var div = document.createElement("div");
         div.id = "abcd"
         div.innerHTML =
@@ -229,34 +229,39 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
          '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
           arrc[i] + '</span></div>' +
           '<div class="flip-card-back"><h3><br><br>' + arree[i] + '</h3> </div></div></a></div>'
-        //css설정
         div.style.border= "1px solid black";
         div.style.margin= "5px";
         div.style.width= "261px";
         div.style.height= "300px";
         div.style.float= "left";
         document.getElementById('aaaa').appendChild(div);
-    }
-}
+    } // div append (팀원들)
 
-function dd(){
-	var con = document.getElementById("teamInfo");
-	var ee = document.getElementById("aaaa");
-	  con.style.display = 'none'
-		 ee.style.display = 'none'
-	
-	var button = document.createElement("button");		 
-	  button.style.width= "100px";
-	  button.style.height= "100px";  
-	  document.getElementById('main-wrap').appendChild(button);
-
- var div = document.createElement("div");
-	    div.style.border= "1px solid black";
-      div.style.width= "1100x";
-      div.style.height= "600px";     
     
-      document.getElementById('main-wrap').appendChild(div);
+    
+    var button = document.createElement("button");
+    button.style.width= "100px";
+    button.style.height= "50px";
+    button.id="btn_zo";
+    if($("#btn_zo").length == 0){
+    document.getElementById('cdcd').appendChild(button);
+    }
+    
+    $("#btn_zo").click(function() {
+    	var teamNo =  parseInt(bbb[1]);    
+    	location.href='${contextRootPath}/app/myteam/send/' + teamNo ;
+    	});
+    
+    
+function dd(){
+	alert("gdgd")
+	location.href='${contextRootPath}/app/myteam/5';
+
 }
+    
+}//셀렉문 onchange
+
+
 </script>
 
 
