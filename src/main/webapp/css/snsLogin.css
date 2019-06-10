@@ -1,0 +1,26 @@
+.btnBox{
+	height: 35px
+}
+.snsBtn {
+	display: inline-block;
+  width: 35px;
+  height: 35px;
+  outline: 0;
+  border: 1px solid #eee;
+	border-radius: 5px
+}
+.facebookBtn {
+  background-color: #fff
+}
+#kakaoBtn:hover {
+  cursor: pointer
+}
+#naverBtn:hover {
+  cursor: pointer
+}
+#googleBtn:hover {
+  cursor: pointer
+}
+#facebookBtn:hover {
+  cursor: pointer
+}

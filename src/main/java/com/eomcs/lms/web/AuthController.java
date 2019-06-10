@@ -35,236 +35,169 @@ public class AuthController {
   @Autowired TeamService teamService;
   @Autowired ServletContext servletContext;
   @Autowired FacebookService facebookService;
-  @Autowired NaverService naverService;
   @Autowired GoogleService googleService;
   @Autowired KakaoService kakaoService;
+  @Autowired NaverService naverService;
   
-  @GetMapping("kakao")
-  public void kakao() {
+  @GetMapping("snsLogin")
+  public void snsLogin() {
   }
   
-  @GetMapping("kakaoJoin")
-  public void kakaoJoin() {
+  @GetMapping("snsLoginFail")
+  public void snsLoginFail() {
   }
   
-  @GetMapping("kakaoLoginFail")
-  public void kakaoLoginFail() {
+  @GetMapping("snsLoginSuccess")
+  public void snsLoginSuccess() {
   }
   
-  @RequestMapping("kakaoSignin")
-  public String getKakaoSigninCode(HttpSession session) throws Exception {
-    logger.debug("kakaoSignin");
+  @GetMapping("snsJoin")
+  public void snsJoin() {
+  }
+  
+  @RequestMapping("snsSignin")
+  public String getSnsSigninCode(
+      HttpSession session, String loginType) throws Exception {
+    logger.debug("snsSignin");
 
     String state = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
     logger.info(state);
     
     String redirectUri = 
-        "http://localhost:8080/bitcamp-team-project/app/auth/kakaoAccessToken";
+        "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=";
+    String returnUrl = "auth/snsLoginFail";
     
-    String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?"
-        + "client_id=43ee012e7eba5344ec3ae793e76332f5"
-        + "&redirect_uri=" + redirectUri
-        + "&response_type=code"
-        + "&state="
-        + state;
-    
-    return "redirect:" + kakaoUrl;
-  }
-  
-  @RequestMapping("kakaoAccessToken")
-  public String getKakaoSignIn(String code, HttpSession session, String state) throws Exception {
-    logger.debug("kakaoAccessToken / code : "+ code);
-    logger.info("state >>" + state); // csrf
-    
-    if (code == null || code.length() == 0) {
-      session.setAttribute("login_type", "cancel");
-      return "auth/kakaoLoginFail";
-    }
-    
-    // accessToken을 받아오고 세션에 토큰을 저장함.
-    String accessToken = kakaoService.requestKakaoAccessToken(session, code);
-    
-    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
-    String url = kakaoService.kakaoUserDataLoadAndCheck(accessToken, session);
-    
-    return url;
-  }
-  
-  @RequestMapping("kakaoEnter")
-  @ResponseBody
-  public Object getKakaoEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
-    String accessToken = (String) session.getAttribute("kakaoAccessToken");
-    
-    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
-    String status = kakaoService.kakaoUserDataLoadAndSave(accessToken, session, termsAgree);
-    
-    HashMap<String,Object> content = new HashMap<>();
-    content.put("status", status);
-    
-    return content;
-  }
-  
-  @GetMapping("google")
-  public void google() {
-  }
-  
-  @GetMapping("googleJoin")
-  public void googleJoin() {
-  }
-  
-  @GetMapping("googleLoginFail")
-  public void googleLoginFail() {
-  }
-  
-  @RequestMapping("googleSignin")
-  public String getGoogleSigninCode(HttpSession session) throws Exception {
-    logger.debug("googleSignin");
+    if (loginType.equalsIgnoreCase("facebook")) {
+      logger.debug("facebookSignin");
+      String facebookUrl = "https://www.facebook.com/v3.3/dialog/oauth?"+
+              "client_id="+ "564771240719772" +
+              "&redirect_uri=" + redirectUri + "facebook"+
+              "&scope=public_profile,email";
 
-    String state = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
-    logger.info(state);
-    
-    // idToken을 발급받기 위해 scope를 지정해준다.
-    String googleUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + 
-        "scope=email%20profile&" + 
-        "response_type=code&" + 
-        "state=" + state + 
-        "&redirect_uri=http://localhost:8080/bitcamp-team-project/app/auth/googleAccessToken&" + 
-        "client_id=867895829996-k3o07c2lj7odqm2p8flo9u95qgcv59lj.apps.googleusercontent.com";
+      returnUrl = "redirect:" + facebookUrl;
       
-    return "redirect:" + googleUrl;
-  }
-  
-  @RequestMapping("googleAccessToken")
-  public String getGoogleSignIn(String code, HttpSession session, String error) throws Exception {
-    logger.debug("googleAccessToken / code : "+ code);
-    logger.info("error >>" + error);
-    
-    if (code == null || code.length() == 0) {
-      session.setAttribute("login_type", "cancel");
-      return "auth/googleLoginFail";
+    } else if (loginType.equalsIgnoreCase("naver")) {
+      
+      logger.debug("naverSignin");
+      String naverUrl = "https://nid.naver.com/oauth2.0/authorize?"
+          + "response_type=code"
+          + "&client_id=" + "I7CsLJrBpKo8Qc1BsyOn"
+          + "&redirect_uri=" + redirectUri + "naver"
+          + "&state="
+          + state;
+      
+      returnUrl = "redirect:" + naverUrl;
+      
+    } else if (loginType.equalsIgnoreCase("kakao")) {
+      logger.debug("kakaoSignin");
+      String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?"
+          + "client_id=" + "43ee012e7eba5344ec3ae793e76332f5"
+          + "&redirect_uri=" + redirectUri + "kakao"
+          + "&response_type=code"
+          + "&state="
+          + state;
+      
+      returnUrl ="redirect:" + kakaoUrl;
+      
+    } else if (loginType.equalsIgnoreCase("google")) {
+      
+      logger.debug("googleSignin");
+      // idToken을 발급받기 위해 scope를 지정해준다.
+      String googleUrl = "https://accounts.google.com/o/oauth2/v2/auth?" + 
+          "scope=email%20profile" + 
+          "&response_type=code" + 
+          "&state=" + state + 
+          "&redirect_uri=" + redirectUri + "google" + 
+          "&client_id=" + "867895829996-k3o07c2lj7odqm2p8flo9u95qgcv59lj.apps.googleusercontent.com";
+        
+      returnUrl = "redirect:" + googleUrl;
+      
+    } else {
+      session.setAttribute("error_type", "error");
     }
     
-    // idToken을 받아오고 세션에 토큰을 저장함.
-    String googleIdToken = googleService.requestGoogleAccessToken(session, code);
-    
-    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
-    String url = googleService.googleUserDataLoadAndCheck(googleIdToken, session);
-    
-    return url;
+    return returnUrl;
   }
   
-  @RequestMapping("googleEnter")
-  @ResponseBody
-  public Object getGoogleEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
-    String idToken = (String) session.getAttribute("googleIdToken");
+  @RequestMapping("snsAccessToken")
+  public String getSnsSignIn(
+      String code, 
+      String loginType, 
+      String error, 
+      String state, 
+      HttpSession session) throws Exception {
+    logger.debug("snsAccessToken / code : " + code);
+    logger.info("state >>" + state); // csrf
+    logger.info("loginType >>" + loginType);
     
-    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
-    String status = googleService.googleUserDataLoadAndSave(idToken, session, termsAgree);
+    String url = "auth/snsLoginFail";
     
-    HashMap<String,Object> content = new HashMap<>();
-    content.put("status", status);
-    
-    return content;
-  }
-  
-  @GetMapping("naver")
-  public void naver() {
-  }
-  
-  @GetMapping("naverJoin")
-  public void naverJoin() {
-  }
-  
-  @GetMapping("naverLoginFail")
-  public void naverLoginFail() {
-  }
-  
-  @RequestMapping("naverSignin")
-  public String getNaverSigninCode(HttpSession session) throws Exception {
-    logger.debug("naverSignin");
-
-    String state = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
-    logger.info(state);
-    
-    String redirectUri = 
-        "http://localhost:8080/bitcamp-team-project/app/auth/naverAccessToken";
-    
-    String naverUrl = "https://nid.naver.com/oauth2.0/authorize?"
-        + "response_type=code&"
-        + "client_id=I7CsLJrBpKo8Qc1BsyOn&"
-        + "redirect_uri="
-        + redirectUri
-        + "&state="
-        + state;
-    
-    return "redirect:" + naverUrl;
-  }
-  
-  @RequestMapping("naverAccessToken")
-  public String getNaverSignIn(String code, HttpSession session, String state) throws Exception {
-    logger.debug("naverAccessToken / code : "+ code);
-    logger.info("state >>" + state);
-    
+    // code가 안넘어오면 error : access_denied가 넘어옴.
     if (code == null || code.length() == 0) {
-      session.setAttribute("login_type", "cancel");
-      return "auth/naverLoginFail";
+      logger.info("error >>" + error);
+      session.setAttribute("error_type", "cancel");
+      return url;
     }
     
     // accessToken을 받아오고 세션에 토큰을 저장함.
-    String accessToken = naverService.requestNaverAccessToken(session, code, state);
-    
     // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
-    String url = naverService.naverUserDataLoadAndCheck(accessToken, session);
+    if (loginType.equalsIgnoreCase("facebook")) {
+      logger.debug("facebookAccessToken / code : "+ code);
+      url = facebookService.requestFaceBookAccessTokenAndUserDataCheck(session, code);
+      
+    } else if (loginType.equalsIgnoreCase("naver")) {
+      logger.debug("naverAccessToken / code : "+ code);
+      logger.info("state >>" + state);
+      url = naverService.requestNaverAccessTokenAndUserDataCheck(session, code, state);
+      
+    } else if (loginType.equalsIgnoreCase("kakao")) {
+      logger.debug("kakaoAccessToken / code : "+ code);
+      url = kakaoService.requestKakaoAccessTokenAndUserDataCheck(session, code);
+      
+    } else if (loginType.equalsIgnoreCase("google")) {
+      logger.debug("googleAccessToken / code : "+ code);
+      url = googleService.requestGoogleAccessTokenAndUserDataCheck(session, code);
+      
+    } else {
+      session.setAttribute("error_type", "error");
+    }
     
     return url;
   }
   
-  @RequestMapping("naverEnter")
+  @RequestMapping("snsEnter")
   @ResponseBody
-  public Object getNaverEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
-    String accessToken = (String) session.getAttribute("naverAccessToken");
+  public Object getSnsEnter(
+      String loginType,
+      TermsAgree termsAgree, 
+      HttpSession session) throws Exception {
+    HashMap<String,Object> content = new HashMap<>();
+    String status = "fail";
     
     // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
-    String status = naverService.naverUserDataLoadAndSave(accessToken, session, termsAgree);
+    if (loginType.equalsIgnoreCase("facebook")) {
+      String accessToken = (String) session.getAttribute("faceBookAccessToken");
+      status = facebookService.facebookUserDataLoadAndSave(accessToken, session, termsAgree);
+      
+    } else if (loginType.equalsIgnoreCase("naver")) {
+      String accessToken = (String) session.getAttribute("naverAccessToken");
+      status = naverService.naverUserDataLoadAndSave(accessToken, session, termsAgree);
+      
+    } else if (loginType.equalsIgnoreCase("kakao")) {
+      String accessToken = (String) session.getAttribute("kakaoAccessToken");
+      status = kakaoService.kakaoUserDataLoadAndSave(accessToken, session, termsAgree);
+      
+    } else if (loginType.equalsIgnoreCase("google")) {
+      String idToken = (String) session.getAttribute("googleIdToken");
+      status = googleService.googleUserDataLoadAndSave(idToken, session, termsAgree);
+    } 
     
-    HashMap<String,Object> content = new HashMap<>();
     content.put("status", status);
-    
     return content;
-  }
-    
-  @GetMapping("facebook")
-  public void facebook() {
-  }
-  
-  @GetMapping("facebookJoin")
-  public void facebookJoin() {
-  }
-  
-  @GetMapping("facebookLoginFail")
-  public void facebookLoginFail() {
-  }
-  
-  @GetMapping("loginSuccess")
-  public void loginSuccess() {
   }
   
   @GetMapping("form")
   public void form(
-      @RequestHeader(value="Referer",required=false) String refererUrl,
-      HttpSession session) {
-    
-    logger.debug("refererUrl: " + refererUrl);
-    
-    if (refererUrl != null && !refererUrl.endsWith("/auth/login")) {
-      session.setAttribute(REFERER_URL, refererUrl);
-    } else {
-      session.removeAttribute(REFERER_URL);
-    }
-  }
-  
-  @GetMapping("form2")
-  public void form2(
       @RequestHeader(value="Referer",required=false) String refererUrl,
       HttpSession session) {
     
@@ -325,50 +258,6 @@ public class AuthController {
     session.invalidate();
     
     return "redirect:/app/main";
-  }
-  
-  @RequestMapping("facebookSignin")
-  public String getfacebookSigninCode(HttpSession session) {
-    logger.debug("facebookSignin");
-
-    String facebookUrl = "https://www.facebook.com/v3.3/dialog/oauth?"+
-            "client_id="+ "564771240719772" +
-            "&redirect_uri=http://localhost:8080/bitcamp-team-project/app/auth/facebookAccessToken"+
-            "&scope=public_profile,email";
-
-    return "redirect:" + facebookUrl;
-  }
-  
-  @RequestMapping("facebookAccessToken")
-  public String getFacebookSignIn(String code, HttpSession session, String state) throws Exception {
-    logger.debug("facebookAccessToken / code : "+ code);
-    
-    if (code == null || code.length() == 0) {
-      session.setAttribute("login_type", "cancel");
-      return "auth/facebookLoginFail";
-    }
-    
-    // accessToken을 받아오고 세션에 토큰을 저장함.
-    String accessToken = facebookService.requestFaceBookAccessToken(session, code);
-    
-    // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
-    String url = facebookService.facebookUserDataLoadAndCheck(accessToken, session);
-    
-    return url;
-  }
-  
-  @RequestMapping("facebookEnter")
-  @ResponseBody
-  public Object getFacebookEnter(TermsAgree termsAgree, HttpSession session) throws Exception {
-    String accessToken = (String) session.getAttribute("faceBookAccessToken");
-    
-    // 토큰을 이용하여 개인정보를 가져오고 신규회원을 가입시킴.
-    String status = facebookService.facebookUserDataLoadAndSave(accessToken, session, termsAgree);
-    
-    HashMap<String,Object> content = new HashMap<>();
-    content.put("status", status);
-    
-    return content;
   }
 }
 

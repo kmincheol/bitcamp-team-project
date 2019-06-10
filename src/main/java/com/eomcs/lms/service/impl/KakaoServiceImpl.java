@@ -3,10 +3,6 @@ package com.eomcs.lms.service.impl;
 import java.util.HashMap;
 import java.util.UUID;
 import javax.servlet.http.HttpSession;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
@@ -34,7 +30,8 @@ public class KakaoServiceImpl implements KakaoService {
     this.memberService = memberService;
   }
   
-  public String requestKakaoAccessToken(HttpSession session, String code) throws Exception {
+  @SuppressWarnings("unchecked")
+  public String requestKakaoAccessTokenAndUserDataCheck(HttpSession session, String code) throws Exception {
     logger.info("token");
     
     RestTemplate template = new RestTemplate();
@@ -42,7 +39,7 @@ public class KakaoServiceImpl implements KakaoService {
     MultiValueMap<String,String> paramMap = new LinkedMultiValueMap<String,String>();
     paramMap.add("grant_type", "authorization_code");
     paramMap.add("client_id", "43ee012e7eba5344ec3ae793e76332f5");
-    paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/kakaoAccessToken");
+    paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=kakao");
     paramMap.add("code", code);
     paramMap.add("client_secret", "UlIkhLNaHbdIqlFRgF8LoaXg5N6lYFhz");
     
@@ -61,28 +58,23 @@ public class KakaoServiceImpl implements KakaoService {
     
     session.setAttribute("kakaoAccessToken", kakaoAccessToken);
     
-    return kakaoAccessToken;
+    // 토큰으로 정보를 받아와서 가입된 회원인지 확인
+    kakaoUrl = "https://kapi.kakao.com/v2/user/me";
     
-  }
-  
-  @SuppressWarnings("unchecked")
-  public String kakaoUserDataLoadAndCheck(String accessToken, HttpSession session) throws Exception {
-    String kakaoUrl = 
-        "https://kapi.kakao.com/v2/user/me";
-    RestTemplate template = new RestTemplate();
+    template = new RestTemplate();
     
-    MultiValueMap<String,String> paramMap = new LinkedMultiValueMap<String,String>();
+    paramMap = new LinkedMultiValueMap<String,String>();
     paramMap.add("property_keys", "[\"kakao_account.email\", \"properties.nickname\"]");
     
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("Authorization", "Bearer " + accessToken);
-    HttpEntity<Object> request = new HttpEntity<>(paramMap, headers);
-    String rawJsonString = template.postForObject(kakaoUrl, request, String.class);
+    headers = new HttpHeaders();
+    headers.add("Authorization", "Bearer " + kakaoAccessToken);
+    HttpEntity<Object> request1 = new HttpEntity<>(paramMap, headers);
+    rawJsonString = template.postForObject(kakaoUrl, request1, String.class);
     
     logger.debug("kakaoAccessToken:check / rawJson! : " + rawJsonString);
 
-    JSONParser jsonParser = new JSONParser();
-    JSONObject jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
+    jsonParser = new JSONParser();
+    jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
 
     logger.debug("kakaoUserDataLoadAndCheck / raw json : " + jsonObject);
     
@@ -92,29 +84,33 @@ public class KakaoServiceImpl implements KakaoService {
     logger.info("email >> " + email);
     
     if (email == null || email.length() == 0) {
-      session.setAttribute("login_type", "noEmail");
-      return "redirect:kakaoLoginFail";
+      session.setAttribute("error_type", "noEmail");
+      session.setAttribute("login_type", "kakao");
+      return "redirect:snsLoginFail";
     }
     
     Member member = memberService.get(email);
     
     // 해당 이메일로 가입된 유저가 없으면 신규가입으로 보낸다.
     if (member == null) {
-      return "redirect:kakaoJoin";
+      session.setAttribute("login_type", "kakao");
+      return "redirect:snsJoin";
     }
     
     // 해당 이메일로 가입되어있지만, 로그인 타입이 네이버가 아니라면, alert창을 띄우게 한다.
     if (!member.getLoginType().equalsIgnoreCase("kakao")) {
       session.setAttribute("login_type", member.getLoginType());
-      return "redirect:kakaoLoginFail";
+      session.setAttribute("error_type", "otherType");
+      return "redirect:snsLoginFail";
     }
     
     // 해당 이메일로 가입되어있고, 로그인 타입이 네이버라면 자동로그인 처리한 후 메인으로 보낸다.
     session.setAttribute("loginUser", member);
 
-    return "redirect:loginSuccess";
-}
-  
+    return "redirect:snsLoginSuccess";
+
+  }
+
   @SuppressWarnings("unchecked")
   public String kakaoUserDataLoadAndSave(
       String accessToken, 

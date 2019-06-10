@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Naver 회원가입</title>
+<title>SNS 회원가입</title>
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
@@ -14,12 +14,27 @@
         });
         
         function checkTerms() {
-          if(confirm('네이버로 BATTLE MATCHING을 시작할까요? \n\n회원가입 시, BATTLE MATCHING의 이용약관과\n개인정보처리방침에 따라 정보가 관리됩니다.')) {
+          var loginType = "${login_type}";
+          var cmt;
+          
+          if (loginType == "facebook") {
+            cmt = "페이스북으로 "
+          } else if (loginType == "naver") { 
+            cmt = "네이버로 "
+          } else if (loginType == "kakao") {
+            cmt = "카카오로 "
+          } else if (loginType == "google") {
+            cmt = "구글로 "
+          } else {
+          }
+          
+          if(confirm(cmt + 'BATTLE MATCHING을 시작할까요? \n\n회원가입 시, BATTLE MATCHING의 이용약관과\n개인정보처리방침에 따라 정보가 관리됩니다.')) {
             var agreeMkt = confirm('더 나은 서비스 제공을 위한 마케팅 정보 활용에 동의하시겠어요?');
             var openUrl = "${contextRootPath}/app/member/signUpCompletion";
-            $.getJSON('${contextRootPath}/app/auth/naverEnter', {
+            $.getJSON('${contextRootPath}/app/auth/snsEnter', {
               "termsRequired" : true,
-              "termsMarketing" : agreeMkt
+              "termsMarketing" : agreeMkt,
+              "loginType" : loginType
             }, (data) => {
               console.log(data);
               if (data.status == "success") {

@@ -28,8 +28,8 @@ public class GoogleServiceImpl implements GoogleService {
     this.memberService = memberService;
   }
   
-  public String requestGoogleAccessToken(HttpSession session, String code) throws Exception {
-    
+  public String requestGoogleAccessTokenAndUserDataCheck(HttpSession session, String code) throws Exception {
+
     RestTemplate template = new RestTemplate();
     logger.info("token");
     String googleUrl = "https://www.googleapis.com/oauth2/v4/token";
@@ -37,7 +37,7 @@ public class GoogleServiceImpl implements GoogleService {
     paramMap.add("code", code);
     paramMap.add("client_id", "867895829996-k3o07c2lj7odqm2p8flo9u95qgcv59lj.apps.googleusercontent.com");
     paramMap.add("client_secret", "qbAgE6Efn4EBgGWlUSjAQ4Ti");
-    paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/googleAccessToken");
+    paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=google");
     paramMap.add("grant_type", "authorization_code");
     
     HttpHeaders headers = new HttpHeaders();
@@ -60,22 +60,20 @@ public class GoogleServiceImpl implements GoogleService {
     logger.debug("googleIdToken / idToken : "+ googleIdToken);
     
     session.setAttribute("googleIdToken", googleIdToken);
-    return googleIdToken;
-  }
-  
-  public String googleUserDataLoadAndCheck(String idToken, HttpSession session) throws Exception {
-    String googleUrl = 
+    
+    // 토큰으로 정보를 받아와서 가입된 회원인지 확인
+    googleUrl = 
         "https://oauth2.googleapis.com/tokeninfo?"
         + "id_token="
-        + idToken;
-    RestTemplate template = new RestTemplate();
+        + googleIdToken;
+    template = new RestTemplate();
 
-    String rawJsonString = template.getForObject(googleUrl, String.class);
+    rawJsonString = template.getForObject(googleUrl, String.class);
     
     logger.debug("googleIdToken:check / rawJson! : " + rawJsonString);
 
-    JSONParser jsonParser = new JSONParser();
-    JSONObject jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
+    jsonParser = new JSONParser();
+    jsonObject = (JSONObject) jsonParser.parse(rawJsonString);
 
     logger.debug("googleUserDataLoadAndCheck / raw json : " + jsonObject);
     
@@ -83,28 +81,32 @@ public class GoogleServiceImpl implements GoogleService {
     logger.info("email >> " + email);
     
     if (email == null || email.length() == 0) {
-      session.setAttribute("login_type", "noEmail");
-      return "redirect:googleLoginFail";
+      session.setAttribute("error_type", "noEmail");
+      session.setAttribute("login_type", "google");
+      return "redirect:snsLoginFail";
     }
     
     Member member = memberService.get(email);
     
     // 해당 이메일로 가입된 유저가 없으면 신규가입으로 보낸다.
     if (member == null) {
-      return "redirect:googleJoin";
+      session.setAttribute("login_type", "google");
+      return "redirect:snsJoin";
     }
     
     // 해당 이메일로 가입되어있지만, 로그인 타입이 구글이 아니라면, alert창을 띄우게 한다.
     if (!member.getLoginType().equalsIgnoreCase("google")) {
       session.setAttribute("login_type", member.getLoginType());
-      return "redirect:googleLoginFail";
+      session.setAttribute("error_type", "otherType");
+      return "redirect:snsLoginFail";
     }
     
     // 해당 이메일로 가입되어있고, 로그인 타입이 구글이라면 자동로그인 처리한 후 메인으로 보낸다.
     session.setAttribute("loginUser", member);
 
-    return "redirect:loginSuccess";
-}
+    return "redirect:snsLoginSuccess";
+    
+  }
   
   public String googleUserDataLoadAndSave(
       String idToken, 
