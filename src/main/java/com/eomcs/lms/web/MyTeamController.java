@@ -47,7 +47,7 @@ public class MyTeamController {
 		session.setAttribute("member", member);
 		model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
-	
+	 System.out.println(tm.toString());
 
 		return "myteam/list";
 	}
@@ -55,7 +55,7 @@ public class MyTeamController {
 	/* 팀원 상세보기 */
 
 	@GetMapping("{tno}/{mno}")
-	public String detail(@PathVariable int tno,@PathVariable int mno, Model model, HttpSession session) {
+	public String detail(@PathVariable int tno, @PathVariable int mno, Model model, HttpSession session) {
 
 		Member member = (Member) session.getAttribute("loginUser");
 
@@ -74,10 +74,10 @@ public class MyTeamController {
 		return "myteam/detail";
 	}
 
-	 @GetMapping("delete/{no}") public String delete(@PathVariable int tno,@PathVariable int mno) {
-		 if (myTeamService.delete(tno,mno) == 0)
-			 throw new RuntimeException("해당 번호의 게시물이 없습니다."); 
-		 return ""; }
+@GetMapping("delete/{tno}/{mno}") public String delete(@PathVariable int tno,@PathVariable int mno) {
+	if (myTeamService.delete(tno,mno) == 0)
+		throw new RuntimeException("해당 번호의 게시물이 없습니다."); 
+		 return "redirect:../../"; }
 	/*
 	 * 질문 게시글 폼
 	 * 

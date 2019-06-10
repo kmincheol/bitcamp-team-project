@@ -64,10 +64,13 @@
       mbr_id,
       name,
       bth_dt,
+      gndr, 
       email,
       user_id,
       pwd,
       tel,
+      post,
+      prof_phot,
       bas_addr,
       det_addr,
       s_intd
@@ -109,6 +112,18 @@
       mbr
     where 
       user_id = #{id}
+      and pwd = password(#{password})
+  </select>
+  
+    <select id="findByPassword" resultMap="memberMap" parameterType="map">
+    select 
+      <include refid="default-columns"/>,
+      mgr,
+      pwd
+    from 
+      mbr
+    where 
+      mbr_id = #{no}
       and pwd = password(#{password})
   </select>
   
@@ -157,11 +172,12 @@
     <set>
       <if test="name != null">name = #{name},</if>
       <if test="email != null">email = #{email},</if>
-      <if test="password != null">pwd = password(#{password}),</if>
       <if test="tel != null">tel = #{tel},</if>
+      <if test="post != null">post = #{post},</if>
       <if test="baseAddress != null">bas_addr = #{baseAddress},</if>
       <if test="detailAddress != null">det_addr = #{detailAddress},</if>
-      <if test="selfIntroduce != null">s_intd = #{selfIntroduce}</if>
+      <if test="selfIntroduce != null">s_intd = #{selfIntroduce},</if>
+      <if test="photo != null">prof_phot = #{photo}</if> 
     </set>  
     where 
       mbr_id = #{no}
@@ -169,11 +185,10 @@
   
     <update id="updatePassword" parameterType="member">
     update mbr
-    <set>
-      <if test="password != null">pwd = password(#{password})</if>
-    </set>  
+    set
+    pwd = password(#{password})
     where 
-      mbr_id = #{no}
+    mbr_id = #{no}
   </update>
   
   <update id="updateOption" parameterType="member">

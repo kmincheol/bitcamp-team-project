@@ -18,8 +18,6 @@
 <!-- Bootstrap core CSS --> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">  
-<!-- Material Design Bootstrap --> 
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -169,15 +167,11 @@
   <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
 
- <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
-  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/> 
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
-  <jsp:include page="../javascript.jsp" />
-  <!-- jPList Library -->
-        <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script> 
-        <script>
-            jplist.init();  
-        </script>
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
          
 
   <script type="text/javascript">

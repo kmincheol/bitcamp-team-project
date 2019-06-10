@@ -168,7 +168,16 @@
          
   </select> 
   
- 
+ <delete id="delete" parameterType="hashmap">
+ delete 
+  from
+    tm_mbr
+  where  
+      mbr_id = #{mno} AND tm_mbr_id = #{tno}
+
+  </delete>
+
+
 
 
 

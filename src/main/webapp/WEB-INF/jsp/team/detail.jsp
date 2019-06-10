@@ -19,15 +19,15 @@
   <div class="container">
     <br>
     <br>
-   <%--   <c:choose>
+    <c:choose>
       <c:when test="${empty teamMembers}">
         <p>해당하는 팀이 없습니다.</p>
       </c:when>
 
-      <c:otherwise>  --%>
+      <c:otherwise>  
 
         
-       <%--  <div class="row" style="border:2px solid gray; width: 400px; padding: 15px;">
+       <div class="row" style="border:2px solid gray; width: 400px; padding: 15px;">
           <div class="bit-pro col-7">
             <div class="form-group row" style="display:none;">
               <label for="no" class="col-sm-3 col-form-label">번호</label>
@@ -80,7 +80,9 @@
               </div> 
               </div>
   </div>
-  </div>  --%>
+  </div>  
+  </c:otherwise>
+  </c:choose>
   <div class="teamMember">
   <table border="1" id="list_table">
   <colgroup>

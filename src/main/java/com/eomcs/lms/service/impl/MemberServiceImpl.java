@@ -70,13 +70,19 @@ public class MemberServiceImpl implements MemberService {
   }
   
   @Override
+  public Member checkPassword(int no, String password) {
+    
+    return memberDao.findByPassword(no,password);
+  }
+  
+  @Override
   public int update(Member member) {
     return memberDao.update(member);
   }
   
   @Override
   public int updatePassword(Member member) {
-    return memberDao.update(member);
+    return memberDao.updatePassword(member);
   }
   
   @Override
