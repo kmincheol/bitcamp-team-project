@@ -51,7 +51,17 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 .th-sm {
 	text-align: center;
+}     
+
+.pagination .page-item.active .page-link { background-color: #000; }
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.active .page-link:focus {
+color: #000;
+background-color: #000;
 }
+
+.pagination .page-item.active .page-link:hover {
+background-color: #000;
 
 /* 테이블 헤더 색상 변경 */
 table.dataTable thead tr {

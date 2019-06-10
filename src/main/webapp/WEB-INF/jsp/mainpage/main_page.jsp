@@ -13,7 +13,7 @@
 <!-- header -->
 <link rel="stylesheet" href="${contextRootPath}/css/mainpage-header.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+   
 <jsp:include page="../mainSidebar/commonSidebarCss.jsp" />
 </head>
 
@@ -27,7 +27,9 @@
 					<ul>
 						<li><a href="${contextRootPath}/app/main">Home</a></li>
 						<li><a href="#">Blog</a></li>
+            <c:if test="${empty sessionScope.loginUser}">
             <li><a href="${contextRootPath}/app/auth/form">Login</a></li>
+            </c:if>
 					</ul>
 				</div>
 			</nav>
