@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
-
 <jsp:include page="../header.jsp" />
 <style>
 .results tr[visible='false'], .no-result {
@@ -63,13 +62,14 @@
           <tbody>
           
             <c:forEach items="${all}" var="match">
-
               <tr>
-                <td id="teaminfo" class="th-sm sorting_asc" rowspan="1" 
+                <td id="${match.team.teamId}" class="teamInfo sorting_asc" rowspan="1" 
+                 data-toggle="modal" data-target="#exampleModalCenter2"
                   align="center" style="cursor: pointer;"
-                  onClick="location.href='${contextRootPath}/app/matchboard/team/${match.team.teamId}'"
+                  onClick="modalEvent2('${match.team.teamId}');"
                   onMouseOver="this.style.backgroundColor='#f2fffd';"
                   onMouseOut="this.style.backgroundColor='' ">
+                  
                   ${match.team.teamEmblemPhoto} 엠블럼자리 <!-- 엠블럼 들어갑니다. -->
                   <br> <br> ${match.team.teamName}<br>
                 </td>
@@ -93,8 +93,10 @@
                 <br>
                 </td>
               </tr>
-              <!-- 모달 시작 -->
-           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              
+              <!--경기정보 모달 시작. -->
+           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" 
+           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -124,8 +126,29 @@
              </div>
              </div>
              </div>
-             <!-- 모달 끝 -->
+             <!--경기정보 모달 끝. -->
              
+             <!-- 팀정보 모달 시작. -->
+           <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" 
+           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalCenterTitle">팀정보머릿글부분</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+           </div>
+               <div class="modal-body">
+               요기가 팀정보몸통부분
+           </div>
+             <div class="modal-footer">
+             </div>
+             </div>
+             </div>
+             </div>
+             
+             <!-- 팀정보 모달 끝. -->
             </c:forEach>
           </tbody>
         </table>
@@ -232,7 +255,24 @@ function modalEvent(number) {
 }
 
 
+function modalEvent2(number) {
+	var no;
+	var nocom;
+	$('.teamInfo').each(function(index) {
+		nocom = $('.teamInfo')[index].id;
+		if (nocom == number) {
+			no = nocom;
+		}
+	})
+	console.log(no);
 
+	$.getJSON("data2", {"no" : no}, function(data2) {
+		console.log(data2);
+	  	$('.modal-title').text(data2.team.teamName);
+	  	$('.modal-body').text("팀번호 : "+data2.team.teamId);
+	  	$('.modal-body').append("<br>팀원 : "+data2.team.teamMembers.member.name);
+	});
+}
 
 
 

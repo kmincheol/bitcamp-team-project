@@ -1,0 +1,269 @@
+.container {
+	width: 1080px;
+	margin: 0 auto;
+	text-align: center;
+}
+#topComment {
+  text-align: center;
+  margin-top: 30px;
+}
+.teamInfo {
+  width: 120px;
+}
+
+#control-box {
+  text-align: center;
+  padding-left: 0px;
+}
+/**
+ * demo styles 
+ */
+
+h1{
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 22px;
+    color: #212529;
+}
+
+a{
+    color: #212529;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.modal-body {
+  text-align:left;
+}
+
+
+[data-jplist-group]{
+    display: flex;
+    font-size: 16px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 20px;
+    box-sizing: border-box;
+    margin-left: 3px;
+}
+
+[data-jplist-item]{
+  width: 1050px;
+  text-align: center;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+#matchInfo{
+  margin-bottom: 0px;
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 10px 0;
+}
+
+button{
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .2rem .6rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  margin: 0 3px;
+}
+
+.jplist-selected{
+  background-color: #d0ffd7;
+  border-color: #d0ffd7;
+}
+
+#modalbody {
+  width: 500px;
+  height: 180px;
+}
+
+
+#btnsub2 {
+  margin-top: 3px;
+}
+
+[data-jplist-control="no-results"]{
+  padding: 20px 0;
+  text-align:center;
+  color: #3e6894;
+}
+
+
+
+/* 테스트구간 */
+
+.ui-datepicker {
+  width: 216px;
+  height: auto;
+  margin: 5px auto 0;
+  font: 9pt Arial, sans-serif;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  background: white;
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+.ui-datepicker table {
+  width: 100%;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-datepicker-prev {
+  float: left;
+  background-position: center -30px;
+  background-color: #c5c5c5;
+  cursor: pointer;
+  hover;
+}
+.ui-datepicker-next {
+  float: right;
+  background-position: center 0px;
+  background-color: #dcf7cb;
+  cursor: pointer;
+  hover;
+}
+
+.ui-datepicker thead {
+  background-color: #f7f7f7;
+  background-image: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
+  background-image: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  background-image: -o-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  background-image: -ms-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  background-image: linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f1f1f1',GradientType=0 );
+  border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker th {
+  text-transform: uppercase;
+  font-size: 6pt;
+  padding: 5px 0;
+  color: #666666;
+  text-shadow: 1px 0px 0px #fff;
+  filter: dropshadow(color=#fff, offx=1, offy=0);
+}
+
+
+
+
+
+/**
+ * slider styles
+ */
+/* [data-jplist-control="slider-range-filter"]{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    align-items: center;
+    text-align:center;
+    width: 100%;
+}
+
+.range-slider-value{
+    width: 100px;
+    box-sizing: border-box;
+    padding: 0 5px;
+}
+
+.jplist-slider {
+    width: 100%;
+    height: 20px;
+    background-color: #fff;
+    margin: 15px;
+    margin: 15px;
+    border-radius: .25rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.jplist-slider::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    opacity: 0;
+}
+
+.jplist-slider-holder-1,
+.jplist-slider-holder-2 {
+    width: 20px;
+    height: 100%;
+    border-radius: .25rem;
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, 0);
+    z-index: 200;
+    transition: 0.3s background-color;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+
+.jplist-slider-holder-1:active,
+.jplist-slider-holder-2:active{
+    background: #00448c;
+    box-shadow: 0px 0px 10px #fff;
+}
+
+.jplist-slider-range {
+    width: 0;
+    height: 20px;
+    background: #ccc;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: 1rem 1rem;
+}
+
+.jplist-slider-values{
+  width: 100%;
+}
+
+[data-type="value-1"],
+[data-type="value-2"]{
+  color: #e83e8c;
+} */

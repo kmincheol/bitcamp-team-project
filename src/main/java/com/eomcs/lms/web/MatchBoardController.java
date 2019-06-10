@@ -20,6 +20,7 @@ import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.LocationService;
 import com.eomcs.lms.service.MatchApplyService;
@@ -38,6 +39,7 @@ public class MatchBoardController {
   @Autowired LocationService locationService;
   @Autowired ServletContext servletContext;
 
+  
   // filter.js test
   @GetMapping("listAll")
   @ResponseBody
@@ -62,15 +64,25 @@ public class MatchBoardController {
   
   
   @GetMapping("list3")
-  public void list3(Model model) {
+  public void list3(Model model, HttpSession session) {
     List<Match> all = matchBoardService.search();
+    
+    // 로그인 유저를 위한.
+    if (session.getAttribute("loginUser") != null) {
+      Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
+      List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+      model.addAttribute("myteam", teames);
+      } else {
+      }
     model.addAttribute("all", all);
   }
+  
   
   @GetMapping("list4")
   public void list4(Model model, HttpSession session) {
     List<Match> all = matchBoardService.search();
     
+    // 로그인 유저를 위한.
     if (session.getAttribute("loginUser") != null) {
       Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
       List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
@@ -78,7 +90,6 @@ public class MatchBoardController {
       logger.info(teames);
       } else {
       }
-    
     model.addAttribute("all", all);
   }
   
@@ -122,44 +133,23 @@ public class MatchBoardController {
   }
   
   
-  
   @GetMapping
-  public String list(
-        @RequestParam(defaultValue="1") int pageNo,
-        @RequestParam(defaultValue="1000") int pageSize,
-        HttpSession session,
-        Model model) {
+  public String movepage(HttpSession session, Model model) {
+    return "matchboard/list1";
+  }
+  
+  @GetMapping("list")
+  public void list(HttpSession session,Model model) {
+    List<Match> all = matchBoardService.search();
 
-      if (pageSize < 1000 || pageSize > 1000)
-        pageSize = 1000;
-
-      int rowCount = matchBoardService.size();
-      int totalPage = rowCount / pageSize;
-        if (rowCount % pageSize > 0)
-        totalPage++;
-
-        if (pageNo < 1) 
-          pageNo = 1;
-        else if (pageNo > totalPage)
-          pageNo = totalPage;
-        
         if (session.getAttribute("loginUser") != null) {
         Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
-        List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
-        model.addAttribute("myteam", teames);
+        List<Match> logUserteames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+        model.addAttribute("myteam", logUserteames);
         } else {
-          
         }
 
-        List<Match> all = matchBoardService.search();
-        List<Match> matches = matchBoardService.list(pageNo, pageSize);
-        model.addAttribute("matches", matches);
-        model.addAttribute("pageNo", pageNo);
-        model.addAttribute("pageSize", pageSize);
-        model.addAttribute("totalPage", totalPage);
         model.addAttribute("all", all);
-        
-        return "matchboard/list";
   }
   
   
@@ -181,7 +171,7 @@ public class MatchBoardController {
   }
   
   
-  @RequestMapping("data")
+  @RequestMapping("data") //JSON. 매치정보 모달을 위한.
   @ResponseBody
   public Object detailData(int no, HttpSession session) {
     Match match = matchBoardService.get(no);
@@ -199,8 +189,22 @@ public class MatchBoardController {
     matchMap.put("match", match);
     
     return matchMap;
-
   }
+  
+  @RequestMapping("data2") //JSON. 팀정보 모달을 위한.
+  @ResponseBody
+  public Object detailteamData(int no) {
+     Team team = teamService.getTeam(no); 
+     List<TeamMember> teamMembers = teamService.getTeamMember(no); 
+
+     HashMap<String,Object> teamMap = new HashMap<>();
+     
+     teamMap.put("teamMembers", teamMembers);
+     teamMap.put("team", team);
+    
+    return teamMap;
+  }
+  
   
   
   
