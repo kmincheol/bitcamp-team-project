@@ -91,6 +91,19 @@
     <result column="tlead_wth" property="teamLeader" />
     </collection>
    -->
+<!--      <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
+    keyProperty="teamNo">
+    insert into rcrm(
+    titl,
+    cont,
+    tm_id
+    )
+    values(
+    #{teamTitle},
+    #{teamContents},
+    #{teamId})
+  </insert> -->
+  
     <select id="findAll3" resultMap="memberMap" parameterType="map">
     select
     tmbr.mbr_id,
@@ -172,9 +185,7 @@
     from
     rcrm r
     left outer join tm t on r.tm_id = t.tm_id
-    left
-    outer join spt_clsf s on s.spt_clsf_id =
-    t.spt_clsf_id
+    left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     where
     r.rcrm_id = #{teamNo};
 

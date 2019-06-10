@@ -169,6 +169,10 @@ values(2,2,2,'야구');
 insert into mtch_tag(mtch_tag_id,mtch_id,mbr_id,tag_name)
 values(3,3,3,'농구');
 
+insert into join_tm(join_id,rcrm_id)
+values(2,6);
+
+
 -- 경기신청데이터
 insert into mtchaply(tm_id,mtch_id,aply_dt,aply_stat)
 values(4,1,'2019-06-08','수락');

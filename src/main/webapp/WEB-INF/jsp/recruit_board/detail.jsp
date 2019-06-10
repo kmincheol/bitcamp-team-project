@@ -90,10 +90,10 @@
                
             <c:choose>
               <c:when test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
-                <a class="btn btn-primary" href=''>모집마감</a>
+                <a class="btn btn-primary" >모집마감</a>
               </c:when>     
               <c:when test="${teamMember.teamLeader == 'true'}">
-              <a class="btn btn-primary" href=''>가입신청</a>
+              <button id="join" class="btn btn-primary">가입신청</button>
               </c:when>
             </c:choose>
             </c:forEach>
@@ -122,6 +122,7 @@
 				}
 			}
 		</script>
+    
     
 </body>
 
