@@ -60,17 +60,18 @@ body {
   */
   transform: rotateY(180deg);
 }
-<!-- </style> -->
-</head>
+ </style>
+</head>      
 <body>
 
   <div id="main-wrap" class="container">
     <div style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
-    <span style="width: 100px"> </span>
+    <span style="width: 100px">
+      <button type="button" class="btn btn-outline-dark btn-sm" onclick="dd()">요청경기목록</button>
+     </span>
     </div>
     <div id="teamInfo"
       style="border: 1px solid black; width: 1080px; height: 400px;">
-
       <div id="teamMark"
         style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">
       </div>
@@ -82,7 +83,8 @@ body {
           <select class="icons" id="cc" onchange="aa();">
             <c:forEach items="${team}" var="team">
               <option
-                value="${team.teamName},
+                value="
+                       ${team.teamName},
                          ${team.teamId},
                        ${team.teamArea},
               ${team.teamAges.teamAges},
@@ -118,7 +120,6 @@ body {
  
   window.onload= aa;
 
-
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, options);
@@ -137,10 +138,13 @@ function aa(){
    var arrc = new Array(); 
    var arrd = new Array(); //${teamMember.member.photo}
    var arre = new Array(); //${teamMember.position}
+   var arree = new Array(); 
    var arrdd = new Array();
    var arrf = new Array();//${teamMember.member.no}
    var arrff = new Array();
-	 
+   var arrg = new Array(); //${teamMember.member.birthDay}
+   var arrgg = new Array();
+   
 	 var target = document.getElementById("cc");
 	var a = String(target.options[target.selectedIndex].value).split(',');
 
@@ -197,13 +201,16 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
 	 arrd.push("${teamMember.member.photo}");
 	 arre.push("${teamMember.position}");
 	 arrf.push("${teamMember.member.no}");
+	 arrg.push("${teamMember.member.birthDay}");
 	 </c:forEach>
-	for (var i = 0; i < arr.length; i++) {
+
+	 for (var i = 0; i < arr.length; i++) {
 	    if(arr[i] == parseInt(a[1])){
 	    	 arrc.push(arrb[i])
 	    	 arrdd.push(arrd[i])
 	    	 arrff.push(arrf[i])
 	    	 arrr.push(arr[i])
+	    	 arree.push(arre[i])
 	    }
 	}
 	
@@ -221,8 +228,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
          '<img src ="' + arrdd[i] +  '" width = "259px" height = "250px">' + 
          '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
           arrc[i] + '</span></div>' +
-          '<div class="flip-card-back"><h3>공격수</h3> <p>1991-03-07</p>  <p>김민철</p><p>20살</p> ' + 
-   ' </div></div></a></div>'
+          '<div class="flip-card-back"><h3><br><br>' + arree[i] + '</h3> </div></div></a></div>'
         //css설정
         div.style.border= "1px solid black";
         div.style.margin= "5px";
@@ -231,6 +237,25 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         div.style.float= "left";
         document.getElementById('aaaa').appendChild(div);
     }
+}
+
+function dd(){
+	var con = document.getElementById("teamInfo");
+	var ee = document.getElementById("aaaa");
+	  con.style.display = 'none'
+		 ee.style.display = 'none'
+	
+	var button = document.createElement("button");		 
+	  button.style.width= "100px";
+	  button.style.height= "100px";  
+	  document.getElementById('main-wrap').appendChild(button);
+
+ var div = document.createElement("div");
+	    div.style.border= "1px solid black";
+      div.style.width= "1100x";
+      div.style.height= "600px";     
+    
+      document.getElementById('main-wrap').appendChild(div);
 }
 </script>
 
