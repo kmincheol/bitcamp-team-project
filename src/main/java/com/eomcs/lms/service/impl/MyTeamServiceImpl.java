@@ -1,9 +1,8 @@
 package com.eomcs.lms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import com.eomcs.lms.dao.MyTeamDao;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
@@ -46,8 +45,14 @@ public class MyTeamServiceImpl implements MyTeamService {
 
 @Override
 public int delete(int tno, int mno) {
+  
+  HashMap<String, Integer> map = new HashMap<String, Integer>(); // MAP을 이용해 담기
+  map.put("tno", tno);
+  map.put("mno", mno);
+
 	// TODO Auto-generated method stub
-	return myteamDao.delete(tno,mno);
+  System.out.println("여기까지일단올거임");
+	return myteamDao.delete(map);
 }
 
 

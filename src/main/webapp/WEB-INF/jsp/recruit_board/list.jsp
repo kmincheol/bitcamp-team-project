@@ -53,11 +53,11 @@ div.dataTables_wrapper div.dataTables_paginate {
 	text-align: center;
 }
 
-/* 테이블 헤더 색상 변경 */
-table.dataTable thead tr {
+	/* 테이블 헤더 색상 변경 */
+	table .dataTable thead tr
+	{
 	/* background-color: gray; */
-	
-}
+}       
 /* 테이블 목록 색상 변경 */
 .table tbody tr.even {
 	/* background-color: #eaeaea; */
@@ -75,6 +75,7 @@ table.dataTable thead tr {
 /* 테이블 목록 hover 색상 변경 */
 #dtBasicExample tbody tr:hover>.sorting_1 {
 	/* background-color: #ffa; */
+	
 }
 
 table tbody tr {
@@ -120,18 +121,18 @@ table tbody tr {
           <tr>
             <!-- 게시글 번호 -->
             <td>${list.teamNo}</td>
-            <!-- 종목에 따라 이미지 출력 -->
+            <!-- 종목에 따라 이미지 출력 -->    
             <td><c:choose>
-                <c:when test="${list.teamTypeSports.teamSportsType eq '축구'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq 'soccer'}">
                   <img src="${contextRootPath}/images/football_list.png">
                 </c:when>
-                <c:when test="${list.teamTypeSports.teamSportsType eq '농구'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq 'basketball'}">
                   <img src="${contextRootPath}/images/basketball_list.png">
                 </c:when>
-                <c:when test="${list.teamTypeSports.teamSportsType eq '야구'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq 'baseball'}">
                   <img src="${contextRootPath}/images/baseball_list.png">
                 </c:when>
-                <c:when test="${list.teamTypeSports.teamSportsType eq '탁구'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq 'pingpong'}">
                   <img src="${contextRootPath}/images/pingpong_list.png">
                 </c:when>
               </c:choose></td>

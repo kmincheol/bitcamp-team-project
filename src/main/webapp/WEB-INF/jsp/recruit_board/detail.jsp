@@ -87,8 +87,16 @@
                 <a class="btn btn-dark" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
                 <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
               </c:if>
+               
+            <c:choose>
+              <c:when test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
+                <a class="btn btn-primary" >모집마감</a>
+              </c:when>     
+              <c:when test="${teamMember.teamLeader == 'true'}">
+              <button id="join" class="btn btn-primary">가입신청</button>
+              </c:when>
+            </c:choose>
             </c:forEach>
-            <a class="btn btn-primary" href=''>가입신청</a>
           </div>
         </div>
       </div>
@@ -114,6 +122,7 @@
 				}
 			}
 		</script>
+    
     
 </body>
 
