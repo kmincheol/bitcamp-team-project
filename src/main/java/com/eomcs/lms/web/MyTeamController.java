@@ -94,7 +94,11 @@ public class MyTeamController {
 					}
 		return "myteam/list2";
 	}
-
+	
+	@RequestMapping("/list3")
+	public String teamRecruitList() {
+	  return "myteam/list3";
+	}
 
 
 }

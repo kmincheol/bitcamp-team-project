@@ -6,7 +6,6 @@
 <html>
 
 <head>
-
 <title>모집게시판_list</title>
 <!-- common.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/common.css">
