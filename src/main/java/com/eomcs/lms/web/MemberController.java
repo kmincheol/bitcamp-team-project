@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.AuthKey;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Sms;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.AuthKeyService;
 import com.eomcs.lms.service.EmailService;
@@ -45,12 +46,37 @@ public class MemberController {
   public void sms() {
   }
   
-  
-  
-  @GetMapping("smsSend")
-  public void smsSend(String tel) throws Exception {
-    smsService.sendSms(tel);
+  @PostMapping(value="checkSmsNo", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  private String checkSmsNo(@RequestBody Map<String,Object> content) {
     
+    smsService.deleteTemp();
+
+    String tel = (String) content.get("tel");
+    String smsContent = (String) content.get("smsKey");
+    Sms sms = new Sms();
+    sms.setTel(tel);
+    sms.setSmsContent(smsContent);
+    sms.setType(1);
+
+    if (smsService.getBySms(sms) != null) {
+      return "auth" + 0;
+    } else {
+      return "auth" + 1;
+    }
+  }
+  
+  @PostMapping(value="smsSend", produces="text/plain;charset=UTF-8")
+  @ResponseBody
+  public String smsSend(@RequestBody Map<String,Object> content) throws Exception {
+    String tel = (String) content.get("tel");
+    Boolean a = smsService.sendAuthSms(tel);
+    
+    if (a) { // 성공
+      return "sms" + 1;
+    } else { // 실패
+      return "sms" + 2;
+    }
   }
   
   @GetMapping("invalid")

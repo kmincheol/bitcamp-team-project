@@ -8,5 +8,4 @@ public interface AuthKeyService {
   int add(AuthKey authKey);
   int delete(AuthKey authKey);
   int deleteTemp();
-  
 }

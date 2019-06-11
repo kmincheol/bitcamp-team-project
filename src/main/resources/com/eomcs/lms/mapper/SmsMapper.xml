@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.eomcs.lms.dao.SmsDao">
+
+  <resultMap type="Sms" id="smsMap">
+    <id column="sms_id" property="no" />
+    <result column="sms_tel" property="tel" />
+    <result column="sms_cont" property="smsContent" />
+    <result column="sms_type" property="type" />
+    <result column="sms_dt" property="createdDate" />
+  </resultMap>
+
+  <select id="checkSms" resultMap="smsMap" parameterType="map">
+    select
+      sms_id,
+      sms_tel,
+      sms_cont,
+      sms_type,
+      sms_dt
+    from
+      sms
+    where
+      sms_tel = #{tel}
+    and
+      sms_cont = #{smsContent}
+    and
+      sms_type = #{type}
+  </select>
+  
+  <insert id="insert" parameterType="sms">
+    insert into sms(
+      sms_tel,
+      sms_cont,
+      sms_type
+    ) values (
+      #{tel},
+      #{smsContent},
+      #{type})
+  </insert>
+  
+  <delete id="deleteByFiveMinute">
+    delete from sms
+    where 
+     TIMESTAMPDIFF(MINUTE,sms_dt,NOW()) <![CDATA[>]]> 5;
+  </delete>
+
+</mapper>
