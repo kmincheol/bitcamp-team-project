@@ -30,7 +30,7 @@ public class MyTeamController {
 	@Autowired
 	ServletContext servletContext;
 
-	List<Match> maa;
+	List<Team> maa;
 	
 	@GetMapping
 	public String list(Model model, HttpSession session) throws JsonProcessingException {
@@ -83,15 +83,20 @@ public class MyTeamController {
 	  
 // no를 통해서 내가 신청 보낸 경기번호 리스트를 알아낸다
     List<MatchApply> matchNos = myTeamService.findMatchNo(4);
+     
     
-    for(MatchApply m : matchNos) {
+    for(MatchApply m : matchNos) { 
       List<Match> match =  myTeamService.findMatchNo2(m.getMatchNo());
            for(Match mm : match) {
-              List<Team> team  =   myTeamService.MatchTeam(mm.getTeamNo());
-                  model.addAttribute("team",team);
+              maa  =   myTeamService.MatchTeam(mm.getTeamNo());
+              
            }
     }
     
+     for(Team t : maa) {
+       System.out.println(t.getTeamName());
+     }
+     model.addAttribute("team",maa);
     
     
     
