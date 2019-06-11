@@ -7,9 +7,22 @@
 <title>아이디찾기</title>
 <jsp:include page="../commonCss.jsp"/>
 <link rel="stylesheet" href="${contextRootPath}/css/findUserId.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 </head>
 <body>
 
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+  
 <div id="container" style="width:1080px;">   
   <div id="content"> 
     <input type="hidden" id="authType" name="authType" value="email"> 
@@ -42,7 +55,7 @@
                 <label for="name">이름</label>
               </h3>
               <span class="ps_box int_pass"  id="nameImg">
-                <input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
+                <input type="text" id="name" name="name" title="이름" class="int" maxlength="40" placeholder="이름을 입력해주세요." autocomplete=off>    
               </span>
               <span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>
             </div>
@@ -50,9 +63,9 @@
               <h3 class="join_title">
                 <label for="email">이메일</label>
               </h3>
-              <span class="ps_box int_pass" id="joinCode">
+              <span class="ps_box int_pass" id="joinCode">  
                 <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요."
-                      maxlength="100" class="int">
+                      maxlength="100" class="int" autocomplete=off>
               </span> 
               <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
             </div>
@@ -80,7 +93,10 @@
     </div><!-- #findIdBox -->
   </div><!-- #content -->
 </div><!-- #container -->
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 <jsp:include page="../javascript.jsp"/>
 <script>
 "use strict"
