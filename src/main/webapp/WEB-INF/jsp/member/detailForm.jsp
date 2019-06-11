@@ -8,6 +8,7 @@
   <title>회원 상세조회</title>
   <jsp:include page="../commonCss.jsp"/>
   <jsp:include page="../header.jsp"/>
+   
 </head>
 <style>
 div.button
