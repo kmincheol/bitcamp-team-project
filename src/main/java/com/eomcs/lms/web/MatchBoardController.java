@@ -280,13 +280,18 @@ public class MatchBoardController {
   
   @RequestMapping("submit/{no}") // 매치번호를 받음.
   @ResponseBody
-  public String submit(int no, Team team) {
-    Match match = matchBoardService.get(no);
+  public String submit(String no, String teamId) {
+    logger.debug("AAAA"+no);
+    logger.debug("BBBB"+teamId);
+    int mno = Integer.parseInt(no) ;
+    int tno = Integer.parseInt(teamId);
+    
+    Match match = matchBoardService.get(mno);
 
     MatchApply matchApply = new MatchApply();
     
     matchApply.setMatchNo(match.getNo());
-    matchApply.setTeamNo(team.getTeamId());
+    matchApply.setTeamNo(tno);
 
     matchApplyService.add(matchApply);
     return "redirect:../";

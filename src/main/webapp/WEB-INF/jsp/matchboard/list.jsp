@@ -336,20 +336,17 @@
             
             //매치정보 모달창
             function modalEvent(number) {
-              var no;
+              var no = 0;
               var nocom;
-              
+              var choiceTeamValue;
               
               $('.detail').each(function(index) {
                 nocom = $('.detail')[index].id;
+                
                 if (nocom == number) {
                   no = nocom;
                 }
               })
-              var choiceTeamValue = $("#selectBox option:selected").val();
-              
-              console.log(no);
-              console.log(choiceTeamValue);
               
               $.getJSON("data", {"no" : no}, function(data) {
                 console.log(data);
@@ -365,7 +362,13 @@
                   });
               
                   $('#btnsub2').click(function() {
-            	  if (choiceTeamValue == "") {
+              
+               var choiceTeamValue = $("#selectBox option:selected").val();
+               
+              console.log(no); // 매치번호
+              console.log(choiceTeamValue); //신청팀번호
+            
+              if (choiceTeamValue == "") {
             		 alert("팀을 선택해주세요.");
             	    return false;
             	  }
@@ -378,13 +381,12 @@
             	    data:JSON.stringify({
             	      teamId: choiceTeamValue
             	    }),
-            	    success : function(data) {}
+            	    success : function(data) {
+            	        location="submit/" + choiceTeamValue;
+            	    }
             	    })
             	  });
               }
-            
-            
-            
             
             
             
