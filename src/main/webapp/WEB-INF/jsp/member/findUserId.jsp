@@ -10,18 +10,18 @@
 </head>
 <body>
 
-<div id="container">
-  <div id="content">
+<div id="container" style="width:1080px;">   
+  <div id="content"> 
     <input type="hidden" id="authType" name="authType" value="email"> 
-  
-    <h1>아이디 찾기</h1>
+    
+    <h1 style="margin-bottom: 20px;">아이디 찾기</h1>
     
     <hr class="hrblack"/>
   
     <div id="findIdBox">
       <div id="findIdContent">
         <div id="findIdComment">
-          <p>이름과 이메일로 <strong>아이디</strong>를 찾을 수 있습니다.</p>
+          <p style="font-size: 0.7em;">이름과 이메일로 <strong>아이디</strong>를 찾을 수 있습니다.</p>
         </div>
         <div id="findIdImgBox">
           <img src="../../images/search.png">
