@@ -11,10 +11,10 @@
 
 </head>
 <body>
-  <div id="main-wrap" class="container"  style="margin-top:150px; width:1080px; height: 500px; border:1px solid black">
+  <div id="main-wrap" class="container"  style="margin-top:150px; width:1080px; height: 500px; border:1px solid black; padding:0">
  
- <div  style="width:530px; height: 500px; border:1px solid black; float:left " >
-    <div style="width:530px; height: 50px; border:1px solid black; float:left "> 보낸 신청 목록</div>
+ <div  style="width:578px; height: 500px; border:1px solid black; float:left ; "  >
+    <div style="width:578px; height: 50px; border:1px solid black; float:left "> 보낸 신청 목록</div>
  </div>
 
  

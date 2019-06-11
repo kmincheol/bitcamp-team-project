@@ -10,18 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.eomcs.lms.domain.AnswerBoard;
+import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
-import com.eomcs.lms.domain.QuestionBoard;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
-import com.eomcs.lms.service.AnswerBoardService;
 import com.eomcs.lms.service.MyTeamService;
-import com.eomcs.lms.service.QuestionBoardService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/myteam")
@@ -34,6 +30,8 @@ public class MyTeamController {
 	@Autowired
 	ServletContext servletContext;
 
+	List<Match> maa;
+	
 	@GetMapping
 	public String list(Model model, HttpSession session) throws JsonProcessingException {
 
@@ -79,20 +77,28 @@ public class MyTeamController {
 	}
 	
 	@GetMapping("send/{no}")
+// no는 팀번호
 	public String sendTeam(@PathVariable int no,  Model model, HttpSession session) {
 
-		System.out.println(no);
-		
-		
-		List<TeamMember> tm = myTeamService.teamMemberList(no);
-		  
-					for(TeamMember tmm : tm) {
-						if(tmm.getTeamMemberNo() == no) {
-								System.out.println(tmm.toString());
-							model.addAttribute("teamMember",tmm);
-						}
-					}
-		return "myteam/list2";
+	  
+// no를 통해서 내가 신청 보낸 경기번호 리스트를 알아낸다
+    List<MatchApply> matchNos = myTeamService.findMatchNo(4);
+    
+    for(MatchApply m : matchNos) {
+      List<Match> match =  myTeamService.findMatchNo2(m.getMatchNo());
+           for(Match mm : match) {
+              List<Team> team  =   myTeamService.MatchTeam(mm.getTeamNo());
+                  model.addAttribute("team",team);
+           }
+    }
+    
+    
+    
+    
+    // 경기번호를 통해서 매치보드를 등록한 팀의 정보를 알아낸다
+	   
+	  
+	  return "myteam/list2";
 	}
 	
 	@RequestMapping("/list3")
