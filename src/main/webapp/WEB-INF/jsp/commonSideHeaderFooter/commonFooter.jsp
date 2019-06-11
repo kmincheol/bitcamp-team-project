@@ -2,5 +2,5 @@
   trimDirectiveWhitespaces="true"%>
   
   <div class="footer">
-    <p>footer</p>
+    <p>footer</p>   
   </div>

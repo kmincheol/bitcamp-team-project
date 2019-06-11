@@ -68,9 +68,17 @@
        <result column="spt_clsf_name" property="teamSportsType" />
     </association>
   
+   <association property="match" javaType="Match">
+    <id column="mtch_id" property="matchNo"/>
+    <result column="tm_id" property="teamNo"/>
+       <result column="game_dt" property="playDate"/>
+       <result column="area" property="location"/>
+       <result column="tel" property="telephone"/>
+       <result column="cost" property="cost"/>
+          <result column="stdm_psti" property="stadiumName"/>
+    </association>
+  
   </resultMap>
-  
-  
   
     <resultMap type="TeamMember" id="teamMemberMap">
     <id column="tm_mbr_id" property="teamMemberNo" />
@@ -94,6 +102,37 @@
     <result column="name" property="teamName" />
     </association>
   </resultMap>
+  
+  
+ <resultMap type="MatchApply" id="matchApplyMap">
+    <id column="mtch_id" property="matchNo" />
+    <id column="tm_id" property="teamNo" />
+    <result column="aply_dt" property="applyDate" />
+    <result column="aply_stat" property="applyStatus" />
+  
+ </resultMap>
+  
+ <resultMap type="match" id="matchMap">
+    <id column="mtch_id" property="no" />
+    <result column="tm_id" property="teamNo" />
+    <result column="tm_id2" property="otherTeamNo" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="game_dt" property="playDate" />
+    <result column="area" property="location" />
+    <result column="stdm_psti" property="stadiumName" />
+    <result column="stdm_lat" property="stadiumLatitude" />
+    <result column="stdm_long" property="stadiumLongitude" />
+    <result column="tel" property="telephone" />
+    <result column="cost" property="cost" />
+
+
+
+</resultMap>  
+  
   
     <sql id="default-columns">
       mbr_id, 
@@ -177,8 +216,38 @@
 
   </delete>
 
+ <select id="findByMatchNo" resultMap="matchApplyMap" parameterType="int">
+  select
+    mtch_id
+  from
+      mtchaply
+  where
+    tm_id = #{value}
+  </select>
 
 
+ <select id="findByMatchNo2" resultMap="matchMap" parameterType="int">
+  select
+    tm_id
+  from
+      mtch
+  where
+    mtch_id = #{value}
+  </select>
+
+ <select id="findByMatchTeam" resultMap="teamMap" parameterType="int">
+    select
+      t.name,
+      t.tm_ambl_phot,
+      game_dt,
+      mc.area,
+      stdm_psti,
+      cost
+    from
+      tm t
+       left outer join mtch mc on t.tm_id = mc.tm_id
+       where t.tm_id = ${value}
+  </select> 
 
 
 

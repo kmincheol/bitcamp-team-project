@@ -36,10 +36,10 @@
 
 <style>
 .team_info {
-  margin-bottom: 15px;
-  margin-left: 50px;
-  margin-right: 50px;
-  font-size: 1.2em;
+	margin-bottom: 15px;
+	margin-left: 50px;
+	margin-right: 50px;
+	font-size: 1.2em;
 }
 </style>
 
@@ -53,21 +53,21 @@
     <div style="margin-top: 50px;">
       <div style="width: 520px; float: left;">
         <div style="background: #949494; text-align: center; font-weight: bold; line-height: 40px;">
-          요청 경기</div>
+          신청받은경기</div>
         <div style="height: 500px; border: 1px solid;">
           <table class="table table-bordered" style="clear: both; margin: 0;">
             <tbody>
-              <c:forEach items="${team}" var="team">
+              <%-- <c:forEach items=""> --%>
               <tr style="height: 100px;">
                 <td colspan="1" style="vertical-align: middle; width: 100px;">팀엠블럼</td>
-                <td colspan="2" style="vertical-align: middle; width: 220px;">팀명: ${team.teamName} <br>번호:
+                <td colspan="2" style="vertical-align: middle; width: 220px;">팀명: <br>번호:
                 </td>
                 <td colspan="1" style="vertical-align: middle; width: 100px;">
                   <button style="width: 100%; margin-bottom: 2px;">수락</button> <br>
                   <button style="width: 100%;">취소</button>
                 </td>
               </tr>
-             </c:forEach> 
+              <%-- </c:forEach> --%>
             </tbody>
           </table>
         </div>

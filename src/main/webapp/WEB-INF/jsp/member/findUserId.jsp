@@ -7,21 +7,34 @@
 <title>아이디찾기</title>
 <jsp:include page="../commonCss.jsp"/>
 <link rel="stylesheet" href="${contextRootPath}/css/findUserId.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 </head>
 <body>
 
-<div id="container">
-  <div id="content">
-    <input type="hidden" id="authType" name="authType" value="email"> 
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
   
-    <h1>아이디 찾기</h1>
+<div id="container" style="width:1080px;">   
+  <div id="content"> 
+    <input type="hidden" id="authType" name="authType" value="email"> 
+    
+    <h1 style="margin-bottom: 20px;">아이디 찾기</h1>
     
     <hr class="hrblack"/>
   
     <div id="findIdBox">
       <div id="findIdContent">
         <div id="findIdComment">
-          <p>이름과 이메일로 <strong>아이디</strong>를 찾을 수 있습니다.</p>
+          <p style="font-size: 0.7em;">이름과 이메일로 <strong>아이디</strong>를 찾을 수 있습니다.</p>
         </div>
         <div id="findIdImgBox">
           <img src="../../images/search.png">
@@ -42,7 +55,7 @@
                 <label for="name">이름</label>
               </h3>
               <span class="ps_box int_pass"  id="nameImg">
-                <input type="text" id="name" name="name" title="이름" class="int" maxlength="40">
+                <input type="text" id="name" name="name" title="이름" class="int" maxlength="40" placeholder="이름을 입력해주세요." autocomplete=off>    
               </span>
               <span class="error_next_box" id="nameMsg" style="display:none" role="alert"></span>
             </div>
@@ -50,9 +63,9 @@
               <h3 class="join_title">
                 <label for="email">이메일</label>
               </h3>
-              <span class="ps_box int_pass" id="joinCode">
+              <span class="ps_box int_pass" id="joinCode">  
                 <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요."
-                      maxlength="100" class="int">
+                      maxlength="100" class="int" autocomplete=off>
               </span> 
               <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
             </div>
@@ -80,7 +93,10 @@
     </div><!-- #findIdBox -->
   </div><!-- #content -->
 </div><!-- #container -->
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 <jsp:include page="../javascript.jsp"/>
 <script>
 "use strict"
