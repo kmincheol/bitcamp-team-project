@@ -86,8 +86,8 @@
                 class="fab fa-maxcdn"></i> <span>매치</span> </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li><a href="${contextRootPath}/app/matchboard">매치보드 </a></li>
-                  <li><a href="#">매치등록</a></li>
+                  <li><a href="${contextRootPath}/app/matchboard/">매치보드 </a></li>
+                  <li><a href="${contextRootPath}/app/matchboard/form.jsp">매치등록</a></li>
                 </ul>
               </div></li>
             <li class="sidebar-dropdown"><a href="#"><i

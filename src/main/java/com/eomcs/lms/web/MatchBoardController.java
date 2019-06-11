@@ -118,10 +118,15 @@ public class MatchBoardController {
   }
   
   @GetMapping("form")
-  public void form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
+  public String form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
     Member member = (Member) session.getAttribute("loginUser");
-    if (member == null) {
+    
+    try {
+      if (member == null) {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
+    }
+    }catch (Exception e) {
+      return "../error";
     }
     
     List<TopLocation> location = locationService.findToplocation(topLocationNo);
@@ -134,6 +139,8 @@ public class MatchBoardController {
     
     model.addAttribute("member", member); 
     model.addAttribute("match",match); 
+    
+    return "matchboard/form";
   }
   
   
@@ -280,13 +287,18 @@ public class MatchBoardController {
   
   @RequestMapping("submit/{no}") // 매치번호를 받음.
   @ResponseBody
-  public String submit(int no, Team team) {
-    Match match = matchBoardService.get(no);
+  public String submit(String no, String teamId) {
+    logger.debug("AAAA"+no);
+    logger.debug("BBBB"+teamId);
+    int mno = Integer.parseInt(no) ;
+    int tno = Integer.parseInt(teamId);
+    
+    Match match = matchBoardService.get(mno);
 
     MatchApply matchApply = new MatchApply();
     
     matchApply.setMatchNo(match.getNo());
-    matchApply.setTeamNo(team.getTeamId());
+    matchApply.setTeamNo(tno);
 
     matchApplyService.add(matchApply);
     return "redirect:../";
