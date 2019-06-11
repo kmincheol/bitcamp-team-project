@@ -16,8 +16,8 @@ public class LocationServiceImpl implements LocationService {
   }
 
   @Override
-  public List<TopLocation> findlocation(int topLocationNo) {
-    return locationDao.findLocation(topLocationNo);
+  public List<TopLocation> findToplocation(int topLocationNo) {
+    return locationDao.findTopLocation(topLocationNo);
   }
 
 

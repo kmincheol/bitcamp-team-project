@@ -4,5 +4,5 @@ import java.util.List;
 import com.eomcs.lms.domain.TopLocation;
 
 public interface LocationService {
-  List<TopLocation> findlocation(int topLocationNo);
+  List<TopLocation> findToplocation(int topLocationNo);
 }

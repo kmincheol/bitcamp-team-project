@@ -112,6 +112,10 @@ public class MatchBoardController {
     model.addAttribute("all", all);
   }
   
+  @GetMapping("test")
+  public String test(Match match) throws Exception {
+    return "matchboard/test";
+  }
   
   @GetMapping("form")
   public void form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
@@ -120,10 +124,10 @@ public class MatchBoardController {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
     }
     
-    List<TopLocation> location = locationService.findlocation(topLocationNo);
+    List<TopLocation> location = locationService.findToplocation(topLocationNo);
     model.addAttribute("location", location);
     
-  List<Match> match = matchBoardService.teamInfoGet(member.getNo());
+    List<Match> match = matchBoardService.leaderJudge(member.getNo());
    
 //    @SuppressWarnings("unchecked")
 //    List<Team> teams = (List<Team>) teamService.getTeam(member.getNo()); 
@@ -134,22 +138,18 @@ public class MatchBoardController {
   
   
   @GetMapping
-  public String movepage(HttpSession session, Model model) {
-    return "matchboard/list1";
-  }
-  
-  @GetMapping("list")
-  public void list(HttpSession session,Model model) {
+  public String list(HttpSession session,Model model) {
     List<Match> all = matchBoardService.search();
 
         if (session.getAttribute("loginUser") != null) {
         Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
-        List<Match> logUserteames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+        List<Match> logUserteames = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
         model.addAttribute("myteam", logUserteames);
         } else {
-        }
+         }
 
         model.addAttribute("all", all);
+        return "/matchboard/list";
   }
   
   
@@ -168,41 +168,6 @@ public class MatchBoardController {
     }
     model.addAttribute("match", match);
     return "matchboard/detail";
-  }
-  
-  
-  @RequestMapping("data") //JSON. 매치정보 모달을 위한.
-  @ResponseBody
-  public Object detailData(int no, HttpSession session) {
-    Match match = matchBoardService.get(no);
-    HashMap<String,Object> matchMap = new HashMap<>();
-    
-    // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
-    if (session.getAttribute("loginUser") != null) {
-    Member member = (Member) session.getAttribute("loginUser"); 
-    List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
-
-    matchMap.put("myteam",teams);
-    } else {
-    }
-    
-    matchMap.put("match", match);
-    
-    return matchMap;
-  }
-  
-  @RequestMapping("data2") //JSON. 팀정보 모달을 위한.
-  @ResponseBody
-  public Object detailteamData(int no) {
-     Team team = teamService.getTeam(no); 
-     List<TeamMember> teamMembers = teamService.getTeamMember(no); 
-
-     HashMap<String,Object> teamMap = new HashMap<>();
-     
-     teamMap.put("teamMembers", teamMembers);
-     teamMap.put("team", team);
-    
-    return teamMap;
   }
   
   
@@ -242,6 +207,7 @@ public class MatchBoardController {
   // 경기신청 데이터 지우고, 후기게시판 데이터 지우고,
   // 태그 데이터 지우고 그리고 나서 매치보드 번호 삭제. 
   @GetMapping("delete/{no}")
+  
   public String delete(@PathVariable int no) {
     
     if (matchBoardService.delete(no) == 0) 
@@ -277,9 +243,44 @@ public class MatchBoardController {
   }
   
   
+  @RequestMapping("data") //JSON. 매치정보 모달을 위한.
+  @ResponseBody
+  public Object detailData(int no, HttpSession session) {
+    Match match = matchBoardService.get(no);
+    HashMap<String,Object> matchMap = new HashMap<>();
+    
+    // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
+    if (session.getAttribute("loginUser") != null) {
+      Member member = (Member) session.getAttribute("loginUser"); 
+      List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+      
+      matchMap.put("myteam",teams);
+    } else {
+    }
+    
+    matchMap.put("match", match);
+    
+    return matchMap;
+  }
   
-  @PostMapping("{no}/submit")
-  public String submit(@PathVariable int no, Team team) {
+  @RequestMapping("data2") //JSON. 팀정보 모달을 위한.
+  @ResponseBody
+  public Object detailteamData(int no) {
+    Team team = teamService.getTeam(no); 
+    List<TeamMember> teamMembers = teamService.getTeamMember(no); 
+    
+    HashMap<String,Object> teamMap = new HashMap<>();
+    
+    teamMap.put("teamMembers", teamMembers);
+    teamMap.put("team", team);
+    
+    return teamMap;
+  }
+  
+  
+  @RequestMapping("submit/{no}") // 매치번호를 받음.
+  @ResponseBody
+  public String submit(int no, Team team) {
     Match match = matchBoardService.get(no);
 
     MatchApply matchApply = new MatchApply();
@@ -291,12 +292,6 @@ public class MatchBoardController {
     return "redirect:../";
   }
   
-  
-  
-  @GetMapping("test")
-  public String test(Match match) throws Exception {
-      return "matchboard/test";
-  }
   
   
 //  @GetMapping("sideBar")

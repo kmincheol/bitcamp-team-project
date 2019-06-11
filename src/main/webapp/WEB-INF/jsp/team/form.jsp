@@ -325,29 +325,28 @@ $('#fileupload2').fileupload(
     }); 
     
     
+    
+    
+    
+    
+    
 var idFlag = false;
 var pwFlag = false;
 
 $(document).ready(function() {
   defaultScript();
-
-  
   $('#teamSportsId').change(function() {
     checkteamSportsId();
   });
-  
   $('#teamAgeId').change(function() {
     checkteamAgeId();
   });
-  
   $('#teamTypeId').change(function() {
     checkteamTypeId();
   });
-  
   $('#teamLevelId').change(function() {
     checkteamLevelId();
   });
-  
   $('#btnCreate').click(function(event) {
     submitClose();
    

@@ -18,28 +18,19 @@
       <result column="name" property="middleLocationName" />
     </collection>
     
-      <collection property="bottomLocation" ofType="BottomLocation">
-        <id column="midlc_id" property="middleLocationId" />
-        <result column="btmlc_id" property="bottomLocationId" />
-        <result column="btmlc_no" property="bottomLocationNo" />
-        <result column="name" property="bottomLocationName" />
-      </collection> 
   </resultMap>
   
   
-  <select id="findLocation" resultMap="topLocationMap" parameterType="int">
+  <select id="findTopLocation" resultMap="topLocationMap" parameterType="int">
     select
       t.name,
-      m.name,
-      b.name
+      m.name
     from
       toplc t
       left outer join midlc m on t.toplc_id = m.toplc_id
-      left outer join btmlc b on m.midlc_id = b.midlc_id
     where
       t.toplc_no = #{value}
   </select>
-  
   
 </mapper>
 

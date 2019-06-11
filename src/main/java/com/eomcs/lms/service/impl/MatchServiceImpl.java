@@ -46,6 +46,11 @@ public class MatchServiceImpl implements MatchBoardService {
     return matchDao.teamInfoGet(no);
   }
 
+  @Override
+  public List<Match> leaderJudge(int no) {
+    return matchDao.leaderJudge(no);
+  }
+
 
   @Override
   public int add(Match match) {

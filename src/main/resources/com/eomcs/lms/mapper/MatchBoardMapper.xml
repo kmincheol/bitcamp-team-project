@@ -221,9 +221,26 @@
       left outer join tm_mbr t on m.mbr_id = t.mbr_id
       left outer join tm s on t.tm_mbr_id = s.tm_id
       left outer join spt_clsf p on s.spt_clsf_id = p.spt_clsf_id
-    where
+    where 
       m.mbr_id = #{value};
   </select>
+
+  <select id="leaderJudge" resultMap="matchMap" parameterType="int"> <!-- 회원번호를 주면 리더인 팀만 가져옴 -->
+    Select 
+      s.name,
+      s.tm_id,
+      t.tlead_wth
+    from
+      mbr m
+      left outer join tm_mbr t on m.mbr_id = t.mbr_id
+      left outer join tm s on t.tm_mbr_id = s.tm_id
+      left outer join spt_clsf p on s.spt_clsf_id = p.spt_clsf_id
+    where
+      t.tlead_wth = 1 AND
+      m.mbr_id = #{value};
+  </select>
+
+
 
 <select id="findByNo" resultMap="matchMap" parameterType="int">
     <include refid="select1"/>

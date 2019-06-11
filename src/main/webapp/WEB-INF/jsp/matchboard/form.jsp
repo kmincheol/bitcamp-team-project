@@ -22,7 +22,7 @@
 
   <div class="container">
    <form action='add' method='post' enctype='multipart/form-data'>
-    <h2><b>매치 글</b>을 <b>등록</b>할 수 있습니다.</h2>
+    <h2 style="text-align:center;"><b>매치 글</b>을 <b>등록</b>할 수 있습니다.</h2>
     <br>
     <p><b>매치</b> 글을 등록한 후</p>
     <p>다른 팀의<b>대결 신청을 받아</b>경기를 진행해 보세요.</p>
@@ -48,7 +48,7 @@
            <div class="col-sm">
               <div class="input-group mb-2">
                 <select name='teamNo' class="custom-select" id="selectBox" >
-         	 	<option selected>소속팀 선택</option>
+         	 	<option value="" disabled selected hidden>소속팀(Leader) 선택</option>
                 <c:forEach items="${match}" var="match">
                      <c:if test="${!match.team.teamMember.team_leader}">
                     	<option value='${match.team.teamId}'>${match.team.teamName}</option>
@@ -66,15 +66,15 @@
 			 <div class="form-group row">
 				 <div class="col-sm">
               <div class="input-group mb-2">
-                <select name='location' class="custom-select" id="sido" onchange="itemChange()">
+                <select class="custom-select" id="sido" name="location" onchange="itemChange()">
             <option value="" disabled selected hidden>지역선택</option> <!-- db명 toplc  -->
             <option value="01">서울</option>
                 </select>
               </div>
             </div>
 				  <div class="col-sm">
-              <div class="input-group mb-2">
-                <select name='location' class="custom-select" id="gugun">
+              <div class="input-group mb-2"> <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
+                <select class="custom-select" id="gugun" onchange="itemChange2()">
             <option value="" disabled selected hidden>지역선택</option> 
               <!-- <option value="01">강남구</option> <option value="02">강동구</option> <option value="03">강북구</option>
               <option value="04">강서구</option> <option value="05">관악구</option> <option value="06">광진구</option>
@@ -84,7 +84,12 @@
               <option value="16">성동구</option> <option value="17">성북구</option> <option value="18">송파구</option>
               <option value="19">양천구</option> <option value="20">영등포구</option> <option value="21">용산구</option>
               <option value="22">은평구</option> <option value="23">종로구</option> <option value="24">중구</option>
-              <option value="25">중랑구</option> -->
+              <option value="25">중랑구</option>  -->
+<!--               
+              <option value="01">강남구</option>
+              <option value="02">서초구</option>
+              <option value="03">송파구</option>
+               -->
                 </select>
               </div>
             </div>
@@ -94,7 +99,8 @@
     <tr>
       <th scope="row">경기장</th>
       <td>
-        <input id="pInput" type="text" class="form-control-sm" name="stadiumName" readonly> <button type="button" onclick="openMap()">검색</button>
+        <input id="pInput" type="text" class="form-control-sm" name="stadiumName"> 
+        <button type="button" onclick="openMap()">검색</button>
       </td>
     </tr>
     
@@ -135,7 +141,7 @@
     <tr>
       <th scope="row">비용</th>
       <td>
-        <input type="number" class="form-control-sm" name="cost">원
+        <input type="number" class="form-control-sm" name="cost" value=0>원
       </td>
     </tr>
 
@@ -189,9 +195,9 @@
 
 
 <script>
-function itemChange(){ 
-	var Seoul = new Array(); 
-	Seoul[0] = '강남구';
+function itemChange(number){
+ 	var Seoul = new Array(); 
+ 	Seoul[0] = '강남구';
 	Seoul[1] = '강동구';
 	Seoul[2] = '강북구';
 	Seoul[3] = '강서구';
@@ -229,15 +235,17 @@ function itemChange(){
 	for(var count = 0; count < changeItem.length; count++){
 	    var option = $("<option>"+changeItem[count]+"</option>");
 	    $('#gugun').append(option);
-	            }
-	}
+	    } 
+	
+	
+	/* var ssido = $("#sido").find("option:selected").val();
+ 	var ggugun = $("#gugun").find("option:selected").val();
+
+	var location = ("$(ssido).text()" + "$(ggugun).text()"); 
+	document.attr("#loc").text(location); */
+}
 
 
-
-
-/* 	$("#gugun").find("option:selected").val();
-
-	var location = $("#sido").text() + $("#gugun").text(); */
 	
 </script>
 

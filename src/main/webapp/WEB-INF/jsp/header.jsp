@@ -45,7 +45,7 @@
         <div class="header-category">
           <li class="nav-item"><a class="nav-link" href="#">매치</a>
             <ul class="category">
-              <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/matchboard">매치보드</a></li>
+              <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/matchboard/">매치보드</a></li>
               <li class="nav-item"><a class="nav-link" href="${contextRootPath}/app/matchboard/form.jsp">매치등록</a></li>
             </ul></li>
         </div>

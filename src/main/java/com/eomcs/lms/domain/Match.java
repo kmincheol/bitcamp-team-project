@@ -37,8 +37,6 @@ public class Match implements Cloneable, Serializable {
   private TeamLevel teamLevel;
   private List<Tag> tags;
   
-  
-
   @Override
   public String toString() {
     return "Match [no=" + no + ", teamNo=" + teamNo + ", otherTeamNo=" + otherTeamNo
@@ -52,6 +50,7 @@ public class Match implements Cloneable, Serializable {
         + teamLevel + ", tags=" + tags + "]";
   }
 
+  
   public int getNo() {
     return no;
   }

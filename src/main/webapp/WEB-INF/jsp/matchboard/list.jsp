@@ -7,13 +7,9 @@
         <title>매치보드</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <jsp:include page="../commonCss.jsp"/>
-        
-        <!-- jPList CSS -->
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
-        
-   
+        <jsp:include page="../commonCss.jsp"/>
     </head>
     <body>
     <jsp:include page="../header.jsp"/>
@@ -66,13 +62,11 @@
             data-order="asc"
             data-type="text">
         </div>
-
+        
     <div class="content">
-
-          
         <!-- filter control -->
         <div>
-        <a type="button"
+        <a style="margin-right:6px; padding-left:4px;"
             data-jplist-control="buttons-text-filter"
             data-path="default"
             data-mode="radio"
@@ -126,7 +120,7 @@
         　　　　　　<!-- 여기에 왼쪽에 공백있음 -->
         
          <!-- filter control -->
-        <a type="button"
+        <a style="margin-right:6px; padding-left:4px;"
             data-jplist-control="buttons-text-filter"
             data-path="default"
             data-mode="radio"
@@ -197,12 +191,10 @@
          data-clear-btn-id="name-clear-btn"
          placeholder="날짜를 선택하세요" />
     </div>
-    
         </div>
-      <br>
         
+        <!-- 페이지 컨트롤 부분 -->
     <div class="controls">
-        <!-- pagination control -->
         <div
                 data-jplist-control="pagination"
                 data-group="group1"
@@ -215,7 +207,7 @@
             <button id="prebtn" type="button" data-type="prev">‹</button>
         
             <div class="jplist-holder" data-type="pages">
-                <button type="button" data-type="page">{pageNumber}</button>
+                <button id="selectbtn" type="button" data-type="page">{pageNumber}</button>
             </div>
             
             <button id="nextbtn" type="button" data-type="next">›</button>
@@ -224,7 +216,7 @@
         
         </div>
      </div>
-          <!-- content to filter 매치글 출력 부분-->
+          <!-- 매치글 출력 부분-->
             <div data-jplist-group="group1">
 
                 <c:forEach items="${all}" var="match">
@@ -256,7 +248,6 @@
                     <div class="sportsType">종목 : ${match.teamTypeSports.teamSportsType}</div>
                     <div class="teamLevel">팀레벨 : ${match.teamLevel.teamLevel}</div>
                     <div class="teamAges">팀연령대 : ${match.teamAges.teamAges}</div>
-                 
                  </td>
                  </tr>
                 </table>
@@ -274,28 +265,23 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-               <div class="modal-body">
-               요기가 몸통부분
-           </div>
-           
-             <div class="modal-footer">
-          <form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
-          <c:if test="${!empty sessionScope.loginUser}">
-            <select name='teamId' class="form-control" id="selectBox" style="width:150px;">
-            <option selected>소속팀 선택</option>
-            <c:forEach items="${myteam}" var="match">
-              <c:if test="${match.team.teamMember.teamLeader}">  <!--!!!!! 왜 적용이 안될까... !!!!!-->
-                <option value='${match.team.teamId}'>${match.team.teamName}</option>
+               <div class="modal-body">요기가 몸통부분</div>
+           <div class="modal-footer">
+             <div id="mtaply" >
+             <c:if test="${!empty sessionScope.loginUser}">
+               <select name='teamId' class="form-control" id="selectBox" style="width:150px;">
+                 <option value="" selected>소속팀(Leader) 선택</option>
+                  <c:forEach items="${myteam}" var="myteam">
+                    <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
+                  </c:forEach>
+               </select>
+                <button class="btn btn-danger" id="btnsub2">신청하기</button>
               </c:if>
-            </c:forEach>
-          </select>
-          <button class="btn btn-danger" id="btnsub2">신청하기</button>
-          </c:if>
-          </form>
-             </div>
-             </div>
-             </div>
-             </div>
+              </div>
+           </div>
+                </div>
+                </div>
+            </div>
              <!--경기정보 모달 끝. -->
              
              <!-- 팀정보 모달 시작. -->
@@ -309,7 +295,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-               <div class="modal-body2" id="modalbody" style="width:500px; height:300px;"></div>
+               <div class="modal-body2" id="modalbody" style="text-align:left; width:200px; height:1200px; padding-left:-400px;"></div>
              <div class="modal-footer2"></div>
              </div>
              </div>
@@ -318,7 +304,7 @@
                 
                 </c:forEach>
                     <!-- no results control -->               
-                <div data-jplist-control="no-results" data-group="group1" data-name="no-results">No Results Found</div>
+                <div data-jplist-control="no-results" data-group="group1" data-name="no-results">검색 결과가 없습니다.</div>
         </div>
     </div><!-- .content -->      
   </div><!-- .container -->
@@ -326,7 +312,6 @@
 <jsp:include page="../javascript.jsp"/>
 <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
 <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/datepicker-ko.js"></script>
-<!-- jPList Library -->
 <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
 
 
@@ -347,17 +332,25 @@
                    //firstDay: 1
            });            
             
+            
+            
+            //매치정보 모달창
             function modalEvent(number) {
               var no;
               var nocom;
+              
+              
               $('.detail').each(function(index) {
                 nocom = $('.detail')[index].id;
                 if (nocom == number) {
                   no = nocom;
                 }
               })
+              var choiceTeamValue = $("#selectBox option:selected").val();
+              
               console.log(no);
-
+              console.log(choiceTeamValue);
+              
               $.getJSON("data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
@@ -367,12 +360,34 @@
                   $('.modal-body').append("<br>종목 : "+data.match.teamTypeSports.teamSportsType);
                   $('.modal-body').append("<br>지역 : "+data.match.location);
                   $('.modal-body').append("<br>경기장 : "+data.match.stadiumName);
+                  $('.modal-body').append("<br>비용 : "+data.match.cost);
                   $('.modal-body').append("<br>내용 : "+data.match.contents);
-                  async: true;
-              });
-            }
+                  });
+              
+                  $('#btnsub2').click(function() {
+            	  if (choiceTeamValue == "") {
+            		 alert("팀을 선택해주세요.");
+            	    return false;
+            	  }
 
-
+            	  $.ajax({
+            	    type:"POST",
+            	    url:'submit/'+number,
+            	    contentType: 'application/json',
+            	    dataType: "text",
+            	    data:JSON.stringify({
+            	      teamId: choiceTeamValue
+            	    }),
+            	    success : function(data) {}
+            	    })
+            	  });
+              }
+            
+            
+            
+            
+            
+            
             function modalEvent2(number) {
                     var no;
                     var nocom;
@@ -391,6 +406,7 @@
                         $('.modal-body2').load("../team/"+no);
                     });
             }
+            
         </script>
         
         
