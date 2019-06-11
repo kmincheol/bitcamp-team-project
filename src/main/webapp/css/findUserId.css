@@ -4,7 +4,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
   margin: 0;
   padding: 0;
 } 
-button,input,select,textarea {
+button,select,textarea {
   border:0;
   border-radius:0;
   -webkit-appearance:none;
@@ -158,7 +158,7 @@ button,input,select,textarea {
   height: 51px;
   border: solid 1px black;
   border-radius: 0;
-  margin-top: 19px;
+  margin-top: 19px;  
   background-color: #fff;
   color: black
 }
@@ -167,7 +167,7 @@ button,input,select,textarea {
 	margin: 0 200px
 }
 #id {
-  text-align: center
+  /* text-align: center */
 }
 #loginBtn, #findPwdBtn {
   width: 190px;
