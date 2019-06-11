@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.apache.logging.log4j.LogManager;
@@ -28,6 +26,7 @@ import com.eomcs.lms.service.AuthKeyService;
 import com.eomcs.lms.service.EmailService;
 import com.eomcs.lms.service.FacebookService;
 import com.eomcs.lms.service.MemberService;
+import com.eomcs.lms.service.SmsService;
 
 @Controller
 @RequestMapping("/member")
@@ -40,6 +39,19 @@ public class MemberController {
   @Autowired EmailService emailService;
   @Autowired FacebookService facebookService;
   @Autowired ServletContext servletContext;
+  @Autowired SmsService smsService;
+  
+  @GetMapping("sms")
+  public void sms() {
+  }
+  
+  
+  
+  @GetMapping("smsSend")
+  public void smsSend(String tel) throws Exception {
+    smsService.sendSms(tel);
+    
+  }
   
   @GetMapping("invalid")
   public void invalid() {

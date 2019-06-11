@@ -8,6 +8,8 @@ build/
 temp/
 Debug/
 Release/
+out/
+.idea/
 
 package-lock.json
 .DS_Store
@@ -24,4 +26,6 @@ package-lock.json
 *.tar.gz
 *.rar
 hs_err_pid*
-
+*.iml
+dump.rdb
+config.ini
