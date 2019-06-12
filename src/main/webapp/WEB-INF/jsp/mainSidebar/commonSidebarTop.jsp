@@ -66,10 +66,24 @@
                   <a style="color: white; font-size: 10px; text-decoration: none;"
                     href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
                 </div>
-              </form>
+              <div class="snsLoginBtnBox" style="text-align: center;">         
+                <span id="facebookBtn" class="snsLoginBtn"> 
+                <img src="${contextRootPath}/images/facebook.png" class="snsBtn facebookBtn" style="width: 35px; border-radius: 5px; margin:5px; cursor: pointer;">
+                </span> 
+                <span id="naverBtn" class="snsLoginBtn"> 
+                <img src="${contextRootPath}/images/naverLogin.png" class="snsBtn" style="width: 35px; border-radius: 5px; margin:5px; cursor: pointer;">
+                </span> 
+                <span id="kakaoBtn" class="snsLoginBtn"> 
+                <img src="${contextRootPath}/images/kakaoIcon.png" class="snsBtn" style="width: 35px; border-radius: 5px; margin:5px; cursor: pointer;">
+                </span>
+                 <span id="googleBtn" class="snsLoginBtn"> 
+                 <img src="${contextRootPath}/images/g-normal.png" class="snsBtn" style="width: 35px; border-radius: 5px; margin:5px; cursor: pointer;">
+                </span>
+              </div>
+            </form>
             </c:otherwise> 
           </c:choose>
-        </div>
+        </div>   
         <!-- sidebar-header  -->
         <div class="sidebar-menu" style="padding: 0px;">
           <ul>

@@ -253,11 +253,6 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
     	});
     
     
-function dd(){
-	alert("gdgd")
-	location.href='${contextRootPath}/app/myteam/5';
-
-}
     
 }//셀렉문 onchange
 
