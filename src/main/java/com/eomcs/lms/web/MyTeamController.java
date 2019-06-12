@@ -82,21 +82,9 @@ public class MyTeamController {
 
 	  
 // no를 통해서 내가 신청 보낸 경기번호 리스트를 알아낸다
-    List<MatchApply> matchNos = myTeamService.findMatchNo(4);
-     
-    
-    for(MatchApply m : matchNos) { 
-      List<Match> match =  myTeamService.findMatchNo2(m.getMatchNo());
-           for(Match mm : match) {
-              maa  =   myTeamService.MatchTeam(mm.getTeamNo());
-              
-           }
-    }
-    
-     for(Team t : maa) {
-       System.out.println(t.getTeamName());
-     }
-     model.addAttribute("team",maa);
+    List<MatchApply> matchNos = myTeamService.findMatchNo(no);
+
+    model.addAttribute("matchNos",matchNos);
     
     
     
