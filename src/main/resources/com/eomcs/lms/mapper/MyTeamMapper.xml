@@ -253,8 +253,11 @@
  <select id="findByMatchNo" resultMap="matchApplyMap" parameterType="int">
  
 select 
-mt.tm_id2, t.name 
-from mtchaply mtc  
+mt.tm_id2, 
+t.name,
+t.tm_id
+from 
+mtchaply mtc  
 left outer join mtch mt on mtc.mtch_id = mt.mtch_id 
 left outer join tm t on mt.tm_id = t.tm_id 
 where 

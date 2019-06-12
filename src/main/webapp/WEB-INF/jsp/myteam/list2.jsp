@@ -59,8 +59,9 @@
             <tbody>
               <c:forEach items="${matchNos}" var="matchNos">
               <tr style="height: 100px;">
-                <td colspan="1" style="vertical-align: middle; width: 100px;"><img src="${matchNos.team.teamEmblemPhoto}" style="width:100px; height:100px"> </td>
-                <td colspan="2" style="vertical-align: middle; width: 220px;" onclick="teaminfo()">팀명: ${matchNos.team.teamName}  
+                <td colspan="1" style="vertical-align: middle; width: 100px;" ><img src="${matchNos.team.teamEmblemPhoto}" style="width:100px; height:100px"> </td>
+                <td colspan="2" style="vertical-align: middle; width: 220px;">
+                 <div id="divdivdd" onclick=teamInfo()>팀명: ${matchNos.team.teamName} </div>    
                 </td>
                 <td colspan="1" style="vertical-align: middle; width: 100px;">
                   <button style="width: 100%;">취소</button>
@@ -71,9 +72,10 @@
           </table>
         </div>
       </div>
+      
       <div style="width: 520px; height: 540px; border: 1px solid; float: right">
-        <div style="width: 200px; border: 1px solid; height: 200px; margin: auto; margin-top: 30px;">
-          엠블렘</div>
+        <div style="width: 200px; border: 1px solid; height: 200px; margin: auto; margin-top: 30px;">엠블렘</div>
+      
         <!-- 팀정보 -->
         <div style="margin-top: 60px;">
           <div class="team_info">○ 지역 : </div>
@@ -96,9 +98,10 @@
 
 <script type="text/javascript">
 
-function teaminfo(){
-	
-	 alert("gd")
+function teamInfo(){
+
+alert(document.getElementById('divdivdd').innerHTML)
+
 }
 
 

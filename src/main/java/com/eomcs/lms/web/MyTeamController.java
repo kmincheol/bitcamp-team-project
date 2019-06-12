@@ -87,7 +87,6 @@ public class MyTeamController {
     model.addAttribute("matchNos",matchNos);
     
     
-    
     // 경기번호를 통해서 매치보드를 등록한 팀의 정보를 알아낸다
 	   
 	  
