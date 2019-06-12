@@ -23,7 +23,8 @@ h2 {
   <div id="container">
     <div id="content">
       <h2>
-        비밀번호를 <b>변경</b>할 수 있습니다.
+      현재 비밀번호 확인 후<br>
+      비밀번호를 <b>변경</b>할 수 있습니다.
       </h2>
       <%-- <div class="join_step">
       <img src="${contextRootPath}/images/logo.png" class="joinImg">
@@ -40,8 +41,8 @@ h2 {
               <div class="join_form">
                 <div class="join_form_input">
 
-                  <input type="hidden" name="no" value="${member.no}">
-                  <input type="hidden" name="id" value="${member.id}">
+                  <input type="hidden" id="no" name="no" value="${member.no}">
+                  <input type="hidden" id="id" name="id" value="${member.id}">
 
                   <!-- name -->
                   <div class="join_row">
@@ -50,7 +51,7 @@ h2 {
                     </h3>
                     <div class="int_mobile_area">
                       <span class="name ps_box int_pass" id="nameImg"> 
-                      <input type="password" id="oldpwdCheck" class="int" maxlength="16">
+                      <input name="password" type="password" id="oldpwd" class="int" maxlength="16" >
                       </span>
                     </div>
                     <span class="error_next_box" id="tel" style="display: none" role="alert"></span> 
@@ -88,7 +89,9 @@ h2 {
   <script>
 "use strict"
 
-
+ $('#btnJoin').on('click', function(){
+  
+}); 
   </script>
 </body>
 </html>

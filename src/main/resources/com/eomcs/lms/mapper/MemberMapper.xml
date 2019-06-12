@@ -115,15 +115,17 @@
       and pwd = password(#{password})
   </select>
   
-    <select id="findByPassword" resultMap="memberMap" parameterType="map">
+    <select id="findByPassword" resultMap="memberMap" parameterType="member">
     select 
-      <include refid="default-columns"/>,
-      mgr,
-      pwd
+      mbr_id, 
+      name, 
+      email, 
+      tel,
+      cdt
     from 
       mbr
     where 
-      mbr_id = #{no}
+      user_id = #{id}
       and pwd = password(#{password})
   </select>
   

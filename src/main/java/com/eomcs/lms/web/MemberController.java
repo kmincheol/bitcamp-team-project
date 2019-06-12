@@ -341,21 +341,7 @@ public class MemberController {
     model.addAttribute("member", member);
     return "member/profUpdate";
   }
-  
-  /*
-   * @RequestMapping(value="passwordUpdate/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-   * public String passwordUpdate(@PathVariable int no, Model model, HttpSession session) { Member
-   * member = (Member) session.getAttribute("loginUser"); member = memberService.get(no);
-   * 
-   * String password = member.getPassword(); member.setPassword(password);
-   * 
-   * model.addAttribute("member", member);
-   * 
-   * memberService.checkPassword(no, password);
-   * 
-   * return "member/passwordUpdate"; };
-   */
-  
+
   @GetMapping
   public String list(Model model) {
     List<Member> members = memberService.list(null);
@@ -375,6 +361,14 @@ public class MemberController {
     return "redirect:../" + member.getNo(); 
   } 
 
+  @RequestMapping(value="passwordUpdate/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+  public String passwordUpdate(@PathVariable int no, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member = memberService.get(no);
+    model.addAttribute("member", member);
+    return "member/passwordUpdate";
+  }
+
   @RequestMapping(value="passwordUpdate2/{no}", method= {RequestMethod.GET, RequestMethod.POST})
   public String passwordUpdate2(@PathVariable int no, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
@@ -382,6 +376,23 @@ public class MemberController {
     model.addAttribute("member", member);
     return "member/passwordUpdate2";
   }
+  
+  /* @ResponseBody */
+  @PostMapping("checkPassword")
+  public String checkPassword(String id, String password, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member.setPassword(password);
+    /* Map<String,Object> map = new HashMap<>(); */
+
+    if (memberService.checkPassword(member) != null) {
+      /* map.put("status", "success"); */
+       return "redirect:../member/passwordUpdate2/" + member.getNo(); 
+    } else {
+      /* map.put("status", "fail"); */
+       return "redirect:../member/passwordUpdate/" + member.getNo(); 
+    }
+    /* return map; */
+  };
   
   @PostMapping("updatePassword")
   public String updatePassword(Member member, HttpSession session) throws Exception {

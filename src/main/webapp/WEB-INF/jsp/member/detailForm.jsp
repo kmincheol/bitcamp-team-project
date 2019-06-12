@@ -82,7 +82,7 @@ $('.prof-btn').on('click',function(){
  
 $('.password-btn').on('click', function(){
   var no = $('.prof_no').val(); 
-  location="passwordUpdate2/" + no;
+  location="passwordUpdate/" + no;
 }); 
 
 </script>
