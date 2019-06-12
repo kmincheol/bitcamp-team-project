@@ -13,7 +13,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.domain.Member;

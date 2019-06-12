@@ -42,15 +42,15 @@ public class MemberController {
   @Autowired FacebookService facebookService;
   @Autowired ServletContext servletContext;
   @Autowired SmsService smsService;
-  
+
   @GetMapping("sms")
   public void sms() {
   }
-  
+
   @PostMapping(value="checkSmsNo", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkSmsNo(@RequestBody Map<String,Object> content) {
-    
+
     smsService.deleteTemp();
 
     String tel = (String) content.get("tel");
@@ -66,49 +66,49 @@ public class MemberController {
       return "auth" + 1;
     }
   }
-  
+
   @PostMapping(value="smsSend", produces="text/plain;charset=UTF-8")
   @ResponseBody
   public String smsSend(@RequestBody Map<String,Object> content) throws Exception {
     String tel = (String) content.get("tel");
     Boolean a = smsService.sendAuthSms(tel);
-    
+
     if (a) { // 성공
       return "sms" + 1;
     } else { // 실패
       return "sms" + 2;
     }
   }
-  
+
   @GetMapping("invalid")
   public void invalid() {
   }
-  
+
   @GetMapping("complete")
   public void complete() {
   }
-  
+
   @GetMapping("form")
   public void form() {
   }
-  
+
   @GetMapping("additional-form")
   public String additionalForm() {
     return "member/additionalForm";
   }
-  
+
   @GetMapping("signUpCompletion")
   public void signUpCompletion() {
   }
-  
+
   @GetMapping("findUserId")
   public void findUserId() {
   }
-  
+
   @GetMapping("findPassword")
   public void findPassword() {
   }
-  
+
   @GetMapping("fbJoin")
   public void fbJoin(String accessToken, HttpSession session) {
     session.setAttribute("accessToken", accessToken);
@@ -189,7 +189,7 @@ public class MemberController {
       return "send" + 0;
     }
   }
-  
+
   @GetMapping(value="sendPwdEmail", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String sendPwdEmail(String email) throws UnsupportedEncodingException {
@@ -200,11 +200,11 @@ public class MemberController {
     StringBuilder sb = new StringBuilder();
     Member member = memberService.get(email);
     member.setPassword(tempPwd);
-    
+
     sb.append("임시비밀번호는 ")
-       .append(tempPwd)
-       .append(" 입니다. 로그인하시고 마이페이지에서 비밀번호를 변경해주시길 바랍니다.");
-    
+    .append(tempPwd)
+    .append(" 입니다. 로그인하시고 마이페이지에서 비밀번호를 변경해주시길 바랍니다.");
+
     if (memberService.updatePassword(member) != 0) {
       if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
         return "pwdSend" + 1;
@@ -219,7 +219,7 @@ public class MemberController {
   @PostMapping(value="checkAuthNo", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkAuthNo(@RequestBody Map<String,Object> content) {
-    
+
     authKeyService.deleteTemp();
 
     String email = (String) content.get("email");
@@ -253,17 +253,17 @@ public class MemberController {
       return "checkId" + 1;
     }
   }
-  
+
   @GetMapping(value="findId", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String findId(String email, String name) {
-    
+
     Member member = new Member();
     member.setName(name);
     member.setEmail(email);
-    
+
     member = memberService.findId(member);
-    
+
     if (member != null) {
       String userId = member.getId();
       return "findId" + 0 + userId;
@@ -284,22 +284,22 @@ public class MemberController {
       Boolean termsPrivacy,
       Boolean termsThirdParty,
       HttpSession session) throws Exception {
-    
+
     if (termsService && termsPrivacy && termsThirdParty) {
       termsAgree.setTermsRequired(true);
     }
-    
+
     memberService.add(member, termsAgree);
-    
+
     // 회원가입 후 자동로그인처리
     Member newMember = memberService.get(member.getNo());
-      
+
     if (newMember == null) {
       return "invalid";
     }
-    
+
     session.setAttribute("loginUser", newMember);
-    
+
     return "redirect:signUpCompletion";
   }
 
@@ -307,15 +307,15 @@ public class MemberController {
   public String updateOption(
       Member member, 
       HttpSession session) throws Exception {
-   
+
     Member loginMember = (Member) session.getAttribute("loginUser");
 
     member.setNo(loginMember.getNo());
-    
+
     memberService.updateOption(member);
-    
+
     session.invalidate();
-    
+
     return "redirect:complete";
   }
 
@@ -358,7 +358,7 @@ public class MemberController {
 
   @RequestMapping(value="profUpdate/update", method= {RequestMethod.POST})
   public String update(Member member, Part photoFile) throws Exception {  
-   memberService.update(member);
+    memberService.update(member);
     return "redirect:../" + member.getNo(); 
   } 
 
@@ -370,48 +370,26 @@ public class MemberController {
     return "member/passwordUpdate";
   }
 
-  @RequestMapping(value="passwordUpdate2/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-  public String passwordUpdate2(@PathVariable int no, Model model, HttpSession session) {
+  @ResponseBody
+  @PostMapping("checkPassword") 
+  public Object checkPassword(String id, String password, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
-    member = memberService.get(no);
-    model.addAttribute("member", member);
-    return "member/passwordUpdate2";
-  }
-  
-  @RequestMapping(value="passwordUpdate3/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-  public String passwordUpdate3(@PathVariable int no, Model model, HttpSession session) {
-    Member member = (Member) session.getAttribute("loginUser");
-    member = memberService.get(no);
-    model.addAttribute("member", member);
-    return "member/passwordUpdate3";
-  }
-  
-  @PostMapping("checkPassword")
-  public String checkPassword(String id, String password, Model model, HttpSession session) {
-    Member member = (Member) session.getAttribute("loginUser");
-    member.setPassword(password);
+    member.setPassword(password); 
+    
+    Map<String,Object> map = new HashMap<>();
 
-    if (memberService.checkPassword(member) != null) {
-       return "redirect:../member/passwordUpdate2/" + member.getNo();  
+    if (memberService.checkPassword(member) != null) { 
+      map.put("status", "success"); 
     } else {
-       return "redirect:../member/passwordUpdate3/" + member.getNo();  
-    }
+      map.put("status", "fail"); 
+    }  
+    return map; 
   };
-  
-  /* JSON 으로 비밀번호 확인 현재는 위에 JSP로 쓰는중
-   * @ResponseBody
-   * 
-   * @PostMapping("checkPassword") public String checkPassword(String id, String password, Model
-   * model, HttpSession session) { Member member = (Member) session.getAttribute("loginUser");
-   * member.setPassword(password); Map<String,Object> map = new HashMap<>();
-   * 
-   * if (memberService.checkPassword(member) != null) { map.put("status", "success"); } else {
-   * map.put("status", "fail"); } return map; };
-   */
-  
+
+
   @PostMapping("updatePassword")
   public String updatePassword(Member member, HttpSession session) throws Exception {
-   memberService.updatePassword(member);
-   return "redirect:./" + member.getNo();
+    memberService.updatePassword(member);
+    return "redirect:./" + member.getNo();
   }
 }

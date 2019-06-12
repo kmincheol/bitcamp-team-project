@@ -57,13 +57,12 @@
         <div style="height: 500px; border: 1px solid;">
           <table class="table table-bordered" style="clear: both; margin: 0;">
             <tbody>
-              <c:forEach items="${team}" var="team">
+              <c:forEach items="${matchNos}" var="matchNos">
               <tr style="height: 100px;">
-                <td colspan="1" style="vertical-align: middle; width: 100px;">팀엠블럼</td>
-                <td colspan="2" style="vertical-align: middle; width: 220px;">팀명: ${team.teamName} <br>번호:
+                <td colspan="1" style="vertical-align: middle; width: 100px;"><img src="${matchNos.team.teamEmblemPhoto}" style="width:100px; height:100px"> </td>
+                <td colspan="2" style="vertical-align: middle; width: 220px;" onclick="teaminfo()">팀명: ${matchNos.team.teamName}  
                 </td>
                 <td colspan="1" style="vertical-align: middle; width: 100px;">
-                  <button style="width: 100%; margin-bottom: 2px;">수락</button> <br>
                   <button style="width: 100%;">취소</button>
                 </td>
               </tr>
@@ -95,7 +94,21 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
+<script type="text/javascript">
+
+function teaminfo(){
+	
+	 alert("gd")
+}
 
 
+
+
+
+
+
+
+
+</script>
 </body>
 </html>
