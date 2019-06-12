@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.MemberService;
@@ -25,9 +26,13 @@ public class NaverServiceImpl implements NaverService {
   final static Logger logger = LogManager.getLogger(NaverServiceImpl.class);
   
   MemberService memberService;
+  GlobalPropertySource globalPropertySource;
   
-  public NaverServiceImpl(MemberService memberService) {
+  public NaverServiceImpl(
+      MemberService memberService,
+      GlobalPropertySource globalPropertySource) {
     this.memberService = memberService;
+    this.globalPropertySource = globalPropertySource;
   }
   
   @SuppressWarnings("unchecked")
@@ -36,8 +41,8 @@ public class NaverServiceImpl implements NaverService {
     String naverUrl = 
         "https://nid.naver.com/oauth2.0/token?"
         + "grant_type=authorization_code"
-        + "&client_id=I7CsLJrBpKo8Qc1BsyOn"
-        + "&client_secret=9A5NZKZsrB"
+        + "&client_id=" + globalPropertySource.getNaverClientId()
+        + "&client_secret=" + globalPropertySource.getNaverClientSecret()
         + "&code=" + code
         + "&state=" + state;
     

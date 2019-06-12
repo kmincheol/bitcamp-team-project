@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
+import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.dao.SmsDao;
 import com.eomcs.lms.domain.Sms;
 import com.eomcs.lms.service.SmsService;
@@ -18,10 +19,13 @@ public class SmsServiceImpl implements SmsService {
   private static final Logger logger = LogManager.getLogger(SmsServiceImpl.class);
 
   SmsDao smsDao;
+  GlobalPropertySource globalPropertySource;
 
   public SmsServiceImpl(
-      SmsDao smsDao) {
+      SmsDao smsDao,
+      GlobalPropertySource globalPropertySource) {
     this.smsDao = smsDao;
+    this.globalPropertySource = globalPropertySource;
   }
 
   @Override
@@ -45,8 +49,8 @@ public class SmsServiceImpl implements SmsService {
 
   @Override
   public Boolean sendAuthSms(String tel) {
-    String api_key = "...";// api_key 값
-    String api_secret = "...";// secret_key 값
+    String api_key = globalPropertySource.getSmsApiKey();// api_key 값
+    String api_secret = globalPropertySource.getSmsApiSecret();// secret_key 값
     Message coolsms = new Message(api_key, api_secret);
     
     int randomCode = new Random().nextInt(899999) + 100000;
@@ -67,7 +71,7 @@ public class SmsServiceImpl implements SmsService {
     // 4 params(to, from, type, text) are mandatory. must be filled
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("to", tel); // 인증 받을 사람
-    params.put("from", "...");// 보내는 사람으로서 api에 등록된 사람의 전화번호
+    params.put("from", globalPropertySource.getSmsFromTel());// 보내는 사람으로서 api에 등록된 사람의 전화번호
     params.put("type", "SMS");
     params.put("text", text);
     params.put("app_version", "test app 1.2"); // application name and version

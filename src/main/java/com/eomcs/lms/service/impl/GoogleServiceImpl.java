@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.GoogleService;
@@ -23,9 +24,13 @@ public class GoogleServiceImpl implements GoogleService {
   final static Logger logger = LogManager.getLogger(GoogleServiceImpl.class);
   
   MemberService memberService;
+  GlobalPropertySource globalPropertySource;
   
-  public GoogleServiceImpl(MemberService memberService) {
+  public GoogleServiceImpl(
+      MemberService memberService,
+      GlobalPropertySource globalPropertySource) {
     this.memberService = memberService;
+    this.globalPropertySource = globalPropertySource;
   }
   
   public String requestGoogleAccessTokenAndUserDataCheck(HttpSession session, String code) throws Exception {
@@ -35,8 +40,8 @@ public class GoogleServiceImpl implements GoogleService {
     String googleUrl = "https://www.googleapis.com/oauth2/v4/token";
     MultiValueMap<String,String> paramMap = new LinkedMultiValueMap<String,String>();
     paramMap.add("code", code);
-    paramMap.add("client_id", "867895829996-k3o07c2lj7odqm2p8flo9u95qgcv59lj.apps.googleusercontent.com");
-    paramMap.add("client_secret", "qbAgE6Efn4EBgGWlUSjAQ4Ti");
+    paramMap.add("client_id", globalPropertySource.getGoogleClientId());
+    paramMap.add("client_secret", globalPropertySource.getGoogleClientSecret());
     paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=google");
     paramMap.add("grant_type", "authorization_code");
     

@@ -25,7 +25,8 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
-
+<!-- sns Login -->
+<link rel="stylesheet" href="${contextRootPath}/css/snsLogin.css">
 <style>
 .custom-control-input:checked ~.custom-control-label::before {
 	color: #fff;
@@ -47,6 +48,29 @@
     background: white;
     border-radius: 5%;
     padding-top: 50px;">
+    
+      <div class="snsLoginBox">
+        <h6 class="snsLoginHeading">소셜 로그인으로 더 빠르게 시작하세요!</h6>
+        
+        <div class="snsLoginBtnBox">
+          <span id="facebookBtn" class="snsLoginBtn">
+            <img src="${contextRootPath}/images/facebookLogo.png" class="snsBtn facebookBtn">
+          </span>
+        
+          <span id="naverBtn" class="snsLoginBtn">
+            <img src="${contextRootPath}/images/naverLogin.png" class="snsBtn">
+          </span>
+        
+          <span id="kakaoBtn" class="snsLoginBtn">
+            <img src="${contextRootPath}/images/kakaoIcon.png" class="snsBtn">
+          </span>
+        
+          <span id="googleBtn" class="snsLoginBtn">
+            <img src="${contextRootPath}/images/g-normal.png" class="snsBtn">
+          </span>
+        </div>
+      </div>
+    
       <div class="md-form">
         <i class="fas fa-user prefix"></i> <input autocomplete=off type="text" id="inputIconEx2"
           class="form-control" aria-describedby="emailHelp" name='id' value='${cookie.id.value}'>
@@ -78,6 +102,7 @@
           <a href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
         </div>
         </div>
+        
       </div>
     </form>
     
@@ -91,5 +116,36 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
   
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+  
+<script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+$(function() {
+  
+  var facebook = 'facebook';
+  var naver = 'naver';
+  var kakao = 'kakao';
+  var google = 'google';
+  
+  $('#facebookBtn').click(function() {windowopenPopup(facebook);});
+  $('#naverBtn').click(function() {windowopenPopup(naver);});
+  $('#kakaoBtn').click(function() {windowopenPopup(kakao);});
+  $('#googleBtn').click(function() {windowopenPopup(google);});
+  
+});
+
+function windowopenPopup(type) {
+  var popupX = (window.screen.width / 2) - (600 / 2);
+  var popupY= (window.screen.height / 2) - (600 / 2);
+  
+  window.open(
+      'snsSignin?loginType=' + type, 
+      type +' 로그인', 
+      'width=600, height=600, left=' + popupX +
+      ', top=' + popupY + ', toolbar=no, menubar=no, location=no, status=no'
+      );
+}
+</script>
+
+
 </body>
 </html>

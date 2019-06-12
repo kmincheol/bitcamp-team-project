@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.FacebookService;
@@ -38,6 +39,7 @@ public class AuthController {
   @Autowired GoogleService googleService;
   @Autowired KakaoService kakaoService;
   @Autowired NaverService naverService;
+  @Autowired GlobalPropertySource globalPropertySource;
   
   @GetMapping("snsLogin")
   public void snsLogin() {
@@ -70,7 +72,7 @@ public class AuthController {
     if (loginType.equalsIgnoreCase("facebook")) {
       logger.debug("facebookSignin");
       String facebookUrl = "https://www.facebook.com/v3.3/dialog/oauth?"+
-              "client_id="+ "564771240719772" +
+              "client_id="+ globalPropertySource.getFacebookClientId() +
               "&redirect_uri=" + redirectUri + "facebook"+
               "&scope=public_profile,email";
 
@@ -81,7 +83,7 @@ public class AuthController {
       logger.debug("naverSignin");
       String naverUrl = "https://nid.naver.com/oauth2.0/authorize?"
           + "response_type=code"
-          + "&client_id=" + "I7CsLJrBpKo8Qc1BsyOn"
+          + "&client_id=" + globalPropertySource.getNaverClientId()
           + "&redirect_uri=" + redirectUri + "naver"
           + "&state="
           + state;
@@ -91,7 +93,7 @@ public class AuthController {
     } else if (loginType.equalsIgnoreCase("kakao")) {
       logger.debug("kakaoSignin");
       String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?"
-          + "client_id=" + "43ee012e7eba5344ec3ae793e76332f5"
+          + "client_id=" + globalPropertySource.getKakaoClientId()
           + "&redirect_uri=" + redirectUri + "kakao"
           + "&response_type=code"
           + "&state="
@@ -108,7 +110,7 @@ public class AuthController {
           "&response_type=code" + 
           "&state=" + state + 
           "&redirect_uri=" + redirectUri + "google" + 
-          "&client_id=" + "867895829996-k3o07c2lj7odqm2p8flo9u95qgcv59lj.apps.googleusercontent.com";
+          "&client_id=" + globalPropertySource.getGoogleClientId();
         
       returnUrl = "redirect:" + googleUrl;
       

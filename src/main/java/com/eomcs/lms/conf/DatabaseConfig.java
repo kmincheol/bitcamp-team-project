@@ -17,14 +17,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //=> application-context-db.xml을 이 Java config 클래스가 대체한다.
 
 @Configuration // IoC 컨테이너에 이 클래스를 알려주지 않아도 찾을 수 있게 한다.
-@PropertySource("classpath:/com/eomcs/lms/conf/jdbc.properties")
 @EnableTransactionManagement
 public class DatabaseConfig {
   
   final static Logger logger = LogManager.getLogger(DatabaseConfig.class);
 
-  @Autowired 
-  Environment env;
+  @Autowired
+  GlobalPropertySource globalPropertySource;
   
 
   public DatabaseConfig() {
@@ -34,10 +33,10 @@ public class DatabaseConfig {
   @Bean
   public DataSource dataSource() {
     BasicDataSource ds = new BasicDataSource();
-    ds.setDriverClassName(env.getProperty("jdbc.driver")); 
-    ds.setUrl(env.getProperty("jdbc.url"));
-    ds.setUsername(env.getProperty("jdbc.username"));
-    ds.setPassword(env.getProperty("jdbc.password"));
+    ds.setDriverClassName(globalPropertySource.getDriverClassName()); 
+    ds.setUrl(globalPropertySource.getUrl());
+    ds.setUsername(globalPropertySource.getUsername());
+    ds.setPassword(globalPropertySource.getPassword());
     return ds;
   }
   
