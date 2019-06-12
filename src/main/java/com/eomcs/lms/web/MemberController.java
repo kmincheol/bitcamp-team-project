@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -377,22 +378,36 @@ public class MemberController {
     return "member/passwordUpdate2";
   }
   
-  /* @ResponseBody */
+  @RequestMapping(value="passwordUpdate3/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+  public String passwordUpdate3(@PathVariable int no, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member = memberService.get(no);
+    model.addAttribute("member", member);
+    return "member/passwordUpdate3";
+  }
+  
   @PostMapping("checkPassword")
   public String checkPassword(String id, String password, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
     member.setPassword(password);
-    /* Map<String,Object> map = new HashMap<>(); */
 
     if (memberService.checkPassword(member) != null) {
-      /* map.put("status", "success"); */
-       return "redirect:../member/passwordUpdate2/" + member.getNo(); 
+       return "redirect:../member/passwordUpdate2/" + member.getNo();  
     } else {
-      /* map.put("status", "fail"); */
-       return "redirect:../member/passwordUpdate/" + member.getNo(); 
+       return "redirect:../member/passwordUpdate3/" + member.getNo();  
     }
-    /* return map; */
   };
+  
+  /* JSON 으로 비밀번호 확인 현재는 위에 JSP로 쓰는중
+   * @ResponseBody
+   * 
+   * @PostMapping("checkPassword") public String checkPassword(String id, String password, Model
+   * model, HttpSession session) { Member member = (Member) session.getAttribute("loginUser");
+   * member.setPassword(password); Map<String,Object> map = new HashMap<>();
+   * 
+   * if (memberService.checkPassword(member) != null) { map.put("status", "success"); } else {
+   * map.put("status", "fail"); } return map; };
+   */
   
   @PostMapping("updatePassword")
   public String updatePassword(Member member, HttpSession session) throws Exception {

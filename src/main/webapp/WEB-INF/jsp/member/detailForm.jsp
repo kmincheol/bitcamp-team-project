@@ -8,9 +8,13 @@
   <title>회원 상세조회</title>
   <jsp:include page="../commonCss.jsp"/>
   <jsp:include page="../header.jsp"/>
-   
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
 </head>
 <style>
+.container {
+  font-family: 'Jua', sans-serif;
+}
+
 div.button
 {
    margin: auto;
@@ -36,6 +40,7 @@ h4 {
 text-align: center;
 margin: 15px; 
 }
+
 </style>
 <body>
    <c:choose>
@@ -48,7 +53,7 @@ margin: 15px;
    
   <div class="container">
    <br><br>
-    <h2>회원 정보를 <b>확인하고 수정</b>할 수 있습니다.</h2>
+    <h2>회원 정보를 확인하고 수정 할 수 있습니다.</h2>
   <br><br>
   
     <div class="row">
