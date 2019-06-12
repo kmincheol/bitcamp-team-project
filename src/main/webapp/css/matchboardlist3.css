@@ -1,11 +1,10 @@
 .container {
-	width: 1080px;
+	width: 400px;
 	margin: 0 auto;
-	text-align: center;
 }
 #topComment {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 90px;
 }
 .teamInfo {
   width: 120px;
@@ -27,6 +26,11 @@ h1{
     color: #212529;
 }
 
+h2{
+  text-align: center;
+    font-size: 14px;
+    color: #212529;
+}
 a{
     color: #212529;
 }
@@ -53,14 +57,19 @@ a:hover{
 }
 
 [data-jplist-item]{
-  width: 1050px;
-  text-align: center;
+  width: 720px;
+  height: 140px;
+  
+  /* text-align: center; */
   overflow: hidden; 
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+#searchArea {
+    position:absolute;
 
+}
 
 #matchInfo{
   margin-bottom: 0px;

@@ -19,8 +19,7 @@
         등록된 <b>매치 글</b>을 검색하여 찾거나
       </h2>
       <h2>직접 매치글을 등록할 수 있습니다.</h2>
-      <br>
-      <p>
+      <p style="margin-top:8px; margin-bottom:8px;">
         원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나
       </p>
       <p>
@@ -34,36 +33,15 @@
             data-jplist-control="hidden-sort"
             data-group="group1"
             
-            data-path=".no"
-            data-order="asc"
-            data-type="number"
-
-            data-path-1=".teamName"
-            data-order="asc"
-            data-type="text"
-
-            data-path-2=".title"
-            data-order="asc"
-            data-type="text"
-            
-            data-path-3=".sportsType"
-            data-order="asc"
-            data-type="text"
-            
-            data-path-4=".teamLevel"
-            data-order="asc"
-            data-type="text"
-            
-            data-path-5=".playDate"
-            data-order="asc"
-            data-type="text"
-            
-            data-path-6=".teamAges"
-            data-order="asc"
-            data-type="text">
+            data-path=".playDate"
+            data-order="desc"
+            data-type="text" >
         </div>
         
+        
     <div class="content">
+    <div id="searchArea">
+    
         <!-- filter control -->
         <div>
         <a style="margin-right:6px; padding-left:4px;"
@@ -117,7 +95,8 @@
          <img src="${contextRootPath}/images/pingpong_list_min.png">
         </a>
         
-        　　　　　　<!-- 여기에 왼쪽에 공백있음 -->
+        <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
+        <br><br>
         
          <!-- filter control -->
         <a style="margin-right:6px; padding-left:4px;"
@@ -161,9 +140,10 @@
         <img src="${contextRootPath}/images/guri.jpg" > <!-- 하 -->
         </a>
         </div>
+        <br>
                 <!-- text filter control -->
         
-        <div id="inputBox2" style="text-align:center;">
+        <div id="inputBox2">
                 <input class="form-control-sm"
                 data-jplist-control="textbox-filter"
                 data-group="group1"
@@ -174,10 +154,16 @@
                 data-clear-btn-id="name-clear-btn"
                 placeholder="글 제목을 입력하세요" />
                 
+                <br>
+                
           <input class="form-control-sm" type="text" id="datepicker" placeholder="날짜를 입력하세요">
+          
+                <br>
+          
             <a type="button" id="name-clear-btn">
             <img src="${contextRootPath}/images/eraser.jpg"> <!-- 지우개버튼 -->
             </a>
+            
     <div style="display: none;">
     <input 
          id="textbox-filter"
@@ -191,6 +177,7 @@
          data-clear-btn-id="name-clear-btn"
          placeholder="날짜를 선택하세요" />
     </div>
+        </div>
         </div>
         
         <!-- 페이지 컨트롤 부분 -->
@@ -216,6 +203,7 @@
         
         </div>
      </div>
+     
           <!-- 매치글 출력 부분-->
             <div data-jplist-group="group1">
 
@@ -227,19 +215,15 @@
                  <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2"
                  data-toggle="modal" data-target="#exampleModalCenter2"
                   align="center" style="cursor: pointer;"
-                  onClick="modalEvent2('${match.team.teamId}');"
-                  onMouseOver="this.style.backgroundColor='#f2fffd';"
-                  onMouseOut="this.style.backgroundColor='' ">
+                  onClick="modalEvent2('${match.team.teamId}');">
                   
-                  <div style="width:200px; height: 200px;">${match.team.teamEmblemPhoto} 엠블럼자리 </div><!-- 엠블럼 들어갑니다. -->
+                  <div style="width:50px; height: 50px;">${match.team.teamEmblemPhoto} 엠블럼자리 </div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
                 <td class="detail" id="${match.no}" colspan="5"
                 style="cursor: pointer;" 
                 data-toggle="modal" data-target="#exampleModalCenter"
-                onMouseOver="this.style.backgroundColor='#f2fffd';"
-                onMouseOut="this.style.backgroundColor='' "
                 onClick="modalEvent('${match.no}');"  >
                 
                     <div class="teamName" style="display:none">${match.team.teamName}</div>
@@ -267,6 +251,13 @@
            </div>
                <div class="modal-body">잠시만 기다려주세요</div>
            <div class="modal-footer">
+           
+           <!-- display:none -->
+           <c:forEach items="${myteam}" var="myteam">
+                <p id="loginUserTeamNumbers"><c:out value="${myteam.team.teamId}"/></p>
+           </c:forEach>
+           
+           
              <div id="mtaply" >
              <c:if test="${!empty sessionScope.loginUser}">
                <select name='teamId' class="form-control" id="selectBox" style="width:150px;">
@@ -305,8 +296,8 @@
                 </c:forEach>
                     <!-- no results control -->               
                 <div data-jplist-control="no-results" data-group="group1" data-name="no-results">검색 결과가 없습니다.</div>
-        </div>
-    </div><!-- .content -->      
+      </div>
+    </div><!-- .content -->
   </div><!-- .container -->
 
 <jsp:include page="../javascript.jsp"/>
@@ -318,28 +309,71 @@
         <script>
             jplist.init();
             
-            $( "#datepicker" ).datepicker({
-              onSelect: function(value, props) {
-                      
-                     var tb = document.getElementById('textbox-filter');
-                     tb.value = value;
-                     let keyupEvent = new Event('keyup');
-                     tb.dispatchEvent(keyupEvent);
-                   },
-                   //selectWeek: true,
-                   //inline: true,
-                   //startDate: '01/01/2000',
-                   //firstDay: 1
-           });            
+            var no = 0; //매치번호
+            var nocom; //no 배열관련
+            var choiceTeamValue; //신청팀번호
+            var number; // 
+            var sizesize = $("input[id='loginUserTeamNumbers']").length; // 신청자의 팀 배열 길이.
+                  
+          $(function() {
+        	  $( "#datepicker" ).datepicker({
+                  onSelect: function(value, props) {
+                         var tb = document.getElementById('textbox-filter');
+                         tb.value = value;
+                         let keyupEvent = new Event('keyup');
+                         tb.dispatchEvent(keyupEvent);
+                       },
+                       defaultDate: +7
+                       //selectWeek: true,
+                       //inline: true,
+                       //startDate: '01/01/2000',
+                       //firstDay: 1
+               });          
+        	  
+        	  $('#btnsub2').click(function() {
+                  var choiceTeamValue = $("#selectBox option:selected").val();
+
+                 // console.log(typeof choiceTeamValue);
+                 console.log(no); // 매치번호
+                 console.log(choiceTeamValue); //신청팀번호
+               
+                 if (choiceTeamValue == "") {
+               		 alert("팀을 선택해주세요.");
+               	    return false;
+               	  }
+   				if (matchTeamNo == choiceTeamValue) {
+   					alert("자기가 속한 팀에 신청을 할 수 없습니다.")
+   					return false;
+   				}
+               	  $.ajax({
+               	    type:"POST",
+               	    url:'submit/' + number,
+               	    contentType: 'application/json',
+               	    dataType: "text",
+               	    data:JSON.stringify({
+               	      teamId: choiceTeamValue
+               	    }),
+               	    success : function(data) {
+               	    	console.log(data)
+               	    	if (data == 12345) {
+               	        alert("신청 되었습니다.");
+               	        location.href=".";
+               	        }
+               	    	
+               	    	}
+               	    	
+               	    })
+               	  });
+        	  
+        	  
+        	  
+          })
             
             
             
-            //매치정보 모달창, 신청기능 관련
+            //매치정보 모달창
             function modalEvent(number) {
-              var no = 0;
-              var nocom;
-              var choiceTeamValue;
-              
+             
               $('.detail').each(function(index) {
                 nocom = $('.detail')[index].id;
                 if (nocom == number) {
@@ -360,46 +394,14 @@
                   $('.modal-body').append("<br>내용 : "+data.match.contents);
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo);
+					 console.log(no);
+	        	  for(i = 0; i < sizesize; i++) {
+	                  console.log($("input[id='loginUserTeamNumbers']").eq(i).attr("value"));
+	                  
+	              }
+	        	  
                   });
               
-             $('#btnsub2').click(function() {
-               var choiceTeamValue = $("#selectBox option:selected").val();
-
-              // console.log(typeof choiceTeamValue);
-              console.log(no); // 매치번호
-              console.log(choiceTeamValue); //신청팀번호
-            
-              if (choiceTeamValue == "") {
-            		 alert("팀을 선택해주세요.");
-            	    return false;
-            	  }
-				if (matchTeamNo == choiceTeamValue) {
-					alert("자기가 속한 팀에 신청을 할 수 없습니다.")
-					return false;
-				}
-
-            	  $.ajax({
-            	    type:"POST",
-            	    url:'submit/' + number,
-            	    contentType: 'application/json',
-            	    dataType: "text",
-            	    data:JSON.stringify({
-            	      teamId: choiceTeamValue
-            	    }),
-            	    success : function(data) {
-            	    	console.log(data)
-            	    	if (data == 12345) {
-            	        alert("신청 되었습니다.");
-            	        location.href=".";
-            	        }
-						
-            	    	if (data == null) {
-            	    	 alert("이미 신청했습니다.")
-            	    	}
-            	    	
-            	    }
-            	    })
-            	  });
               }
             
             

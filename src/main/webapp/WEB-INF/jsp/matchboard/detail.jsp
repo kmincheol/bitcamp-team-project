@@ -16,7 +16,6 @@
   text-align: center;
 }
 #detail_table {
-  background-color:#FDF7EF ;
   text-align: center;
   width:1000px;
 }
@@ -44,7 +43,7 @@ width:300px;
     </div>
 
     <div style="padding-left: 100px; padding-bottom: 10px; padding-top: 10px; ">
-      <a class="btn btn-primary" href='${contextRootPath}/app/matchboard'>목록</a> 
+      <a class="btn btn-primary" href='${contextRootPath}/app/matchboard/'>목록</a> 
     </div>
     
     
