@@ -231,7 +231,7 @@
                   onMouseOver="this.style.backgroundColor='#f2fffd';"
                   onMouseOut="this.style.backgroundColor='' ">
                   
-                  ${match.team.teamEmblemPhoto} 엠블럼자리 <!-- 엠블럼 들어갑니다. -->
+                  <div style="width:200px; height: 200px;">${match.team.teamEmblemPhoto} 엠블럼자리 </div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
@@ -260,12 +260,12 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+                 <h5 class="modal-title" id="exampleModalCenterTitle">잠시만 기다려주세요</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-               <div class="modal-body">요기가 몸통부분</div>
+               <div class="modal-body">잠시만 기다려주세요</div>
            <div class="modal-footer">
              <div id="mtaply" >
              <c:if test="${!empty sessionScope.loginUser}">
@@ -290,12 +290,12 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header2">
-                 <h5 class="modal-title2" id="exampleModalCenterTitle">팀정보 머릿글</h5>
+                 <h5 class="modal-title2" id="exampleModalCenterTitle">잠시만 기다려주세요</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-               <div class="modal-body2" id="modalbody" style="text-align:left; width:200px; height:1200px; padding-left:-400px;"></div>
+               <div class="modal-body2" id="modalbody" style="text-align:left; width:200px; height:1200px; padding-left:-400px;">잠시만 기다려주세요</div>
              <div class="modal-footer2"></div>
              </div>
              </div>
@@ -334,7 +334,7 @@
             
             
             
-            //매치정보 모달창
+            //매치정보 모달창, 신청기능 관련
             function modalEvent(number) {
               var no = 0;
               var nocom;
@@ -342,7 +342,6 @@
               
               $('.detail').each(function(index) {
                 nocom = $('.detail')[index].id;
-                
                 if (nocom == number) {
                   no = nocom;
                 }
@@ -359,12 +358,14 @@
                   $('.modal-body').append("<br>경기장 : "+data.match.stadiumName);
                   $('.modal-body').append("<br>비용 : "+data.match.cost);
                   $('.modal-body').append("<br>내용 : "+data.match.contents);
+                  matchTeamNo = data.match.team.teamId;
+                  console.log(matchTeamNo);
                   });
               
-                  $('#btnsub2').click(function() {
-              
+             $('#btnsub2').click(function() {
                var choiceTeamValue = $("#selectBox option:selected").val();
-               
+
+              // console.log(typeof choiceTeamValue);
               console.log(no); // 매치번호
               console.log(choiceTeamValue); //신청팀번호
             
@@ -372,17 +373,30 @@
             		 alert("팀을 선택해주세요.");
             	    return false;
             	  }
+				if (matchTeamNo == choiceTeamValue) {
+					alert("자기가 속한 팀에 신청을 할 수 없습니다.")
+					return false;
+				}
 
             	  $.ajax({
             	    type:"POST",
-            	    url:'submit/'+number,
+            	    url:'submit/' + number,
             	    contentType: 'application/json',
             	    dataType: "text",
             	    data:JSON.stringify({
             	      teamId: choiceTeamValue
             	    }),
             	    success : function(data) {
-            	        location="submit/" + choiceTeamValue;
+            	    	console.log(data)
+            	    	if (data == 12345) {
+            	        alert("신청 되었습니다.");
+            	        location.href=".";
+            	        }
+						
+            	    	if (data == null) {
+            	    	 alert("이미 신청했습니다.")
+            	    	}
+            	    	
             	    }
             	    })
             	  });
