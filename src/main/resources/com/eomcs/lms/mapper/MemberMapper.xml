@@ -131,7 +131,8 @@
   
   <select id="findByNameWithEmail" resultMap="memberMap" parameterType="member">
     select 
-      user_id
+      user_id,
+      login_type
     from 
       mbr
     where 

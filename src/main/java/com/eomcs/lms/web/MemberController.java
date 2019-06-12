@@ -265,8 +265,13 @@ public class MemberController {
     member = memberService.findId(member);
     
     if (member != null) {
-      String userId = member.getId();
-      return "findId" + 0 + userId;
+      if (member.getLoginType().equalsIgnoreCase("homepage")) {
+        String userId = member.getId();
+        return "findId" + 0 + userId;
+      } else {
+        String loginType = member.getLoginType();
+        return "findId" + 2 + loginType;
+      }
     } else {
       return "findId" + 1;
     }

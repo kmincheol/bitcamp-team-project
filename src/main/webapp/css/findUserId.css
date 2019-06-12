@@ -14,17 +14,19 @@ button,select,textarea {
 #container {
   text-align: center;
   margin: 90px auto 0 auto;
-  width: 1000px;
+  width: 500px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
 #content{
-  width: 1000px;
   margin: 0 auto;
+  width: 500px
+}
+#emailAuth {
+	text-align : left
 }
 #findIdBox {
-	margin: 0 100px;
-	width: 800px
+	width: 500px
 }
 #findIdImgBox {
 	width: 150px;
@@ -41,10 +43,11 @@ button,select,textarea {
 }
 #findIdComment {
   margin-top: 50px;
-  font-size: 35px
 }
 #findIdAuthComment {
 	margin: 40px 0 60px 0;
+}
+.findIdComments {
 	font-size: 25px
 }
 .hrblack {
@@ -142,6 +145,7 @@ button,select,textarea {
   border:none;
   background:#fff;
   font-size:15px;
+  outline: 0;
   box-sizing:border-box
 }
 .error_next_box{
@@ -164,7 +168,7 @@ button,select,textarea {
 }
 #findIdDiv {
 	width: 400px;
-	margin: 0 200px
+	margin: 0 50px
 }
 #id {
   /* text-align: center */
