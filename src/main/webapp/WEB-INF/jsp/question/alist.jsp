@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container">
+  <div id="main-wrap" class="container">
         <label for="content">답변</label>
         <form name="commentInsertForm">
             <div class="input-group">
