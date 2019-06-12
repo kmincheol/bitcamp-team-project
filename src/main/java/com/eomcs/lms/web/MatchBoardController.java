@@ -3,17 +3,24 @@ package com.eomcs.lms.web;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Match;
@@ -26,6 +33,7 @@ import com.eomcs.lms.service.LocationService;
 import com.eomcs.lms.service.MatchApplyService;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
+import com.fasterxml.jackson.core.JsonParser;
 
 @Controller
 @RequestMapping("/matchboard")
@@ -285,23 +293,29 @@ public class MatchBoardController {
   }
   
   
-  @RequestMapping("submit/{no}") // 매치번호를 받음.
+  @RequestMapping(value="submit/{no}" , method= {RequestMethod.GET, RequestMethod.POST}) 
   @ResponseBody
-  public String submit(String no, String teamId) {
+  public String submit(@PathVariable int no, @RequestBody String teamId) throws ParseException { // 매치번호를 받음. 신청팀번호를 받음.
     logger.debug("AAAA"+no);
-    logger.debug("BBBB"+teamId);
-    int mno = Integer.parseInt(no) ;
-    int tno = Integer.parseInt(teamId);
-    
-    Match match = matchBoardService.get(mno);
+    logger.debug("BBBB"+teamId); // teamId는 지금 JSON문자열임.
+    //teamId => {"teamId":"7"}
 
+    // JSON 파싱하기
+    
+      JSONParser jsonParser = new JSONParser();
+      JSONObject jsonObj = (JSONObject) jsonParser.parse(teamId);
+      String obj = (String) jsonObj.get("teamId");
+      int teamIdNo = Integer.parseInt(obj);
+    
+    Match match = matchBoardService.get(no);
     MatchApply matchApply = new MatchApply();
     
     matchApply.setMatchNo(match.getNo());
-    matchApply.setTeamNo(tno);
+    matchApply.setTeamNo(teamIdNo);
 
     matchApplyService.add(matchApply);
-    return "redirect:../";
+    
+    return "12345";
   }
   
   

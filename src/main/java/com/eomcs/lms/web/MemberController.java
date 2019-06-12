@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -341,21 +342,7 @@ public class MemberController {
     model.addAttribute("member", member);
     return "member/profUpdate";
   }
-  
-  /*
-   * @RequestMapping(value="passwordUpdate/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-   * public String passwordUpdate(@PathVariable int no, Model model, HttpSession session) { Member
-   * member = (Member) session.getAttribute("loginUser"); member = memberService.get(no);
-   * 
-   * String password = member.getPassword(); member.setPassword(password);
-   * 
-   * model.addAttribute("member", member);
-   * 
-   * memberService.checkPassword(no, password);
-   * 
-   * return "member/passwordUpdate"; };
-   */
-  
+
   @GetMapping
   public String list(Model model) {
     List<Member> members = memberService.list(null);
@@ -375,6 +362,14 @@ public class MemberController {
     return "redirect:../" + member.getNo(); 
   } 
 
+  @RequestMapping(value="passwordUpdate/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+  public String passwordUpdate(@PathVariable int no, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member = memberService.get(no);
+    model.addAttribute("member", member);
+    return "member/passwordUpdate";
+  }
+
   @RequestMapping(value="passwordUpdate2/{no}", method= {RequestMethod.GET, RequestMethod.POST})
   public String passwordUpdate2(@PathVariable int no, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
@@ -382,6 +377,37 @@ public class MemberController {
     model.addAttribute("member", member);
     return "member/passwordUpdate2";
   }
+  
+  @RequestMapping(value="passwordUpdate3/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+  public String passwordUpdate3(@PathVariable int no, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member = memberService.get(no);
+    model.addAttribute("member", member);
+    return "member/passwordUpdate3";
+  }
+  
+  @PostMapping("checkPassword")
+  public String checkPassword(String id, String password, Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    member.setPassword(password);
+
+    if (memberService.checkPassword(member) != null) {
+       return "redirect:../member/passwordUpdate2/" + member.getNo();  
+    } else {
+       return "redirect:../member/passwordUpdate3/" + member.getNo();  
+    }
+  };
+  
+  /* JSON 으로 비밀번호 확인 현재는 위에 JSP로 쓰는중
+   * @ResponseBody
+   * 
+   * @PostMapping("checkPassword") public String checkPassword(String id, String password, Model
+   * model, HttpSession session) { Member member = (Member) session.getAttribute("loginUser");
+   * member.setPassword(password); Map<String,Object> map = new HashMap<>();
+   * 
+   * if (memberService.checkPassword(member) != null) { map.put("status", "success"); } else {
+   * map.put("status", "fail"); } return map; };
+   */
   
   @PostMapping("updatePassword")
   public String updatePassword(Member member, HttpSession session) throws Exception {

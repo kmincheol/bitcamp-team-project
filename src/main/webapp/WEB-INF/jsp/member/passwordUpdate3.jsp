@@ -47,9 +47,9 @@ h2 {
                   <!-- name -->
                   <div class="join_row">
                     <h3 class="join_title">
-                      <label for="name">현재 비밀번호</label>
+                      <label for="name" style="color:red;">비밀번호가 틀립니다. 다시 한번 확인해 주세요.</label> 
                     </h3>
-                    <div class="int_mobile_area">
+                    <div class="int_mobile_area"> 
                       <span class="name ps_box int_pass" id="nameImg"> 
                       <input name="password" type="password" id="oldpwd" class="int" maxlength="16" >
                       </span>
@@ -64,9 +64,9 @@ h2 {
           <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin" >확인</button> 
         </div><!-- .btn_area --> 
         
-            </form>
+            </form> 
             <!-- #join_form-->
-
+ 
           </div>
           <!-- .join_content -->
         </c:otherwise>
@@ -86,32 +86,5 @@ h2 {
   <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script>
   <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
-
-  <script>
-"use strict"
-
- /* $('#btnJoin').on('click', function(){
-   
-   var id = $('#id').val();
-   var password = $('#oldpwd').val();
-   
-   console.log(id);
-   console.log(password);
-     
-     $.getJSON('../checkPassword', 
-         {
-       id: id,
-       password: password 
-         },
-       function(obj) {
-         if (obj.status = success) { 
-           alert("확인");
-         } else {
-           alert("실패"); 
-         }
-         
-       }); 
-});  */
-  </script>
 </body>
 </html>

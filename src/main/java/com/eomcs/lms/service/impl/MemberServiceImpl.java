@@ -70,9 +70,8 @@ public class MemberServiceImpl implements MemberService {
   }
   
   @Override
-  public Member checkPassword(int no, String password) {
-    
-    return memberDao.findByPassword(no,password);
+  public Member checkPassword(Member member) {
+    return memberDao.findByPassword(member);
   }
   
   @Override
