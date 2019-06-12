@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호찾기</title>
+<title>임시 비밀번호 발급</title>
 <jsp:include page="../commonCss.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/findPassword.css">
 
@@ -27,74 +27,73 @@
     <div id="content">
       <input type="hidden" id="authType" name="authType" value="password">
 
-      <h1 style="margin-bottom: 20px;">비밀번호 찾기</h1>
+      <h1 style="margin-bottom: 20px;">임시 비밀번호 발급</h1>
 
       <hr class="hrblack" />
 
       <div id="findPwdBox">
         <div id="findPwdContent">
           <div id="findPwdComment">
-            <p style="font-size: 0.7em;">
-              이메일 인증을 통해 <strong>비밀번호</strong>를 찾을 수 있습니다.
+            <p>
+              <strong>임시 비밀번호</strong>를 발급받으실 수 있습니다.
             </p>
           </div>
           <div id="findPwdImgBox">
-            <img src="../../images/email.png">
+            <label for="findPwdAuthBtn">
+              <img id="findPwdImg" src="../../images/email.png">
+            </label>
           </div>
           <div id="findPwdAuthComment">
             <p>
-              회원가입하실 때 인증하신 <strong>이메일</strong>로 인증해주세요.
+                       가입하신 <strong>이메일</strong>로 인증해주세요.
             </p>
           </div>
-          <hr class="hrSlim">
+        </div><!-- #findPwdContent -->
+        <hr class="hrSlim">
+      </div><!-- #findPwdBox -->
+
+      <div id="findPwdAuth">
+        <div id="findPwdAuthBox">
+          <button class="btn btn-primary btn-lg" id="findPwdAuthBtn" type="button">이메일 인증</button>
         </div>
-        <!-- #findPwdContent -->
-        <div id="findPwdAuth">
-          <div id="findPwdAuthBox">
-            <button class="btn btn-primary btn-lg" id="findPwdAuthBtn" type="button">이메일 인증</button>
-          </div>
 
 
-          <div id="findPwdDiv">
-            <div id="emailAuth" style="display: none">
-              <div class="join_row join_email">
-                <h3 class="join_title">
-                  <label for="email">이메일 인증</label>
-                </h3>
-                <span class="ps_box int_pass" id="joinCode"> <input type="text" id="email"
+        <div id="findPwdDiv">
+          <div id="emailAuth" style="display: none">
+            <div class="join_row join_email">
+              <h3 class="join_title">
+                <label for="email">이메일 인증</label>
+              </h3>
+              <span class="ps_box int_pass" id="joinCode"> <input type="text" id="email"
                   name="email" placeholder="이메일을 입력해주세요." maxlength="100" class="int"
                   autocomplete=off>
-                </span> <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn"> <span
-                  class="error_next_box" id="emailMsg" style="display: none" role="alert"></span>
-              </div>
-              <div class="join_row join_email join_authNo_confirm">
-                <span class="ps_box int_pass" id="authNoBox"> <input type="tel" id="authNo"
+              </span> 
+              <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn"> 
+              <span class="error_next_box" id="emailMsg" style="display: none" role="alert"></span>
+            </div>
+            <div class="join_row join_email join_authNo_confirm">
+              <span class="ps_box int_pass" id="authNoBox"> <input type="tel" id="authNo"
                   placeholder="인증번호 입력하세요" class="int" maxlength="6" disabled>
-                </span> <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn"> <span
-                  class="error_next_box" id="authNoMsg" style="display: none" role="alert"></span>
-              </div>
-            </div>
-            <div class="btn_area" id="findPwdBtnBox" style="display: none">
-              <button class="btn btn-primary btn-lg" id="btnJoin" type="button">임시 비밀번호 발송</button>
-            </div>
-            <div class="btn_area" id="AfterBtnBox" style="display: none">
-              <p>
-                <strong>임시 비밀번호</strong>를 인증하신 이메일로 발송했습니다. <br>임시 비밀번호로 로그인 하신 후, <br>마이페이지에서
-                비밀번호를 변경해 주시기 바랍니다.
-              </p>
-              <a href="../main" class="btn btn-primary btn-lg" id="mainBtn" type="button">메인화면</a> <a
-                href="../auth/form" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인
-                하기</a>
+              </span> 
+              <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn"> 
+              <span class="error_next_box" id="authNoMsg" style="display: none" role="alert"></span>
             </div>
           </div>
+          <div class="btn_area" id="findPwdBtnBox" style="display: none">
+            <button class="btn btn-primary btn-lg" id="btnJoin" type="button">임시 비밀번호 발송</button>
+          </div>
+          <div class="btn_area" id="AfterBtnBox" style="display: none">
+            <p>
+              <strong>임시 비밀번호</strong>를 인증하신 이메일로 발송했습니다. <br>임시 비밀번호로 로그인 하신 후, <br>마이페이지에서 비밀번호를 변경해 주시기 바랍니다.
+            </p>
+            <a href="../main" class="btn btn-primary btn-lg" id="mainBtn" type="button">메인화면</a> 
+            <a href="../auth/form" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인하기</a>
+          </div>
         </div>
-        <!-- #findPwdAuth -->
-      </div>
-      <!-- #findPwdBox -->
-    </div>
-    <!-- #content -->
-  </div>
-  <!-- #container -->
+      </div><!-- #findPwdAuth -->
+    </div><!-- #content -->
+  </div><!-- #container -->
+  
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
@@ -321,9 +320,6 @@
 				}
 
 				if (authFlag) {
-					showSuccessMsg(oMsg,
-							"이메일 인증에 성공했습니다. <br>아이디 찾기 버튼을 눌러주세요.");
-					showSuccessBoxBySuccess(oBox);
 					$('#emailMsg').hide();
 					$("#authNo").attr("disabled", true);
 					return true;
@@ -355,7 +351,7 @@
 						var result = data.substr(4);
 						if (result == "0") {
 							showSuccessMsg(oMsg,
-									"이메일 인증에 성공했습니다. <br>아이디 찾기 버튼을 눌러주세요.");
+									"이메일 인증에 성공했습니다. <br>임시 비밀번호 발송 버튼을 눌러주세요.");
 							showSuccessBoxBySuccess(oBox);
 							$("#findPwdBtnBox").show();
 							$("#emailMsg").hide();
@@ -412,11 +408,16 @@
 									return true;
 								} else if (result == "0") {
 									showErrorMsg(oMsg,
-											"임시비밀번호 발급 중에 오류가 발생했습니다. <br>다시 한번 임시 비밀번호 발송 버튼을 눌러주세요.");
+											"임시비밀번호 발급 중에 오류가 발생했습니다.<br>다시 한번 임시 비밀번호 발송 버튼을 눌러주세요.");
 									return false;
+									
+								} else if (result == "4") {
+								  showErrorMsg(oMsg,
+                  "이 이메일로 가입한 계정은 소셜로그인으로 가입된 계정입니다.<br>소셜로그인으로 가입하신 계정은 임시 비밀번호를 받으실 수 없습니다.");
+								  return false;
 								} else {
 									showErrorMsg(oMsg,
-											"임시 비밀번호를 전달할 메일 발송에 실패했습니다. <br>정상적인 이메일 계정인지 확인해주세요.");
+											"임시 비밀번호를 전달할 메일 발송에 실패했습니다.<br>정상적인 이메일 계정이 아니거나 <br>이 이메일로 가입된 아이디가 존재하지 않습니다.");
 									return false;
 								}
 							}

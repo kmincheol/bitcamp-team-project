@@ -36,13 +36,15 @@
     <div id="findIdBox">
       <div id="findIdContent">
         <div id="findIdComment" class="findIdComments">
-          <p>이름과 이메일로 <strong>아이디</strong>를 찾을 수 있습니다.</p>
+          <p>회원 가입하신 <strong>아이디</strong>를 찾을 수 있습니다.</p>
         </div>
         <div id="findIdImgBox">
-          <img src="../../images/search.png">
+          <label for="findIdAuthBtn">
+            <img id="findIdImg" src="../../images/search.png">
+          </label>
         </div>
         <div id="findIdAuthComment" class="findIdComments">
-          <p>회원가입하실 때 등록하신 <br><strong>이름, 이메일</strong> 정보가 필요합니다.</p>
+          <p>회원님의 <strong>이름, 이메일</strong> 정보가 필요합니다.</p>
         </div>
         <hr class="hrSlim">
       </div><!-- #findIdContent -->

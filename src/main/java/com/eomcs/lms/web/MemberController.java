@@ -199,6 +199,12 @@ public class MemberController {
     String subject = "BATTLE MATCHING에서 발급한 임시비밀번호입니다.";
     StringBuilder sb = new StringBuilder();
     Member member = memberService.get(email);
+    if (member == null) {
+      return "pwdSend" + 3;
+    }
+    if (!member.getLoginType().equalsIgnoreCase("homepage")) {
+      return "pwdSend" + 4;
+    }
     member.setPassword(tempPwd);
 
     sb.append("임시비밀번호는 ")

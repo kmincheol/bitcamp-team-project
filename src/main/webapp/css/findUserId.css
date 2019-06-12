@@ -31,15 +31,21 @@ button,select,textarea {
 #findIdImgBox {
 	width: 150px;
 	height: 150px;
-	margin: 50px auto;
+	margin: 50px auto 0 auto;
   background-color: rgb(220, 220, 220);
   border:  hidden 1px white;
   border-radius: 100px
 }
-#findIdImgBox > img {
+#findIdImg {
   width: 100px;
 	height: 100px;
-	margin: 28px 0;
+	margin: 25px 0;
+}
+#findIdImgBox > label {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  cursor: pointer
 }
 #findIdComment {
   margin-top: 50px;
@@ -170,8 +176,8 @@ button,select,textarea {
 	width: 400px;
 	margin: 0 50px
 }
-#id {
-  /* text-align: center */
+#userId {
+  text-align: center
 }
 #loginBtn, #findPwdBtn {
   width: 190px;
@@ -183,5 +189,5 @@ button,select,textarea {
   color: black
 }
 #loginBtn {
-  margin-right: 15px
+  margin-right: 14px
 }

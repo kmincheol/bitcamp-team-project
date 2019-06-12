@@ -32,9 +32,6 @@ public class EmailConfig {
     final String userName = globalPropertySource.getMailUserName();
     final String password = globalPropertySource.getMailPassword();
     
-    logger.info(userName);
-    logger.info(password);
-    
     Properties props = System.getProperties();
     props.put("mail.smtp.auth", "true");
     props.put("mail.smtp.starttls.enable", "true");
