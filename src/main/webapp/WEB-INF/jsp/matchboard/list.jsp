@@ -19,11 +19,7 @@
         등록된 <b>매치 글</b>을 검색하여 찾거나
       </h2>
       <h2>직접 매치글을 등록할 수 있습니다.</h2>
-      <p style="margin-top:8px; margin-bottom:8px;">
-        원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나
-      </p>
-      <p style="margin-bottom:25px;">
-        <b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.
+      <p style="margin-bottom:50px;">
       </p>
     </div>
   <div class="container" id="main-wrap">
@@ -54,7 +50,7 @@
          모든종목
          </button><br>
         
-        <a type="button" 
+        <a type="button" id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -65,7 +61,7 @@
         <img src="${contextRootPath}/images/football_list_min.png"> 
         </a>
         
-        <a type="button"
+        <a type="button" id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -75,7 +71,7 @@
          <img src="${contextRootPath}/images/baseball_list_min.png">
         </a>
         
-        <a type="button" 
+        <a type="button" id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -85,7 +81,7 @@
          <img src="${contextRootPath}/images/basketball_list_min.png">
         </a>
         
-        <a type="button"  
+        <a type="button" id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -161,9 +157,12 @@
                 <br>
           
             <button type="button" class="btn btn-dark" id="name-clear-btn" style="margin-top:10px;">
-            모든 내용 초기화 <!-- 지우개버튼 -->
+            검색 설정 초기화 <!-- 지우개버튼 -->
             </button>
             
+            <button  type="button" class="btn btn-dark" id="matchform"
+            onClick="location.href='${contextRootPath}/app/matchboard/form' " >
+            매치등록하기</button>
     <div style="display: none;">
     <input 
          id="textbox-filter"
@@ -204,13 +203,17 @@
         </div>
      </div>
      
+        <div id="listtitle">
+          매치 목록
+        </div>
+     <div id="list">
           <!-- 매치글 출력 부분: 팀정보,매치글정보-->
             <div data-jplist-group="group1">
 
                 <c:forEach items="${all}" var="match">
                  
                  <div data-jplist-item>
-                 <table class="table table-dark table-bordered table-striped results" id="matchInfo">
+                 <table class="table table-bordered table-striped results" id="matchInfo">
                  <tr>
                  <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2"
                  data-toggle="modal" data-target="#exampleModalCenter2"
@@ -218,7 +221,7 @@
                   <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
                   align="center" style="cursor: pointer;" >
                   
-                  <div style="width:50px; height: 50px;">${match.team.teamEmblemPhoto} 엠블럼위치 </div><!-- 엠블럼 들어갑니다. -->
+                  <div style="width:58px; height:58px;">${match.team.teamEmblemPhoto} 엠블럼 </div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
@@ -293,6 +296,8 @@
                 </c:forEach>
                     <!-- no results control -->               
                 <div data-jplist-control="no-results" data-group="group1" data-name="no-results">검색 결과가 없습니다.</div>
+      </div>
+                　　　　　　　　　　　　　　　　　　　　<!-- 칸 일그러짐 방지 -->　　　　　　　　　　　　　　　　　　　　　　　
       </div>
     </div><!-- .content -->
   </div><!-- .container -->

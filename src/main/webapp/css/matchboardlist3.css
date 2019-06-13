@@ -2,7 +2,7 @@
 	width: 400px;
 	margin: 0 auto;
 	margin-bottom: 70px;
-	border-top: 1px solid black;
+	border-top: 2px solid black;
 }
 #topComment {
   text-align: center;
@@ -47,21 +47,39 @@ a:hover{
   text-align:left;
 }
 
+#list{
+  float: right;
+  z-index: 2;
+  text-align:center;
+  border-radius: 2px;
+  border: 2px solid #dfdfdf;
+  border-top: 0px;
+  margin-right: 17px;
+}
+
+#listtitle{
+  float: right;
+  text-align:center;
+   z-index: 1;
+  width: 740px;
+  height: 42px;
+  font-size: 21px;
+  border-radius: 2px;
+  border: 2px solid #dfdfdf;
+  background-color: #ffffff;
+}
 
 [data-jplist-group]{
     display: flex;
     font-size: 16px;
     flex-wrap: nowrap;
     flex-direction: column;
-    width: 100%;
-    margin: 0 20px;
+    margin: 10px 10px;
     box-sizing: border-box;
-    margin-left: 3px;
-    padding-left: 320px;
 }
 
 [data-jplist-item]{
-  width: 720px;
+  width: 680px;
   height: 140px;
   
   /* text-align: center; */
@@ -88,7 +106,8 @@ a:hover{
 }
 
 #searchArea {
-  position: absolute;
+  float: left;
+  position: relative;
   border-radius: 25px;
   border: 3px solid #73AD21;
   padding: 20px; 
@@ -96,24 +115,40 @@ a:hover{
   height: 350px;  
 }
 
+#inputBox2{
+  float: left;
+}
+
+#matchform{
+margin-top: 50px;
+width: 255px;
+}
+
 #matchInfo{
   margin-bottom: 0px;
+  background-color: #ffffff;
 }
 
 .controls{
     display: flex;
     justify-content: center;
-    padding-left: 300px;
     margin: 35px 0 17px 0;
 }
 
+#stype{
+  margin-left: 4px;
+}
+
 #levelbtn{
-  margin-top: 3px;
+  margin-top: 6px;
+  margin-left: 2px;
   border-radius: 0px;
-  width:32px; height:30px; 
+  width:31px; height:30px; 
+    padding-top: 3px;
     padding-right: 48px;
     padding-left: 30px;
-    border-top-width: 0px;
+    border-width: 0px;
+    background-color: #d5cfd8;
 }
 
 
@@ -123,13 +158,11 @@ button{
   border-color: #343a40;
   display: inline-block;
   border: 3px solid;
-  border-radius: 16px;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: 1px solid transparent;
   padding: .2rem .6rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -137,33 +170,27 @@ button{
 }
 
 #firstbtn{
-  border: 3px solid #343a40;
-  border-radius: 5px;
+  border-right: 0px solid #343a40;
 }
 
 #prebtn{
-  border: 3px solid #343a40;
-  border-radius: 5px;
+  border-left: 0px solid #343a40;
 }
 
 #selectbtn{
   margin-top: 1px;
-  border: 2px solid #343a40;
-  border-radius: 2px;
 }
 
 #nextbtn{
-  border: 3px solid #343a40;
-  border-radius: 5px;
+  border-right: 0px solid #343a40;
 }
 
 #lastbtn{
-  border: 3px solid #343a40;
-  border-radius: 5px;
+  border-left: 0px solid #343a40;
 }
 
 .jplist-selected{
-  background-color: #ff7d20;
+  background-color: #d3d3d3;
 }
 
 #modalbody {
@@ -179,6 +206,7 @@ button{
 
 [data-jplist-control="no-results"]{
   padding: 20px 0;
+  witth: 400px;
   text-align:center;
   color: #3e6894;
 }

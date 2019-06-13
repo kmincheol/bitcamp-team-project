@@ -20,7 +20,6 @@
 </head>
 <body>
     
-    
   <div id="main-text">    
     <h2 style="text-align:center;"><b>매치 글</b>을 <b>등록</b>할 수 있습니다.</h2>
     <br>
@@ -29,7 +28,8 @@
   </div>
 
   <div class="container" id="main-wrap">
-   <form action='add' method='post' enctype='multipart/form-data'>
+  
+   <form action='add' method='post'>
     
     <table id="match_table" class="table table-bordered">
   <thead>
@@ -42,12 +42,12 @@
   </thead>
   <tbody>
           <tr>
-      <th scope="row" >소속팀</th>
+      <th scope="row" id="teamsteams" >소속팀</th>
       <td>
         <div class="form-group row">
            <div class="col-sm">
               <div class="input-group mb-2">
-                <select name='teamNo' class="custom-select" id="selectBox" >
+                <select name='teamNo' class="custom-select" id="selectBox22" >
          	 	<option value="" disabled selected hidden>소속팀(Leader) 선택</option>
                 <c:forEach items="${match}" var="match">
                      <c:if test="${!match.team.teamMember.team_leader}">
@@ -74,7 +74,7 @@
             </div>
 				  <div class="col-sm">
               <div class="input-group mb-2"> <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
-                <select class="custom-select" id="gugun" onchange="itemChange2()">
+            <select name='location' class="custom-select" id="gugun">
             <option value="" disabled selected hidden>지역선택</option> 
               <!-- <option value="01">강남구</option> <option value="02">강동구</option> <option value="03">강북구</option>
               <option value="04">강서구</option> <option value="05">관악구</option> <option value="06">광진구</option>
@@ -84,12 +84,7 @@
               <option value="16">성동구</option> <option value="17">성북구</option> <option value="18">송파구</option>
               <option value="19">양천구</option> <option value="20">영등포구</option> <option value="21">용산구</option>
               <option value="22">은평구</option> <option value="23">종로구</option> <option value="24">중구</option>
-              <option value="25">중랑구</option>  -->
-<!--               
-              <option value="01">강남구</option>
-              <option value="02">서초구</option>
-              <option value="03">송파구</option>
-               -->
+              <option value="25">중랑구</option> -->
                 </select>
               </div>
             </div>
@@ -99,8 +94,8 @@
     <tr>
       <th scope="row">경기장</th>
       <td>
-        <input id="pInput" type="text" class="form-control-sm" name="stadiumName"> 
-        <button type="button" onclick="openMap()">검색</button>
+        <input id="pInput" class="form-control-sm" name="stadiumName"> 
+        <a  onclick="openMap()">검색하기</a>
       </td>
     </tr>
     
@@ -145,7 +140,6 @@
       </td>
     </tr>
 
-    
   </tbody>
 </table>
 
@@ -153,19 +147,17 @@
     <a class="btn btn-dark" href='.'>목록</a>
     </div>
 
-
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button id="add" class="btn btn-dark">매치보드에 등록하기</button>
+        <div id="regbtn">
+          <button id="add" class="btn btn-dark" type=submit>매치보드에 등록하기</button>
         </div>
-      </div>
 	
-	<br><br><br><br><br>
-	
+<br><br>
 </form>
+
   </div> <!-- .container -->
   
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    
     <script type="text/javascript">
     
     var openWin;
@@ -178,6 +170,7 @@
         openWin = window.open("${contextRootPath}/app/matchboard/map.jsp",
                 "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
     }
+
     
     	function getDate() {
     	  var today = new Date();
