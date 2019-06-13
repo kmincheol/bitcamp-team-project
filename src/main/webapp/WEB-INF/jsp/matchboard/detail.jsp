@@ -44,7 +44,7 @@ width:300px;
           <label for="no">번호</label>
       </th>
       <td>
-            <label id="no">${match.no}</label>
+            <label id="no" class="detail">${match.no}</label>
       </td>
       <th scope="col">
           <label for="viewCount">조회수</label>
@@ -154,22 +154,30 @@ width:300px;
 
 <script>
 
-var no = 0; //매치번호
-var nocom; //no 배열관련
 var choiceTeamValue; //신청팀번호
-var number; // 매치번호선택값 들어옴
 var matchTeamNo;// 매치글의 팀번호 들어옴
 var sizesize = $("input[id='loginUserTeamNumbers']").length; // 신청자의 팀 배열 길이.
 var teamnocom = sizesize;
 
 
+
 $('#btnsub2').click(function() {
     var choiceTeamValue = $("#selectBox option:selected").val();
 
+   var no = '${match.no}';
+   matchTeamNo = '${match.team.teamId}';
+   
    //console.log(typeof choiceTeamValue);
-   console.log(no); // 매치번호
-   console.log(choiceTeamValue); //신청팀번호
+   console.log(no +"-> 매치번호"); // 매치번호
+   console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
  
+
+     
+       console.log(no+"-> 매치번호");
+       console.log(matchTeamNo+"-> 매치글작성한 팀번호");
+   
+   
+   
    if (choiceTeamValue == "") {
  		 alert("팀을 선택해주세요.");
  	    return false;
@@ -196,6 +204,7 @@ $('#btnsub2').click(function() {
  	    	},
  	    error : function(data) {
  	       alert("이미 신청되었습니다.")
+ 	       location.href=".";
  	    	}
  	    })
  	 });

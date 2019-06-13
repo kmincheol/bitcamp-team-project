@@ -13,7 +13,7 @@ p {
 }
 
 .container{
-  border-top: 1px solid black;
+  border-top: 2px solid black;
 }
 
 #main-wrap{
@@ -97,7 +97,9 @@ popover 디자인
   padding-top: 40px;
 }
 
-
+#regbtn{
+  text-align:center;
+}
 
 
 #viewCnt {
@@ -117,8 +119,8 @@ text-align: right;
 
 
 #match_table {
-  width: 90%;
-  height: 50%;
+  height: 70%;
+  margin-top: 60px;
 }
 
 #sub_title {
@@ -217,17 +219,11 @@ text-align: right;
 
 .listbtn{
   top:30px;
-  position: absolute;
   margin-top: 21px;
   margin-left: 25px;
   text-align: left;
 }
 
-
-#listbtn{
-  position: absolute;
-  text-align: left;
-}
 
 #mtaply{
   text-align: left;
@@ -240,3 +236,14 @@ text-align: right;
   margin-bottom: 3px;
   width: 170px;
 }
+
+#selectBox22{
+  text-aling: center;
+}
+
+#teamsteams{
+      padding-top: 21px;
+}
+
+
+

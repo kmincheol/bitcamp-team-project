@@ -131,7 +131,7 @@ public class MatchBoardController {
       throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
     }
     }catch (Exception e) {
-      return "../error";
+      return "matchboard/auth";
     }
     
     List<TopLocation> location = locationService.findToplocation(topLocationNo);
@@ -173,7 +173,7 @@ public class MatchBoardController {
     // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
     if (session.getAttribute("loginUser") != null) {
     Member member = (Member) session.getAttribute("loginUser"); 
-    List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+    List<Match> teams = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
 
     model.addAttribute("myteam",teams);
     } else {
@@ -194,7 +194,7 @@ public class MatchBoardController {
   
   
   
-  @PostMapping("add")
+  @RequestMapping("add")
   public String add(Match match) throws Exception {
     System.out.println("BBBBBBB");
     logger.debug(match);
