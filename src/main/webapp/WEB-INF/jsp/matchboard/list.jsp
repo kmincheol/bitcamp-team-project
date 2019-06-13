@@ -22,7 +22,7 @@
       <p style="margin-top:8px; margin-bottom:8px;">
         원하는 <b>검색 결과에 맞춰</b> 경기를 매칭시키거나
       </p>
-      <p>
+      <p style="margin-bottom:25px;">
         <b>추천 매칭</b>을 통하여 경기를 매칭시켜보세요.
       </p>
     </div>
@@ -160,7 +160,7 @@
           
                 <br>
           
-            <button type="button" class="btn btn-dark" id="name-clear-btn">
+            <button type="button" class="btn btn-dark" id="name-clear-btn" style="margin-top:10px;">
             모든 내용 초기화 <!-- 지우개버튼 -->
             </button>
             
@@ -214,9 +214,9 @@
                  <tr>
                  <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2"
                  data-toggle="modal" data-target="#exampleModalCenter2"
-                  onClick="location.href='${contextRootPath}/app/team/${match.team.teamId}' "
+                  <%-- onClick="location.href='${contextRootPath}/app/team/${match.team.teamId}' " --%>
+                  onClick="modalEvent2('${match.team.teamId}');"
                   align="center" style="cursor: pointer;" >
-                  <!-- onClick="modalEvent2('${match.team.teamId}');" -->
                   
                   <div style="width:50px; height: 50px;">${match.team.teamEmblemPhoto} 엠블럼자리 </div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
@@ -279,8 +279,7 @@
             </div>
              <!--경기정보 모달 끝. -->
              
-             <!-- 
-             팀정보 모달 시작.
+             
            <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" 
            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -296,8 +295,6 @@
              </div>
              </div>
              </div>
-             팀정보 모달 끝.
-              -->   
                 </c:forEach>
                     <!-- no results control -->               
                 <div data-jplist-control="no-results" data-group="group1" data-name="no-results">검색 결과가 없습니다.</div>
@@ -345,8 +342,7 @@
         	  $('#btnsub2').click(function() {
                   var choiceTeamValue = $("#selectBox option:selected").val();
 
-                  
-                 // console.log(typeof choiceTeamValue);
+                 //console.log(typeof choiceTeamValue);
                  console.log(no); // 매치번호
                  console.log(choiceTeamValue); //신청팀번호
                
@@ -361,7 +357,7 @@
    				
                	  $.ajax({
                	    type:"POST",
-               	    url:'submit/' + number,
+               	    url:'submit/' + no,
                	    contentType: 'application/json',
                	    dataType: "text",
                	    data:JSON.stringify({
@@ -373,14 +369,10 @@
                	        alert("신청 되었습니다.");
                	        location.href=".";
                	        }
-               	    	
                	    	}
-               	    	
                	    })
                	 });
           })
-            
-          
           
             //매치정보 모달창
             function modalEvent(number) {
@@ -408,52 +400,10 @@
 					 console.log(no+"-> 매치글번호");
 					 
                   });
-              
-              $('.loginUserTeamNumbers').each(function(index) {
-                  teamnocom = $('.loginUserTeamNumbers')[index].id;
-                  
-                  console.log(teamnocom+"-> 로그인한 유저의 팀 번호");
-                  console.log(teamnocom.size);
-                  
-                  
-                  if (teamnocom == matchTeamNo) {
-                	  $("btnrev").show();
-                  }
-                })
-              
-              
-              /* for(i = 0; i < sizesize; i++) {
-			        console.log($("input[id='loginUserTeamNumbers']").eq(i));
-			          if(loginUserTeamNo == matchTeamNo) {
-			            document.getElementById("btnrev").style.display="block";
-			           }
-			        } */
-              
               }
-            
-            
- /*
- 				목록이랑 충돌되서 사용못함...
- 				function modalEvent2(number) {
-                    var no;
-                    var nocom;
-                    $('.teamInfo').each(function(index) {
-                      nocom = $('.teamInfo')[index].id;
-                      if (nocom == number) {
-                        no = nocom;
-                      }
-                    })
-                    console.log(no);
-
-                    async: true;
-                    $.getJSON("data2", {"no" : no}, function(data2) {
-                      console.log(data2);
-                        $('.modal-title2').text(data2.team.teamName);
-                        $('.modal-body2').load("../team/"+no);
-                    });
-            }  
-*/
-            
+              
+              
+             
         </script>
         
         
