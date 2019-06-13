@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-<!-- 여기까지가 리스트 css 끝 -->
 h2 {
   text-align: center;
 }
@@ -10,8 +8,16 @@ p {
   text-align: center;
 }
 
-.match_content_title {
-  margin-top: 30px
+#main-text{
+  margin-top: 90px;
+}
+
+.container{
+  border-top: 1px solid black;
+}
+
+#main-wrap{
+  padding-left: 35px;
 }
 
 div.button1 {
@@ -201,6 +207,7 @@ text-align: right;
 
 #detail_background{
   text-align: center;
+  margin-top: 40px;
 }
 
 #detail_table {
@@ -208,3 +215,28 @@ text-align: right;
   width:1000px;
 }
 
+.listbtn{
+  top:30px;
+  position: absolute;
+  margin-top: 21px;
+  margin-left: 25px;
+  text-align: left;
+}
+
+
+#listbtn{
+  position: absolute;
+  text-align: left;
+}
+
+#mtaply{
+  text-align: left;
+  padding-left: 340px;
+  padding-bottom: 3px;
+}
+#selectBox{
+  text-aling: center;
+  margin-left: 65px;
+  margin-bottom: 3px;
+  width: 170px;
+}

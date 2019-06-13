@@ -265,23 +265,6 @@
      order by (case when tlead_wth then 1 when tlead_wth then 2 end) desc
   </select>
   
-   <select id="findTeamMemberByMemberNo" resultMap="teamMemberMap" parameterType="int">
-    select
-    tm_mbr_id,
-    tm_id,
-    tmb.mbr_id,
-    m.name,    
-    pstn,
-    tlead_wth
-    from
-    tm_mbr tmb
-    left outer join tm t on tmb.tm_mbr_id = t.tm_id
-    left outer join mbr m on tmb.mbr_id = m.mbr_id
-    where
-      tmb.mbr_id = #{value}
-     order by (case when tlead_wth then 1 when tlead_wth then 2 end) desc
-  </select>
-  
   <select id="findByNoWithTeamMember" resultMap="teamMemberMap2" parameterType="int">
     select
     tm_mbr_id,
@@ -318,23 +301,6 @@
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
     left outer join mbr m on t.tm_id = m.mbr_id
     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
-    where tm_id = ${value}
-  </select>
-  
-  <select id="findSportsTypeByNo" resultMap="teamMap1" parameterType="int">
-    select
-    s.spt_clsf_id,
-    s.spt_clsf_name,
-    t.area,
-    t.tm_lev_id,
-    t.age_id,
-    a.ages,
-    l.levs
-    from
-    tm t
-    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
-    left outer join age a on t.age_id = a.age_id
-    left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
     where tm_id = ${value}
   </select>
 

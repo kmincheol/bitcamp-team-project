@@ -1,6 +1,7 @@
 .container {
 	width: 400px;
 	margin: 0 auto;
+	margin-bottom: 70px;
 	border-top: 1px solid black;
 }
 #topComment {
@@ -73,13 +74,26 @@ a:hover{
   text-align:center;
 }
 
+#allbtn {
+  width: 250px;
+}
+
+.title {
+    max-width: 150px;
+    display:inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 #searchArea {
   position: absolute;
   border-radius: 25px;
-  border: 2px solid #73AD21;
+  border: 3px solid #73AD21;
   padding: 20px; 
   width: 300px;
-  height: 330px;  
+  height: 350px;  
 }
 
 #matchInfo{
@@ -93,31 +107,63 @@ a:hover{
     margin: 35px 0 17px 0;
 }
 
+#levelbtn{
+  margin-top: 3px;
+  border-radius: 0px;
+  width:32px; height:30px; 
+    padding-right: 48px;
+    padding-left: 30px;
+    border-top-width: 0px;
+}
+
+
 button{
   color: #fff;
-  background-color: #d3d7cf;
-  border-color: #6c757d;
+  background-color: #343a40;
+  border-color: #343a40;
   display: inline-block;
+  border: 3px solid;
+  border-radius: 16px;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
-  border-radius: 16px;
   padding: .2rem .6rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: .25rem;
   margin: 0 3px;
 }
 
+#firstbtn{
+  border: 3px solid #343a40;
+  border-radius: 5px;
+}
+
+#prebtn{
+  border: 3px solid #343a40;
+  border-radius: 5px;
+}
+
 #selectbtn{
-  
+  margin-top: 1px;
+  border: 2px solid #343a40;
+  border-radius: 2px;
+}
+
+#nextbtn{
+  border: 3px solid #343a40;
+  border-radius: 5px;
+}
+
+#lastbtn{
+  border: 3px solid #343a40;
+  border-radius: 5px;
 }
 
 .jplist-selected{
-  background-color: #e4d87a;
+  background-color: #ff7d20;
 }
 
 #modalbody {
@@ -128,6 +174,7 @@ button{
 
 #btnsub2 {
   margin-top: 3px;
+  margin-left: 49px;
 }
 
 [data-jplist-control="no-results"]{
@@ -162,7 +209,6 @@ button{
 .ui-datepicker-title {
   text-align: center;
 }
-
 .ui-datepicker-prev {
   float: left;
   background-position: center -30px;
@@ -179,7 +225,7 @@ button{
 }
 
 .ui-datepicker thead {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   background-image: -moz-linear-gradient(top,  #f7f7f7 0%, #f1f1f1 100%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#f1f1f1));
   background-image: -webkit-linear-gradient(top,  #f7f7f7 0%,#f1f1f1 100%);

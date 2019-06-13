@@ -11,12 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
-import com.eomcs.lms.service.JoinTeamService;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.TeamRecruitBoardService;
 
@@ -26,9 +24,8 @@ public class RecruitBoardController {
 
   private static final Logger logger = LogManager.getLogger(RecruitBoardController.class);
 
-  @Autowired TeamRecruitBoardService recruitBoardService;
-  @Autowired JoinTeamService joinTeamService;
-  @Autowired MemberService memberService;
+  @Autowired
+  TeamRecruitBoardService recruitBoardService;
 
   @RequestMapping("/form")
   public String recruitView(Model model, HttpSession session) {
@@ -109,13 +106,9 @@ public class RecruitBoardController {
   
   @GetMapping("{no}/{mno}")
   public String joinTeam(@PathVariable int no, @PathVariable int mno, HttpSession session,Model model) {
-    TeamRecruit teamRecruit = recruitBoardService.get(no);
-    Member member = memberService.get(mno);
-    
-    JoinTeam joinTeam = new JoinTeam();
-    joinTeam.setRcrmId(teamRecruit.getTeamNo());
-    joinTeam.setMbrId(member.getNo());
-    logger.debug("cc"+ joinTeam);
+    Member member = (Member) session.getAttribute("loginUser");
+    TeamRecruit teamRecruit = recruitBoardService.getUpdate(no);
+    model.addAttribute("teamRecruit", teamRecruit);
     
     return null;
   }

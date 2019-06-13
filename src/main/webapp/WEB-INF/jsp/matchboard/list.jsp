@@ -44,7 +44,7 @@
     
         <!-- filter control -->
         <div>
-        <button class="btn btn-info"  style="margin-bottom: 6px;"
+        <button class="btn btn-dark" id="allbtn" style="margin-bottom: 6px;"
             data-jplist-control="buttons-text-filter"
             data-path="default"
             data-mode="radio"
@@ -54,7 +54,7 @@
          모든종목
          </button><br>
         
-        <button type="button" class="btn btn-primary"
+        <a type="button" 
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -63,9 +63,9 @@
             data-text="축구"
             >
         <img src="${contextRootPath}/images/football_list_min.png"> 
-        </button>
+        </a>
         
-        <button type="button" class="btn btn-primary"
+        <a type="button"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -73,9 +73,9 @@
             name="sportsType"
             data-text="야구">
          <img src="${contextRootPath}/images/baseball_list_min.png">
-        </button>
+        </a>
         
-        <button type="button" class="btn btn-primary"
+        <a type="button" 
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -83,9 +83,9 @@
             name="sportsType"
             data-text="농구">
          <img src="${contextRootPath}/images/basketball_list_min.png">
-        </button>
+        </a>
         
-        <button type="button" class="btn btn-primary"
+        <a type="button"  
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -93,13 +93,13 @@
             name="sportsType"
             data-text="탁구">
          <img src="${contextRootPath}/images/pingpong_list_min.png">
-        </button>
+        </a>
         
         <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
         <br><br>
         
          <!-- filter control -->
-        <button class="btn btn-info"
+        <button class="btn btn-dark" id="allbtn"
             data-jplist-control="buttons-text-filter"
             data-path="default"
             data-mode="radio"
@@ -109,7 +109,7 @@
          모든레벨 <!-- 전체 -->
          </button>
 
-        <button type="button" class="btn btn-primary" style="width:10px; height:30px; padding-left:0px; padding-right: 15px;"
+        <button type="button" id="levelbtn" class="btn btn-dark" 
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
             data-mode="radio"
@@ -120,7 +120,7 @@
         상 
         </button>
         
-        <button type="button" class="btn btn-primary" style="width:10px; height:30px; padding-left:0px; padding-right: 15px;"
+        <button type="button" id="levelbtn" class="btn btn-dark" 
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
             data-mode="radio"
@@ -130,7 +130,7 @@
         중 
         </button>
         
-        <button type="button" class="btn btn-primary" style="width:10px; height:30px; padding-left:0px; padding-right:15px;"
+        <button type="button" id="levelbtn" class="btn btn-dark"
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
             data-mode="radio"
@@ -214,11 +214,11 @@
                  <tr>
                  <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2"
                  data-toggle="modal" data-target="#exampleModalCenter2"
-                  <%-- onClick="location.href='${contextRootPath}/app/team/${match.team.teamId}' " --%>
-                  onClick="modalEvent2('${match.team.teamId}');"
+                  onClick="location.href='${contextRootPath}/app/team/${match.team.teamId}' " 
+                  <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
                   align="center" style="cursor: pointer;" >
                   
-                  <div style="width:50px; height: 50px;">${match.team.teamEmblemPhoto} 엠블럼자리 </div><!-- 엠블럼 들어갑니다. -->
+                  <div style="width:50px; height: 50px;">${match.team.teamEmblemPhoto} 엠블럼위치 </div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
@@ -249,22 +249,16 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-               <div class="modal-body" 
-               onClick="location.href='${contextRootPath}/app/matchboard/${match.no}">
+           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 280px;" 
+           onMouseOver="this.style.backgroundColor='#EAFFFC';"
+           onMouseOut="this.style.backgroundColor='' ">
                잠시만 기다려주세요</div>
            <div class="modal-footer">
            
            
-           <c:forEach items="${myteam}" var="myteam">
-              <p id="${myteam.team.teamId}" class="loginUserTeamNumbers">
-              <c:out value="${myteam.team.teamId}"/></p>
-           </c:forEach>
-           <button class="btn btn-danger" id="btnrev">수정하기</button>
-           
-           
              <div id="mtaply" >
              <c:if test="${!empty sessionScope.loginUser}">
-               <select name='teamId' class="form-control" id="selectBox" style="width:150px;">
+               <select name='teamId' class="form-control" id="selectBox">
                  <option value="" selected>소속팀(Leader) 선택</option>
                   <c:forEach items="${myteam}" var="myteam">
                     <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
@@ -280,7 +274,7 @@
              <!--경기정보 모달 끝. -->
              
              
-           <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" 
+<!--            <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" 
            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -294,7 +288,8 @@
              <div class="modal-footer2"></div>
              </div>
              </div>
-             </div>
+             </div> -->
+             
                 </c:forEach>
                     <!-- no results control -->               
                 <div data-jplist-control="no-results" data-group="group1" data-name="no-results">검색 결과가 없습니다.</div>
@@ -310,8 +305,6 @@
 
         <script>
             jplist.init();
-            
-            $("#btnrev").hide();
             
             var no = 0; //매치번호
             var nocom; //no 배열관련
@@ -368,7 +361,10 @@
                	    	if (data == 12345) {
                	        alert("신청 되었습니다.");
                	        location.href=".";
-               	        }
+               	        	}
+               	    	},
+               	    error : function(data) {
+               	       alert("이미 신청되었습니다.")
                	    	}
                	    })
                	 });
@@ -402,10 +398,16 @@
                   });
               }
               
-              
+          $('#name-clear-btn').click(function() {
+        	  $('#datepicker').val('');
+          });
+          
+           $('.modal-body').click(function() {
+        	  location.href = no;
+          });
+          
              
         </script>
-        
         
     </body>
 </html>

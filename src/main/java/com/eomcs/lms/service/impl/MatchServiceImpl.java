@@ -1,22 +1,16 @@
 package com.eomcs.lms.service.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MatchApplyDao;
 import com.eomcs.lms.dao.MatchDao;
 import com.eomcs.lms.dao.TagDao;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.service.MatchBoardService;
 
 @Service
 public class MatchServiceImpl implements MatchBoardService {
-  
-  private static final Logger logger = LogManager.getLogger(MatchServiceImpl.class);
 
   MatchDao matchDao;
   MatchApplyDao matchApplyDao;
@@ -102,50 +96,10 @@ public class MatchServiceImpl implements MatchBoardService {
     return matchDao.countAll();
   }
 
-  @Override
-  public List<Match> searchBySportsType(int sportsTypeNo) {
-    return matchDao.searchBySportsType(sportsTypeNo);
-  }
 
-  @Override
-  public List<Match> searchBySportsTypeAll(int mainTeamSportsTypeNo, int insufficientNo) {
-    HashMap<String, Object> params = new HashMap<>();
-    params.put("mainTeamSportsTypeNo", mainTeamSportsTypeNo);
-    params.put("insufficientNo", insufficientNo);
-    return matchDao.searchBySportsTypeAll(params);
-  }
 
-  @Override
-  public List<Match> checkAllConditions(List<Match> list,  Team team) {
-    List<Match> matches = new ArrayList<Match>(); // 선별된 애들을 넣을 매치들.
-    List<Match> matches1 = new ArrayList<Match>();
-    List<Match> matches2 = new ArrayList<Match>();
-    List<Match> matches3 = new ArrayList<Match>();
-    for (Match m : list) {
-      logger.info("선별할 Match >> " + m);
-      logger.info("메인팀 >>" + team);
-      if (m.getLocation() == team.getTeamArea() &&
-          m.getTeamSportsId() == team.getTeamSportsId() &&
-          m.getTeam().getTeamLevelId() == team.getTeamLevelId()) {
-        matches.add(m);
-      }
-      // 다시 생각해보자
-      
-    }
-    
-    if (matches.size() == 5) {
-      return matches;
-    } else if (matches.size() > 5) {
-      for (int a = matches.size() ; a > 5 ; a--) {
-        matches.remove(a);
-      }
-      return matches;
-    }
-    
-    
-    return matches;
-  }
+
+
 }
-
 
 

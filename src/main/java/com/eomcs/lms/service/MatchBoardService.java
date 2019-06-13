@@ -2,13 +2,10 @@ package com.eomcs.lms.service;
 
 import java.util.List;
 import com.eomcs.lms.domain.Match;
-import com.eomcs.lms.domain.Team;
 
 public interface MatchBoardService {
   List<Match> list(int pageNo, int pageSize);
   List<Match> search();
-  List<Match> searchBySportsType(int sportsTypeNo);
-  List<Match> searchBySportsTypeAll(int mainTeamSportsTypeNo, int insufficientNo);
   int add(Match match);
   Match get(int no); // 번호로 게시물을 가져옴
   List<Match> teamInfoGet(int no); // 회원번호로 팀명,팀리더 정보 가져옴
@@ -16,5 +13,4 @@ public interface MatchBoardService {
   int update(Match match);
   int delete(int no);
   int size();
-  List<Match> checkAllConditions(List<Match> list,  Team team); // 메인팀과 매치를넘겨서 체크
 }

@@ -192,10 +192,9 @@ public class MatchBoardController {
     
     try {
       if (member == null) {
-      throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
+        return "matchboard/auth";
     }
     }catch (Exception e) {
-      return "../error";
     }
     
     List<TopLocation> location = locationService.findToplocation(topLocationNo);
@@ -237,7 +236,7 @@ public class MatchBoardController {
     // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
     if (session.getAttribute("loginUser") != null) {
     Member member = (Member) session.getAttribute("loginUser"); 
-    List<Match> teams = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+    List<Match> teams = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
 
     model.addAttribute("myteam",teams);
     } else {
@@ -370,6 +369,16 @@ public class MatchBoardController {
     
     Match match = matchBoardService.get(no);
     MatchApply matchApply = new MatchApply();
+    
+//    List<MatchApply> applyMatchNumbers = matchApplyService.check(teamIdNo); // 여기서 팀번호로 신청한 모든 매치신청 결과를 가져옴
+//    
+//    for (int i = 0; i < applyMatchNumbers.size(); i++) {
+//        matchApply = applyMatchNumbers.get(i);
+//        int matchApplyNum = matchApply.getMatchNo();
+//         if (matchApplyNum == no) {
+//           return "matchboard/overlap";
+//         }
+//    }
     
     matchApply.setMatchNo(match.getNo());
     matchApply.setTeamNo(teamIdNo);

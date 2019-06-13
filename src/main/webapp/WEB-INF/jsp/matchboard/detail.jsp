@@ -7,18 +7,12 @@
 <head>
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/css/common.css" />
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 </head>
 <jsp:include page="../header.jsp" />
 
 <style>
-#detail_background{
-  text-align: center;
-}
-#detail_table {
-  text-align: center;
-  width:1000px;
-}
 th {
 width:70px;
 }
@@ -33,24 +27,18 @@ width:300px;
 }
 </style>
 
-
 <body>
 
-  <div class="container">
-    <br><br><br>
     <div id="main-text">
-      <h2>작성글 확인</h2>
+      <h2>${match.team.teamName}</h2>
     </div>
 
-    <div style="padding-left: 100px; padding-bottom: 10px; padding-top: 10px; ">
-      <a class="btn btn-primary" href='${contextRootPath}/app/matchboard/'>목록</a> 
-    </div>
-    
-    
+  <div class="container" id="main-wrap">
+
     <div id="detail_background">
       <form action='update' method='post' enctype='multipart/form-data'>
    
-   <table class="table" id="detail_table">
+   <table class="table table-striped table-dark" id="detail_table">
   <tr>
       <th scope="col">
           <label for="no">번호</label>
@@ -66,7 +54,7 @@ width:300px;
       </td>
       
       <td scope="col" rowspan="3" colspan="1" style="text-align: center;">
-            <label for="후후사진">엠블럼자리입니다</label>
+      엠블럼
       </td>   
   </tr>
 	  
@@ -108,34 +96,30 @@ width:300px;
 </tr>
 
 <tr>
-	     <th id="teamArea" scope="col" colspan="4" rowspan="1" >
-          <label for="teamName">팀명</label>
-         </th>
-         <td>
-            <label> ${match.team.teamName} </label>
-	     </td>
-	     
-</tr>
-<tr>
      <th scope="col" colspan="1" >
           <label for="title">제목</label>
      </th>     
-     <td>
-            <label>${match.title}</label>
+     <td colspan="4">
+            <label >${match.title}</label>
       </td>
            
 </tr>
 
 <tr>
 	<th scope="col" colspan="1" >
-          <label for="contents">내용</label>
+          <label for="contents" style="padding-top:130px;">내용</label>
     </th>
     <td colspan="4">
-            <label class="form-control">${match.contents}</label>
+            <textArea class="form-control" style="height:300px;">${match.contents}</textArea>
 	 </td>
 </tr>	
 	</table>  
-        <div class="form-group row" style="padding-left:165px;">
+  
+      <div id="listbtn">
+      <a class="btn btn-dark" href='${contextRootPath}/app/matchboard/'>목록</a> 
+    </div>
+  
+        <div class="form-group row" style="padding-left:165px; height:5px;">
           <div class="col-sm-10">
             <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
              <c:if test="${!empty sessionScope.loginUser}">
@@ -149,19 +133,18 @@ width:300px;
           </div>
         </div>
       </form>
-              <form action='${contextRootPath}/app/matchboard/${match.no}/submit' id="mtaply" method='post'>
-              <c:if test="${!empty sessionScope.loginUser}">
-					<select name='teamId' class="form-control" id="selectBox" style="width:150px;">
-					<option selected>소속팀 선택</option>
-					<c:forEach items="${myteam}" var="myteam">
-					<c:if test="${myteam.team.teamMember.teamleader}">  <!--!!!!! 왜 적용이 안될까... !!!!!-->
-					<option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
-                    </c:if>
-					</c:forEach>
-					</select>
-              <button class="btn btn-primary" id="btnsub2">신청하기</button>
-            </c:if>
-				</form>
+              <div id="mtaply" >
+               <c:if test="${!empty sessionScope.loginUser}">
+               <select name='teamId' class="form-control col-md-4" id="selectBox">
+                 <option value="" selected>소속팀(Leader) 선택</option>
+                  <c:forEach items="${myteam}" var="myteam">
+                    <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
+                  </c:forEach>
+               </select>
+                <button class="btn btn-danger" id="btnsub2">신청하기</button>
+              </c:if>
+              </div>
+      
     </div>
   </div>
   <!-- .container -->
@@ -171,46 +154,54 @@ width:300px;
 
 <script>
 
-var openWin;
+var no = 0; //매치번호
+var nocom; //no 배열관련
+var choiceTeamValue; //신청팀번호
+var number; // 매치번호선택값 들어옴
+var matchTeamNo;// 매치글의 팀번호 들어옴
+var sizesize = $("input[id='loginUserTeamNumbers']").length; // 신청자의 팀 배열 길이.
+var teamnocom = sizesize;
 
 
-function openMap()
-{
-    // window.name = "부모창 이름"; 
-    window.name = "parentForm";
-    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-    window.open("${contextRootPath}/app/matchboard/map2.jsp",
-            "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
-}
+$('#btnsub2').click(function() {
+    var choiceTeamValue = $("#selectBox option:selected").val();
 
-var ajaxSend = (function() {
+   //console.log(typeof choiceTeamValue);
+   console.log(no); // 매치번호
+   console.log(choiceTeamValue); //신청팀번호
+ 
+   if (choiceTeamValue == "") {
+ 		 alert("팀을 선택해주세요.");
+ 	    return false;
+ 	  }
+		if (matchTeamNo == choiceTeamValue) {
+			alert("자기가 속한 팀에 신청을 할 수 없습니다.")
+			return false;
+		}
+		
+ 	  $.ajax({
+ 	    type:"POST",
+ 	    url:'submit/' + no,
+ 	    contentType: 'application/json',
+ 	    dataType: "text",
+ 	    data:JSON.stringify({
+ 	      teamId: choiceTeamValue
+ 	    }),
+ 	    success : function(data) {
+ 	    	console.log(data)
+ 	    	if (data == 12345) {
+ 	        alert("신청 되었습니다.");
+ 	        location.href=".";
+ 	        	}
+ 	    	},
+ 	    error : function(data) {
+ 	       alert("이미 신청되었습니다.")
+ 	    	}
+ 	    })
+ 	 });
 
-  if (!isSubmitted) {
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-          
-	alert("신청되었습니다.")
-          
-	    isSubmitted = true;
-      location.href = '../'
-          
-    // 버튼 요소의 disabled 속성 추가
-    ajaxButton.setAttribute('disabled', 'disabled');
-  
-        } else {
-          alert("이미 매칭 신청을 보냈습니다.");
-          location.href = ''
-        }
-      }
-    };
 
-  }
-});
-// Ajax 전송 버튼 이벤트
-ajaxButton.addEventListener('click', ajaxSend);
 
 </script>
 

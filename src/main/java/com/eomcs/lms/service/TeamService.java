@@ -20,7 +20,6 @@ public interface TeamService {
   List<TeamAges> teamAgeList();
   List<TeamTypeSports> sportsTypeList();
   List<TeamMember> teamMemberList();
-  List<TeamMember> getTeamMemberListByMemberNo(int no);
   List<TeamMember> getTeamMember(int no);
   List<Team> search(String keyword);
  
@@ -28,7 +27,6 @@ public interface TeamService {
   int addTeamLeader(TeamMember teamMember);
   int addMember(Member member);
   Team getTeam(int no);
-  Team getTeamSportsType(int no);
   Member getMember(int no);
   int update(Team team);
   int deleteTeam(int no);

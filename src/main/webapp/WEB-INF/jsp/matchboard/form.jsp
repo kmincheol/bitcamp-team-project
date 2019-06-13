@@ -13,23 +13,23 @@
    <%-- <jsp:include page="../header.jsp"/> --%>
    <jsp:include page="../commonCss.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="${contextRootPath}/css/common.css" />
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
-   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   
 
 </head>
 <body>
-<br><br><br>
-
-  <div class="container">
-   <form action='add' method='post' enctype='multipart/form-data'>
+    
+    
+  <div id="main-text">    
     <h2 style="text-align:center;"><b>매치 글</b>을 <b>등록</b>할 수 있습니다.</h2>
     <br>
     <p><b>매치</b> 글을 등록한 후</p>
     <p>다른 팀의<b>대결 신청을 받아</b>경기를 진행해 보세요.</p>
-    
-    <div class="listbtn">
-    <a class="btn btn-primary" href='.'>목록</a>
-    </div>
+  </div>
+
+  <div class="container" id="main-wrap">
+   <form action='add' method='post' enctype='multipart/form-data'>
     
     <table id="match_table" class="table table-bordered">
   <thead>
@@ -133,7 +133,7 @@
       </td>
     </tr>
     <tr>
-      <th scope="row">내용</th>
+      <th scope="row" style="padding-top:120px;">내용</th>
       <td>
        <textarea name="contents" class="form-control" rows="10" cols="50"></textarea>
       </td>
@@ -148,9 +148,15 @@
     
   </tbody>
 </table>
+
+    <div class="listbtn">
+    <a class="btn btn-dark" href='.'>목록</a>
+    </div>
+
+
       <div class="form-group row">
         <div class="col-sm-10">
-          <button id="add" class="btn btn-primary">매치보드에 등록하기</button>
+          <button id="add" class="btn btn-dark">매치보드에 등록하기</button>
         </div>
       </div>
 	
@@ -158,6 +164,8 @@
 	
 </form>
   </div> <!-- .container -->
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
     
     var openWin;

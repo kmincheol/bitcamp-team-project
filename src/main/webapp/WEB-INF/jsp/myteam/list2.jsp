@@ -61,7 +61,7 @@
               <tr style="height: 100px;">
                 <td colspan="1" style="vertical-align: middle; width: 100px;" ><img src="${matchNos.team.teamEmblemPhoto}" style="width:100px; height:100px"> </td>
                 <td colspan="2" style="vertical-align: middle; width: 220px;">
-                 <div id="divdivdd" onclick="teamInfo()" > 팀명: ${matchNos.team.teamName} </div>       
+                 <div id="divdivdd" onclick=teamInfo()>팀명: ${matchNos.team.teamName} </div>    
                 </td>
                 <td colspan="1" style="vertical-align: middle; width: 100px;">
                   <button style="width: 100%;">취소</button>
@@ -78,8 +78,8 @@
       
         <!-- 팀정보 -->
         <div style="margin-top: 60px;">
-          <div id="aa"class="team_info">○ 지역 : </div>
-          <div class="team_info"> </div>
+          <div class="team_info">○ 지역 : </div>
+          <div class="team_info">○ 팀명 : </div>
           <div class="team_info">○ 구장 : </div>
           <div class="team_info">○ 날짜 : </div>
           <div class="team_info">○ 비용 : </div>
@@ -100,8 +100,16 @@
 
 function teamInfo(){
 
+alert(document.getElementById('divdivdd').innerHTML)
 
 }
+
+
+
+
+
+
+
 
 
 </script>
