@@ -52,7 +52,7 @@ body {
   font-weight:700
 }
 .join_content{
-  width: 500px;
+  width: 502px;
   margin: 0px auto;
 }
 .join_step{
@@ -88,7 +88,7 @@ body {
 .ps_box {
   display:block;
   position:relative;
-  width:100%;
+  width:500px;
   height:51px;
   border:solid 1px #dadada;
   padding:10px 14px 10px 14px;
@@ -131,7 +131,7 @@ body {
   font-weight:700;
   text-align:center;
   cursor:pointer;
-  -webkit-box-sizing:border-box;
+  border-radius: 0;
   box-sizing:border-box
 }
 .btn_type:active,.btn_type:focus,.btn_type:hover {
@@ -232,13 +232,10 @@ html[lang=ko] #header .lang .sel {
 	display: inline-block;
   height: 51px;
   width: 100px;
-  border: solid 1px #6c757d;
-  background-color: #fff;
-  color: #212529;
   margin: 0 0 0 10px;
   position: relative;
   border-radius: 0;
-  outline: 0
+  bottom: 3px
 }
 #postBox {
   display: inline-block;
@@ -352,13 +349,10 @@ html[lang=ko] #header .lang .sel {
   width: 100px
 }
 #authSend, #btnSend {
-  border: solid 1px #6c757d;
-  background-color: #fff;
-  color: #212529;
   margin: 0 0 0 15px;
   position: relative;
   border-radius: 0;
-  outline: 0
+  bottom : 3px
 }
 #telBox, #authNoBox {
   display: inline-block;
@@ -366,4 +360,7 @@ html[lang=ko] #header .lang .sel {
 }
 .join_authNo_confirm {
   margin: 10px 0 8px
+}
+.join_birthday, .join_sex, .addressInputBox {
+	width: 500px
 }

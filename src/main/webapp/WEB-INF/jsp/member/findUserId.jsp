@@ -50,7 +50,7 @@
       </div><!-- #findIdContent -->
       <div id="findIdAuth">
         <div id="findIdAuthBox">
-          <button class="btn btn-primary btn-lg" id="findIdAuthBtn" type="button">아이디 찾기</button>
+          <button class="btn btn-outline-dark btn-lg" id="findIdAuthBtn" type="button">아이디 찾기</button>
         </div>    
         <div id="findIdDiv">
           <div id="emailAuth" style="display:none">
@@ -75,7 +75,7 @@
             </div>
           </div>
           <div class="btn_area" id="findIdBtnBox" style="display:none">
-            <button class="btn btn-primary btn-lg" id="btnJoin" type="button">아이디 찾기</button>
+            <button class="btn btn-outline-dark btn-lg" id="btnJoin" type="button">아이디 찾기</button>
           </div>
           <div class="btn_area" id="userIdBox" style="display:none">
             <h3 class="join_title">
@@ -86,8 +86,8 @@
             </span>
           </div>
           <div class="btn_area" id="AfterBtnBox" style="display:none">
-            <a href="../auth/form" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인 하기</a>
-            <a href="findPassword" class="btn btn-primary btn-lg" id="findPwdBtn" type="button">비밀번호 찾기</a>
+            <button class="btn btn-outline-dark btn-lg" id="loginBtn" type="button" onclick="location.href='../auth/form'">로그인 하기</button>
+            <button class="btn btn-outline-dark btn-lg" id="findPwdBtn" type="button" onclick="location.href='findPassword'">비밀번호 찾기</button>
           </div>
         </div>
 

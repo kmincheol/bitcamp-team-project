@@ -8,11 +8,18 @@
   <meta charset="UTF-8">
   <title>BATTLE MATCHING :: 회원가입</title>
   <jsp:include page="../commonCss.jsp"/>
+  <!-- header -->
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+  <!-- commonSidebar css -->
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+  <!-- footer.css -->
+  <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
   <link rel="stylesheet" href="${contextRootPath}/css/member_form.css">
   
 </head>
 <body style="background:white">
- 
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
  
 <div id="container">
   <div id="content">
@@ -36,7 +43,7 @@
                   <label for="id">아이디</label>
                 </h3>
                 <span class="ps_box int_pass" id="idImg">
-                     <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
+                     <input type="text" id="userId" name="id" class="int" title="ID" maxlength="20" placeholder="ex)abcd102">
                 </span>
                 <span class="error_next_box" id="idMsg" style="display:none" role="alert"></span>
               </div>
@@ -77,14 +84,14 @@
                   <input type="text" id="email" name="email" placeholder="이메일을 입력해주세요."
                   maxlength="100" class="int">
                 </span> 
-                <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn">
+                <input id="btnSend" type="button" value="인증번호받기" class="btn btn-sm btn-outline-dark emailBtn">
                 <span class="error_next_box" id="emailMsg" style="display:none" role="alert"></span>
               </div>
               <div class="join_row join_email join_authNo_confirm">
                 <span class="ps_box int_pass" id="authNoBox">
                   <input type="tel" id="authNo" placeholder="인증번호를 입력하세요"  class="int" maxlength="6" disabled>
                 </span>
-                <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn">
+                <input id="authSend" type="button" value="인증하기" class="btn btn-sm btn-outline-dark emailBtn">
                 <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               </div>
             </div><!-- .row_group -->
@@ -110,9 +117,9 @@
                   <label for="termsService"><strong>서비스 이용약관</strong>에 동의합니다.
                     <span class="terms_necessary">(필수)</span>
                   </label>
-                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirService">상세보기</button>
+                  <button id="termsBtnService" type="button" class="btn btn-sm btn-outline-dark termsBtn">상세보기</button>
                 </span>
-                <div class="terms_box collapse in" tabindex="0" id="dirService">
+                <div class="terms_box" tabindex="0" id="dirService">
                   <!-- 서비스 이용약관 -->
                   <div class="article">
                     <h3 class="article_title">서비스 이용약관 제목입니다.</h3>
@@ -127,9 +134,9 @@
                   <label for="termsPrivacy"><strong>개인정보 수집 및 이용</strong>에 동의합니다.
                     <span class="terms_necessary">(필수)</span>
                   </label>
-                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirPrivacy">상세보기</button>
+                  <button id="termsBtnPrivacy" type="button" class="btn btn-sm btn-outline-dark termsBtn">상세보기</button>
                 </span>
-                <div class="terms_box collapse in" tabindex="0" id="dirPrivacy">
+                <div class="terms_box" tabindex="0" id="dirPrivacy">
                   <!-- 개인정보 수집 및 이용 동의 -->
                   <div class="article">
                     <h3 class="article_title">개인정보 수집 제목입니다.</h3>
@@ -144,9 +151,9 @@
                   <label for="termsThirdParty"><strong>개인정보 제3자 제공</strong>에 동의합니다.
                     <span class="terms_necessary">(필수)</span>
                   </label>
-                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirThirdParty">상세보기</button>
+                  <button id="termsBtnThirdParty" type="button" class="btn btn-sm btn-outline-dark termsBtn">상세보기</button>
                 </span>
-                <div class="terms_box collapse in" tabindex="0" id="dirThirdParty">
+                <div class="terms_box" tabindex="0" id="dirThirdParty">
                   <!-- 개인정보 제3자 제공 동의 -->
                   <div class="article">
                     <h3 class="article_title">제목입니다.</h3>
@@ -161,9 +168,9 @@
                   <label for="termsMarketing">마케팅 및 광고에의 활용에 동의합니다.
                     <span class="terms_choice">(선택)</span>
                   </label>
-                  <button type="button" class="btn btn-sm btn-outline-dark termsBtn" data-toggle="collapse" data-target="#dirMarketing">상세보기</button>
+                  <button id="termsBtnMarketing" type="button" class="btn btn-sm btn-outline-dark termsBtn">상세보기</button>
                 </span>
-                <div class="terms_box collapse in" tabindex="0" id="dirMarketing">
+                <div class="terms_box" tabindex="0" id="dirMarketing">
                   <!-- 마케팅 및 광고에의 활용 -->
                   <div class="article">
                     <h3 class="article_title">제목입니다.</h3>
@@ -177,7 +184,7 @@
           
         </div><!-- .join_form -->
         <div class="btn_area">
-          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin" type="button">가입하기</button>
+          <button class="btn btn_lg btn_type btn-outline-dark sunext" id="btnJoin" type="button">가입하기</button>
         </div><!-- .btn_area -->
       </form><!-- #join_form-->
     </div><!-- .join_content -->
@@ -185,7 +192,9 @@
 </div><!-- .container -->
 
 <jsp:include page="../javascript.jsp"/>
-
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+<jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 <script>
 "use strict"
 
@@ -197,7 +206,7 @@ var emailFlag = false;
 $(document).ready(function() {
   defaultScript();
 
-  $('#id').keyup(debounce(function() {
+  $('#userId').keyup(debounce(function() {
    idFlag = false;
    checkId("first");
   }, 500));
@@ -252,6 +261,22 @@ $(document).ready(function() {
   $("#chk_all").click(function() {
     setTerms();
     location.hash = '#btnAgree';
+  })
+  
+  $("#termsBtnService").click(function() {
+    $("#dirService").slideToggle();
+  })
+  
+  $("#termsBtnPrivacy").click(function() {
+    $("#dirPrivacy").slideToggle();
+  })
+  
+  $("#termsBtnThirdParty").click(function() {
+    $("#dirThirdParty").slideToggle();
+  })
+  
+  $("#termsBtnMarketing").click(function() {
+    $("#dirMarketing").slideToggle();
   })
   
   $("#termsService").click(function() {
@@ -382,7 +407,7 @@ function checkId(event) {
     return true;
   }
 
-  var id = $('#id').val();
+  var id = $('#userId').val();
   var oMsg = $('#idMsg');
   var oImg = $('#idImg');
 
@@ -431,7 +456,7 @@ function checkPswd1() {
     return true;
   }
 
-  var id = $('#id').val();
+  var id = $('#userId').val();
   var pw = $('#pswd1').val();
   var oImg = $('#pswd1Img');
   var oMsg = $('#pswd1Msg');

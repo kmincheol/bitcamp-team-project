@@ -54,7 +54,7 @@
 
       <div id="findPwdAuth">
         <div id="findPwdAuthBox">
-          <button class="btn btn-primary btn-lg" id="findPwdAuthBtn" type="button">이메일 인증</button>
+          <button class="btn btn-lg btn-outline-dark" id="findPwdAuthBtn" type="button">이메일 인증</button>
         </div>
 
 
@@ -68,26 +68,26 @@
                   name="email" placeholder="이메일을 입력해주세요." maxlength="100" class="int"
                   autocomplete=off>
               </span> 
-              <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn"> 
+              <input id="btnSend" type="button" value="인증번호받기" class="btn btn-sm btn-outline-dark emailBtn"> 
               <span class="error_next_box" id="emailMsg" style="display: none" role="alert"></span>
             </div>
             <div class="join_row join_email join_authNo_confirm">
               <span class="ps_box int_pass" id="authNoBox"> <input type="tel" id="authNo"
                   placeholder="인증번호 입력하세요" class="int" maxlength="6" disabled>
               </span> 
-              <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn"> 
+              <input id="authSend" type="button" value="인증하기" class="btn btn-sm btn-outline-dark emailBtn"> 
               <span class="error_next_box" id="authNoMsg" style="display: none" role="alert"></span>
             </div>
           </div>
           <div class="btn_area" id="findPwdBtnBox" style="display: none">
-            <button class="btn btn-primary btn-lg" id="btnJoin" type="button">임시 비밀번호 발송</button>
+            <button class="btn btn-outline-dark btn-lg" id="btnJoin" type="button">임시 비밀번호 발송</button>
           </div>
           <div class="btn_area" id="AfterBtnBox" style="display: none">
             <p>
               <strong>임시 비밀번호</strong>를 인증하신 이메일로 발송했습니다. <br>임시 비밀번호로 로그인 하신 후, <br>마이페이지에서 비밀번호를 변경해 주시기 바랍니다.
             </p>
-            <a href="../main" class="btn btn-primary btn-lg" id="mainBtn" type="button">메인화면</a> 
-            <a href="../auth/form" class="btn btn-primary btn-lg" id="loginBtn" type="button">로그인하기</a>
+            <button class="btn btn-outline-dark btn-lg" id="mainBtn" type="button" onclick="location.href='../main'">메인화면</button> 
+            <button class="btn btn-outline-dark btn-lg" id="loginBtn" type="button" onclick="location.href='../auth/form'">로그인하기</button>
           </div>
         </div>
       </div><!-- #findPwdAuth -->

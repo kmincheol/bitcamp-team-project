@@ -28,7 +28,7 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
 }
 #successComment {
   margin-top: 50px;
-  font-size: 40px
+  font-size: 38px
 }
 #addComment {
 	margin: 40px 0 60px 0;
@@ -37,14 +37,11 @@ body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend,
 #mainBtn {
 	width: 100%;
 	border-radius: 0;
-	border: solid 1px black;
-	background-color: #fff;
-	color: black
+	font-weight: 550
 }
 #addBtn {
 	width: 100%;
 	border-radius: 0;
-  border: solid 1px #fff;
-  background-color: black;
-  color: #fff
+	margin-bottom: 10px;
+	font-weight: 550
 }

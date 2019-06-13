@@ -8,11 +8,18 @@
   <meta charset="UTF-8">
   <title>BATTLE MATCHING :: 상세정보입력</title>
   <jsp:include page="../commonCss.jsp"/>
+    <!-- header -->
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+  <!-- commonSidebar css -->
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+  <!-- footer.css -->
+  <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
   <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css">
   
 </head>
 <body style="background:white">
- 
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
  
 <div id="container">
   <div id="content">
@@ -91,7 +98,7 @@
                   <span class="ps_box int_pass" id="telBox">
                     <input type="tel" id="phoneNo" name="tel" placeholder="전화번호를 입력하세요." aria-label="전화번호를 입력하세요." class="int" maxlength="16">          
                   </span>
-                 <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn">
+                 <input id="btnSend" type="button" value="인증번호받기" class="btn btn-sm btn-outline-dark emailBtn">
                 <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
               </div><!-- .join_row-->
               
@@ -99,7 +106,7 @@
                 <span class="ps_box int_pass" id="authNoBox">
                   <input type="tel" id="authNo" placeholder="인증번호를 입력하세요"  class="int" maxlength="6" disabled>
                 </span>
-                <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn">
+                <input id="authSend" type="button" value="인증하기" class="btn btn-sm btn-outline-dark emailBtn">
                 <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               </div>
               
@@ -109,11 +116,11 @@
                   <label for="fileupload" style="cursor: pointer">프로필 사진<span class="terms_choice">(선택)</span></label>
                   <span class="file_input">
                     <input type="text" readonly="readonly" title="File Route" id="file_route">
-                    <label for="fileupload">
+                    <label for="fileupload" class="btn btn-sm btn-outline-dark">
                        사진올리기
                       <input type="file" id="fileupload" name="files">
                     </label>
-                    <label for="uploadCancel">
+                    <label for="uploadCancel" class="btn btn-sm btn-outline-dark">
                        취소하기
                       <input type="button" id="uploadCancel">
                     </label>
@@ -137,14 +144,14 @@
                   <span class="ps_box" id="postBox">
                     <input class="int" placeholder="우편번호" name="post" id="addr1" type="text" readonly="readonly" maxlength="5">
                   </span>
-                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호찾기"> 
+                  <input id="addressBtn" type="button" class="btn btn-sm btn-outline-dark addressBtn" value="우편번호찾기"> 
                 </div>
-                <div>
+                <div class="addressInputBox">
                   <span class="ps_box" id="baseAddr">
                     <input class="int" placeholder="도로명 주소" name="baseAddress" id="addr2" type="text" readonly="readonly" />
                   </span>
                 </div>
-                <div>
+                <div class="addressInputBox">
                   <span class="ps_box" id="detailAddr">
                     <input class="int" placeholder="상세주소" name="detailAddress" id="addr3" type="text"/>
                   </span>
@@ -166,7 +173,7 @@
           
         </div><!-- .join_form -->
         <div class="btn_area">
-          <button class="btn btn_type btn-outline-secondary sunext" id="btnJoin" type="button">저장하기</button>
+          <button class="btn btn_type btn-outline-dark" id="btnJoin" type="button">저장하기</button>
         </div><!-- .btn_area -->
       </form><!-- #join_form-->
     </div><!-- .join_content -->
@@ -174,6 +181,9 @@
 </div><!-- .container -->
 
 <jsp:include page="../javascript.jsp"/>
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+<jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="${contextRootPath}/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
 <script src="${contextRootPath}/node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
