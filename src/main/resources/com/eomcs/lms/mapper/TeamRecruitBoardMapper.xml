@@ -117,7 +117,7 @@
 
   <select id="findAll" resultMap="teamRecruitMap" >
     select
-    rcrm_id,
+    r.rcrm_id,
     titl,
     area,
     r.cdt,
