@@ -255,7 +255,13 @@
 select 
 mt.tm_id2, 
 t.name,
-t.tm_id
+t.tm_id,
+game_dt,
+stdm_psti,
+tel,
+t.area,
+tm_ambl_phot,
+cost
 from 
 mtchaply mtc  
 left outer join mtch mt on mtc.mtch_id = mt.mtch_id 
