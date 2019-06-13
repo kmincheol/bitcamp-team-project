@@ -55,8 +55,7 @@ public class RecruitBoardController {
     
     return "recruit_board/update";
   }
-
-
+  
   @PostMapping("add")
   public String add(TeamRecruit teamRecruit, HttpSession session, TeamMember tm) {
     Member member = (Member) session.getAttribute("loginUser");
@@ -103,6 +102,15 @@ public class RecruitBoardController {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     }
     return "redirect:../recruit_board/" + String.valueOf(teamRecruit.getTeamNo());
+  }
+  
+  @GetMapping("{no}/{mno}")
+  public String joinTeam(@PathVariable int no, @PathVariable int mno, HttpSession session,Model model) {
+    Member member = (Member) session.getAttribute("loginUser");
+    TeamRecruit teamRecruit = recruitBoardService.getUpdate(no);
+    model.addAttribute("teamRecruit", teamRecruit);
+    
+    return null;
   }
 
 }

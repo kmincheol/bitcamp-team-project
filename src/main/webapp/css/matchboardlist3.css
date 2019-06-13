@@ -1,6 +1,7 @@
 .container {
 	width: 400px;
 	margin: 0 auto;
+	border-top: 1px solid black;
 }
 #topComment {
   text-align: center;
@@ -31,6 +32,8 @@ h2{
     font-size: 14px;
     color: #212529;
 }
+
+
 a{
     color: #212529;
 }
@@ -49,11 +52,11 @@ a:hover{
     font-size: 16px;
     flex-wrap: nowrap;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     margin: 0 20px;
     box-sizing: border-box;
     margin-left: 3px;
+    padding-left: 320px;
 }
 
 [data-jplist-item]{
@@ -66,9 +69,17 @@ a:hover{
   white-space: nowrap;
 }
 
-#searchArea {
-    position:absolute;
+#content {
+  text-align:center;
+}
 
+#searchArea {
+  position: absolute;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px; 
+  width: 300px;
+  height: 330px;  
 }
 
 #matchInfo{
@@ -78,12 +89,13 @@ a:hover{
 .controls{
     display: flex;
     justify-content: center;
-    margin: 20px 0 10px 0;
+    padding-left: 300px;
+    margin: 35px 0 17px 0;
 }
 
 button{
   color: #fff;
-  background-color: #6c757d;
+  background-color: #d3d7cf;
   border-color: #6c757d;
   display: inline-block;
   font-weight: 400;
@@ -92,6 +104,7 @@ button{
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
+  border-radius: 16px;
   padding: .2rem .6rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -99,8 +112,12 @@ button{
   margin: 0 3px;
 }
 
+#selectbtn{
+  
+}
+
 .jplist-selected{
-  background-color: #a18591;
+  background-color: #e4d87a;
 }
 
 #modalbody {
@@ -126,7 +143,7 @@ button{
 .ui-datepicker {
   width: 216px;
   height: auto;
-  margin: 5px auto 0;
+  margin: 5px 0px 0px 0px;
   font: 9pt Arial, sans-serif;
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
