@@ -2,6 +2,6 @@ package com.eomcs.lms.service;
 
 import com.eomcs.lms.domain.Member;
 
-public interface JoinService {
+public interface JoinTeamService {
   int add(Member member);
 }
