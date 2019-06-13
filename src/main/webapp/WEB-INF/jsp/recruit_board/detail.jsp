@@ -93,7 +93,7 @@
                 <a class="btn btn-primary" >모집마감</a>
               </c:when>     
               <c:when test="${teamMember.teamLeader == 'true'}">
-              <button id="join" class="btn btn-primary">가입신청</button>
+              <a href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}' id="join" class="btn btn-primary">가입신청</A>
               </c:when>
             </c:choose>
             </c:forEach>
@@ -111,19 +111,19 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
   
     <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
-  
+
   <script>
 			function removeCheck() {
 				if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 					document.remove.submit();
-				alert('삭제되었습니다.');
+					alert('삭제되었습니다.');
 				} else { //취소
 					return false;
 				}
 			}
 		</script>
-    
-    
+
+
 </body>
 
 </html>

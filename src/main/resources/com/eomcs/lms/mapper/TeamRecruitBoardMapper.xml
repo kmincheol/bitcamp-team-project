@@ -91,8 +91,7 @@
     <result column="tlead_wth" property="teamLeader" />
     </collection>
    -->
-<!--      <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id"
-    keyProperty="teamNo">
+<!--   <insert id="insert" parameterType="teamRecruit" useGeneratedKeys="true" keyColumn="rcrm_id" keyProperty="teamNo">
     insert into rcrm(
     titl,
     cont,
@@ -103,6 +102,20 @@
     #{teamContents},
     #{teamId})
   </insert> -->
+
+<!--   <insert id="jinsert" parameterType="">
+  insert into join_tm(
+    mbr_id, rcrm_id
+  )
+  select
+    mbr_id,
+    rcrm_id
+  from
+    mbr,
+    rcrm
+  where
+    mbr_id=#{mbrid} and rcrm_id=#{rcrmid};
+    </insert> -->
   
     <select id="findAll3" resultMap="memberMap" parameterType="map">
     select
