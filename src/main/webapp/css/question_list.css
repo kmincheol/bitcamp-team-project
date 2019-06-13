@@ -22,9 +22,15 @@
 
 #btnbtn {
 	float: right;
+	position: relative;
+	top: -70px;
 }
 
 #in {
 	position: relative;
 	top: -70px;
+}
+
+.btn-ans {
+	pointer-events: none;
 }

@@ -1,5 +1,12 @@
-.btnBox{
-	height: 35px
+.snsLoginBox {
+	text-align: center
+}
+.snsLoginBtnBox {
+  height: 35px;
+  margin: 0 50px 24px 50px
+}
+.snsLoginHeading {
+	margin: 0 0 15px 0
 }
 .snsBtn {
 	display: inline-block;
@@ -8,6 +15,11 @@
   outline: 0;
   border: 1px solid #eee;
 	border-radius: 5px
+}
+.snsLoginBtn {
+	display: inline-block;
+	height: 35px;
+	margin: 5px;
 }
 .facebookBtn {
   background-color: #fff

@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.FacebookService;
@@ -20,18 +21,22 @@ public class FacebookServiceImpl implements FacebookService {
   final static Logger logger = LogManager.getLogger(FacebookServiceImpl.class);
   
   MemberService memberService;
+  GlobalPropertySource globalPropertySource;
   
-  public FacebookServiceImpl(MemberService memberService) {
+  public FacebookServiceImpl(
+      MemberService memberService, 
+      GlobalPropertySource globalPropertySource) {
     this.memberService = memberService;
+    this.globalPropertySource = globalPropertySource;
   }
   
   public String requestFaceBookAccessTokenAndUserDataCheck
   (HttpSession session, String code) throws Exception {
     String facebookUrl = 
         "https://graph.facebook.com/v3.3/oauth/access_token?"+
-        "client_id=" + "564771240719772" +
+        "client_id=" + globalPropertySource.getFacebookClientId() +
         "&redirect_uri=" + "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=facebook" +
-        "&client_secret="+ "da197861cbfcc7cb90a738e785aadcad" +
+        "&client_secret="+ globalPropertySource.getFacebookClientSecret() +
         "&code=" + code;
     
     RestTemplate template = new RestTemplate();

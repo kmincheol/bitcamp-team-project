@@ -14,37 +14,46 @@ button,select,textarea {
 #container {
   text-align: center;
   margin: 90px auto 0 auto;
-  width: 1000px;
+  width: 500px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
 #content{
-  width: 1000px;
   margin: 0 auto;
+  width: 500px
+}
+#emailAuth {
+	text-align : left
 }
 #findIdBox {
-	margin: 0 100px;
-	width: 800px
+	width: 500px
 }
 #findIdImgBox {
 	width: 150px;
 	height: 150px;
-	margin: 50px auto;
+	margin: 50px auto 0 auto;
   background-color: rgb(220, 220, 220);
   border:  hidden 1px white;
   border-radius: 100px
 }
-#findIdImgBox > img {
+#findIdImg {
   width: 100px;
 	height: 100px;
-	margin: 28px 0;
+	margin: 25px 0;
+}
+#findIdImgBox > label {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  cursor: pointer
 }
 #findIdComment {
   margin-top: 50px;
-  font-size: 35px
 }
 #findIdAuthComment {
 	margin: 40px 0 60px 0;
+}
+.findIdComments {
 	font-size: 25px
 }
 .hrblack {
@@ -142,6 +151,7 @@ button,select,textarea {
   border:none;
   background:#fff;
   font-size:15px;
+  outline: 0;
   box-sizing:border-box
 }
 .error_next_box{
@@ -164,10 +174,10 @@ button,select,textarea {
 }
 #findIdDiv {
 	width: 400px;
-	margin: 0 200px
+	margin: 0 50px
 }
-#id {
-  /* text-align: center */
+#userId {
+  text-align: center
 }
 #loginBtn, #findPwdBtn {
   width: 190px;
@@ -179,5 +189,5 @@ button,select,textarea {
   color: black
 }
 #loginBtn {
-  margin-right: 15px
+  margin-right: 14px
 }

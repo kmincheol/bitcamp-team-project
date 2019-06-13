@@ -9,17 +9,21 @@
 <link rel="stylesheet" href="${contextRootPath}/css/member_form.css">
 </head>
 <body>
-              <div class="join_row join_email">
+
+                    
+              <!-- mobile -->
+              <div class="join_row">
                 <h3 class="join_title">
-                  <label for="tel">Sms 인증</label>
+                  <label for="phoneNo">휴대전화</label>
                 </h3>
-                <span class="ps_box int_pass" id="joinCode">
-                  <input type="tel" id="tel" name="tel" placeholder="전화번호를 입력해주세요."
-                  maxlength="100" class="int">
-                </span> 
-                <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn">
-                <span class="error_next_box" id="telMsg" style="display:none" role="alert"></span>
-              </div>
+                <div class="int_mobile_area">
+                  <span class="ps_box int_pass" id="telImg">
+                    <input type="tel" id="phoneNo" name="tel" placeholder="전화번호를 입력하세요." aria-label="전화번호를 입력하세요." class="int" maxlength="16">          
+                  </span>
+                </div>
+                 <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn">
+                <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
+              </div><!-- .join_row-->
               
               <div class="join_row join_email join_authNo_confirm">
                 <span class="ps_box int_pass" id="authNoBox">
@@ -90,8 +94,8 @@ function hideMsg(obj) {
 
 
 function sendSms() {
-  var telAuth = $('#tel').val();
-  var oMsg = $('#telMsg');
+  var telAuth = $('#phoneNo').val();
+  var oMsg = $('#phoneNoMsg');
   var oBox = $('#joinCode');
   var authNoBox = $('#authNoBox');
   var authNoMsg = $('#authNoMsg');
@@ -161,7 +165,7 @@ function checkAuthNo() {
   if (authFlag) {
     showSuccessMsg(oMsg, "SMS 인증에 성공했습니다.");
     showSuccessBoxBySuccess(oBox);
-    $('#telMsg').hide();
+    $('#phoneNoMsg').hide();
     $("#authNo").attr("disabled", true);
     return true;
   } else {
@@ -174,7 +178,7 @@ function checkAuthNo() {
 
 function checkAuthnoByAjax() {
   var authNo = $('#authNo').val();
-  var telAuth = $("#tel").val();
+  var telAuth = $("#phoneNo").val();
   var typeAuth = $('#authType').val();
   var oMsg = $('#authNoMsg');
   var oBox = $('#authNoBox');

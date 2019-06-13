@@ -109,6 +109,40 @@
     <id column="tm_id" property="teamNo" />
     <result column="aply_dt" property="applyDate" />
     <result column="aply_stat" property="applyStatus" />
+   
+    <association property="match" javaType="Match">
+      <id column="mtch_id" property="no" />
+    <result column="tm_id" property="teamNo" />
+    <result column="tm_id2" property="otherTeamNo" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="game_dt" property="playDate" />
+    <result column="area" property="location" />
+    <result column="stdm_psti" property="stadiumName" />
+    <result column="stdm_lat" property="stadiumLatitude" />
+    <result column="stdm_long" property="stadiumLongitude" />
+    <result column="tel" property="telephone" />
+    <result column="cost" property="cost" />
+    </association>
+   
+   <association property="team" javaType="Team">
+       <id column="tm_id" property="teamId" />
+    <result column="name" property="teamName" />
+    <result column="tm_intd" property="teamInfo" />
+    <result column="area" property="teamArea" />
+    <result column="age_id" property="teamAgeId" />
+    <result column="tm_type_id" property="teamTypeId" />
+    <result column="tm_lev_id" property="teamLevelId" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="tm_ambl_phot" property="teamEmblemPhoto" />
+    <result column="tm_unf_wth" property="teamUniform" />
+    <result column="tm_unf_phot" property="teamUniformPhoto" />
+    <result column="cdt" property="teamCreateDate" />
+    <result column="mdt" property="teamInfoModifieDate" />
+    </association>
   
  </resultMap>
   
@@ -217,12 +251,17 @@
   </delete>
 
  <select id="findByMatchNo" resultMap="matchApplyMap" parameterType="int">
-  select
-    mtch_id
-  from
-      mtchaply
-  where
-    tm_id = #{value}
+ 
+select 
+mt.tm_id2, 
+t.name,
+t.tm_id
+from 
+mtchaply mtc  
+left outer join mtch mt on mtc.mtch_id = mt.mtch_id 
+left outer join tm t on mt.tm_id = t.tm_id 
+where 
+mtc.tm_id = #{value}
   </select>
 
 

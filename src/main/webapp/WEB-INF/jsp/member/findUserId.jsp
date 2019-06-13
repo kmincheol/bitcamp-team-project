@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" 
+         contentType="text/html; charset=UTF-8" 
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,14 +35,16 @@
   
     <div id="findIdBox">
       <div id="findIdContent">
-        <div id="findIdComment">
-          <p style="font-size: 0.7em;">이름과 이메일로 <strong>아이디</strong>를 찾을 수 있습니다.</p>
+        <div id="findIdComment" class="findIdComments">
+          <p>회원 가입하신 <strong>아이디</strong>를 찾을 수 있습니다.</p>
         </div>
         <div id="findIdImgBox">
-          <img src="../../images/search.png">
+          <label for="findIdAuthBtn">
+            <img id="findIdImg" src="../../images/search.png">
+          </label>
         </div>
-        <div id="findIdAuthComment">
-          <p>회원가입하실 때 등록하신 <strong>이름, 이메일</strong> 정보가 필요합니다.</p>
+        <div id="findIdAuthComment" class="findIdComments">
+          <p>회원님의 <strong>이름, 이메일</strong> 정보가 필요합니다.</p>
         </div>
         <hr class="hrSlim">
       </div><!-- #findIdContent -->
@@ -75,10 +79,10 @@
           </div>
           <div class="btn_area" id="userIdBox" style="display:none">
             <h3 class="join_title">
-              <label for="id">아이디</label>
+              <label for="userId">아이디</label>
             </h3>
             <span class="ps_box" id="idImg">
-              <input type="text" id="id" name="id" class="int" title="ID" maxlength="20" readonly>
+              <input type="text" id="userId" name="id" class="int" title="ID" maxlength="20" readonly>
             </span>
           </div>
           <div class="btn_area" id="AfterBtnBox" style="display:none">
@@ -143,6 +147,7 @@ function mainSubmit() {
   }
   if (nameFlag && emailFlag) {
     findId();
+    submitOpen();
   } else {
     submitOpen();
     return false;
@@ -286,18 +291,21 @@ function findId() {
     url: "findId?email=" + email + "&name=" + name,
     success : function(data) {
       var result = data.substr(6, 1);
-      var userId;
+      var responseText;
       if (data.length > 8) {
-        userId = data.substring(7, data.length);
+        responseText = data.substring(7, data.length);
       }
 
       if (result == "0") {
-        $('#id').val(userId);
+        $('#userId').val(responseText);
         $('#findIdBtnBox').hide();
         $('#emailAuth').hide();
         $('#userIdBox').show();
         $('#AfterBtnBox').show();
         return true;
+      } else if (result == "2"){
+        showErrorMsg(oMsg, "소셜 로그인으로 이미 가입한 아이디가 있습니다. <br>소셜로그인 : " + responseText);
+        return false;
       } else {
         showErrorMsg(oMsg, "아이디 찾기에 실패했습니다. <br>이름과 이메일을 확인하시고 다시 시도해주세요.");
         return false;

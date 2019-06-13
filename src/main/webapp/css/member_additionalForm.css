@@ -308,4 +308,62 @@ html[lang=ko] #header .lang .sel {
   height: 200px;
   resize: none
 }
-
+.ps_box,.ps_box_disable {
+  display:block;
+  position:relative;
+  width:100%;
+  height:51px;
+  border:solid 1px #dadada;
+  padding:10px 14px 10px 14px;
+  background:#fff;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+}
+.ps_box.int_pass,.ps_box.int_pass_check,.ps_box.int_pass_check2,.ps_box.box_right_space {
+  padding-right:50px
+}
+.ps_box.int_pass:after,.ps_box.int_pass_check2:after,.ps_box.int_pass_check:after {
+  content:'';
+  display:inline-block;
+  position:absolute;
+  top:50%;
+  right:10px;
+  margin-top:-16px;
+  cursor:pointer
+}
+.ps_box.int_pass:after {
+  width: 30px; 
+  height: 30px;
+  background:#fff url(../images/write.png) no-repeat center center
+}
+.ps_box.int_pass_check:after {
+  width: 30px; 
+  height: 30px;
+  background:#fff url(../images/ok.png) no-repeat center center
+}
+.ps_box.int_pass_check2:after {
+  width: 30px; 
+  height: 30px;
+  background:#fff url(../images/error.png) no-repeat center center
+}
+.emailBtn {
+  display: inline-block;
+  height: 51px;
+  width: 100px
+}
+#authSend, #btnSend {
+  border: solid 1px #6c757d;
+  background-color: #fff;
+  color: #212529;
+  margin: 0 0 0 15px;
+  position: relative;
+  border-radius: 0;
+  outline: 0
+}
+#telBox, #authNoBox {
+  display: inline-block;
+  width: 381px
+}
+.join_authNo_confirm {
+  margin: 10px 0 8px
+}

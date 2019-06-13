@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.KakaoService;
@@ -25,9 +26,13 @@ public class KakaoServiceImpl implements KakaoService {
   final static Logger logger = LogManager.getLogger(KakaoServiceImpl.class);
   
   MemberService memberService;
+  GlobalPropertySource globalPropertySource;
   
-  public KakaoServiceImpl(MemberService memberService) {
+  public KakaoServiceImpl(
+      MemberService memberService,
+      GlobalPropertySource globalPropertySource) {
     this.memberService = memberService;
+    this.globalPropertySource = globalPropertySource;
   }
   
   @SuppressWarnings("unchecked")
@@ -38,10 +43,10 @@ public class KakaoServiceImpl implements KakaoService {
     String kakaoUrl = "https://kauth.kakao.com/oauth/token";
     MultiValueMap<String,String> paramMap = new LinkedMultiValueMap<String,String>();
     paramMap.add("grant_type", "authorization_code");
-    paramMap.add("client_id", "43ee012e7eba5344ec3ae793e76332f5");
+    paramMap.add("client_id", globalPropertySource.getKakaoClientId());
     paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=kakao");
     paramMap.add("code", code);
-    paramMap.add("client_secret", "UlIkhLNaHbdIqlFRgF8LoaXg5N6lYFhz");
+    paramMap.add("client_secret", globalPropertySource.getKakaoClientSecret());
     
     HttpHeaders headers = new HttpHeaders();
     HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<>(paramMap, headers);

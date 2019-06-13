@@ -82,18 +82,26 @@
                 <span class="error_next_box" id="genderMsg" style="display:none" role="alert"></span>
               </div>
               
+                   
               <!-- mobile -->
               <div class="join_row">
                 <h3 class="join_title">
                   <label for="phoneNo">휴대전화</label>
                 </h3>
-                <div class="int_mobile_area">
-                  <span class="ps_box int_pass" id="telImg">
+                  <span class="ps_box int_pass" id="telBox">
                     <input type="tel" id="phoneNo" name="tel" placeholder="전화번호를 입력하세요." aria-label="전화번호를 입력하세요." class="int" maxlength="16">          
                   </span>
-                </div>
+                 <input id="btnSend" type="button" value="인증번호받기" class="btn-sm emailBtn">
                 <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
               </div><!-- .join_row-->
+              
+              <div class="join_row join_email join_authNo_confirm">
+                <span class="ps_box int_pass" id="authNoBox">
+                  <input type="tel" id="authNo" placeholder="인증번호를 입력하세요"  class="int" maxlength="6" disabled>
+                </span>
+                <input id="authSend" type="button" value="인증하기" class="btn-sm emailBtn">
+                <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
+              </div>
               
               <div class="row_group join_photo">
               <div class="join_row join_photo_title">
@@ -207,6 +215,9 @@ $('.file_input input[type=file]').change(function() {
   $('.file_input input[type=text]').val(filename);
 });
 
+var authFlag = false;
+var telFlag = false;
+
 $(document).ready(function() {
   defaultScript();
 
@@ -233,6 +244,21 @@ $(document).ready(function() {
   $('#phoneNo').keyup(debounce(function() {
     checkPhoneNo();
   }, 500));
+  
+  $('#authNo').keyup(debounce(function() {
+    checkAuthNo();
+   }, 500));
+  
+  $('#btnSend').click(function() {
+    sendSms();
+    return false;
+  });
+  
+  $('#authSend').click(function() {
+    authFlag = false;
+    checkAuthnoByAjax();
+    return false;
+  });
 
   $('#addressBtn').click(function() {
    execPostCode();
@@ -249,8 +275,14 @@ $(document).ready(function() {
 
   $('#btnJoin').click(function(event) {
     submitClose();
-    mainSubmit();
-
+    
+    if (telFlag && authFlag) {
+      mainSubmit();
+    } else {
+      setTimeout(function() {
+      mainSubmit();
+      }, 700);
+    }
   });
   
 });
@@ -261,8 +293,13 @@ function mainSubmit() {
     submitOpen();
     return false;
   }
-  
-  $('#join_form').submit();
+  if (telFlag && authFlag) {
+    
+    $('#join_form').submit();
+  } else {
+    submitOpen();
+    return false;
+  }
 }
 
 function submitClose() {
@@ -288,6 +325,7 @@ function checkUnrealInput() {
   if (checkBirthday() &
       checkGender() &
       checkPhoneNo() & 
+      checkAuthNo() &
       checkAddress()
       ) {
         return true;
@@ -302,13 +340,38 @@ function showErrorMsg(obj, msg) {
   obj.show();
 }
 
+function showDefaultBoxByPen(oBox) {
+  oBox.attr("class", "ps_box int_pass");
+}
 
 function showDefaultBox(oBox) {
   oBox.attr("class", "ps_box");
 }
 
+function showDefaultBoxByOK(oBox) {
+  oBox.attr("class", "ps_box int_pass_check");
+}
+
+function showDefaultBoxByPen(oBox) {
+  oBox.attr("class", "ps_box int_pass");
+}
+
+function showSuccessBoxBySuccess(oBox) {
+  oBox.attr("class", "ps_box int_pass_check accord");
+}
+
 function showErrorBox(oBox) {
   oBox.attr("class", "ps_box discord");
+}
+
+function showErrorBoxByError(oBox) {
+  oBox.attr("class", "ps_box int_pass_check2 discord");
+}
+
+function showSuccessMsg(obj, msg) {
+  obj.attr("class", "error_next_box green");
+  obj.html(msg);
+  obj.show();
 }
 
 function hideMsg(obj) {
@@ -542,11 +605,11 @@ function checkGender() {
 function checkPhoneNo() {
   var phoneNo = $('#phoneNo').val();
   var oMsg = $('#phoneNoMsg');
-  var oImg = $('#telImg');
+  var oImg = $('#telBox');
 
   if (phoneNo == "") {
     showErrorMsg(oMsg, "전화번호를 입력해주세요.");
-    showErrorBox(oImg);
+    showErrorBoxByError(oImg);
     return false;
   }
 
@@ -554,12 +617,13 @@ function checkPhoneNo() {
   
   if (!isCellPhone(phoneNo)) {
     showErrorMsg(oMsg, "형식에 맞지 않는 번호입니다.");
-    showErrorBox(oImg);
+    showErrorBoxByError(oImg);
     return false;
   }
 
   hideMsg(oMsg);
   showDefaultBoxByOK(oImg);
+  telFlag = true;
   return true;
 }
 
@@ -589,6 +653,120 @@ function debounce(func, wait, immediate) {
     if (callNow) func.apply(context, args);
   };
 };
+
+
+function sendSms() {
+  var telAuth = $('#phoneNo').val();
+  var oMsg = $('#phoneNoMsg');
+  var oBox = $('#joinCode');
+  var authNoBox = $('#authNoBox');
+  var authNoMsg = $('#authNoMsg');
+
+  if (!telFlag) {
+    showErrorBoxByError(oBox);
+    return false;
+  }
+
+  $.ajax({
+    type:"POST",
+    url:'smsSend',
+    contentType: 'application/json',
+    dataType: "text",
+    data:JSON.stringify({
+      tel: telAuth
+    }),
+    success : function(data) {
+      var result = data.substr(3);
+      if (result == "1") {
+        showSuccessMsg(oMsg,"인증 SMS를 발송했습니다.<br>인증 SMS가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.<br>");
+        $("#authNo").attr("disabled", false);
+        showDefaultBoxByOK(oBox);
+        showDefaultBoxByPen(authNoBox);
+        authNoMsg.hide();
+        // 타이머 박스 생각해볼것
+      } else if (result == "0") {
+        showErrorMsg(oMsg, "인증 중에 오류가 발생했습니다. 다시 인증 버튼을 눌러주세요.");
+        showErrorBoxByError(oBox);
+      } else {
+        showErrorMsg(oMsg, "인증 SMS 발송에 실패했습니다. 전화번호를 확인해주세요.");
+        showErrorBoxByError(oBox);
+      }
+    }
+  });
+
+  return false;
+};
+
+function checkAuthNo() {
+  var authNo = $('#authNo').val();
+  var oMsg = $('#authNoMsg');
+  var oBox = $('#authNoBox');
+  var isNum = /^[0-9]+$/;
+
+  if (authNo == "") {
+    showErrorMsg(oMsg, "인증번호를 입력해주세요.");
+    showErrorBoxByError(oBox);
+    return false;
+  }
+  
+  if (!isNum.test(authNo)) {
+    showErrorMsg(oMsg, "숫자만 입력할 수 있습니다.");
+    showErrorBoxByError(oBox);
+    return false;
+  }
+
+  if (authNo.length < 6) {
+    showErrorMsg(oMsg, "인증번호 6자리를 모두 입력해주세요.");
+    showErrorBoxByError(oBox);
+    return false;
+  }
+
+  if (authFlag) {
+    showSuccessMsg(oMsg, "SMS 인증에 성공했습니다.");
+    showSuccessBoxBySuccess(oBox);
+    $('#phoneNoMsg').hide();
+    $("#authNo").attr("disabled", true);
+    return true;
+  } else {
+    showSuccessMsg(oMsg, "인증버튼을 눌러 인증을 진행해주세요.");
+    showDefaultBoxByPen(oBox);
+    return false;
+  }
+}
+
+
+function checkAuthnoByAjax() {
+  var authNo = $('#authNo').val();
+  var telAuth = $("#phoneNo").val();
+  var typeAuth = $('#authType').val();
+  var oMsg = $('#authNoMsg');
+  var oBox = $('#authNoBox');
+
+  $.ajax({
+    type: "POST",
+    url: "checkSmsNo",
+    contentType: 'application/json',
+    dataType: "text",
+    data: JSON.stringify({
+      smsKey: authNo,
+      tel: telAuth
+    }),
+    success: function(data) {
+      var result = data.substr(4);
+      if (result == "0") {
+        showSuccessMsg(oMsg, "SMS 인증에 성공했습니다.");
+        showSuccessBoxBySuccess(oBox);
+        $("#smsMsg").hide();
+        $("#authNo").attr("disabled", true);
+        authFlag = true;
+      } else {
+        showErrorMsg(oMsg, "인증번호를 다시 확인해주세요.");
+        showErrorBoxByError(oBox);
+      }
+    }
+  });
+  return false;
+}
 
 
 </script>
