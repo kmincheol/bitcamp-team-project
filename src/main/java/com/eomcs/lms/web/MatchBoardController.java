@@ -3,12 +3,10 @@ package com.eomcs.lms.web;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -33,13 +31,12 @@ import com.eomcs.lms.service.LocationService;
 import com.eomcs.lms.service.MatchApplyService;
 import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.TeamService;
-import com.fasterxml.jackson.core.JsonParser;
 
 @Controller
 @RequestMapping("/matchboard")
 public class MatchBoardController {
   
-  private static final Logger logger = LogManager.getLogger(AnnounceController.class);
+  private static final Logger logger = LogManager.getLogger(MatchBoardController.class);
   
   @Autowired MatchBoardService matchBoardService;
   @Autowired TeamService teamService;
@@ -59,6 +56,70 @@ public class MatchBoardController {
       matches.add(m);
     }
     return matches;
+  }
+  
+  @GetMapping("listAllTest")
+  @ResponseBody
+  public Object listAllTest(HttpSession session) {
+    ArrayList<Match> recommendMatches = new ArrayList<>();
+    if (session.getAttribute("loginUser") != null) {
+      // 로그인 유저 정보를 가져옴.
+      Member member = (Member) session.getAttribute("loginUser");
+      logger.info(member);
+      // 그 유저가 가입한 팀번호를 가져옴.
+      List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo());
+      // 그 유저의 메인팀 번호로 종목, 지역, 수준, 연령을 얻음.
+      Team team = teamService.getTeamSportsType(member.getMainTeam());
+      logger.info(team);
+      int mainTeamSportsTypeNo = team.getTeamTypeSports().getTeamSportsTypeId();
+
+      logger.info(mainTeamSportsTypeNo);
+      // 그 종목과 1달이내의 매치들을 검색함.
+      List<Match> matches = matchBoardService.searchBySportsType(mainTeamSportsTypeNo);
+      logger.info(matches);
+      
+      // 본인이 가입한 팀이 있으면 제외함.
+      for (TeamMember t : teams) {
+        for (Match m : matches) {
+          if (t.getTeamMemberNo() == m.getTeamNo()) {
+            matches.remove(m);
+          }
+        }
+      }
+      
+      // 5개보다 작으면 부족한 숫자만큼만 종목이 일치하는 매치를 최신순으로 뽑아서 리턴.
+      // 그래도 적으면 적은대로 리턴한다.
+      if (matches.size() < 5) {
+        logger.info("부족함");
+        int insufficientNo = 5 - matches.size();
+        List<Match> plusMatches = matchBoardService.searchBySportsTypeAll(mainTeamSportsTypeNo, insufficientNo);
+        // 본인이 가입한 팀이 있으면 제외하고 아니면 리턴할 배열에 추가
+        for (TeamMember t : teams) {
+          for (Match m : plusMatches) {
+            if (t.getTeamMemberNo() == m.getTeamNo()) {
+              matches.remove(m);
+            } else {              
+              recommendMatches.add(m);
+            }
+          }
+        }
+        return recommendMatches;
+      }
+
+      if (matches.size() > 5) { // 5개보다 많은 경우만 선별
+      // 메인팀, 매치정보로 5개 선별한 후 받음.
+      matches = matchBoardService.checkAllConditions(matches, team);
+      }
+      
+      for (Match m : matches) {
+        logger.info("Match >> " + m);
+        
+        recommendMatches.add(m);
+      }
+      
+    }
+    
+    return recommendMatches;
   }
   
   

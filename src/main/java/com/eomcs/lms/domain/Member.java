@@ -28,11 +28,11 @@ public class Member implements Cloneable, Serializable {
   @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
   private Date latestDate;
   private boolean manager;
+  private int mainTeam;
   
   private List<Team> team;
   private TeamMember teamMember;
   private TeamTypeSports teamTypeSports;
-  
   
   @Override
   public String toString() {
@@ -41,10 +41,9 @@ public class Member implements Cloneable, Serializable {
         + ", post=" + post + ", baseAddress=" + baseAddress + ", detailAddress=" + detailAddress
         + ", photo=" + photo + ", selfIntroduce=" + selfIntroduce + ", loginType=" + loginType
         + ", status=" + status + ", createdDate=" + createdDate + ", latestDate=" + latestDate
-        + ", manager=" + manager + ", team=" + team + ", teamMember=" + teamMember
-        + ", teamTypeSports=" + teamTypeSports + "]";
+        + ", manager=" + manager + ", mainTeam=" + mainTeam + ", team=" + team + ", teamMember="
+        + teamMember + ", teamTypeSports=" + teamTypeSports + "]";
   }
-
 
   public int getNo() {
     return no;
@@ -254,12 +253,15 @@ public class Member implements Cloneable, Serializable {
   public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
     this.teamTypeSports = teamTypeSports;
   }
+
+  public int getMainTeam() {
+    return mainTeam;
+  }
+
+  public void setMainTeam(int mainTeam) {
+    this.mainTeam = mainTeam;
+  }
   
-  
-  
-  
-  
- 
 }
   
   
