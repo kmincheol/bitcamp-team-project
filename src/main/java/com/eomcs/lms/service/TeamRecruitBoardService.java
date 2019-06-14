@@ -32,4 +32,6 @@ public interface TeamRecruitBoardService {
   int delete(int no);
 
    int size();
+   
+   int add3(int no, int mno);
 }

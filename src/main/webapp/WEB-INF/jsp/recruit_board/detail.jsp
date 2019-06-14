@@ -78,25 +78,21 @@
             <div class="contents">${teamRecruit.teamContents}</div>
           </div>
         </div>
-
         <div id="control-box" class="form-group row">
-          <div class="col-sm-12 text-center">
-            <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a>
+          <div class="col-sm-12 text-center">                
+            <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board'>목록</a>
             <c:forEach var="teamMember" items="${teamMember}">
               <c:if test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
-                <a class="btn btn-dark" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
-                <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
-              </c:if>
-               
-            <c:choose>
-              <c:when test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
-                <a class="btn btn-primary" >모집마감</a>
-              </c:when>     
-              <c:when test="${teamMember.teamLeader == 'true'}">
-              <a href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}' id="join" class="btn btn-primary">가입신청</A>
-              </c:when>
-            </c:choose>
+                <a class="btn btn-outline-dark" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
+                <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
+                <a class="btn btn-outline-dark" href="#">모집마감</a>
+              </c:if>     
             </c:forEach>
+            <c:if test="${!empty sessionScope.loginUser}">
+              <a onclick="return joinCheck()"
+                href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}'
+                id="join" class="btn btn-outline-dark">가입신청</a>
+            </c:if>
           </div>
         </div>
       </div>
@@ -121,6 +117,15 @@
 					return false;
 				}
 			}
+			
+			function joinCheck() {
+		        if (confirm("가입신청 하시겠습니까?") == true) { //확인
+		          document.remove.submit();
+		          alert('가입신청되었습니다.');
+		        } else { //취소
+		          return false;
+		        }
+		      }
 		</script>
 
 

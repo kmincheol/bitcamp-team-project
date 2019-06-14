@@ -6,6 +6,7 @@ import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
+import com.eomcs.lms.domain.TeamRecruit;
 
 public interface MyTeamService {
   List<Member> list();
@@ -16,4 +17,5 @@ public interface MyTeamService {
  List<MatchApply>findMatchNo(int no);
  List<Match>findMatchNo2(int no);
  List<Team> MatchTeam(int no); 
+  List<TeamRecruit> findByJoinTeam(int no); 
 }

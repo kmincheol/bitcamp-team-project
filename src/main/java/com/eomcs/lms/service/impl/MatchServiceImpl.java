@@ -83,10 +83,14 @@ public class MatchServiceImpl implements MatchBoardService {
     // 후기게시판 데이터 지우고, (경기가 시작되고나서 생성되는 게시판이고, 경기가 진행되었다면 매치보드 글을 삭제하지 못하게 설계)
     // 태그 데이터 지우고
     // 그리고 나서 매치보드 번호 삭제. 
+<<<<<<< HEAD
 
     matchApplyDao.deleteAll(no);
 
     tagDao.deleteByTagNo(no);
+=======
+    
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
     return matchDao.delete(no);
   }
 

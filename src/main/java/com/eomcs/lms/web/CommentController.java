@@ -73,6 +73,13 @@ public class CommentController {
  
     return commentMap;
   }
+  
+  /*
+   * @GetMapping("form") public String form(HttpSession session) {
+   * 
+   * return "comment/form"; }
+   */
+  
 
   @PostMapping("update")
   public String update(Comment comment, HttpSession session) {

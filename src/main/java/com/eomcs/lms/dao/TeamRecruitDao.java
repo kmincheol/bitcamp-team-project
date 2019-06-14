@@ -1,5 +1,6 @@
 package com.eomcs.lms.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
@@ -34,6 +35,8 @@ public interface TeamRecruitDao {
   int delete(int no);
 
   int countAll();
+  
+  int jinsert(HashMap<String, Integer> hm);
 }
 
 

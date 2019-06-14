@@ -227,7 +227,9 @@
                 
                 <td class="detail" id="${match.no}" colspan="5"
                 style="cursor: pointer;" data-toggle="modal" data-target="#exampleModalCenter"
-                onClick="modalEvent('${match.no}');"  >
+                onClick="modalEvent('${match.no}');"  
+                onMouseOver="this.style.backgroundColor='#E6F0F4';"
+                onMouseOut="this.style.backgroundColor='' ">
                 
                     <div class="teamName" style="display:none">${match.team.teamName}</div>
                     <div class="title">제목 : ${match.title}</div>
@@ -341,8 +343,8 @@
                   var choiceTeamValue = $("#selectBox option:selected").val();
 
                  //console.log(typeof choiceTeamValue);
-                 console.log(no); // 매치번호
-                 console.log(choiceTeamValue); //신청팀번호
+                 console.log(no +"-> 매치번호"); // 매치번호
+                 console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
                
                  if (choiceTeamValue == "") {
                		 alert("팀을 선택해주세요.");
@@ -388,7 +390,7 @@
               $.getJSON("data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
-                  $('.modal-title').append("<h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6> ");
+                  $('.modal-title').append("<div ><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6> ");
                   $('.modal-body').append("<br>경기날짜 : "+data.match.playDate);
                   $('.modal-body').text("제목 : "+data.match.title);
                   $('.modal-body').append("<br>종목 : "+data.match.teamTypeSports.teamSportsType);

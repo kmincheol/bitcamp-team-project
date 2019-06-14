@@ -243,14 +243,18 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
     button.style.width= "100px";
     button.style.height= "50px";
     button.id="btn_zo";
+    button.innerHTML="hihi"
     if($("#btn_zo").length == 0){
     document.getElementById('cdcd').appendChild(button);
     }
     
     $("#btn_zo").click(function() {
-    	var teamNo =  parseInt(bbb[1]);    
-    	location.href='${contextRootPath}/app/myteam/send/' + teamNo ;
-    	});
+    /* 	var teamNo =  parseInt(bbb[1]);    
+    	location.href='${contextRootPath}/app/myteam/send/' + teamNo
+    	 */
+    	 document.getElementById('aaaa').style.display="none"
+      
+    });
     
     
     

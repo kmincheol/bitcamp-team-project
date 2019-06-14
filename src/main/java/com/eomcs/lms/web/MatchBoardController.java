@@ -237,6 +237,9 @@ public class MatchBoardController {
   @RequestMapping("{no}")
   public String detail(@PathVariable int no, HttpSession session, Model model) {
     Match match = matchBoardService.get(no);
+    String matchuserId = match.getMember().getId();
+    System.out.println("TTTTTT"+ matchuserId);
+    
     
     // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
     if (session.getAttribute("loginUser") != null) {
@@ -247,13 +250,14 @@ public class MatchBoardController {
     } else {
     }
     model.addAttribute("match", match);
+    model.addAttribute("matchuserId", matchuserId); 
     return "matchboard/detail";
   }
   
   
   
   
-  @GetMapping("update/{no}")
+  @GetMapping("update_form/{no}")
   public String detailUpdate(@PathVariable int no, Model model) {
     Match match = matchBoardService.get(no);
     model.addAttribute("match", match);
@@ -275,7 +279,7 @@ public class MatchBoardController {
   
   @PostMapping("update")
   public String update(Match match) {
-    
+    System.out.println("UPDATEUPDATE"+ match.toString());
     if (matchBoardService.update(match) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     return "redirect:.";
@@ -287,8 +291,10 @@ public class MatchBoardController {
   // 경기신청 데이터 지우고, 후기게시판 데이터 지우고,
   // 태그 데이터 지우고 그리고 나서 매치보드 번호 삭제. 
   @GetMapping("delete/{no}")
-  
   public String delete(@PathVariable int no) {
+    System.out.println("DELETEDLETE"+ no);
+
+    matchApplyService.delete(no);
     
     if (matchBoardService.delete(no) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");

@@ -9,19 +9,39 @@
 <html>
 <head>
 <title>자유게시판</title>
-<jsp:include page="../javascript.jsp" />
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<jsp:include page="../header.jsp" />
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
-<link rel="stylesheet" href="${contextRootPath}/css/free.css">
-</head>
-<body>
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
-  <div class="container">
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+
+<!-- detail css -->
+<link rel="stylesheet" href="${contextRootPath}/css/free/free_detail.css">
+              
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="${contextRootPath}/css/comment.css">
+</head>
+
+<body>
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
+
+  <div id="main-wrap" class="container">
 <div class="freeList">
     <div id="main-text">
-    <br><br>
-      <h2>자유게시판</h2>
+    <h2><img src="${contextRootPath}/images/open-book.png">게시글</h2>
     </div>
     <br>
       <c:choose>
@@ -31,37 +51,40 @@
 
         <c:otherwise>
           <form action='update' method='post'>
-            <div class="free-header">
               <label for="no" style="display:none;">게시물 번호</label> <label style="display:none;">${free.no}</label>
-              <hr>
-              <div class="title">
-                <div id="title">${free.title}</div>
-              </div>
+           
+         <div id="title-wrap" class="form-group row">
+          <div id="title-row" class="col-sm-12">
+            <div id="title" >${free.title}</div>
+          </div>
+          <div class="col-sm-12">
+            <span >${free.member.name}</span> 
+            <span>|</span>
+            <span >${free.modifierDate}</span> 
+            <span>|</span>
+            <span >${free.viewCount}</span> 
+          </div>
+        </div>
+          
+           <div id="contents-section">
+          <div class="contents-section-head">
+            <div>내용</div>
+          </div>
+          <div class="contents-section-body">
+            <div class="contents">${free.contents}</div>
+          </div>
+        </div>
 
-              <div class="freeInfo">
-                <span>작성자 <b>${free.member.name}</b>
-                </span> <span>조회수 <b>${free.viewCount}</b>
-                </span><br> <span>최근수정일 <b>${free.modifierDate}</b>
-                </span>
-              </div>
-
-              <br>
-              <hr>
-            </div>
-
-            <div>
-              ${free.contents} 
-            </div>
-
-            <hr><br>
-            <div class="btns form-group row">
+             <div id="control-box" class="form-group row">
+             <div class="col-sm-12 text-center">
               <div class="btns2">
-                <a class="input-group-btn btn btn-dark" href='.'>목록</a>
+                <a class="btn btn-outline-dark" href='.'>목록</a>
                 <c:if test="${sessionScope.loginUser.name eq free.member.name}">
-                  <a class="input-group-btn btn btn-dark" href='delete/${free.no}'>삭제</a>
-                  <a class="input-group-btn btn btn-dark"
+                  <a class="btn btn-outline-dark" href='delete/${free.no}'>삭제</a>
+                  <a class="btn btn-outline-dark"
                     href='${contextRootPath}/app/free/update/${free.no}'>변경</a>
                 </c:if>
+              </div>
               </div>
             </div>
 
@@ -73,27 +96,48 @@
           </c:otherwise>
       </c:choose>
           </div>
+          
+          
            <c:if test="${sessionScope.loginUser != null}">
            <form action='../comment/add' method="post">
-    		<div id="comment">
-     	 <div class="form-group row">
-        <div class="col-sm-10">
-          <input class="cmtform form-control" name='contents' placeholder="댓글을 작성하세요.">${comment.contents}
-          <button class="a input-group-btn btn btn-dark" type='submit'>작성</button>
+
+    <div id="comment"> 
+
+      <div class="form-group row"> 
+        <div class="col-sm-10"> 
+          <textarea class="cmtform form-control comment-form" name='contents' placeholder="댓글을 작성하세요."  autocomplete=off rows="3">${comment.contents}</textarea>
+          <span id="counter">0/150</span> 
+          <button class="a btn btn-outline-dark" type='submit'>작성</button>   
         </div>
-      	 </div>
-          </div>
-		<br>
-			</form>
-          <jsp:include page="../comment/list.jsp" />
+      </div>
+    </div>
+    </form>
+<br>
+       <%-- <jsp:include page="../comment/form.jsp" />  --%>
           </c:if>
+          <jsp:include page="../comment/list.jsp" />
         
   </div>
+   <jsp:include page="../javascript.jsp" />
+  
+    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+  
 </body>
+
+<script>
+$(document).ready(function(){
+  
+  $('.comment-form').on('keydown', function() {
+    if($(this).val().length > 150) {
+        $(this).val($(this).val().substring(0, 150));
+    }
+    
+    var content = $(this).val();
+    $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+    $('#counter').html(content.length + '/150');
+});
+$('.comment-form').keyup();
+    
+  });
+</script>
 </html>
-
-
-
-
-
-

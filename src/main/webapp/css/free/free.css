@@ -49,6 +49,11 @@ table a:hover {
 	color: black;
 }
 
+img {
+	width: 30px;
+	height: 30px;
+}
+
 #in {
 	width: 100%;
 	position: relative;

@@ -45,7 +45,6 @@ public class MatchApplyServiceImpl implements MatchApplyService {
   
   @Override
   public int delete(int no) {
-    matchApplyDao.deleteAll(no);
     return matchApplyDao.delete(no);
   }
   

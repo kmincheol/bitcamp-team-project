@@ -18,15 +18,16 @@
           <c:choose>
             <c:when test="${sessionScope.loginUser != null }">
               <div class="user-pic">
-                <img class="img-responsive img-rounded"
+                <img id="pimg" class="img-responsive img-rounded"
                   src="${sessionScope.loginUser.photo }">
               </div>
               <div class="user-info">
-                <span class="user-name">${sessionScope.loginUser.name}</span> <span>
+                <span class="user-name"><b>${sessionScope.loginUser.name}</b> 님<br>환영합니다.</span> 
+                <span>
                   <c:forEach items="${team}" var="team">
                     <span class="user-team">${team.teamName}</span>
-                  </c:forEach>
-                </span>
+                  </c:forEach>    
+                </span>    
               </div>
             </c:when>
 
@@ -138,19 +139,19 @@
         <!-- sidebar-menu  -->
       </div>
       <!-- sidebar-content  -->
+			<c:if test="${!empty sessionScope.loginUser}">   
       <div class="sidebar-footer">
-        <a href="#"> <i class="fa fa-bell"></i>
+<!--         <a href="#"> <i class="fa fa-bell"></i>
         </a> 
         <a href="#"> <i class="fa fa-envelope"></i>
         </a> 
         <a href="#"> <i class="fa fa-cog"></i>
-        </a>
-			<c:if test="${sessionScope.loginUser != null}">
+        </a> -->
 				<a href="${contextRootPath}/app/auth/logout"> <i
 					class="fa fa-power-off"></i>
-				</a>
-			</c:if>
+				</a>   
 		</div>
+			</c:if>
     </nav> 
     <!-- sidebar-wrapper  -->
     <!-- 본문 영역 -->

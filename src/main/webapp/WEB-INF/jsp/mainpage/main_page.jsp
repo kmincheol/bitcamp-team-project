@@ -26,7 +26,6 @@
 				<div class="menu">
 					<ul>
 						<li><a href="${contextRootPath}/app/main">Home</a></li>
-						<li><a href="#">Blog</a></li>
             <c:if test="${empty sessionScope.loginUser}">
             <li><a href="${contextRootPath}/app/auth/form">Login</a></li>
             </c:if>
@@ -47,7 +46,33 @@
 				$('nav').removeClass('black');
 			}
 		})
-	</script>
+	</script>   
+<script>
+$(function() {
+  
+  var facebook = 'facebook';
+  var naver = 'naver';
+  var kakao = 'kakao';
+  var google = 'google';
+  
+  $('#facebookBtn').click(function() {windowopenPopup(facebook);});
+  $('#naverBtn').click(function() {windowopenPopup(naver);});
+  $('#kakaoBtn').click(function() {windowopenPopup(kakao);});
+  $('#googleBtn').click(function() {windowopenPopup(google);});
+  
+});
 
+function windowopenPopup(type) {
+  var popupX = (window.screen.width / 2) - (600 / 2);
+  var popupY= (window.screen.height / 2) - (600 / 2);
+  
+  window.open(
+      'auth/snsSignin?loginType=' + type, 
+      type +' 로그인', 
+      'width=600, height=600, left=' + popupX +
+      ', top=' + popupY + ', toolbar=no, menubar=no, location=no, status=no'
+      );
+}
+</script>
 </body>
 </html>

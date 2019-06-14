@@ -19,7 +19,7 @@
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
-<!-- recruit_board_form.css -->
+<!-- recruit_board_form.css -->      
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_form.css">
 
 <!-- Font Awesome -->
@@ -28,6 +28,9 @@
 <!-- Bootstrap core CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">
+  
+  <!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/5.8.2/css/mdb.min.css" rel="stylesheet">
 
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">

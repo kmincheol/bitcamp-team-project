@@ -27,16 +27,7 @@ public class TeamRecruit implements Cloneable, Serializable {
   private Member member;
   private TeamMember teamMember;
   private TeamAges teamAges;
-  
-  @Override
-  public String toString() {
-    return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle
-        + ", teamContents=" + teamContents + ", teamViewCount=" + teamViewCount
-        + ", teamCreatedDate=" + teamCreatedDate + ", teamModifyDate=" + teamModifyDate
-        + ", teamRcrmStatus=" + teamRcrmStatus + ", teamRcrmPerson=" + teamRcrmPerson + ", team="
-        + team + ", teamTypeSports=" + teamTypeSports + ", member=" + member + ", teamMember="
-        + teamMember + ", teamAges=" + teamAges + "]";
-  }
+  private JoinTeam joinTeam;
   public int getTeamNo() {
     return teamNo;
   }
@@ -121,6 +112,24 @@ public class TeamRecruit implements Cloneable, Serializable {
   public void setTeamAges(TeamAges teamAges) {
     this.teamAges = teamAges;
   }
+  public JoinTeam getJoinTeam() {
+    return joinTeam;
+  }
+  public void setJoinTeam(JoinTeam joinTeam) {
+    this.joinTeam = joinTeam;
+  }
+  @Override
+  public String toString() {
+    return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle
+        + ", teamContents=" + teamContents + ", teamViewCount=" + teamViewCount
+        + ", teamCreatedDate=" + teamCreatedDate + ", teamModifyDate=" + teamModifyDate
+        + ", teamRcrmStatus=" + teamRcrmStatus + ", teamRcrmPerson=" + teamRcrmPerson + ", team="
+        + team + ", teamTypeSports=" + teamTypeSports + ", member=" + member + ", teamMember="
+        + teamMember + ", teamAges=" + teamAges + ", joinTeam=" + joinTeam + "]";
+  }
+ 
+  
+  
  
   
 }

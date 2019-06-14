@@ -10,22 +10,43 @@
 
   <form action='../comment/add' method="post">
 
-    <div id="comment">
+    <div id="comment"> 
 
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <input class="cmtform form-control" name='contents' placeholder="댓글을 작성하세요.">${comment.contents}
-          <button class="a input-group-btn btn btn-dark" type='submit'>작성</button>
+      <div class="form-group row"> 
+        <div class="col-sm-10"> 
+          <textarea class="cmtform form-control comment-form" name='contents' placeholder="댓글을 작성하세요."  autocomplete=off rows="3">${comment.contents}</textarea>
+          <span id="counter">###</span> 
+          <button class="a input-group-btn btn btn-dark" type='submit'>작성</button>  
         </div>
       </div>
     </div>
 <br>
 
   </form>
+  <!-- JQuery -->
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/> 
+  <script type="text/javascript">
+ 
+  $(document).ready(function(){
+    
+    $('.comment-form').on('keyup', function() {
+      if($(this).val().length > 150) {
+          $(this).val($(this).val().substring(0, 150));
+      }
+      
+      var content = $(this).val();
+      $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+      $('#counter').html(content.length + '/150');
+  });
+  $('.comment-form').keyup();
+      
+    });
   
-<!--   <script type="text/javascript">
   
-  $('.a').click((e) => {
+  
+  
+  
+ /*  $('.a').click((e) => {
     e.preventDefault();
     var xhr = new XMLHttpRequest();
     var cmt = $('#contents').val();
@@ -51,10 +72,10 @@
     xhr.open("POST", "../../app/comment/add", true);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.send(sJson);
-  });
+  }); */
   
   
-  </script> -->
+  </script> 
 </body>
 
 </html>

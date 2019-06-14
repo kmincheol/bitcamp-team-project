@@ -19,22 +19,24 @@
             <br> 
             <div class="conts">
               <input type="text" class="no" name="no" value="${comment.no}" style="display: none;">
-              <input type="text" class="cmtcontents" name="contents" value="${comment.contents}"
-                style="font-size: 20px; border: none; display:inline; margin-left: 10px; margin-bottom:5px;" readonly>  
- 
+              <label class="cmtcontents" style="font-size: 20px; display:inline;  margin-bottom:5px;" >${comment.contents}</label>
+              <input class="cmtcontents2" type="hidden" value="${comment.contents}"
+                style="font-size: 20px; display:inline;  margin-bottom:5px;" >
+              
               <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
                 <div class="btnsave">
                 
-                  <a class="deletebtn input-group-btn btn btn-dark" 
+                  <a class="deletebtn btn btn-outline-dark" 
                     href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
-                  <button class="update-btn input-group-btn btn btn-dark" type="button">변경</button>
+                  <button class="update-btn btn btn-outline-dark" type="button">변경</button>
                   <div class="save-cancel" style="display: none;">
                    <form id="form-save" action="../comment/update" method="post">
                     <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'style="display:none;">
-                   <textarea class="form-control" id="contents" name='contents' style='margin-top:10px; font-size: 20px;'>${comment.contents}</textarea>
-                    <button class="save-btn input-group-btn btn btn-dark">저장</button>
+                   <textarea class="form-control contentsF" name='contents' style='margin-top:10px; font-size: 20px;'>${comment.contents}</textarea>
+                    <span class="counter2">0/150</span> 
+                    <button class="save-btn btn btn-outline-dark">저장</button>
                      </form>
-                    <a class="cancel-btn input-group-btn btn btn-dark" style="color: white;">취소</a>
+                    <a class="cancel-btn btn btn-outline-dark">취소</a>
                   </div>
                 </div>
               </c:if>
@@ -46,11 +48,14 @@
     </div>
  
 
-
+<!-- JQuery -->
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/> 
 
   <script type="text/javascript">
 
+  
       $(document).ready(function() {
+        
         $('.update-btn').click(function() {
           $(this).hide();
           $(this).prev().hide();
@@ -72,13 +77,27 @@
             state.attr("style", "display:none;");
           }
         };
-      });
+        
+        $('.contentsF').on('keyup', function() {
+          if($(this).val().length > 150) {
+              $(this).val($(this).val().substring(0, 150));
+          }
+          
+          var content = $(this).val();
+          $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+          $('.counter2').html(content.length + '/150');
+      }); 
+      $('.contentsF').keyup(); 
+        
 
-      $(document).ready(function() {
         $('.cancel-btn').click(function() {
+          var up = $(this).parent().parent().parent().children().next().next($(".cmtcontents2")); 
+          var prevText = up.val();
+          $(this).parent().children($('.contentsF')).val(prevText);
           $('.update-btn').show();
            $('.deletebtn').show();  
-          var state = $('.save-cancel').css('display');
+         
+           var state = $('.save-cancel').css('display');
 
           if (state == 'none') {
             $('.save-cancel').hide();
@@ -88,23 +107,19 @@
 
           var state = $('.cmtcontents').css('style');
           if (state != 'none') {
-            $('.cmtcontents').attr("style", "font-size: 20px; border: none; margin-left:10px;");
+            $('.cmtcontents').attr("style", "font-size: 20px;");
           }
         });
-      });
 
       $('.cancel-btn').on('click', function() {
         $('.cmtcontents').attr('readonly', 'true');
       });
       
-      $(document).ready(function(){
         $(".save-btn").click(function(){
             $(".cmt-list").load("list.jsp");
         });
-    });
-
         
-      
+      });
       
     </script>
 

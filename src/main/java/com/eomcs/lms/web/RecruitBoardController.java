@@ -15,7 +15,6 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
-import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.TeamRecruitBoardService;
 
 @Controller
@@ -105,12 +104,10 @@ public class RecruitBoardController {
   }
   
   @GetMapping("{no}/{mno}")
-  public String joinTeam(@PathVariable int no, @PathVariable int mno, HttpSession session,Model model) {
-    Member member = (Member) session.getAttribute("loginUser");
-    TeamRecruit teamRecruit = recruitBoardService.getUpdate(no);
-    model.addAttribute("teamRecruit", teamRecruit);
+  public String insertJoinTeam(@PathVariable int no, @PathVariable int mno) {
+    recruitBoardService.add3(no, mno);
     
-    return null;
+    return "redirect:.";
   }
 
 }

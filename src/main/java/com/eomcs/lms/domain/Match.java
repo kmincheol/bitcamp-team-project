@@ -36,6 +36,8 @@ public class Match implements Cloneable, Serializable {
   private TeamAges teamAges;
   private TeamLevel teamLevel;
   private List<Tag> tags;
+  private Member member;
+  
   
   @Override
   public String toString() {
@@ -47,16 +49,19 @@ public class Match implements Cloneable, Serializable {
         + stadiumLongitude + ", telephone=" + telephone + ", cost=" + cost + ", team=" + team
         + ", teamMember=" + teamMember + ", otherTeam=" + otherTeam + ", teamTypeSports="
         + teamTypeSports + ", matchApply=" + matchApply + ", teamAges=" + teamAges + ", teamLevel="
-        + teamLevel + ", tags=" + tags + "]";
+        + teamLevel + ", tags=" + tags + ", member=" + member + "]";
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
   public int getNo() {
     return no;
   }
-
   public void setNo(int no) {
     this.no = no;
   }
+<<<<<<< HEAD
 
   public int getOtherTeamNo() {
     return otherTeamNo;
@@ -170,76 +175,153 @@ public class Match implements Cloneable, Serializable {
     this.tags = tags;
   }
 
+=======
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
   public int getTeamNo() {
     return teamNo;
   }
-
   public void setTeamNo(int teamNo) {
     this.teamNo = teamNo;
   }
-
+  public int getOtherTeamNo() {
+    return otherTeamNo;
+  }
+  public void setOtherTeamNo(int otherTeamNo) {
+    this.otherTeamNo = otherTeamNo;
+  }
   public int getTeamSportsId() {
     return teamSportsId;
   }
-
   public void setTeamSportsId(int teamSportsId) {
     this.teamSportsId = teamSportsId;
   }
-
   public String getTitle() {
     return title;
   }
-
   public void setTitle(String title) {
     this.title = title;
   }
-
+  public String getContents() {
+    return contents;
+  }
+  public void setContents(String contents) {
+    this.contents = contents;
+  }
   public int getViewCount() {
     return viewCount;
   }
-
   public void setViewCount(int viewCount) {
     this.viewCount = viewCount;
   }
-
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+  }
+  public Date getModifierDate() {
+    return modifierDate;
+  }
+  public void setModifierDate(Date modifierDate) {
+    this.modifierDate = modifierDate;
+  }
+  public Date getPlayDate() {
+    return playDate;
+  }
+  public void setPlayDate(Date playDate) {
+    this.playDate = playDate;
+  }
+  public int getLocation() {
+    return location;
+  }
+  public void setLocation(int location) {
+    this.location = location;
+  }
+  public String getStadiumName() {
+    return stadiumName;
+  }
+  public void setStadiumName(String stadiumName) {
+    this.stadiumName = stadiumName;
+  }
+  public String getStadiumLatitude() {
+    return stadiumLatitude;
+  }
+  public void setStadiumLatitude(String stadiumLatitude) {
+    this.stadiumLatitude = stadiumLatitude;
+  }
+  public String getStadiumLongitude() {
+    return stadiumLongitude;
+  }
+  public void setStadiumLongitude(String stadiumLongitude) {
+    this.stadiumLongitude = stadiumLongitude;
+  }
   public String getTelephone() {
     return telephone;
   }
-
   public void setTelephone(String telephone) {
     this.telephone = telephone;
   }
-
-  public TeamTypeSports getTeamTypeSports() {
-    return teamTypeSports;
+  public int getCost() {
+    return cost;
   }
-
-  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
-    this.teamTypeSports = teamTypeSports;
+  public void setCost(int cost) {
+    this.cost = cost;
   }
-
-  public TeamAges getTeamAges() {
-    return teamAges;
+  public Team getTeam() {
+    return team;
   }
-
-  public void setTeamAges(TeamAges teamAges) {
-    this.teamAges = teamAges;
+  public void setTeam(Team team) {
+    this.team = team;
   }
-
-  public TeamLevel getTeamLevel() {
-    return teamLevel;
-  }
-
-  public void setTeamLevel(TeamLevel teamLevel) {
-    this.teamLevel = teamLevel;
-  }
-
   public TeamMember getTeamMember() {
     return teamMember;
   }
-
   public void setTeamMember(TeamMember teamMember) {
     this.teamMember = teamMember;
   }
+  public Team getOtherTeam() {
+    return otherTeam;
+  }
+  public void setOtherTeam(Team otherTeam) {
+    this.otherTeam = otherTeam;
+  }
+  public TeamTypeSports getTeamTypeSports() {
+    return teamTypeSports;
+  }
+  public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
+    this.teamTypeSports = teamTypeSports;
+  }
+  public List<MatchApply> getMatchApply() {
+    return matchApply;
+  }
+  public void setMatchApply(List<MatchApply> matchApply) {
+    this.matchApply = matchApply;
+  }
+  public TeamAges getTeamAges() {
+    return teamAges;
+  }
+  public void setTeamAges(TeamAges teamAges) {
+    this.teamAges = teamAges;
+  }
+  public TeamLevel getTeamLevel() {
+    return teamLevel;
+  }
+  public void setTeamLevel(TeamLevel teamLevel) {
+    this.teamLevel = teamLevel;
+  }
+  public List<Tag> getTags() {
+    return tags;
+  }
+  public void setTags(List<Tag> tags) {
+    this.tags = tags;
+  }
+  public Member getMember() {
+    return member;
+  }
+  public void setMember(Member member) {
+    this.member = member;
+  }
+ 
+ 
   
 }

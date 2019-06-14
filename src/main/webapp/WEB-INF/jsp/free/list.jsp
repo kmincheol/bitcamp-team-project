@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
 <!-- recruit_board_list.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/free/free.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -37,13 +37,14 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
      
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
-<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:700&display=swap&subset=korean" rel="stylesheet">
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 
 .container {
-font-family: 'Do Hyeon', sans-serif;
+font-family: 'Nanum Gothic', sans-serif;
 }
 
 .pagination {
@@ -186,12 +187,14 @@ table tbody tr {
 </nav>
   </div> --%>
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
-
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
-
-  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-
+    <jsp:include page="../javascript.jsp" />
+    
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  
+    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
+ 
   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
 
@@ -210,7 +213,7 @@ table tbody tr {
 
       $(document).ready(function() {
         $('#dtBasicExample').DataTable({
-          order : [ [ 1, "desc" ] ],
+          order : [ [ 0, "desc" ] ],
           "info" : false,
           "paging" : true,
           language : lang_kor
