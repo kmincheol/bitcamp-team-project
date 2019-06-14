@@ -10,9 +10,10 @@
         <link rel="stylesheet" href="${contextRootPath}/css/common.css" />
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
+        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" />
     </head>
  
-    <body>
+    <body ng-app="app"> 
     <jsp:include page="../header.jsp"/>
 
     <div id="topComment">
@@ -24,17 +25,10 @@
       </p>
     </div>
   <div class="container" id="main-wrap">
-       <!-- hidden sort control -->
-        <div
-            style="display: none"
-            data-jplist-control="hidden-sort"
-            data-group="group1"
-            
-            data-path=".playDate"
-            data-order="desc"
-            data-type="text" >
+       <!-- hidden sort control  -->
+        <div style="display: none" data-jplist-control="hidden-sort" data-group="group1"
+            data-path=".playDate"  data-order="desc"  data-type="text" >
         </div>
-        
         
     <div class="content">
     <div id="searchArea">
@@ -43,140 +37,84 @@
         <div>
         <button class="btn btn-dark" id="allbtn" style="margin-bottom: 6px;"
             data-jplist-control="buttons-text-filter"
-            data-path="default"
-            data-mode="radio"
-            data-group="group1"
-            name="sportsType"
-            data-selected="true">
-         모든 종목
-         </button><br>
+            data-path="default" data-mode="radio"
+            data-group="group1" name="sportsType" data-selected="true">
+         모든 종목</button><br>
         
-        <a id="stype"
-            data-jplist-control="buttons-text-filter"
-            data-path=".sportsType"
-            data-mode="radio"
-            data-group="group1"
-            name="sportsType"
-            data-text="soccer"
-            >
+        <a id="stype"  data-jplist-control="buttons-text-filter" data-path=".sportsType"
+            data-mode="radio" data-group="group1" name="sportsType" data-text="soccer">
         <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png"> 
-        </a>
+        </a><!-- 축구버튼 -->
         
-        <a id="stype"
-            data-jplist-control="buttons-text-filter"
-            data-path=".sportsType"
-            data-mode="radio"
-            data-group="group1"
-            name="sportsType"
-            data-text="baseball">
+        <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
+            data-mode="radio" data-group="group1" name="sportsType" data-text="baseball">
          <img id="imgcontro" src="${contextRootPath}/images/baseball_list_min.png">
-        </a>
+        </a><!-- 야구버튼 -->
         
-        <a id="stype"
-            data-jplist-control="buttons-text-filter"
-            data-path=".sportsType"
-            data-mode="radio"
-            data-group="group1"
-            name="sportsType"
-            data-text="basketball">
+        <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
+            data-mode="radio" data-group="group1" name="sportsType" data-text="basketball">
          <img id="imgcontro" src="${contextRootPath}/images/basketball_list_min.png">
-        </a>
+        </a><!-- 농구버튼 -->
         
-        <a id="stype"
-            data-jplist-control="buttons-text-filter"
-            data-path=".sportsType"
-            data-mode="radio"
-            data-group="group1"
-            name="sportsType"
-            data-text="pingpong">
+        <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
+            data-mode="radio" data-group="group1" name="sportsType" data-text="pingpong">
          <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png">
-        </a>
+        </a><!-- 탁구버튼 -->
         
         <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
         <br><br>
         
          <!-- filter control -->
-        <button class="btn btn-dark" id="allbtn"
-            data-jplist-control="buttons-text-filter"
-            data-path="default"
-            data-mode="radio"
-            data-group="group1"
-            name="teamLevel"
-            data-selected="true">
-         모든 레벨 <!-- 전체 -->
-         </button>
+        <button class="btn btn-dark" id="allbtn" data-jplist-control="buttons-text-filter"
+            data-path="default"  data-mode="radio" data-group="group1" name="teamLevel"  data-selected="true">
+         모든 레벨 </button> <!-- 전체 -->  
 
-        <button type="button" id="levelbtn1" class="btn btn-dark" 
-            data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel"
-            data-mode="radio"
-            data-group="group1"
-            name="teamLevel"
-            data-text="high"
-            style='text-align: center;'
-            >
-        상 
-        </button>
+        <button type="button" id="levelbtn1" class="btn btn-dark"  data-jplist-control="buttons-text-filter"
+            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="high" 
+             style='text-align: center;'  ><!-- 상 스타일 확인! -->
+        상 </button>
         
-        <button type="button" id="levelbtn2" class="btn btn-dark" 
-            data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel"
-            data-mode="radio"
-            data-group="group1"
-            name="teamLevel"       
-            data-text="mid">
-        중 
-        </button>
+        <button type="button" id="levelbtn2" class="btn btn-dark"  data-jplist-control="buttons-text-filter"
+            data-path=".teamLevel"  data-mode="radio" data-group="group1" name="teamLevel" data-text="mid">
+        중 </button>
         
-        <button type="button" id="levelbtn3" class="btn btn-dark"
-            data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel"
-            data-mode="radio"
-            data-group="group1"
-            name="teamLevel"
-            data-text="low">
-        하 
-        </button>
+        <button type="button" id="levelbtn3" class="btn btn-dark" data-jplist-control="buttons-text-filter"
+            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="low">
+        하 </button>
+        
         </div>
         <br>
                 <!-- text filter control -->
         
         <div id="inputBox2">
                 <input class="form-control-sm" id="titleSearchBox"
-                data-jplist-control="textbox-filter"
-                data-group="group1"
-                data-name="my-filter-1"
-                data-path=".title"
-                type="text"
-                value=""
+                data-jplist-control="textbox-filter" data-group="group1"
+                data-name="my-filter-1" data-path=".title"
+                type="text" value=""
                 data-clear-btn-id="name-clear-btn"
                 placeholder="글 제목을 입력하세요" />
                 
                 <br>
                 
+                <!-- datepicker 적용 -->
           <input class="form-control-sm" type="text" id="datepicker" placeholder="날짜를 입력하세요">
           
                 <br>
           
             <button type="button" class="btn btn-dark" id="name-clear-btn">
-            검색 설정 초기화 <!-- 지우개버튼 -->
-            </button>
+            검색 설정 초기화</button> <!-- 지우개버튼 -->
             
             <div id="liner"></div>
             <button type="button" class="btn btn-info" id="matchform"
             onClick="location.href='${contextRootPath}/app/matchboard/form' " >
             매치등록하기
             </button>
+            
     <div style="display: none;">
-    <input 
-         id="textbox-filter"
-         data-jplist-control="textbox-filter"
-         data-group="group1"
-         data-name="my-filter-1"
-         data-path=".playDate"
-         name="playDate"
-         type="text"
-         value=""
+    <input  
+         data-jplist-control="textbox-filter" data-group="group1"
+         data-name="my-filter-1" data-path=".playDate"
+         id="textbox-filter" name="playDate" type="text"  value=""
          data-clear-btn-id="name-clear-btn"
          placeholder="날짜를 선택하세요" />
     </div>
@@ -209,9 +147,7 @@
                 
                 <td class="detail" id="${match.no}" colspan="5"
                 style="cursor: pointer; padding-top: 5px;" data-toggle="modal" data-target="#exampleModalCenter"
-                onClick="modalEvent('${match.no}');"  
-                onMouseOver="this.style.backgroundColor='#E6F0F4';"
-                onMouseOut="this.style.backgroundColor='' ">
+                onClick="modalEvent('${match.no}');" >
                 
                     <div class="teamName" style="display:none">${match.team.teamName}</div>
                     <div class="title">제목 : ${match.title}</div>
@@ -236,9 +172,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 180px;" 
-           onMouseOver="this.style.backgroundColor='#EAFFFC';"
-           onMouseOut="this.style.backgroundColor='' ">
+           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 180px;" >
                잠시만 기다려주세요</div>
            <div class="modal-footer">
            
@@ -313,14 +247,13 @@
     </div><!-- .content -->
   </div><!-- .container -->
 
-<jsp:include page="../javascript.jsp"/>
-<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
-<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/datepicker-ko.js"></script>
+<jsp:include page="../javascript.jsp"/> 
 <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
-
-
+<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
+        
         <script>
             jplist.init();
+            
             
             var no = 0; //매치번호
             var nocom; //no 배열관련
@@ -338,13 +271,16 @@
                          let keyupEvent = new Event('keyup');
                          tb.dispatchEvent(keyupEvent);
                        },
-                       defaultDate: +7
-                       //selectWeek: true,
-                       //inline: true,
-                       //startDate: '01/01/2000',
-                       //firstDay: 1
+                       defaultDate: +7,
+                       dateFormat: 'yy-mm-dd',
+                       buttonText: "선택",
+                       showMonthAfterYear:true,
+                       yearSuffix: "년",
+                       buttonImageOnly: true,
+                       dayNamesMin: ['일','월','화','수','목','금','토'],
+                       monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                       buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
                });          
-        	  
         	  
         	  
         	  
@@ -399,9 +335,10 @@
               $.getJSON("data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
-                  $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
+                  $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
                   $('.modal-body').append("<div id='ajplaydate'>경기날짜 : "+data.match.playDate +"</div>");
-                  $('.modal-body').text("제목 : "+data.match.title + "");
+                  $('.modal-body').text("제목 : "+data.match.title); 
+                    $('.modal-body').append("<div='ajlevel'><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
                   $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
                   $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.match.location + "</div>");
                   $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");

@@ -194,13 +194,14 @@ public class MatchBoardController {
   public String form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
     Member member = (Member) session.getAttribute("loginUser");
     
-    try {
-      if (member == null) {
-      throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
-    }
-    }catch (Exception e) {
-      return "matchboard/auth";
-    }
+//    try {
+//      if (member == null) {
+//      throw new RuntimeException("로그인 해야 글을 등록할 수 있습니다.");
+//    }
+//    }catch (Exception e) {
+//      return "matchboard/auth";
+//    }
+//    로그인 처리 안되서 잠시 주석처리.... 나중에 해제할것 !!!
     
     List<TopLocation> location = locationService.findToplocation(topLocationNo);
     model.addAttribute("location", location);
