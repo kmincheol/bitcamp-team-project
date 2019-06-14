@@ -143,9 +143,30 @@
               </div>
             </td>
           </tr>
+          
           <tr>
-            <th scope="row">전화번호</th>
-            <td><input type="text" class="form-control-sm" name="telephone"></td>
+          <th scope="col">
+          <label for="playdt">전화번호</label>
+        </th>
+        <td>
+            <input type="text" class="form-control-sm" name="telephone">
+            
+        <th scope="col">
+          <label id="teamLevel">레벨</label>
+          </th>
+        <td>
+<!--             <div class="col-sm" id="teamLevel" style="padding-left: 0px;">
+                <div class="input-group mb-2">
+                  <select name='teamLevel' class="custom-select" id="inputGroupSelect01">
+                    <option value="" disabled selected hidden>우리팀 실력</option>
+                    db명 toplc 
+                    <option value="1">상</option>
+                    <option value="2">중</option>
+                    <option value="3">하</option>
+                  </select>
+                </div>
+              </div>     레벨관련도 넣어야 함-->
+              </td>
           </tr>
 
           <tr>

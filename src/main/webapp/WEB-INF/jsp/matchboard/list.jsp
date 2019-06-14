@@ -41,7 +41,8 @@
             data-group="group1" name="sportsType" data-selected="true">
          모든 종목</button><br>
         
-        <a id="stype"  data-jplist-control="buttons-text-filter" data-path=".sportsType"
+        <div id="sstypeArea">
+        <a id="stype"  data-jplist-control="buttons-text-filter" data-path=".sportsType" 
             data-mode="radio" data-group="group1" name="sportsType" data-text="soccer">
         <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png"> 
         </a><!-- 축구버튼 -->
@@ -60,6 +61,7 @@
             data-mode="radio" data-group="group1" name="sportsType" data-text="pingpong">
          <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png">
         </a><!-- 탁구버튼 -->
+        </div>
         
         <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
         <br><br>
@@ -139,7 +141,7 @@
                  data-toggle="modal" data-target="#exampleModalCenter2"
                   onClick="location.href='${contextRootPath}/app/team/${match.team.teamId}' " 
                   <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
-                  align="center" style="cursor: pointer;" >
+                  align="center" style="cursor: pointer; width:172px;" >
                   
                   <div style="width:58px; height:40px;">${match.team.teamEmblemPhoto}</div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
@@ -176,16 +178,19 @@
                잠시만 기다려주세요</div>
            <div class="modal-footer">
            
+           <div class="modal-footer-inside-control">
+              <div class="modal-footer-inside" ></div>
+           </div>
            
              <div id="mtaply" >
              <c:if test="${!empty sessionScope.loginUser}">
                <select name='teamId' class="form-control" id="selectBox">
-                 <option value="" selected>소속팀(Leader) 선택</option>
+                 <option value="" selected>나의소속팀</option>
                   <c:forEach items="${myteam}" var="myteam">
                     <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
                   </c:forEach>
                </select>
-                <button class="btn btn-danger" id="btnsub2">신청하기</button>
+                <button class="btn btn-danger" id="btnsub2">매치신청</button>
               </c:if>
               </div>
            </div>
@@ -338,12 +343,13 @@
                   $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
                   $('.modal-body').append("<div id='ajplaydate'>경기날짜 : "+data.match.playDate +"</div>");
                   $('.modal-body').text("제목 : "+data.match.title); 
-                    $('.modal-body').append("<div='ajlevel'><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
+                    $('.modal-body').append("<div='ajlevel' ><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
                   $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
                   $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.match.location + "</div>");
                   $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");
-                  $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "</div>");
+                  $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "원</div>");
                   $('.modal-body').append("<div='ajcontents'><br> 내용 : "+data.match.contents + "</div>");
+                  $('.modal-footer-inside').text("상대전화번호 : "+data.match.telephone);
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo+"-> 매치글작성한 팀번호");
 					 console.log(no+"-> 매치글번호");
@@ -365,6 +371,6 @@
     </body>
 </html>
 
-
+<!-- style='float:right; margin-top' -->
 
 
