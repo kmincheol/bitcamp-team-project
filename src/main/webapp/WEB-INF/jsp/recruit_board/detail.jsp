@@ -92,7 +92,7 @@
                 <a class="btn btn-primary" >모집마감</a>
               </c:when>     
               <c:when test="${teamMember.teamLeader == 'true'}">
-              <a href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}' id="join" class="btn btn-primary">가입신청</A>
+              <a onclick="return joinCheck()" href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}' id="join" class="btn btn-primary">가입신청</A>
               </c:when>
             </c:choose>
             </c:forEach>
@@ -120,6 +120,15 @@
 					return false;
 				}
 			}
+			
+			function joinCheck() {
+		        if (confirm("가입신청 하시겠습니까?") == true) { //확인
+		          document.remove.submit();
+		          alert('가입신청되었습니다.');
+		        } else { //취소
+		          return false;
+		        }
+		      }
 		</script>
 
 

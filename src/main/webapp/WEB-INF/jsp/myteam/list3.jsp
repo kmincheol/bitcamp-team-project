@@ -33,8 +33,14 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
+  
+   <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
 
 <style>
+.container {
+  font-family: 'Jua', sans-serif;
+}
+
 .team_info {
 
 }
@@ -57,16 +63,16 @@
               <%-- <c:forEach items=""> --%>
               <tr style="height: 100px;">
                 <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;">팀엠블럼</td>
-                <td colspan="2" style="vertical-align: middle; width: 220px;">
+                <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px;">
                 <div class="team_info">&middot; 팀명 : </div>
                 <div class="team_info">&middot; 지역 : </div>
                 <div class="team_info">&middot; 구장 : </div>
                 <div class="team_info">&middot; 날짜 : </div>
                 <div class="team_info">&middot; 비용 : </div>
-                </td>
-                <td colspan="1" style="vertical-align: middle; width: 100px;">  
-                  <button style="width: 100%; margin-bottom: 2px;">수락</button> <br>
-                  <button style="width: 100%;">취소</button>
+                </td>              
+                <td colspan="1" style="vertical-align: middle; width: 150px;">  
+                  <a class="btn btn-outline-dark" href="#" style="width: 100%; margin-bottom: 15px;">수락</a><br>
+                  <a class="btn btn-outline-dark" href="#" style="width: 100%;">거절</a>
                 </td>
               </tr>
               <%-- </c:forEach> --%>
