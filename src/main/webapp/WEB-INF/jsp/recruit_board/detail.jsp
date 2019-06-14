@@ -78,7 +78,6 @@
             <div class="contents">${teamRecruit.teamContents}</div>
           </div>
         </div>
-
         <div id="control-box" class="form-group row">
           <div class="col-sm-12 text-center">
             <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>목록</a>
