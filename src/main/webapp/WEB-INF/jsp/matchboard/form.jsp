@@ -144,7 +144,7 @@
 </table>
 
     <div class="listbtn">
-    <a class="btn btn-dark" href='.'>목록</a>
+    <a id="listbutton" class="btn btn-dark" href='.'>목록</a>
     </div>
 
         <div id="regbtn">

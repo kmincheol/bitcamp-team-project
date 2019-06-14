@@ -54,7 +54,6 @@ div.button2 {
   text-align: center;
 }
 
-popover 디자인
 .popover-body {
   width:200px;
   height:200px;
@@ -101,6 +100,19 @@ popover 디자인
   text-align:center;
 }
 
+#searchArea{
+  padding-left: 0px;
+  width: 300px;
+}
+
+
+#locationsetting{
+  width: 240px;
+}
+
+#sido{
+  width:40px;
+}
 
 #viewCnt {
 text-align: right;
@@ -148,11 +160,6 @@ text-align: right;
   margin: 20px;
 }
 
-
-#detail_table {
-  text-align: center;
-}
-
  #sidebar-right {
   background-color: black;
   font-size: 1.2em;
@@ -179,7 +186,6 @@ text-align: right;
 
 #add {
   width: 300px;
-  margin-left: 40px;
 }
 
 
@@ -218,12 +224,29 @@ text-align: right;
 }
 
 .listbtn{
-  top:30px;
   margin-top: 21px;
   margin-left: 25px;
   text-align: left;
 }
 
+#listbutton{
+  float: left;
+  margin-right: 10px;
+}
+
+#listbutton2{
+  float: left;
+  margin-left: 43px;
+  margin-right: 10px;
+}
+
+#delt{
+  float: left;
+  margin-right: 10px;
+}
+#updt{
+  float: left;
+}
 
 #mtaply{
   text-align: left;
