@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
     </head>
+ 
     <body>
     <jsp:include page="../header.jsp"/>
 
@@ -50,7 +51,7 @@
          모든 종목
          </button><br>
         
-        <a type="button" id="stype"
+        <a id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
@@ -58,37 +59,37 @@
             name="sportsType"
             data-text="soccer"
             >
-        <img src="${contextRootPath}/images/football_list_min.png"> 
+        <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png"> 
         </a>
         
-        <a type="button" id="stype"
+        <a id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
             data-group="group1"
             name="sportsType"
             data-text="baseball">
-         <img src="${contextRootPath}/images/baseball_list_min.png">
+         <img id="imgcontro" src="${contextRootPath}/images/baseball_list_min.png">
         </a>
         
-        <a type="button" id="stype"
+        <a id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
             data-group="group1"
             name="sportsType"
             data-text="basketball">
-         <img src="${contextRootPath}/images/basketball_list_min.png">
+         <img id="imgcontro" src="${contextRootPath}/images/basketball_list_min.png">
         </a>
         
-        <a type="button" id="stype"
+        <a id="stype"
             data-jplist-control="buttons-text-filter"
             data-path=".sportsType"
             data-mode="radio"
             data-group="group1"
             name="sportsType"
             data-text="pingpong">
-         <img src="${contextRootPath}/images/pingpong_list_min.png">
+         <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png">
         </a>
         
         <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
@@ -105,18 +106,19 @@
          모든 레벨 <!-- 전체 -->
          </button>
 
-        <button type="button" id="levelbtn" class="btn btn-dark" 
+        <button type="button" id="levelbtn1" class="btn btn-dark" 
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
             data-mode="radio"
             data-group="group1"
             name="teamLevel"
             data-text="high"
+            style='text-align: center;'
             >
         상 
         </button>
         
-        <button type="button" id="levelbtn" class="btn btn-dark" 
+        <button type="button" id="levelbtn2" class="btn btn-dark" 
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
             data-mode="radio"
@@ -126,7 +128,7 @@
         중 
         </button>
         
-        <button type="button" id="levelbtn" class="btn btn-dark"
+        <button type="button" id="levelbtn3" class="btn btn-dark"
             data-jplist-control="buttons-text-filter"
             data-path=".teamLevel"
             data-mode="radio"
@@ -201,12 +203,12 @@
                   <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
                   align="center" style="cursor: pointer;" >
                   
-                  <div style="width:58px; height:58px;">${match.team.teamEmblemPhoto} 엠블럼 </div><!-- 엠블럼 들어갑니다. -->
+                  <div style="width:58px; height:40px;">${match.team.teamEmblemPhoto}</div><!-- 엠블럼 들어갑니다. -->
                   <br> <br> <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
                 <td class="detail" id="${match.no}" colspan="5"
-                style="cursor: pointer;" data-toggle="modal" data-target="#exampleModalCenter"
+                style="cursor: pointer; padding-top: 5px;" data-toggle="modal" data-target="#exampleModalCenter"
                 onClick="modalEvent('${match.no}');"  
                 onMouseOver="this.style.backgroundColor='#E6F0F4';"
                 onMouseOut="this.style.backgroundColor='' ">
@@ -277,7 +279,9 @@
              
                 </c:forEach>
                     <!-- no results control -->               
-                <div data-jplist-control="no-results" data-group="group1" data-name="no-results">검색 결과가 없습니다.</div>
+                <div id="noresul" data-jplist-control="no-results" 
+                data-group="group1" data-name="no-results">검색 결과가 없습니다.
+                </div>
       </div>
                 　　　　　　　　　　　　　　　　　　　　<!-- 칸 일그러짐 방지 -->　　　　　　　　　　　　　　　　　　　　　　　
       </div>
@@ -395,14 +399,14 @@
               $.getJSON("data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
-                  $('.modal-title').append("<div ><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6> ");
-                  $('.modal-body').append("<br>경기날짜 : "+data.match.playDate);
-                  $('.modal-body').text("제목 : "+data.match.title);
-                  $('.modal-body').append("<br>종목 : "+data.match.teamTypeSports.teamSportsType);
-                  $('.modal-body').append("<br>지역 : "+data.match.location);
-                  $('.modal-body').append("<br>경기장 : "+data.match.stadiumName);
-                  $('.modal-body').append("<br>비용 : "+data.match.cost);
-                  $('.modal-body').append("<br>내용 : "+data.match.contents);
+                  $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
+                  $('.modal-body').append("<div id='ajplaydate'>경기날짜 : "+data.match.playDate +"</div>");
+                  $('.modal-body').text("제목 : "+data.match.title + "");
+                  $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
+                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.match.location + "</div>");
+                  $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");
+                  $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "</div>");
+                  $('.modal-body').append("<div='ajcontents'><br> 내용 : "+data.match.contents + "</div>");
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo+"-> 매치글작성한 팀번호");
 					 console.log(no+"-> 매치글번호");

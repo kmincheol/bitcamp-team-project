@@ -79,7 +79,7 @@ a:hover{
 }
 
 .detail{
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 [data-jplist-group]{
@@ -170,15 +170,21 @@ a:hover{
     float:left;
     display: flex;
     justify-content: center;
-    margin: 35px 0 17px 0;
+    margin: 25px 0 17px 0;
     width:1060px;
 }
 
-#stype{
-  margin-left: 4px;
+#imgcontro{
+  padding-bottom: 5px;
 }
 
-#levelbtn{
+#stype{
+  padding-left: 4px;
+  height: 12px;
+  width: 20px;  
+}
+
+#levelbtn1{
   margin-top: 6px;
   margin-left: 2px;
   border-radius: 0px;
@@ -187,10 +193,39 @@ a:hover{
     padding-right: 48px;
     padding-left: 30px;
     border-width: 0px;
+    color:#343434;
+    background-color: #ffcece;
+}
+#levelbtn2{
+  margin-top: 6px;
+  margin-left: 2px;
+  border-radius: 0px;
+  width:31px; height:30px; 
+    padding-top: 3px;
+    padding-right: 48px;
+    padding-left: 30px;
+    border-width: 0px;
+    color:#343434;
+    background-color: #c7ffae;
+}
+#levelbtn3{
+  margin-top: 6px;
+  margin-left: 2px;
+  border-radius: 0px;
+  width:31px; height:30px; 
+    padding-top: 3px;
+    padding-right: 48px;
+    padding-left: 30px;
+    border-width: 0px;
+    color:#343434;
     background-color: #d5cfd8;
 }
 #subArea{
   text-align: center;
+}
+
+#noresul{
+  padding-left: 32px;
 }
 
 button{
@@ -250,6 +285,13 @@ button{
   text-align:center;
   color: #3e6894;
 }
+
+
+
+#ajteamname{
+  text-align: center;
+}
+
 
 
 
