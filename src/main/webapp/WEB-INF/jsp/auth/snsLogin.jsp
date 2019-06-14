@@ -28,6 +28,7 @@
   </span>
 </div>
 
+<script src="${contextRootPath}/jsp/rootpath.js"></script>
 <script>
 $(function() {
   
@@ -48,7 +49,7 @@ function windowopenPopup(type) {
   var popupY= (window.screen.height / 2) - (600 / 2);
   
   window.open(
-      'snsSignin?loginType=' + type, 
+      rootpath + 'app/auth/snsSignin?loginType=' + type, 
       type +' 로그인', 
       'width=600, height=600, left=' + popupX +
       ', top=' + popupY + ', toolbar=no, menubar=no, location=no, status=no'

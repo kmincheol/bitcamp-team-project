@@ -32,6 +32,8 @@
     <association property="team" javaType="Team">
       <id column="tm_id" property="teamId" />
       <result column="name" property="teamName" />
+      <result column="age_id" property="teamAgeId" />
+      <result column="tm_lev_id" property="teamLevelId" />
       <result column="tm_ambl_phot" property="teamEmblemPhoto"/>
       <result column="area" property="teamArea" />
     </association>
@@ -200,6 +202,29 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
   </sql>
+  
+  
+<sql id="select2"> <!-- 추천매칭을 위한 select -->
+   select distinct
+    mtch_id,
+    m.tm_id,
+    s.spt_clsf_name,
+    game_dt,
+    m.area,
+    t.name,
+    t.tm_lev_id,
+    t.age_id,
+    t.tm_ambl_phot,
+    l.levs,
+    a.ages
+   from
+    mtch m
+    left outer join tm t on m.tm_id = t.tm_id
+    left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
+    left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
+    left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
+    left outer join age a on t.age_id = a.age_id
+  </sql>
 
 
 <!-- js로 처리할거라 모든 데이터 가져옴 -->
@@ -209,6 +234,8 @@
     mtch_id desc
    </select>
    
+   
+   
   <select id="findAll" resultMap="matchMap" parameterType="map">
 	<include refid="select1"/>  
     order by
@@ -217,6 +244,36 @@
       limit #{rowNo}, #{size}
     </if>
   </select>
+  
+     <!-- 추천매칭을 처리하기 위해 종목이 일치하고 1달이내인 매치정보를 가져옴 -->
+   <select id="searchBySportsType" resultMap="matchMap" parameterType="int">
+      <include refid="select2"/>
+      where
+        m.spt_clsf_id = #{value}
+        and
+        m.tm_id2 IS NULL
+        and
+        TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[<=]]> 30
+        and
+        TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[>=]]> 0
+      order by
+        mtch_id desc
+   </select>
+
+    <!-- 부족한 매칭정보를 가져옴 -->
+   <select id="searchBySportsTypeAll" resultMap="matchMap" parameterType="map">
+      <include refid="select2"/>
+      where
+        m.spt_clsf_id = #{mainTeamSportsTypeNo}
+        and
+        m.tm_id2 IS NULL
+        and
+        TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[>=]]> 0
+      order by
+        mtch_id desc
+      limit #{insufficientNo}
+   </select>
+  
 
 
   <select id="teamInfoGet" resultMap="matchMap" parameterType="int"> <!-- 리더 정보를 갖고오기 위함 -->

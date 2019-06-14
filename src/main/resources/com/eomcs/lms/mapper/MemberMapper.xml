@@ -25,6 +25,7 @@
     <result column="cdt" property="createdDate" />
     <result column="lcd" property="latestDate" />
     <result column="mgr" property="manager" />
+    <result column="main_tm_id" property="mainTeam" />
 
   </resultMap>
   
@@ -87,7 +88,8 @@
       <include refid="default-columns"/>,
       mgr,
       prof_phot,
-      login_type
+      login_type,
+      main_tm_id
     from 
       mbr
     where 
@@ -108,7 +110,9 @@
     select 
       <include refid="default-columns"/>,
       mgr,
-      prof_phot
+      prof_phot,
+      login_type,
+      main_tm_id
     from 
       mbr
     where 

@@ -352,11 +352,27 @@ html[lang=ko] #header .lang .sel {
   margin: 0 0 0 15px;
   position: relative;
   border-radius: 0;
-  bottom : 3px
+  bottom : 2.5px
+}
+#fileupload1 {
+	margin: 0 0 0 15px;
+  position: relative;
+  border-radius: 0;
+  top: 1.7px
+}
+#uploadCancel {
+	margin: 0 0 0 13px;
+  position: relative;
+  border-radius: 0;
+  top: 1.7px
 }
 #telBox, #authNoBox {
   display: inline-block;
   width: 381px
+}
+#profileBox {
+	display: inline-block;
+	width: 265px
 }
 .join_authNo_confirm {
   margin: 10px 0 8px

@@ -13,7 +13,7 @@ public interface TeamService {
   List<Team> teamList1(); // 관리자 팀조회
   List<Team> teamList2(); // 유저 팀조회
   List<Member> memberList(int pageNo, int pageSize); 
-  
+  List<TeamMember> getTeamMemberListByMemberNo(int no);
   List<TeamLevel> teamLevelList(); 
   
   List<TeamType> teamTypeList();
@@ -22,7 +22,7 @@ public interface TeamService {
   List<TeamMember> teamMemberList();
   List<TeamMember> getTeamMember(int no);
   List<Team> search(String keyword);
- 
+  Team getTeamSportsType(int no);
   int addTeam(Team team);
   int addTeamLeader(TeamMember teamMember);
   int addMember(Member member);

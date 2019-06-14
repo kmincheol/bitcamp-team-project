@@ -138,6 +138,17 @@ public int size() {
   // TODO Auto-generated method stub
   return 0;
 }
+
+  @Override
+  public Team getTeamSportsType(int no) {
+    return teamDao.findSportsTypeByNo(no);
+  }
+
+  @Override
+  public List<TeamMember> getTeamMemberListByMemberNo(int no) {
+    return teamDao.findTeamMemberByMemberNo(no);
+  }
+
  
 }
 

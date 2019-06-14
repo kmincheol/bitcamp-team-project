@@ -114,18 +114,13 @@
               <div class="join_row join_photo_title">
                 <h3 class="join_title" id="photo_title">
                   <label for="fileupload" style="cursor: pointer">프로필 사진<span class="terms_choice">(선택)</span></label>
-                  <span class="file_input">
-                    <input type="text" readonly="readonly" title="File Route" id="file_route">
-                    <label for="fileupload" class="btn btn-sm btn-outline-dark">
-                       사진올리기
-                      <input type="file" id="fileupload" name="files">
-                    </label>
-                    <label for="uploadCancel" class="btn btn-sm btn-outline-dark">
-                       취소하기
-                      <input type="button" id="uploadCancel">
-                    </label>
-                  </span>
                 </h3>
+                  <span class="ps_box" id="profileBox">
+                    <input type="text" readonly="readonly" title="File Route" id="file_route">
+                  </span>
+                  <button type="button" id="fileupload1" class="btn btn-sm btn-outline-dark emailBtn">사진올리기</button>
+                  <input type="file" id="fileupload" name="files" style="display:none">
+                  <button type="button" id="uploadCancel" class="btn btn-sm btn-outline-dark emailBtn">취소하기</button>
               </div>
               <div class="join_photo_view">
                 <span class="photoView">
@@ -274,6 +269,11 @@ $(document).ready(function() {
    execPostCode();
    return false;
   });
+  
+  $('#fileupload1').click(function (e) {
+    e.preventDefault();
+    $('#fileupload').click();
+    });
   
   $('#uploadCancel').click(function() {
     $('#images-div').attr('src', "../../images/profile.png");

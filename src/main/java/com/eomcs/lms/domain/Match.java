@@ -21,7 +21,7 @@ public class Match implements Cloneable, Serializable {
   private Date modifierDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date playDate;
-  private int location; // 임시 숫자로 바꿈, 첫번째 상세위치
+  private String location; // 임시 숫자로 바꿈, 첫번째 상세위치
   private String stadiumName;
   private String stadiumLatitude;
   private String stadiumLongitude;
@@ -37,8 +37,6 @@ public class Match implements Cloneable, Serializable {
   private TeamLevel teamLevel;
   private List<Tag> tags;
   private Member member;
-  
-  
   @Override
   public String toString() {
     return "Match [no=" + no + ", teamNo=" + teamNo + ", otherTeamNo=" + otherTeamNo
@@ -57,41 +55,17 @@ public class Match implements Cloneable, Serializable {
   public void setNo(int no) {
     this.no = no;
   }
-  public int getTeamNo() {
-    return teamNo;
-  }
-  public void setTeamNo(int teamNo) {
-    this.teamNo = teamNo;
-  }
   public int getOtherTeamNo() {
     return otherTeamNo;
   }
   public void setOtherTeamNo(int otherTeamNo) {
     this.otherTeamNo = otherTeamNo;
   }
-  public int getTeamSportsId() {
-    return teamSportsId;
-  }
-  public void setTeamSportsId(int teamSportsId) {
-    this.teamSportsId = teamSportsId;
-  }
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
-  }
   public String getContents() {
     return contents;
   }
   public void setContents(String contents) {
     this.contents = contents;
-  }
-  public int getViewCount() {
-    return viewCount;
-  }
-  public void setViewCount(int viewCount) {
-    this.viewCount = viewCount;
   }
   public Date getCreatedDate() {
     return createdDate;
@@ -111,10 +85,10 @@ public class Match implements Cloneable, Serializable {
   public void setPlayDate(Date playDate) {
     this.playDate = playDate;
   }
-  public int getLocation() {
+  public String getLocation() {
     return location;
   }
-  public void setLocation(int location) {
+  public void setLocation(String location) {
     this.location = location;
   }
   public String getStadiumName() {
@@ -135,17 +109,59 @@ public class Match implements Cloneable, Serializable {
   public void setStadiumLongitude(String stadiumLongitude) {
     this.stadiumLongitude = stadiumLongitude;
   }
-  public String getTelephone() {
-    return telephone;
-  }
-  public void setTelephone(String telephone) {
-    this.telephone = telephone;
-  }
   public int getCost() {
     return cost;
   }
   public void setCost(int cost) {
     this.cost = cost;
+  }
+  public Team getOtherTeam() {
+    return otherTeam;
+  }
+  public void setOtherTeam(Team otherTeam) {
+    this.otherTeam = otherTeam;
+  }
+  public List<MatchApply> getMatchApply() {
+    return matchApply;
+  }
+  public void setMatchApply(List<MatchApply> matchApply) {
+    this.matchApply = matchApply;
+  }
+  public Member getMember() {
+    return member;
+  }
+  public void setMember(Member member) {
+    this.member = member;
+  }
+  public int getTeamNo() {
+    return teamNo;
+  }
+  public void setTeamNo(int teamNo) {
+    this.teamNo = teamNo;
+  }
+  public int getTeamSportsId() {
+    return teamSportsId;
+  }
+  public void setTeamSportsId(int teamSportsId) {
+    this.teamSportsId = teamSportsId;
+  }
+  public String getTitle() {
+    return title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
+  }
+  public int getViewCount() {
+    return viewCount;
+  }
+  public void setViewCount(int viewCount) {
+    this.viewCount = viewCount;
+  }
+  public String getTelephone() {
+    return telephone;
+  }
+  public void setTelephone(String telephone) {
+    this.telephone = telephone;
   }
   public Team getTeam() {
     return team;
@@ -159,23 +175,11 @@ public class Match implements Cloneable, Serializable {
   public void setTeamMember(TeamMember teamMember) {
     this.teamMember = teamMember;
   }
-  public Team getOtherTeam() {
-    return otherTeam;
-  }
-  public void setOtherTeam(Team otherTeam) {
-    this.otherTeam = otherTeam;
-  }
   public TeamTypeSports getTeamTypeSports() {
     return teamTypeSports;
   }
   public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
     this.teamTypeSports = teamTypeSports;
-  }
-  public List<MatchApply> getMatchApply() {
-    return matchApply;
-  }
-  public void setMatchApply(List<MatchApply> matchApply) {
-    this.matchApply = matchApply;
   }
   public TeamAges getTeamAges() {
     return teamAges;
@@ -195,13 +199,6 @@ public class Match implements Cloneable, Serializable {
   public void setTags(List<Tag> tags) {
     this.tags = tags;
   }
-  public Member getMember() {
-    return member;
-  }
-  public void setMember(Member member) {
-    this.member = member;
-  }
- 
- 
   
+    
 }
