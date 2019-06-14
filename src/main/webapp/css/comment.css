@@ -1,15 +1,20 @@
 @charset "UTF-8";
 
 .a {
-	left: 520px; 
-	top:0px; 
-	position: absolute;  
+	left: 260px; 
+	bottom: 40px; 
+	position: relative;  
 }
 
 .cmtform {
 	width:500px;
 }
 
+.comment-form{
+	width:300px; 
+	resize: none;
+} 
+ 
 .comment-list {
 	text-align: left;
 }
@@ -18,5 +23,20 @@
 	left: 0px; 
 	position: absolute;
 }
+ 
+#counter {
+  background:black;
+  color:white; 
+  border-radius: 0.5em;
+  padding: 0 .5em 0 .5em;
+  font-size: 0.75em;
+} 
 
+.counter2 {
+  background:black;
+  color:white; 
+  border-radius: 0.5em;
+  padding: 0 .5em 0 .5em;
+  font-size: 0.75em;
+} 
 

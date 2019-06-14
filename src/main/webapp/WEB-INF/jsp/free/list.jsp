@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
 <!-- recruit_board_list.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/free/free.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
