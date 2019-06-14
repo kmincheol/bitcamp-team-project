@@ -171,6 +171,16 @@ body {
   overflow: hidden;
 }
 
+.user-pic{
+	    width: 180px !important;
+    height: 180px !important;
+    margin: 14px 17px !important;
+}
+
+#pimg{
+  border-radius: 100px;
+}
+
 .sidebar-wrapper .sidebar-header .user-pic img {
   object-fit: cover;
   height: 100%;
@@ -502,10 +512,6 @@ body {
 	margin:10px 0px;
 }
 
-.sidebar-header{
-	height: 280px;
-}
-
 .sidebar-brand{
 	height: 92px;
 }
@@ -526,4 +532,9 @@ body {
 	border-radius: .25rem;
 	transition: color .15s ease-in-out, background-color .15s ease-in-out,
 		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.user-info{
+	    width: 100%;
+    text-align: center;
 }

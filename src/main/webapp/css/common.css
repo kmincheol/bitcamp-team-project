@@ -34,8 +34,19 @@ body, html {
   height: auto;
   min-height: 100%;
   margin: 0 auto;
+  font-family: 'Jua', sans-serif;
 }
 
 #main-wrap{
 	width:1080px;
+}
+
+#main-wrap input{
+	box-shadow: 0 0;
+}
+#main-wrap select{
+  box-shadow: 0 0;
+}
+#main-wrap textarea{
+  box-shadow: 0 0;
 }

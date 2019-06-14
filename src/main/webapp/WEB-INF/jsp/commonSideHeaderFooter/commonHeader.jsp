@@ -7,7 +7,6 @@
     <div class="menu">
       <ul>
         <li><a href="${contextRootPath}/app/main">Home</a></li>
-        <li><a href="#">Blog</a></li>
         <c:if test="${empty sessionScope.loginUser}">
           <li><a href="${contextRootPath}/app/auth/form">Login</a></li>
         </c:if>

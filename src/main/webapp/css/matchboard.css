@@ -1,249 +1,304 @@
 @charset "UTF-8";
 
 h2 {
-  text-align: center;
+	text-align: center;
 }
 
 p {
-  text-align: center;
+	text-align: center;
 }
 
-#main-text{
-  margin-top: 90px;
+#main-text {
+	margin-top: 90px;
 }
 
-.container{
-  border-top: 2px solid black;
-}
-
-#main-wrap{
-  padding-left: 35px;
+.container {
+	border-top: 2px solid black;
 }
 
 div.button1 {
-  width: 200px;  
-  position: absolute; 
-    text-align: center;
-  left: 55%; 
-  }
+	width: 200px;
+	position: absolute;
+	text-align: center;
+	left: 55%;
+}
 
 div.button2 {
-  width: 100px;  
-  right: 10%
+	width: 100px;
+	right: 10%
 }
 
 .button3 {
-  top:60px;
-  height: 20px;
-  padding: 0px;
+	top: 60px;
+	height: 20px;
+	padding: 0px;
 }
-
 
 .pos-relative {
-  margin: 0px;
+	margin: 0px;
 }
-  
+
 .tableline {
-  border-width: 3px;
-  border-style: solid;
-  border-color: rgb(255, 255, 255);
-  border-bottom-color: rgb(200, 200, 200);
+	border-width: 3px;
+	border-style: solid;
+	border-color: rgb(255, 255, 255);
+	border-bottom-color: rgb(200, 200, 200);
 }
 
 .col-sm-10 {
-  text-align: center;
+	text-align: center;
 }
 
 popover 디자인
 .popover-body {
-  width:200px;
-  height:200px;
-  overflow:hidden;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
 }
 
 #info {
-    padding-right: 75px;
-  position: relative;
-    width: 400px;
+	padding-right: 75px;
+	position: relative;
+	width: 400px;
 }
 
-#teaminfo:not(#subtable) {
-  padding: 20px 20px 20px 20px;
-}
+#teaminfo
 
-#applybtn{
-  top:60px
+
+
+
+
+
+:not
+
+
+
+ 
+
+
+
+(
+#subtable
+
+
+
+ 
+
+
+
+)
+{
+padding
+
+
+
+
+
+
+:
+
+
+
+ 
+
+
+
+20
+px
+
+
+
+ 
+
+
+
+20
+px
+
+
+
+ 
+
+
+
+20
+px
+
+
+
+ 
+
+
+
+20
+px
+
+
+
+
+
+
+;
+}
+#applybtn {
+	top: 60px
 }
 
 #formBtn {
-  margin-bottom: 16px
+	margin-bottom: 16px
 }
 
-
 #button3 {
-  position: absolute;
-  top: 60px;
-  position: relative;
-  border-width: 0px
+	position: absolute;
+	top: 60px;
+	position: relative;
+	border-width: 0px
 }
 
 #btnsub {
-  margin-left: 17px;
-  padding-top:36px;
-  padding-bottom:36px;
+	margin-left: 17px;
+	padding-top: 36px;
+	padding-bottom: 36px;
 }
 
-#btnform{
-  padding-top: 40px;
+#btnform {
+	padding-top: 40px;
 }
 
-#regbtn{
-  text-align:center;
+#regbtn {
+	text-align: center;
 }
-
 
 #viewCnt {
-text-align: right;
+	text-align: right;
 }
+
 #viewCnt {
-text-align: right;
+	text-align: right;
 }
+
 #loclab {
-text-align: right;
-}
-#typlab{
-text-align: right;
+	text-align: right;
 }
 
-
-
+#typlab {
+	text-align: right;
+}
 
 #match_table {
-  height: 70%;
-  margin-top: 60px;
+	height: 70%;
+	margin-top: 60px;
 }
 
 #sub_title {
-  color: white;
+	color: white;
 }
 
 #sub1 {
-  color: white;
-}
- 
-#subtable {
-  text-align: center;
-  height :300px;
+	color: white;
 }
 
-#selectType{
-  padding-left: 0px;
+#subtable {
+	text-align: center;
+	height: 300px;
+}
+
+#selectType {
+	padding-left: 0px;
 }
 
 #matchform {
-  height:150px;
+	height: 150px;
 }
 
 #embloc {
-  margin: 20px;
+	margin: 20px;
 }
-
 
 #detail_table {
-  text-align: center;
+	text-align: center;
 }
 
- #sidebar-right {
-  background-color: black;
-  font-size: 1.2em;
-  color: white;
-  width: 180px;
-  height: 480px; 
-  margin-left: 830px; 
-  overflow:auto; 
-  position: absolute; 
-  font-size: 15px;
+#sidebar-right {
+	background-color: black;
+	font-size: 1.2em;
+	color: white;
+	width: 180px;
+	height: 480px;
+	margin-left: 830px;
+	overflow: auto;
+	position: absolute;
+	font-size: 15px;
 }
 
- #sidebar2-right {
-  background-color: silver;
-  font-size: 1.2em;
-  color: black;
-  width: 180px;
-  height: 180px; 
-  margin-left: 830px;
-  min-height: 550px;
-  position: absolute; 
+#sidebar2-right {
+	background-color: silver;
+	font-size: 1.2em;
+	color: black;
+	width: 180px;
+	height: 180px;
+	margin-left: 830px;
+	min-height: 550px;
+	position: absolute;
 }
-
 
 #add {
-  width: 300px;
-  margin-left: 40px;
+	width: 300px;
+	margin-left: 40px;
 }
-
-
 
 #ground_title {
-  background-color: black; 
-  color: white;
+	background-color: black;
+	color: white;
 }
 
-
 #side_title {
-  margin-left: 830px;
-  margin-bottom: 18px;
-  font-size: 30px;
-  width: 165px;
+	margin-left: 830px;
+	margin-bottom: 18px;
+	font-size: 30px;
+	width: 165px;
 }
 
 #side_team {
-  color: white;
-  border: 3px soild black;
+	color: white;
+	border: 3px soild black;
 }
 
 #searchbtn {
-  width: 300px;
-  }
+	width: 300px;
+}
 
-
-#detail_background{
-  text-align: center;
-  margin-top: 40px;
+#detail_background {
+	text-align: center;
+	margin-top: 40px;
 }
 
 #detail_table {
-  text-align: center;
-  width:1000px;
+	text-align: center;
+	width: 1000px;
 }
 
-.listbtn{
-  top:30px;
-  margin-top: 21px;
-  margin-left: 25px;
-  text-align: left;
+.listbtn {
+	top: 30px;
+	margin-top: 21px;
+	margin-left: 25px;
+	text-align: left;
 }
 
-
-#mtaply{
-  text-align: left;
-  padding-left: 340px;
-  padding-bottom: 3px;
-}
-#selectBox{
-  text-aling: center;
-  margin-left: 65px;
-  margin-bottom: 3px;
-  width: 170px;
+#mtaply {
+	text-align: left;
+	padding-left: 340px;
+	padding-bottom: 3px;
 }
 
-#selectBox22{
-  text-aling: center;
+#selectBox {
+	text-aling: center;
+	margin-left: 65px;
+	margin-bottom: 3px;
+	width: 170px;
 }
 
-#teamsteams{
-      padding-top: 21px;
+th {
+	text-align: center;
+	vertical-align: middle !important;
 }
-
-
-
