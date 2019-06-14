@@ -36,7 +36,7 @@ width:300px;
   <div class="container" id="main-wrap">
 
     <div id="detail_background">
-      <form action='update' method='post' enctype='multipart/form-data'>
+      <form action='update' method='post'>
    
    <table class="table table-striped table-dark" id="detail_table">
   <tr>
@@ -55,6 +55,9 @@ width:300px;
       
       <td scope="col" rowspan="3" colspan="1" style="text-align: center;">
       엠블럼
+      <div style="width:60px; height:50px;">
+       ${match.team.teamEmblemPhoto}
+      </div>
       </td>   
   </tr>
 	  
@@ -110,28 +113,25 @@ width:300px;
           <label for="contents" style="padding-top:130px;">내용</label>
     </th>
     <td colspan="4">
-            <textArea class="form-control" style="height:300px;">${match.contents}</textArea>
+            <textArea class="form-control" style="height:300px;" readonly="readonly">${match.contents}</textArea>
 	 </td>
 </tr>	
 	</table>  
   
-      <div id="listbtn">
-      <a class="btn btn-dark" href='${contextRootPath}/app/matchboard/'>목록</a> 
-    </div>
+      <div class="listbtn">
+      <a id="listbutton" class="btn btn-dark" href='${contextRootPath}/app/matchboard/'>목록</a> 
   
-        <div class="form-group row" style="padding-left:165px; height:5px;">
           <div class="col-sm-10">
             <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
              <c:if test="${!empty sessionScope.loginUser}">
-             <c:if test="${sessionScope.loginUser.no eq match.team.teamMember.memberNo}">
-             <c:if test="${match.team.teamMember.teamLeader == 'true'}">
+             <c:if test="${sessionScope.loginUser.id eq matchuserId}">
           <a id="delt" class="btn btn-primary" href='delete/${match.no}'>삭제</a>
-          <a id="updt" class="btn btn-primary" href='${contextRootPath}/app/matchboard/update/${match.no}'>변경</a> 
-            </c:if> 
+          <a id="updt" class="btn btn-primary" href='${contextRootPath}/app/matchboard/update_form/${match.no}'>변경</a> 
             </c:if>
             </c:if>
           </div>
-        </div>
+<%--              <c:if test="${match.team.teamMember.teamLeader == 'true'}"> --%>
+    </div>
       </form>
               <div id="mtaply" >
                <c:if test="${!empty sessionScope.loginUser}">
@@ -153,11 +153,23 @@ width:300px;
 
 
 <script>
-
+var openWin;
 var choiceTeamValue; //신청팀번호
 var matchTeamNo;// 매치글의 팀번호 들어옴
 var sizesize = $("input[id='loginUserTeamNumbers']").length; // 신청자의 팀 배열 길이.
 var teamnocom = sizesize;
+
+console.log("${sessionScope.loginUser.id} + '로그인 유저 아이디'");
+console.log("${matchuserId} + '매치글 작성 유저 아이디'");
+
+function openMap(){
+    // window.name = "부모창 이름"; 
+    window.name = "parentForm";
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+    window.open("${contextRootPath}/app/matchboard/map2.jsp",
+            "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
+}
+
 
 
 

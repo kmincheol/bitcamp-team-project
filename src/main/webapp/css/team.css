@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 .container {
-	font-family: 'Jua', sans-serif;
+font-family: 'Do Hyeon', sans-serif;
 }
 
-#main-text {
+#main-text { 
 	margin-bottom: 30px;
 	text-align: center;
 }

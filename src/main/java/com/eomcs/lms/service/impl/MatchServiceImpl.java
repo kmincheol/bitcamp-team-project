@@ -78,9 +78,6 @@ public class MatchServiceImpl implements MatchBoardService {
     // 태그 데이터 지우고
     // 그리고 나서 매치보드 번호 삭제. 
     
-    matchApplyDao.deleteAll(no);
-
-    tagDao.deleteByTagNo(no);
     return matchDao.delete(no);
   }
 

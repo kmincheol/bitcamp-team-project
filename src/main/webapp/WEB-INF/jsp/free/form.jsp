@@ -4,50 +4,95 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>게시글 등록</title>
-<jsp:include page="../commonCss.jsp" />
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- recruit_board_form.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_form.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+  
+  <!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
+  rel="stylesheet">
+
+<!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
+
 </head>
 <body>
 
-  <div class="container">
-    <h1>글 쓰기</h1>
-    <br>
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
+  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
 
-    <section>
-      <form id='add_form' action='add' method='post'>
 
-        <div class="form-group row">
-          <label for="title" class="col-sm-10 col-form-label">제목</label>
-          <div class="col-sm-10">
-            <input class="form-control" id="title" name='title'>
-          </div>
+     <div id="main-wrap" class="container">
+
+    <div id="main-text">
+      <div class="text-field">
+        <span style="font-weight: bold; font-size: 2.0em;">자유롭게 </span> <span
+          style="font-size: 2.0em;"> 글을 </span>
+        <div style="font-size: 2.0em;">등록할 수 있습니다.</div>
+      </div>
+    </div>
+
+<form id='add_form' name="add-cancle" action='add' method='post'>
+      <div id="table">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th id="table-header" scope="row">제목</th>
+              <td><input id="title" name="title" class="form-control"></td>
+            </tr>
+            <tr>
+              <th id="table-header" scope="row">내용</th>
+              <td><textarea id="summernote" name='contents' rows='5'></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12 text-center">
+          <a id="cancle" class="btn btn-dark" href='${contextRootPath}/app/free'>취소</a>
+          <button id="add" class="btn btn-dark">등록</button>
         </div>
-
-
-        <!-- summernote와 관련된 영역 -->
-        <hr>
-        <b>내용</b> <br>
-        
-        <div class="freeSummernote">
-          <textarea id="summernote" name="contents"></textarea>
-          <br><br>
-        </div>
-
-        <!-- 버튼과 관련된 영역 -->
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <a class="input-group-btn btn btn-dark" href='./'>목록</a>
-            <button class="input-group-btn btn btn-dark" id="add">작성하기</button>
-          </div>
-        </div>
-      </form>
-    </section>
-  </div>
-  <!-- .container -->
+      </div>
+    </form>
+</div>
   
 <jsp:include page="../javascript.jsp" />
-<script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+
+  <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+  
 <script>
 "use strict"
 
@@ -74,7 +119,7 @@ function checkTerms() {
 
   if (titleCheck.length <= 0 ||
       contentsCheck.length <= 0) {
-    alert("내용을 입력해주세요!");
+    alert("제목과 내용을 입력해주세요!");
     res = false;
   }
 
@@ -83,7 +128,7 @@ function checkTerms() {
 
 function submitAgree() {
   if (checkTerms() != true) {
-    return false;
+    return false; 
   }
 
   $("#add_form").submit();

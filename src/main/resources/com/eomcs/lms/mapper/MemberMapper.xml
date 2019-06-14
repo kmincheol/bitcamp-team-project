@@ -65,14 +65,15 @@
       name,
       bth_dt,
       gndr, 
+      prof_phot,
       email,
       user_id,
       pwd,
       tel,
       post,
-      prof_phot,
       bas_addr,
       det_addr,
+      login_type,
       s_intd
     from 
       mbr

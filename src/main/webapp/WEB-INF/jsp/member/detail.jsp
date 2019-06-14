@@ -6,12 +6,39 @@
 <html>
 <head>
   <title>회원 상세조회</title>
-  <jsp:include page="../commonCss.jsp"/>
-  <jsp:include page="../header.jsp"/>
+  <!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- recruit_board_list.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/free/free.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+     
 </head>
 <body>
+ <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
-  <%-- <jsp:include page="../header.jsp" /> --%> 
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
    
   <div class="container">
    <br><br>
@@ -171,8 +198,14 @@
     </div>
   </div>
   
-  <jsp:include page="../javascript.jsp"/> 
-
+  <jsp:include page="../javascript.jsp" />
+    
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
+   
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>
+  
+    <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/> 
+ 
   <script type="text/javascript">
    /* $('#password-btn').on('click', function () {
       var url = "form.jsp";  

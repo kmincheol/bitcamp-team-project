@@ -162,11 +162,32 @@
     <result column="stdm_long" property="stadiumLongitude" />
     <result column="tel" property="telephone" />
     <result column="cost" property="cost" />
-
-
-
 </resultMap>  
+
   
+    
+ <resultMap type="TeamRecruit" id="teamRecruitMap">
+    <id column="rcrm_id" property="teamNo" />
+    <result column="tm_id" property="teamId" />
+    <result column="titl" property="teamTitle" />
+    <result column="vw_cnt" property="teamViewCount" />
+    <result column="cdt" property="teamCreatedDate" />
+    <result column="rcrm_stat" property="teamRcrmStatus" />
+    <result column="cont" property="teamContents" />
+
+    <association property="team" javaType="Team">
+      <id column="tm_id" property="teamId" />
+      <result column="age_id" property="teamAgeId" />
+      <result column="area" property="teamArea" />
+      <result column="name" property="teamName" />
+    </association>
+    
+    <association property="joinTeam" javaType="JoinTeam">
+      <id column="rcrm_id" property="rcrmId" />
+      <id column="mbr_id"  property="mbrId"/>
+    </association>
+
+  </resultMap>
   
     <sql id="default-columns">
       mbr_id, 
@@ -286,6 +307,19 @@ mtc.tm_id = #{value}
       tm t
        left outer join mtch mc on t.tm_id = mc.tm_id
        where t.tm_id = ${value}
+  </select> 
+
+
+
+
+ <select id="findJoinTeam" resultMap="teamRecruitMap" parameterType="int">
+ select 
+ name,
+ gndr 
+ from
+  rcrm rc left outer join join_tm jt on rc.rcrm_id = jt.rcrm_id 
+  left outer join mbr m on jt.mbr_id = m.mbr_id 
+  where tm_id = ${value}
   </select> 
 
 
