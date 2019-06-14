@@ -249,9 +249,12 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
     }
     
     $("#btn_zo").click(function() {
-    	var teamNo =  parseInt(bbb[1]);    
-    	location.href='${contextRootPath}/app/myteam/send/' + teamNo ;
-    	});
+    /* 	var teamNo =  parseInt(bbb[1]);    
+    	location.href='${contextRootPath}/app/myteam/send/' + teamNo
+    	 */
+    	 document.getElementById('aaaa').style.display="none"
+      
+    });
     
     
     

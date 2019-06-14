@@ -7,6 +7,7 @@ import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
+import com.eomcs.lms.domain.TeamRecruit;
 
 public interface MyTeamDao {
  
@@ -18,6 +19,7 @@ public interface MyTeamDao {
   List<MatchApply>findByMatchNo(int no);
   List<Match>findByMatchNo2(int no);
   List<Team>findByMatchTeam(int no);
+  List<TeamRecruit>findJoinTeam(int no);
 }
 
 

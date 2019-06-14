@@ -9,6 +9,7 @@ import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
+import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.MyTeamService;
 
 // 5월 14일 생성만 함
@@ -72,6 +73,8 @@ public List<Match> findMatchNo2(int no) {
 public List<Team> MatchTeam(int no) {
   return myteamDao.findByMatchTeam(no);
 }
+
+  @Override public List<TeamRecruit> findByJoinTeam(int no) { return myteamDao.findJoinTeam(no); }
 
 
  
