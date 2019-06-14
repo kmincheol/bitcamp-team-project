@@ -103,7 +103,7 @@
     #{teamId})
   </insert> -->
 
-<!--   <insert id="jinsert" parameterType="">
+ <insert id="jinsert" parameterType="Hashmap">
   insert into join_tm(
     mbr_id, rcrm_id
   )
@@ -114,8 +114,8 @@
     mbr,
     rcrm
   where
-    mbr_id=#{mbrid} and rcrm_id=#{rcrmid};
-    </insert> -->
+    mbr_id=#{mno} and rcrm_id=#{no};
+    </insert>
   
     <select id="findAll3" resultMap="memberMap" parameterType="map">
     select

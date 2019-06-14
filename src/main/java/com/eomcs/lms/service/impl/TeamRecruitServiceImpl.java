@@ -1,5 +1,6 @@
 package com.eomcs.lms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.TeamRecruitDao;
@@ -125,6 +126,14 @@ public class TeamRecruitServiceImpl implements TeamRecruitBoardService {
     return teamRecruit;
   }
 
+  @Override
+  public int add3(int no, int mno) {
+    HashMap<String, Integer> hm = new HashMap<String, Integer>();
+    hm.put("no", no);
+    hm.put("mno", mno);
+    // TODO Auto-generated method stub
+    return teamRecruitDao.jinsert(hm);
+  }
 
 }
 

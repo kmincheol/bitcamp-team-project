@@ -51,7 +51,7 @@
 
   <div id="main-wrap" class="container">
     <div style="margin-top: 50px;">
-      <div style="width: 520px; float: left;">
+      <div style="width: 1080px;">
         <div style="background: #949494; text-align: center; font-weight: bold; line-height: 40px;">
           신청받은경기</div>
         <div style="height: 500px; border: 1px solid;">
@@ -70,18 +70,6 @@
               <%-- </c:forEach> --%>
             </tbody>
           </table>
-        </div>
-      </div>
-      <div style="width: 520px; height: 540px; border: 1px solid; float: right">
-        <div style="width: 200px; border: 1px solid; height: 200px; margin: auto; margin-top: 30px;">
-          엠블렘</div>
-        <!-- 팀정보 -->
-        <div style="margin-top: 60px;">
-          <div class="team_info">○ 지역 : </div>
-          <div class="team_info">○ 팀명 : </div>
-          <div class="team_info">○ 구장 : </div>
-          <div class="team_info">○ 날짜 : </div>
-          <div class="team_info">○ 비용 : </div>
         </div>
       </div>
     </div>   

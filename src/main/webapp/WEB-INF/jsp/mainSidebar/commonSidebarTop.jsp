@@ -139,12 +139,12 @@
       </div>
       <!-- sidebar-content  -->
       <div class="sidebar-footer">
-        <a href="#"> <i class="fa fa-bell"></i>
+<!--         <a href="#"> <i class="fa fa-bell"></i>
         </a> 
         <a href="#"> <i class="fa fa-envelope"></i>
         </a> 
         <a href="#"> <i class="fa fa-cog"></i>
-        </a>
+        </a> -->
 			<c:if test="${sessionScope.loginUser != null}">
 				<a href="${contextRootPath}/app/auth/logout"> <i
 					class="fa fa-power-off"></i>
