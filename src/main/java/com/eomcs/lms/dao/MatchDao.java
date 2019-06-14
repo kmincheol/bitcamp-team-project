@@ -12,6 +12,8 @@ public interface MatchDao {
   List<Match> teamInfoGet(int no);
   List<Match> leaderJudge(int no);
   List<Match> search();
+  List<Match> searchBySportsType(int sportsTypeNo);
+  List<Match> searchBySportsTypeAll(Map<String, Object> params);
   void increaseCount(int no);
   int update(Match match);
   int delete(int no);

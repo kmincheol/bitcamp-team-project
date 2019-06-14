@@ -15,6 +15,7 @@ public interface TeamDao {
   int insert(Team team);
   int insertTeamLeader(TeamMember teamMember);
   Team findByNo(int no);
+  Team findSportsTypeByNo(int no);
   List<Team> findAllTeam1();
   List<Team> findAllTeam2();
   List<Team> findBykeyword(String keyword);
@@ -24,6 +25,7 @@ public interface TeamDao {
   List<TeamLevel> findTeamLevel();
   List<TeamMember> findTeamMember();
   List<TeamMember> findByNoWithTeamMember(int no);
+  List<TeamMember> findTeamMemberByMemberNo(int no);
   List<Member> findAllMember(Map<String,Object> params);
   int update(Team teamO);
   int delete(int no);

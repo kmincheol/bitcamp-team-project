@@ -21,7 +21,7 @@ public class Match implements Cloneable, Serializable {
   private Date modifierDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date playDate;
-  private int location; // 임시 숫자로 바꿈, 첫번째 상세위치
+  private String location; // 임시 숫자로 바꿈, 첫번째 상세위치
   private String stadiumName;
   private String stadiumLatitude;
   private String stadiumLongitude;
@@ -50,7 +50,6 @@ public class Match implements Cloneable, Serializable {
         + teamLevel + ", tags=" + tags + "]";
   }
 
-  
   public int getNo() {
     return no;
   }
@@ -99,11 +98,11 @@ public class Match implements Cloneable, Serializable {
     this.playDate = playDate;
   }
 
-  public int getLocation() {
+  public String getLocation() {
     return location;
   }
 
-  public void setLocation(int location) {
+  public void setLocation(String location) {
     this.location = location;
   }
 
