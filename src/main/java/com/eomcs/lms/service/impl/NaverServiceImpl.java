@@ -21,7 +21,7 @@ import com.eomcs.lms.domain.TermsAgree;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.NaverService;
 
-@RequestMapping
+@Service
 public class NaverServiceImpl implements NaverService {
   
   final static Logger logger = LogManager.getLogger(NaverServiceImpl.class);
