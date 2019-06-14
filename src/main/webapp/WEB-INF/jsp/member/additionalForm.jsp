@@ -110,7 +110,7 @@
                 <span class="error_next_box" id="authNoMsg" style="display:none" role="alert"></span>
               </div>
               
-              <div class="row_group join_photo">
+              <div class="join_photo">
               <div class="join_row join_photo_title">
                 <h3 class="join_title" id="photo_title">
                   <label for="fileupload" style="cursor: pointer">프로필 사진<span class="terms_choice">(선택)</span></label>
@@ -130,7 +130,7 @@
                 </span>
               </div>
             </div><!-- .join_photo -->
-            <div class="row_group">
+            <div class="row_addr">
               <div class="join_row">
                 <h3 class="join_title">
                   <label for="addressBtn">주소/상세주소</label>
@@ -161,7 +161,7 @@
                   <textarea class="ps_box self_introduce" id="self_introduce" name="selfIntroduce" placeholder="간단한 자기소개를 입력해주세요." rows="5" cols="30"></textarea>
                 </div>
               </div>
-            </div><!-- .row_group -->
+            </div><!-- .row_addr -->
             
           </div><!-- .join_form_input -->
           
@@ -215,9 +215,9 @@ $('#fileupload').fileupload({
   }
 });
 
-$('.file_input input[type=file]').change(function() {
+$('#fileupload').change(function() {
   var filename = $(this).val().replace(/c:\\fakepath\\/i, '');
-  $('.file_input input[type=text]').val(filename);
+  $('#file_route').val(filename);
 });
 
 var authFlag = false;
@@ -671,7 +671,7 @@ function sendSms() {
   var oBox = $('#joinCode');
   var authNoBox = $('#authNoBox');
   var authNoMsg = $('#authNoMsg');
-
+  
   if (!telFlag) {
     showErrorBoxByError(oBox);
     return false;

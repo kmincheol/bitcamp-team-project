@@ -6,5 +6,5 @@ public interface SmsService {
   Sms getBySms(Sms sms);
   int add(Sms sms);
   int deleteTemp();
-  Boolean sendAuthSms(String tel);
+  void sendAuthSms(String tel);
 }

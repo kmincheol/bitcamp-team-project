@@ -68,8 +68,7 @@ body {
   box-sizing: border-box;
   display: block;
 }
-.row_group {
-  overflow:hidden;
+.row_addr {
   width:100%
 }
 .join_row .green{
@@ -232,14 +231,14 @@ html[lang=ko] #header .lang .sel {
 	display: inline-block;
   height: 51px;
   width: 100px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 15px;
   position: relative;
   border-radius: 0;
-  bottom: 3px
+  bottom: 2.9px
 }
 #postBox {
   display: inline-block;
-  width: 386px
+  width: 381px
 }
 #baseAddr, #detailAddr {
   margin-top: 10px
@@ -299,6 +298,9 @@ html[lang=ko] #header .lang .sel {
 .join_photo_view {
 	text-align: center
 }
+.join_photo {
+	width:100%
+}
 #self_introduce {
 	outline: 0;
   width: 500px;
@@ -355,7 +357,7 @@ html[lang=ko] #header .lang .sel {
   bottom : 2.5px
 }
 #fileupload1 {
-	margin: 0 0 0 15px;
+	margin: 0 0 0 13px;
   position: relative;
   border-radius: 0;
   top: 1.7px
