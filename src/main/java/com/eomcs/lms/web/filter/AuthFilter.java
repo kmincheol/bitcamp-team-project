@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.eomcs.lms.domain.Member;
-import com.eomcs.lms.web.FreeController;
 
 @WebFilter("/app/app") // 임시로 오류발생시킴 ("/app/*")
 public class AuthFilter implements Filter {
+  
+  final static Logger logger = LogManager.getLogger(AuthFilter.class);
   
   FilterConfig filterConfig;
   String contextRootPath; // 예) /java-web-project
@@ -41,23 +42,25 @@ public class AuthFilter implements Filter {
     // /app/* URL에 대해서 적용하기 때문에 서블릿 경로를 검사해서는 안된다.
     //String servletPath = httpReq.getServletPath(); // "/app"
     String pathInfo = httpReq.getPathInfo(); // ex) "/board/list"
+    logger.info("경로 >> " + pathInfo);
     
     if (pathInfo.endsWith("add")
         || pathInfo.endsWith("update")
         || pathInfo.endsWith("delete")
         || pathInfo.endsWith("member")
-        || pathInfo.substring(pathInfo.lastIndexOf("/")+ 1, pathInfo.length()).matches("(^[0-9]*$)")
+        //|| pathInfo.substring(pathInfo.lastIndexOf("/")+ 1, pathInfo.length()).matches("(^[0-9]*$)")
         || (!pathInfo.endsWith("/member/form") && 
              pathInfo.endsWith("form"))) {
       // 로그인 되어 있어야 한다.
       Member loginUser = (Member) httpReq.getSession().getAttribute("loginUser");
-      System.out.println(loginUser.toString());
+
       if (loginUser == null) {
         // 클라이언트가 요청한 위치를 알 수 없기 때문에
         // 막연히 상대경로로 로그인 폼의 URL을 지정할 수 없다.
         // 절대 경로로 정확하게 지정하라.
         
         httpResp.sendRedirect(contextRootPath + "/app/auth/form");
+        
         return;
       }
     }
