@@ -47,7 +47,7 @@
             data-group="group1"
             name="sportsType"
             data-selected="true">
-         모든종목
+         모든 종목
          </button><br>
         
         <a type="button" id="stype"
@@ -56,7 +56,7 @@
             data-mode="radio"
             data-group="group1"
             name="sportsType"
-            data-text="축구"
+            data-text="soccer"
             >
         <img src="${contextRootPath}/images/football_list_min.png"> 
         </a>
@@ -67,7 +67,7 @@
             data-mode="radio"
             data-group="group1"
             name="sportsType"
-            data-text="야구">
+            data-text="baseball">
          <img src="${contextRootPath}/images/baseball_list_min.png">
         </a>
         
@@ -77,7 +77,7 @@
             data-mode="radio"
             data-group="group1"
             name="sportsType"
-            data-text="농구">
+            data-text="basketball">
          <img src="${contextRootPath}/images/basketball_list_min.png">
         </a>
         
@@ -87,7 +87,7 @@
             data-mode="radio"
             data-group="group1"
             name="sportsType"
-            data-text="탁구">
+            data-text="pingpong">
          <img src="${contextRootPath}/images/pingpong_list_min.png">
         </a>
         
@@ -102,7 +102,7 @@
             data-group="group1"
             name="teamLevel"
             data-selected="true">
-         모든레벨 <!-- 전체 -->
+         모든 레벨 <!-- 전체 -->
          </button>
 
         <button type="button" id="levelbtn" class="btn btn-dark" 
@@ -111,7 +111,7 @@
             data-mode="radio"
             data-group="group1"
             name="teamLevel"
-            data-text="상"
+            data-text="high"
             >
         상 
         </button>
@@ -122,7 +122,7 @@
             data-mode="radio"
             data-group="group1"
             name="teamLevel"       
-            data-text="중">
+            data-text="mid">
         중 
         </button>
         
@@ -132,7 +132,7 @@
             data-mode="radio"
             data-group="group1"
             name="teamLevel"
-            data-text="하">
+            data-text="low">
         하 
         </button>
         </div>
@@ -140,7 +140,7 @@
                 <!-- text filter control -->
         
         <div id="inputBox2">
-                <input class="form-control-sm"
+                <input class="form-control-sm" id="titleSearchBox"
                 data-jplist-control="textbox-filter"
                 data-group="group1"
                 data-name="my-filter-1"
@@ -156,13 +156,15 @@
           
                 <br>
           
-            <button type="button" class="btn btn-dark" id="name-clear-btn" style="margin-top:10px;">
+            <button type="button" class="btn btn-dark" id="name-clear-btn">
             검색 설정 초기화 <!-- 지우개버튼 -->
             </button>
             
-            <button  type="button" class="btn btn-dark" id="matchform"
+            <div id="liner"></div>
+            <button type="button" class="btn btn-info" id="matchform"
             onClick="location.href='${contextRootPath}/app/matchboard/form' " >
-            매치등록하기</button>
+            매치등록하기
+            </button>
     <div style="display: none;">
     <input 
          id="textbox-filter"
@@ -180,29 +182,7 @@
         </div>
         
         <!-- 페이지 컨트롤 부분 -->
-    <div class="controls">
-        <div
-                data-jplist-control="pagination"
-                data-group="group1"
-                data-items-per-page="5"
-                data-current-page="0"
-                data-name="pagination1">
-        
-        <div id="control-box" class="form-group row">
-            <button id="firstbtn" type="button" data-type="first">«</button>
-            <button id="prebtn" type="button" data-type="prev">‹</button>
-        
-            <div class="jplist-holder" data-type="pages">
-                <button id="selectbtn" type="button" data-type="page">{pageNumber}</button>
-            </div>
-            
-            <button id="nextbtn" type="button" data-type="next">›</button>
-            <button id="lastbtn" type="button" data-type="last">»</button>
-        </div>
-        
-        </div>
-     </div>
-     
+     <div id="formform">
         <div id="listtitle">
           매치 목록
         </div>
@@ -254,7 +234,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 280px;" 
+           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 180px;" 
            onMouseOver="this.style.backgroundColor='#EAFFFC';"
            onMouseOut="this.style.backgroundColor='' ">
                잠시만 기다려주세요</div>
@@ -301,6 +281,31 @@
       </div>
                 　　　　　　　　　　　　　　　　　　　　<!-- 칸 일그러짐 방지 -->　　　　　　　　　　　　　　　　　　　　　　　
       </div>
+      </div>
+      
+      <div class="controls">
+        <div
+                data-jplist-control="pagination"
+                data-group="group1"
+                data-items-per-page="5"
+                data-current-page="0"
+                data-name="pagination1">
+        
+        <div id="control-box" class="form-group row">
+            <button id="firstbtn" type="button" data-type="first">«</button>
+            <button id="prebtn" type="button" data-type="prev">‹</button>
+        
+            <div class="jplist-holder" data-type="pages">
+                <button id="selectbtn" type="button" data-type="page">{pageNumber}</button>
+            </div>
+            
+            <button id="nextbtn" type="button" data-type="next">›</button>
+            <button id="lastbtn" type="button" data-type="last">»</button>
+        </div>
+        
+        </div>
+     </div>
+      
     </div><!-- .content -->
   </div><!-- .container -->
 
