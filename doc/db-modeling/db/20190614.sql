@@ -67,11 +67,11 @@ DROP TABLE IF EXISTS atk RESTRICT;
 -- 약관선택
 DROP TABLE IF EXISTS terms_optn RESTRICT;
 
--- 가입
-DROP TABLE IF EXISTS join_tm RESTRICT;
-
 -- 문자인증
 DROP TABLE IF EXISTS sms RESTRICT;
+
+-- 새 테이블
+DROP TABLE IF EXISTS join_tm RESTRICT;
 
 -- 후기게시판
 CREATE TABLE revw (
@@ -142,7 +142,9 @@ CREATE TABLE tm (
   tm_unf_wth   BOOLEAN      NULL     DEFAULT 0 COMMENT '팀유니폼여부', -- 팀유니폼여부
   tm_unf_phot  MEDIUMTEXT   NULL     COMMENT '팀유니폼사진', -- 팀유니폼사진
   cdt          DATETIME     NULL     DEFAULT now() COMMENT '팀개설일자', -- 팀개설일자
-  mdt          DATETIME     NULL     DEFAULT now() COMMENT '팀정보수정일자' -- 팀정보수정일자
+  mdt          DATETIME     NULL     DEFAULT now() COMMENT '팀정보수정일자', -- 팀정보수정일자
+  mbr_id       INTEGER(30)  NULL     COMMENT '회원번호', -- 회원번호
+  rcrm_id      INTEGER(30)  NULL     COMMENT '팀원모집번호' -- 팀원모집번호
 )
 COMMENT '팀';
 
@@ -188,7 +190,6 @@ ALTER TABLE qstn
 CREATE TABLE rcrm (
   rcrm_id   INTEGER(30) NOT NULL COMMENT '팀원모집번호', -- 팀원모집번호
   tm_id     INTEGER(30) NULL     COMMENT '팀번호', -- 팀번호
-  mbr_id    INTEGER(30) NULL     COMMENT '신청회원번호', -- 신청회원번호
   titl      VARCHAR(50) NOT NULL COMMENT '제목', -- 제목
   cont      MEDIUMTEXT  NOT NULL COMMENT '내용', -- 내용
   vw_cnt    INTEGER     NULL     DEFAULT 0 COMMENT '조회수', -- 조회수
@@ -565,21 +566,6 @@ ALTER TABLE terms_optn
 ALTER TABLE terms_optn
   MODIFY COLUMN terms_optn_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '약관번호';
 
--- 가입
-CREATE TABLE join_tm (
-  join_id INTEGER(30) NOT NULL COMMENT '가입번호', -- 가입번호
-  rcrm_id INTEGER(30) NULL     COMMENT '팀원모집번호', -- 팀원모집번호
-  mbr_id  INTEGER(30) NULL     COMMENT '회원번호' -- 회원번호
-)
-COMMENT '가입';
-
--- 가입
-ALTER TABLE join_tm
-  ADD CONSTRAINT PK_join_tm -- 가입 기본키
-    PRIMARY KEY (
-      join_id -- 가입번호
-    );
-
 -- 문자인증
 CREATE TABLE sms (
   sms_id   INTEGER(30) NOT NULL COMMENT '문자인증번호', -- 문자인증번호
@@ -599,6 +585,21 @@ ALTER TABLE sms
 
 ALTER TABLE sms
   MODIFY COLUMN sms_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '문자인증번호';
+
+-- 새 테이블
+CREATE TABLE join_tm (
+  mbr_id  INTEGER(30) NOT NULL COMMENT '회원번호', -- 회원번호
+  rcrm_id INTEGER(30) NOT NULL COMMENT '팀원모집번호' -- 팀원모집번호
+)
+COMMENT '새 테이블';
+
+-- 새 테이블
+ALTER TABLE join_tm
+  ADD CONSTRAINT PK_join_tm -- 새 테이블 기본키
+    PRIMARY KEY (
+      mbr_id,  -- 회원번호
+      rcrm_id  -- 팀원모집번호
+    );
 
 -- 후기게시판
 ALTER TABLE revw
@@ -680,6 +681,18 @@ ALTER TABLE tm
       tm_lev_id -- 팀수준번호
     );
 
+-- 팀
+ALTER TABLE tm
+  ADD CONSTRAINT FK_join_tm_TO_tm -- 새 테이블 -> 팀
+    FOREIGN KEY (
+      mbr_id,  -- 회원번호
+      rcrm_id  -- 팀원모집번호
+    )
+    REFERENCES join_tm ( -- 새 테이블
+      mbr_id,  -- 회원번호
+      rcrm_id  -- 팀원모집번호
+    );
+
 -- 질문
 ALTER TABLE qstn
   ADD CONSTRAINT FK_mbr_TO_qstn -- 회원 -> 질문
@@ -698,16 +711,6 @@ ALTER TABLE rcrm
     )
     REFERENCES tm ( -- 팀
       tm_id -- 팀번호
-    );
-
--- 팀원모집
-ALTER TABLE rcrm
-  ADD CONSTRAINT FK_mbr_TO_rcrm -- 회원 -> 팀원모집
-    FOREIGN KEY (
-      mbr_id -- 신청회원번호
-    )
-    REFERENCES mbr ( -- 회원
-      mbr_id -- 회원번호
     );
 
 -- 회원
@@ -890,22 +893,22 @@ ALTER TABLE terms_optn
       mbr_id -- 회원번호
     );
 
--- 가입
+-- 새 테이블
 ALTER TABLE join_tm
-  ADD CONSTRAINT FK_rcrm_TO_join_tm -- 팀원모집 -> 가입
+  ADD CONSTRAINT FK_mbr_TO_join_tm -- 회원 -> 새 테이블
+    FOREIGN KEY (
+      mbr_id -- 회원번호
+    )
+    REFERENCES mbr ( -- 회원
+      mbr_id -- 회원번호
+    );
+
+-- 새 테이블
+ALTER TABLE join_tm
+  ADD CONSTRAINT FK_rcrm_TO_join_tm -- 팀원모집 -> 새 테이블
     FOREIGN KEY (
       rcrm_id -- 팀원모집번호
     )
     REFERENCES rcrm ( -- 팀원모집
       rcrm_id -- 팀원모집번호
     );
-
--- 가입
-ALTER TABLE join_tm
-  ADD CONSTRAINT FK_mbr_TO_join_tm -- 회원 -> 가입
-    FOREIGN KEY (
-      mbr_id -- 회원번호
-    )
-    REFERENCES mbr ( -- 회원
-      mbr_id -- 회원번호
-    ); 

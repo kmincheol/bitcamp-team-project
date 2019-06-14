@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.service.EmailService;
 
@@ -18,9 +19,10 @@ public class EmailServiceImpl implements EmailService{
   @Autowired JavaMailSender mailSender;
   
   @Override
-  public boolean send(String subject, String text, String from, String to) {
+  @Async("threadPoolTaskExecutor")
+  public void send(String subject, String text, String from, String to) {
     MimeMessage message = mailSender.createMimeMessage();
-    
+    logger.info("Execute method asynchronously. " + Thread.currentThread().getName());
     try {
       MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
       helper.setSubject(subject);
@@ -29,11 +31,8 @@ public class EmailServiceImpl implements EmailService{
       helper.setTo(to);
       
       mailSender.send(message);
-      return true;
     } catch (MessagingException e) {
       e.printStackTrace();
     }
-    
-    return false;
   }
 }

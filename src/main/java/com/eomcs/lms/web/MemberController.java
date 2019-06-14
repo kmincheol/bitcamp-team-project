@@ -71,11 +71,11 @@ public class MemberController {
   @ResponseBody
   public String smsSend(@RequestBody Map<String,Object> content) throws Exception {
     String tel = (String) content.get("tel");
-    Boolean a = smsService.sendAuthSms(tel);
-
-    if (a) { // 성공
-      return "sms" + 1;
-    } else { // 실패
+    try {
+    smsService.sendAuthSms(tel);
+    return "sms" + 1;
+    } catch (Exception e) {
+      e.printStackTrace();
       return "sms" + 2;
     }
   }
@@ -181,10 +181,13 @@ public class MemberController {
     StringBuilder sb = new StringBuilder();
     sb.append("이메일 인증 승인 번호는 ").append(joinCode).append(" 입니다. 인증번호 6자리를 모두 입력해주세요.");
     if (authKeyService.add(authKey) != 0) {
-      if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
+      try {
+        emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email);
         return "send" + 1;      
+      } catch (Exception e) {
+        e.printStackTrace();
+        return "send" + 2;
       }
-      return "send" + 2;
     } else {
       return "send" + 0;
     }
@@ -212,9 +215,11 @@ public class MemberController {
     .append(" 입니다. 로그인하시고 마이페이지에서 비밀번호를 변경해주시길 바랍니다.");
 
     if (memberService.updatePassword(member) != 0) {
-      if (emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email)) {
-        return "pwdSend" + 1;
-      } else {
+      try {
+        emailService.send(subject, sb.toString(), "gwanghosongT@gmail.com", email);
+        return "pwdSend" + 1;      
+      } catch (Exception e) {
+        e.printStackTrace();
         return "pwdSend" + 2;
       }
     } else {

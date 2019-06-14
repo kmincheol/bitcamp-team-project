@@ -5,6 +5,7 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.simple.JSONObject;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.conf.GlobalPropertySource;
 import com.eomcs.lms.dao.SmsDao;
@@ -48,7 +49,8 @@ public class SmsServiceImpl implements SmsService {
   }
 
   @Override
-  public Boolean sendAuthSms(String tel) {
+  @Async("threadPoolTaskExecutor")
+  public void sendAuthSms(String tel) {
     String api_key = globalPropertySource.getSmsApiKey();// api_key 값
     String api_secret = globalPropertySource.getSmsApiSecret();// secret_key 값
     Message coolsms = new Message(api_key, api_secret);
@@ -65,7 +67,7 @@ public class SmsServiceImpl implements SmsService {
     
     // sms인증테이블에 저장
     if (smsDao.insert(sms) == 0) {
-      return false;
+      return;
     }
     
     // 4 params(to, from, type, text) are mandatory. must be filled
@@ -79,11 +81,9 @@ public class SmsServiceImpl implements SmsService {
     try {
       JSONObject obj = (JSONObject) coolsms.send(params);
       logger.info(obj.toString());
-      return true;
     } catch (CoolsmsException e) {
       logger.info(e.getMessage());
       logger.info(e.getCode());
-      return false;
     }
   }
 }
