@@ -19,7 +19,7 @@ public interface MyTeamDao {
   List<MatchApply>findByMatchNo(int no);
   List<Match>findByMatchNo2(int no);
   List<Team>findByMatchTeam(int no);
-  List<TeamRecruit>findJoinTeam(int no);
+  List<TeamRecruit>findJoinTeam();
 }
 
 

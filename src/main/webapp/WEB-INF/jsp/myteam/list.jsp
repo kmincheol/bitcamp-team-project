@@ -107,7 +107,7 @@ body {
     </div>
 
     <div id="aaaa" style="width: 1100px; height: 350px; float: left; margin-top: 22px;"></div>
-
+  <div id="aaaa2" style="width: 1100px; height: 350px; float: left; margin-top: 22px;"></div>
   </div>
   <!-- containner -->
 
@@ -146,11 +146,14 @@ function select_onchange(){
    var arrg = new Array(); //${teamMember.member.birthDay}
    var arrgg = new Array();
    
+   
 	 var target = document.getElementById("select_k");
 	 var bbb = String(target.options[target.selectedIndex].value).split(',');
   var teamMark = document.getElementById("teamMark");
 	var teamName= document.getElementById("teamName");
 	 var teamDetail = document.getElementById("teamdetail");
+
+
 
 	 if (bbb.length > 11){
   teamMark.innerHTML ='<img src ="' + bbb[9] +',' +bbb[10] +'" width = "250px" height = "250px" >'
@@ -194,6 +197,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
        '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[7]+'</U></I></B></span>' 
    }
  
+        
 	  
 	<c:forEach items="${tm}" var="teamMember">
 	 arr.push("${teamMember.teamMemberNo}");
@@ -204,6 +208,13 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
 	 arrg.push("${teamMember.member.birthDay}");
 	 </c:forEach>
 
+	
+	 <c:forEach items="${tr}" var="tr">
+ if(${tr.teamId} == bbb[1]){
+		   alert('${tr.member.name}')
+ }	
+	 </c:forEach>
+	 
 	 for (var i = 0; i < arr.length; i++) {
 	    if(arr[i] == parseInt(bbb[1])){
 	    	 arrc.push(arrb[i])
@@ -225,7 +236,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         div.id = "abcd"
         div.innerHTML =
         	'<div class="flip-card"><a href="${contextRootPath}/app/myteam/' + arrr[i] +'/' + arrff[i] + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
-         '<img src ="' + arrdd[i] +  '" width = "259px" height = "250px">' + 
+         '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
          '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
           arrc[i] + '</span></div>' +
           '<div class="flip-card-back"><h3><br><br>' + arree[i] + '</h3> </div></div></a></div>'
@@ -237,6 +248,8 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         document.getElementById('aaaa').appendChild(div);
     } // div append (팀원들)
 
+    
+    
     
     
     var button = document.createElement("button");

@@ -1,8 +1,10 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.eomcs.lms.domain.Match;
+
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
+import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.MyTeamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -41,15 +44,20 @@ public class MyTeamController {
 
 		List<Team> team = myTeamService.teamList(a); // 팀목록
 		List<TeamMember> tm = myTeamService.teamMemberList2();
-
+      List<TeamRecruit> tr = myTeamService.findByJoinTeam();
+     
 		session.setAttribute("member", member);
 		model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
-		System.out.println(tm.toString());
-
+		model.addAttribute("tr", tr);
+	
+		
 		return "myteam/list";
 	}
 
+	 
+
+	
 	/* 팀원 상세보기 */
 
 	@GetMapping("{tno}/{mno}")

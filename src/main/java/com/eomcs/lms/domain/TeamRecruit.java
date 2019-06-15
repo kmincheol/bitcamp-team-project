@@ -28,6 +28,8 @@ public class TeamRecruit implements Cloneable, Serializable {
   private TeamMember teamMember;
   private TeamAges teamAges;
   private JoinTeam joinTeam;
+  
+  
   public int getTeamNo() {
     return teamNo;
   }

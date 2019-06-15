@@ -74,7 +74,7 @@ public List<Team> MatchTeam(int no) {
   return myteamDao.findByMatchTeam(no);
 }
 
-  @Override public List<TeamRecruit> findByJoinTeam(int no) { return myteamDao.findJoinTeam(no); }
+  @Override public List<TeamRecruit> findByJoinTeam() { return myteamDao.findJoinTeam(); }
 
 
  

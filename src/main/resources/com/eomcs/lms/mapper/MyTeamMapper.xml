@@ -186,6 +186,28 @@
       <id column="rcrm_id" property="rcrmId" />
       <id column="mbr_id"  property="mbrId"/>
     </association>
+    
+     <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+       <result column="user_id" property="id" />
+      <result column="pwd" property="password" />
+      <result column="name" property="name" />
+      <result column="bth_dt" property="birthDay" />
+      <result column="gndr" property="gender" />
+      <result column="tel" property="tel" />
+    <result column="email" property="email" />
+    <result column="post" property="post" />
+    <result column="bas_addr" property="baseAddress" />
+    <result column="det_addr" property="detailAddress" />
+    <result column="prof_phot" property="photo" />
+    <result column="s_intd" property="selfIntroduce" />
+    <result column="login_type" property="loginType" />
+    <result column="stat" property="status" />
+    <result column="cdt" property="createdDate" />
+    <result column="lcd" property="latestDate" />
+    <result column="mgr" property="manager" />
+      
+    </association>
 
   </resultMap>
   
@@ -312,14 +334,16 @@ mtc.tm_id = #{value}
 
 
 
- <select id="findJoinTeam" resultMap="teamRecruitMap" parameterType="int">
+ <select id="findJoinTeam" resultMap="teamRecruitMap" >
  select 
- name,
- gndr 
+ m.name,
+ rc.tm_id
+ 
  from
-  rcrm rc left outer join join_tm jt on rc.rcrm_id = jt.rcrm_id 
+  rcrm rc 
+  left outer join join_tm jt on rc.rcrm_id = jt.rcrm_id
   left outer join mbr m on jt.mbr_id = m.mbr_id 
-  where tm_id = ${value}
+  where NOT m.name is null
   </select> 
 
 
