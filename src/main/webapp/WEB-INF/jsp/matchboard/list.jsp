@@ -106,7 +106,7 @@
                 <br>
           
             <button type="button" class="btn btn-dark" id="name-clear-btn">
-            검색 설정 초기화</button> <!-- 지우개버튼 -->
+            검색어 설정 초기화</button> <!-- 지우개버튼 -->
             
             <div id="liner"></div>
             <button type="button" class="btn btn-info" id="matchform"
@@ -261,13 +261,6 @@
         
         <script>
             jplist.init();
-            
-            $(function(){
-              $('.col-sm-4.date').datepicker({});
-              });
-
-            
-            
             
             var no = 0; //매치번호
             var nocom; //no 배열관련

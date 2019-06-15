@@ -51,11 +51,12 @@
 
   <div class="container" id="main-wrap">
                   
-    <form action='add' method='post'>      
+    <form action='add' method='post' name="submit">      
       <div class="row mt-5" style="width: 100%; height:70px; margin-left: 0px;">    
-        <div class="col col-md-2 p-0" style="border: 1px solid #dee2e6; text-align: center; font-weight: bold;">제목</div>
+        <div class="col col-md-2 p-0" style="border: 1px solid #dee2e6; text-align: center; font-weight: bold;">
+        제목</div>
         <div class="col col-md-10 p-0" style="border: 1px solid #dee2e6; text-align: center; font-weight: bold;">
-          <input type="text" class="form-control col-md-11" name="title">
+          <input type="text" id="title" class="form-control col-md-11" name="title">
         </div>
       </div>
       
@@ -88,7 +89,7 @@
             <td><input class="form-control" type='date' id="playDate" name='playDate' /></td>
           </tr>
           <tr>
-            <th scope="row">위치</th>
+            <th scope="row">경기할 지역</th>
             <td>
               <div class="form-group row">
                 <div class="col-sm">
@@ -187,8 +188,8 @@
         <a class="btn btn-dark" href='.'>목록</a>
       </div>
 
-      <div id="regbtn">
-        <button id="add" class="btn btn-dark" type=submit>매치보드에 등록하기</button>
+      <div id="regbtn" >
+        <input type="button" id="add" class="btn btn-dark" onclick="check_onclick()" value="매치보드에 등록하기" >
       </div>
 </div>
       <br> <br>
@@ -197,12 +198,17 @@
   </div>
   <!-- .container -->
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+<%--   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" /> --%>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+<%--   
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />  
+             왜 에러인지 모름.. 유효성 빈칸 작업중
+--%> 
 
-  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+<%--   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" /> --%>
+
+
 
   <script type="text/javascript">
 			var openWin;
@@ -211,10 +217,8 @@
 				// window.name = "부모창 이름"; 
 				window.name = "parentForm";
 				// window.open("open할 window", "자식창 이름", "팝업창 옵션");
-				openWin = window
-						.open("${contextRootPath}/app/matchboard/map.jsp",
-								"childForm",
-								"width=800, height=500, resizable = no, scrollbars = no");
+				openWin = window.open(
+       "${contextRootPath}/app/matchboard/map.jsp", "childForm", "width=800, height=500, resizable = no, scrollbars = no");
 			}
 
 			function getDate() {
@@ -236,10 +240,7 @@
 			window.onload = function() {
 				getDate();
 			};
-		</script>
 
-
-  <script>
 			function itemChange(number) {
 				var Seoul = new Array();
 				Seoul[0] = '강남구';
@@ -288,6 +289,49 @@
 				var location = ("$(ssido).text()" + "$(ggugun).text()"); 
 				document.attr("#loc").text(location); */
 			}
+
+function check_onclick(){
+  		theForm=document.submit;
+  		var choicelocation1 = $("#sido option:selected").val();
+  		var choicelocation2 = $("#gugun option:selected").val();
+  
+  if(theForm.title.value=="" || theForm.teamNo.value=="" || theForm.playDate.value==""
+      || choicelocation1=="" || theForm.teamSportsId.value=="" || theForm.contents.value==""
+        || theForm.cost.value==""){
+    
+  		if(theForm.title.value==""){
+  			alert("제목 입력란이 비어있습니다. 확인해 주세요.");
+ 			 theForm.title.focus();
+  		}
+  		else if(theForm.teamNo.value==""){
+    			alert("소속팀 선택이 되어있지 않습니다. 확인해 주세요.");
+    		}
+      else if(theForm.playDate.value==""){
+    			alert("경기 날짜를 입력해주세요.");
+       theForm.playDate.focus();
+    		}
+       else if(choicelocation1==""){
+    			alert("지역을 선택 해주세요.");
+    		}
+      else if(theForm.teamSportsId.value==""){
+    			alert("종목을 선택해 주세요.");
+       theForm.teamSportsId.focus();
+    		}
+      else if(theForm.contents.value==""){
+        			alert("내용을 입력해 주세요.");
+        }
+      else if(theForm.cost.value==""){
+        			alert("비용을 입력해 주세요.");
+           theForm.teamSportsId.focus();
+        }
+  } else {
+    if (confirm("매치 등록하시겠습니까?") == true){    //확인
+      document.submit.submit();
+  	}  else {   //취소
+      return false;
+ 		 }
+  }
+  }
 		</script>
 
 
