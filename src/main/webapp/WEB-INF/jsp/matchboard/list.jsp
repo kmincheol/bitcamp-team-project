@@ -6,15 +6,18 @@
  <head>
         <title>매치보드</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/css/common.css" />
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
+        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" /> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
-        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" />
-    </head>
  
-    <body ng-app="app"> 
+ <style>
+ </style>
     <jsp:include page="../header.jsp"/>
+ 
+    </head>
+    <body ng-app="app"> 
 
     <div id="topComment">
       <h2>
@@ -100,7 +103,6 @@
                 
                 <!-- datepicker 적용 -->
           <input class="form-control-sm" type="text" id="datepicker" placeholder="날짜를 입력하세요">
-          
                 <br>
           
             <button type="button" class="btn btn-dark" id="name-clear-btn">
@@ -252,12 +254,19 @@
     </div><!-- .content -->
   </div><!-- .container -->
 
-<jsp:include page="../javascript.jsp"/> 
+
+<script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
 <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
         
         <script>
             jplist.init();
+            
+            $(function(){
+              $('.col-sm-4.date').datepicker({});
+              });
+
+            
             
             
             var no = 0; //매치번호
@@ -270,6 +279,7 @@
             
           $(function() {
         	  $( "#datepicker" ).datepicker({
+           
                   onSelect: function(value, props) {
                          var tb = document.getElementById('textbox-filter');
                          tb.value = value;

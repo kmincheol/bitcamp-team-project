@@ -151,11 +151,11 @@
         <td>
             <input type="text" class="form-control-sm" name="telephone">
             
-        <th scope="col">
+ <!--       <th scope="col">
           <label id="teamLevel">레벨</label>
           </th>
         <td>
-<!--             <div class="col-sm" id="teamLevel" style="padding-left: 0px;">
+             <div class="col-sm" id="teamLevel" style="padding-left: 0px;">
                 <div class="input-group mb-2">
                   <select name='teamLevel' class="custom-select" id="inputGroupSelect01">
                     <option value="" disabled selected hidden>우리팀 실력</option>
@@ -182,6 +182,7 @@
         </tbody>
       </table>
 
+      <div id="btnArea">
       <div class="listbtn">
         <a class="btn btn-dark" href='.'>목록</a>
       </div>
@@ -189,7 +190,7 @@
       <div id="regbtn">
         <button id="add" class="btn btn-dark" type=submit>매치보드에 등록하기</button>
       </div>
-
+</div>
       <br> <br>
     </form>
 

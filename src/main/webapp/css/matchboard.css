@@ -87,6 +87,7 @@ div.button2 {
 }
 
 #regbtn {
+  position:absolute;
 	text-align: center;
 }
 
@@ -211,10 +212,11 @@ div.button2 {
 }
 
 .listbtn {
-	top: 30px;
-	margin-top: 21px;
-	margin-left: 25px;
-	text-align: left;
+  top:30px;
+  position: absolute;
+  margin-top: 21px;
+  margin-left: 25px;
+  text-align: left;
 }
 
 #mtaply {
@@ -233,12 +235,11 @@ div.button2 {
   margin-right: 10px;
 }
 
+
 #delt{
-  float: left;
   margin-right: 10px;
 }
 #updt{
-  float: left;
 }
 
 #mtaply{
@@ -246,16 +247,14 @@ div.button2 {
   padding-left: 340px;
   padding-bottom: 3px;
 }
-#selectBox{
-  text-aling: center;
-  margin-left: 65px;
-  margin-bottom: 3px;
-  width: 170px;
+
+#btnArea{
 }
+
 
 #selectBox {
 	text-aling: center;
-	margin-left: 65px;
+  margin-left: 53px;
 	margin-bottom: 3px;
 	width: 170px;
 }

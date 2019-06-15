@@ -57,6 +57,7 @@ a:hover{
 #list{
   z-index: 2;
   width: 460px;
+  margin-left: 10px;
   border-radius: 2px;
   border: 2px solid #dfdfdf;
   border-top: 0px;
@@ -69,7 +70,7 @@ a:hover{
 #listtitle{
   text-align:center;
    z-index: 1;
-  width: 460px;
+  width: 480px;
   height: 42px;
   font-size: 21px;
   border-radius: 2px;
@@ -169,7 +170,7 @@ a:hover{
   margin-top: 8px;
   margin-bottom: 30px;
   width:174px;
-  margin-left: 40px;
+  margin-left: 34px;
 }
 
 
@@ -291,7 +292,9 @@ button{
   height: 180px;
 }
 
-
+#modal-footer{
+  height: 120px;
+}
 
 .modal-footer-inside-control{
     position: absolute;

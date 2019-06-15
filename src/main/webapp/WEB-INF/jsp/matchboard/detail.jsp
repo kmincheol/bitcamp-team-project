@@ -120,16 +120,14 @@ width:300px;
   
       <div class="listbtn">
       <a id="listbutton" class="btn btn-dark" href='${contextRootPath}/app/matchboard/'>목록</a> 
-  
-          <div class="col-sm-10">
+      
             <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
              <c:if test="${!empty sessionScope.loginUser}">
              <c:if test="${sessionScope.loginUser.id eq matchuserId}">
-          <a id="delt" class="btn btn-primary" href='delete/${match.no}'>삭제</a>
-          <a id="updt" class="btn btn-primary" href='${contextRootPath}/app/matchboard/update_form/${match.no}'>변경</a> 
+          <a id="delt" class="btn btn-dark" href='delete/${match.no}'>삭제</a>
+          <a id="updt" class="btn btn-dark" href='${contextRootPath}/app/matchboard/update_form/${match.no}'>변경</a> 
             </c:if>
             </c:if>
-          </div>
 <%--              <c:if test="${match.team.teamMember.teamLeader == 'true'}"> --%>
     </div>
       </form>
