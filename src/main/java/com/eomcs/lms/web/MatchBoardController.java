@@ -45,74 +45,6 @@ public class MatchBoardController {
   @Autowired LocationService locationService;
   @Autowired ServletContext servletContext;
 
-  @GetMapping("listAllTest")
-  @ResponseBody
-  public Object listAllTest(HttpSession session) {
-    ArrayList<Match> recommendMatches = new ArrayList<>();
-    if (session.getAttribute("loginUser") != null) {
-      // 로그인 유저 정보를 가져옴.
-      Member member = (Member) session.getAttribute("loginUser");
-      logger.info("로그인유저 >>" +member);
-      // 그 유저가 가입한 팀번호를 가져옴.
-      List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo());
-      // 그 유저의 메인팀 번호로 종목, 지역, 수준, 연령을 얻음.
-      Team team = teamService.getTeamSportsType(member.getMainTeam());
-      logger.info("메인팀정보 >> " + team);
-      int mainTeamSportsTypeNo = team.getTeamTypeSports().getTeamSportsTypeId();
-
-      logger.info("메인팀의 종목 >>" + mainTeamSportsTypeNo);
-      // 그 종목과 1달이내의 매치들을 검색함.
-      List<Match> matches = matchBoardService.searchBySportsType(mainTeamSportsTypeNo);
-      logger.info("종목&1달이내 매치들 >> " + matches);
-
-      for (TeamMember t : teams) {
-        Iterator<Match> iter = matches.iterator();
-        while (iter.hasNext()) {
-          Match m = iter.next();
-          if (t.getTeamMemberNo() == m.getTeamNo()) {
-            iter.remove();
-          }
-        }
-      }
-      
-      // 5개보다 작으면 부족한 숫자만큼만 종목이 일치하는 매치를 최신순으로 뽑아서 리턴.
-      // 그래도 적으면 적은대로 리턴한다.
-      if (matches.size() < 5) {
-        logger.info("부족함");
-        int insufficientNo = 5 - matches.size();
-        List<Match> plusMatches = matchBoardService.searchBySportsTypeAll(mainTeamSportsTypeNo, insufficientNo);
-        // 본인이 가입한 팀이 있으면 제외하고 아니면 리턴할 배열에 추가
-        for (TeamMember t : teams) {
-          Iterator<Match> iter = plusMatches.iterator();
-          while (iter.hasNext()) {
-            Match m = iter.next();
-            if (t.getTeamMemberNo() == m.getTeamNo()) {
-              iter.remove();
-            } else {
-              recommendMatches.add(m);
-            }
-          }
-        }
-        return recommendMatches;
-      }
-
-      if (matches.size() > 5) { // 5개보다 많은 경우만 선별
-        logger.info("선별하자!");
-        // 메인팀, 매치정보로 5개 선별한 후 받음.
-        matches = matchBoardService.checkAllConditions(matches, team);
-      }
-
-      for (Match m : matches) {
-        logger.info("Match >> " + m);
-
-        recommendMatches.add(m);
-      }
-
-    }
-
-    return recommendMatches;
-  }
-
   // filter.js test
   @GetMapping("listAll")
   @ResponseBody
@@ -219,16 +151,19 @@ public class MatchBoardController {
   
   @GetMapping
   public String list(HttpSession session,Model model) {
+    ArrayList<Match> recommendMatches = new ArrayList<>(); // 추천매칭 담을 배열
     List<Match> all = matchBoardService.search();
 
         if (session.getAttribute("loginUser") != null) {
         Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
         List<Match> logUserteames = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+        recommendMatches = matchBoardService.recommendMatch(member); // 추천매칭 정보가져오기
         model.addAttribute("myteam", logUserteames);
         } else {
          }
 
         model.addAttribute("all", all);
+        session.setAttribute("recommendMatches", recommendMatches); // 세션에 추천매칭 추가
         return "/matchboard/list";
   }
   

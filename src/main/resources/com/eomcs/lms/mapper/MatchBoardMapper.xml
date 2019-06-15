@@ -208,6 +208,7 @@
    select distinct
     mtch_id,
     m.tm_id,
+    m.titl,
     s.spt_clsf_name,
     game_dt,
     m.area,
@@ -271,7 +272,6 @@
         TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[>=]]> 0
       order by
         mtch_id desc
-      limit #{insufficientNo}
    </select>
   
 

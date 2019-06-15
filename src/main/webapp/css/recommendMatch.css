@@ -1,0 +1,21 @@
+.recommendDiv {
+	float: left;
+	margin: 0 0 0 30px
+}
+.recommendTable {
+	width: 200px;
+  font-size: 16px;
+	border: 1px solid black
+}
+.recommendTh {
+	font-size: 21px;
+	background-color: #f8f7f3;
+	text-align: center;
+	border: 2px solid #dfdfdf
+}
+.recommendTd {
+	padding: 10px;
+	vertical-align: top;
+	background-color: #f8f7f3;
+	border : 1px solid #dee2e6
+}

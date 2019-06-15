@@ -2,6 +2,7 @@ package com.eomcs.lms.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MatchApplyDao;
 import com.eomcs.lms.dao.MatchDao;
 import com.eomcs.lms.dao.TagDao;
+import com.eomcs.lms.dao.TeamDao;
 import com.eomcs.lms.domain.Match;
+import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.service.MatchBoardService;
 
 @Service
@@ -20,9 +24,12 @@ public class MatchServiceImpl implements MatchBoardService {
 
   MatchDao matchDao;
   MatchApplyDao matchApplyDao;
+  TeamDao teamDao;
   TagDao tagDao;
 
-  public MatchServiceImpl(MatchDao matchDao, TagDao tagDao) {
+  public MatchServiceImpl(MatchDao matchDao, TagDao tagDao, TeamDao teamDao, MatchApplyDao matchApplyDao) {
+    this.matchApplyDao = matchApplyDao;
+    this.teamDao = teamDao;
     this.matchDao = matchDao;
     this.tagDao = tagDao;
   }
@@ -107,12 +114,84 @@ public class MatchServiceImpl implements MatchBoardService {
   }
 
   @Override
-  public List<Match> searchBySportsTypeAll(int mainTeamSportsTypeNo, int insufficientNo) {
+  public List<Match> searchBySportsTypeAll(int mainTeamSportsTypeNo) {
     HashMap<String, Object> params = new HashMap<>();
     params.put("mainTeamSportsTypeNo", mainTeamSportsTypeNo);
-    params.put("insufficientNo", insufficientNo);
     return matchDao.searchBySportsTypeAll(params);
   }
+
+  @Override
+  public ArrayList<Match> recommendMatch(Member member) {
+    
+    ArrayList<Match> recommendMatches = new ArrayList<>();
+    
+    logger.info("로그인유저 >>" + member);
+    // 그 유저가 가입한 팀번호를 가져옴.
+    List<TeamMember> teams = teamDao.findTeamMemberByMemberNo(member.getNo());
+    // 그 유저의 메인팀 번호로 종목, 지역, 수준, 연령을 얻음.
+    Team team = teamDao.findSportsTypeByNo(member.getMainTeam());
+    logger.info("메인팀정보 >> " + team);
+    int mainTeamSportsTypeNo = team.getTeamTypeSports().getTeamSportsTypeId();
+
+    logger.info("메인팀의 종목 >>" + mainTeamSportsTypeNo);
+    // 그 종목과 1달이내의 매치들을 검색함.
+    List<Match> matches = searchBySportsType(mainTeamSportsTypeNo);
+    logger.info("종목&1달이내 매치들 >> " + matches);
+
+    for (TeamMember t : teams) {
+      Iterator<Match> iter = matches.iterator();
+      while (iter.hasNext()) {
+        Match m = iter.next();
+        if (t.getTeamMemberNo() == m.getTeamNo()) {
+          iter.remove();
+        }
+      }
+    }
+    
+    // 5개보다 작으면 부족한 숫자만큼만 종목이 일치하는 매치를 최신순으로 뽑아서 리턴.
+    // 그래도 적으면 적은대로 리턴한다.
+    if (matches.size() < 5) {
+      logger.info("부족함");
+      List<Match> plusMatches = searchBySportsTypeAll(mainTeamSportsTypeNo);
+
+      // 본인이 가입한 팀이 있으면 제외하고 아니면 리턴할 배열에 추가
+      Iterator<Match> iter = plusMatches.iterator();
+      while (iter.hasNext()) {
+        Match m = iter.next();
+        for (TeamMember t : teams) {
+          if (t.getTeamMemberNo() == m.getTeamNo()) {
+            break;
+          }
+          if (teams.get(teams.size()) == t) {
+            logger.info("내팀>> " + teams.get(teams.size()).hashCode());
+            logger.info("for문 >> " + t.hashCode());
+            recommendMatches.add(m);
+          } else {
+            continue;
+          }
+        }
+        if (recommendMatches.size() == 5) {
+          break;
+        }
+      }
+      return recommendMatches;
+    }
+
+    if (matches.size() > 5) { // 5개보다 많은 경우만 선별
+      logger.info("선별하자!");
+      // 메인팀, 매치정보로 5개 선별한 후 받음.
+      matches = checkAllConditions(matches, team);
+    }
+
+    for (Match m : matches) {
+      logger.info("Match >> " + m);
+
+      recommendMatches.add(m);
+    }
+    
+    return recommendMatches;
+  }
+  
   @Override
   public List<Match> checkAllConditions(List<Match> list,  Team team) {
     List<Match> matches = new ArrayList<Match>(); // 선별된 애들을 넣을 매치들.

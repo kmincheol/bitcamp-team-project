@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
         <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" /> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
+        <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
  
  <style>
  </style>
@@ -226,6 +227,53 @@
       </div>
                 　　　　　　　　　　　　　　　　　　　　<!-- 칸 일그러짐 방지 -->　　　　　　　　　　　　　　　　　　　　　　　
       </div>
+      </div>
+      <div class="recommendDiv">
+        <table class="recommendTable">
+          <tr>
+            <th class="recommendTh">추천매칭</th>
+          </tr>
+          <c:forEach items="${recommendMatches}" var="match">
+            <tr>
+              <td class="recommendTd" id="${match.no}" colspan="5"
+                  style="cursor: pointer; padding-top: 5px;" 
+                  data-toggle="modal" 
+                  data-target="#exampleModalCenter"
+                  onClick="modalEvent('${match.no}');" >
+                          
+                <div class="recommendTeamName" style="display:none">${match.team.teamName}</div>
+                <div class="recommendTitle">제목 : ${match.title}</div>
+                <div class="recommendPlayDate">경기날짜 : ${match.playDate}</div>
+                <c:choose>
+                  <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                    <div class="recommendSportsType">종목 : 축구</div>
+                  </c:when>
+                  <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                    <div class="recommendSportsType">종목 : 농구</div>
+                  </c:when>
+                  <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                    <div class="recommendSportsType">종목 : 야구</div>
+                  </c:when>
+                  <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                    <div class="recommendSportsType">종목 : 탁구</div>
+                  </c:when>
+                </c:choose>
+                <c:choose>
+                  <c:when test="${match.teamLevel.teamLevel eq 'high'}">
+                    <div class="recommendTeamLevel">팀레벨 : 상</div>
+                  </c:when>
+                  <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
+                    <div class="recommendTeamLevel">팀레벨 : 상</div>
+                  </c:when>
+                  <c:when test="${match.teamLevel.teamLevel eq 'low'}">
+                    <div class="recommendTeamLevel">팀레벨 : 상</div>
+                  </c:when>
+                </c:choose>
+                <div class="recommendTeamAges">팀연령대 : ${match.teamAges.teamAges}</div>
+              </td>
+             </tr>
+          </c:forEach>
+        </table>
       </div>
       
       <div class="controls">
