@@ -63,6 +63,7 @@ body {
  </style>
 </head>      
 <body>
+<a href="${contextRootPath}/app/myteam/list4" style="top: 200px; left: 100px; position: absolute;">list4</a>
 
   <div id="main-wrap" class="container">
     <div id="cdcd"style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
@@ -208,13 +209,6 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
 	 arrg.push("${teamMember.member.birthDay}");
 	 </c:forEach>
 
-	
-	 <c:forEach items="${tr}" var="tr">
- if(${tr.teamId} == bbb[1]){
-		   alert('${tr.member.name}')
- }	
-	 </c:forEach>
-	 
 	 for (var i = 0; i < arr.length; i++) {
 	    if(arr[i] == parseInt(bbb[1])){
 	    	 arrc.push(arrb[i])
@@ -230,7 +224,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         	$("#abcd").remove()
         }      
     
-	   // div append for문 (팀원들)
+   // div append for문 (팀원들)
     for (var i = 0; i < arrc.length; i++) { 
         var div = document.createElement("div");
         div.id = "abcd"
@@ -246,8 +240,33 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         div.style.height= "300px";
         div.style.float= "left";
         document.getElementById('aaaa').appendChild(div);
+      
     } // div append (팀원들)
 
+     // 신청한 사람들 목록
+        <c:forEach items="${tr}" var="tr">
+      if(${tr.teamId} == bbb[1]){
+            /* alert('${tr.member.name}') */
+             var div = document.createElement("div");
+            div.id = "abcd"
+            div.innerHTML =
+              '<div class="flip-card"><a href="${contextRootPath}/app/myteam/apply/${tr.member.no}/' + bbb[1] + '/' + ${tr.teamNo} + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
+             '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
+             '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: red; color: white">'+ 
+             '${tr.member.name}' + '</span></div>' +
+              '<div class="flip-card-back"><h3><br><br>' + arree[i] + '</h3> </div></div></a></div>'
+            div.style.border= "1px solid black";
+            div.style.margin= "5px";
+            div.style.width= "261px";
+            div.style.height= "300px";
+            div.style.float= "left";
+            document.getElementById('aaaa').appendChild(div);
+      }  
+        </c:forEach>
+        
+   
+    
+    
     
     
     

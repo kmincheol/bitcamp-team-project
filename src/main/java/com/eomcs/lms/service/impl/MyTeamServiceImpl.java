@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.MyTeamDao;
+import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
@@ -53,10 +54,20 @@ public int delete(int tno, int mno) {
   map.put("tno", tno);
   map.put("mno", mno);
 
-	// TODO Auto-generated method stub
-  System.out.println("여기까지일단올거임");
 	return myteamDao.delete(map);
 }
+
+@Override
+public int insertTeamMember(int tno, int mno) {
+  
+  HashMap<String, Integer> map = new HashMap<String, Integer>(); // MAP을 이용해 담기
+  map.put("tno", tno);
+  map.put("mno", mno);
+
+	return myteamDao.insertTeamMember(map);
+}
+
+
 
 @Override
 public List<MatchApply> findMatchNo(int no) {
@@ -74,7 +85,53 @@ public List<Team> MatchTeam(int no) {
   return myteamDao.findByMatchTeam(no);
 }
 
-  @Override public List<TeamRecruit> findByJoinTeam() { return myteamDao.findJoinTeam(); }
+  @Override public List<TeamRecruit> findByJoinTeam() { 
+	  return myteamDao.findJoinTeam(); 
+	  }
+
+@Override
+public List<Member> findByMember(int no) {
+	return myteamDao.findByMember(no);
+}
+
+@Override
+public List<TeamRecruit> findByTeamRecruitTeamNo(int no) {
+	return myteamDao.teamRecruit2(no);
+}
+
+@Override
+public List<JoinTeam> findByJoinTeamMemberNo(int no) {
+	return myteamDao.joinTeam(no);
+}
+
+@Override
+public int deleteJoinTeam(int mno, int rcrmno) {
+	 HashMap<String, Integer> map = new HashMap<String, Integer>(); // MAP을 이용해 담기
+	  map.put("mno", mno);
+	  map.put("rcrmno", rcrmno);
+
+	return myteamDao.deleteJoinTeam(map);
+}
+
+@Override
+public int deleteMatchAply(int no) {
+	return myteamDao.mtchAplyDelete(no);
+}
+
+@Override
+public int mtchupdate(int otNo, int matchNo) {
+	 HashMap<String, Integer> map = new HashMap<String, Integer>(); // MAP을 이용해 담기
+	  map.put("otherTeamNo", otNo);
+	  map.put("mtchNo", matchNo);
+
+	return myteamDao.mtchupdate(map);
+}
+
+  @Override
+  public List<Match> list4() {
+    // TODO Auto-generated method stub
+    return myteamDao.findAll4();
+  }
 
 
  

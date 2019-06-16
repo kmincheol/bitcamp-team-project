@@ -1,10 +1,8 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.eomcs.lms.domain.JoinTeam;
+//github.com/kmincheol/bitcamp-team-project.git
+import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
@@ -44,18 +44,28 @@ public class MyTeamController {
 
 		List<Team> team = myTeamService.teamList(a); // 팀목록
 		List<TeamMember> tm = myTeamService.teamMemberList2();
-      List<TeamRecruit> tr = myTeamService.findByJoinTeam();
-     
+      List<TeamRecruit> tr = myTeamService.findByJoinTeam();     
+      
 		session.setAttribute("member", member);
 		model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
 		model.addAttribute("tr", tr);
-	
-		
 		return "myteam/list";
 	}
+	
+  
+  @GetMapping("/list4")
+  public String list4(Model model) {
+    List<Match> matchs = myTeamService.list4();
 
-	 
+    model.addAttribute("matchs", matchs);
+    logger.debug(matchs);
+
+    return "myteam/list4";
+  }
+   
+   
+
 
 	
 	/* 팀원 상세보기 */
@@ -71,40 +81,106 @@ public class MyTeamController {
 
 		for(TeamMember tmm : tm) {
 			if(tmm.getTeamMemberNo() == tno) {
-				System.out.println(tmm.toString());
 				model.addAttribute("teamMember",tmm);
 			}
 		}
 		return "myteam/detail";
 	}
+	
+// 신청 한 사람 상세보기
+	@GetMapping("apply/{mno}/{tno}/{trno}")
+	public String detail2(@PathVariable int tno, @PathVariable int mno,@PathVariable int trno,  Model model, HttpSession session) {
 
-	@GetMapping("delete/{tno}/{mno}") public String delete(@PathVariable int tno,@PathVariable int mno) {
+		List<Member> member = myTeamService.findByMember(mno);
+		List<JoinTeam> jt = myTeamService.findByJoinTeamMemberNo(mno);
+        List<TeamRecruit> tr = myTeamService.findByTeamRecruitTeamNo(tno);
+        
+        
+        
+         for(JoinTeam j : jt) {
+        	    for(TeamRecruit r : tr) {
+        	    	    if(j.getRcrmId() == r.getTeamId()) {   
+        	    	    	System.out.println(r.getTeamId());
+        	    	    	model.addAttribute("rermId",j.getRcrmId());
+        	    	    }else {
+        	    	    	model.addAttribute("rermId",j.getRcrmId());
+        	    	    	}
+        	    }
+         }
+        
+		
+		for(Member m : member) {
+			if(m.getNo() == mno) {
+				model.addAttribute("memberInfo",m);
+			}
+		}
+		model.addAttribute("tno",tno);
+		return "myteam/detail2";
+	}
+	
+	// 신청 온 사람 팀원으로 추가하기
+	@GetMapping("applyadd/{tno}/{mno}/{rcrmno}") 
+	public String addTeamMember(@PathVariable int tno,@PathVariable int mno,@PathVariable int rcrmno) {
+     
+		 
+		myTeamService.deleteJoinTeam(mno, rcrmno);
+		myTeamService.insertTeamMember(tno, mno);
+		return "redirect:../../../"; 
+	}
+	
+	// 신청 온 사람 거절하기
+		@GetMapping("applydelete/{tno}/{mno}/{rcrmno}") 
+		public String deleteTeamMember(@PathVariable int tno,@PathVariable int mno,@PathVariable int rcrmno) {
+	     
+			 
+			myTeamService.deleteJoinTeam(mno, rcrmno);
+			return "redirect:../../../"; 
+		}
+		
+	
+	@GetMapping("delete/{tno}/{mno}") 
+	public String delete(@PathVariable int tno,@PathVariable int mno) {
 		if (myTeamService.delete(tno,mno) == 0)
 			throw new RuntimeException("해당 번호의 게시물이 없습니다."); 
 		return "redirect:../../"; 
 	}
 	
-	@GetMapping("send/{no}")
-// no는 팀번호
-	public String sendTeam(@PathVariable int no,  Model model, HttpSession session) {
-
-	  
-// no를 통해서 내가 신청 보낸 경기번호 리스트를 알아낸다
-    List<MatchApply> matchNos = myTeamService.findMatchNo(no);
-
+	@GetMapping("/list2/{tno}")
+	public String sendTeam(@PathVariable int tno,  Model model, HttpSession session) {
+    List<Match> matchNos = myTeamService.findMatchNo2(10);  //번호 수정해야함
+    System.out.println(matchNos.toString());
     model.addAttribute("matchNos",matchNos);
-    
-    
-    // 경기번호를 통해서 매치보드를 등록한 팀의 정보를 알아낸다
 	   
 	  
 	  return "myteam/list2";
 	}
-	
-	@RequestMapping("/list3")
-	public String teamRecruitList() {
-	  return "myteam/list3";
+	@RequestMapping("/list2/update/{matchNo}/{otNo}")
+	public String matchSuccess(@PathVariable int matchNo,@PathVariable int otNo,Model model) {
+			 myTeamService.mtchupdate(otNo, matchNo);
+			
+		return "redirect:../../";
 	}
+	
+
+	
+	
+	
+	@RequestMapping("/list3/{tno}")
+	public String teamRecruitList(@PathVariable int tno,Model model) {
+		List<MatchApply> matchNos = myTeamService.findMatchNo(8); //번호 수정해야함
+		model.addAttribute("matchNos",matchNos);
+		model.addAttribute("tno",tno);
+		return "myteam/list3";
+	}
+	
+
+	@RequestMapping("/list3/delete/{no}")
+	public String deleteMatchAply(@PathVariable int no,Model model) {
+		myTeamService.deleteMatchAply(no);
+		return "redirect:../../";
+	}
+
+	
 
 
 }

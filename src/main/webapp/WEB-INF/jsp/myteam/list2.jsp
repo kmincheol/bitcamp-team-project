@@ -33,13 +33,16 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
+  
+   <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
 
 <style>
+.container {
+  font-family: 'Jua', sans-serif;
+}
+
 .team_info {
-  margin-bottom: 15px;
-  margin-left: 50px;
-  margin-right: 50px;
-  font-size: 1.2em;
+
 }
 </style>
 
@@ -51,28 +54,31 @@
 
   <div id="main-wrap" class="container">
     <div style="margin-top: 50px;">
-      <div style="width: 520px; float: left;">
+      <div style="width: 1080px;">
         <div style="background: #949494; text-align: center; font-weight: bold; line-height: 40px;">
-          요청 경기</div>
-        <div style="height: 500px; border: 1px solid;">
-          <table class="table table-bordered" style="clear: both; margin: 0;">
-            <tbody>
-              <c:forEach items="${matchNos}" var="matchNos">
+         신청 받은 경기</div>      
+        <div style="height: 700px; width: 1085px; overflow: scroll;">
+          <table class="table table-bordered" style="margin: 0;">
+            <tbody>  
+               <c:forEach items="${matchNos}" var="matchNos"> 
               <tr style="height: 100px;">
-                <td colspan="1" style="vertical-align: middle; width: 100px;" ><img src="${matchNos.team.teamEmblemPhoto}" style="width:100px; height:100px"> </td>
-                <td colspan="2" style="vertical-align: middle; width: 220px;">
-                 <div  onclick="teamInfo()" >팀명: ${matchNos.team.teamName}</div>    
-                </td>
-                <td colspan="1" style="vertical-align: middle; width: 100px;">
-                  <button style="width: 100%;">취소</button>
+                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img src="${matchNos.team.teamEmblemPhoto }"/></td>
+                <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px;">
+                <div class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
+                <div class="team_info">&middot; 연령 : ${matchNos.team.teamAgeId } 대</div>
+                <div class="team_info">&middot; 수준 :  ${matchNos.team.teamLevelId }</div>
+                <div class="team_info">&middot; 소개 : ${matchNos.team.teamInfo }</div>
+                </td>              
+                <td colspan="1" style="vertical-align: middle; width: 150px;">  
+                   <a class="btn btn-outline-dark" href="${contextRootPath}/app/myteam/list2/update/${matchNos.no}/${matchNos.team.teamId}" style="width: 100%;">수락</a>
+                   <a class="btn btn-outline-dark" href="#" style="width: 100%;">거절</a> 
                 </td>
               </tr>
-             </c:forEach> 
+               </c:forEach> 
             </tbody>
           </table>
         </div>
       </div>
-      
     </div>   
 
 
@@ -84,21 +90,7 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
-<script type="text/javascript">
-
-function teamInfo(){
-	
-	alert(document.getElementById("divdivdd").innerHTML)
-}
 
 
-
-
-
-
-
-
-
-</script>
 </body>
 </html>

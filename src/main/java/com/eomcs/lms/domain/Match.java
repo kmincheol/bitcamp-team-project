@@ -3,6 +3,7 @@ package com.eomcs.lms.domain;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Match implements Cloneable, Serializable {
@@ -216,5 +217,4 @@ public class Match implements Cloneable, Serializable {
     this.middleLocation = middleLocation;
   }
   
-    
 }
