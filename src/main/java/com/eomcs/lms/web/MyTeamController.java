@@ -1,10 +1,8 @@
 package com.eomcs.lms.web;
 
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
@@ -54,6 +52,19 @@ public class MyTeamController {
 		
 		return "myteam/list";
 	}
+	
+  
+  @GetMapping("/list4")
+  public String list4(Model model) {
+    List<Match> matchs = myTeamService.list4();
+
+    model.addAttribute("matchs", matchs);
+    logger.debug(matchs);
+
+    return "myteam/list4";
+  }
+   
+   
 
 	 
 

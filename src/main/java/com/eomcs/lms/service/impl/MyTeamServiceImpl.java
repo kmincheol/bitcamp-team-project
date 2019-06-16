@@ -76,6 +76,12 @@ public List<Team> MatchTeam(int no) {
 
   @Override public List<TeamRecruit> findByJoinTeam() { return myteamDao.findJoinTeam(); }
 
+  @Override
+  public List<Match> list4() {
+    // TODO Auto-generated method stub
+    return myteamDao.findAll4();
+  }
+
 
  
 }

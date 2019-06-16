@@ -20,6 +20,8 @@ public interface MyTeamDao {
   List<Match>findByMatchNo2(int no);
   List<Team>findByMatchTeam(int no);
   List<TeamRecruit>findJoinTeam();
+  
+  List<Match> findAll4();
 }
 
 

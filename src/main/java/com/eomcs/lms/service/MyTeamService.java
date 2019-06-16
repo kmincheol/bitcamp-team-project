@@ -17,5 +17,7 @@ public interface MyTeamService {
  List<MatchApply>findMatchNo(int no);
  List<Match>findMatchNo2(int no);
  List<Team> MatchTeam(int no); 
-  List<TeamRecruit> findByJoinTeam(); 
+  List<TeamRecruit> findByJoinTeam();
+  
+  List<Match> list4();
 }

@@ -145,26 +145,6 @@
     </association>
   
  </resultMap>
-  
- <resultMap type="match" id="matchMap">
-    <id column="mtch_id" property="no" />
-    <result column="tm_id" property="teamNo" />
-    <result column="tm_id2" property="otherTeamNo" />
-    <result column="spt_clsf_id" property="teamSportsId" />
-    <result column="titl" property="title" />
-    <result column="cont" property="contents" />
-    <result column="vw_cnt" property="viewCount" />
-    <result column="cdt" property="createdDate" />
-    <result column="game_dt" property="playDate" />
-    <result column="area" property="location" />
-    <result column="stdm_psti" property="stadiumName" />
-    <result column="stdm_lat" property="stadiumLatitude" />
-    <result column="stdm_long" property="stadiumLongitude" />
-    <result column="tel" property="telephone" />
-    <result column="cost" property="cost" />
-</resultMap>  
-
-  
     
  <resultMap type="TeamRecruit" id="teamRecruitMap">
     <id column="rcrm_id" property="teamNo" />
@@ -210,6 +190,41 @@
     </association>
 
   </resultMap>
+  
+  <resultMap type="match" id="matchMap">
+    <id column="mtch_id" property="no" />
+    <result column="tm_id" property="teamNo" />
+    <result column="tm_id2" property="otherTeamNo" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="game_dt" property="playDate" />
+    <result column="area" property="location" />
+    <result column="stdm_psti" property="stadiumName" />
+    <result column="stdm_lat" property="stadiumLatitude" />
+    <result column="stdm_long" property="stadiumLongitude" />
+    <result column="tel" property="telephone" />
+    <result column="cost" property="cost" />
+</resultMap>  
+  
+ <select id="findAll4" resultMap="matchMap">
+  select
+    mtch_id,
+    tm_id,
+    spt_clsf_id,
+    titl,
+    cont,
+    cdt,
+    game_dt,
+    area,
+    stdm_psti,
+    tel,
+    cost
+  from
+    mtch
+  </select>
   
     <sql id="default-columns">
       mbr_id, 

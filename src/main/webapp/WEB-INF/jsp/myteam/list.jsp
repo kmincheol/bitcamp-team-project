@@ -63,6 +63,7 @@ body {
  </style>
 </head>      
 <body>
+<a href="${contextRootPath}/app/myteam/list4" style="top: 200px; left: 100px; position: absolute;">list4</a>
 
   <div id="main-wrap" class="container">
     <div id="cdcd"style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
