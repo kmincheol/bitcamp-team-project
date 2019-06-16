@@ -153,21 +153,28 @@ public class MatchBoardController {
   public String list(HttpSession session,Model model) {
     ArrayList<Match> recommendMatches = new ArrayList<>(); // 추천매칭 담을 배열
     List<Match> all = matchBoardService.search();
+    
+    if (session.getAttribute("loginUser") != null) {
+      Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
+      List<Match> logUserteames = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
+      List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo());
+      recommendMatches = matchBoardService.recommendMatch(member); // 추천매칭 정보가져오기
+      model.addAttribute("myteam", logUserteames);
+      if (teams.size() == 0 || teams == null) {
+        session.setAttribute("teamsCheck", "not");
+      } else {
+        session.setAttribute("teamsCheck", "exist");
+      }
+    } else {
+    }
 
-        if (session.getAttribute("loginUser") != null) {
-        Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
-        List<Match> logUserteames = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
-        recommendMatches = matchBoardService.recommendMatch(member); // 추천매칭 정보가져오기
-        model.addAttribute("myteam", logUserteames);
-        } else {
-         }
 
-        model.addAttribute("all", all);
-        session.setAttribute("recommendMatches", recommendMatches); // 세션에 추천매칭 추가
-        return "/matchboard/list";
+    model.addAttribute("all", all);
+    session.setAttribute("recommendMatches", recommendMatches); // 세션에 추천매칭 추가
+    return "/matchboard/list";
   }
-  
-  
+
+
   
   @RequestMapping("{no}")
   public String detail(@PathVariable int no, HttpSession session, Model model) {

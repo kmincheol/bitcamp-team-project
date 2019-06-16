@@ -21,7 +21,7 @@ public class Match implements Cloneable, Serializable {
   private Date modifierDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private Date playDate;
-  private String location; // 임시 숫자로 바꿈, 첫번째 상세위치
+  private String location;
   private String stadiumName;
   private String stadiumLatitude;
   private String stadiumLongitude;
@@ -37,6 +37,9 @@ public class Match implements Cloneable, Serializable {
   private TeamLevel teamLevel;
   private List<Tag> tags;
   private Member member;
+  private TopLocation topLocation;
+  private MiddleLocation middleLocation;
+  
   @Override
   public String toString() {
     return "Match [no=" + no + ", teamNo=" + teamNo + ", otherTeamNo=" + otherTeamNo
@@ -47,7 +50,8 @@ public class Match implements Cloneable, Serializable {
         + stadiumLongitude + ", telephone=" + telephone + ", cost=" + cost + ", team=" + team
         + ", teamMember=" + teamMember + ", otherTeam=" + otherTeam + ", teamTypeSports="
         + teamTypeSports + ", matchApply=" + matchApply + ", teamAges=" + teamAges + ", teamLevel="
-        + teamLevel + ", tags=" + tags + ", member=" + member + "]";
+        + teamLevel + ", tags=" + tags + ", member=" + member + ", topLocation=" + topLocation
+        + ", middleLocation=" + middleLocation + "]";
   }
   public int getNo() {
     return no;
@@ -198,6 +202,18 @@ public class Match implements Cloneable, Serializable {
   }
   public void setTags(List<Tag> tags) {
     this.tags = tags;
+  }
+  public TopLocation getTopLocation() {
+    return topLocation;
+  }
+  public void setTopLocation(TopLocation topLocation) {
+    this.topLocation = topLocation;
+  }
+  public MiddleLocation getMiddleLocation() {
+    return middleLocation;
+  }
+  public void setMiddleLocation(MiddleLocation middleLocation) {
+    this.middleLocation = middleLocation;
   }
   
     

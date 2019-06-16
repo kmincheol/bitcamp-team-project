@@ -3,7 +3,7 @@
 	margin: 0 0 0 30px
 }
 .recommendTable {
-	width: 200px;
+	width: 70px;
   font-size: 16px;
 	border: 1px solid black
 }
@@ -14,8 +14,36 @@
 	border: 2px solid #dfdfdf
 }
 .recommendTd {
+	width: 70px;
 	padding: 10px;
 	vertical-align: top;
 	background-color: #f8f7f3;
 	border : 1px solid #dee2e6
+}
+.recommendTeamEmblem {
+	float:left;
+	width: 50px
+}
+.recommendPlayDate {
+	float: left;
+	border : 1px solid #dee2e6;
+	width: 70px
+}
+.recommendBox {
+	float: left;
+	border : 1px solid #dee2e6;
+  width: 70px
+}
+.recommendTeamEmblemPhoto {
+	display: inline;
+	margin-top: 30px;
+	width: 50px;
+	height: 50px
+}
+.recommendTeamInfo {
+	float:left;
+	margin-left: 5px;
+	display: inline;
+	overflow: hidden;
+	width: 70px
 }

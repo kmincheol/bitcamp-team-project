@@ -62,6 +62,19 @@
       <result column="user_id" property="id" />
     </association>
     
+    <association property="topLocation" javaType="TopLocation">
+      <id column="toplc_id" property="topLocationId" />
+      <result column="toplc_no" property="topLocationNo" />
+      <result column="toplc_name" property="topLocationName" />
+    </association>
+    
+    <association property="middleLocation" javaType="MiddleLocation">
+      <id column="midlc_id" property="middleLocationId" />
+      <result column="midlc_no" property="middleLocationNo" />
+      <result column="midlc_name" property="middleLocationName" />
+      <result column="toplc_id" property="topLocationId" />
+    </association>
+    
     <!-- 매치신청테이블 -->
    <collection property="matchApply" ofType="MatchApply">
       <id column="tm_id" property="teamNo" />
@@ -217,7 +230,10 @@
     t.age_id,
     t.tm_ambl_phot,
     l.levs,
-    a.ages
+    a.ages,
+    m.area,
+    p.toplc_name,
+    d.midlc_name
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
@@ -225,6 +241,8 @@
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
+    left outer join toplc p on p.toplc_no = substr(m.area,1,2)
+    left outer join midlc d on d.midlc_no = substr(m.area,3,2)
   </sql>
 
 
@@ -257,6 +275,8 @@
         TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[<=]]> 30
         and
         TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[>=]]> 0
+        and
+        p.toplc_id = d.toplc_id
       order by
         mtch_id desc
    </select>
@@ -270,6 +290,8 @@
         m.tm_id2 IS NULL
         and
         TIMESTAMPDIFF(DAY, NOW(), game_dt) <![CDATA[>=]]> 0
+        and
+        p.toplc_id = d.toplc_id
       order by
         mtch_id desc
    </select>

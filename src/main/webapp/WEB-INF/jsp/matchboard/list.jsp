@@ -235,49 +235,75 @@
           </tr>
           <c:choose>
             <c:when test="${!empty sessionScope.loginUser}">
-              <c:forEach items="${recommendMatches}" var="match">
-                <tr>
-                  <td class="recommendTd" id="${match.no}" colspan="5"
-                      style="cursor: pointer; padding-top: 5px;" 
-                      data-toggle="modal" 
-                      data-target="#exampleModalCenter"
-                      onClick="modalEvent('${match.no}');" >
-                              
-                    <div class="recommendTeamName" style="display:none">${match.team.teamName}</div>
-                    <div class="recommendTitle">제목 : ${match.title}</div>
-                    <div class="recommendPlayDate">경기날짜 : ${match.playDate}</div>
-                    <c:choose>
-                      <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
-                        <div class="recommendSportsType">종목 : 축구</div>
-                      </c:when>
-                      <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
-                        <div class="recommendSportsType">종목 : 농구</div>
-                      </c:when>
-                      <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
-                        <div class="recommendSportsType">종목 : 야구</div>
-                      </c:when>
-                      <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
-                        <div class="recommendSportsType">종목 : 탁구</div>
-                      </c:when>
-                    </c:choose>
-                    <c:choose>
-                      <c:when test="${match.teamLevel.teamLevel eq 'high'}">
-                        <div class="recommendTeamLevel">팀레벨 : 상</div>
-                      </c:when>
-                      <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
-                        <div class="recommendTeamLevel">팀레벨 : 상</div>
-                      </c:when>
-                      <c:when test="${match.teamLevel.teamLevel eq 'low'}">
-                        <div class="recommendTeamLevel">팀레벨 : 상</div>
-                      </c:when>
-                    </c:choose>
-                    <div class="recommendTeamAges">팀연령대 : ${match.teamAges.teamAges}</div>
-                  </td>
-                 </tr>
-              </c:forEach>
+              <c:choose>
+                <c:when test="${teamsCheck eq 'exist'}">
+                  <c:forEach items="${recommendMatches}" var="match">
+                    <tr>
+                      <td class="recommendTd" id="${match.no}" colspan="5"
+                          style="cursor: pointer; padding-top: 5px;" 
+                          data-toggle="modal" 
+                          data-target="#exampleModalCenter"
+                          onClick="modalEvent('${match.no}');" >
+                                  
+                        <div class="recommendPlayDate">경기날짜 : ${match.playDate}</div>
+                        <div class="recommendBox">
+                        <div class="recommendTeamEmblem">
+                          <img class="recommendTeamEmblemPhoto" 
+                               src="${match.team.teamEmblemPhoto}" 
+                               onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'">
+                        </div>
+                        <div class="recommendTeamInfo">
+                          <div class="recommendTeamName">팀이름 : ${match.team.teamName}</div>
+                          <div class="recommendNo">매치번호 : ${match.no}</div>
+                          <div class="recommendTitle">제목 : ${match.title}</div>
+                          <div class="recommendArea">위치: ${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</div>
+                          <c:choose>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                              <div class="recommendSportsType">종목 : 축구</div>
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                              <div class="recommendSportsType">종목 : 농구</div>
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                              <div class="recommendSportsType">종목 : 야구</div>
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                              <div class="recommendSportsType">종목 : 탁구</div>
+                            </c:when>
+                          </c:choose>
+                          <c:choose>
+                            <c:when test="${match.teamLevel.teamLevel eq 'high'}">
+                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                            </c:when>
+                            <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
+                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                            </c:when>
+                            <c:when test="${match.teamLevel.teamLevel eq 'low'}">
+                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                            </c:when>
+                          </c:choose>
+                          <div class="recommendTeamAges">팀연령대 : ${match.teamAges.teamAges}</div>
+                        </div>
+                        </div>
+                      </td>
+                     </tr>
+                  </c:forEach>
+                </c:when>
+                <c:otherwise>
+                  <tr>
+                    <td>
+                      <div>팀이 없음</div>
+                    </td>
+                  </tr>
+                </c:otherwise>
+              </c:choose>
             </c:when>
             <c:otherwise>
-            
+              <tr>
+                <td>
+                  <div>로그인안함</div>
+                </td>
+              </tr>
             </c:otherwise>
           </c:choose>
         </table>
