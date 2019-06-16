@@ -1,6 +1,8 @@
 package com.eomcs.lms.service;
 
 import java.util.List;
+
+import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
@@ -18,4 +20,12 @@ public interface MyTeamService {
  List<Match>findMatchNo2(int no);
  List<Team> MatchTeam(int no); 
   List<TeamRecruit> findByJoinTeam(); 
+  List<Member> findByMember(int no);
+  int insertTeamMember(int tno, int mno);
+  
+  List<TeamRecruit> findByTeamRecruitTeamNo(int no); 
+  List<JoinTeam> findByJoinTeamMemberNo(int no); 
+  int mtchupdate(int otNo, int matchNo);
+  int deleteJoinTeam(int tno,int rcrmno);
+  int deleteMatchAply(int no);
 }
