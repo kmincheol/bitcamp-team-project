@@ -481,6 +481,12 @@ insert into mtchaply(tm_id,mtch_id,aply_dt,aply_stat)
 values(5,2,'2019-06-09','수락');
 insert into mtchaply(tm_id,mtch_id,aply_dt,aply_stat)
 values(6,3,'2019-06-11','수락');
+insert into mtchaply(tm_id,mtch_id,aply_dt,aply_stat)
+values(3,11,'2019-06-11','대기');
+insert into mtchaply(tm_id,mtch_id,aply_dt,aply_stat)
+values(4,11,'2019-06-11','대기');
+insert into mtchaply(tm_id,mtch_id,aply_dt,aply_stat)
+values(5,11,'2019-06-11','대기');
 
 -- 후기게시판데이터
 insert into revw(tm_id,tm_id2,mtch_id,cont,gpa)

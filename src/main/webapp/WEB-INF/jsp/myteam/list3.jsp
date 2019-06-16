@@ -56,26 +56,25 @@
     <div style="margin-top: 50px;">
       <div style="width: 1080px;">
         <div style="background: #949494; text-align: center; font-weight: bold; line-height: 40px;">
-          신청받은경기</div>      
+         신청 보낸 경기</div>      
         <div style="height: 700px; width: 1085px; overflow: scroll;">
           <table class="table table-bordered" style="margin: 0;">
-            <tbody>        
-              <%-- <c:forEach items=""> --%>
+            <tbody>  
+               <c:forEach items="${matchNos}" var="matchNos"> 
               <tr style="height: 100px;">
-                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;">팀엠블럼</td>
+                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img src="${matchNos.team.teamEmblemPhoto }"/></td>
                 <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px;">
-                <div class="team_info">&middot; 팀명 : </div>
-                <div class="team_info">&middot; 지역 : </div>
-                <div class="team_info">&middot; 구장 : </div>
-                <div class="team_info">&middot; 날짜 : </div>
-                <div class="team_info">&middot; 비용 : </div>
+                <div class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
+                <div class="team_info">&middot; 지역 : ${matchNos.match.location }</div>
+                <div class="team_info">&middot; 구장 : ${matchNos.match.stadiumName }</div>
+                <div class="team_info">&middot; 날짜 :${matchNos.match.playDate }</div>
+                <div class="team_info">&middot; 비용 : ${matchNos.match.cost }</div>
                 </td>              
                 <td colspan="1" style="vertical-align: middle; width: 150px;">  
-                  <a class="btn btn-outline-dark" href="#" style="width: 100%; margin-bottom: 15px;">수락</a><br>
-                  <a class="btn btn-outline-dark" href="#" style="width: 100%;">거절</a>
+                  <a class="btn btn-outline-dark" href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}" style="width: 100%;">취소</a>
                 </td>
               </tr>
-              <%-- </c:forEach> --%>
+               </c:forEach> 
             </tbody>
           </table>
         </div>

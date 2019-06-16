@@ -145,6 +145,83 @@
     </association>
   
  </resultMap>
+  
+ <resultMap type="match" id="matchMap">
+    <result column="mtch_id" property="no" />
+    <result column="tm_id" property="teamNo" />
+    <result column="tm_id2" property="otherTeamNo" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="titl" property="title" />
+    <result column="cont" property="contents" />
+    <result column="vw_cnt" property="viewCount" />
+    <result column="cdt" property="createdDate" />
+    <result column="game_dt" property="playDate" />
+    <result column="area" property="location" />
+    <result column="stdm_psti" property="stadiumName" />
+    <result column="stdm_lat" property="stadiumLatitude" />
+    <result column="stdm_long" property="stadiumLongitude" />
+    <result column="tel" property="telephone" />
+    <result column="cost" property="cost" />
+    
+    <association property="matchApplly" javaType="MatchApply">
+    <id column="mtch_id" property="matchNo" />
+    <id column="tm_id" property="teamNo" />
+    <result column="aply_dt" property="applyDate" />
+    <result column="aply_stat" property="applyStatus" />
+    </association>
+    
+       <association property="team" javaType="Team">
+       <id column="tm_id" property="teamId" />
+    <result column="name" property="teamName" />
+    <result column="tm_intd" property="teamInfo" />
+    <result column="area" property="teamArea" />
+    <result column="age_id" property="teamAgeId" />
+    <result column="tm_type_id" property="teamTypeId" />
+    <result column="tm_lev_id" property="teamLevelId" />
+    <result column="spt_clsf_id" property="teamSportsId" />
+    <result column="tm_ambl_phot" property="teamEmblemPhoto" />
+    <result column="tm_unf_wth" property="teamUniform" />
+    <result column="tm_unf_phot" property="teamUniformPhoto" />
+    <result column="cdt" property="teamCreateDate" />
+    <result column="mdt" property="teamInfoModifieDate" />
+    </association>
+    
+     <association property="teamAges" javaType="TeamAges">
+      <id column="age_id" property="teamAgeId" />
+      <result column="ages" property="teamAges" />
+    </association>
+
+    <association property="teamLevel" javaType="TeamLevel">
+      <id column="tm_lev_id" property="teamLevelId" />
+      <result column="levs" property="teamLevel" />
+    </association>
+
+    <association property="teamMember" javaType="TeamMember">
+      <id column="tm_mbr_id" property="teamMemberNo" />
+      <id column="mbr_id" property="memberNo" />
+      <id column="pstn" property="position" />
+      <id column="tlead_wth" property="teamLeader" />
+    </association>
+    
+    <association property="member" javaType="Member">
+      <id column="mbr_id" property="no" />
+      <result column="user_id" property="id" />
+      <result column="name" property="name" />
+    </association>
+
+    <association property="teamType" javaType="teamType">
+      <id column="tm_type_id" property="teamTypeId" />
+      <result column="types" property="teamType" />
+    </association>
+
+    <association property="teamTypeSports" javaType="teamTypeSports">
+      <id column="spt_clsf_id" property="teamSportsTypeId" />
+      <result column="spt_clsf_name" property="teamSportsType" />
+    </association>
+    
+</resultMap>  
+
+  
     
  <resultMap type="TeamRecruit" id="teamRecruitMap">
     <id column="rcrm_id" property="teamNo" />
@@ -191,24 +268,53 @@
 
   </resultMap>
   
-  <resultMap type="match" id="matchMap">
-    <id column="mtch_id" property="no" />
-    <result column="tm_id" property="teamNo" />
-    <result column="tm_id2" property="otherTeamNo" />
-    <result column="spt_clsf_id" property="teamSportsId" />
-    <result column="titl" property="title" />
-    <result column="cont" property="contents" />
-    <result column="vw_cnt" property="viewCount" />
+   <resultMap type="Member" id="MemberMap">
+    <id column="mbr_id" property="no" />
+       <result column="user_id" property="id" />
+      <result column="pwd" property="password" />
+      <result column="name" property="name" />
+      <result column="bth_dt" property="birthDay" />
+      <result column="gndr" property="gender" />
+      <result column="tel" property="tel" />
+    <result column="email" property="email" />
+    <result column="post" property="post" />
+    <result column="bas_addr" property="baseAddress" />
+    <result column="det_addr" property="detailAddress" />
+    <result column="prof_phot" property="photo" />
+    <result column="s_intd" property="selfIntroduce" />
+    <result column="login_type" property="loginType" />
+    <result column="stat" property="status" />
     <result column="cdt" property="createdDate" />
-    <result column="game_dt" property="playDate" />
-    <result column="area" property="location" />
-    <result column="stdm_psti" property="stadiumName" />
-    <result column="stdm_lat" property="stadiumLatitude" />
-    <result column="stdm_long" property="stadiumLongitude" />
-    <result column="tel" property="telephone" />
-    <result column="cost" property="cost" />
-</resultMap>  
+    <result column="lcd" property="latestDate" />
+    <result column="mgr" property="manager" />
+      </resultMap>
+
+      <resultMap type="JoinTeam" id="JoinTeamMAp">
+
+      <id column="rcrm_id" property="rcrmId" />
+      <id column="mbr_id"  property="mbrId"/>
+      
+      </resultMap>
+      
+  <resultMap type="TeamRecruit" id="teamRecruitMap2">
+    <id column="rcrm_id" property="teamNo" />
+    <result column="tm_id" property="teamId" />
+    <result column="titl" property="teamTitle" />
+    <result column="vw_cnt" property="teamViewCount" />
+    <result column="cdt" property="teamCreatedDate" />
+    <result column="rcrm_stat" property="teamRcrmStatus" />
+    <result column="cont" property="teamContents" />
+  </resultMap>
   
+    <sql id="default-columns">
+      mbr_id, 
+      name, 
+      user_id,
+      email, 
+      tel,
+      cdt
+  </sql>
+    
  <select id="findAll4" resultMap="matchMap">
   select
     mtch_id,
@@ -224,17 +330,7 @@
     cost
   from
     mtch
-  </select>
-  
-    <sql id="default-columns">
-      mbr_id, 
-      name, 
-      user_id,
-      email, 
-      tel,
-      cdt
-  </sql>
-  
+  </select>  
   
    <select id="findByMyTeam" resultMap="teamMap" parameterType="int">
     select
@@ -311,9 +407,15 @@
  <select id="findByMatchNo" resultMap="matchApplyMap" parameterType="int">
  
 select 
-mt.tm_id2, 
+mt.mtch_id,
+mt.tm_id,
 t.name,
-t.tm_id
+mt.area,
+mt.stdm_psti,
+mt.game_dt,
+mt.cost,
+t.tm_ambl_phot
+
 from 
 mtchaply mtc  
 left outer join mtch mt on mtc.mtch_id = mt.mtch_id 
@@ -324,12 +426,26 @@ mtc.tm_id = #{value}
 
 
  <select id="findByMatchNo2" resultMap="matchMap" parameterType="int">
-  select
-    tm_id
-  from
-      mtch
-  where
-    mtch_id = #{value}
+ select 
+ t.name,
+ t.age_id,
+ t.tm_lev_id,
+ t.tm_ambl_phot,
+ t.tm_intd,
+ t.tm_id,
+ mt.mtch_id,
+ mt.tm_id2
+ 
+ from 
+ mtch mt
+ left outer join mtchaply mtc on mt.mtch_id = mtc.mtch_id  
+ left outer join tm t on mtc.tm_id = t.tm_id
+ left outer join age a on t.age_id = a.age_id
+ left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+ left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
+ left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    where 
+  mt.tm_id =  #{value}
   </select>
 
  <select id="findByMatchTeam" resultMap="teamMap" parameterType="int">
@@ -343,7 +459,8 @@ mtc.tm_id = #{value}
     from
       tm t
        left outer join mtch mc on t.tm_id = mc.tm_id
-       where t.tm_id = ${value}
+       where 
+       t.tm_id = ${value} 
   </select> 
 
 
@@ -352,14 +469,91 @@ mtc.tm_id = #{value}
  <select id="findJoinTeam" resultMap="teamRecruitMap" >
  select 
  m.name,
- rc.tm_id
- 
+ rc.tm_id,
+ m.mbr_id,
+ gndr,
+ tel,    
+ email
  from
   rcrm rc 
   left outer join join_tm jt on rc.rcrm_id = jt.rcrm_id
   left outer join mbr m on jt.mbr_id = m.mbr_id 
   where NOT m.name is null
   </select> 
+
+ <select id="findByMember" resultMap="MemberMap" parameterType="int">
+
+ 
+   select 
+      mbr_id,
+      name,
+      bth_dt,
+      gndr, 
+      prof_phot,
+      email,
+      user_id,
+      pwd,
+      tel,
+      post,
+      bas_addr,
+      det_addr,
+      login_type,
+      s_intd
+    from 
+      mbr
+    where 
+      mbr_id = #{value}
+  </select>
+
+  <insert id="insertTeamMember" parameterType="HashMap">
+    insert into 
+     tm_mbr(
+      tm_mbr_id,
+      mbr_id) 
+      values(
+      #{tno},
+      #{mno}
+      )
+  </insert>
+
+ <select id="joinTeam" resultMap="JoinTeamMAp" parameterType="int" >
+ select 
+*
+ from
+  join_tm 
+  where 
+  mbr_id= #{value}
+  </select> 
+
+ <select id="teamRecruit2" resultMap="teamRecruitMap2" parameterType="int" >
+select
+ * 
+ from rcrm 
+ where 
+ tm_id = #{value}
+  </select> 
+
+ <delete id="deleteJoinTeam" parameterType="hashmap">
+ delete 
+  from
+    join_tm
+  where  
+      mbr_id = #{mno} AND rcrm_id = #{rcrmno}
+
+  </delete>
+
+ <delete id="mtchAplyDelete" parameterType="int">
+    delete from mtchaply
+    where mtch_id = #{no}
+  </delete>
+
+  <update id="mtchupdate" parameterType="hashmap">
+  update mtch
+    set
+    tm_id2 = #{otherTeamNo}
+    where 
+    mtch_id = #{mtchNo}
+  </update>
 
 
 
