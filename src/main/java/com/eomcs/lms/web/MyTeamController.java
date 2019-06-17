@@ -54,9 +54,13 @@ public class MyTeamController {
 	
   
   @GetMapping("/list4")
-  public String list4(Model model) {
-    List<Match> matchs = myTeamService.list4();
+  public String list4(Model model, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    int a = member.getNo(); // 회원번호
+    
+    List<Match> matchs = myTeamService.list4(a);
 
+    session.setAttribute("member", member);
     model.addAttribute("matchs", matchs);
     logger.debug(matchs);
 

@@ -315,21 +315,24 @@
       cdt
   </sql>
     
- <select id="findAll4" resultMap="matchMap">
+ <select id="findAll4" resultMap="matchMap"  parameterType="int">
   select
     mtch_id,
-    tm_id,
-    spt_clsf_id,
+    mt.tm_id,
+    mt.spt_clsf_id,
     titl,
     cont,
-    cdt,
+    mt.cdt,
     game_dt,
-    area,
+    mt.area,
     stdm_psti,
-    tel,
+    mt.tel,
     cost
   from
-    mtch
+    mtch mt
+    left outer join tm t on mt.tm_id = t.tm_id
+  where
+    mt.tm_id=${value};
   </select>  
   
    <select id="findByMyTeam" resultMap="teamMap" parameterType="int">

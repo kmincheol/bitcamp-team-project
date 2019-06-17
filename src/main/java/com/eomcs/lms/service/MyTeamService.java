@@ -42,5 +42,5 @@ public interface MyTeamService {
 
   int deleteMatchAply(int no);
 
-  List<Match> list4();
+  List<Match> list4(int no);
 }
