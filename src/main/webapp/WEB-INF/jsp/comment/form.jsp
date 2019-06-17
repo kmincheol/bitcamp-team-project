@@ -14,9 +14,9 @@
 
       <div class="form-group row"> 
         <div class="col-sm-10"> 
-          <textarea class="cmtform form-control comment-form" name='contents' placeholder="댓글을 작성하세요."  autocomplete=off rows="3">${comment.contents}</textarea>
+          <textarea class="cmtform form-control comment-form" name='contents' placeholder="댓글을 작성하세요."  autocomplete=off rows="2">${comment.contents}</textarea>
           <span id="counter">###</span> 
-          <button class="a input-group-btn btn btn-dark" type='submit'>작성</button>  
+          <button class="a input-group-btn btn btn-dark" type='submit'>작성</button>   
         </div>
       </div>
     </div>

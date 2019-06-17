@@ -106,6 +106,16 @@
       user_id = #{value}
   </select>
   
+      <select id="findById2" resultMap="memberMap" parameterType="string">
+    select
+      mbr_id, 
+      user_id
+    from 
+      mbr
+    where 
+      user_id = #{no}
+  </select>
+  
   <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
     select 
       <include refid="default-columns"/>,

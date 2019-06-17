@@ -80,6 +80,11 @@ table.info-table td {
 	padding: 50px;
 }
 
+.comment-form{
+  width:900px;  
+  resize: none; 
+} 
+
 #contents-section {
 	margin-bottom: 50px;
 	border-bottom: 1px solid #ccc;

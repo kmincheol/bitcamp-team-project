@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -340,9 +341,13 @@ public class MemberController {
   }
 
   @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model, HttpSession session) {
+  public String detail(@PathVariable byte[] no, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
-    member = memberService.get(no);
+    byte[] decodedBytes = Base64.getDecoder().decode(no);
+    String no2 = new String(decodedBytes);
+    
+    memberService.get(no2);
+    
     model.addAttribute("member", member);
     return "member/detailForm";
   }

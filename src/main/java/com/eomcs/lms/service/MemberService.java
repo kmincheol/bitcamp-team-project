@@ -9,6 +9,7 @@ public interface MemberService {
   List<Member> list(String keyword);
   int add(Member member, TermsAgree termsAgree);
   Member get(int no);
+  Member get(byte[] no);
   Member get(String id, String password);
   Member get(String email);
   Member findId(Member member);
