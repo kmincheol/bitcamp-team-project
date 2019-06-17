@@ -7,7 +7,6 @@
 <!-- page-content" -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="${contextRootPath}/commonSideHeaderFooter/commonSidebarBottomScript.jsp"></script>
 <!-- SCRIPTS -->
 <!-- JQuery -->
 <script type="text/javascript"
@@ -21,4 +20,4 @@
 <!-- MDBootstrap Datatables  -->
 <script type="text/javascript"
   src="${contextRootPath}/node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
-  
+             
