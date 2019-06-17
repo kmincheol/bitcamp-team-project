@@ -15,7 +15,8 @@
   <!-- footer.css -->
   <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
   <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css">
-  
+  <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+  <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 </head>
 <body style="background:white">
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
@@ -285,7 +286,6 @@ $(document).ready(function() {
 
   $('#btnJoin').click(function(event) {
     submitClose();
-    
     if (telFlag && authFlag) {
       mainSubmit();
     } else {
@@ -304,12 +304,27 @@ function mainSubmit() {
     return false;
   }
   if (telFlag && authFlag) {
-    
-    $('#join_form').submit();
+    redirect();
   } else {
     submitOpen();
     return false;
   }
+}
+
+function redirect() {
+  var message = "추가정보입력이 완료되었습니다! <br>다시 로그인 해주시기 바랍니다!";
+  if ('' != '') {
+      message = '${message}'; 
+  }
+  Swal.fire({
+    type: 'success',
+    title: message
+  }).then(function(result) {
+    if (result.value) {
+      $('#join_form').submit();
+      location.href = "http://localhost:8080/bitcamp-team-project/app/auth/form";
+    }
+  })
 }
 
 function submitClose() {

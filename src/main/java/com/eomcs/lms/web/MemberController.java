@@ -84,10 +84,6 @@ public class MemberController {
   public void invalid() {
   }
 
-  @GetMapping("complete")
-  public void complete() {
-  }
-
   @GetMapping("form")
   public void form() {
   }
