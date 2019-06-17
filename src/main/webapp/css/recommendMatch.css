@@ -1,47 +1,69 @@
 .recommendDiv {
 	float: left;
-	margin: 0 0 0 30px
 }
 .recommendTable {
-	width: 70px;
+	width: 190px;
   font-size: 16px;
 	border: 1px solid black
 }
 .recommendTh {
-	font-size: 21px;
-	background-color: #f8f7f3;
+    padding-top: 5px;
+	background-color: #2e3436;
 	text-align: center;
-	border: 2px solid #dfdfdf
+	border: 2px solid #2e3436;
+	color: #FF4545;
 }
 .recommendTd {
 	width: 70px;
 	padding: 10px;
 	vertical-align: top;
-	background-color: #f8f7f3;
+	background-color: #888a85;
 	border : 1px solid #dee2e6
 }
-.recommendTeamEmblem {
-	float:left;
-	width: 50px
+.recommendTeamLevel{
+  position: absolute;
+  margin-left: 6px;
+  margin-top: 6px;
 }
+
+.recommendTeamEmblem {
+  text-align:center;
+	width: 154px
+}
+
+#teamNameText{
+  margin-bottom: 0px;
+  color: white;
+}
+
+.recommendArea{
+  text-align:center;
+  color: white;
+}
+
+
 .recommendPlayDate {
+  background-color: #f19d29;
+  text-align:center;
 	float: left;
 	border : 1px solid #dee2e6;
-	width: 70px
+	width: 170px
 }
 .recommendBox {
-	float: left;
-	border : 1px solid #dee2e6;
-  width: 70px
+  float: left;
+  border : 1px solid #dee2e6;
+  border-top-width: 0px;
+  background-color: #babdb6;
+  width: 154px;
+  margin-left: 8px;
+  
 }
 .recommendTeamEmblemPhoto {
 	display: inline;
-	margin-top: 30px;
 	width: 50px;
 	height: 50px
 }
 .recommendTeamInfo {
-	float:left;
 	margin-left: 5px;
 	display: inline;
 	overflow: hidden;

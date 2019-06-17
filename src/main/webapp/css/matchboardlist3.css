@@ -49,22 +49,12 @@ a:hover{
 
 #formform{
   margin-left: 30px;
+  margin-right: 30px;
   float: left;
   border-left: 1px solid #555753;
+  border-right: 1px solid #555753;
   padding-left: 30px;
-}
-
-#list{
-  z-index: 2;
-  width: 460px;
-  margin-left: 10px;
-  border-radius: 2px;
-  border: 2px solid #dfdfdf;
-  border-top: 0px;
-  margin-bottom: 28px;
-  padding-left: 13px;
-  height: 733px;
-  background-color: #f8f7f3;
+  padding-right: 30px;
 }
 
 #listtitle{
@@ -77,7 +67,20 @@ a:hover{
   margin-top: 28px;
   padding-top: 6px;
   border: 2px solid #dfdfdf;
-  background-color: #f8f7f3;
+  background-color: #d0d0c9;
+}
+
+#list{
+  z-index: 2;
+  width: 460px;
+  margin-left: 10px;
+  border-radius: 2px;
+  border: 2px solid #dfdfdf;
+  border-top: 0px;
+  margin-bottom: 28px;
+  padding-left: 13px;
+  height: 743px;
+  background-color: #eeeee9;
 }
 
 .detail{
@@ -138,12 +141,15 @@ a:hover{
   position: relative;
   width: 180px;
   height: 350px;
+  margin-left: 32px;
   margin-top: 28px;
 }
 
 #titleSearchBox {
   width:180px;
+  margin-top:20px;
   margin-bottom: 6px;
+  
 }
 
 #datepicker{
@@ -184,7 +190,8 @@ a:hover{
     display: flex;
     justify-content: center;
     margin: 25px 0 17px 0;
-    width:1125px;
+    text-align:center;
+    width: 1025px;
 }
 
 #imgcontro{
@@ -335,7 +342,9 @@ button{
   margin-left: 0px;
 }
 
-
+.recommendTable{
+  
+}
 
 
 

@@ -146,8 +146,13 @@
                   <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
                   align="center" style="cursor: pointer; width:172px;" >
                   
-                  <div style="width:58px; height:40px;">${match.team.teamEmblemPhoto}</div><!-- 엠블럼 들어갑니다. -->
-                  <br> <br> <div class="teamName">${match.team.teamName}</div><br>
+                  <div style="width:50px; height:50px;">
+                  <img class="recommendTeamEmblemPhoto" src="${match.team.teamEmblemPhoto}" 
+                       onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'"></div>
+                       <br>
+                       
+                       
+                   <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
                 <td class="detail" id="${match.no}" colspan="5"
@@ -157,8 +162,37 @@
                     <div class="teamName" style="display:none">${match.team.teamName}</div>
                     <div class="title">제목 : ${match.title}</div>
                     <div class="playDate">경기날짜 : ${match.playDate}</div>
-                    <div class="sportsType">종목 : ${match.teamTypeSports.teamSportsType}</div>
-                    <div class="teamLevel">팀레벨 : ${match.teamLevel.teamLevel}</div>
+                    
+                    <div class="sportsType">종목 : 
+                          <c:choose>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                              <img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/football_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                              <img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/basketball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                              <img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/baseball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                              <img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                            </c:when>
+                          </c:choose>
+                    </div>
+                    
+                    <div class="teamLevel">팀레벨 : 
+                          <c:choose>
+                            <c:when test="${match.teamLevel.teamLevel eq 'high'}">
+                             상
+                            </c:when>
+                            <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
+                             중
+                            </c:when>
+                            <c:when test="${match.teamLevel.teamLevel eq 'low'}">
+                             하
+                            </c:when>
+                          </c:choose>
+                    </div>
                     <div class="teamAges">팀연령대 : ${match.teamAges.teamAges}</div>
                  </td>
                  </tr>
@@ -248,43 +282,48 @@
                         <div class="recommendPlayDate">경기날짜 : ${match.playDate}</div>
                         <div class="recommendBox">
                         <div class="recommendTeamEmblem">
-                          <img class="recommendTeamEmblemPhoto" 
-                               src="${match.team.teamEmblemPhoto}" 
-                               onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'">
-                        </div>
-                        <div class="recommendTeamInfo">
-                          <div class="recommendTeamName">팀이름 : ${match.team.teamName}</div>
-                          <div class="recommendNo">매치번호 : ${match.no}</div>
-                          <div class="recommendTitle">제목 : ${match.title}</div>
-                          <div class="recommendArea">위치: ${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</div>
-                          <c:choose>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
-                              <div class="recommendSportsType">종목 : 축구</div>
-                            </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
-                              <div class="recommendSportsType">종목 : 농구</div>
-                            </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
-                              <div class="recommendSportsType">종목 : 야구</div>
-                            </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
-                              <div class="recommendSportsType">종목 : 탁구</div>
-                            </c:when>
-                          </c:choose>
+                        
+                        
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq 'high'}">
-                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                              <div class="recommendTeamLevel" style="background-color:#ffcece">상</div>
                             </c:when>
                             <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
-                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                              <div class="recommendTeamLevel" style="background-color:#c7ffae">중</div>
                             </c:when>
                             <c:when test="${match.teamLevel.teamLevel eq 'low'}">
-                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                              <div class="recommendTeamLevel" style="background-color:#d5cfd8">하</div>
                             </c:when>
                           </c:choose>
-                          <div class="recommendTeamAges">팀연령대 : ${match.teamAges.teamAges}</div>
+                        
+                        
+                          <img class="recommendTeamEmblemPhoto" 
+                               src="${match.team.teamEmblemPhoto}" 
+                               onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'"><br>
+                               
+                               
+                          <c:choose>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/football_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/basketball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/baseball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                            </c:when>
+                          </c:choose>
+                               <label id="teamNameText">${match.team.teamName}</label></div>
+                        
+                        
                         </div>
-                        </div>
+                        
+                          <div class="recommendArea">
+                          ${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName} / ${match.teamAges.teamAges}
+                          </div>
                       </td>
                      </tr>
                   </c:forEach>
