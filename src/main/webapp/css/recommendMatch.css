@@ -4,65 +4,101 @@
 .recommendTable {
 	width: 190px;
   font-size: 16px;
-	border: 1px solid black
+	border: 1px solid black;
+	margin-top: 30px;
 }
 .recommendTh {
     padding-top: 5px;
-	background-color: #2e3436;
 	text-align: center;
-	border: 2px solid #2e3436;
-	color: #FF4545;
+	border: 3px solid #FF4545;
+	background-color: #FF4545;
+	color:white;
+}
+#loginsugge{
+  
 }
 .recommendTd {
 	width: 70px;
 	padding: 10px;
 	vertical-align: top;
-	background-color: #888a85;
+	background-color: rgb(64, 64, 64);
 	border : 1px solid #dee2e6
 }
 .recommendTeamLevel{
-  position: absolute;
+  float:right;
   margin-left: 6px;
   margin-top: 6px;
+  height:20px;
+  border-radius: 30px;
 }
 
 .recommendTeamEmblem {
-  text-align:center;
-	width: 154px
+  float: left;
+}
+.recommendSportsType{
+  margin-left: 10px;
+  float:left;
 }
 
 #teamNameText{
   margin-bottom: 0px;
-  color: white;
+  font-size: 24px;
 }
-
+#levels{
+  float:right;
+  border-left : 2px solid #555753;
+  border-bottom : 2px solid #555753;
+}
 .recommendArea{
+  float:left;
   text-align:center;
-  color: white;
 }
-
+#jumjum{
+  margin-bottom: 10px;
+}
 
 .recommendPlayDate {
-  background-color: #f19d29;
+  background-color: rgb(94, 94, 94);
+  color:white;
   text-align:center;
 	float: left;
-	border : 1px solid #dee2e6;
-	width: 170px
+	margin-top:3px;
+	width: 200px;
+	height: 32px;
+	padding-top: 5px;
+	margin-left: 4px;
 }
 .recommendBox {
   float: left;
   border : 1px solid #dee2e6;
   border-top-width: 0px;
-  background-color: #babdb6;
-  width: 154px;
-  margin-left: 8px;
+  background-color: white;
+  width: 200px;
+  margin-left: 4px;
   
 }
 .recommendTeamEmblemPhoto {
-	display: inline;
+  float: left;
 	width: 50px;
-	height: 50px
+	height: 50px;
+	margin-top: 20px;
+	margin-left: 5px;
+    margin-right: 5px;
 }
+
+#sidbarSubmit{
+  float:left;
+  text-align:center;
+  width:198px;
+  height: 30px;
+  background-color: #d3d7cf;
+}
+
+
+#EEE{
+  margin-left: 30px;
+}
+
 .recommendTeamInfo {
 	margin-left: 5px;
 	display: inline;
