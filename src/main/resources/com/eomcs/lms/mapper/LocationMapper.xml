@@ -9,13 +9,13 @@
   <resultMap type="topLocation" id="topLocationMap">
     <id column="toplc_id"  property="topLocationId"/>
     <result column="toplc_no"   property="topLocationNo"/>
-    <result column="name"  property="topLocationName"/>
+    <result column="toplc_name"  property="topLocationName"/>
   
     <collection property="middleLocation" ofType="MiddleLocation">
       <id column="toplc_id" property="topLocationId" />
       <result column="midlc_id" property="middleLocationId" />
       <result column="midlc_no" property="middleLocationNo" />
-      <result column="name" property="middleLocationName" />
+      <result column="midel_name" property="middleLocationName" />
     </collection>
     
   </resultMap>
@@ -23,8 +23,8 @@
   
   <select id="findTopLocation" resultMap="topLocationMap" parameterType="int">
     select
-      t.name,
-      m.name
+      t.toplc_name,
+      m.midlc_name
     from
       toplc t
       left outer join midlc m on t.toplc_id = m.toplc_id
