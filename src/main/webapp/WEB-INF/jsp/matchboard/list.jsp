@@ -93,22 +93,28 @@
         하 </button>
       </div>  
         </div>
-        
         <div id="inputBox2">
+        <table>
+          <tr>
+          <td>
                 <input class="form-control-sm" id="titleSearchBox"
                 data-jplist-control="textbox-filter" data-group="group1"
                 data-name="my-filter-1" data-path=".title"
                 type="text" value=""
                 data-clear-btn-id="name-clear-btn"
                 placeholder="글 제목을 입력하세요" />
-                
-          <button type="button" class="btn btn-dark" id="name-clear-btn">
-            검색어 설정<br> 초기화</button> <!-- 지우개버튼 -->
-                <br>
-                
+          
+          <br>      
                 <!-- datepicker 적용 -->
           <input class="form-control-sm" type="text" id="datepicker" placeholder="날짜를 입력하세요">
           
+          </td>
+          <td>      
+          <button type="button" class="btn btn-dark" id="name-clear-btn">
+            검색어 설정<br> 초기화</button> <!-- 지우개버튼 -->
+          </td>
+          </tr>
+          </table>
           </div>
             
     <div style="display: none;">
@@ -155,8 +161,6 @@
                   <div>
                   <img class="TeamEmblemPhoto" src="${match.team.teamEmblemPhoto}" style="width:100px; height:100px;" 
                        onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'"></div>
-                       <br>
-                       
                        
                    <div class="teamName">${match.team.teamName}</div><br>
                 </td>
@@ -297,28 +301,26 @@
                                src="${match.team.teamEmblemPhoto}" 
                                onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'">
                         
-
-                        
                           <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/football_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/football_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/basketball_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/basketball_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/baseball_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/baseball_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/pingpong_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/pingpong_list_min.png"></div>
                             </c:when>
                           </c:choose>
                                <label id="teamNameText">${match.team.teamName}</label>
                                
                                <br>
-                               <ul>
-                          <li id="EEE">${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</li>
-                          <li id="EEE">${match.teamAges.teamAges} / 
+                               <ul id="EEE">
+                          <li>${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</li>
+                          <li>${match.teamAges.teamAges} / 
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq 'high'}">
                              상
@@ -336,10 +338,7 @@
                           <div id="sidbarSubmit">
                           신청하기
                           </div>
-                          
-                        
                         </div>
-                        
                       </td>
                      </tr>
                   </c:forEach>

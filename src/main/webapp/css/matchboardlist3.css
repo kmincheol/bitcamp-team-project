@@ -166,8 +166,9 @@ a:hover{
 
 #name-clear-btn {
   margin-left: 4px;
+  padding-top: 4px;
   width:100px;
-  height: 35px;
+  height: 55px;
 }
 
 #titleSearchBox {
