@@ -421,7 +421,7 @@
                 }
               })
               
-              $.getJSON("data", {"no" : no}, function(data) {
+              $.getJSON("matchboard/data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
                   $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
