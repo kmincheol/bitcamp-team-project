@@ -125,7 +125,7 @@ public class MyTeamController {
 			}
 		}
 		model.addAttribute("tno",tno);
-		return "myteam/detail";
+		return "myteam/detail2";
 	}
 	
 	// 신청 온 사람 팀원으로 추가하기
