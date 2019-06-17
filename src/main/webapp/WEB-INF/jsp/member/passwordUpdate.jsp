@@ -8,7 +8,8 @@
 <title>BATTLE MATCHING :: 상세정보입력</title>
 <jsp:include page="../commonCss.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css">
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css">  
 
 <style>
 h2 {
@@ -155,15 +156,27 @@ $(document).ready(function() {
          },
        function(obj) {
          if (obj.status == 'success') { 
-           alert("확인되었습니다.")
+           
+           Swal.fire({
+             type: 'success',
+             title: '비밀번호가 확인되었습니다!',
+             showConfirmButton: false,
+             timer: 1500
+           })
            $('.oldPwd').hide();
            $('.newPwd').show();
            $('.newBtn').show(); 
-           $('.oldBtn').hide();
+           $('.oldBtn').hide(); 
          } else { 
+           
+           Swal.fire({
+             type: 'error',
+             title: '비밀번호 확인 실패',
+             text: '비밀번호가 틀립니다. 다시 확인해 주세요!',
+           })
            $('#newMessage').show();
-           $('#oldInput').focus(); 
-           $('#oldInput').val(''); 
+           $('#oldInput').focus();   
+           $('#oldInput').val('');
          } 
        }); 
 });
