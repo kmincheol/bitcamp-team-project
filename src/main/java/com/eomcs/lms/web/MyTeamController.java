@@ -41,10 +41,11 @@ public class MyTeamController {
 		Member member = (Member) session.getAttribute("loginUser");
 		int a = member.getNo(); // 회원번호
 		List<Team> team = myTeamService.teamList(a); // 팀목록
+		List<Match> matchs = myTeamService.list4(a);
 		List<TeamMember> tm = myTeamService.teamMemberList2();
       List<TeamRecruit> tr = myTeamService.findByJoinTeam();     
       session.setAttribute("member", member);
-	
+      model.addAttribute("matchs", matchs);
       model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
 		model.addAttribute("tr", tr);
