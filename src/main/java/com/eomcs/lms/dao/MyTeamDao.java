@@ -45,6 +45,12 @@ public interface MyTeamDao {
   int mtchAplyDelete(int no);
 
   List<Match> findAll4();
+  
+  List<Match>sucessMatching(int no);
+  
+  List<Team> matchOtherTeam(int no);
+  
+  List<Team> matchMyTeam(int no);
 }
 
 

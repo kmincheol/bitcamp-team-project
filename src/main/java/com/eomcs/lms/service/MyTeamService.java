@@ -43,4 +43,10 @@ public interface MyTeamService {
   int deleteMatchAply(int no);
 
   List<Match> list4();
+  
+  List<Match>sucessMatching(int no);
+  
+  List<Team> matchOtherTeam(int no);
+  
+  List<Team> matchMyTeam(int no);
 }
