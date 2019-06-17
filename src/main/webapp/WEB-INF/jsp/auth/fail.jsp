@@ -3,18 +3,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Refresh" content="2;url=form">
+  <meta charset="UTF-8">
   <title>로그인 실패</title>
   <jsp:include page="../commonCss.jsp"/>
+  <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+<link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+<style>
+.btn-sss, .btn-fff {
+ cursor: pointer
+}
+</style>
 </head>
 <body>
 
-
-<div class="container">
-<h1>로그인 실패</h1>
-<p>아이디 또는 암호가 맞지 않습니다.</p>
-</div>
-
 <jsp:include page="../javascript.jsp"/>
+<script>
+$(document).ready(function () {
+  alertMsg();
+});
+
+function alertMsg() {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success btn-sss',
+      cancelButton: 'btn btn-danger btn-fff'
+    },
+    buttonsStyling: false,
+  })
+  
+  swalWithBootstrapButtons.fire({
+        title: '로그인에 실패했습니다.',
+        html: '비밀번호를 확인해주세요.',
+        type: 'error',
+        footer: '<a href="../member/findPassword">비밀번호를 찾으시려면 클릭해주세요.</a>'
+    }).then((result) => {
+      location.href = "http://localhost:8080/bitcamp-team-project/app/auth/form"
+      })
+}
+</script>
 </body>
 </html>

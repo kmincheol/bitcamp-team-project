@@ -5,15 +5,33 @@
 <head>
 <meta charset="UTF-8">
 <title>SNS 회원가입</title>
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+<link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+<style>
+.btn-sss, .btn-fff {
+ cursor: pointer
+}
+</style>
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
+
 <script>
         $(document).ready(function () {
             checkTerms();
         });
         
         function checkTerms() {
+          
+          const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success btn-sss',
+              cancelButton: 'btn btn-danger btn-fff'
+            },
+            buttonsStyling: false,
+          })
+          
           var loginType = "${login_type}";
           var cmt;
           
@@ -28,26 +46,68 @@
           } else {
           }
           
-          if(confirm(cmt + 'BATTLE MATCHING을 시작할까요? \n\n회원가입 시, BATTLE MATCHING의 이용약관과\n개인정보처리방침에 따라 정보가 관리됩니다.')) {
-            var agreeMkt = confirm('더 나은 서비스 제공을 위한 마케팅 정보 활용에 동의하시겠어요?');
-            var openUrl = "${contextRootPath}/app/member/signUpCompletion";
-            $.getJSON('${contextRootPath}/app/auth/snsEnter', {
-              "termsRequired" : true,
-              "termsMarketing" : agreeMkt,
-              "loginType" : loginType
-            }, (data) => {
-              console.log(data);
-              if (data.status == "success") {
-                opener.location.href = openUrl;
-                self.close();
-              } else {
-                alert('회원가입에 실패했습니다. 다시 시도해주세요. \n 만약 이와 같은 현상이 반복된다면 고객센터로 문의해주시기 바랍니다.')
-                self.close();
-              }
+          swalWithBootstrapButtons.fire({
+            title: cmt + '<br>BATTLE MATCHING을 시작할까요?',
+            html: '회원가입 시, BATTLE MATCHING의 이용약관과<br>개인정보처리방침에 따라 정보가 관리됩니다.',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '확인',
+            cancelButtonText: '취소',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.value) {
+              swalWithBootstrapButtons.fire({
+                  title: '더 나은 서비스 제공을 위한<br>마케팅 정보 활용에 동의하시겠어요?',
+                  type: 'warning',
+                  showCancelButton: true,
+                  confirmButtonText: '확인',
+                  cancelButtonText: '취소',
+                  reverseButtons: true
+              }).then((result) => {
+                var openUrl = "${contextRootPath}/app/member/signUpCompletion";
+                var agreeMkt;
+                if (result.value) {
+                  agreeMkt = true;
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                  agreeMkt = false;
+                }
+                
+                $.getJSON('${contextRootPath}/app/auth/snsEnter', {
+                  "termsRequired" : true,
+                  "termsMarketing" : agreeMkt,
+                  "loginType" : loginType
+                }, (data) => {
+                  console.log(data);
+                  if (data.status == "success") {
+                    opener.location.href = openUrl;
+                    self.close();
+                  } else {
+                    swalWithBootstrapButtons.fire({
+                        title: '회원가입에 실패했습니다.<br>다시 시도해주세요.',
+                        html: '만약 이와 같은 현상이 반복된다면<br>고객센터로 문의해주시기 바랍니다.',
+                        type: 'error'
+                    }).then((result) => {
+                        if (result.value) {
+                          self.close();
+                        }
+                    })
+                  }                     
+                }).fail(function () {
+                  swalWithBootstrapButtons.fire({
+                    title: '회원가입에 실패했습니다.<br>다시 시도해주세요.',
+                    html: '만약 이와 같은 현상이 반복된다면<br>고객센터로 문의해주시기 바랍니다.',
+                    type: 'error'
+                }).then((result) => {
+                      if (result.value) {
+                        self.close();
+                      }
+                  })
+                })
               })
-          } else {
-            self.close();
-          }
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              self.close();
+            }
+            })
         }
 </script>
 </body>
