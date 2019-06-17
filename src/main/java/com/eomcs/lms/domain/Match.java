@@ -40,7 +40,10 @@ public class Match implements Cloneable, Serializable {
   private Member member;
   private TopLocation topLocation;
   private MiddleLocation middleLocation;
-  
+  private MatchApply matchApplly;
+  private TeamType teamType;
+
+
   @Override
   public String toString() {
     return "Match [no=" + no + ", teamNo=" + teamNo + ", otherTeamNo=" + otherTeamNo
@@ -52,7 +55,14 @@ public class Match implements Cloneable, Serializable {
         + ", teamMember=" + teamMember + ", otherTeam=" + otherTeam + ", teamTypeSports="
         + teamTypeSports + ", matchApply=" + matchApply + ", teamAges=" + teamAges + ", teamLevel="
         + teamLevel + ", tags=" + tags + ", member=" + member + ", topLocation=" + topLocation
-        + ", middleLocation=" + middleLocation + "]";
+        + ", middleLocation=" + middleLocation + ", matchApplly=" + matchApplly + ", teamType="
+        + teamType + "]";
+  }
+  public TeamType getTeamType() {
+    return teamType;
+  }
+  public void setTeamType(TeamType teamType) {
+    this.teamType = teamType;
   }
   public int getNo() {
     return no;
@@ -132,11 +142,29 @@ public class Match implements Cloneable, Serializable {
   public void setMatchApply(List<MatchApply> matchApply) {
     this.matchApply = matchApply;
   }
+  public List<Tag> getTags() {
+    return tags;
+  }
+  public void setTags(List<Tag> tags) {
+    this.tags = tags;
+  }
   public Member getMember() {
     return member;
   }
   public void setMember(Member member) {
     this.member = member;
+  }
+  public MiddleLocation getMiddleLocation() {
+    return middleLocation;
+  }
+  public void setMiddleLocation(MiddleLocation middleLocation) {
+    this.middleLocation = middleLocation;
+  }
+  public MatchApply getMatchApplly() {
+    return matchApplly;
+  }
+  public void setMatchApplly(MatchApply matchApplly) {
+    this.matchApplly = matchApplly;
   }
   public int getTeamNo() {
     return teamNo;
@@ -198,23 +226,11 @@ public class Match implements Cloneable, Serializable {
   public void setTeamLevel(TeamLevel teamLevel) {
     this.teamLevel = teamLevel;
   }
-  public List<Tag> getTags() {
-    return tags;
-  }
-  public void setTags(List<Tag> tags) {
-    this.tags = tags;
-  }
   public TopLocation getTopLocation() {
     return topLocation;
   }
   public void setTopLocation(TopLocation topLocation) {
     this.topLocation = topLocation;
   }
-  public MiddleLocation getMiddleLocation() {
-    return middleLocation;
-  }
-  public void setMiddleLocation(MiddleLocation middleLocation) {
-    this.middleLocation = middleLocation;
-  }
-  
+
 }
