@@ -101,6 +101,7 @@
                 type="text" value=""
                 data-clear-btn-id="name-clear-btn"
                 placeholder="글 제목을 입력하세요" />
+                
           <button type="button" class="btn btn-dark" id="name-clear-btn">
             검색어 설정<br> 초기화</button> <!-- 지우개버튼 -->
                 <br>
