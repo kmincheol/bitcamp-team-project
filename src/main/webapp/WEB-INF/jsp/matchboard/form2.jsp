@@ -27,27 +27,17 @@
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
-
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
-   
-<style>   
-  th{
-    vertical-align: middle!important;
-    text-align: center;
-    background: #f9f7f7;
-  }               
-</style>
 
-</head>      
+
+</head>
 <body>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />         
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
   <div id="main-text">
-    <h2 style="text-align: center;">     
+    <h2 style="text-align: center;">
       <b>매치 글</b>을 <b>등록</b>할 수 있습니다.
     </h2>
     <br>
@@ -59,113 +49,187 @@
     </p>
   </div>
 
-  <div class="container" id="main-wrap" style="margin-top: 50px;">
+  <div class="container" id="main-wrap">
                   
     <form action='add' method='post' name="submit">
-      <table id="match_table" class="table table-bordered table-white">
+<table class="table table-bordered table-white">
+  <tbody>
+    <tr>
+      <th scope="row">제목</th>
+      <td colspan="3"><input type="text" id="title" class="form-control col-md-11" name="title"></td>       
+    </tr>
+    <tr>
+      <th scope="row">소속팀</th>
+      <td>Jacob</td>
+      <td>Thornton</td>      
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+      <div class="row mt-5" style="width: 100%; height:70px; margin-left: 0px;">    
+        <div class="col col-md-2 p-0" style="border: 1px solid #dee2e6; text-align: center; font-weight: bold;">
+        제목</div>
+        <div class="col col-md-10 p-0" style="border: 1px solid #dee2e6; text-align: center; font-weight: bold;">
+          <input type="text" id="title" class="form-control col-md-11" name="title">
+        </div>
+      </div>
+      
+      
+      
+    
+      <table id="match_table" class="table table-bordered">
         <tbody>
           <tr>
-            <th scope="row">제목</th>
-            <td colspan="3"><input type="text" id="title" class="form-control col-md-12"
-              name="title"></td>
-          </tr>
           <tr>
             <th scope="row">소속팀</th>
-            <td><select name='teamNo' class="custom-select" id="selectBox22">
-                <option value="" disabled selected hidden>소속팀(Leader) 선택</option>
-                <c:forEach items="${match}" var="match">   
-                  <c:if test="${!match.team.teamMember.team_leader}">
-                    <option value='${match.team.teamId}'>${match.team.teamName}</option>
-                  </c:if>
-                </c:forEach>
-            </select></td>
-            <th scope="row">경기일</th>
-            <td><input class="form-control" type='date' id="playDate" name='playDate' /></td>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">종목</th>
-            <td><select name='teamSportsId' class="custom-select" id="inputGroupSelect01">
-                <option value="" disabled selected hidden>종목선택</option>
-                <!-- db명 toplc  -->
-                <option value="1">축구</option>
-                <option value="2">야구</option>
-                <option value="3">농구</option>
-                <option value="4">탁구</option>
-            </select></td>
-            <th scope="row">경기장</th>
-            <td>
-              <div class="input-group md-form form-sm form-2 pl-0">
-                <input id="pInput" class="form-control my-0 py-1 lime-border" type="text"
-                  placeholder="검색하세요" aria-label="Search" name="stadiumName">
-                <div class="input-group-append">
-                  <span class="input-group-text lime lighten-2" id="basic-text1"><a
-                    onclick="openMap()" class="fas fa-search text-grey" aria-hidden="true"></a></span>
+            <td colspan="2">
+              <div class="col-sm">
+                <div class="input-group mb-2">
+                  <select name='teamNo' class="custom-select" id="selectBox22">
+                    <option value="" disabled selected hidden>소속팀(Leader) 선택</option>
+                    <c:forEach items="${match}" var="match">
+                      <c:if test="${!match.team.teamMember.team_leader}">
+                        <option value='${match.team.teamId}'>${match.team.teamName}</option>
+                      </c:if>
+                    </c:forEach>
+                  </select>
                 </div>
               </div>
             </td>
+            <td></td>
           </tr>
           <tr>
-            <th scope="row">경기 지역</th>
+            <th scope="row">경기일</th>
+            <td><input class="form-control" type='date' id="playDate" name='playDate' /></td>
+          </tr>
+          <tr>
+            <th scope="row">경기할 지역</th>
             <td>
-              <div class="form-group row" style="margin-bottom: 0;">
+              <div class="form-group row">
                 <div class="col-sm">
-                  <div class="input-group">
+                  <div class="input-group mb-2">
                     <select class="custom-select" id="sido" name="location" onchange="itemChange()">
                       <option value="" disabled selected hidden>지역선택</option>
                       <!-- db명 toplc  -->
-                      <option value="01">서울</option>   
+                      <option value="01">서울</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-sm">
-                  <div class="input-group">
+                  <div class="input-group mb-2">
                     <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
                     <select name='location' class="custom-select" id="gugun">
                       <option value="" disabled selected hidden>지역선택</option>
+                      <!-- <option value="01">강남구</option> <option value="02">강동구</option> <option value="03">강북구</option>
+              <option value="04">강서구</option> <option value="05">관악구</option> <option value="06">광진구</option>
+              <option value="07">구로구</option> <option value="08">금천구</option> <option value="09">노원구</option>
+              <option value="10">도봉구</option> <option value="11">동대문구</option> <option value="12">동작구</option>
+              <option value="13">마포구</option> <option value="14">서대문구</option> <option value="15">서초구</option>
+              <option value="16">성동구</option> <option value="17">성북구</option> <option value="18">송파구</option>
+              <option value="19">양천구</option> <option value="20">영등포구</option> <option value="21">용산구</option>
+              <option value="22">은평구</option> <option value="23">종로구</option> <option value="24">중구</option>
+              <option value="25">중랑구</option> -->
                     </select>
                   </div>
                 </div>
               </div>
             </td>
-            <th scope="row">전화번호</th>
-            <td><input type="text" class="form-control" name="telephone"></td>
           </tr>
           <tr>
-            <th scope="row">내용</th>
-            <td colspan="3"><textarea name="contents" class="form-control" rows="10" cols="50"></textarea>
-            </td>
-          </tr>    
-          <tr>    
-            <th scope="row">비용(원)</th>                      
-            <td colspan="3"><input type="number" class="form-control" name="cost" value=0 style="width: 343px;"></td>
+            <th scope="row">경기장</th>
+            <td><input id="pInput" class="form-control-sm" name="stadiumName"> <a
+              onclick="openMap()">검색하기</a></td>
           </tr>
+
+          <tr>
+            <th scope="row">종목</th>
+            <td>
+              <div class="col-sm" id="selectType" style="padding-left: 0px;">
+                <div class="input-group mb-2">
+                  <select name='teamSportsId' class="custom-select" id="inputGroupSelect01">
+                    <option value="" disabled selected hidden>종목선택</option>
+                    <!-- db명 toplc  -->
+                    <option value="1">축구</option>
+                    <option value="2">야구</option>
+                    <option value="3">농구</option>
+                    <option value="4">탁구</option>
+                  </select>
+                </div>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+          <th scope="col">
+          <label for="playdt">전화번호</label>
+        </th>
+        <td>
+            <input type="text" class="form-control-sm" name="telephone">
+            
+ <!--       <th scope="col">
+          <label id="teamLevel">레벨</label>
+          </th>
+        <td>
+             <div class="col-sm" id="teamLevel" style="padding-left: 0px;">
+                <div class="input-group mb-2">
+                  <select name='teamLevel' class="custom-select" id="inputGroupSelect01">
+                    <option value="" disabled selected hidden>우리팀 실력</option>
+                    db명 toplc 
+                    <option value="1">상</option>
+                    <option value="2">중</option>
+                    <option value="3">하</option>
+                  </select>
+                </div>
+              </div>     레벨관련도 넣어야 함-->
+              </td>
+          </tr>
+
+          <tr>
+            <th scope="row" style="padding-top: 120px;">내용</th>
+            <td><textarea name="contents" class="form-control" rows="10" cols="50"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">비용</th>
+            <td><input type="number" class="form-control-sm" name="cost" value=0>원</td>
+          </tr>
+
         </tbody>
       </table>
 
-      <div id="btnArea" style=" text-align: center;">       
-          <a class="btn btn-outline-dark" href='.'>목록</a>
-          <input type="button" id="add" class="btn btn-outline-dark" onclick="check_onclick()" value="매치보드에 등록하기">
+      <div id="btnArea">
+      <div class="listbtn">
+        <a class="btn btn-dark" href='.'>목록</a>
       </div>
+
+      <div id="regbtn" >
+        <input type="button" id="add" class="btn btn-dark" onclick="check_onclick()" value="매치보드에 등록하기" >
+      </div>
+</div>
+      <br> <br>
     </form>
 
   </div>
   <!-- .container -->
 
- <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
- 
- <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+<%--   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" /> --%>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+<%--   
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />  
+             왜 에러인지 모름.. 유효성 빈칸 작업중
+--%> 
 
-  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-  
+<%--   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" /> --%>
 
 
 
