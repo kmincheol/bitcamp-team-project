@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 @RequestMapping("/myteam")
 public class MyTeamController {
 
+  ArrayList<Match> matchNosd = new ArrayList<>();
+  ArrayList<Match> matchNosd3 = new ArrayList<>();
+  ArrayList<MatchApply> matchNosd2 = new ArrayList<>();
+  ArrayList<Team> otherTeam = new ArrayList<>();
+  ArrayList<Team> MyTeam = new ArrayList<>();
+  
 	private static final Logger logger = LogManager.getLogger(MyTeamController.class);
 
 	@Autowired
@@ -150,17 +157,25 @@ public class MyTeamController {
 	
 	@GetMapping("/list2/{tno}")
 	public String sendTeam(@PathVariable int tno,  Model model, HttpSession session) {
-    List<Match> matchNos = myTeamService.findMatchNo2(10);  //번호 수정해야함
+	  matchNosd.clear();
+	
+	  List<Match> matchNos = myTeamService.findMatchNo2(8);  //번호 수정해야함 신청받은거
    
-    model.addAttribute("matchNos",matchNos);
-	   
-	  
+    for(Match m : matchNos) {
+      if(m.getOtherTeamNo() == 0) {
+        matchNosd.add(m);
+        model.addAttribute("matchNos",matchNosd);
+       }
+    }
 	  return "myteam/list2";
 	}
+	
+	
+	
 	@RequestMapping("/list2/update/{matchNo}/{otNo}")
 	public String matchSuccess(@PathVariable int matchNo,@PathVariable int otNo,Model model) {
 			 myTeamService.mtchupdate(otNo, matchNo);
-			
+			 
 		return "redirect:../../";
 	}
 	
@@ -170,20 +185,57 @@ public class MyTeamController {
 	
 	@RequestMapping("/list3/{tno}")
 	public String teamRecruitList(@PathVariable int tno,Model model) {
-		List<MatchApply> matchNos = myTeamService.findMatchNo(8); //번호 수정해야함
-		model.addAttribute("matchNos",matchNos);
+	    matchNosd2.clear();
+		
+	    List<MatchApply> matchNos = myTeamService.findMatchNo(5); //번호 수정해야함
+		
+		for(MatchApply m : matchNos) {
+		   if(m != null) {
+		      if(m.getMatch().getOtherTeamNo() == 0) {
+		  matchNosd2.add(m);
+		  model.addAttribute("matchNos",matchNosd2);
+		      }
+		}
+		}
 		model.addAttribute("tno",tno);
+		
 		return "myteam/list3";
 	}
 	
 
 	@RequestMapping("/list3/delete/{no}")
 	public String deleteMatchAply(@PathVariable int no,Model model) {
-		myTeamService.deleteMatchAply(no);
+		myTeamService.deleteMatchAply(8);
 		return "redirect:../../";
 	}
 
-	
+
+    @RequestMapping("/list5/{no}")
+    public String myMatching(@PathVariable int no,Model model) {
+        otherTeam.clear();
+
+    List<Match> match = myTeamService.sucessMatching(8);  //임시번호 나의팀번호
+                     
+             model.addAttribute("myTeam",myTeamService.matchMyTeam(8));   // 나의 팀정보   
+   
+      for(Match m : match) {
+        if(m.getOtherTeamNo() != 0) {
+             for(Team t : myTeamService.matchOtherTeam(m.getOtherTeamNo())) {
+                  if(m.getOtherTeamNo() == t.getTeamId()) {
+                    matchNosd3.add(m); 
+                  }
+              
+                 otherTeam.add(t);
+            }
+                    model.addAttribute("otherTeam",otherTeam);
+        }
+      }
+      model.addAttribute("matchNosd3",matchNosd3);
+    
+        return "myteam/list5";
+    }
+
+    
 
 
 }

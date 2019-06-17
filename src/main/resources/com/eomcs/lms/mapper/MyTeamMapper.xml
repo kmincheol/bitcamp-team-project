@@ -417,7 +417,8 @@ mt.area,
 mt.stdm_psti,
 mt.game_dt,
 mt.cost,
-t.tm_ambl_phot
+t.tm_ambl_phot,
+mt.tm_id2
 
 from 
 mtchaply mtc  
@@ -437,7 +438,8 @@ mtc.tm_id = #{value}
  t.tm_intd,
  t.tm_id,
  mt.mtch_id,
- mt.tm_id2
+ mt.tm_id2,
+ mt.tm_id
  
  from 
  mtch mt
@@ -547,7 +549,7 @@ select
 
  <delete id="mtchAplyDelete" parameterType="int">
     delete from mtchaply
-    where mtch_id = #{no}
+    where tm_id = #{no}
   </delete>
 
   <update id="mtchupdate" parameterType="hashmap">
@@ -557,6 +559,54 @@ select
     where 
     mtch_id = #{mtchNo}
   </update>
+
+ <select id="sucessMatching" resultMap="matchMap" parameterType="int" >
+select
+ * 
+ from mtch 
+ where 
+ tm_id = #{value}
+  </select> 
+
+ <select id="matchOtherTeam" resultMap="teamMap" parameterType="int">
+    select
+      *
+    from
+      tm 
+       where 
+       tm_id = ${value} 
+  </select> 
+
+
+ <select id="matchMyTeam" resultMap="teamMap" parameterType="int">
+      select
+      *
+    from
+      tm 
+       where 
+       tm_id = ${value} 
+  </select> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
