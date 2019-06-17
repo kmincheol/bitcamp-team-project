@@ -26,8 +26,11 @@
               <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
                 <div class="btnsave">
                 
-                  <a class="deletebtn btn btn-outline-dark" 
-                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a>
+                  <%-- <a class="deletebtn btn btn-outline-dark" 
+                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a> --%>
+                    <input id="cmtNo" type="hidden" value="${comment.no}">
+                    <button class="deletebtn btn btn-outline-dark" 
+                    type="button">삭제</button>
                   <button class="update-btn btn btn-outline-dark" type="button">변경</button>
                   <div class="save-cancel" style="display: none;">
                    <form id="form-save" action="../comment/update" method="post">
@@ -116,9 +119,36 @@
       });
       
         $(".save-btn").click(function(){
-            $(".cmt-list").load("list.jsp");
+            /* $(".cmt-list").load("list.jsp"); */
+            
+              var conts = $('.contentsF').val();  
+              
+              $.post('../comment/update',  
+                  { 
+                contents: conts
+                  },
+                function(obj) {
+                  if (obj.status == 'success') { 
+                    
+                 document.location.reload(true); 
+                  }
+            })
         });
         
+        $(".deletebtn").click(function(){
+          
+          var cmtNo = $(this).prev().val();
+          
+            $.ajax({
+             type:"GET",
+             url:'${contextRootPath}/app/comment/delete/' + cmtNo,
+             success:function(obj){ 
+                if (obj.status == 'success') {   
+               document.location.reload(true); 
+                } 
+             }
+      });
+      });
       });
       
     </script>

@@ -1,17 +1,17 @@
 @charset "UTF-8";
 
 .a {
-	left: 260px; 
+	left: 620px; 
 	bottom: 40px; 
 	position: relative;  
 }
-
+ 
 .cmtform {
-	width:500px;
+	width:900px; 
 }
 
 .comment-form{
-	width:300px; 
+	width:650px;   
 	resize: none;
 } 
  

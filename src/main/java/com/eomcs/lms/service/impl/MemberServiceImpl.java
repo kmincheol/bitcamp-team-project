@@ -102,6 +102,12 @@ public class MemberServiceImpl implements MemberService {
     
     return memberDao.findByIdPassword(paramMap);
   }
+  
+  @Override
+  public Member get(byte[] no) {
+    
+    return memberDao.findById2(no);
+  }
 
   @Override
   public Member findId(Member member) {

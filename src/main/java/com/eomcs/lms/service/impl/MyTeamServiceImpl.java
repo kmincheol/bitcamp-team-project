@@ -128,13 +128,26 @@ public int mtchupdate(int otNo, int matchNo) {
 }
 
   @Override
-  public List<Match> list4() {
+  public List<Match> list4(int no) {
     // TODO Auto-generated method stub
-    return myteamDao.findAll4();
+    return myteamDao.findAll4(no);
+  }
+  
+
+  @Override
+  public List<Match> sucessMatching(int no) {
+    return myteamDao.sucessMatching(no);
   }
 
+  @Override
+  public List<Team> matchOtherTeam(int no) {
+    return myteamDao.matchOtherTeam(no);
+  }
 
- 
+  @Override
+  public List<Team> matchMyTeam(int no) {
+    return myteamDao.matchMyTeam(no);
+  }
 }
 
 

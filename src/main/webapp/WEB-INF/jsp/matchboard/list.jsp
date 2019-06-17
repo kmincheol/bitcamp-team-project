@@ -228,6 +228,9 @@
                 　　　　　　　　　　　　　　　　　　　　<!-- 칸 일그러짐 방지 -->　　　　　　　　　　　　　　　　　　　　　　　
       </div>
       </div>
+      
+      
+      
       <div class="recommendDiv">
         <table class="recommendTable">
           <tr>
@@ -248,43 +251,52 @@
                         <div class="recommendPlayDate">경기날짜 : ${match.playDate}</div>
                         <div class="recommendBox">
                         <div class="recommendTeamEmblem">
+                        
                           <img class="recommendTeamEmblemPhoto" 
                                src="${match.team.teamEmblemPhoto}" 
                                onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'">
-                        </div>
-                        <div class="recommendTeamInfo">
-                          <div class="recommendTeamName">팀이름 : ${match.team.teamName}</div>
-                          <div class="recommendNo">매치번호 : ${match.no}</div>
-                          <div class="recommendTitle">제목 : ${match.title}</div>
-                          <div class="recommendArea">위치: ${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</div>
+                               
                           <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
-                              <div class="recommendSportsType">종목 : 축구</div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/football_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
-                              <div class="recommendSportsType">종목 : 농구</div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/basketball_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
-                              <div class="recommendSportsType">종목 : 야구</div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/baseball_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
-                              <div class="recommendSportsType">종목 : 탁구</div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/pingpong_list_min.png">
                             </c:when>
                           </c:choose>
+                               <label id="teamNameText">${match.team.teamName}</label>
+                               
+                               <br>
+                               <ul id="jumjum">
+                          <li id="EEE">${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</li>
+                          <li id="EEE">${match.teamAges.teamAges} /
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq 'high'}">
-                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                             상
                             </c:when>
                             <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
-                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                             중
                             </c:when>
                             <c:when test="${match.teamLevel.teamLevel eq 'low'}">
-                              <div class="recommendTeamLevel">팀레벨 : 상</div>
+                             하
                             </c:when>
                           </c:choose>
-                          <div class="recommendTeamAges">팀연령대 : ${match.teamAges.teamAges}</div>
+                          </li>
+                              </ul>
+                               </div>
+                          <div id="sidbarSubmit">
+                          신청하기
+                          </div>
+                          
+                        
                         </div>
-                        </div>
+                        
                       </td>
                      </tr>
                   </c:forEach>
@@ -300,8 +312,8 @@
             </c:when>
             <c:otherwise>
               <tr>
-                <td>
-                  <div>로그인안함</div>
+                <td id="loginsugge">
+                  <div>로그인을 하면 팀에 맞는<br> 경기를 추천해드립니다.</div>
                 </td>
               </tr>
             </c:otherwise>
@@ -352,7 +364,7 @@
             var teamnocom = sizesize;
             
           $(function() {
-        	  $( "#datepicker" ).datepicker({
+         $( "#datepicker" ).datepicker({
            
                   onSelect: function(value, props) {
                          var tb = document.getElementById('textbox-filter');
@@ -370,10 +382,10 @@
                        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
                });          
-        	  
-        	  
-        	  
-        	  $('#btnsub2').click(function() {
+         
+         
+         
+         $('#btnsub2').click(function() {
                   var choiceTeamValue = $("#selectBox option:selected").val();
 
                  //console.log(typeof choiceTeamValue);
@@ -381,34 +393,34 @@
                  console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
                
                  if (choiceTeamValue == "") {
-               		 alert("팀을 선택해주세요.");
-               	    return false;
-               	  }
-   				if (matchTeamNo == choiceTeamValue) {
-   					alert("자기가 속한 팀에 신청을 할 수 없습니다.")
-   					return false;
-   				}
-   				
-               	  $.ajax({
-               	    type:"POST",
-               	    url:'submit/' + no,
-               	    contentType: 'application/json',
-               	    dataType: "text",
-               	    data:JSON.stringify({
-               	      teamId: choiceTeamValue
-               	    }),
-               	    success : function(data) {
-               	    	console.log(data)
-               	    	if (data == 12345) {
-               	        alert("신청 되었습니다.");
-               	        location.href=".";
-               	        	}
-               	    	},
-               	    error : function(data) {
-               	       alert("이미 신청되었습니다.")
-               	    	}
-               	    })
-               	 });
+                alert("팀을 선택해주세요.");
+                   return false;
+                 }
+    if (matchTeamNo == choiceTeamValue) {
+    alert("자기가 속한 팀에 신청을 할 수 없습니다.")
+    return false;
+    }
+    
+                 $.ajax({
+                   type:"POST",
+                   url:'submit/' + no,
+                   contentType: 'application/json',
+                   dataType: "text",
+                   data:JSON.stringify({
+                     teamId: choiceTeamValue
+                   }),
+                   success : function(data) {
+                    console.log(data)
+                    if (data == 12345) {
+                       alert("신청 되었습니다.");
+                       location.href=".";
+                        }
+                    },
+                   error : function(data) {
+                      alert("이미 신청되었습니다.")
+                    }
+                   })
+                });
           })
           
             //매치정보 모달창
@@ -421,7 +433,7 @@
                 }
               })
               
-              $.getJSON("matchboard/data", {"no" : no}, function(data) {
+              $.getJSON("data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
                   $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
@@ -436,17 +448,17 @@
                   $('.modal-footer-inside').text("상대전화번호 : "+data.match.telephone);
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo+"-> 매치글작성한 팀번호");
-					 console.log(no+"-> 매치글번호");
-					 
+					console.log(no+"-> 매치글번호");
+
                   });
               }
               
           $('#name-clear-btn').click(function() {
-        	  $('#datepicker').val('');
+         $('#datepicker').val('');
           });
           
            $('.modal-body').click(function() {
-        	  location.href = no;
+         location.href = no;
           });
           
              
@@ -456,5 +468,3 @@
 </html>
 
 <!-- style='float:right; margin-top' -->
-
-

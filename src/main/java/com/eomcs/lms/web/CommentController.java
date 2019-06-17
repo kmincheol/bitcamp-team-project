@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Comment;
 import com.eomcs.lms.domain.Free;
 import com.eomcs.lms.domain.Member;
@@ -28,9 +29,9 @@ public class CommentController {
   @Autowired
   ServletContext servletContext;
 
-
+  @ResponseBody
   @PostMapping("add")
-  public String add(Comment comment, HttpSession session) throws Exception {
+  public Object add(Comment comment, HttpSession session) throws Exception {
 
     Member member = (Member) session.getAttribute("loginUser");
     Free free = (Free) session.getAttribute("free");
@@ -38,7 +39,11 @@ public class CommentController {
     comment.setMemberNo(member.getNo());
     comment.setFreeNo(free.getNo());
     commentService.add(comment);
-    return "redirect:../free/" + free.getNo();
+    
+    HashMap<String,Object> map = new HashMap<>();
+    map.put("status", "success");
+    return map;
+    /* return "redirect:../free/" + free.getNo(); */
 
   }
   
@@ -67,38 +72,37 @@ public class CommentController {
     int no = (int) session.getAttribute("freeNo");
     
     List<Comment> comment1 = commentService.list(no);
-    //model.addAttribute("list", comment);
  HashMap<String,Object> commentMap = new HashMap<>();
  commentMap.put("list", comment1);
  
     return commentMap;
   }
   
-  /*
-   * @GetMapping("form") public String form(HttpSession session) {
-   * 
-   * return "comment/form"; }
-   */
-  
-
+  @ResponseBody
   @PostMapping("update")
-  public String update(Comment comment, HttpSession session) {
+  public Object update(Comment comment, HttpSession session) {
     
     Free free = (Free) session.getAttribute("free");
     comment.setFreeNo(free.getNo());
 
-    if (commentService.update(comment) == 0) 
-       throw new RuntimeException("해당 댓글이 없습니다.");
+    commentService.update(comment);
+    HashMap<String,Object> map = new HashMap<>();
+    
+    map.put("status", "success");
+    return map;
      
-     return "redirect:../free/" + free.getNo();
   }
 
+  @ResponseBody
   @GetMapping("delete/{no}")
-  public String delete(@PathVariable int no, HttpSession session) {
-    Free free = (Free) session.getAttribute("free");
-    if (commentService.delete(no) == 0)
-      throw new RuntimeException("해당 댓글이 없습니다.");
-    return "redirect:../../free/" + free.getNo();
+  public Object delete(@PathVariable int no, HttpSession session) {
+    commentService.delete(no);
+     
+    HashMap<String,Object> map = new HashMap<>();
+    
+    map.put("status", "success");
+    return map;
+    
   }
 }
 

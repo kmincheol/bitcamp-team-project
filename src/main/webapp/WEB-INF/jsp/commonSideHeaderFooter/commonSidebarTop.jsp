@@ -133,8 +133,8 @@
             </a>
               <div class="sidebar-submenu">
                 <ul>
-                  <li><a
-                    href="${contextRootPath}/app/member/${sessionScope.loginUser.no}">개인정보</a></li>
+                    <li id="mypage-btn"> <a href="#">개인정보</a></li>  
+                    <li id="loginNo" value="${sessionScope.loginUser.no}" style="display:none;"/>
                   <li><a href="${contextRootPath}/app/myteam">나의 팀정보</a></li>
                 </ul>
               </div></li>
@@ -157,3 +157,12 @@
     <!-- sidebar-wrapper  -->
     <!-- 본문 영역 -->
     <main class="page-content">
+    <jsp:include page="../javascript.jsp" />
+    <script>
+   $('#mypage-btn').on('click', function(){
+      var no = $('#loginNo').val(); 
+      no2 = btoa(no); 
+      location="${contextRootPath}/app/member/" + no2;   
+   });
+    
+    </script>

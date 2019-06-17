@@ -10,13 +10,13 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
 
 <style>
 .select-wrapper input.select-dropdown {
-	height: 2em;
-	font-size: 40px;
+  height: 2em;
+  font-size: 40px;
 }
 body {
 /*   font-family: Arial, Helvetica, sans-serif; */
@@ -63,7 +63,21 @@ body {
  </style>
 </head>      
 <body>
-<a href="${contextRootPath}/app/myteam/list4" style="top: 200px; left: 100px; position: absolute;">list4</a>
+
+ <nav>    
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+  <jsp:include page="list4.jsp"></jsp:include>
+  </div>                  
+</div>
 
   <div id="main-wrap" class="container">
     <div id="cdcd"style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
@@ -148,15 +162,15 @@ function select_onchange(){
    var arrgg = new Array();
    
    
-	 var target = document.getElementById("select_k");
-	 var bbb = String(target.options[target.selectedIndex].value).split(',');
+   var target = document.getElementById("select_k");
+   var bbb = String(target.options[target.selectedIndex].value).split(',');
   var teamMark = document.getElementById("teamMark");
-	var teamName= document.getElementById("teamName");
-	 var teamDetail = document.getElementById("teamdetail");
+  var teamName= document.getElementById("teamName");
+   var teamDetail = document.getElementById("teamdetail");
 
 
 
-	 if (bbb.length > 11){
+   if (bbb.length > 11){
   teamMark.innerHTML ='<img src ="' + bbb[9] +',' +bbb[10] +'" width = "250px" height = "250px" >'
   row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
   '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
@@ -176,14 +190,14 @@ row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
 
 row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' +   
 '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[7]+'</U></I></B></span>' 
-	 }else {
-		  teamMark.innerHTML ='<img src ="' + bbb[9] +  '" width = "250px" height = "250px" >'
-		  row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
-		                       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
-		                       '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
-		                       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
-		                       
-		                       
+   }else {
+      teamMark.innerHTML ='<img src ="' + bbb[9] +  '" width = "250px" height = "250px" >'
+      row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
+                           '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
+                           '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
+                           '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
+                           
+                           
        row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
        '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[6]+'</U></I></B></span>' + 
        '<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
@@ -199,29 +213,29 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
    }
  
         
-	  
-	<c:forEach items="${tm}" var="teamMember">
-	 arr.push("${teamMember.teamMemberNo}");
-	 arrb.push("${teamMember.member.name}");
-	 arrd.push("${teamMember.member.photo}");
-	 arre.push("${teamMember.position}");
-	 arrf.push("${teamMember.member.no}");
-	 arrg.push("${teamMember.member.birthDay}");
-	 </c:forEach>
+    
+  <c:forEach items="${tm}" var="teamMember">
+   arr.push("${teamMember.teamMemberNo}");
+   arrb.push("${teamMember.member.name}");
+   arrd.push("${teamMember.member.photo}");
+   arre.push("${teamMember.position}");
+   arrf.push("${teamMember.member.no}");
+   arrg.push("${teamMember.member.birthDay}");
+   </c:forEach>
 
-	 for (var i = 0; i < arr.length; i++) {
-	    if(arr[i] == parseInt(bbb[1])){
-	    	 arrc.push(arrb[i])
-	    	 arrdd.push(arrd[i])
-	    	 arrff.push(arrf[i])
-	    	 arrr.push(arr[i])
-	    	 arree.push(arre[i])
-	    }
-	}
-	
-	     //append div 삭제
+   for (var i = 0; i < arr.length; i++) {
+      if(arr[i] == parseInt(bbb[1])){
+         arrc.push(arrb[i])
+         arrdd.push(arrd[i])
+         arrff.push(arrf[i])
+         arrr.push(arr[i])
+         arree.push(arre[i])
+      }
+  }
+  
+       //append div 삭제
         for(var j=0; j< 30; j++){
-        	$("#abcd").remove()
+          $("#abcd").remove()
         }      
     
    // div append for문 (팀원들)
@@ -229,7 +243,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         var div = document.createElement("div");
         div.id = "abcd"
         div.innerHTML =
-        	'<div class="flip-card"><a href="${contextRootPath}/app/myteam/' + arrr[i] +'/' + arrff[i] + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
+          '<div class="flip-card"><a href="${contextRootPath}/app/myteam/' + arrr[i] +'/' + arrff[i] + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
          '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
          '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
           arrc[i] + '</span></div>' +
@@ -264,13 +278,6 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
       }  
         </c:forEach>
         
-   
-    
-    
-    
-    
-    
-    
     var button = document.createElement("button");
     button.style.width= "100px";
     button.style.height= "50px";
@@ -281,10 +288,10 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
     }
     
     $("#btn_zo").click(function() {
-    /* 	var teamNo =  parseInt(bbb[1]);    
-    	location.href='${contextRootPath}/app/myteam/send/' + teamNo
-    	 */
-    	 document.getElementById('aaaa').style.display="none"
+    /*  var teamNo =  parseInt(bbb[1]);    
+      location.href='${contextRootPath}/app/myteam/send/' + teamNo
+       */
+       document.getElementById('aaaa').style.display="none"
       
     });
     
