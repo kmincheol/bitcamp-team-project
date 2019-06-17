@@ -16,7 +16,8 @@
     "materialize-css": "^1.0.0",
     "mdbootstrap": "^4.8.1",
     "popper.js": "^1.15.0",
-    "summernote": "^0.8.12"
+    "summernote": "^0.8.12",
+    "sweetalert2": "^8.12.1"
   },
   "devDependencies": {},
   "description": ""
