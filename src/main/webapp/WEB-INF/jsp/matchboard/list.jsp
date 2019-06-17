@@ -38,7 +38,8 @@
     <div id="searchArea">
     
         <!-- filter control -->
-        <div>
+        <div id="tools">
+        <div id="allTypes">
         <button class="btn btn-dark" id="allbtn" style="margin-bottom: 6px;"
             data-jplist-control="buttons-text-filter"
             data-path="default" data-mode="radio"
@@ -47,50 +48,51 @@
         
         <div id="sstypeArea">
         <a id="stype"  data-jplist-control="buttons-text-filter" data-path=".sportsType" 
-            data-mode="radio" data-group="group1" name="sportsType" data-text="soccer">
+            data-mode="radio" data-group="group1" name="sportsType" data-text="축구">
         <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png"> 
         </a><!-- 축구버튼 -->
         
         <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
-            data-mode="radio" data-group="group1" name="sportsType" data-text="baseball">
+            data-mode="radio" data-group="group1" name="sportsType" data-text="야구">
          <img id="imgcontro" src="${contextRootPath}/images/baseball_list_min.png">
         </a><!-- 야구버튼 -->
         
         <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
-            data-mode="radio" data-group="group1" name="sportsType" data-text="basketball">
+            data-mode="radio" data-group="group1" name="sportsType" data-text="농구">
          <img id="imgcontro" src="${contextRootPath}/images/basketball_list_min.png">
         </a><!-- 농구버튼 -->
         
         <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
-            data-mode="radio" data-group="group1" name="sportsType" data-text="pingpong">
+            data-mode="radio" data-group="group1" name="sportsType" data-text="탁구">
          <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png">
         </a><!-- 탁구버튼 -->
         </div>
         
-        <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
-        <br><br>
         
+        </div>
+        <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
+
+        <div id="allLevel">        
          <!-- filter control -->
         <button class="btn btn-dark" id="allbtn" data-jplist-control="buttons-text-filter"
             data-path="default"  data-mode="radio" data-group="group1" name="teamLevel"  data-selected="true">
          모든 레벨 </button> <!-- 전체 -->  
 
+      <div id="levelArea">
         <button type="button" id="levelbtn1" class="btn btn-dark"  data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="high" 
+            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="상" 
              style='text-align: center;'  ><!-- 상 스타일 확인! -->
         상 </button>
         
         <button type="button" id="levelbtn2" class="btn btn-dark"  data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel"  data-mode="radio" data-group="group1" name="teamLevel" data-text="mid">
+            data-path=".teamLevel"  data-mode="radio" data-group="group1" name="teamLevel" data-text="중">
         중 </button>
         
         <button type="button" id="levelbtn3" class="btn btn-dark" data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="low">
+            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="하">
         하 </button>
-        
+      </div>  
         </div>
-        <br>
-                <!-- text filter control -->
         
         <div id="inputBox2">
                 <input class="form-control-sm" id="titleSearchBox"
@@ -99,21 +101,14 @@
                 type="text" value=""
                 data-clear-btn-id="name-clear-btn"
                 placeholder="글 제목을 입력하세요" />
-                
+          <button type="button" class="btn btn-dark" id="name-clear-btn">
+            검색어 설정<br> 초기화</button> <!-- 지우개버튼 -->
                 <br>
                 
                 <!-- datepicker 적용 -->
           <input class="form-control-sm" type="text" id="datepicker" placeholder="날짜를 입력하세요">
-                <br>
           
-            <button type="button" class="btn btn-dark" id="name-clear-btn">
-            검색어 설정 초기화</button> <!-- 지우개버튼 -->
-            
-            <div id="liner"></div>
-            <button type="button" class="btn btn-info" id="matchform"
-            onClick="location.href='${contextRootPath}/app/matchboard/form' " >
-            매치등록하기
-            </button>
+          </div>
             
     <div style="display: none;">
     <input  
@@ -123,11 +118,21 @@
          data-clear-btn-id="name-clear-btn"
          placeholder="날짜를 선택하세요" />
     </div>
+    
+        </div> <!-- tools 끝 -->
+        
+        <div id="submitArea">
+            <button type="button" class="btn btn-info" id="matchform"
+            onClick="location.href='${contextRootPath}/app/matchboard/form' " >
+            매치등록하기
+            </button>
         </div>
+                <!-- text filter control -->
         </div>
         
         <!-- 페이지 컨트롤 부분 -->
      <div id="formform">
+     <div id="floatfloat">
         <div id="listtitle">
           매치 목록
         </div>
@@ -146,8 +151,13 @@
                   <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
                   align="center" style="cursor: pointer; width:172px;" >
                   
-                  <div style="width:58px; height:40px;">${match.team.teamEmblemPhoto}</div><!-- 엠블럼 들어갑니다. -->
-                  <br> <br> <div class="teamName">${match.team.teamName}</div><br>
+                  <div>
+                  <img class="TeamEmblemPhoto" src="${match.team.teamEmblemPhoto}" style="width:100px; height:100px;" 
+                       onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'"></div>
+                       <br>
+                       
+                       
+                   <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
                 <td class="detail" id="${match.no}" colspan="5"
@@ -157,8 +167,41 @@
                     <div class="teamName" style="display:none">${match.team.teamName}</div>
                     <div class="title">제목 : ${match.title}</div>
                     <div class="playDate">경기날짜 : ${match.playDate}</div>
-                    <div class="sportsType">종목 : ${match.teamTypeSports.teamSportsType}</div>
-                    <div class="teamLevel">팀레벨 : ${match.teamLevel.teamLevel}</div>
+                    
+                    <div class="sportsType">종목 :
+                    <c:choose>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                            <p style="display:none;">축구</p>
+                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/football_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                            <p style="display:none;">야구</p>
+                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/baseball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                            <p style="display:none;">농구</p>
+                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/basketball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                            <p style="display:none;">탁구</p>
+                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                            </c:when>
+                          </c:choose>
+                    </div>
+                    <div class="teamLevel">팀레벨 : 
+                          <c:choose>
+                            <c:when test="${match.teamLevel.teamLevel eq 'high'}">
+                             상
+                            </c:when>
+                            <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
+                             중
+                            </c:when>
+                            <c:when test="${match.teamLevel.teamLevel eq 'low'}">
+                             하
+                            </c:when>
+                          </c:choose>
+                    
+                    </div>
                     <div class="teamAges">팀연령대 : ${match.teamAges.teamAges}</div>
                  </td>
                  </tr>
@@ -225,12 +268,9 @@
                 data-group="group1" data-name="no-results">검색 결과가 없습니다.
                 </div>
       </div>
+      </div>
                 　　　　　　　　　　　　　　　　　　　　<!-- 칸 일그러짐 방지 -->　　　　　　　　　　　　　　　　　　　　　　　
       </div>
-      </div>
-      
-      
-      
       <div class="recommendDiv">
         <table class="recommendTable">
           <tr>
@@ -255,27 +295,29 @@
                           <img class="recommendTeamEmblemPhoto" 
                                src="${match.team.teamEmblemPhoto}" 
                                onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'">
-                               
+                        
+
+                        
                           <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/football_list_min.png">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/football_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/basketball_list_min.png">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/basketball_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/baseball_list_min.png">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/baseball_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-bottom:4px;" src="${contextRootPath}/images/pingpong_list_min.png"></div>
                             </c:when>
                           </c:choose>
                                <label id="teamNameText">${match.team.teamName}</label>
                                
                                <br>
-                               <ul id="jumjum">
+                               <ul>
                           <li id="EEE">${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</li>
-                          <li id="EEE">${match.teamAges.teamAges} /
+                          <li id="EEE">${match.teamAges.teamAges} / 
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq 'high'}">
                              상
@@ -320,12 +362,13 @@
           </c:choose>
         </table>
       </div>
+      </div>
       
       <div class="controls">
         <div
                 data-jplist-control="pagination"
                 data-group="group1"
-                data-items-per-page="5"
+                data-items-per-page="6"
                 data-current-page="0"
                 data-name="pagination1">
         
@@ -343,7 +386,6 @@
         
         </div>
      </div>
-      
     </div><!-- .content -->
   </div><!-- .container -->
 
@@ -364,7 +406,7 @@
             var teamnocom = sizesize;
             
           $(function() {
-         $( "#datepicker" ).datepicker({
+        	  $( "#datepicker" ).datepicker({
            
                   onSelect: function(value, props) {
                          var tb = document.getElementById('textbox-filter');
@@ -382,10 +424,10 @@
                        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
                });          
-         
-         
-         
-         $('#btnsub2').click(function() {
+        	  
+        	  
+        	  
+        	  $('#btnsub2').click(function() {
                   var choiceTeamValue = $("#selectBox option:selected").val();
 
                  //console.log(typeof choiceTeamValue);
@@ -393,34 +435,34 @@
                  console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
                
                  if (choiceTeamValue == "") {
-                alert("팀을 선택해주세요.");
-                   return false;
-                 }
-    if (matchTeamNo == choiceTeamValue) {
-    alert("자기가 속한 팀에 신청을 할 수 없습니다.")
-    return false;
-    }
-    
-                 $.ajax({
-                   type:"POST",
-                   url:'submit/' + no,
-                   contentType: 'application/json',
-                   dataType: "text",
-                   data:JSON.stringify({
-                     teamId: choiceTeamValue
-                   }),
-                   success : function(data) {
-                    console.log(data)
-                    if (data == 12345) {
-                       alert("신청 되었습니다.");
-                       location.href=".";
-                        }
-                    },
-                   error : function(data) {
-                      alert("이미 신청되었습니다.")
-                    }
-                   })
-                });
+               		 alert("팀을 선택해주세요.");
+               	    return false;
+               	  }
+   				if (matchTeamNo == choiceTeamValue) {
+   					alert("자기가 속한 팀에 신청을 할 수 없습니다.")
+   					return false;
+   				}
+   				
+               	  $.ajax({
+               	    type:"POST",
+               	    url:'submit/' + no,
+               	    contentType: 'application/json',
+               	    dataType: "text",
+               	    data:JSON.stringify({
+               	      teamId: choiceTeamValue
+               	    }),
+               	    success : function(data) {
+               	    	console.log(data)
+               	    	if (data == 12345) {
+               	        alert("신청 되었습니다.");
+               	        location.href=".";
+               	        	}
+               	    	},
+               	    error : function(data) {
+               	       alert("이미 신청되었습니다.")
+               	    	}
+               	    })
+               	 });
           })
           
             //매치정보 모달창
@@ -433,7 +475,7 @@
                 }
               })
               
-              $.getJSON("data", {"no" : no}, function(data) {
+              $.getJSON("matchboard/data", {"no" : no}, function(data) {
                 console.log(data);
                   $('.modal-title').text(data.match.team.teamName);
                   $('.modal-title').append("<div id='ajmatchno'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
@@ -448,17 +490,17 @@
                   $('.modal-footer-inside').text("상대전화번호 : "+data.match.telephone);
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo+"-> 매치글작성한 팀번호");
-					console.log(no+"-> 매치글번호");
-
+					 console.log(no+"-> 매치글번호");
+					 
                   });
               }
               
           $('#name-clear-btn').click(function() {
-         $('#datepicker').val('');
+        	  $('#datepicker').val('');
           });
           
            $('.modal-body').click(function() {
-         location.href = no;
+        	  location.href = no;
           });
           
              
@@ -468,3 +510,5 @@
 </html>
 
 <!-- style='float:right; margin-top' -->
+
+
