@@ -39,18 +39,17 @@ public class MyTeamController {
 	public String list(Model model, HttpSession session) throws JsonProcessingException {
 
 		Member member = (Member) session.getAttribute("loginUser");
-
 		int a = member.getNo(); // 회원번호
-
 		List<Team> team = myTeamService.teamList(a); // 팀목록
 		List<TeamMember> tm = myTeamService.teamMemberList2();
       List<TeamRecruit> tr = myTeamService.findByJoinTeam();     
-      
-		session.setAttribute("member", member);
-		model.addAttribute("team", team);
+      session.setAttribute("member", member);
+	
+      model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
 		model.addAttribute("tr", tr);
 		return "myteam/list";
+
 	}
 	
   
@@ -107,7 +106,6 @@ public class MyTeamController {
         	    	    	}
         	    }
          }
-        
 		
 		for(Member m : member) {
 			if(m.getNo() == mno) {
@@ -115,7 +113,7 @@ public class MyTeamController {
 			}
 		}
 		model.addAttribute("tno",tno);
-		return "myteam/detail2";
+		return "myteam/detail";
 	}
 	
 	// 신청 온 사람 팀원으로 추가하기
@@ -148,7 +146,7 @@ public class MyTeamController {
 	@GetMapping("/list2/{tno}")
 	public String sendTeam(@PathVariable int tno,  Model model, HttpSession session) {
     List<Match> matchNos = myTeamService.findMatchNo2(10);  //번호 수정해야함
-    System.out.println(matchNos.toString());
+   
     model.addAttribute("matchNos",matchNos);
 	   
 	  
