@@ -155,7 +155,7 @@ table tbody tr {
 
     <div id="in">
       <c:if test="${sessionScope.loginUser.no == 1}">
-        <a class="btn btn-outline-dark" id="btnbtn"
+        <a class="btn btn-outline-dark" id="btnbtn1"
           href="${contextRootPath}/app/question/answerlist">답변 목록</a>
       </c:if>
     </div>
