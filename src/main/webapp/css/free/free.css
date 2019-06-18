@@ -7,6 +7,11 @@
 	margin-bottom: 15px;
 }
 
+img {
+	width: 30px;
+	height: 30px;
+}
+
 #main-text h2 {
 	position: absolute;
 	text-align: left;
@@ -49,10 +54,6 @@ table a:hover {
 	color: black;
 }
 
-img {
-	width: 30px;
-	height: 30px;
-}
 
 #in {
 	width: 100%;
