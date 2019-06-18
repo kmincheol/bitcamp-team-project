@@ -547,9 +547,9 @@ select
 
   </delete>
 
- <delete id="mtchAplyDelete" parameterType="int">
+ <delete id="mtchAplyDelete" parameterType="hashmap">
     delete from mtchaply
-    where tm_id = #{no}
+    where tm_id = #{tno} and mtch_id = #{mtno}
   </delete>
 
   <update id="mtchupdate" parameterType="hashmap">

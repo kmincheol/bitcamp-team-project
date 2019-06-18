@@ -4,21 +4,58 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
-<jsp:include page="../header.jsp" />
-<jsp:include page="../commonCss.jsp" />
 <head>
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<style>
+
+#main-text h2 {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+}
+
+#main-text h2 img {
+  margin-bottom: 25px;
+  margin-right: 5px;
+  width:80px;
+  height:80px;
+}
+</style>
 </head>
 <body>
- <div class="container">
+ <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
 
+ <div id="main-wrap" class="container">
+ <div id="main-text">
+    <h2>    
+        <img src="${contextRootPath}/images/3dusersoccer.jpg">팀원 정보
+      </h2>
+    </div>
 
-<div style="border: 15px solid #efefef;width: 1080px;height: 500px;margin-top:180px;">
+
+<div style="border: 15px solid #efefef;width: 1080px;height: 400px;">
      
-      <div style="width: 600px;height: 450px; float:left;">
+      <div style="width: 600px;height: 350px; float:left;">
              <div  style="width: 450px;height: 450px; margin:auto; margin-top:25px" >
-             <table class="table" style="border-top:4px solid;border-bottom:4px solid;height: 95%;">
+             <table class="table" style="border-top:4px solid;border-bottom:4px solid; font-size:17px">
   <tbody>
     <tr>
       <th scope="row">이름</th>
@@ -54,9 +91,13 @@
        </div>
           </div>
           <div>
-            <a class="btn btn-dark" href='../delete/${teamMember.teamMemberNo}/${teamMember.memberNo}'>추방</a>
+            <a class="btn btn-outline-dark" href='../delete/${teamMember.teamMemberNo}/${teamMember.memberNo}'>추방</a>
           </div>
 </div> <!-- containner -->
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+
 </body>
 
 </html>
