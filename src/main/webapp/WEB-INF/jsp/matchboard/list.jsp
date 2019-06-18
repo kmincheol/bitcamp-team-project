@@ -249,16 +249,20 @@
            </div>
            
              <div id="mtaply" >
+             <table>
+             <tr>
              <c:if test="${!empty sessionScope.loginUser}">
-             <h6 style="color:green;">나의 팀 :</h6>
+             <h6 id="myteamtext" style="color:green;">나의 팀 :</h6>
                <select name='teamId' class="form-control" id="selectBox">
                  <option value="" selected>나의소속팀</option>
                   <c:forEach items="${myteam}" var="myteam">
                     <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
                   </c:forEach>
                </select>
-                <button class="btn btn-danger" id="btnsub2">매치신청</button>
+                <button class="btn btn-danger" id="btnsub2">매치신청보내기</button>
               </c:if>
+              </tr>
+              </table>
               </div>
            </div>
                 </div>

@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+#main-text {
+	position: relative;
+	width: 100%;
+	height: 230px;
+	border-bottom: 2px solid black;
+	margin-bottom: 15px;
+}
+
+#titleTeamName {
+   font-size: 35px;
+	position: absolute;
+	text-align: left; 
+	bottom: 0;
+	margin-bottom: 15px;
+}
+
+#title-wrap {
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	border-bottom: 1px solid gray;
+}
+
+#title {
+	font-size: 35px;
+}
+
+#detail_background {
+	margin-top: 50px;
+}
+
+#detail_table {
+	text-align: center;
+	width: 1000px;
+}
+
+
+form {
+	margin: 0 auto;
+}
+
+#title-wrap {
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	border-bottom: 1px solid gray;
+}
+
+#title {
+	font-size: 35px;
+}
+
+#contents-wrap {
+	margin-top: 50px;
+}
+
+table.info-table {
+	text-align: center;
+	line-height: 1.5;
+	width: 100%;
+	border-top: 1px solid #ccc;
+}
+
+table.info-table th {
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+}
+
+table.info-table td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+}
+
+.contents-section-head {
+	width: 100%;
+	display: inline-block;
+	height: 45px;
+	text-align: center;
+	padding: 10px;
+	background: #efefef;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+.contents-section-body {
+	width: 100%;
+	height: auto;
+	padding: 50px;
+}
+
+#contents-section {
+	margin-bottom: 50px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 100px;
+}
+
+#mtaply{
+  text-align:center;
+  width:300px;
+  background-color: #decdb0;
+  border: 2px solid #e1dbd6;
+  border-radius: 14px;
+  margin-bottom: 90px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#selectBox{
+  margin: 0 auto;
+  width:180px;
+  display:inline-block;
+}
+
+#btnsub2{
+  margin-bottom: 5px;
+}
