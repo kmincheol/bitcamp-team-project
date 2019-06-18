@@ -92,6 +92,11 @@ table tbody tr {
 .table>tbody>tr>td {
 	vertical-align: middle;
 }
+
+
+
+
+
 </style>
 
 </head>

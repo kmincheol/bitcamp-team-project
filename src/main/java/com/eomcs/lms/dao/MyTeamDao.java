@@ -42,7 +42,7 @@ public interface MyTeamDao {
 
   int mtchupdate(Map<String, Integer> map);
 
-  int mtchAplyDelete(int no);
+  int mtchAplyDelete(Map<String, Integer> map);
 
   List<Match> findAll4(int no);
   

@@ -159,7 +159,7 @@ public class MyTeamController {
 	public String sendTeam(@PathVariable int tno,  Model model, HttpSession session) {
 	  matchNosd.clear();
 	
-	  List<Match> matchNos = myTeamService.findMatchNo2(8);  //번호 수정해야함 신청받은거
+	  List<Match> matchNos = myTeamService.findMatchNo2(tno);  //번호 수정해야함 신청받은거
    
     for(Match m : matchNos) {
       if(m.getOtherTeamNo() == 0) {
@@ -187,7 +187,7 @@ public class MyTeamController {
 	public String teamRecruitList(@PathVariable int tno,Model model) {
 	    matchNosd2.clear();
 		
-	    List<MatchApply> matchNos = myTeamService.findMatchNo(5); //번호 수정해야함
+	    List<MatchApply> matchNos = myTeamService.findMatchNo(tno); //번호 수정해야함
 		
 		for(MatchApply m : matchNos) {
 		   if(m != null) {
@@ -203,9 +203,9 @@ public class MyTeamController {
 	}
 	
 
-	@RequestMapping("/list3/delete/{no}")
-	public String deleteMatchAply(@PathVariable int no,Model model) {
-		myTeamService.deleteMatchAply(8);
+	@RequestMapping("/list3/delete/{mtno}/{tno}")
+	public String deleteMatchAply(@PathVariable int mtno, @PathVariable int tno,Model model) {
+		myTeamService.deleteMatchAply(mtno,tno);
 		return "redirect:../../";
 	}
 
@@ -214,9 +214,9 @@ public class MyTeamController {
     public String myMatching(@PathVariable int no,Model model) {
         otherTeam.clear();
 
-    List<Match> match = myTeamService.sucessMatching(8);  //임시번호 나의팀번호
+    List<Match> match = myTeamService.sucessMatching(no);  //임시번호 나의팀번호
                      
-             model.addAttribute("myTeam",myTeamService.matchMyTeam(8));   // 나의 팀정보   
+             model.addAttribute("myTeam",myTeamService.matchMyTeam(no));   // 나의 팀정보   
    
       for(Match m : match) {
         if(m.getOtherTeamNo() != 0) {

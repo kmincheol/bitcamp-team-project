@@ -31,10 +31,11 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 
 <!-- MDBootstrap Datatables  -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
-  rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
   
    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
+   
+<link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
 
 <style>
 .container {
@@ -71,7 +72,7 @@
                 <div class="team_info">&middot; 비용 : ${matchNos.match.cost }</div>
                 </td>              
                 <td colspan="1" style="vertical-align: middle; width: 150px;">  
-                  <a class="btn btn-outline-dark" href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}" style="width: 100%;">취소</a>
+                  <a class="btn btn-outline-dark"  onclick="aa()" href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}/${tno}" style="width: 100%;">취소</a>
                 </td>
               </tr>
                </c:forEach> 
@@ -90,7 +91,28 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
-
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<script>
+function aa(){
+Swal.fire({
+	  title: 'Are you sure?',
+	  text: "You won't be able to revert this!",
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Yes, delete it!'
+	}).then((result) => {
+	  if (result.value) {
+	    Swal.fire(
+	      'Deleted!',
+	      'Your file has been deleted.',
+	      'success'
+	    )
+	  }
+	})
+}
+</script>
 
 </body>
 </html>
