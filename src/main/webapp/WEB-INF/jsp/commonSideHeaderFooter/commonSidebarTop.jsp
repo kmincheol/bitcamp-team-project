@@ -16,22 +16,25 @@
         </div>
         <div class="sidebar-header">
           <c:choose>
-            <c:when test="${sessionScope.loginUser != null }">
-              <div class="user-pic">
+          <c:when test="${sessionScope.loginUser != null }">     
+            <div class="user-pic">
+              <c:if test="${sessionScope.loginUser.photo == null}">
                 <img id="pimg" class="img-responsive img-rounded"
-                  src="${sessionScope.loginUser.photo }">
-              </div>
-              <div class="user-info">
-                <span class="user-name"><b>${sessionScope.loginUser.name}</b> 님<br>환영합니다.</span> 
-                <span>
-                  <c:forEach items="${team}" var="team">
-                    <span class="user-team">${team.teamName}</span>
-                  </c:forEach>    
-                </span>    
-              </div>
-            </c:when>
-
-            <c:otherwise>
+                  src="${contextRootPath}/images/default.jpg">
+              </c:if>
+              <img id="pimg" class="img-responsive img-rounded"
+                src="${sessionScope.loginUser.photo }">
+            </div>
+            <div class="user-info">
+              <span class="user-name"><b>${sessionScope.loginUser.name}</b> 님<br>환영합니다.</span>
+              <%-- <span> <c:forEach items="${team}" var="team">
+                  <span class="user-team">${team.teamName}</span>
+                </c:forEach>
+              </span> --%>
+            </div>
+          </c:when>
+   
+          <c:otherwise>
               <form action='${contextRootPath}/app/auth/login' method='post'>
                 <div class="form-group"
                   style="line-height: 10px; margin-bottom: 10px;">
@@ -106,7 +109,7 @@
               <div class="sidebar-submenu">
                 <ul>
                   <li><a href="${contextRootPath}/app/matchboard">매치보드 </a></li>
-                  <li><a href="#">매치등록</a></li>
+                  <li><a href="${contextRootPath}/app/matchboard/form.jsp">매치등록</a></li>
                 </ul>
               </div></li>
             <li class="sidebar-dropdown"><a href="#"><i

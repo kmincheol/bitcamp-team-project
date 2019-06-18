@@ -34,3 +34,11 @@
 .btn-ans {
 	pointer-events: none;
 }
+
+table a {
+  color: black;
+}
+
+table a:hover {
+  color: black;
+}

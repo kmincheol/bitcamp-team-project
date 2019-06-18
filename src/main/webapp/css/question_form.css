@@ -29,14 +29,10 @@ th{
   top: 90px;
 }
 
-#btnbtn{
-	float:right;
-}
 #main-text {
   position: relative;
   text-align: center;
   width: 100%;
   height: 230px;
   border-bottom: 2px solid black;
-  margin-bottom: 15px;
 }

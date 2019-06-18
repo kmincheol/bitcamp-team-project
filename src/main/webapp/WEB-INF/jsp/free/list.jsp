@@ -61,9 +61,8 @@ div.dataTables_wrapper div.dataTables_paginate {
 }
 
 /* 테이블 헤더 색상 변경 */
-table.dataTable thead tr {
-  /* background-color: gray; */
-  
+.dataTable thead tr {
+  background-color: #f9f7f7;
 }
 /* 테이블 목록 색상 변경 */
 .table tbody tr.even {
@@ -136,7 +135,7 @@ table tbody tr {
         test="${sessionScope.loginUser != null}">
         <div id="in">
           <div id="write-btn">
-            <a class="input-group-btn1 btn btn-dark"
+            <a class="input-group-btn1 btn btn-outline-dark"
               href="${contextRootPath}/app/free/form">글쓰기</a>
           </div>
         </div>

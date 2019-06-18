@@ -538,3 +538,6 @@ body {
 	    width: 100%;
     text-align: center;
 }
+.user-pic img{
+	vertical-align: baseline;
+}

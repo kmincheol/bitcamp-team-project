@@ -7,6 +7,7 @@
 <html>
 
 <head>
+<title>고객센터_list</title>
 <!-- common.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
@@ -28,59 +29,62 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">
 
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css"
-  rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 
 <!-- MDBootstrap Datatables  -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
-  rel="stylesheet">
-
-
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+     
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
-	display: inline-flex;
-}
-
-#dtBasicExample_length {
-	float: left;
+  display: inline-flex;
 }
 
 div.dataTables_wrapper div.dataTables_paginate {
-	text-align: left;
-	width: 100%;
+  text-align: left;
+  width: 100%;
 }
 
-.black {
-	background: #31353D !important;
+.th-sm {
+  text-align: center;
 }
 
-/* 테이블 헤더 색상 변경 */
-table.dataTable thead tr {
-	background-color: #e5ebee;
+  /* 테이블 헤더 색상 변경 */
+  .dataTable thead tr
+  {
+  background-color: #f9f7f7;
 }
 /* 테이블 목록 색상 변경 */
 .table tbody tr.even {
-	/* background-color: #eaeaea; */
-	
+  /* background-color: #eaeaea; */
+  
 }
 /* 테이블 목록 색상 변경 */
 .table tbody tr.odd {
-	/* background-color: white; */
-	
+  /* background-color: white; */
+  
 }
 /* 테이블 목록 hover 색상 변경 */
 #dtBasicExample tbody tr:hover {
-	/* background-color: #ffa; */
-	
+  background-color: #f7f4f4;
 }
 /* 테이블 목록 hover 색상 변경 */
 #dtBasicExample tbody tr:hover>.sorting_1 {
-	/* background-color: #ffa; */
-	
+  /* background-color: #ffa; */
+  
+}
+
+table tbody tr {
+  height: 80px;
+  vertical-align: center;
+}
+
+.table>tbody>tr>td {
+  vertical-align: middle;
 }
 </style>
 
@@ -138,10 +142,10 @@ table.dataTable thead tr {
 
             <td><c:choose>
                 <c:when test="${(question.questionStatus) == 'false'}">
-                  <button type="button" class="btn btn-outline-dark btn-sm btn-ans">답변대기</button>
+                  <button type="button" class="btn btn-sm btn-ans" >답변대기</button>
                 </c:when>
                 <c:otherwise>
-                  <button type="button" class="btn btn-outline-danger btn-sm btn-ans">답변완료</button>
+                  <button type="button" class="btn btn-sm btn-ans" style="color:green">답변완료</button>
                 </c:otherwise>
               </c:choose></td>
           </tr>
@@ -165,11 +169,6 @@ table.dataTable thead tr {
       </c:if>
     </div>
   </div>
-
-
-
-
-
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 

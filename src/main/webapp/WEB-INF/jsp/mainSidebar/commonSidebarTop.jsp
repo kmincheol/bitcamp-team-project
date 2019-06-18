@@ -16,22 +16,25 @@
         </div>
         <div class="sidebar-header">
           <c:choose>
-            <c:when test="${sessionScope.loginUser != null }">
-              <div class="user-pic">
+          <c:when test="${sessionScope.loginUser != null }">
+            <div class="user-pic">
+              <c:if test="${sessionScope.loginUser.photo == null}">
                 <img id="pimg" class="img-responsive img-rounded"
-                  src="${sessionScope.loginUser.photo }">
-              </div>
-              <div class="user-info">
-                <span class="user-name"><b>${sessionScope.loginUser.name}</b> 님<br>환영합니다.</span> 
-                <span>
-                  <c:forEach items="${team}" var="team">
-                    <span class="user-team">${team.teamName}</span>
-                  </c:forEach>    
-                </span>    
-              </div>
-            </c:when>
+                  src="${contextRootPath}/images/default.jpg">
+              </c:if>
+              <img id="pimg" class="img-responsive img-rounded"
+                src="${sessionScope.loginUser.photo }">
+            </div>
+            <div class="user-info">
+              <span class="user-name"><b>${sessionScope.loginUser.name}</b> 님<br>환영합니다.</span>
+              <span> <c:forEach items="${team}" var="team">
+                  <span class="user-team">${team.teamName}</span>
+                </c:forEach>
+              </span>
+            </div>
+          </c:when>
 
-            <c:otherwise>
+          <c:otherwise>
               <form action='${contextRootPath}/app/auth/login' method='post'>
                 <div class="form-group"
                   style="line-height: 10px; margin-bottom: 10px;">
@@ -161,7 +164,7 @@
    $('#mypage-btn').on('click', function(){
       var no = $('#loginNo').val(); 
       no2 = btoa(no); 
-      location="${contextRootPath}/app/member/" + no2;   
+      location="${contextRootPath}/app/member/" + no2;
    });
     
     </script>

@@ -52,11 +52,10 @@ div.dataTables_wrapper div.dataTables_paginate {
 	text-align: center;
 }
 
-	/* 테이블 헤더 색상 변경 */
-	table .dataTable thead tr
-	{
-	/* background-color: gray; */
-}       
+/* 테이블 헤더 색상 변경 */
+.dataTable thead tr {
+	background-color: #f9f7f7;
+}
 /* 테이블 목록 색상 변경 */
 .table tbody tr.even {
 	/* background-color: #eaeaea; */
@@ -170,10 +169,10 @@ table tbody tr {
         test="${sessionScope.loginUser.id eq member.id && member.teamMember.teamLeader == 'true'}">
         <div id="in">
           <div id="write-btn">
-            <a class="input-group-btn1 btn btn-dark"
+            <a class="input-group-btn1 btn btn-outline-dark"
               href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
           </div>
-        </div>
+        </div>        
       </c:if>
     </c:forEach>
   </div>

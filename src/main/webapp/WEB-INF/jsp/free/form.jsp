@@ -28,8 +28,8 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">
   
-  <!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet"> -->
 
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 
 </head>
 <body>
-
+            
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
   
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
@@ -76,8 +76,8 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12 text-center">
-          <a id="cancle" class="btn btn-dark" href='${contextRootPath}/app/free'>취소</a>
-          <button id="add" class="btn btn-dark">등록</button>
+          <a id="cancle" class="btn btn-outline-dark" href='${contextRootPath}/app/free'>취소</a>
+          <button id="add" class="btn btn-outline-dark">등록</button>
         </div>
       </div>
     </form>

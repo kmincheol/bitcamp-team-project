@@ -81,9 +81,9 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12 text-center">
-          <a class="btn btn-dark" href='${contextRootPath}/app/free'>취소</a>
-          <a class="btn btn-dark" href='' id="update" >저장</a>
-        </div>
+          <a class="btn btn-outline-dark" href='${contextRootPath}/app/free'>취소</a>
+          <a class="btn btn-outline-dark" href='' id="update" >저장</a>
+        </div>    
       </div>
     </form>
     </div>

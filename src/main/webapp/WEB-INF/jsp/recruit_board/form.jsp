@@ -108,7 +108,7 @@
             <tr>
               <th id="table-header" scope="row">소속팀</th>
               <td><select class="custom-select" id="select2" name='team.teamId'
-                style="box-shadow: 0 0 0px 0px;">
+                style="box-shadow: 0 0 0px 0px; width:403px">
                   <option selected>팀을 선택해주세요.</option>
                   <c:forEach items="${team}" var="team">
                     <option value='${team.teamId}'>${team.teamName}</option>
@@ -128,8 +128,8 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12 text-center">
-          <a id="cancle" class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
-          <button id="add" class="btn btn-dark">등록</button>
+          <a id="cancle" class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
+          <button id="add" class="btn btn-outline-dark">등록</button>
         </div>
       </div>
     </form>

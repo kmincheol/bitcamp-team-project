@@ -91,7 +91,7 @@
             <c:if test="${!empty sessionScope.loginUser}">
               <a onclick="return joinCheck()"
                 href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}'
-                id="join" class="btn btn-outline-dark">가입신청</a>
+                id="join" class="btn btn-outline-dark">가입신청</a>     
             </c:if>
           </div>
         </div>
