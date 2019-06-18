@@ -5,19 +5,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="../header.jsp" />
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+
 <link href="${contextRootPath}/css/common.css" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <style>
 .select-wrapper input.select-dropdown {
   height: 2em;
   font-size: 40px;
 }
+
 body {
+
 /*   font-family: Arial, Helvetica, sans-serif; */
 }
 
@@ -62,25 +74,16 @@ body {
  </style>
 </head>      
 <body>
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
- <nav>    
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-  <jsp:include page="list4.jsp"></jsp:include>
-  </div>                  
-</div>
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+
 
   <div id="main-wrap" class="container">
-    <div id="cdcd"style = "border: 1px solid black; margin-top:150px; width:1080px; height: 50px;">
-     <!--  <button type="button" class="btn btn-outline-dark btn-sm" id="kaka" onclick="dd()">요청경기목록</button> -->
+
+    <div id="cdcd"style = "border: 1px solid black; width:1080px; height: 50px;">
+  
     </div>
     <div id="teamInfo"
       style="border: 1px solid black; width: 1080px; height: 400px;">
@@ -91,8 +94,8 @@ body {
       <div id="teamName"
         style="width: 600px; height: 100px; float: left; margin-top: 22px; font-size: 50px; text-align: left;">
 
-        <div class="input-field col s12 m6" id="teamSelect">
-          <select class="icons" id="select_k" onchange="select_onchange();">
+        <div class="input-field col s12 m6" id="teamSelect" style="margin-top: 33px; padding-left:0px">
+        <select class="browser-default custom-select custom-select-lg mb-3"  id="select_k" onchange="select_onchange();">
             <c:forEach items="${team}" var="team">
               <option
                 value="
@@ -120,13 +123,13 @@ body {
 
     </div>
 
-    <div id="aaaa" style="width: 1100px; height: 350px; float: left; margin-top: 22px;"></div>
-  <div id="aaaa2" style="width: 1100px; height: 350px; float: left; margin-top: 22px;"></div>
+    <div id="aaaa" style="width: 1100px;  float: left; margin-top: 22px;"></div>
   </div>
   <!-- containner -->
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
  
  <!-- ------------------------------- 스크립트 시작  -->
@@ -166,9 +169,25 @@ function select_onchange(){
   var teamMark = document.getElementById("teamMark");
   var teamName= document.getElementById("teamName");
    var teamDetail = document.getElementById("teamdetail");
-
-
-
+ /* 종목변환 */
+ if(bbb[8]="soccer"){
+	   bbb[8]="축구"
+ }else if(bbb[8]="baseball"){
+	 bbb[8]="야구"
+ }else if(bbb[8]="basketball"){
+   bbb[8]="농구"
+ }else if(bbb[8]="pingpong"){
+   bbb[8]="탁구"
+ }
+ 
+ /*  레벨 변환 */
+ if(bbb[5]="high"){
+     bbb[5]="상"
+ }else if(bbb[5]="mid"){
+   bbb[5]="중"
+ }else if(bbb[5]="low"){
+   bbb[5]="하"
+ }
    if (bbb.length > 11){
   teamMark.innerHTML ='<img src ="' + bbb[9] +',' +bbb[10] +'" width = "250px" height = "250px" >'
   row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
@@ -246,7 +265,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
          '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
          '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
           arrc[i] + '</span></div>' +
-          '<div class="flip-card-back"><h3><br><br>' + arree[i] + '</h3> </div></div></a></div>'
+          '<div class="flip-card-back"><h3>' + arree[i] + '</h3></div></div></a></div>'
         div.style.border= "1px solid black";
         div.style.margin= "5px";
         div.style.width= "261px";
@@ -265,9 +284,9 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
             div.innerHTML =
               '<div class="flip-card"><a href="${contextRootPath}/app/myteam/apply/${tr.member.no}/' + bbb[1] + '/' + ${tr.teamNo} + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
              '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
-             '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: red; color: white">'+ 
+             '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: yellow; color: white">'+ 
              '${tr.member.name}' + '</span></div>' +
-              '<div class="flip-card-back"><h3><br><br>' + arree[i] + '</h3> </div></div></a></div>'
+              '<div class="flip-card-back" style="margin-top : 150px"><h3>' + arree[i] + '</h3></div></div></a></div>'
             div.style.border= "1px solid black";
             div.style.margin= "5px";
             div.style.width= "261px";
@@ -277,25 +296,19 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
       }  
         </c:forEach>
         
-    var button = document.createElement("button");
-    button.style.width= "100px";
-    button.style.height= "50px";
-    button.id="btn_zo";
-    button.innerHTML="hihi"
-    if($("#btn_zo").length == 0){
-    document.getElementById('cdcd').appendChild(button);
-    }
+        document.getElementById("cdcd").innerHTML=
+        '	<div id="myTeamHeader" style="margin-left: 180px;margin-top: 10px;">'+
+        	' <span style="margin : 50px;border-bottom: 2px solid #51c321;"><a href="#"style="text-decoration:none; color:black"> 나의팀 </a> </span> '+
+        '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list3/'+bbb[1]+ '"style="text-decoration:none; color:black">요청한 경기</a></span > ' +
+        '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list2/'+bbb[1]+ '"style="text-decoration:none; color:black">요청받은 경기</a></span>'   +
+       ' <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list5/'+bbb[1]+ '"style="text-decoration:none; color:black">성사된 나의 경기</a></span>'+
+       ' </div>'
     
-    $("#btn_zo").click(function() {
-    /*  var teamNo =  parseInt(bbb[1]);    
-      location.href='${contextRootPath}/app/myteam/send/' + teamNo
-       */
-       document.getElementById('aaaa').style.display="none"
-      
-    });
-    
-    
-    
+/*         <span style="margin : 50px;border-bottom: 2px solid #51c321;"><a href="#"style="text-decoration:none; color:black"> 나의팀 </a> </span>    
+        <span style="margin : 50px"><a href="#"style="text-decoration:none; color:black">요청한 경기</a></span >  
+        <span style="margin : 50px"><a href="#"style="text-decoration:none; color:black">요청받은 경기</a></span>   
+        <span style="margin : 50px"><a href="#"style="text-decoration:none; color:black">성사된 나의 경기</a></span> */
+        
 }//셀렉문 onchange
 
 
