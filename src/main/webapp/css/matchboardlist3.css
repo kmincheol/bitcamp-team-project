@@ -42,9 +42,6 @@ a:hover{
   text-align:left;
 }
 
-#submitArea{
-  margin-top: 30px;
-}
 #floatfloat{
   float:left;
   width: 500px;
@@ -113,7 +110,15 @@ a:hover{
   text-align:center;
 }
 
-#allbtn {
+#allbtn1 {
+  width: 165px;
+  margin-bottom: 6px;
+  margin-left: 44px;
+  padding-top: 3px;
+  height: 32px;
+}
+
+#allbtn2 {
   width: 250px;
   margin-bottom: 6px;
   padding-top: 3px;
@@ -142,11 +147,12 @@ a:hover{
   width: 1080px;
   height: 90px;
   border-top: 2px solid #000000;
-  padding-top: 40px;
+  padding-top: 10px;
 }
 
-#tools{
-  height: 80px;
+#toolsss{
+  height: 165px;
+  padding-top: 10px;
 }
 
 #allTypes{
@@ -164,8 +170,12 @@ a:hover{
   display:inline-block;
 }
 
+.md-form{
+  margin: 0;
+}
+
 #name-clear-btn {
-  margin-left: 4px;
+  margin-left: 9px;
   padding-top: 4px;
   width:100px;
   height: 55px;
@@ -196,11 +206,11 @@ a:hover{
 #matchform{
   width: 500px;
   height: 36px;
-  margin-top: 30px;
-  margin-left: 105px;
-  background-color: #def1f7;
-  border: 3px solid #eefaff;
-  color:black;
+  margin-left: 108px;
+  font-size:19px;
+  border:0px;
+  background: deepskyblue;
+  color: white;
 }
 
 
@@ -223,8 +233,9 @@ a:hover{
 }
 
 #sstypeArea{
-  width:250px;
-  text-align:center;
+  width: 250px;
+  text-align: center;
+  margin-top: 7px;
 }
 
 #stype{
@@ -238,40 +249,37 @@ a:hover{
 }
 
 #levelbtn1{
-  margin-top: 6px;
-  margin-left: 2px;
+  margin-left: 4px;
   border-radius: 0px;
-  width:32px; height:30px; 
-    padding-top: 3px;
-    padding-left: 18px;
+  width:65px; height:30px; 
+    padding-top: 2px;
+    padding-left: 24px;
     padding-right: 33px;
     border-width: 0px;
     color:#343434;
-    background-color: #ffcece;
+    background-color: #e4e4e4;
 }
 #levelbtn2{
-  margin-top: 6px;
-  margin-left: 2px;
+  margin-left: 4px;
   border-radius: 0px;
-  width:32px; height:30px; 
-    padding-top: 3px;
-    padding-left: 18px;
+  width:65px; height:30px; 
+    padding-top: 2px;
+    padding-left: 24px;
     padding-right: 33px;
     border-width: 0px;
     color:#343434;
-    background-color: #c7ffae;
+    background-color: #e4e4e4;
 }
 #levelbtn3{
-  margin-top: 6px;
-  margin-left: 2px;
+  margin-left: 4px;
   border-radius: 0px;
-  width:32px; height:30px; 
-    padding-top: 3px;
-    padding-left: 18px;
+  width:65px; height:30px; 
+    padding-top: 2px;
+    padding-left: 24px;
     padding-right: 33px;
     border-width: 0px;
     color:#343434;
-    background-color: #d5cfd8;
+    background-color: #e4e4e4;
 }
 #subArea{
   text-align: center;
@@ -326,7 +334,7 @@ button{
   height: 180px;
 }
 
-#modal-footer{
+.modal-footer{
   height: 120px;
 }
 
@@ -336,9 +344,10 @@ button{
     margin-right: 5px;
     top: 290px;
 }
-
 .modal-footer-inside{
 }
+
+
 
 #btnsub2 {
   margin-top: 3px;
