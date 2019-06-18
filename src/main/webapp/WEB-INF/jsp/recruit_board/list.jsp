@@ -37,6 +37,8 @@
      
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
@@ -143,9 +145,9 @@ table tbody tr {
               data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>연령대 : ${list.teamAges.teamAges}<br>
               " style="cursor: pointer">${list.team.teamName }</a><br>
               <a class='openTm' href='#' title='test add link' style="font-size:12px;">상세정보
-                <input id="tmNo" type="hidden" value="${list.teamNo}">
+                <input id="tmNo" type="hidden" value="${list.team.teamId}">
               </a>  
-            </td> 
+            </td>       
             <!-- 상세정보검색 -->
             
               <%-- <td><a tabindex="0" role="button"
@@ -191,49 +193,54 @@ table tbody tr {
 
   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
-
+  
   <script>
-  
-  
-  $(function() {
-    $('[data-toggle="popover"]').popover({
-      html : true
-    })
-  })
-  
-			$(document).ready(function() {
-				$('#dtBasicExample').DataTable({
-					order : [ [ 1, "desc" ] ],
-					"info" : false,
-					"paging" : true,
-					language : lang_kor
-				});
-				
-				 var lang_kor = {
-		          "lengthMenu" : "_MENU_ 개씩 보기",
-		          "search" : "검색 : ",
-		          "zeroRecords" : "검색된 데이터가 없습니다.",
-		          "searchPlaceholder" : "검색어 입력",
-		          "paginate" : {
-		            "next" : "다음",
-		            "previous" : "이전"
-		          }
-		        };
-				 
-				 
-				$('.dataTables_length').addClass('bs-select');
-				
-			  /* 상세정보검색 */
-	       $('.openTm').on('click', function(){  
-	       /* window.name = "parentForm"; */
-	       
-	       var no = $(this).children().val();
-	       console.log(no)
-	       window.open("${contextRootPath}/app/team/" + no,   
-	       "childForm", "width=1200, height=1200, resizable = no, scrollbars = no");     
-			}); 
-			});  
-		</script>
+			$(function() {
+				$('[data-toggle="popover"]').popover({
+					html : true
+				})
+			})
 
+		
+			var lang_kor = {
+				"lengthMenu" : "_MENU_ 개씩 보기",
+				"search" : "검색 : ",
+				"zeroRecords" : "검색된 데이터가 없습니다.",
+				"searchPlaceholder" : "검색어 입력",
+				"paginate" : {
+					"next" : "다음",
+					"previous" : "이전"
+				}
+			};
+			$('.dataTables_length').addClass('bs-select');
+
+		
+			$(document).ready(function() {
+								$('#dtBasicExample').DataTable({
+									order : [ [ 1, "desc" ] ],
+									"info" : false,
+									"paging" : true,
+									language : lang_kor
+								});
+
+								/* 상세정보검색 */
+								$('.openTm')
+										.on(
+												'click',
+												function() {
+													/* window.name = "parentForm"; */
+
+													var no = $(this).children()
+															.val();
+													console.log(no)
+													window
+															.open(
+																	"${contextRootPath}/app/team/"
+																			+ no,
+																	"childForm",
+																	"width=1200, height=1200, resizable = no, scrollbars = no");
+												});
+							});
+		</script>
 </body>
 </html>
