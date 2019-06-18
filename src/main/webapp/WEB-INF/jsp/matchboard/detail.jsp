@@ -17,7 +17,10 @@
 
 <div id="main-wrap" class="container">
   <div id="main-text">
-    <h2 id="titleTeamName">${match.team.teamName}</h2>
+    <h2 id="titleTeamName" style="cursor:pointer;"
+    onClick="window.open('${contextRootPath}/app/team/${match.team.teamId}', '팝업!', 'width=804, height=752');return false;">
+    
+    ${match.team.teamName}</h2>
   </div>
   
   

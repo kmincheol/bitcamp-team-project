@@ -6,21 +6,54 @@
  <head>
         <title>매치보드</title>
         <meta charset="utf-8" />
-        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" >
         <link rel="stylesheet" href="${contextRootPath}/css/common.css" />
         <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
-        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" /> 
+ 
+ <!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- recruit_board_list.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/free/free.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
+ 
+ 
+ 
+ 
+ 
+        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
- 
+        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" /> 
  <style>
  .modal-title{
  color:red;
  }
  </style>
-    <jsp:include page="../header.jsp"/>
- 
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
     </head>
     <body ng-app="app"> 
 
@@ -55,27 +88,27 @@
         <div id="sstypeArea">
         <a id="stype"  data-jplist-control="buttons-text-filter" data-path=".sportsType" 
             data-mode="radio" data-group="group1" name="sportsType" data-text="축구">
-        <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png"> 
+        <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png" title="축구"> 
         </a><!-- 축구버튼 -->
         
         <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="야구">
-         <img id="imgcontro" src="${contextRootPath}/images/baseball_list_min.png">
+         <img id="imgcontro" src="${contextRootPath}/images/baseball_list_min.png" title="야구">
         </a><!-- 야구버튼 -->
         
         <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="농구">
-         <img id="imgcontro" src="${contextRootPath}/images/basketball_list_min.png">
+         <img id="imgcontro" src="${contextRootPath}/images/basketball_list_min.png" title="농구">
         </a><!-- 농구버튼 -->
         
         <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="탁구">
-         <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png">
+         <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png" title="탁구">
         </a><!-- 탁구버튼 -->
-        </div>
-        
         
         </div>
+        </div>
+        
         </td>
         <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
         <td>
@@ -168,7 +201,8 @@
                  <tr>
                  <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2"
                  data-toggle="modal" data-target="#exampleModalCenter2"
-                  onClick="location.href='${contextRootPath}/app/team/${match.team.teamId}' " 
+                  onClick="window.open('${contextRootPath}/app/team/${match.team.teamId}', '팝업!', 'width=804, height=752');return false;"
+                  
                   <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
                   align="center" style="cursor: pointer; width:172px;" >
                   
@@ -191,19 +225,19 @@
                     <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
                             <p style="display:none;">축구</p>
-                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/football_list_min.png">
+                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
                             <p style="display:none;">야구</p>
-                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/baseball_list_min.png">
+                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/baseball_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
                             <p style="display:none;">농구</p>
-                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/basketball_list_min.png">
+                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/basketball_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
                             <p style="display:none;">탁구</p>
-                              <img style="width:15px; height:15px; margin-bottom:11px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/pingpong_list_min.png">
                             </c:when>
                           </c:choose>
                     </div>
@@ -248,11 +282,9 @@
               <div class="modal-footer-inside" ></div>
            </div>
            
-             <div id="mtaply" >
-             <table>
-             <tr>
+             <div id="mtaply" style='display:inline; min-width:100px;' >
              <c:if test="${!empty sessionScope.loginUser}">
-             <h6 id="myteamtext" style="color:green;">나의 팀 :</h6>
+             <h6 id="myteamtext" style="color:green; display:inline; float:left">나의 팀 :</h6>
                <select name='teamId' class="form-control" id="selectBox">
                  <option value="" selected>나의소속팀</option>
                   <c:forEach items="${myteam}" var="myteam">
@@ -261,8 +293,6 @@
                </select>
                 <button class="btn btn-danger" id="btnsub2">매치신청보내기</button>
               </c:if>
-              </tr>
-              </table>
               </div>
            </div>
                 </div>
@@ -363,6 +393,7 @@
                      </tr>
                   </c:forEach>
                 </c:when>
+                
                 <c:otherwise>
                   <tr>
                     <td>
@@ -371,7 +402,9 @@
                   </tr>
                 </c:otherwise>
               </c:choose>
+            
             </c:when>
+            
             <c:otherwise>
               <tr>
                 <td id="loginsugge">
@@ -379,7 +412,9 @@
                 </td>
               </tr>
             </c:otherwise>
+            
           </c:choose>
+          
         </table>
       </div>
       </div>
@@ -410,11 +445,14 @@
   </div><!-- .container -->
 
 
-<script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
-<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
-        
+        <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
         <script>
             jplist.init();
             
@@ -472,7 +510,7 @@
    				
                	  $.ajax({
                	    type:"POST",
-               	    url:'submit/' + no,
+               	    url:'matchboard/submit/' + no,
                	    contentType: 'application/json',
                	    dataType: "text",
                	    data:JSON.stringify({
@@ -482,7 +520,7 @@
                	    	console.log(data)
                	    	if (data == 12345) {
                	        alert("신청 되었습니다.");
-               	        location.href=".";
+               	        location.href="matchboard";
                	        	}
                	    	},
                	    error : function(data) {

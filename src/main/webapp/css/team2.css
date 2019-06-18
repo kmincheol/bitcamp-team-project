@@ -1,0 +1,305 @@
+@charset "UTF-8";
+
+html{
+  width:800px;
+  height:600px;
+}
+
+body{
+  width:800px;
+  height:600px;
+}
+.revise {
+  font-family: 'Do Hyeon', sans-serif;
+  margin-left: 67px;
+  width:595px;
+  height:600px;
+  position: absolute;
+  top: -80px;
+}
+
+#main-text { 
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+#keyword {
+	height: 40px;
+	width: 198px;
+	right: 283px;
+	border: 1px solid silver;
+	text-align: center;
+	position: relative;
+	top: 50px;
+}
+
+.md-form {
+	width: 200px;
+	right: 80px;
+	top: 60px;
+}
+
+.select {
+	height: 40px;
+	width: 200px;
+	position: relative;
+	right: 80px;
+	top: 105px;
+}
+
+#triangle-topleft {
+	width: 0;
+	height: 0;
+	border-top: 50px solid darkred;
+	border-right: 150px solid transparent;
+	z-index: 10;
+	position: relative;
+	left: 130px;
+	top: 1px;
+}
+
+#triangle-bottomright {
+	width: 0;
+	height: 0;
+	border-bottom: 50px solid darkred;
+	border-left: 150px solid transparent;
+	z-index: 9;
+	position: relative;
+	bottom: 50px;
+	left: 730px;
+}
+
+.team_list {
+	border: 1px solid silver;
+	margin: 20px;
+	top: 10px;
+	box-sizing: border-box;
+	width: 200px;
+	right: 100px;
+	height: 640px;
+	position: relative;
+}
+
+.team_ul {
+	display: inline-block;
+	width: 180px;
+	height: 30px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.photo {
+	width: 20px;
+	height: 20px;
+	left: 20px;
+	position: relative;
+}
+
+.detailbtn {
+	cursor: pointer;
+	text-align: center;
+	margin: 5px;
+	float: left;
+	left: 50px;
+	bottom: 42px;
+	position: relative;
+}
+
+team_ul li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	border: 0;
+	float: left;
+	display: none;
+}
+
+.tmInfo{
+  height: 400px;
+  margin-left: 47px;
+}
+
+.mbrInfo{
+  width:350px;
+}
+
+.mbrList{
+  width:350px;
+}
+
+.mbrlist li {
+	display: none;
+}
+
+.jpg {
+	width: 40px;
+	height: 30px;
+}
+
+.png {
+	width: 40px;
+	height: 30px;
+}
+
+.container {
+	position: relative;
+	width: 50%;
+}
+
+.hover01 figure img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.hover01 figure:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+label {
+	font-weight: bold;
+}
+
+.scrollbar {
+	float: left;
+	height: 690px;
+	width: 200px;
+	background: #fff;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.force-overflow {
+	min-height: 450px;
+}
+
+.scrollbar-primary::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	-webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+	background-color: black;
+}
+
+.contents {
+	width: 100%;
+	position: relative;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+	margin: 2em 0;
+}
+
+.shiny {
+	margin: 30px auto;
+	background-color: #ffffff;
+	border-radius: 15px;
+	width: 640px;
+	height: 400px;
+	padding: 15px;
+	overflow: hidden;
+}
+
+.show-off {
+	width: 405px;
+	height: 605px;
+	position: relative;
+	top: -556px;
+	left: -550px;
+	transition: 1s;
+	transform: rotate(30deg);
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%,
+		rgba(255, 255, 255, 0.7) 100%);
+}
+
+.shiny:hover .show-off {
+	transform: rotate(0);
+	left: 560px;
+	top: -445px;
+}
+
+.detailForm{
+	position: relative;
+	bottom: 30px;
+	left:60px;
+}
+ 
+.detail {
+	left: 130px;
+	width: 750px;
+	bottom: 180px;
+	position: relative;
+	display: none;
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	height: 750px;
+}
+
+.suvdetail {
+	width: 750px;
+	height: 50px;
+	background: black;
+	color: white;
+}
+
+#teamInfo {
+	font-size: 20px;
+	bottom: 50px;
+	width: 300px;
+	padding: 80px;
+	padding-left: 45px;
+	display: none;
+	right: 200px;
+	float: left;
+	position: relative;
+}
+
+#teamMemberInfo {
+	left: 295px;
+	bottom: 980px;
+	font-size: 20px;
+	width: 450px;
+	height: 677px;
+	margin: 30px;
+	display: none;
+}
+
+.detailText {
+	position: relative;
+	width: 500px;
+}
+
+.infoText {
+	top: 25px;
+	position: relative;
+}
+
+.tmcategory {
+	text-align: center;
+	margin: 20px;
+	position: relative;
+}
+
+.tmcategory span {
+	margin: 60px;
+	text-align: center;
+	font-size: 30px;
+	color: black; 
+}
+
+#finallist {
+	margin: 30px;
+	overflow: auto;
+	height: 500px;
+}

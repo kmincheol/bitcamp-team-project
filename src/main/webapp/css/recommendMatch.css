@@ -1,7 +1,7 @@
 .recommendDiv {
   width: 250px;
   float:left;
-  margin-left: 120px;
+  margin-left: 130px;
 }
 .recommendTable {
 	width: 190px;
@@ -11,8 +11,8 @@
 .recommendTh {
     padding-top: 5px;
 	text-align: center;
-	border: 3px solid #FF4545;
-	background-color: #FF4545;
+	border: 3px solid red;
+	background-color: red;
 	color:white;
 }
 #loginsugge{

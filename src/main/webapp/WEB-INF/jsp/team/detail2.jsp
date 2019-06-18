@@ -10,15 +10,14 @@
 <title>팀 상세조회</title>
 <jsp:include page="../commonCss.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/team.css">
+<link rel="stylesheet" href="${contextRootPath}/css/team2.css">
 </head>
 <body>
 
   <%-- <jsp:include page="../header.jsp" /> --%>
 
-  <div class="container">
-    <br>
-    <br>
+<!-- 팝업용이라서 정상적인 페이지 크기가 필요없음. container 제외 -->
+<div class="revise">
     <c:choose>
       <c:when test="${empty teamMembers}">
         <p>해당하는 팀이 없습니다.</p>
@@ -40,7 +39,7 @@
             <div> <img src='${team.teamEmblemPhoto}'
                   onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'" class="photo"  style="width:250px; height: 250px;"></div>  
            
-          <div class="tmInfo" style="position:relative; left:30px; top:20px;"> 
+          <div class="tmInfo" style="left:30px; top:20px;"> 
         <div style='position:relative; right:30px; bottom:10px;'>   
         <div style='margin:10px;'> <b style='font-size:30px; color:darkred;'>팀명</b><br>${team.teamName}</div> 
         <div class='area' style='margin:10px;'> <b style='font-size:30px; color:darkred;'>지역</b><br>${team.teamArea}</div>    
@@ -87,7 +86,7 @@
   </c:otherwise>
   </c:choose>
  
-<div class="mbrList" style="position:relative; left:370px; bottom:670px;">
+<div class="mbrList" style="position:relative; float:left; left:330px; bottom:670px;">
 <div class="mbrInfo" style="font-size:30px; margin-bottom:30px;"> 
  <span style="margin-right:140px; position:relative; left:30px;"><b>팀원</b></span>         
  <span><b>포지션</b></span><br> 
@@ -104,7 +103,7 @@
      <span style='padding:10px; display:inline-block; width:170px; height:50px; text-align:center;'> ${teamMember.position} </span><br>  
        </c:forEach>
   </div>
-</div>
+  </div>
   <jsp:include page="../javascript.jsp" />
 
 </body>
