@@ -3,149 +3,123 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
+<title>${match.team.teamName} 매치 글 상세보기</title>
 <head>
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/common.css" />
-<link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
+<link rel="stylesheet" href="${contextRootPath}/css/matchboarddetail.css">
 </head>
 <jsp:include page="../header.jsp" />
 
-<style>
-th {
-width:70px;
-}
-td {
-width:70px;
-}
-#teamArea{
-text-align: right;
-}
-#btnsub2{
-width:300px;
-}
-</style>
-
 <body>
-
-    <div id="main-text">
-      <h2>${match.team.teamName}</h2>
-    </div>
 
   <div class="container" id="main-wrap">
 
-    <div id="detail_background">
-      <form action='update' method='post'>
-   
-   <table class="table table-striped table-dark" id="detail_table">
-  <tr>
-      <th scope="col">
-          <label for="no">번호</label>
-      </th>
-      <td>
-            <label id="no" class="detail">${match.no}</label>
-      </td>
-      <th scope="col">
-          <label for="viewCount">조회수</label>
-      </th>   
-      <td>   
-            <label id="viewCnt">${match.viewCount}</label>
-      </td>
-      
-      <td scope="col" rowspan="3" colspan="1" style="text-align: center;">
-      엠블럼
-      <div style="width:60px; height:50px;">
-       ${match.team.teamEmblemPhoto}
-      </div>
-      </td>   
-  </tr>
-	  
-  <tr>
-        <th scope="col">
-          <label for="playdt">경기날짜</label>
-        </th>
-        <td>
-            <label> ${match.playDate}</label>
-        </td>
-        <th scope="col">
-          <label for="location" id="loclab">지역</label>
-          </th>
-        <td>
-            <label id="location">${match.location}</label>
-        </td>
-  </tr>
-<%--         <div class="form-group row">
-          <label for="playdt" class="col-sm-2 col-form-label">연령대</label>
-          <div class="col-sm-10">
-            <input type="number" class="form-control" name="teamAges"
-              value="${match.teamAges.teamAges}" readonly/>
-          </div>
-        </div> --%>
-
-<tr>
-		<th scope="col">
-          <label for="location" >경기장</label>
-       </th>
-       <td>  
-          <input id="stadiumName" value="${match.stadiumName}" style="border:none;"readonly> <button id="map" type="button" onclick="openMap()">위치보기</button>
-       </td>      
-       <th scope="col">
-          <label for="sportsType" id="typlab">종목</label>
-       </th>
-       <td>  
-          <label id="sportsType">${match.teamTypeSports.teamSportsType}</label>
-		</td>
-</tr>
-
-<tr>
-     <th scope="col" colspan="1" >
-          <label for="title">제목</label>
-     </th>     
-     <td colspan="4">
-            <label >${match.title}</label>
-      </td>
-           
-</tr>
-
-<tr>
-	<th scope="col" colspan="1" >
-          <label for="contents" style="padding-top:130px;">내용</label>
-    </th>
-    <td colspan="4">
-            <textArea class="form-control" style="height:300px;" readonly="readonly">${match.contents}</textArea>
-	 </td>
-</tr>	
-	</table>  
+<div id="main-wrap" class="container">
+  <div id="main-text">
+    <h2 id="titleTeamName">${match.team.teamName}</h2>
+  </div>
   
-      <div class="listbtn">
-      <a id="listbutton" class="btn btn-dark" href='${contextRootPath}/app/matchboard/'>목록</a> 
+  
+  <div id="title-wrap" class="form-group row">
+          <div id="title-row" class="col-sm-12">
+            <div id="title">${match.title}</div>
+          </div>
+          <div id="teamName-row" class="col-sm-12">
+            <span id="teamName">${match.team.teamName}</span> 
+            <span>|</span>
+            <span id="createdDate">${match.createdDate}(글작성일)</span> 
+            <span>|</span>
+            <span id="viewCount">${match.viewCount}</span>
+          </div>
+        </div>
+</div>
+
+
+    <div id="detail_background">
+    <form action='update' method='post'>
+
+<div id="contents-wrap">
+        <div id="info-wrap">
+          <table class="info-table">
+            <tr>
+              <th>
+                <div>경기날짜</div>
+              </th>
+              <td>
+                <div id="sportsType">${match.playDate}</div>
+              </td>
+              <th>
+                <div>경기장</div>
+              </th>
+              <td>
+                <div id="location">${match.stadiumName}</div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <div>종목</div>
+              </th>
+              <td>
+                <div id="sportsType">${match.teamTypeSports.teamSportsType}</div>
+              </td>
+              <th>
+                <div>지역</div>
+              </th>
+              <td>
+                <div id="location">${match.location}</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="contents-section">
+          <div class="contents-section-head">
+            <div>내용</div>
+          </div>
+          <div class="contents-section-body">
+            <div class="contents">${match.contents}</div>
+          </div>
+        </div>
+
+  
+      <div id="control-box" class="form-group row">
+          <div class="col-sm-12 text-center">                
+            <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
       
             <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
+            
              <c:if test="${!empty sessionScope.loginUser}">
              <c:if test="${sessionScope.loginUser.id eq matchuserId}">
-          <a id="delt" class="btn btn-dark" href='delete/${match.no}'>삭제</a>
-          <a id="updt" class="btn btn-dark" href='${contextRootPath}/app/matchboard/update_form/${match.no}'>변경</a> 
+          <a id="delt" class="btn btn-outline-dark" href='delete/${match.no}'>삭제</a>
+          <a id="updt" class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard/update_form/${match.no}'>변경</a> 
             </c:if>
             </c:if>
-<%--              <c:if test="${match.team.teamMember.teamLeader == 'true'}"> --%>
     </div>
+    </div>
+    </div>
+    
       </form>
-              <div id="mtaply" >
+          <c:if test="${sessionScope.loginUser.id ne matchuserId}">
+              <div id="mtaply">
                <c:if test="${!empty sessionScope.loginUser}">
-               <select name='teamId' class="form-control col-md-4" id="selectBox">
+              <h5 style="color: #557745;">나의 팀:</h5>
+               <select name='teamId' class="form-control" id="selectBox">
                  <option value="" selected>소속팀(Leader) 선택</option>
                   <c:forEach items="${myteam}" var="myteam">
                     <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
                   </c:forEach>
                </select>
-                <button class="btn btn-danger" id="btnsub2">신청하기</button>
+               
+                <button class="btn btn-danger" id="btnsub2">매치신청</button>
               </c:if>
               </div>
+          </c:if>
       
     </div>
-  </div>
-  <!-- .container -->
+  </div> <!-- .container -->
+
 
   <jsp:include page="../javascript.jsp" />
 
