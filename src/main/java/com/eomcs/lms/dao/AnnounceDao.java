@@ -6,7 +6,7 @@ import com.eomcs.lms.domain.Announce;
 
 public interface AnnounceDao {
   int insert(Announce announce);
-  List<Announce> findAll(Map<String,Object> params);
+  List<Announce> findAll();
   Announce findByNo(int no);
   int increaseCount(int no);
   int update(Announce announce);

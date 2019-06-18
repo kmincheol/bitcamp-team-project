@@ -34,8 +34,7 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 
 <!-- MDBootstrap Datatables  -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
-  rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
 
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->

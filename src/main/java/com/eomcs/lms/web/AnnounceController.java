@@ -30,29 +30,10 @@ public class AnnounceController {
   @Autowired ServletContext servletContext;
 
   @GetMapping
-  public String list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="5") int pageSize,
-      Model model) {
+  public String list(Model model) {
 
-    if (pageSize < 5 || pageSize > 8) 
-      pageSize = 5;
-
-    int rowCount = announceService.size();
-    int totalPage = rowCount / pageSize;
-    if (rowCount % pageSize > 0)
-      totalPage++;
-
-    if (pageNo < 1) 
-      pageNo = 1;
-    else if (pageNo > totalPage)
-      pageNo = totalPage;
-
-    List<Announce> announces = announceService.list(pageNo, pageSize);
+    List<Announce> announces = announceService.list();
     model.addAttribute("list", announces);
-    model.addAttribute("pageNo", pageNo);
-    model.addAttribute("pageSize", pageSize);
-    model.addAttribute("totalPage", totalPage);
 
     return "announce/list";
   }

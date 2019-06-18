@@ -27,12 +27,8 @@ public class FreeServiceImpl implements FreeService {
 
   // 비지니스 객체에서 메서드 이름은 가능한 업무 용어를 사용한다.
   @Override
-  public List<Free> list(int pageNo, int pageSize) {
-      HashMap<String,Object> params = new HashMap<>();
-
-      params.put("size", pageSize);
-      params.put("rowNo", (pageNo - 1) * pageSize);
-      return freeDao.findAll(params);
+  public List<Free> list() {
+      return freeDao.findAll();
     }
 
   
