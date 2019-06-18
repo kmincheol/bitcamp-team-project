@@ -69,6 +69,19 @@
       <id column="spt_clsf_id" property="teamSportsTypeId" />
       <result column="spt_clsf_name" property="teamSportsType" />
     </association>
+    
+  <association property="topLocation" javaType="TopLocation">
+      <id column="toplc_id" property="topLocationId" />
+      <result column="toplc_no" property="topLocationNo" />
+      <result column="toplc_name" property="topLocationName" />
+    </association>
+    
+    <association property="middleLocation" javaType="MiddleLocation">
+      <id column="midlc_id" property="middleLocationId" />
+      <result column="midlc_no" property="middleLocationNo" />
+      <result column="midlc_name" property="middleLocationName" />
+      <result column="toplc_id" property="topLocationId" />
+    </association>
 
   </resultMap>
 
@@ -140,13 +153,17 @@
     tl.levs,
     a.ages,
     spt_clsf_name,
-    t.cdt
+    t.cdt,
+    p.toplc_name,
+    d.midlc_name
     from
-      tm t
+    tm t
     left outer join age a on t.age_id = a.age_id
     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
     left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    left outer join toplc p on p.toplc_no = substr(t.area,1,2)
+    left outer join midlc d on d.midlc_no = substr(t.area,3,2)
   </select> 
 
 <!-- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
@@ -174,7 +191,9 @@
     tm_ambl_phot,
     tm_unf_phot,
     cdt,
-    mdt
+    mdt,
+    p.toplc_name,
+    d.midlc_name
     from
     tm t
     left outer join
@@ -184,6 +203,8 @@
     join tm_type tt on t.tm_type_id = tt.tm_type_id
     left outer join spt_clsf s on t.spt_clsf_id =
     s.spt_clsf_id
+    left outer join toplc p on p.toplc_no = substr(t.area,1,2)
+    left outer join midlc d on d.midlc_no = substr(t.area,3,2)
   </select>
 
  <select id="findBykeyword" resultMap="teamMap1" parameterType="string">
@@ -350,8 +371,7 @@
     tm_lev_id,
     tm_type_id,
     spt_clsf_id,
-    tm_ambl_phot,
-    tm_unf_phot
+    tm_ambl_phot
     )
     values(
     #{teamName},
@@ -361,8 +381,7 @@
     #{teamLevelId},
     #{teamTypeId},
     #{teamSportsId},
-    #{teamEmblemPhoto},
-    #{teamUniformPhoto}
+    #{teamEmblemPhoto}
     )
 
   </insert>
