@@ -37,6 +37,8 @@
      
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
@@ -185,7 +187,7 @@ table tbody tr {
 
   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
-
+     
   <script>
 			$(function() {
 				$('[data-toggle="popover"]').popover({
@@ -195,15 +197,6 @@ table tbody tr {
 		</script>
 
   <script>
-			/* 상세정보검색 */
-			/* $('#openTm').on('click', function(){ 
-			 // window.name = "부모창 이름"; 
-			 window.name = "parentForm";
-			 // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-			 window.open("${contextRootPath}/app/team/list4",
-			 "childForm", "width=1200, height=1200, resizable = no, scrollbars = no");     
-			 });  */
-
 			var lang_kor = {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
