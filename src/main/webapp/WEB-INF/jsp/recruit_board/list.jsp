@@ -37,6 +37,8 @@
      
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
@@ -106,7 +108,7 @@ table tbody tr {
         <tr>
           <th class="th-sm">번호</th>
           <th class="th-sm">종목</th>
-          <th class="th-sm">제목</th>
+          <th class="th-sm">제목</th> 
           <th class="th-sm">팀명</th>
           <th class="th-sm">지역</th>
           <th class="th-sm">상태</th>
@@ -137,19 +139,25 @@ table tbody tr {
             <!-- 제목 -->
             <td><a href="${contextRootPath}/app/recruit_board/${list.teamNo}">${list.teamTitle}</a></td>
             <!-- 팀명 -->
-            <td><a tabindex="0" class="btn popovers" role="button" data-toggle="popover" data-trigger="focus"
+           <td>
+           <a tabindex="0" class="btn popovers" role="button" data-toggle="popover" data-trigger="focus"
               title="팀명 : ${list.team.teamName }"
               data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>연령대 : ${list.teamAges.teamAges}<br>
-              <a href='' title='test add link'>상세정보</a>" style="cursor: pointer">${list.team.teamName }</a>
-            </td>
+              " style="cursor: pointer">${list.team.teamName }</a><br>
+              <a class='openTm' href='#' title='test add link' style="font-size:12px;">상세정보
+                <input id="tmNo" type="hidden" value="${list.team.teamId}">
+              </a>  
+            </td>       
             <!-- 상세정보검색 -->
-            <%-- <td><a id="openTm" tabindex="0" role="button"
+            
+              <%-- <td><a tabindex="0" role="button"
               data-toggle="popover" data-trigger="focus" title="${list.team.teamName }"
               data-content="종목 : ${list.teamTypeSports.teamSportsType}<br>
-              <a title='test add link'>상세정보</a>">${list.team.teamName }</a>
+              ">${list.team.teamName }</a><br>
+              <a href='#' id="openTm2" class="openTm" title='test add link'>상세정보</a>
               <input id="openTm1" value="${list.team.teamName}" type="hidden">
-              </td> --%>
-            <!-- 지역 -->
+              </td>   --%>
+            <!-- 지역 --> 
             <td>${list.team.teamArea }</td>
             <!-- 게시글 상태(모집중, 모집완료) -->
             <td><c:choose>
@@ -185,25 +193,15 @@ table tbody tr {
 
   <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
-
+  
   <script>
 			$(function() {
 				$('[data-toggle="popover"]').popover({
 					html : true
 				})
 			})
-		</script>
 
-  <script>
-			/* 상세정보검색 */
-			/* $('#openTm').on('click', function(){ 
-			 // window.name = "부모창 이름"; 
-			 window.name = "parentForm";
-			 // window.open("open할 window", "자식창 이름", "팝업창 옵션");
-			 window.open("${contextRootPath}/app/team/list4",
-			 "childForm", "width=1200, height=1200, resizable = no, scrollbars = no");     
-			 });  */
-
+		
 			var lang_kor = {
 				"lengthMenu" : "_MENU_ 개씩 보기",
 				"search" : "검색 : ",
@@ -214,17 +212,25 @@ table tbody tr {
 					"previous" : "이전"
 				}
 			};
+			$('.dataTables_length').addClass('bs-select');
 
+		
 			$(document).ready(function() {
-				$('#dtBasicExample').DataTable({
-					order : [ [ 1, "desc" ] ],
-					"info" : false,
-					"paging" : true,
-					language : lang_kor
-				});
-				$('.dataTables_length').addClass('bs-select');
+								$('#dtBasicExample').DataTable({
+									order : [ [ 1, "desc" ] ],
+									"info" : false,
+									"paging" : true,
+									language : lang_kor
+								});
+
+			/* 상세정보검색 */
+			$('.openTm').on('click',function() {
+			/* window.name = "parentForm"; */
+      var no = $(this).children().val();
+			console.log(no)
+			window.open("${contextRootPath}/app/team/" + no,"childForm","width=1200, height=1200, resizable = no, scrollbars = no");
+					});
 			});
 		</script>
-
 </body>
 </html>

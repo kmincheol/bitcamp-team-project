@@ -32,30 +32,10 @@ public class FreeController {
   @Autowired ServletContext servletContext;
 
   @GetMapping
-  public String list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
-      Model model) {
+  public String list(Model model) {
 
-    if (pageSize < 10 || pageSize > 8) 
-      pageSize = 10;
-
-    int rowCount = freeService.size();
-    int totalPage = rowCount / pageSize;
-    if (rowCount % pageSize > 0)
-      totalPage++;
-
-    if (pageNo < 1) 
-      pageNo = 1;
-    else if (pageNo > totalPage)
-      pageNo = totalPage;
-
-    List<Free> frees = freeService.list(pageNo, pageSize);
+    List<Free> frees = freeService.list();
     model.addAttribute("list", frees);
-    model.addAttribute("pageNo", pageNo);
-    model.addAttribute("pageSize", pageSize);
-    model.addAttribute("totalPage", totalPage);
-    model.addAttribute("rowCount", rowCount);
     
     return "free/list";
   }

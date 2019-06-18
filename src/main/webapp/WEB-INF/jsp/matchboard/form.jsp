@@ -113,8 +113,8 @@
                   <div class="input-group">
                     <select class="custom-select" id="sido" name="location" onchange="itemChange()">
                       <option value="" disabled selected hidden>지역선택</option>
-                      <!-- db명 toplc  -->
-                      <option value="01">서울</option>   
+                      <!-- db명 toplc_name  -->
+                      <option value="서울">서울</option>   
                     </select>
                   </div>
                 </div>
@@ -232,7 +232,7 @@
 
 				var changeItem;
 
-				if (selectItem == "01") { // 서울
+				if (selectItem == "서울") { // 서울
 					changeItem = Seoul;
 				}
 				$('#gugun').empty();
