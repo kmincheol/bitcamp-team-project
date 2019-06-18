@@ -13,7 +13,6 @@
 <jsp:include page="../header.jsp" />
 
 <body>
-
   <div class="container" id="main-wrap">
 
 <div id="main-wrap" class="container">

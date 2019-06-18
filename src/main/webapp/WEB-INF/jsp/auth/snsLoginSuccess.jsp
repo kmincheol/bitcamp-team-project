@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Facebook 로그인 성공</title>
+<title>로그인 성공</title>
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>

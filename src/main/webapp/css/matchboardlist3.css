@@ -38,9 +38,6 @@ a:hover{
   text-decoration: none;
 }
 
-.modal-body {
-  text-align:left;
-}
 
 #floatfloat{
   float:left;
@@ -329,10 +326,6 @@ button{
   background-color: #d3d3d3;
 }
 
-#modalbody {
-  width: 500px;
-  height: 180px;
-}
 
 .modal-footer{
   height: 120px;
@@ -347,12 +340,27 @@ button{
 .modal-footer-inside{
 }
 
+#mtaply{
+  
+}
 
+#footerchain{
+  display:inline-block;
+}
+
+#myteamtext{
+}
+
+#selectBox{
+}
 
 #btnsub2 {
   margin-top: 3px;
   margin-left: 19px;
 }
+
+
+
 
 [data-jplist-control="no-results"]{
   padding: 20px 0;

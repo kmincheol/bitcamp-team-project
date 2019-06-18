@@ -46,21 +46,21 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />         
 
-  <div id="main-text">
-    <h2 style="text-align: center;">     
-      <b>매치 글</b>을 <b>등록</b>할 수 있습니다.
-    </h2>
-    <br>
-    <p>
-      <b>매치</b> 글을 등록한 후
-    </p>
-    <p>
-      다른 팀의<b>대결 신청을 받아</b>경기를 진행해 보세요.
-    </p>
-  </div>
+  <div class="container" id="main-wrap">
+  
+    <div id="main-text">
+      <h2 style="text-align: center;">
+        <b>매치 글</b>을 <b>등록</b>할 수 있습니다.
+      </h2>
+      <br>
+      <p>
+        <b>매치</b> 글을 등록한 후
+      </p>
+      <p>
+        다른 팀의<b>대결 신청을 받아</b>경기를 진행해 보세요.
+      </p>
+    </div>
 
-  <div class="container" id="main-wrap" style="margin-top: 50px;">
-                  
     <form action='add' method='post' name="submit">
       <table id="match_table" class="table table-bordered table-white">
         <tbody>

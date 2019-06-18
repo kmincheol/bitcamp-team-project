@@ -6,7 +6,7 @@ import com.eomcs.lms.domain.Free;
 
 public interface FreeDao {
   int insert(Free free);
-  List<Free> findAll(Map<String,Object> params);
+  List<Free> findAll();
   Free findByNo(int no);
   List<Free> findByKeyword(String keyword);
   int increaseCount(int no);

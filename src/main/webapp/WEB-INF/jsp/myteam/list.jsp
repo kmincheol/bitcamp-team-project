@@ -20,13 +20,14 @@
 
 <link href="${contextRootPath}/css/common.css" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 
 <style>
 .select-wrapper input.select-dropdown {
   height: 2em;
   font-size: 40px;
 }
+
 
 body {
 
@@ -71,6 +72,26 @@ body {
   */
   transform: rotateY(180deg);
 }
+
+
+#main-text h2 {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+}
+
+#main-text h2 img {
+  margin-bottom: 25px;
+  margin-right: 5px;
+  width:80px;
+  height:80px;
+}
+.flip-card-back > h3{
+    margin-top: 120px;
+    margin-left: 20px;
+    font-size: 50px;
+
+}
  </style>
 </head>      
 <body>
@@ -81,12 +102,16 @@ body {
 
 
   <div id="main-wrap" class="container">
-
-    <div id="cdcd"style = "border: 1px solid black; width:1080px; height: 50px;">
-  
+    <div id="main-text">
+  <h2>    
+        <img src="${contextRootPath}/images/myteammain.jpg">나의 팀정보
+      </h2>
+    </div>
+    <div id="cdcd" style="width:1080px;height: 50px;margin-top: 30px;">
+                           
     </div>
     <div id="teamInfo"
-      style="border: 1px solid black; width: 1080px; height: 400px;">
+      style="border: 1px solid black; width: 1080px; height: 400px; box-shadow: 7px 7px 7px darkgray;">
       <div id="teamMark"
         style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">
       </div>
@@ -115,11 +140,12 @@ body {
           </select>
         </div>
       </div>
-
-      <div id="row1" style="width: 660px; height: 50px; float: left; margin-top: 20px;"></div>
+ <div style="margin-top:150px">
+      <div id="row1" style="width: 660px; height: 50px; float: left; margin-text-align: center;top: 20px;"></div>
       <div id="row2" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
       <div id="row3" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
       <div id="row4" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
+</div>
 
     </div>
 
@@ -140,12 +166,12 @@ body {
   // 셀렉문 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
+  /*   var instances = M.FormSelect.init(elems, options); */
   });
 
-  $(document).ready(function(){
+/*   $(document).ready(function(){
     $('select').formSelect();
-  });
+  }); */
 //셀렉문 
 
 // 셀렉문 onchange
@@ -191,45 +217,45 @@ function select_onchange(){
    if (bbb.length > 11){
   teamMark.innerHTML ='<img src ="' + bbb[9] +',' +bbb[10] +'" width = "250px" height = "250px" >'
   row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
-  '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
+  '<span style="display: inline-block;font-size:25px; ;width: 300px;"> <I><U>'+bbb[8]+ '</U></I></span>' + 
   '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
-  '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
+  '<span style="display: inline-block;font-size:25px; width: 100px;"> <I><U>'+'서울'+'</U></I></span>' 
   
   
 row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
-'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[6]+'</U></I></B></span>' + 
+'<span style="display: inline-block;font-size:25px; ;width: 300px;"> <I><U>'+bbb[6]+'</U></I></span>' + 
 '<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
-'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[3]+'</U></I></B></span>' 
+'<span style="display: inline-block;font-size:25px; width: 100px;"><I><U>'+bbb[3]+'</U></I></span>' 
 
 row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 유형</span> ' + 
-'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[4]+'</U></I></B></span>' + 
+'<span style="display: inline-block;font-size:25px; ;width: 300px;"><I><U>'+bbb[4]+'</U></I></span>' + 
 '<span style="display: inline-block;font-size:20px; width: 100px;">팀 실력</span> ' + 
-'<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[5]+'</U></I></B></span>' 
+'<span style="display: inline-block;font-size:25px; width: 100px;"><I><U>'+bbb[5]+'</U></I></span>' 
 
 row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' +   
-'<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[7]+'</U></I></B></span>' 
+'<span style="display: inline-block;font-size:25px; ;width: 300px;"> <I><U>'+bbb[7]+'</U></I></span>' 
    }else {
       teamMark.innerHTML ='<img src ="' + bbb[9] +  '" width = "250px" height = "250px" >'
       row1.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">종 목</div></span> ' + 
-                           '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[8]+'</U></I></B></span>' + 
+                           '<span style="display: inline-block;font-size:25px; ;width: 300px;"> <I><U>'+bbb[8]+'</U></I></span>' + 
                            '<span style="display: inline-block;font-size:20px; width: 100px;">지 역</span> ' + 
-                           '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+'서울'+'</U></I></B></span>' 
+                           '<span style="display: inline-block;font-size:25px; width: 100px;"><I><U>'+'서울'+'</U></I></span>' 
                            
                            
        row2.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">창단일</span> ' + 
-       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[6]+'</U></I></B></span>' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 300px;"> <I><U>'+bbb[6]+'</U></I></span>' + 
        '<span style="display: inline-block;font-size:20px; width: 100px;">평균연령</span> ' + 
-       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[3]+'</U></I></B></span>' 
+       '<span style="display: inline-block;font-size:25px; width: 100px;"><I><U>'+bbb[3]+'</U></I></span>' 
        
        row3.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 유형</span> ' + 
-       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[4]+'</U></I></B></span>' + 
+       '<span style="display: inline-block;font-size:25px; ;width: 300px;"> <I><U>'+bbb[4]+'</U></I></span>' + 
        '<span style="display: inline-block;font-size:20px; width: 100px;">팀 실력</span> ' + 
-       '<span style="display: inline-block;font-size:25px; width: 100px;"> <B><I><U>'+bbb[5]+'</U></I></B></span>' 
+       '<span style="display: inline-block;font-size:25px; width: 100px;"><I><U>'+bbb[5]+'</U></I></span>' 
        
        row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100px;">팀 소개</span> ' + 
-       '<span style="display: inline-block;font-size:25px; ;width: 220px;"> <B><I><U>'+bbb[7]+'</U></I></B></span>' 
+       '<span style="display: inline-block;font-size:25px; ;width: 300px;"><I><U>'+bbb[7]+'</U></I></span>' 
    }
- 
+   
         
     
   <c:forEach items="${tm}" var="teamMember">
@@ -265,11 +291,12 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
          '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
          '<span style="display: inline-block;font-size:30px; width: 260px; height:49px; text-align:center; background-color: #262626; color: white">'+ 
           arrc[i] + '</span></div>' +
-          '<div class="flip-card-back"><h3>' + arree[i] + '</h3></div></div></a></div>'
+          '<div class="flip-card-back"><h3 >' + arree[i] + '</h3></div></div></a></div>'
         div.style.border= "1px solid black";
         div.style.margin= "5px";
         div.style.width= "261px";
         div.style.height= "300px";
+        div.style.boxShadow = "5px 5px 5px darkgray";      
         div.style.float= "left";
         document.getElementById('aaaa').appendChild(div);
       
@@ -292,12 +319,12 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
             div.style.width= "261px";
             div.style.height= "300px";
             div.style.float= "left";
+            
             document.getElementById('aaaa').appendChild(div);
       }  
         </c:forEach>
-        
         document.getElementById("cdcd").innerHTML=
-        '	<div id="myTeamHeader" style="margin-left: 180px;margin-top: 10px;">'+
+        '	<div id="myTeamHeader" style="text-align: center; font-size: 20px;">'+
         	' <span style="margin : 50px;border-bottom: 2px solid #51c321;"><a href="#"style="text-decoration:none; color:black"> 나의팀 </a> </span> '+
         '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list3/'+bbb[1]+ '"style="text-decoration:none; color:black">요청한 경기</a></span > ' +
         '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list2/'+bbb[1]+ '"style="text-decoration:none; color:black">요청받은 경기</a></span>'   +

@@ -224,7 +224,7 @@ public class MatchBoardController {
     System.out.println("UPDATEUPDATE"+ match.toString());
     if (matchBoardService.update(match) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
-    return "redirect:..";
+    return "redirect:../matchboard";
   }
   
   

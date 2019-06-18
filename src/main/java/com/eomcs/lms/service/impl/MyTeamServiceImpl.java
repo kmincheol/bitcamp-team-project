@@ -114,8 +114,13 @@ public int deleteJoinTeam(int mno, int rcrmno) {
 }
 
 @Override
-public int deleteMatchAply(int no) {
-	return myteamDao.mtchAplyDelete(no);
+public int deleteMatchAply(int mtno,int tno) {
+	
+  HashMap<String, Integer> map = new HashMap<String, Integer>(); // MAP을 이용해 담기
+  map.put("mtno", mtno);
+  map.put("tno", tno);
+  
+  return myteamDao.mtchAplyDelete(map);
 }
 
 @Override
