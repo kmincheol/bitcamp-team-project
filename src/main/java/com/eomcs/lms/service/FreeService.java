@@ -4,7 +4,7 @@ import java.util.List;
 import com.eomcs.lms.domain.Free;
 
 public interface FreeService {
-  List<Free> list(int pageNo, int pageSize);
+  List<Free> list();
   int add(Free free);
   Free get(int no);
   List<Free> search(String keyword, int pageNo, int pageSize);

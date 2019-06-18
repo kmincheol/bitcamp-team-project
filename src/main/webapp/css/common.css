@@ -57,3 +57,14 @@ body, html {
     height: 230px;
     border-bottom: 2px solid black;
 }
+
+#main-text h2 {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+}
+
+#main-text h2 img {
+  margin-bottom: 25px;
+  margin-right: 5px;
+}

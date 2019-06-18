@@ -223,24 +223,14 @@ table tbody tr {
 									language : lang_kor
 								});
 
-								/* 상세정보검색 */
-								$('.openTm')
-										.on(
-												'click',
-												function() {
-													/* window.name = "parentForm"; */
-
-													var no = $(this).children()
-															.val();
-													console.log(no)
-													window
-															.open(
-																	"${contextRootPath}/app/team/"
-																			+ no,
-																	"childForm",
-																	"width=1200, height=1200, resizable = no, scrollbars = no");
-												});
-							});
+			/* 상세정보검색 */
+			$('.openTm').on('click',function() {
+			/* window.name = "parentForm"; */
+      var no = $(this).children().val();
+			console.log(no)
+			window.open("${contextRootPath}/app/team/" + no,"childForm","width=1200, height=1200, resizable = no, scrollbars = no");
+					});
+			});
 		</script>
 </body>
 </html>

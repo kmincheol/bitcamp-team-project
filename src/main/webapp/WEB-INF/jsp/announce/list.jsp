@@ -6,40 +6,114 @@
 <html>
 <head>
 <title>공지사항 게시판</title>
-<jsp:include page="../commonCss.jsp" />
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+     
+
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
+
 <link rel="stylesheet" href="${contextRootPath}/css/announce_list.css">
+
+<style>
+/* 페이지 컨트롤러 가운데 정렬 style */
+.pagination {
+  display: inline-flex;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+  text-align: left;
+  width: 100%;
+}
+
+.th-sm {
+  text-align: center;
+}
+
+/* 테이블 헤더 색상 변경 */
+.dataTable thead tr {
+  background-color: #f9f7f7;
+}
+/* 테이블 목록 색상 변경 */
+.table tbody tr.even {
+  /* background-color: #eaeaea; */
+  
+}
+/* 테이블 목록 색상 변경 */
+.table tbody tr.odd {
+  /* background-color: white; */
+  
+}
+/* 테이블 목록 hover 색상 변경 */
+#dtBasicExample tbody tr:hover {
+  background-color: #f7f4f4;
+}
+/* 테이블 목록 hover 색상 변경 */
+#dtBasicExample tbody tr:hover>.sorting_1 {
+  /* background-color: #ffa; */
+  
+}
+
+table tbody tr {
+  height: 80px;
+  vertical-align: center;
+}
+
+.table>tbody>tr>td {
+  vertical-align: middle;
+}
+</style>
 </head>
 
 <body>
 
-<jsp:include page="../header.jsp" />
-  <div class="container">
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+  <div class="container" id="main-wrap">
+   
     <div id="main-text">
-      <h2>공지사항</h2>
+      <h2>
+        <img src="${contextRootPath}/images/speaker.png" style="width: 30px; height: 30px;">공지사항
+      </h2>
     </div>
-<c:if test="${!empty sessionScope.loginUser}">
-<c:if test="${sessionScope.loginUser.manager}">
-    <p>
-      <a href='${contextRootPath}/app/announce/form' class="btn btn-dark">새 글</a>
-    </p>
-</c:if>    
-</c:if>
-    <div class="announce-list">
-      <table class="table table-hover">
+    
+      <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
         <thead>
           <tr>
-            <th scope="col">번호</th>
-            <th id="announce-title" scope="col" width="300px">제목</th>
-            <th scope="col">작성자</th>
-            <th scope="col">작성일</th>
-            <th scope="col">조회</th>
+            <th class="th-sm">번호</th>   
+            <th class="th-sm">제목</th>
+            <th class="th-sm">작성자</th>
+            <th class="th-sm">작성일</th>
+            <th class="th-sm">조회</th>    
           </tr>
         </thead>
         <tbody>
           <c:forEach items="${list}" var="announce">
             <tr>
-              <th scope="row">${announce.no}</th>
+              <td scope="row">${announce.no}</td>
               
               <td><a href='${contextRootPath}/app/announce/${announce.no}'>${announce.title}</a></td>
               
@@ -56,7 +130,6 @@
           			${announce.member.email}
             	</span>
        	 </div>
-				
 				<!-- popover끝 -->
               </td>
               <td>${announce.createdDate}</td>
@@ -65,37 +138,25 @@
           </c:forEach>
         </tbody>
       </table>
-    </div>
-    <!-- .bit-list -->
 
-    <nav aria-label="목록 페이지 이동">
-  <ul class="pagination justify-content-center">
-  
-    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
-    <a class="page-link" href="?pageNo=${pageNo -  1}&pageSize=${pageSize}">이전</a></li>
-    
-    <li class="page-item ${pageNo <= 1 ? 'disabled' : ''}">
-    <a class="page-link" href="?pageNo=${pageNo - 1}&pageSize=${pageSize}">${pageNo <= 1 ? "-" : pageNo - 1}</a></li>
-    
-    <li class="page-item active"><span class="page-link">${pageNo}</span></li>
-    
-    <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
-    <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">${pageNo >= totalPage ? "-" : pageNo + 1}</a></li>
-    
-    <li class="page-item ${pageNo >= totalPage ? 'disabled' : ''}">
-      <a class="page-link" href="?pageNo=${pageNo + 1}&pageSize=${pageSize}">다음</a></li>
-  </ul>
-    </nav>
+    <c:if test="${!empty sessionScope.loginUser}">
+      <c:if test="${sessionScope.loginUser.manager}">
+        <div id="in">
+          <div id="write-btn">
+            <a href='${contextRootPath}/app/announce/form' class="btn btn-outline-dark">새 글</a>  
+          </div>
+        </div>
+      </c:if>
+    </c:if>
 
   </div>
-  <!-- .container -->
+  <!-- .container -->   
 
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
-  <jsp:include page="../javascript.jsp" />
-  
-  
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
-  
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
   
 </body>
 
@@ -120,8 +181,29 @@ $(function () {
 	  	});
 	  });
 	});
-
 </script>
+<script>    
+      var lang_kor = {
+        "lengthMenu" : "_MENU_ 개씩 보기",
+        "search" : "검색 : ",
+        "zeroRecords" : "검색된 데이터가 없습니다.",
+        "searchPlaceholder" : "검색어 입력",
+        "paginate" : {
+          "next" : "다음",
+          "previous" : "이전"
+        }
+      };
+
+      $(document).ready(function() {
+        $('#dtBasicExample').DataTable({
+          order : [ [ 0, "desc" ] ],
+          "info" : false,
+          "paging" : true,
+          language : lang_kor
+        });
+        $('.dataTables_length').addClass('bs-select');
+      });
+    </script>
 
 
 </html>
