@@ -42,7 +42,7 @@
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 
-</head>
+</head>   
 
 <body>
 
@@ -50,7 +50,7 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <div id="main-wrap" class="container">
+  <div id="main-wrap" class="container">   
 
     <div id="main-text">
       <div class="text-field">
