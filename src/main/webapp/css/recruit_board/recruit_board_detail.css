@@ -34,17 +34,12 @@ form {
 
 #title {
 	font-size: 35px;
-}
-
-#contents-wrap {
-	margin-top: 50px;
-}
+}        
 
 table.info-table {
 	text-align: center;
 	line-height: 1.5;
 	width: 100%;
-	border-top: 1px solid #ccc;
 }
 
 table.info-table th {

@@ -68,7 +68,7 @@
               <td><input id="title" name="title" class="form-control"></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row">내용</th>
+              <th id="table-header" scope="row" style="width:151px;">내용</th>
               <td><textarea id="summernote" name='contents' rows='5'></textarea></td>
             </tr>
           </tbody>

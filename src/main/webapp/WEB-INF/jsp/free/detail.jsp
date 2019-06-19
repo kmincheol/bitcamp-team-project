@@ -78,7 +78,7 @@
 
             <div id="control-box" class="form-group row">
               <div class="col-sm-12 text-center">
-                <div class="btns2">
+                <div class="btns2" style="margin-bottom: 50px;">
                   <a class="btn btn-outline-dark" href='.'>목록</a>
                   <c:if test="${sessionScope.loginUser.name eq free.member.name}">
                     <a class="btn btn-outline-dark" href='delete/${free.no}'>삭제</a>
@@ -90,10 +90,6 @@
             </div>
 
           </form>
-          <br>
-          <br>
-          <hr>
-          <br>
         </c:otherwise>
       </c:choose>
     </div>

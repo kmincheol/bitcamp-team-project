@@ -64,8 +64,8 @@ th {
     <div id="main-text">
       <div class="text-field" id="main-textfield">
         <span style="font-weight: bold; font-size: 2.0em;">문의</span> <span
-          style="font-size: 2.0em;"> 했던 게시글을</span>
-        <div style="font-size: 2.0em;">변경할 수 있습니다.</div>
+          style="font-size: 1.8em;"> 했던 게시글을</span>
+        <div style="font-size: 1.8em;">변경할 수 있습니다.</div>
       </div>
     </div>    
 
@@ -122,6 +122,7 @@ th {
 $(document).ready(function() {
 	  $('#summernote').summernote({
 	    height: 400,
+	    width:900,
 	    minHeight: null,
 	    maxHeight: null,
 	    focus: true

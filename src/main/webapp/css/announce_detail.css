@@ -1,40 +1,28 @@
-* {
-	margin: 0px;
-	padding: 0px;
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}  
+
+#main-text h2 {
+  position: absolute;
+  text-align: left; 
+  bottom: 0;
 }
 
-body, html {
-	width: 100%;
-	height: 100%;
-	margin: 0px;
-	padding: 0px;
-}
-
-.container {
-	width: auto;
-	height: auto;
-	min-height: 100%;
-	padding: 0px;
-	margin: 0 auto;
+#main-text h2 img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-bottom: 25px;
 }
 
 h3 {
 	margin: 30px 0px 45px 20px;
 	text-decoration: underline;
-}
-
-#main-text {
-	position: relative;
-	text-align: center;
-	width: 100%;
-	height: 230px;
-	border-bottom: 2px solid black;
-}
-
-#main-text>h2 {
-	position: relative;
-	top: 90px;
-	color: black;
 }
 
 form {
@@ -54,9 +42,6 @@ form {
 	font-size: 35px;
 }
 
-#contents-wrap {
-	margin-top: 50px;
-}
 
 table.info-table {
 	text-align: center;

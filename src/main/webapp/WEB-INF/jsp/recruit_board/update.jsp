@@ -86,7 +86,7 @@
                 value="${teamRecruit.teamTitle}" /></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row">내용</th>
+              <th id="table-header" scope="row" style="width:151px;">내용</th>
               <td><textarea class="form-control" id="summernote" name='teamContents' rows='5'>${teamRecruit.teamContents}</textarea></td>
             </tr>
           </tbody>
@@ -114,7 +114,8 @@
   
 $(document).ready(function() {
   $('#summernote').summernote({
-    height: 300,
+    height: 400,
+    width: 900,
     minHeight: null,
     maxHeight: null,
     focus: true

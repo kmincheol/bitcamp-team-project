@@ -100,8 +100,6 @@
   </div>
   <!-- .container -->
   
-  <jsp:include page="../javascript.jsp" />
-    
    <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp"/>
   
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp"/>

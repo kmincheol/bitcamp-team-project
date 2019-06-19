@@ -5,17 +5,17 @@
 <html lang="ko">
 <head>
 <title>자유게시판</title>
-<!-- common.css --> 
+<!-- common.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
 <!-- header -->
 <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
 
-<!-- footer.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-
 <!-- commonSidebar css -->
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
 <!-- recruit_board_update.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_update.css">
@@ -73,7 +73,7 @@
                 value="${free.title}" /></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row">내용</th>
+              <th id="table-header" scope="row" style="width:151px;">내용</th>
               <td><textarea class="form-control" id="summernote" name='teamContents' rows='5'>${free.contents}</textarea></td>
             </tr>
           </tbody>
@@ -88,9 +88,14 @@
     </form>
     </div>
 
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
-<jsp:include page="../javascript.jsp" />
-<script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+  <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+
 <script>
 "use strict"
 

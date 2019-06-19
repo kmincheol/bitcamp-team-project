@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#buttonRow{
+   padding-top: 15px;
+   padding-left: 15px;
+}
+
+th{
+  text-align: center;
+}
+#main-textfield{
+    position: relative;
+  top: 90px;
+}
+
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+}

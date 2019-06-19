@@ -120,7 +120,7 @@
               <td><input id="title" name="teamTitle" class="form-control"></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row">내용</th>
+              <th id="table-header" scope="row" style="width:151px;">내용</th>
               <td><textarea id="summernote" name='teamContents' rows='5'></textarea></td>
             </tr>
           </tbody>
@@ -144,12 +144,13 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-
+    
   <script>
 
 $(document).ready(function() {
-  $('#summernote').summernote({
+  $('#summernote').summernote({ 
     height: 400,
+    width:900,
     minHeight: null,
     maxHeight: null,
     focus: true
