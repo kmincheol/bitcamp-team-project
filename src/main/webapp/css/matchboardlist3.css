@@ -225,8 +225,15 @@ a:hover{
   margin-left: 155px;
   font-size:19px;
   border:0px;
-  background: deepskyblue;
+  /* background: deepskyblue; */
   color: white;
+  
+  background: rgb(0,0,0); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(0,0,0,1) 7%, rgba(255,40,44,1) 27%, rgba(255,45,49,1) 44%, rgba(255,180,145,1) 64%, rgba(226,255,12,1) 78%, rgba(255,180,145,1) 87%, rgba(255,0,4,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 7%,rgba(255,40,44,1) 27%,rgba(255,45,49,1) 44%,rgba(255,180,145,1) 64%,rgba(226,255,12,1) 78%,rgba(255,180,145,1) 87%,rgba(255,0,4,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(0,0,0,1) 7%,rgba(255,40,44,1) 27%,rgba(255,45,49,1) 44%,rgba(255,180,145,1) 64%,rgba(226,255,12,1) 78%,rgba(255,180,145,1) 87%,rgba(255,0,4,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ff0004',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  
 }
 
 
