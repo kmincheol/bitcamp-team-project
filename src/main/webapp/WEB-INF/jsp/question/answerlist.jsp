@@ -95,7 +95,7 @@ table tbody tr {
   <div class="container" id="main-wrap">
     <div id="main-text">
       <h2>
-        <img src="${contextRootPath}/images/headset.png">답변해야 할 게시물
+        <img src="${contextRootPath}/images/headset.png">답변대기 게시물
       </h2>
     </div>
 
@@ -133,7 +133,7 @@ table tbody tr {
       </tbody>
     </table>
     <div>
-      <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question">목록 이동</a>
+      <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question">목록으로</a>
     </div>
   </div>
 
