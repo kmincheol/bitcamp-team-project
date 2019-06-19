@@ -45,7 +45,7 @@
         <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
-        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.css" /> 
+        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
  <style>
  .modal-title{
  color:red;
@@ -79,32 +79,32 @@
         <table id="tabletable">
         <td>
         <div id="allTypes">
-        <button class="btn btn-dark" id="allbtn1" style="margin-bottom: 6px;"
+        <button class="btn btn-dark" id="allbtn1" type="button" style="margin-bottom: 6px;"
             data-jplist-control="buttons-text-filter"
             data-path="default" data-mode="radio"
             data-group="group1" name="sportsType" data-selected="true">
          모든 종목</button><br>
         
         <div id="sstypeArea">
-        <a id="stype"  data-jplist-control="buttons-text-filter" data-path=".sportsType" 
+        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType" 
             data-mode="radio" data-group="group1" name="sportsType" data-text="축구">
-        <img id="imgcontro" src="${contextRootPath}/images/football_list_min.png" title="축구"> 
-        </a><!-- 축구버튼 -->
+        <img id="imgcontro1" src="${contextRootPath}/images/football_list_min.png" title="축구"> 
+        </button><!-- 축구버튼 -->
         
-        <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
+        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="야구">
-         <img id="imgcontro" src="${contextRootPath}/images/baseball_list_min.png" title="야구">
-        </a><!-- 야구버튼 -->
+         <img id="imgcontro2" src="${contextRootPath}/images/baseball_list_min.png" title="야구">
+        </button><!-- 야구버튼 -->
         
-        <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
+        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="농구">
-         <img id="imgcontro" src="${contextRootPath}/images/basketball_list_min.png" title="농구">
-        </a><!-- 농구버튼 -->
+         <img id="imgcontro3" src="${contextRootPath}/images/basketball_list_min.png" title="농구">
+        </button><!-- 농구버튼 -->
         
-        <a id="stype" data-jplist-control="buttons-text-filter" data-path=".sportsType"
+        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="탁구">
-         <img id="imgcontro" src="${contextRootPath}/images/pingpong_list_min.png" title="탁구">
-        </a><!-- 탁구버튼 -->
+         <img id="imgcontro4" src="${contextRootPath}/images/pingpong_list_min.png" title="탁구">
+        </button><!-- 탁구버튼 -->
         
         </div>
         </div>
@@ -140,24 +140,24 @@
           <tr>
           <td>
           <div class="md-form">
+          글 제목 :
                 <input class="form-control-sm" id="titleSearchBox" aria-describedby="emailHelp"
                 data-jplist-control="textbox-filter" data-group="group1"
                 data-name="my-filter-1" data-path=".title"
                 type="text" value=""
                 data-clear-btn-id="name-clear-btn"/>
                 
-                <label for="titleSearchBox">글 제목을 입력하세요</label>
           </div>
           <br>      
                 <!-- datepicker 적용 -->
           <div class="md-form">
-          <input autocomplete=off class="form-control-sm" type="text" id="datepicker">
-          <label for="datepicker">날짜를 입력하세요</label>
+          날 짜 :<input autocomplete=off class="form-control-sm" type="text" id="datepicker">
+          
           </div>
           </td>
           <td>      
           <button type="button" class="btn btn-dark" id="name-clear-btn">
-            검색어 설정<br> 지우기 </button> <!-- 지우개버튼 -->
+             텍스트<br> 지우기 </button> <!-- 지우개버튼 -->
           </td>
           </tr>
           </table>
@@ -397,7 +397,7 @@
                 <c:otherwise>
                   <tr>
                     <td>
-                      <div>팀이 없음</div>
+                      <div>추천할 팀이 없음</div>
                     </td>
                   </tr>
                 </c:otherwise>
@@ -428,15 +428,15 @@
                 data-name="pagination1">
         
         <div id="control-box" class="form-group row">
-            <button id="firstbtn" type="button" data-type="first">«</button>
-            <button id="prebtn" type="button" data-type="prev">‹</button>
+            <button id="firstbtn" type="button" data-type="first" style="background-color:#9b9b9b;">«</button>
+            <button id="prebtn" type="button" data-type="prev" style="background-color:#9b9b9b;">‹</button>
         
             <div class="jplist-holder" data-type="pages">
-                <button id="selectbtn" type="button" data-type="page">{pageNumber}</button>
+                <button id="selectbtn" type="button" data-type="page" >{pageNumber}</button>
             </div>
             
-            <button id="nextbtn" type="button" data-type="next">›</button>
-            <button id="lastbtn" type="button" data-type="last">»</button>
+            <button id="nextbtn" type="button" data-type="next" style="background-color:#9b9b9b;">›</button>
+            <button id="lastbtn" type="button" data-type="last" style="background-color:#9b9b9b;">»</button>
         </div>
         
         </div>
@@ -452,7 +452,7 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker/jquery-ui.min.js"></script>
+<script src="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.min.js"></script>
         <script>
             jplist.init();
             
@@ -464,7 +464,8 @@
             var sizesize = $("input[id='loginUserTeamNumbers']").length; // 신청자의 팀 배열 길이.
             var teamnocom = sizesize;
             
-            $("#datepicker").on("keyup", function() {
+            
+             $("#datepicker").on("keyup", function() {
                 var value = $(this).val().toLowerCase(); 
                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
               });
@@ -488,7 +489,7 @@
                        dayNamesMin: ['일','월','화','수','목','금','토'],
                        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
-               });          
+               });           
         	  
         	  
         	  

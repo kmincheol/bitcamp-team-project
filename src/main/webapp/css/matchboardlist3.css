@@ -40,7 +40,7 @@ a:hover{
 
 #floatfloat{
   float:left;
-  
+  padding-left: 30px;
   width: 500px;
 }
 
@@ -111,7 +111,7 @@ a:hover{
   width: 165px;
   margin-bottom: 6px;
   margin-left: 44px;
-  padding-top: 3px;
+  margin-top: 10px;
   height: 32px;
 }
 
@@ -153,14 +153,13 @@ a:hover{
 }
 
 #allTypes{
-  margin-left: 90px;
-  margin-right: 10px;
+  margin-left: 70px;
   margin-bottom: 2px;
   display:inline-block;
 }
 
 #allLevel{
-  margin-right: 30px;
+  margin-right: 40px;
   display:inline-block;
 }
 
@@ -175,8 +174,6 @@ a:hover{
 #name-clear-btn {
   margin-left: 9px;
   padding-top: 4px;
-  width:85px;
-  height: 92px;
 }
 
 #titleSearchBox {
@@ -188,6 +185,7 @@ a:hover{
 #datepicker{
   width:180px;
   padding-right: 9px;
+  margin-left: 14px;
 }
 
 #liner{
@@ -209,7 +207,7 @@ a:hover{
 #matchform{
   width: 500px;
   height: 36px;
-  margin-left: 122px;
+  margin-left: 155px;
   font-size:19px;
   border:0px;
   background: deepskyblue;
@@ -226,28 +224,44 @@ a:hover{
     display: flex;
     justify-content: center;
     text-align:center;
-    width: 755px;
+    width: 810px;
     float: left;
     margin-bottom: 70px;
 }
 
-#imgcontro{
+#imgcontro1{
+  position: relative;
+  right: 6px;
+}
+#imgcontro2{
+  position: relative;
+  right: 6px;
+}
+#imgcontro3{
+  position: relative;
+  right: 5px;
+}
+#imgcontro4{
+  position: relative;
+  right: 5px;
 }
 
 #sstypeArea{
   width: 250px;
   text-align: center;
   margin-top: 7px;
+  margin-left: 2px;
 }
 
 #stype{
-  padding-left: 4px;
-  height: 12px;
-  width: 20px;  
+  border: 1px solid #ffffff;
+  width: 40px;
+  border-radius: 120px;
 }
 
 #levelArea{
-  text-align:center;
+  text-align: center;
+  padding-left: 3px;
 }
 
 #levelbtn1{
@@ -293,9 +307,9 @@ a:hover{
 
 button{
   color: #fff;
-  background-color: #9b9b9b;
+  background-color: #a7a7a7;
   display: inline-block;
-  border: 3px solid;
+  border: 2px solid;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
@@ -327,7 +341,7 @@ button{
 }
 
 .jplist-selected{
-  background-color: #d3d3d3;
+  background-color: #dcdcdc;
 }
 
 
