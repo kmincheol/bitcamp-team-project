@@ -186,6 +186,7 @@
     mtch_id,
     m.tm_id,
     tm_id2,
+    s.spt_clsf_id,
     s.spt_clsf_name,
     titl,
     cont,
@@ -377,6 +378,9 @@
     cont = #{contents},
     area = #{location},
     stdm_psti = #{stadiumName},
+    spt_clsf_id = #{teamSportsId},
+    cost = #{cost},
+    tel = #{telephone},
     game_dt = #{playDate}
     where 
     mtch_id = #{no}

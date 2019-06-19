@@ -13,6 +13,7 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
+<link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
 <style>
   th{
     vertical-align: middle!important;
@@ -51,14 +52,14 @@
             </td>
             <th scope="row">경기일</th>
             <td>
-            <input class="form-control" type='date' id="playDate" name='playDate' value="${match.playDate}" />
+            <input autocomplete=off class="form-control" type='text' 
+            id="datepicker" name='playDate' value="${match.playDate}"/>
             </td>
           </tr>
           <tr>
             <th scope="row">종목</th>
             <td><select name='teamSportsId' class="custom-select" id="inputGroupSelect01">
-                <option value="{match.teamTypeSports.teamSportsTypeId}" disabled selected hidden>${match.teamTypeSports.teamSportsType}</option>
-                <!-- db명 toplc  -->
+                <option value="${match.teamTypeSports.teamSportsTypeId}" disabled selected hidden></option>
                 <option value="1">축구</option>
                 <option value="2">야구</option>
                 <option value="3">농구</option>
@@ -66,9 +67,13 @@
             </select></td>
             <th scope="row">경기장</th>
             <td>
-              <div class="input-group md-form form-sm form-2 pl-0">
-              <input id="pInput" value="${match.stadiumName}" class="form-control-sm" name="stadiumName"> 
-              <a onclick="openMap()">검색하기</a>
+            <div class="input-group md-form form-sm form-2 pl-0">
+                <input id="pInput" class="form-control my-0 py-1 lime-border" type="text"
+                  placeholder="검색하세요" value="${match.stadiumName}" aria-label="Search" name="stadiumName">
+                <div class="input-group-append">
+                  <span class="input-group-text lime lighten-2" id="basic-text1"><a
+                    onclick="openMap()" class="fas fa-search text-grey" aria-hidden="true"></a></span>
+                </div>
               </div>
             </td>
           </tr>
@@ -100,18 +105,21 @@
           </tr>
           <tr>
             <th scope="row">내용</th>
-            <td colspan="3"><textarea name="contents" class="form-control" rows="10" cols="50">${match.contents}</textarea>
+            <td colspan="3"><textarea name="contents" class="form-control"
+             rows="10" cols="50" placeholder="경기 상세정보를 입력하세요">${match.contents}</textarea>
             </td>
           </tr>    
           <tr>    
             <th scope="row">비용(원)</th>                      
-            <td colspan="3"><input type="number" class="form-control" name="cost" value="${match.cost}" style="width: 343px;"></td>
+            <td colspan="3">
+            <input type="number" class="form-control" maxlength="7" oninput="numberMaxLength(this);"
+            name="cost" value="${match.cost}" style="width: 343px;"></td>
           </tr>
         </tbody>
       </table>
 
       <div id="btnArea" style=" text-align: center;">       
-          <a class="btn btn-outline-dark" href='.'>목록</a>
+          <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
           <input type="button" id="add" class="btn btn-outline-dark" onclick="check_onclick()" value="매치보드 글 수정하기">
       </div>
     </form>
@@ -119,9 +127,20 @@
   <!-- .container -->
 
   <jsp:include page="../javascript.jsp" />
+
+<script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
+
+  <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
 
 var openWin;
+var matctTeamTypeVal = ${match.teamTypeSports.teamSportsTypeId};
+
+/* 페이지 로드시 종목번호로 자동 셀렉트 해줌 */
+  $(function() {
+	  $("#inputGroupSelect01 option:eq(${match.teamTypeSports.teamSportsTypeId})").attr("selected","selected");
+  });
 
 function openMap()
 {
@@ -134,25 +153,20 @@ function openMap()
 
 
 
-function getDate() {
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth() + 1; //January is 0!
-	var yyyy = today.getFullYear();
+$(function() {
+    $( "#datepicker" ).datepicker({
+           defaultDate: +7,
+           dateFormat: 'yy-mm-dd',
+           buttonText: "선택",
+           showMonthAfterYear:true,
+           yearSuffix: "년",
+           buttonImageOnly: true,
+           dayNamesMin: ['일','월','화','수','목','금','토'],
+           monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+           buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
+    });
+});
 
-	if (dd < 10) {
-		dd = '0' + dd
-	}
-	if (mm < 10) {
-		mm = '0' + mm
-	}
-	today = yyyy + '-' + mm + '-' + dd;
-	console.log(today);
-	document.getElementById("playDate").value = today;
-}
-window.onload = function() {
-	getDate();
-};
 
 function itemChange(number){
  	var Seoul = new Array(); 
@@ -196,6 +210,14 @@ function itemChange(number){
 	    $('#gugun').append(option);
 	    }
 }
+	
+	
+function numberMaxLength(e){
+    if(e.value.length > e.maxLength){
+        e.value = e.value.slice(0, e.maxLength);
+    }
+}
+
 	
 	function check_onclick(){
   		theForm=document.update;

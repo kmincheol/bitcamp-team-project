@@ -88,22 +88,26 @@
         <div id="sstypeArea">
         <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType" 
             data-mode="radio" data-group="group1" name="sportsType" data-text="축구">
-        <img id="imgcontro1" src="${contextRootPath}/images/football_list_min.png" title="축구"> 
+        <img id="imgcontro1" src="${contextRootPath}/images/football_list_min.png" title="축구"
+        style="width:28px; height: 28px;"> 
         </button><!-- 축구버튼 -->
         
         <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="야구">
-         <img id="imgcontro2" src="${contextRootPath}/images/baseball_list_min.png" title="야구">
+         <img id="imgcontro2" src="${contextRootPath}/images/baseball_list_min.png" title="야구"
+         style="width:28px; height: 28px;">
         </button><!-- 야구버튼 -->
         
         <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="농구">
-         <img id="imgcontro3" src="${contextRootPath}/images/basketball_list_min.png" title="농구">
+         <img id="imgcontro3" src="${contextRootPath}/images/basketball_list_min.png" title="농구"
+         style="width:28px; height: 28px;">
         </button><!-- 농구버튼 -->
         
         <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
             data-mode="radio" data-group="group1" name="sportsType" data-text="탁구">
-         <img id="imgcontro4" src="${contextRootPath}/images/pingpong_list_min.png" title="탁구">
+         <img id="imgcontro4" src="${contextRootPath}/images/pingpong_list_min.png" title="탁구"
+         style="width:28px; height: 28px;">
         </button><!-- 탁구버튼 -->
         
         </div>
@@ -145,19 +149,29 @@
                 data-jplist-control="textbox-filter" data-group="group1"
                 data-name="my-filter-1" data-path=".title"
                 type="text" value=""
-                data-clear-btn-id="name-clear-btn"/>
-                
+                data-clear-btn-id="name-clear-btn1"/>
+          <button type="button" class="btn btn-dark" id="name-clear-btn1">지우기</button>
           </div>
-          <br>      
+          
+          <div class="md-form">
+          팀 명 :
+                <input class="form-control-sm" id="teamSearchBox" aria-describedby="emailHelp"
+                data-jplist-control="textbox-filter" data-group="group1"
+                data-name="my-filter-1" data-path=".teamName"
+                type="text" value=""
+                data-clear-btn-id="name-clear-btn2"/>
+                
+          <button type="button" class="btn btn-dark" id="name-clear-btn2">지우기</button>
+          </div>
+          
                 <!-- datepicker 적용 -->
           <div class="md-form">
-          날 짜 :<input autocomplete=off class="form-control-sm" type="text" id="datepicker">
+          날 짜 : <input autocomplete=off class="form-control-sm" type="text" id="datepicker">
+          <button type="button" class="btn btn-dark" id="name-clear-btn3">초기화 </button>
           
           </div>
           </td>
           <td>      
-          <button type="button" class="btn btn-dark" id="name-clear-btn">
-             텍스트<br> 지우기 </button> <!-- 지우개버튼 -->
           </td>
           </tr>
           </table>
@@ -168,7 +182,7 @@
          data-jplist-control="textbox-filter" data-group="group1"
          data-name="my-filter-1" data-path=".playDate"
          id="textbox-filter" name="playDate" type="text"  value=""
-         data-clear-btn-id="name-clear-btn"
+         data-clear-btn-id="name-clear-btn3"
          placeholder="날짜를 선택하세요" />
     </div>
     </td>
@@ -198,13 +212,13 @@
                  
                  <div data-jplist-item>
                  <table class="table table-bordered table-striped results" id="matchInfo">
-                 <tr>
-                 <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2"
+                 
+                 <tr onMouseOver="this.style.backgroundColor='white';" onMouseOut="this.style.backgroundColor='#f2f3f2';">
+                 <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2" 
                  data-toggle="modal" data-target="#exampleModalCenter2"
                   onClick="window.open('${contextRootPath}/app/team/${match.team.teamId}', '팝업!', 'width=804, height=752');return false;"
+                  align="center" style="cursor: pointer; padding-top: 0px;" >
                   
-                  <%-- onClick="modalEvent2('${match.team.teamId}');" --%>
-                  align="center" style="cursor: pointer; width:172px;" >
                   
                   <div>
                   <img class="TeamEmblemPhoto" src="${match.team.teamEmblemPhoto}" style="width:100px; height:100px;" 
@@ -214,30 +228,31 @@
                 </td>
                 
                 <td class="detail" id="${match.no}" colspan="5"
-                style="cursor: pointer; padding-top: 5px;" data-toggle="modal" data-target="#exampleModalCenter"
+                 onMouseOver="this.style.backgroundColor='white';" onMouseOut="this.style.backgroundColor='#f2f3f2';"
+                style="cursor: pointer; padding-top: 12px; width:130px;" data-toggle="modal" data-target="#exampleModalCenter"
                 onClick="modalEvent('${match.no}');" >
                 
-                    <div class="teamName" style="display:none">${match.team.teamName}</div>
-                    <div class="title">제목 : ${match.title}</div>
-                    <div class="playDate">경기날짜 : ${match.playDate}</div>
+                    <div class="teamName" style="width:130px; display:none">${match.team.teamName}</div>
+                    <div class="title" style="width:130px;">제목 : ${match.title}</div>
+                    <div class="playDate" style="width:130px;">경기날짜 : ${match.playDate}</div>
                     
                     <div class="sportsType">종목 :
                     <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
                             <p style="display:none;">축구</p>
-                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
+                                 축구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
                             <p style="display:none;">야구</p>
-                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/baseball_list_min.png">
+                                 야구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/baseball_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
                             <p style="display:none;">농구</p>
-                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/basketball_list_min.png">
+                                 농구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/basketball_list_min.png">
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
                             <p style="display:none;">탁구</p>
-                              <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                                 탁구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/pingpong_list_min.png">
                             </c:when>
                           </c:choose>
                     </div>
@@ -273,7 +288,7 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
            </div>
-           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 180px;" >
+           <div class="modal-body" style="cursor:pointer; overflow-y:scroll; height: 180px; width:500px; word-break:break-all;" >
                잠시만 기다려주세요</div>
                           
            <div class="modal-footer">
@@ -337,8 +352,11 @@
                 <c:when test="${teamsCheck eq 'exist'}">
                   <c:forEach items="${recommendMatches}" var="match">
                     <tr>
+                     
                       <td class="detail recommendTd" id="${match.no}" colspan="5" 
-                          style="cursor: pointer; padding-top: 5px;" 
+                          style="cursor: pointer;" 
+                           onMouseOver="this.style.backgroundColor='#f4f4f4';" 
+                           onMouseOut="this.style.backgroundColor=''"
                           data-toggle="modal" 
                           data-target="#exampleModalCenter"
                           onClick="modalEvent('${match.no}');" >
@@ -562,9 +580,10 @@
                   });
               }
               
-          $('#name-clear-btn').click(function() {
+          $('#name-clear-btn3').click(function() {
         	  $('#datepicker').val('');
           });
+          
           
            $('.modal-body').click(function() {
         	  location.href = 'matchboard/' + no;

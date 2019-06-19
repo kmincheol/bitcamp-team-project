@@ -26,7 +26,7 @@
   
   <div id="title-wrap" class="form-group row">
           <div id="title-row" class="col-sm-12">
-            <div id="title">${match.title}</div>
+            <div id="title" style="word-break:break-all; ">${match.title}</div>
           </div>
           <div id="teamName-row" class="col-sm-12">
             <span id="teamName">${match.team.teamName}</span> 
@@ -64,7 +64,22 @@
                 <div>종목</div>
               </th>
               <td>
-                <div id="sportsType">${match.teamTypeSports.teamSportsType}</div>
+                <div id="sportsType">
+                           <c:choose>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                                축구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                                야구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/baseball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                                농구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/basketball_list_min.png">
+                            </c:when>
+                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                                탁구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/pingpong_list_min.png">
+                            </c:when>
+                          </c:choose>
+                </div>
               </td>
               <th>
                 <div>지역</div>
@@ -81,7 +96,7 @@
             <div>내용</div>
           </div>
           <div class="contents-section-body">
-            <div class="contents">${match.contents}</div>
+            <div class="contents" style="word-break:break-all;">${match.contents}</div>
           </div>
         </div>
 

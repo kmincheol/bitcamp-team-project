@@ -31,13 +31,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
-   
+<link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
 <style>   
   th{
     vertical-align: middle!important;
     text-align: center;
     background: #f9f7f7;
-  }               
+  }
+   .ui-datepicker-calendar thead th {
+color:black;
+ }
 </style>
 
 </head>      
@@ -80,7 +83,7 @@
                 </c:forEach>
             </select></td>
             <th scope="row">경기일</th>
-            <td><input class="form-control" type='date' id="playDate" name='playDate' /></td>
+            <td><input autocomplete=off class="form-control" type='text' id="datepicker" name='playDate' value=""/></td>
             </td>
           </tr>
           <tr>
@@ -133,12 +136,15 @@
           </tr>
           <tr>
             <th scope="row">내용</th>
-            <td colspan="3"><textarea name="contents" class="form-control" rows="10" cols="50"></textarea>
+            <td colspan="3"><textarea name="contents" class="form-control" 
+            rows="10" cols="50" placeholder="경기 상세정보를 입력하세요"></textarea>
             </td>
           </tr>    
           <tr>    
             <th scope="row">비용(원)</th>                      
-            <td colspan="3"><input type="number" class="form-control" name="cost" value=0 style="width: 343px;"></td>
+            <td colspan="3">
+            <input type="number" class="form-control" maxlength="7" oninput="numberMaxLength(this);"
+            name="cost" value=0 style="width: 343px;"></td>
           </tr>
         </tbody>
       </table>
@@ -152,26 +158,24 @@
   </div>
   <!-- .container -->
 
+
+
+<script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
- 
  <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
-
+  
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
-
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-  
+
+  <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.min.js"></script>
 
 
 
   <script type="text/javascript">
 			var openWin;
-
+			
 			function openMap() {
 				// window.name = "부모창 이름"; 
 				window.name = "parentForm";
@@ -180,25 +184,19 @@
        "${contextRootPath}/app/matchboard/map.jsp", "childForm", "width=800, height=500, resizable = no, scrollbars = no");
 			}
 
-			function getDate() {
-				var today = new Date();
-				var dd = today.getDate();
-				var mm = today.getMonth() + 1; //January is 0!
-				var yyyy = today.getFullYear();
-
-				if (dd < 10) {
-					dd = '0' + dd
-				}
-				if (mm < 10) {
-					mm = '0' + mm
-				}
-				today = yyyy + '-' + mm + '-' + dd;
-				console.log(today);
-				document.getElementById("playDate").value = today;
-			}
-			window.onload = function() {
-				getDate();
-			};
+            $(function() {
+                $( "#datepicker" ).datepicker({
+                       defaultDate: +7,
+                       dateFormat: 'yy-mm-dd',
+                       buttonText: "선택",
+                       showMonthAfterYear:true,
+                       yearSuffix: "년",
+                       buttonImageOnly: true,
+                       dayNamesMin: ['일','월','화','수','목','금','토'],
+                       monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+                       buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
+                });
+            });
 
 			function itemChange(number) {
 				var Seoul = new Array();
@@ -239,7 +237,7 @@
 
 				for (var count = 0; count < changeItem.length; count++) {
 					var option = $("<option>" + changeItem[count] + "</option>");
-					$('#gugun').append(option);
+					$(' #gugun').append(option);
 				}
 
 				/* var ssido = $("#sido").find("option:selected").val();
@@ -249,6 +247,14 @@
 				document.attr("#loc").text(location); */
 			}
 
+			
+			function numberMaxLength(e){
+			    if(e.value.length > e.maxLength){
+			        e.value = e.value.slice(0, e.maxLength);
+			    }
+			}
+			
+			
 function check_onclick(){
   		theForm=document.submit;
   		var choicelocation1 = $("#sido option:selected").val();
@@ -263,7 +269,7 @@ function check_onclick(){
  			 theForm.title.focus();
   		}
   		else if(theForm.teamNo.value==""){
-    			alert("소속팀 선택이 되어있지 않습니다. 확인해 주세요.");
+    			alert("소속팀 선택이 되어있지 않습니다. 확인해 주하게되어 있고, 옵션도 풍부하게 갖추어져 있습니세요.");
     		}
       else if(theForm.playDate.value==""){
     			alert("경기 날짜를 입력해주세요.");

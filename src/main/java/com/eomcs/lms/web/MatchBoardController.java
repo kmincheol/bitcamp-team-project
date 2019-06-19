@@ -210,8 +210,14 @@ public class MatchBoardController {
   
   @RequestMapping("add")
   public String add(Match match) throws Exception {
-    System.out.println("BBBBBBB");
-    logger.debug(match);
+    System.out.println("BBBBBBB" + match);
+    
+    String address = match.getLocation();
+    
+    String address1 = address.substring(0, 2);
+    String address2 = address.substring(3);
+    
+    match.setLocation(address1 +" "+address2);
     
     matchBoardService.add(match);
       return "redirect:../matchboard";

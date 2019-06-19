@@ -79,9 +79,6 @@ a:hover{
   
 }
 
-.detail{
-  padding-top: 15px;
-}
 
 [data-jplist-group]{
     width: 500px;
@@ -99,6 +96,7 @@ a:hover{
   /* text-align: center; */
   overflow: hidden; 
   margin-top: 5px;
+  padding-top: 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -129,10 +127,11 @@ a:hover{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    width: 100px;
 }
 
 .title {
-    max-width: 150px;
+    max-width: 140px;
     display:inline-block;
     vertical-align: middle;
     overflow: hidden;
@@ -142,7 +141,7 @@ a:hover{
 
 #searchArea {
   width: 1080px;
-  height: 90px;
+  height: 140px;
   border-top: 2px solid #000000;
   padding-top: 10px;
 }
@@ -150,6 +149,7 @@ a:hover{
 #toolsss{
   height: 165px;
   padding-top: 20px;
+  margin-bottom: 47px;
 }
 
 #allTypes{
@@ -171,21 +171,36 @@ a:hover{
   margin: 0;
 }
 
-#name-clear-btn {
+#name-clear-btn1 {
   margin-left: 9px;
   padding-top: 4px;
+  width: 78px;
+}
+#name-clear-btn2 {
+  margin-left: 9px;
+  padding-top: 4px;
+  width: 78px;
+}
+#name-clear-btn3 {
+  margin-left: 8px;
+  padding-top: 4px;
+  width: 78px;
 }
 
 #titleSearchBox {
   width:180px;
   display:inline-block;
-  
+}
+
+#teamSearchBox {
+  width:180px;
+  margin-left: 12px;
+  display:inline-block;
 }
 
 #datepicker{
   width:180px;
-  padding-right: 9px;
-  margin-left: 14px;
+  margin-left: 12px;
 }
 
 #liner{
@@ -231,19 +246,19 @@ a:hover{
 
 #imgcontro1{
   position: relative;
-  right: 6px;
+  right: 4px;
 }
 #imgcontro2{
   position: relative;
-  right: 6px;
+  right: 5px;
 }
 #imgcontro3{
   position: relative;
-  right: 5px;
+  right: 4px;
 }
 #imgcontro4{
   position: relative;
-  right: 5px;
+  right: 4px;
 }
 
 #sstypeArea{
@@ -266,7 +281,8 @@ a:hover{
 
 #levelbtn1{
   margin-left: 4px;
-  border-radius: 0px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
   width:65px; height:30px; 
     padding-top: 2px;
     padding-left: 24px;
@@ -277,7 +293,8 @@ a:hover{
 }
 #levelbtn2{
   margin-left: 4px;
-  border-radius: 0px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
   width:65px; height:30px; 
     padding-top: 2px;
     padding-left: 24px;
@@ -288,7 +305,8 @@ a:hover{
 }
 #levelbtn3{
   margin-left: 4px;
-  border-radius: 0px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
   width:65px; height:30px; 
     padding-top: 2px;
     padding-left: 24px;
@@ -398,7 +416,7 @@ button{
 
 #exampleModalCenterTitle{
   text-align:center;
-  margin-left: 35px;
+  margin-left: 45px;
 }
 
 
