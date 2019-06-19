@@ -27,9 +27,15 @@
 <link rel="stylesheet" href="${contextRootPath}/css/team_form.css">
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
-<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
+<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+<style>
+.page-wrapper{
+height: auto;
+}
+</style> 
 </head>
-<body>
+<body>   
 
   <div id="container">
     <div id="content">
