@@ -6,15 +6,16 @@ public class MiddleLocation implements Cloneable, Serializable {
   private static final long serialVersionUID = 1L;
 
   private int middleLocationId;
-  private int middleLocationNo;
+  private String middleLocationNo;
   private String middleLocationName;
+  private TopLocation topLocation;
   private int topLocationId;
   
   @Override
   public String toString() {
     return "MiddleLocation [middleLocationId=" + middleLocationId + ", middleLocationNo="
-        + middleLocationNo + ", middleLocationName=" + middleLocationName + ", topLocationId="
-        + topLocationId + "]";
+        + middleLocationNo + ", middleLocationName=" + middleLocationName + ", topLocation="
+        + topLocation + ", topLocationId=" + topLocationId + "]";
   }
   
   public int getMiddleLocationId() {
@@ -23,10 +24,10 @@ public class MiddleLocation implements Cloneable, Serializable {
   public void setMiddleLocationId(int middleLocationId) {
     this.middleLocationId = middleLocationId;
   }
-  public int getMiddleLocationNo() {
+  public String getMiddleLocationNo() {
     return middleLocationNo;
   }
-  public void setMiddleLocationNo(int middleLocationNo) {
+  public void setMiddleLocationNo(String middleLocationNo) {
     this.middleLocationNo = middleLocationNo;
   }
   public String getMiddleLocationName() {
@@ -35,6 +36,12 @@ public class MiddleLocation implements Cloneable, Serializable {
   public void setMiddleLocationName(String middleLocationName) {
     this.middleLocationName = middleLocationName;
   }
+  public TopLocation getTopLocation() {
+    return topLocation;
+  }
+  public void setTopLocation(TopLocation topLocation) {
+    this.topLocation = topLocation;
+  }
   public int getTopLocationId() {
     return topLocationId;
   }
@@ -42,5 +49,5 @@ public class MiddleLocation implements Cloneable, Serializable {
     this.topLocationId = topLocationId;
   }
   
-
+  
 }

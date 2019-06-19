@@ -85,6 +85,8 @@
 
   </resultMap>
 
+  
+
   <resultMap type="TeamAges" id="ageMap">
     <id column="age_id" property="teamAgeId" />
     <result column="ages" property="teamAges" />
@@ -141,6 +143,23 @@
     </collection>
   </resultMap>
   
+    <resultMap type="MiddleLocation" id="middleLocationMap">
+      <id column="midlc_id" property="middleLocationId" />
+      <result column="midlc_no" property="middleLocationNo" />
+      <result column="midlc_name" property="middleLocationName" />
+      <result column="toplc_id" property="topLocationId" />
+      
+      <association property="topLocation" javaType="TopLocation">
+      <id column="toplc_id" property="topLocationId" />
+    </association>
+    
+    </resultMap>
+    
+    <resultMap type="TopLocation" id="topLocationMap">
+      <id column="toplc_id" property="topLocationId" />
+      <result column="toplc_no" property="topLocationNo" />
+      <result column="toplc_name" property="topLocationName" />
+    </resultMap>
   
    <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
     select
@@ -163,7 +182,10 @@
     left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
     left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
     left outer join toplc p on p.toplc_no = substr(t.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(t.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(t.area,3,3)
+  
+    <!-- left outer join toplc p on p.toplc_id = substr(t.area,2,(instr(t.area,',')-1))
+    left outer join midlc d on d.midlc_id = substr(t.area,1,(instr(t.area,',')-1)) --> 
   </select> 
 
 <!-- <select id="findAllTeam1" resultMap="teamMap1" parameterType="map">
@@ -204,7 +226,8 @@
     left outer join spt_clsf s on t.spt_clsf_id =
     s.spt_clsf_id
     left outer join toplc p on p.toplc_no = substr(t.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(t.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(t.area,3,2)
+    where  p.toplc_id = d.toplc_id
   </select>
 
  <select id="findBykeyword" resultMap="teamMap1" parameterType="string">
@@ -269,6 +292,27 @@
     levs
     from
     tm_lev
+  </select>
+  
+   <select id="findMiddleLocation" resultMap="middleLocationMap" parameterType="int"> 
+    select
+    midlc_id,
+    midlc_no,
+    midlc_name,
+    m.toplc_id
+    from
+    midlc m
+    left outer join toplc t on m.toplc_id = t.toplc_id  
+    where t.toplc_id = #{no}
+  </select>
+  
+  <select id="findTopLocation" resultMap="topLocationMap" parameterType="map">
+    select
+    toplc_id,
+    toplc_no,
+    toplc_name
+    from 
+    toplc
   </select>
   
    <select id="findTeamMember" resultMap="teamMemberMap" parameterType="map">

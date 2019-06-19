@@ -4,12 +4,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import com.eomcs.lms.dao.TeamDao;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.MiddleLocation;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
 import com.eomcs.lms.domain.TeamLevel;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TeamTypeSports;
+import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.TeamService;
 
 // 5월 14일 생성만 함
@@ -81,6 +83,16 @@ public class TeamServiceImpl implements TeamService {
     
     return teamDao.findTeamMember();
   }
+  
+  @Override
+  public List<TopLocation> topLocationList() {
+    return teamDao.findTopLocation();
+  }
+   
+@Override
+public List<MiddleLocation> middleLocationList(int no) {
+  return teamDao.findMiddleLocation(no);
+}
   
   @Override
   public Team checkName(String teamName) {

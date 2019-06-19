@@ -1,5 +1,6 @@
 package com.eomcs.lms.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.MiddleLocation;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamAges;
 import com.eomcs.lms.domain.TeamLevel;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TeamTypeSports;
+import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.lms.service.TeamService;
 
@@ -75,11 +78,31 @@ public class TeamController {
     List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
     List<TeamLevel> teamLevels = teamService.teamLevelList();
     List<TeamMember> teamMembers = teamService.teamMemberList();
+    List<TopLocation> topLocations = teamService.topLocationList();
+    
     map.put("teamTypes", teamTypes);
     map.put("teamAges", teamAges);
     map.put("teamTypeSports", teamTypeSports);
     map.put("teamLevels", teamLevels);
     map.put("teamMembers", teamMembers);
+    map.put("topLocations", topLocations);
+    
+  }
+  
+  @ResponseBody
+  @GetMapping("AddressCheck")
+  public Object AddressCheck(int no) {
+    System.out.println("===>" + no);
+    HashMap<String,Object> map = new HashMap<>();
+    
+    if (teamService.middleLocationList(no) != null) {
+      List<MiddleLocation> middleLocations = teamService.middleLocationList(no);
+      map.put("status", "success");  
+      map.put("middleLocations", middleLocations);
+    } else {
+      map.put("status", "fail");
+    }  
+    return map;
   }
 
 
