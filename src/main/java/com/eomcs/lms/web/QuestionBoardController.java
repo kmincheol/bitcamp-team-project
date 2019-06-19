@@ -99,7 +99,7 @@ public class QuestionBoardController {
   /* 답변 수정하기 */
   @PostMapping("update2")
   public String update(AnswerBoard answerBoard) {
-    
+    System.out.println(answerBoard.getContents());
     if (answerBoardService.update(answerBoard) == 0) {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     }

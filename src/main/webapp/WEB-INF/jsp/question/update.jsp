@@ -91,9 +91,9 @@ th {
               <th id="table-header" scope="row">제목</th>
               <td><input type="text" class="form-control" name=title id="titleb"
                 value="${question.title}" /></td>
-            </tr>
+            </tr>   
             <tr>      
-              <th id="table-header" scope="row">내용</th>
+              <th id="table-header" scope="row" style="width:151px;">내용</th>
               <td><textarea class="form-control col-sm-13" rows="5" name="contents"
                   id="summernote">${question.contents}</textarea></td>
             </tr>

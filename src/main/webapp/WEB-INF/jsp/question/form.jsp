@@ -51,11 +51,11 @@
   <div class="container" id="main-wrap">
     <div id="main-text">
       <div class="text-field" id="main-textfield">
-        <span style="font-weight: bold; font-size: 2.0em;">궁금</span> <span
-          style="font-size: 2.0em;"> 해하는 글을 간편하게</span>
-        <div style="font-size: 2.0em;">등록할 수 있습니다.</div>
-      </div>
-    </div>
+        <span style="font-weight: bold; font-size: 2.0em;">궁금해하는 글</span> 
+        <span style="font-size: 1.8em;"> 을 간편하게</span>
+        <div style="font-size: 1.8em;">등록할 수 있습니다.</div>  
+      </div>   
+    </div>  
 
       <form id="add_form" action='add' method='post' onsubmit="return check()">
       <div id="table">
@@ -67,7 +67,7 @@
                 value="${question.title}" /></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row">내용</th>
+              <th id="table-header" scope="row" style="width: 151px; min-width: 151px;">내용</th>
               <td><textarea id="summernote" name='contents' rows='5'></textarea></td>
             </tr>
             <tr>
@@ -80,12 +80,11 @@
       </div>
       <div class="form-group">
         <div class="col-sm-12" style="text-align: center;">
-          <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question' >취소</a>
-          <button  class="btn  btn-outline-dark">등록</button>
+          <a class="btn  btn-outline-dark " href='${contextRootPath}/app/question' style="width:80px">취소</a>
+          <button  class="btn  btn-outline-dark"  style="width:80px">등록</button>
         </div>
       </div>
-   
-    </form>
+    </form>     
   </div>
   <!-- .container -->
  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
@@ -113,34 +112,6 @@ $(document).ready(function() {
   })
 });
 
-function checkTerms() {
-  var res = true;
-  
-  var titleCheck = $.trim($('#title').val());
-  var contentsCheck = $.trim($('#summernote').val());
-  var areaSelect = $('#area_select').val();
-  var localSelect = $('#local_select').val();
-  var teamSelect = $('#select2').val();
-  
-  if (areaSelect == $('#area_select option:eq(0)').val() ||
-      localSelect == $('#local_select option:eq(0)').val() ||
-      teamSelect == $('#select2 option:eq(0)').val()) {
-    alert("지역과 팀을 선택해주세요!");
-    res = false;
-  }
-
-  if (titleCheck.length <= 0 ||
-      contentsCheck.length <= 0 ||
-      areaSelect.length <= 0 ||
-      localSelect.length <= 0 ||
-      teamSelect.length <= 0) {
-    alert("필수 내용을 모두 입력해주세요!");
-    res = false;
-  }
-
-  return res;
-}
-    
 function submitAgree() {
   if (checkTerms() != true) {
     return false;
@@ -150,12 +121,9 @@ function submitAgree() {
   return true;
 }
 
-
-
 function check(){
     var title = $('#title').val(); 
     var content = $('#contents').val();
-    var password = $('#password').val();
    if(title == ""){
      alert("제목을 입력 하세요.") ;
       return false;
@@ -164,10 +132,6 @@ function check(){
 	     alert("내용을 입력 하세요.") ;
 	      return false;
 	   }
-   else if(password >10000){
-	   alert("1~9999 숫자만 입력가능합니다");
-	   return false;
-   }
 }
   
 

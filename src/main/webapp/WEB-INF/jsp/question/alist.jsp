@@ -4,24 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-  <div id="main-wrap" class="container">
-        <label for="content">답변</label>
-        <form name="commentInsertForm">
-            <div class="input-group">
-               <textarea class="form-control col-sm-13" rows="5" id="content" name="content" 
-                readonly>${answer.contents}</textarea>
-            </div>
-        </form>
+  <div id="contents-section">
+    <div class="contents-section-head">
+      <div>답변</div>
     </div>
+    <div class="contents-section-body">
+      <div class="contents">${answer.contents}</div>
+    </div>
+  </div>
 
-<jsp:include page="../javascript.jsp" />
-
-<script>
-
-</script>
- 
 </body>
 </html>
+   

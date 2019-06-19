@@ -104,14 +104,14 @@
 
         <div id="comment">
 
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <textarea class="cmtform form-control comment-form" 
-                placeholder="댓글을 작성하세요." autocomplete=off rows="2"></textarea>
-              <span id="counter">0/150</span>
-              <button class="a btn btn-outline-dark" id="cmt-submit" type='button'>작성</button>
-            </div>
-          </div>
+          <div class="form-group">
+            <div class="col-sm-12" style="padding:0px;">
+              <textarea class="form-control comment-form"
+                placeholder="댓글을 작성하세요." autocomplete=off rows="2" style="width: 100%; float:left;"></textarea>
+              <button class="btn btn-outline-dark" id="cmt-submit" type='button' style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button>
+              <span id="counter">0/150</span>         
+            </div>        
+          </div>   
         </div>
       </form>
       <br>
