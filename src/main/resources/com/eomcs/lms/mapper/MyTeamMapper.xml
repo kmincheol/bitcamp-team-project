@@ -398,6 +398,30 @@
          
   </select> 
   
+    <select id="findByMyTeamMember3" resultMap="teamMemberMap" parameterType="int">
+    select
+    tmb.tm_mbr_id,
+    tmb.mbr_id,
+    m.name,    
+    pstn,
+    tlead_wth,
+    m.bth_dt,
+    m.gndr,
+    m.tel,
+    m.email,
+    m.prof_phot
+    from
+    tm_mbr tmb
+    left outer join tm t on tmb.tm_mbr_id = t.tm_id
+    left outer join mbr m on tmb.mbr_id = m.mbr_id
+         
+       where tmb.tm_mbr_id = ${value}
+  </select> 
+  
+  
+  
+  
+  
  <delete id="delete" parameterType="hashmap">
  delete 
   from
@@ -567,6 +591,18 @@ select
  where 
  tm_id = #{value}
   </select> 
+  
+ <delete id="mtchDelete" parameterType="int">
+    delete from mtch
+    where  mtch_id = #{value}
+  </delete>
+  
+  
+  <delete id="mtchApllyDelete" parameterType="int">
+    delete from mtchaply
+    where  mtch_id = #{value}
+  </delete>
+  
 
  <select id="matchOtherTeam" resultMap="teamMap" parameterType="int">
     select

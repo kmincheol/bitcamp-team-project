@@ -45,6 +45,18 @@
 .team_info {
 
 }
+#main-text h2 {
+  position: absolute;
+  text-align: left;
+  bottom: 0;
+}
+
+#main-text h2 img {
+  margin-bottom: 25px;
+  margin-right: 5px;
+  width:80px;
+  height:80px;
+}
 </style>
 
 </head>
@@ -54,12 +66,35 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
   <div id="main-wrap" class="container">
-    <div style="margin-top: 50px;">
+   <div id="main-text">
+    <h2>    
+        <img src="${contextRootPath}/images/3dusersoccer.jpg">요청한 경기
+      </h2>
+    </div>
+       <div id="cdcd" style="width:1080px;height: 50px;margin-top: 30px;">
+             <div id="myTeamHeader" style="text-align: center; font-size: 20px;">
+          <span style="margin : 50px;"><a href="${contextRootPath}/app/myteam"style="text-decoration:none; color:black"> 나의팀 </a> </span> 
+        <span style="margin : 50px;border-bottom: 2px solid #51c321;"><a href="${contextRootPath}/app/myteam/list3/${tno}" style="text-decoration:none; color:black">요청한 경기</a></span > 
+        <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list2/${tno}" style="text-decoration:none; color:black">요청받은 경기</a></span>
+        <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list5/${tno}" style="text-decoration:none; color:black">성사된 나의 경기</a></span>
+                </div>
+          
+    </div>
+    <div >
       <div style="width: 1080px;">
         <div style="background: #949494; text-align: center; font-weight: bold; line-height: 40px;">
-         신청 보낸 경기</div>      
+         요청 경기</div>      
         <div style="height: 700px; width: 1085px; overflow: scroll;">
           <table class="table table-bordered" style="margin: 0;">
+            <c:if test="${fn:length(matchNos) == 0}">
+             <tbody>  
+              <tr style="height: 100px;">
+                <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px; text-align : center;">
+                             경기 신청 내역이 없습니다.
+                </td>              
+              </tr>
+            </tbody>
+          </c:if>
             <tbody>  
                <c:forEach items="${matchNos}" var="matchNos"> 
               <tr style="height: 100px;">
@@ -72,7 +107,7 @@
                 <div class="team_info">&middot; 비용 : ${matchNos.match.cost }</div>
                 </td>              
                 <td colspan="1" style="vertical-align: middle; width: 150px;">  
-                  <a class="btn btn-outline-dark"  onclick="aa()" href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}/${tno}" style="width: 100%;">취소</a>
+                  <a class="btn btn-outline-dark"   href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}/${tno}" style="width: 120px;">취소</a>
                 </td>
               </tr>
                </c:forEach> 
@@ -93,25 +128,7 @@
 
 <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script>
-function aa(){
-Swal.fire({
-	  title: 'Are you sure?',
-	  text: "You won't be able to revert this!",
-	  type: 'warning',
-	  showCancelButton: true,
-	  confirmButtonColor: '#3085d6',
-	  cancelButtonColor: '#d33',
-	  confirmButtonText: 'Yes, delete it!'
-	}).then((result) => {
-	  if (result.value) {
-	    Swal.fire(
-	      'Deleted!',
-	      'Your file has been deleted.',
-	      'success'
-	    )
-	  }
-	})
-}
+
 </script>
 
 </body>

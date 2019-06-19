@@ -15,8 +15,8 @@ public interface MyTeamDao {
   List<Team> findByMyTeam(int no);
 
   List<TeamMember> findByMyTeamMember(int no);
-
   List<TeamMember> findByMyTeamMember2();
+  List<TeamMember> findByMyTeamMember3(int no); //팀원 전체 불러오기
 
   int delete(Map<String, Integer> map);
 
@@ -51,6 +51,11 @@ public interface MyTeamDao {
   List<Team> matchOtherTeam(int no);
   
   List<Team> matchMyTeam(int no);
+  
+  int mtchApllyDelete(int no);
+  
+  int mtchDelete(int no);
+  
 }
 
 

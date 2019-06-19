@@ -153,6 +153,21 @@ public int mtchupdate(int otNo, int matchNo) {
   public List<Team> matchMyTeam(int no) {
     return myteamDao.matchMyTeam(no);
   }
+
+  @Override
+  public List<TeamMember> findByMyTeamMember3(int no) {
+    return myteamDao.findByMyTeamMember3(no);
+  }
+
+  @Override
+  public int mtchApllyDelete(int no) {
+    return myteamDao.mtchApllyDelete(no);
+  }
+
+  @Override
+  public int mtchDelete(int no) {
+    return myteamDao.mtchDelete(no);
+  }
 }
 
 

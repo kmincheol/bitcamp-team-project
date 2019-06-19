@@ -93,6 +93,13 @@
         <input type="text" class="form-control" name="contents" id="anwerContents" value="${answer.contents}" />
       </div>
     </div>
+     
+      <div class="form-group">
+        <div class="col-sm-10">
+          <button id="add_Answer_Btn" class="btn  btn-outline-dark" >등록</button>
+          <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question'>목록</a>
+        </div>
+      </div>
     </form>
   </div> 
   
@@ -115,12 +122,6 @@
         <div class="col-sm-10">
           <button id="modify_button" class="btn btn-dark" onclick="button3_click();">수정</button>
           <a class="btn btn-dark" href='delete2/${answer.answerNo}'>삭제</a> 
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-10">
-          <button id="add_Answer_Btn" class="btn  btn-outline-dark" >등록</button>
-          <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question'>목록</a>
         </div>
       </div>
     </form>

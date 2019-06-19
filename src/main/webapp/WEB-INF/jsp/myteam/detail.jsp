@@ -59,7 +59,16 @@
   <tbody>
     <tr>
       <th scope="row">이름</th>
-      <td>${teamMember.member.name}</td>
+      <td>${teamMember.member.name} 
+      <c:choose>
+        <c:when test="${teamMember.teamLeader == true}">
+              (팀장)
+        </c:when>
+        <c:otherwise>
+            (팀원)
+        </c:otherwise>
+      </c:choose>
+      </td>
     </tr>
         <tr>
       <th scope="row">포지션</th>
@@ -90,9 +99,11 @@
           <img src="${teamMember.member.photo}" style="width:100%; height:100%">           
        </div>
           </div>
+            <c:if test="${teamLeader.memberNo eq sessionScope.loginUser.no }">
           <div>
             <a class="btn btn-outline-dark" href='../delete/${teamMember.teamMemberNo}/${teamMember.memberNo}'>추방</a>
           </div>
+          </c:if>
 </div> <!-- containner -->
  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
