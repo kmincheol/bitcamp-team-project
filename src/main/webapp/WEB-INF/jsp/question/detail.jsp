@@ -50,9 +50,9 @@ trimDirectiveWhitespaces="true"%>
 
         <div id="contents-section">
           <div class="contents-section-head">
-            <div>내용</div>
+            <div>내용</div>           
           </div>
-          <div class="contents-section-body">
+          <div class="contents-section-body" style="word-break: break-word;">      
             <div class="contents">${question.contents}</div>
           </div>
         </div>

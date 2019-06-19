@@ -1,4 +1,4 @@
-<%@page import="com.eomcs.lms.domain.Free"%>
+<%-- <%@page import="com.eomcs.lms.domain.Free"%> --%>
 <%@page import="com.eomcs.lms.domain.Member"%>
 <%@page import="com.eomcs.lms.domain.Comment"%>
 <%@page import="java.util.List"%>
@@ -71,7 +71,7 @@
               <div class="contents-section-head">
                 <div>내용</div>
               </div>
-              <div class="contents-section-body">
+              <div class="contents-section-body" style="word-break: break-word;">
                 <div class="contents">${free.contents}</div>
               </div>
             </div>

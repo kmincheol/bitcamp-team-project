@@ -11,7 +11,7 @@
     <div class="contents-section-head">
       <div>답변</div>
     </div>
-    <div class="contents-section-body">
+    <div class="contents-section-body" style="word-break: break-word;">
       <div class="contents">${answer.contents}</div>
     </div>
   </div>
