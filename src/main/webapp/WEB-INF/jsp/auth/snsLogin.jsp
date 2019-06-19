@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>소셜 로그인</title>
+<title>SNS 로그인</title>
 <link rel="stylesheet" href="${contextRootPath}/css/snsLogin.css">
 </head>
 <body>
