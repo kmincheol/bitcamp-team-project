@@ -98,7 +98,8 @@
 
 $(document).ready(function() {
   $('#summernote').summernote({
-    height: 300,
+    height: 400,
+    width: 900,
     minHeight: null,
     maxHeight: null,
     focus: true

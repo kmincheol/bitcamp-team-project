@@ -95,13 +95,14 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-
+      
 <script>
 "use strict"
 
 $(document).ready(function() {
   $('#summernote').summernote({
-    height: 300,
+    height: 400,
+    width:900,
     minHeight: null,
     maxHeight: null,
     focus: true

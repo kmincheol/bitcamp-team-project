@@ -39,40 +39,38 @@
       </c:when>
       <c:otherwise>
         <form>
-        <div id="title-wrap" class="form-group row">
-          <div id="title-row" class="col-sm-12">
-            <div id="title" name="teamTitle">${announce.title}</div>
-          </div>
-          <div id="teamName-row" class="col-sm-12">
-          <div id="no" style="display: none">${announce.no}</div>
-            <span id="teamName" name="teamName">${announce.member.name}</span> 
-            <span>|</span>
-            <span id="createdDate" name="createdDate">${announce.modifierDate}</span> 
-            <span>|</span>
-            <span id="viewCount" name="teamViewCount">${announce.viewCount}</span>
-          </div>
-        </div>
-        
-            <!-- 내용 전 -->
-            <div id="contents-section">
-              <div class="contents-section-head">
-                <div>내용</div>
-              </div>
-              <div class="contents-section-body">
-                <div class="contents">${announce.contents}</div>
-              </div>
+          <div id="title-wrap" class="form-group row">
+            <div id="title-row" class="col-sm-12">
+              <div id="title" name="teamTitle">${announce.title}</div>
             </div>
-            <div id="control-box" class="form-group row">
-              <div class="col-sm-12 text-center">
-                <a class="btn btn-outline-dark" href='.' style="width:80px;">목록</a>
-                <c:if test="${!empty sessionScope.loginUser}">
-                  <c:if test="${sessionScope.loginUser.manager}">
-                    <a class="btn btn-outline-dark" href='delete/${announce.no}' style="width:80px;">삭제</a>
-                    <a href='${contextRootPath}/app/announce/update/${announce.no}'
-                      class="btn btn-outline-dark" style="width:80px;">변경</a>     
-                  </c:if>
+            <div id="teamName-row" class="col-sm-12">
+              <div id="no" style="display: none">${announce.no}</div>
+              <span id="teamName" name="teamName">${announce.member.name}</span> <span>|</span> <span
+                id="createdDate" name="createdDate">${announce.modifierDate}</span> <span>|</span> <span
+                id="viewCount" name="teamViewCount">${announce.viewCount}</span>
+            </div>
+          </div>
+
+          <!-- 내용 전 -->
+          <div id="contents-section">
+            <div class="contents-section-head">
+              <div>내용</div>
+            </div>
+            <div class="contents-section-body" style="word-break: break-word">
+              <div class="contents">${announce.contents}</div>
+            </div>
+          </div>
+          <div id="control-box" class="form-group row">
+            <div class="col-sm-12 text-center">
+              <a class="btn btn-outline-dark" href='.' style="width: 80px;">목록</a>
+              <c:if test="${!empty sessionScope.loginUser}">
+                <c:if test="${sessionScope.loginUser.manager}">
+                  <a class="btn btn-outline-dark" href='delete/${announce.no}' style="width: 80px;">삭제</a>
+                  <a href='${contextRootPath}/app/announce/update/${announce.no}'
+                    class="btn btn-outline-dark" style="width: 80px;">변경</a>
                 </c:if>
-              </div>
+              </c:if>
+            </div>
           </div>
         </form>
       </c:otherwise>
