@@ -50,7 +50,7 @@ height: auto;
       <div class="join_content">
         <form id='add_form' action='add' method='post'>
 
-          <div class="join_form" style="height: 1300px;">
+          <div class="join_form">
             <div class="join_form_left" style="height: 800px;">
               <!-- id, password -->
               <div class="row_group">
@@ -251,9 +251,10 @@ height: auto;
                     <div class="self_introduce_area">
                       <textarea class="ps_box self_introduce" id="teamInfo" name="teamInfo"
                         placeholder="간단한 팀소개를 입력해주세요." rows="20" cols="30" style="height: 90px;"></textarea>
-                    </div>
+                        <span id="counter">0/150</span> 
+                    </div> 
                   </div>
-                </div>
+                </div> 
                 <!-- .row_group -->
               </div>
               <!-- .join_form_right -->
@@ -291,6 +292,19 @@ height: auto;
 
   <script> 
       "use strict"
+        $(document).ready(function(){
+       $('#teamInfo').on('keydown', function() {
+          if($(this).val().length > 150) {
+              $(this).val($(this).val().substring(0, 150));
+          }
+          
+          var content = $(this).val();
+          $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+          $('#counter').html(content.length + '/150');
+      }); 
+      $('#teamInfo').keyup(); 
+        });
+      
  $('#topLocation').change(function() {
    var no = $(this).val();
    console.log(name) 

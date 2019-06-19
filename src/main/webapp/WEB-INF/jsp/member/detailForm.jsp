@@ -153,12 +153,15 @@ $(document).ready(function(){
  
 $('.prof-btn').on('click',function(){
   var no = $('.prof_no').val(); 
-  location="profUpdate/" + no; 
+  no2 = btoa(no); 
+  location="profUpdate/" + no2;   
+  /* location="profUpdate/" + no; */ 
 });
  
 $('.password-btn').on('click', function(){
   var no = $('.prof_no').val(); 
-  location="passwordUpdate/" + no;
+  no2 = btoa(no); 
+  location="passwordUpdate/" + no2;   
 }); 
 
 </script>

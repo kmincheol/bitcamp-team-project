@@ -352,12 +352,16 @@ public class MemberController {
     return "member/detailForm";
   }
 
-  @RequestMapping(value="profUpdate/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-  public String profChange(@PathVariable int no, Model model, HttpSession session) {
+  @GetMapping("profUpdate/{no}")
+  public String profChange(@PathVariable byte[] no, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
-    member = memberService.get(no);
+    byte[] decodedBytes = Base64.getDecoder().decode(no);
+    String no2 = new String(decodedBytes);
+    
+    memberService.get(no2);
+    
     model.addAttribute("member", member);
-    return "member/profUpdate";
+    return "member/profUpdate"; 
   }
 
   @GetMapping
@@ -376,13 +380,17 @@ public class MemberController {
   @RequestMapping(value="profUpdate/update", method= {RequestMethod.POST})
   public String update(Member member, Part photoFile) throws Exception {  
     memberService.update(member);
-    return "redirect:../" + member.getNo(); 
+    return "redirect:../../../"; 
   } 
 
-  @RequestMapping(value="passwordUpdate/{no}", method= {RequestMethod.GET, RequestMethod.POST})
-  public String passwordUpdate(@PathVariable int no, Model model, HttpSession session) {
+  @GetMapping("passwordUpdate/{no}")
+  public String passwordUpdate(@PathVariable byte[] no, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
-    member = memberService.get(no);
+    byte[] decodedBytes = Base64.getDecoder().decode(no);
+    String no2 = new String(decodedBytes);
+    
+    memberService.get(no2);
+    
     model.addAttribute("member", member);
     return "member/passwordUpdate";
   }
@@ -407,6 +415,7 @@ public class MemberController {
   @PostMapping("updatePassword")
   public String updatePassword(Member member, HttpSession session) throws Exception {
     memberService.updatePassword(member);
-    return "redirect:./" + member.getNo();
+    
+    return "redirect:../../";
   }
 }
