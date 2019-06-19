@@ -28,7 +28,7 @@
 </head>   
   
  
-<body> 
+<body>  
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/> 
  
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
@@ -95,7 +95,7 @@
               </c:choose>
           
           </li> 
-          <li>${team.teamArea}</li>
+          <li>${team.topLocation.topLocationName} ${team.middleLocation.middleLocationName}</li>
           <li>${team.teamCreateDate}</li>
           <li class="Ages">${team.teamAges.teamAges}</li>
           <li>
