@@ -331,10 +331,6 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
        ' <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list5/'+bbb[1]+ '"style="text-decoration:none; color:black">성사된 나의 경기</a></span>'+
        ' </div>'
     
-/*         <span style="margin : 50px;border-bottom: 2px solid #51c321;"><a href="#"style="text-decoration:none; color:black"> 나의팀 </a> </span>    
-        <span style="margin : 50px"><a href="#"style="text-decoration:none; color:black">요청한 경기</a></span >  
-        <span style="margin : 50px"><a href="#"style="text-decoration:none; color:black">요청받은 경기</a></span>   
-        <span style="margin : 50px"><a href="#"style="text-decoration:none; color:black">성사된 나의 경기</a></span> */
         
 }//셀렉문 onchange
 

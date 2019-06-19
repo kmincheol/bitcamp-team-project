@@ -87,14 +87,24 @@ public class MyTeamController {
 		Member member = (Member) session.getAttribute("loginUser");
 
 		int a = member.getNo(); // 회원번호
-
+        
+		List<TeamMember>atm = myTeamService.findByMyTeamMember3(tno);
+		
+		for(TeamMember t: atm) {
+		    if(t.isTeamLeader() == true) {
+		        model.addAttribute("teamLeader",t);
+		    }
+		}
+		
 		List<TeamMember> tm = myTeamService.teamMemberList(mno);
-
+     
 		for(TeamMember tmm : tm) {
 			if(tmm.getTeamMemberNo() == tno) {
 				model.addAttribute("teamMember",tmm);
 			}
 		}
+
+		  
 		return "myteam/detail";
 	}
 	
@@ -159,18 +169,25 @@ public class MyTeamController {
 	public String sendTeam(@PathVariable int tno,  Model model, HttpSession session) {
 	  matchNosd.clear();
 	
-	  List<Match> matchNos = myTeamService.findMatchNo2(tno);  //번호 수정해야함 신청받은거
+	  List<Match> matchNos = myTeamService.findMatchNo2(tno);
    
     for(Match m : matchNos) {
-      if(m.getOtherTeamNo() == 0) {
+      if(m.getOtherTeamNo() == 0 && m.getTeamNo() != 0 ) {
         matchNosd.add(m);
+        System.out.println(matchNosd.toString());
         model.addAttribute("matchNos",matchNosd);
        }
     }
+    model.addAttribute("tno",tno);
 	  return "myteam/list2";
 	}
 	
-	
+	   @RequestMapping("/list2/delete/{mtno}/{tno}")
+	    public String delete2MatchAply(@PathVariable int mtno, @PathVariable int tno,Model model) {
+	        myTeamService.deleteMatchAply(mtno,tno);
+	        return "redirect:../../tno";
+	    }
+
 	
 	@RequestMapping("/list2/update/{matchNo}/{otNo}")
 	public String matchSuccess(@PathVariable int matchNo,@PathVariable int otNo,Model model) {
@@ -189,6 +206,7 @@ public class MyTeamController {
 		
 	    List<MatchApply> matchNos = myTeamService.findMatchNo(tno); //번호 수정해야함
 		
+	    
 		for(MatchApply m : matchNos) {
 		   if(m != null) {
 		      if(m.getMatch().getOtherTeamNo() == 0) {
@@ -206,17 +224,17 @@ public class MyTeamController {
 	@RequestMapping("/list3/delete/{mtno}/{tno}")
 	public String deleteMatchAply(@PathVariable int mtno, @PathVariable int tno,Model model) {
 		myTeamService.deleteMatchAply(mtno,tno);
-		return "redirect:../../";
+		return "redirect:../../tno";
 	}
 
 
-    @RequestMapping("/list5/{no}")
-    public String myMatching(@PathVariable int no,Model model) {
+    @RequestMapping("/list5/{tno}")
+    public String myMatching(@PathVariable int tno,Model model) {
         otherTeam.clear();
 
-    List<Match> match = myTeamService.sucessMatching(no);  //임시번호 나의팀번호
+    List<Match> match = myTeamService.sucessMatching(tno);  //임시번호 나의팀번호
                      
-             model.addAttribute("myTeam",myTeamService.matchMyTeam(no));   // 나의 팀정보   
+             model.addAttribute("myTeam",myTeamService.matchMyTeam(tno));   // 나의 팀정보   
    
       for(Match m : match) {
         if(m.getOtherTeamNo() != 0) {
@@ -224,15 +242,26 @@ public class MyTeamController {
                   if(m.getOtherTeamNo() == t.getTeamId()) {
                     matchNosd3.add(m); 
                   }
-              
                  otherTeam.add(t);
             }
-                    model.addAttribute("otherTeam",otherTeam);
+               model.addAttribute("otherTeam",otherTeam);
         }
       }
+      System.out.println(matchNosd3.toString());
       model.addAttribute("matchNosd3",matchNosd3);
-    
+       
+    model.addAttribute("tno",tno);
+      
         return "myteam/list5";
+    }
+
+    @RequestMapping("/list5/delete/{mtno}")
+    public String deleteMatch(@PathVariable int mtno) {
+      
+       myTeamService.mtchApllyDelete(mtno);
+     
+        myTeamService.mtchDelete(mtno);
+        return "redirect:../../";
     }
 
     

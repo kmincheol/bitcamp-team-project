@@ -146,7 +146,7 @@ trimDirectiveWhitespaces="true"%>
   <script>                                      
 $(document).ready(function() {
     $('.summernote').summernote({
-    	width:1080,
+      width:1080,
       height: 300,
       minHeight: null,
       maxHeight: null,
@@ -159,23 +159,19 @@ $(document).ready(function() {
     })
   });    
  
-
 function button1_click(){
 $("#answer_form").css("display","block");
 }
-
 function button2_click(){
-	$("#modify_form").css("display","block");
-	}
-
+  $("#modify_form").css("display","block");
+  }
 function add_check(){
-  	var theForm = $('.anwerContents').val();
-	 if(theForm == ""){
-		 alert("내용을 입력해주세요.") ;
-		  return false;
-	 }
+    var theForm = $('.anwerContents').val();
+   if(theForm == ""){
+     alert("내용을 입력해주세요.") ;
+      return false;
+   }
 }
-
 function add_Modify_check(){
     var theForm = $('.modify_contents').val();
    if(theForm == ""){
@@ -183,7 +179,6 @@ function add_Modify_check(){
       return false;
    }
 }
-
 </script>
 
 </body>

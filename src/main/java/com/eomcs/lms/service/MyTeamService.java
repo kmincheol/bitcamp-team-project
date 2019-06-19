@@ -18,6 +18,8 @@ public interface MyTeamService {
 
   List<TeamMember> teamMemberList2();
 
+  List<TeamMember> findByMyTeamMember3(int no);
+  
   int delete(int tno, int mno);
 
   List<MatchApply> findMatchNo(int no);
@@ -50,4 +52,8 @@ public interface MyTeamService {
   List<Team> matchOtherTeam(int no);
   
   List<Team> matchMyTeam(int no);
+  
+  int mtchApllyDelete(int no);
+  
+  int mtchDelete(int no);
 }
