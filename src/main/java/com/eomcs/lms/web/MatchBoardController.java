@@ -2,7 +2,6 @@ package com.eomcs.lms.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.MiddleLocation;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TopLocation;
@@ -123,7 +123,7 @@ public class MatchBoardController {
   }
   
   @GetMapping("form")
-  public String form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
+  public String form(Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
     
     try {
@@ -133,9 +133,8 @@ public class MatchBoardController {
     }catch (Exception e) {
       return "matchboard/auth";
     }
-    
-    List<TopLocation> location = locationService.findToplocation(topLocationNo);
-    model.addAttribute("location", location);
+    List<TopLocation> locations = locationService.topLocationList();
+    model.addAttribute("locations", locations);
     
     List<Match> match = matchBoardService.leaderJudge(member.getNo());
    
@@ -223,6 +222,22 @@ public class MatchBoardController {
       return "redirect:../matchboard";
   }
   
+  @ResponseBody
+  @GetMapping("AddressCheck")
+  public Object AddressCheck(int no) {
+    HashMap<String,Object> map = new HashMap<>();
+    
+    if (locationService.findToplocation(no) != null) {
+      List<MiddleLocation> middleLocations = locationService.findMiddleLocation(no);
+      System.out.println("MiddleLocations"+ middleLocations);
+      
+      map.put("status", "success");
+      map.put("middleLocations", middleLocations);
+    } else {
+      map.put("status", "fail");
+    }  
+    return map;
+  }
   
   
   @PostMapping("update")
@@ -281,6 +296,12 @@ public class MatchBoardController {
   @ResponseBody
   public Object detailData(int no, HttpSession session) {
     Match match = matchBoardService.get(no);
+    
+    String address = match.getLocation(); // 6글자 이거나 7글자임 ex) 서울 강남구 , 경기 남양주시
+    
+    String address1 = address.substring(0, 2);
+    String address2 = address.substring(3);
+    
     HashMap<String,Object> matchMap = new HashMap<>();
     
     // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
@@ -291,8 +312,9 @@ public class MatchBoardController {
       matchMap.put("myteam",teams);
     } else {
     }
-    
     matchMap.put("match", match);
+    matchMap.put("address1", address1);
+    matchMap.put("address2", address2);
     
     return matchMap;
   }

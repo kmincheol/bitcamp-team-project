@@ -62,12 +62,14 @@
       <result column="user_id" property="id" />
     </association>
     
+     <!-- 주소 상위 테이블 -->
     <association property="topLocation" javaType="TopLocation">
       <id column="toplc_id" property="topLocationId" />
       <result column="toplc_no" property="topLocationNo" />
       <result column="toplc_name" property="topLocationName" />
     </association>
     
+      <!-- 주소 하위 테이블 -->
     <association property="middleLocation" javaType="MiddleLocation">
       <id column="midlc_id" property="middleLocationId" />
       <result column="midlc_no" property="middleLocationNo" />
@@ -205,7 +207,10 @@
     t.tm_ambl_phot,
     u.user_id,
     l.levs,
-    a.ages
+    p.toplc_name,
+    d.midlc_name,
+    a.ages,
+    tmb.tlead_wth
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
@@ -215,8 +220,52 @@
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
+    left outer join toplc p on p.toplc_no = substr(m.area,1,2)
+    left outer join midlc d on d.midlc_no = substr(m.area,4,2)
   </sql>
   
+  <sql id="select123"> <!-- 매치정보를 위한 select2 -->
+   select distinct
+    mtch_id,
+    m.tm_id,
+    tm_id2,
+    s.spt_clsf_id,
+    s.spt_clsf_name,
+    titl,
+    cont,
+    vw_cnt,
+    m.cdt,
+    game_dt,
+    m.area,
+    stdm_psti,
+    stdm_lat,
+    stdm_long,
+    m.tel,
+    cost,
+    t.name,
+    t.tm_lev_id,
+    t.age_id,
+    t.tm_ambl_phot,
+    u.user_id,
+    l.levs,
+    p.toplc_name,
+    d.midlc_name,
+    a.ages,
+    tmb.tlead_wth
+   from
+    mtch m
+    left outer join tm t on m.tm_id = t.tm_id
+    left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
+    left outer join mbr u on tmb.mbr_id = u.mbr_id
+    left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
+    left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
+    left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
+    left outer join age a on t.age_id = a.age_id
+    left outer join toplc p on p.toplc_no = substr(m.area,1,2)
+    left outer join midlc d on d.midlc_no = substr(m.area,4,2)
+   where
+    tmb.tlead_wth = 1
+  </sql>
   
 <sql id="select2"> <!-- 추천매칭을 위한 select -->
    select distinct
@@ -249,7 +298,7 @@
 
 <!-- js로 처리할거라 모든 데이터 가져옴 -->
    <select id="search" resultMap="matchMap">
-    <include refid="select1"/>
+   <include refid="select123"/>
     order by
     mtch_id desc
    </select>
@@ -257,7 +306,7 @@
    
    
   <select id="findAll" resultMap="matchMap" parameterType="map">
-	<include refid="select1"/>  
+	<include refid="select123"/>  
     order by
     mtch_id desc
     <if test="#{size != null || rowNo != null}">

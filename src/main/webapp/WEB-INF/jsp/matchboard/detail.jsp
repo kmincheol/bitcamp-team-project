@@ -66,16 +66,16 @@
               <td>
                 <div id="sportsType">
                            <c:choose>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '축구'}">
                                 축구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '야구'}">
                                 야구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/baseball_list_min.png">
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '농구'}">
                                 농구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/basketball_list_min.png">
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '탁구'}">
                                 탁구<img style="width:30px; height:30px; margin-bottom:5px;" src="${contextRootPath}/images/pingpong_list_min.png">
                             </c:when>
                           </c:choose>
