@@ -102,36 +102,14 @@ height: auto;
                   <h3 class="join_title">
                     <label for="teamSportsId">종목</label>
                   </h3>
-                  <div class="ps_box" id="teamSportsIdBox">
+                  <div class="ps_box" id="teamSportsIdBox" style="z-index:10;">
                     <select id="teamSportsId" name="teamSportsId" class="sel" aria-label="종목">
                       <option value="" selected>종목 선택</option>
                       <c:forEach items="${teamTypeSports}" var="typeSports">
-
-                        <c:choose>
-                          <c:when test="${typeSports.teamSportsType eq 'soccer'}">
                             <option value="${typeSports.teamSportsTypeId}"
-                              ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>축구
-                            </option>
-                          </c:when>
-                          <c:when test="${typeSports.teamSportsType eq 'basketball'}">
-                            <option value="${typeSports.teamSportsTypeId}"
-                              ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>농구
-                            </option>
-                          </c:when>
-                          <c:when test="${typeSports.teamSportsType eq 'baseball'}">
-                            <option value="${typeSports.teamSportsTypeId}"
-                              ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>야구
-                            </option>
-                          </c:when>
-                          <c:when test="${typeSports.teamSportsType eq 'pingpong'}">
-                            <option value="${typeSports.teamSportsTypeId}"
-                              ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>탁구
-                            </option>
-                          </c:when>
-                        </c:choose>
-
-
-                      </c:forEach>
+                              ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>${typeSports.teamSportsType}
+                            </option>  
+                      </c:forEach> 
                     </select>
                   </div>
                   <span class="error_next_box" id="teamSportsIdMsg" style="display: none"
@@ -180,27 +158,9 @@ height: auto;
                     <select id="teamLevelId" name="teamLevelId" class="sel" aria-label="팀실력">
                       <option value="" selected>팀실력 선택</option>
                       <c:forEach items="${teamLevels}" var="teamLevel">
-
-                        <c:choose>
-                          <c:when test="${teamLevel.teamLevel eq 'high'}">
                             <option value="${teamLevel.teamLevelId}"
-                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>상
+                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>${teamLevel.teamLevel} 
                             </option>
-                          </c:when>
-
-                          <c:when test="${teamLevel.teamLevel eq 'mid'}">
-                            <option value="${teamLevel.teamLevelId}"
-                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>중
-                            </option>
-                          </c:when>
-
-                          <c:when test="${teamLevel.teamLevel eq 'low'}">
-                            <option value="${teamLevel.teamLevelId}"
-                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>하
-                            </option>
-                          </c:when>
-
-                        </c:choose>
                       </c:forEach>
                     </select>
                   </div>
