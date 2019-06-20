@@ -106,13 +106,18 @@ table tbody tr {
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
+
+ <div id="main-text">
+ <img src="${contextRootPath}/images/freeboard2.png" style="width:100%; height:100%;">
+      <h1>
+       자유 게시판
+      </h1>      
+    </div>
+    
+
   <div id="main-wrap" class="container">
 
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/edit.png">자유게시판
-      </h2>
-    </div>
+  
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>

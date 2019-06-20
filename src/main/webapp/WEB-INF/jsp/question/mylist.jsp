@@ -91,14 +91,15 @@ table tbody tr {
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
+<div id="main-text">
+ <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
+      <h1>
+       나의 질문 내역
+      </h1>      
+    </div>
 
   <div class="container" id="main-wrap">
-    <div id="main-text">
-    <h2>
-      <img src="${contextRootPath}/images/headset.png">나의 질문 내역
-      </h2>
-    </div>
+  
 
      
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">

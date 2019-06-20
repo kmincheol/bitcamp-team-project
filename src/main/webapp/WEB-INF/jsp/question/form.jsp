@@ -48,17 +48,19 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
   
-  <div class="container" id="main-wrap">
-    <div id="main-text">
+  <div id="main-text">
+    <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
       <div class="text-field" id="main-textfield">
         <span style="font-weight: bold; font-size: 2.0em;">궁금해하는 글</span> 
         <span style="font-size: 1.8em;"> 을 간편하게</span>
         <div style="font-size: 1.8em;">등록할 수 있습니다.</div>  
-      </div>   
-    </div>  
+      </div>
+    </div>
+    
+  <div class="container" id="main-wrap">
 
       <form id="add_form" action='add' method='post' onsubmit="return check()">
-      <div id="table">
+      <div id="table" style="margin-top: 40px;">
         <table class="table table-bordered">
           <tbody>
             <tr>

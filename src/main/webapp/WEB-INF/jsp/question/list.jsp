@@ -37,7 +37,7 @@
      
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
-
+     
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {
@@ -95,13 +95,14 @@ table tbody tr {
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
+    <div id="main-text">
+    <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
+      <h1>
+        고객 센터
+      </h1>
+    </div>
   <div id="main-wrap" class="container">
 
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/headset.png">고객 센터
-      </h2>
-    </div>
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>

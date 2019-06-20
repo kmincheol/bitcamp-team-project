@@ -28,14 +28,16 @@ trimDirectiveWhitespaces="true"%>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
-  <div id="main-wrap" class="container">
-
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/open-book.png">게시글
-      </h2>
+  
+ <div id="main-text">
+ <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
+      <h1>
+        고객 센터
+      </h1>      
     </div>
+    
+  <div id="main-wrap" class="container">
+  
 
     <form action='update' method='post' name="remove">
       <div id="title-wrap" class="form-group">

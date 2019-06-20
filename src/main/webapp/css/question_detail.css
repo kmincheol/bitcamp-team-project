@@ -7,13 +7,13 @@
   margin-bottom: 15px;
 }  
 
-#main-text h2 {
-  position: absolute;
-  text-align: left; 
-  bottom: 0;
-}
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
+}    
 
-#main-text h2 img {
+#main-text h1 img {
   width: 30px;
   height: 30px;
   margin-right: 5px;
@@ -27,9 +27,8 @@ form {
 #title-wrap {
   margin: 0px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   text-align: center;
-  border-bottom: 1px solid gray;
 }
 
 #title {
@@ -80,7 +79,7 @@ table.info-table td {
 }
 
 #contents-section {
-  border-bottom: 1px solid #ccc;
+  border: 1px solid #ccc;
   padding-bottom: 100px;
 }
 
