@@ -16,16 +16,15 @@
           <c:forEach items="${list}" var="comment">
             <span style="font-size: 15px; margin-right: 10px;"><b>${comment.member.name}</b></span>
             <span style="font-size: 12px;">${comment.modifierDate}</span>
-            <br> 
-            <div class="conts">
+            <div class="conts" style="border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 10px;">
               <input type="text" class="no" name="no" value="${comment.no}" style="display: none;">
               <label class="cmtcontents" style="font-size: 20px; display:inline;  margin-bottom:5px;" >${comment.contents}</label>
               <input class="cmtcontents2" type="hidden" value="${comment.contents}"
                 style="font-size: 20px; display:inline;  margin-bottom:5px;" >
               
               <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
-                <div class="btnsave">
-                
+                <div class="btnsave" style="float: right; top: -20px; position: relative;">
+                           
                   <%-- <a class="deletebtn btn btn-outline-dark" 
                     href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a> --%>
                     <input id="cmtNo" type="hidden" value="${comment.no}">
@@ -43,7 +42,6 @@
                   </div>
                 </div>
               </c:if>
-              <hr>
             </div>
           </c:forEach>
         </tbody>

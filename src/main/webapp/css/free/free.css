@@ -7,6 +7,11 @@
 	margin-bottom: 15px;
 }
 
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
+}    
 
 #main-text h1 img {
 	margin-bottom: 25px;
@@ -43,11 +48,7 @@ table a {
 table a:hover {
 	color: black;
 }
-#main-text h1 {
-  position: relative;
-    top: -60%;
-    color: white;
-}    
+
 
 
 #in {
