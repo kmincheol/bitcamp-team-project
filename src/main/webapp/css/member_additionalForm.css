@@ -191,12 +191,9 @@ body {
   padding:7px 8px 6px 7px\9;
   font-size:15px;
   line-height:18px;
-  color:#000;
   border:none;
   border-radius:0;
   background-color: #fff;
-  *height:auto;
-  *margin-top:3px;
   -webkit-appearance: none;
   outline: 0;
 }
@@ -382,3 +379,27 @@ html[lang=ko] #header .lang .sel {
 .join_birthday, .join_sex, .addressInputBox {
 	width: 500px
 }
+
+#birmm select:required:invalid {
+  color: gray;
+}
+#birmm option[value=""][disabled] {
+  display: none;
+}
+#birmm option {
+  color: black;
+}
+#genderBox select:required:invalid {
+  color: gray;
+}
+#genderBox option[value=""][disabled] {
+  display: none;
+}
+#genderBox option {
+  color: black;
+}
+#birmm {
+	display: inline-block
+}
+
+
