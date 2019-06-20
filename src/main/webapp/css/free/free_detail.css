@@ -7,17 +7,15 @@
 	margin-bottom: 15px;
 }
 
-#main-text h2 {
-	position: absolute;
-	text-align: left; 
-	bottom: 0;
-}
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
+}    
 
-#main-text h2 img {
-	width: 30px;
-	height: 30px;
-	margin-right: 5px;
-	margin-bottom: 25px;
+#main-text h1 img {
+  margin-bottom: 25px;
+  margin-right: 5px;
 }
 
 form {
@@ -27,9 +25,8 @@ form {
 #title-wrap {
 	margin: 0px;
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	text-align: center;
-	border-bottom: 1px solid gray;
 }
 
 #title {
@@ -78,7 +75,7 @@ table.info-table td {
 	width: 100%;
 	height: auto;
 	padding: 50px;
-}
+}     
 
 .comment-form{
   width:900px;  
@@ -89,4 +86,5 @@ table.info-table td {
 	margin-bottom: 50px;
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 100px;
+	border: 1px solid #ccc;
 }

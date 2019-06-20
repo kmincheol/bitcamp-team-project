@@ -4,11 +4,10 @@
   min-height: 100%;
   padding: 0px;
   margin: 0 auto;
-   
 }
 
 th{
-	text-align: center;
+  text-align: center;
 }
 #main-textfield{
     position: relative;
@@ -23,3 +22,4 @@ th{
   height: 230px;
   border-bottom: 2px solid black;
 }
+              

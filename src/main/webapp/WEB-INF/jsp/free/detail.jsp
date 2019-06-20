@@ -40,14 +40,13 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
+  <div id="main-text">
+    <img src="${contextRootPath}/images/freeboard2.png" style="width: 100%; height: 100%;">
+    <h1>자유 게시판</h1>
+  </div>
+
   <div id="main-wrap" class="container">
     <div class="freeList">
-      <div id="main-text">
-        <h2>
-          <img src="${contextRootPath}/images/open-book.png">게시글
-        </h2>
-      </div>
-      <br>
       <c:choose>
         <c:when test="${empty free}">
           <p>해당 게시물을 찾을 수 없습니다.</p>
@@ -118,7 +117,7 @@
   </div>
   <jsp:include page="../javascript.jsp" />
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />    
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 

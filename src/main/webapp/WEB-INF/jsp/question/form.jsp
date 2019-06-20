@@ -39,7 +39,7 @@
     vertical-align: middle!important;
     text-align: center;
     background: #f9f7f7;
-  }               
+  }
 </style>
 </head>
 
