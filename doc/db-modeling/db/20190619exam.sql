@@ -71,21 +71,21 @@ values(3,'회사소모임');
 
 -- 팀수준데이터
 insert into tm_lev(tm_lev_id,levs)
-values(1,'high');
+values(1,'상');
 insert into tm_lev(tm_lev_id,levs)
-values(2,'mid');
+values(2,'중');
 insert into tm_lev(tm_lev_id,levs)
-values(3,'low');
+values(3,'하');
 
 -- 종목유형데이터
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(1,'soccer');
+values(1,'축구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(2,'baseball');
+values(2,'야구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(3,'basketball');
+values(3,'농구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(4,'pingpong');
+values(4,'탁구');
 
 -- 팀데이터
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)

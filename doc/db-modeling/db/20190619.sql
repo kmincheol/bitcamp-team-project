@@ -309,7 +309,7 @@ CREATE TABLE mtch (
   mdt         DATETIME     NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
   game_dt     DATETIME     NOT NULL COMMENT '경기날짜', -- 경기날짜
   area        VARCHAR(100) NOT NULL COMMENT '지역', -- 지역
-  stdm_psti   VARCHAR(255) NULL     COMMENT '경기장이름', -- 경기장이름
+  stdm_psti   VARCHAR(255) NULL     DEFAULT '경기장이 없습니다.' COMMENT '경기장이름', -- 경기장이름
   stdm_lat    VARCHAR(100) NULL     COMMENT '경기장위치위도', -- 경기장위치위도
   stdm_long   VARCHAR(100) NULL     COMMENT '경기장위치경도', -- 경기장위치경도
   tel         VARCHAR(30)  NOT NULL COMMENT '연락처', -- 연락처
