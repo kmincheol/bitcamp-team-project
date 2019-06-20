@@ -92,17 +92,14 @@ table tbody tr {
 <body>
 
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
-
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
+<div id="main-text">
+    <img src="${contextRootPath}/images/recruit.png" style="width: 100%; height: 100%;">
+    <h1>모집 게시판</h1>
+  </div>
+  
   <div id="main-wrap" class="container">
-
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/edit.png" style=" width: 30px; height: 30px;">모집게시판
-      </h2>
-    </div>
-
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>
         <tr>
