@@ -164,7 +164,7 @@ color:black;
         </tbody>
       </table>
 
-      <div id="btnArea" style=" text-align: center;">       
+      <div id="btnArea" style=" text-align: center; margin-bottom: 50px;">       
           <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
           <input type="button" id="add" class="btn btn-outline-dark" onclick="check_onclick()" value="매치보드에 등록하기">
       </div>
