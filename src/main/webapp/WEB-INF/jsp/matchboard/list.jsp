@@ -501,6 +501,36 @@
             
             
           $(function() {
+            
+            
+            function modalEvent(number) {
+              
+              $('.detail').each(function(index) {
+                nocom = $('.detail')[index].id;
+                if (nocom == number) {
+                  no = nocom;
+                }
+              })
+              
+              $.getJSON("matchboard/data", {"no" : no}, function(data) {
+                console.log(data);
+                  $('.modal-title').text(data.match.team.teamName);
+                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.addressTop.topLocationName+ " " + data.addressMiddle.middleLocationName + "</div>");
+                  matchTeamNo = data.match.team.teamId;
+                  console.log(matchTeamNo+"-> 매치글작성한 팀번호");
+					 console.log(no+"-> 매치글번호");
+					console.log(data.match.topLocation.topLocationName);
+					console.log(data.match.middleLocation.middleLocationName)
+                  });
+              }
+            
+            
+            
+            
+            
+            
+            
+            
         	  $( "#datepicker" ).datepicker({
            
                   onSelect: function(value, props) {
@@ -568,7 +598,6 @@
           
             //매치정보 모달창
             function modalEvent(number) {
-
              
               $('.detail').each(function(index) {
                 nocom = $('.detail')[index].id;
@@ -576,8 +605,6 @@
                   no = nocom;
                 }
               })
-			
-              
               
               $.getJSON("matchboard/data", {"no" : no}, function(data) {
                 console.log(data);
@@ -588,7 +615,7 @@
                     $('.modal-body').append("<div='ajPlayDate' ><br> 경기날짜 : " +data.match.playDate + "</div>");
                     $('.modal-body').append("<div='ajlevel' ><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
                   $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
-                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.addressTop+ " " + data.addressMiddle + "</div>");
+                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.addressTop.topLocationName+ " " + data.addressMiddle.middleLocationName + "</div>");
                   $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");
                   $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "원</div>");
                   $('.modal-body').append("<div='ajcontents'><br> 내용 : "+data.match.contents + "</div>");

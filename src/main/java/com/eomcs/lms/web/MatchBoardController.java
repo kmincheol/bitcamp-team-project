@@ -39,16 +39,11 @@ public class MatchBoardController {
 
   private static final Logger logger = LogManager.getLogger(MatchBoardController.class);
 
-  @Autowired
-  MatchBoardService matchBoardService;
-  @Autowired
-  TeamService teamService;
-  @Autowired
-  MatchApplyService matchApplyService;
-  @Autowired
-  LocationService locationService;
-  @Autowired
-  ServletContext servletContext;
+  @Autowired MatchBoardService matchBoardService;
+  @Autowired TeamService teamService;
+  @Autowired MatchApplyService matchApplyService;
+  @Autowired LocationService locationService;
+  @Autowired ServletContext servletContext;
 
   // filter.js test
   @GetMapping("listAll")
