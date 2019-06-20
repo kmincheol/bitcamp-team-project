@@ -25,7 +25,7 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
   
-<div id="container" style="width:1080px;">   
+<div class="container" id="container">   
   <div id="content"> 
     <input type="hidden" id="authType" name="authType" value="email"> 
     

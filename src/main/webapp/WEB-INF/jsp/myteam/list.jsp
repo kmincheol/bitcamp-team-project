@@ -101,17 +101,21 @@ body {
 
 
 
-  <div id="main-wrap" class="container">
     <div id="main-text">
+    <img src="${contextRootPath}/images/국대.jpg" style="width:100%; height:100%;">
   <h2>    
-        <img src="${contextRootPath}/images/myteammain.jpg">나의 팀정보
+        나의 팀정보
       </h2>
     </div>
+  <div id="main-wrap" class="container">
     <div id="cdcd" style="width:1080px;height: 50px;margin-top: 30px;">
                            
     </div>
+   
     <div id="teamInfo"
       style="border: 1px solid black; width: 1080px; height: 400px; box-shadow: 7px 7px 7px darkgray;">
+    <div id="teamModify" style="width: 188px;height: 13px;border 1px solid;/* border: 1px solid black; */position: absolute;margin-left: 28px;/* background-color: white; */margin-top: 20px;">
+    </div>
       <div id="teamMark"
         style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">
       </div>
@@ -330,8 +334,9 @@ row4.innerHTML = '<span style="display: inline-block;font-size:20px; width: 100p
         '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list2/'+bbb[1]+ '"style="text-decoration:none; color:black">요청받은 경기</a></span>'   +
        ' <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list5/'+bbb[1]+ '"style="text-decoration:none; color:black">성사된 나의 경기</a></span>'+
        ' </div>'
-    
         
+       document.getElementById("teamModify").innerHTML= 
+    	   '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/form/'+bbb[1]+ '"style="text-decoration:none; color:black">팀 정보 변경</a></span > '
 }//셀렉문 onchange
 
 

@@ -155,7 +155,7 @@ body {
 	line-height:14px;
   color:red;
   width: 400px;
-  font-family: Dotum,'돋움',Helvetica,sans-serif
+  font-family: 'Jua', sans-serif;
 }
 .btn_area {
   margin:30px 0 9px
@@ -277,7 +277,7 @@ li .input_chk {
   border-top: 0;
   background-color: white;
   padding: 12px 8px 8px 8px;
-  font-size: 12px
+  font-size: 14px
 }
 .input_chk input {
   position: absolute; 

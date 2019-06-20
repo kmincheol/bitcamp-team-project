@@ -27,6 +27,8 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
 <!-- sns Login -->
 <link rel="stylesheet" href="${contextRootPath}/css/snsLogin.css">
+<!-- Jua -->
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <style>
 .custom-control-input:checked ~.custom-control-label::before {
 	color: #fff;
@@ -40,7 +42,7 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
   
-  <div class="container-fluid" id="all">
+  <div class="container container-fluid" id="all">
     <form action='login' method='post'>
     <div style="height: 500px;
     width: 500px;

@@ -2,6 +2,7 @@ package com.eomcs.lms.web;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
@@ -18,9 +19,15 @@ import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
+import com.eomcs.lms.domain.TeamAges;
+import com.eomcs.lms.domain.TeamLevel;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
+import com.eomcs.lms.domain.TeamType;
+import com.eomcs.lms.domain.TeamTypeSports;
+import com.eomcs.lms.domain.TopLocation;
 import com.eomcs.lms.service.MyTeamService;
+import com.eomcs.lms.service.TeamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 @Controller
@@ -35,6 +42,8 @@ public class MyTeamController {
   
 	private static final Logger logger = LogManager.getLogger(MyTeamController.class);
 
+	 @Autowired 
+	 TeamService teamService;
 	@Autowired
 	MyTeamService myTeamService;
 	@Autowired
@@ -259,11 +268,42 @@ public class MyTeamController {
     public String deleteMatch(@PathVariable int mtno) {
       
        myTeamService.mtchApllyDelete(mtno);
-     
         myTeamService.mtchDelete(mtno);
         return "redirect:../../";
     }
 
+    @RequestMapping("/form/{no}")
+    public String deledddteMatch(Model model, @PathVariable int no) {
+       
+         
+       List<TeamType> teamTypes = teamService.teamTypeList();
+        List<TeamAges> teamAges = teamService.teamAgeList();
+        List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
+        List<TeamLevel> teamLevels = teamService.teamLevelList();
+        List<TeamMember> teamMembers = teamService.teamMemberList();
+        List<TopLocation> topLocations = teamService.topLocationList();
+        Team team = myTeamService.findByNo(no);
+      System.out.println(team.getTeamId());
+        
+        model.addAttribute("team" ,team );     
+        model.addAttribute("teamTypes", teamTypes);
+        model.addAttribute("teamAges", teamAges);
+        model.addAttribute("teamTypeSports", teamTypeSports);
+        model.addAttribute("teamLevels", teamLevels);
+        model.addAttribute("teamMembers", teamMembers);
+        model.addAttribute("topLocations", topLocations);
+         
+        return "myteam/form";
+    }
+
+    @RequestMapping("/form/update")
+    public String updateTeam(Team team) {
+       System.out.println("ddd"+ team.toString());
+    myTeamService.update(team);
+        return "redirect:../";
+    }
+
+    
     
 
 
