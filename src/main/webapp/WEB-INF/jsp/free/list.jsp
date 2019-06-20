@@ -108,9 +108,9 @@ table tbody tr {
 
 
   <div id="main-text">
-    <img src="${contextRootPath}/images/freeboard2.png" style="width: 100%; height: 100%;">
+    <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
     <h1>자유 게시판</h1>
-  </div>
+  </div>       
 
 
   <div id="main-wrap" class="container">

@@ -56,7 +56,7 @@ th {
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
   <div id="main-text">
-    <img src="${contextRootPath}/images/freeboard2.png" style="width: 100%; height: 100%;">
+    <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
     <div class="text-field" id="main-textfield">
       <span style="font-weight: bold; font-size: 2.0em;">자유롭게 </span> <span
         style="font-size: 1.8em;"> 글을 </span>

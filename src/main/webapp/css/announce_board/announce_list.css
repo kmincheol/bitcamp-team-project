@@ -1,0 +1,39 @@
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
+
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
+}
+
+#main-text h1 img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 25px;
+  margin-right: 5px;
+}
+
+table a {
+	color: black;
+}
+
+table a:hover {
+	color: black;
+}
+
+#in {
+	width: 100%;
+	position: relative;
+	top:-70px;
+}
+
+#write-btn{
+	float: right;
+}

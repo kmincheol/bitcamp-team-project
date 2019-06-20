@@ -20,7 +20,7 @@
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
-<link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/question_list.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -101,8 +101,8 @@ table tbody tr {
         고객 센터
       </h1>
     </div>
+    
   <div id="main-wrap" class="container">
-
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>
