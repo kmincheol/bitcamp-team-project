@@ -1,1 +1,1 @@
-var rootpath = "http://localhost:8080/bitcamp-team-project/";
+var rootpath = "https://localhost:8080/bitcamp-team-project";
