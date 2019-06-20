@@ -221,7 +221,7 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(m.area,4,2)
+    left outer join midlc d on d.midlc_no = substr(m.area,3,2)
   </sql>
   
   <sql id="select123"> <!-- 매치정보를 위한 select2 -->
@@ -262,7 +262,7 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(m.area,4,2)
+    left outer join midlc d on d.midlc_no = substr(m.area,3,2)
    where
     tmb.tlead_wth = 1
   </sql>

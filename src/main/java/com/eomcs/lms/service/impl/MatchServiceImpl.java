@@ -129,14 +129,21 @@ public class MatchServiceImpl implements MatchBoardService {
     // 그 유저가 가입한 팀번호를 가져옴.
     List<TeamMember> teams = teamDao.findTeamMemberByMemberNo(member.getNo());
     // 그 유저의 메인팀 번호로 종목, 지역, 수준, 연령을 얻음.
-    Team team = teamDao.findSportsTypeByNo(member.getMainTeam());
-    logger.info("메인팀정보 >> " + team);
-    int mainTeamSportsTypeNo = team.getTeamTypeSports().getTeamSportsTypeId();
+    
+    if (member.getMainTeam() != 0) {
+      Team team = teamDao.findSportsTypeByNo(member.getMainTeam());
+      
+      logger.info("메인팀정보 >> " + team);
+      int mainTeamSportsTypeNo = team.getTeamTypeSports().getTeamSportsTypeId();
 
-    logger.info("메인팀의 종목 >>" + mainTeamSportsTypeNo);
-    // 그 종목과 1달이내의 매치들을 검색함.
-    List<Match> matches = searchBySportsType(mainTeamSportsTypeNo);
-    logger.info("종목&1달이내 매치들 >> " + matches);
+      logger.info("메인팀의 종목 >>" + mainTeamSportsTypeNo);
+      // 그 종목과 1달이내의 매치들을 검색함.
+      List<Match> matches = searchBySportsType(mainTeamSportsTypeNo);
+      logger.info("종목&1달이내 매치들 >> " + matches);
+      
+//    Team team = teamDao.findSportsTypeByNo(member.getMainTeam());
+      
+      
 
     for (TeamMember t : teams) {
       Iterator<Match> iter = matches.iterator();
@@ -189,7 +196,10 @@ public class MatchServiceImpl implements MatchBoardService {
       recommendMatches.add(m);
     }
     
+    }
     return recommendMatches;
+    
+
   }
   
   @Override

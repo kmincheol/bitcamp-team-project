@@ -284,13 +284,13 @@ values(4,6,'농구팀원모집합니다.','인천사시는분오세요.',1,3);
 
 -- 경기데이터
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(1,1,4,1,'축구한판','축구합시다.','2019-09-09','010101','서초경기장','as010101','as202020','010-5698-5456',10000);
+values(1,1,4,1,'축구한판','축구합시다.','2019-09-09','0101','서초경기장','as010101','as202020','010-5698-5456',10000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(2,2,5,2,'야구한판','야구합시다.','2019-09-07','020101','고양경기장','ks010101','ks202020','010-4598-5456',5000);
+values(2,2,5,2,'야구한판','야구합시다.','2019-09-07','0201','고양경기장','ks010101','ks202020','010-4598-5456',5000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(3,3,6,3,'농구한판','농구합시다.','2019-09-03','030101','인천경기장','ss010101','ss202020','010-5645-5456',20000);
+values(3,3,6,3,'농구한판','농구합시다.','2019-09-03','0301','인천경기장','ss010101','ss202020','010-5645-5456',20000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(10,8,6,3,'농구한판','농구합시다.','2019-09-03','030101','인천경기장','ss010101','ss202020','010-5645-5456',20000);
+values(10,8,6,3,'농구한판','농구합시다.','2019-09-03','0301','인천경기장','ss010101','ss202020','010-5645-5456',20000);
 
 insert into mtch(mtch_id,tm_id,spt_clsf_id,titl,cont,game_dt,area,tel)
 values(11,10,1,'매치해요1','고고고1','2019-07-01','0101','010-5621-4521');
