@@ -342,7 +342,10 @@ public class MemberController {
 
   @GetMapping("{no}")
   public String detail(@PathVariable byte[] no, Model model, HttpSession session) {
+    
     Member member = (Member) session.getAttribute("loginUser");
+    if (member != null) {
+    
     byte[] decodedBytes = Base64.getDecoder().decode(no);
     String no2 = new String(decodedBytes);
     
@@ -351,7 +354,9 @@ public class MemberController {
     model.addAttribute("member", member);
     return "member/detailForm";
   }
-
+    return "redirect:../auth/form";
+  }
+  
   @GetMapping("profUpdate/{no}")
   public String profChange(@PathVariable byte[] no, Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");

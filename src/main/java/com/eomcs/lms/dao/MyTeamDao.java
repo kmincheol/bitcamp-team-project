@@ -56,6 +56,10 @@ public interface MyTeamDao {
   
   int mtchDelete(int no);
   
+  Team findByNo(int no);
+  
+  int update(Team team);
+  
 }
 
 

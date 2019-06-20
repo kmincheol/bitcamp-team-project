@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>게시글 등록</title>
+<title>모집 게시글 등록</title>
 <!-- common.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/common.css">
 
@@ -41,7 +41,13 @@
 
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-
+<style>
+th {
+  vertical-align: middle !important;
+  text-align: center;
+  background: #f9f7f7;
+}
+</style>
 </head>   
 
 <body>
@@ -50,20 +56,20 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <div id="main-wrap" class="container">   
-
-    <div id="main-text">
-      <div class="text-field">
+<div id="main-text">
+    <img src="${contextRootPath}/images/recruit.png" style="width: 100%; height: 100%;">
+    <div class="text-field" id="main-textfield">
         <span style="font-weight: bold; font-size: 2.0em;">팀원을 모집 </span> <span
           style="font-size: 2.0em;"> 하는 글을 간편하게</span>
         <div style="font-size: 2.0em;">등록할 수 있습니다.</div>
         <br> <span>종목과 지역을 설정하고 <span style="font-weight: bold;">팀원</span>을 구해보세요.
         </span>
-      </div>
-    </div>
+      </div>      
+  </div>   
 
+  <div id="main-wrap" class="container">   
     <form id='add_form' name="add-cancle" action='add' method='post'>
-      <div id="table">
+      <div id="table" style="margin-top: 40px;">
         <table class="table table-bordered">
           <tbody>
             <tr>
@@ -124,12 +130,12 @@
               <td><textarea id="summernote" name='teamContents' rows='5'></textarea></td>
             </tr>
           </tbody>
-        </table>
+        </table>   
       </div>
       <div class="form-group row">
         <div class="col-sm-12 text-center">
-          <a id="cancle" class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
-          <button id="add" class="btn btn-outline-dark">등록</button>
+          <a id="cancle" class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board' style="width:80px;">취소</a>
+          <button id="add" class="btn btn-outline-dark" style="width:80px;">등록</button>
         </div>
       </div>
     </form>

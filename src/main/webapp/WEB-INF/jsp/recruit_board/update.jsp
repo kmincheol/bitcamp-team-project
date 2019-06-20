@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <!-- common.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/common.css">
@@ -34,28 +33,35 @@
 
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
+
+<style>
+th {
+  vertical-align: middle !important;
+  text-align: center;
+  background: #f9f7f7;
+}
+</style>
 </head>
 
 <body>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
-  
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
   
-  <div id="main-wrap" class="container">
-
-    <div id="main-text">
-      <div class="text-field">
-        <span style="font-weight: bold; font-size: 2.0em;">팀원을 모집 </span> 
+  <div id="main-text">       
+    <img src="${contextRootPath}/images/recruit.png" style="width: 100%; height: 100%;">
+    <div class="text-field" id="main-textfield">
+      <span style="font-weight: bold; font-size: 2.0em;">팀원을 모집 </span> 
         <span style="font-size: 2.0em;"> 하는 글을 <br></span>
         <span style="font-weight: bold; font-size: 2.0em;">수정</span>
         <span style="font-size: 2.0em;">할 수 있습니다. </span> 
         <br> <br> 
         <span>수정할 항목을 변경 후 <span style="font-weight: bold;">저장</span> 버튼을 누르세요.</span>
       </div>
-    </div>
-
+  </div>
+  
+  <div id="main-wrap" class="container">
     <form id='update_form' action='../update' name="change" method='post'>
-      <div id="table">
+      <div id="table" style="margin-top: 40px;">
         <table class="table table-bordered">
           <tbody>
             <!-- 번호 넘겨줘야함 / 화면에 보이지 않음 -->
@@ -94,10 +100,10 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12 text-center">
-          <a class="btn btn-dark" href='${contextRootPath}/app/recruit_board'>취소</a>
-          <a class="btn btn-dark" href='' id="update" >저장</a>
+          <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board' style="width:80px;">취소</a>
+          <a class="btn btn-outline-dark" href='' id="update" style="width:80px;">저장</a>
         </div>
-      </div>
+      </div>    
     </form>
   </div>
   <!-- .container -->

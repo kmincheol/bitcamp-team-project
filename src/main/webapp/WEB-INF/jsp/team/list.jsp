@@ -78,39 +78,14 @@
           </li>
           <li class="detailbtn">
           <b>${team.teamName}</b></li> 
-          <li class="Type">
-          <c:choose>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'soccer'}">
-                  축구
-                </c:when>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'basketball'}">
-                  농구
-                </c:when>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'baseball'}">
-                  야구
-                </c:when>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'pingpong'}">
-                  탁구
-                </c:when>
-              </c:choose>
-          
+          <li class="Type"> 
+                ${team.teamTypeSports.teamSportsType} 
           </li> 
           <li>${team.topLocation.topLocationName} ${team.middleLocation.middleLocationName}</li>
           <li>${team.teamCreateDate}</li>
           <li class="Ages">${team.teamAges.teamAges}</li>
           <li>
-          <c:choose>
-                <c:when test="${team.teamLevel.teamLevel eq 'high'}">
-                  상
-                </c:when>
-                <c:when test="${team.teamLevel.teamLevel eq 'mid'}">
-                  중
-                </c:when>
-                <c:when test="${team.teamLevel.teamLevel eq 'low'}">
-                  하
-                </c:when>
-              </c:choose>
-          
+          ${team.teamLevel.teamLevel}
           </li>
           <li>${team.teamInfo}</li>
           <li class="teamType">${team.teamType}</li>
