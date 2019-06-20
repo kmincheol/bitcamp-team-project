@@ -78,6 +78,19 @@
           <result column="stdm_psti" property="stadiumName"/>
     </association>
   
+  <association property="topLocation" javaType="TopLocation">
+      <id column="toplc_id" property="topLocationId" />
+      <result column="toplc_no" property="topLocationNo" />
+      <result column="toplc_name" property="topLocationName" />
+    </association>
+    
+    <association property="middleLocation" javaType="MiddleLocation">
+      <id column="midlc_id" property="middleLocationId" />
+      <result column="midlc_no" property="middleLocationNo" />
+      <result column="midlc_name" property="middleLocationName" />
+      <result column="toplc_id" property="topLocationId" />
+    </association>
+ 
   </resultMap>
   
     <resultMap type="TeamMember" id="teamMemberMap">
@@ -623,9 +636,56 @@ select
        tm_id = ${value} 
   </select> 
 
+ <select id="findByNo" resultMap="teamMap" parameterType="int">
+    select
+    tm_id,
+    t.name,
+    tm_ambl_phot,
+    tm_intd,
+    area,
+     p.toplc_name,
+    d.midlc_name,
+    a.ages,
+    tt.types,
+    spt_clsf_name,
+    t.cdt,
+    tl.levs
+    from
+    tm t
+    left outer join
+    age a on t.age_id = a.age_id
+    left outer join tm_type tt on t.tm_type_id = tt.tm_type_id
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+     left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+      left outer join toplc p on p.toplc_no = substr(t.area,1,2)
+    left outer join midlc d on d.midlc_id = substr(t.area,3,2)
+    where   p.toplc_id = d.toplc_id and tm_id = ${value}
+  
+  </select>
 
-
-
+<update id="update" parameterType="team">
+  update
+    tm
+ <set>
+   <if test="teamInfo != null">tm_intd = #{teamInfo},</if>
+    <if test="teamAgeId != null">age_id = #{teamAgeId},</if>
+     <if test="teamTypeId != null">tm_type_id = #{teamTypeId},</if>
+    <if test="teamLevelId != null">tm_lev_id = #{teamLevelId},</if>
+     <if test="teamEmblemPhoto != null">tm_ambl_phot = #{teamEmblemPhoto}</if>
+   </set>
+ where
+    tm_id = #{teamId};
+  </update>
+  
+  <update id="update22" parameterType="questionBoard">
+  update
+    qstn
+ set
+    ans_stat = #{questionStatus}
+ where
+    qstn_id = #{questionNo};
+  </update>
+  
 
 
 

@@ -56,4 +56,8 @@ public interface MyTeamService {
   int mtchApllyDelete(int no);
   
   int mtchDelete(int no);
+  
+  Team findByNo(int no);
+  
+  int update(Team team);
 }

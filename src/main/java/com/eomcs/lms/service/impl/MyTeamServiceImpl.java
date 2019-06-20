@@ -168,6 +168,17 @@ public int mtchupdate(int otNo, int matchNo) {
   public int mtchDelete(int no) {
     return myteamDao.mtchDelete(no);
   }
+
+  @Override
+  public Team findByNo(int no) {
+    return myteamDao.findByNo(no);
+  }
+
+  @Override
+  public int update(Team team) {
+    // TODO Auto-generated method stub
+    return myteamDao.update(team);
+  }
 }
 
 
