@@ -1,35 +1,34 @@
 #main-text {
-	position: relative;
-	text-align: center;
-	width: 100%;
-	height: 230px;
-	border-bottom: 2px solid black;
-	margin-bottom: 15px;
-}
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}  
 
-#main-text h2 {
-	position: absolute;
-	text-align: left; 
-	bottom: 0;
-}
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
+}    
 
-#main-text h2 img {
-	width: 30px;
-	height: 30px;
-	margin-right: 5px;
-	margin-bottom: 25px;
+#main-text h1 img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-bottom: 25px;
 }
 
 form {
 	margin: 0 auto;
 }
 
-#title-wrap {
-	margin: 0px;
+#title-wrap {     
+	margin: 0px;    
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 40px;
 	text-align: center;
-	border-bottom: 1px solid gray;
 }
 
 #title {
@@ -40,6 +39,7 @@ table.info-table {
 	text-align: center;
 	line-height: 1.5;
 	width: 100%;
+	border-top: 1px solid #ccc;
 }
 
 table.info-table th {
@@ -79,4 +79,6 @@ table.info-table td {
 	margin-bottom: 50px;
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 100px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
 }

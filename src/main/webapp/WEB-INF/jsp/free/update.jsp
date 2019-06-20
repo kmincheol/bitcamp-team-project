@@ -48,7 +48,6 @@ th {
 
 <body>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
-
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
   <div id="main-text">
