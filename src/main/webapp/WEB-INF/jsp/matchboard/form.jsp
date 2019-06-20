@@ -38,16 +38,27 @@
     text-align: center;
     background: #f9f7f7;
   }
-   .ui-datepicker-calendar thead th {
+  .ui-datepicker-calendar thead th {
 color:black;
  }
 </style>
 
 </head>      
 <body>
+ <c:choose>
+      <c:when test="${teamsCheck eq 'notTeams'}">
+      <script>
+      alert("소속된 팀이 없습니다. 팀을 먼저 생성해주세요!")
+       location.href="${contextRootPath}/app/matchboard";
+      </script>
+       </c:when>
+</c:choose>
+
+
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />         
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
 
   <div class="container" id="main-wrap">
   
@@ -75,7 +86,7 @@ color:black;
           <tr>
             <th scope="row">소속팀</th>
             <td><select name='teamNo' class="custom-select" id="selectBox22">
-                <option value="" disabled selected hidden>소속팀(Leader) 선택</option>
+                <option value="" disabled selected hidden>소속팀 선택</option>
                 <c:forEach items="${match}" var="match">   
                   <c:if test="${!match.team.teamMember.team_leader}">
                     <option value='${match.team.teamId}'>${match.team.teamName}</option>
@@ -154,7 +165,7 @@ color:black;
       </table>
 
       <div id="btnArea" style=" text-align: center;">       
-          <a class="btn btn-outline-dark" href='.'>목록</a>
+          <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
           <input type="button" id="add" class="btn btn-outline-dark" onclick="check_onclick()" value="매치보드에 등록하기">
       </div>
     </form>
@@ -230,13 +241,13 @@ color:black;
             
             $('#gugun').on('click', function(){
             	   
-                var top = $("#sido option:selected").text();
-                var mid = $("#gugun option:selected").text();
+                var top = $("#sido option:selected").val();
+                var mid = $("#gugun option:selected").val();
                
                 console.log(top)
                 console.log(mid)
                 
-               $('#location').val(top +" "+ mid) 
+               $('#location').val(top + mid) 
                console.log($('#location').val())
               });
             

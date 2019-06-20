@@ -22,7 +22,7 @@
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
  
-<div id="container">
+<div class="container" id="container">
   <div id="content">
             
     <div class="join_step">
@@ -48,9 +48,9 @@
                     </span>
                   </div>
                   <div class="bir_mm">
-                    <span class="ps_box" id="birmm">
-                      <select id="mm" class="sel" aria-label="월">
-                        <option value="month">월</option>
+                    <div class="ps_box" id="birmm">
+                      <select id="mm" class="sel" required>
+                        <option value="" selected disabled>월</option>
                           <option value="01">1</option>
                           <option value="02">2</option>
                           <option value="03">3</option>
@@ -64,7 +64,7 @@
                           <option value="11">11</option>
                           <option value="12">12</option>
                       </select>
-                    </span>
+                    </div>
                   </div>
                   <div class="bir_dd">
                     <span class="ps_box" id="birdd">
@@ -81,8 +81,8 @@
                   <label for="gender">성별</label>
                 </h3>
                 <div class="ps_box" id="genderBox">
-                  <select id="gender" name="gender" class="sel" aria-label="성별">
-                    <option value="" selected>성별</option>
+                  <select id="gender" name="gender" class="sel" required>
+                    <option value="" selected disabled>성별</option>
                     <option value="남자">남자</option>
                     <option value="여자">여자</option>
                   </select>
@@ -475,7 +475,7 @@ function checkBirthday() {
   showDefaultBox(birmm);
   showDefaultBox(birdd);
 
-  if (yy == "" && mm == "month" && dd == "") {
+  if (yy == "" && mm == "" && dd == "") {
     showErrorMsg(oMsg, "생년월일을 정확하게 입력하세요.");
     showErrorBox(biryy);
     showErrorBox(birmm);
@@ -501,7 +501,7 @@ function checkBirthday() {
     showErrorBox(biryy);
     return false;
   }
-  if (mm == "month") {
+  if (mm == "") {
     showErrorMsg(oMsg, "태어난 월을 선택하세요.");
     showErrorBox(birmm);
     return false;
