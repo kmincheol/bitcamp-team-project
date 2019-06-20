@@ -39,11 +39,6 @@
 	font-family: 'Nanum Gothic', sans-serif;
 }
 
-div.button {
-	margin: auto;
-	width: 50%;
-}
-
 div.button input {
 	position: relative;
 	top: 50px;
@@ -102,8 +97,8 @@ h6 {
             <br>
             <h4>프로필 변경</h4>
             <h6>프로필 사진 및 기본 정보를 변경할 수 있습니다.</h6>
-            <input class="prof_no" type="hidden" value="${member.no}"> <input
-              class="prof-btn input-group-btn btn btn-dark" type="button" value="변경하기">
+            <input class="prof_no" type="hidden" value="${member.no}"> 
+            <input class="prof-btn input-group-btn btn btn-dark" type="button" value="변경하기">
           </div>
 
           <div class="col button">
