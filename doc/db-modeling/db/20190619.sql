@@ -1,3 +1,6 @@
+--외래키 제약 풀기
+SET foreign_key_checks = 0;
+
 -- 후기게시판
 DROP TABLE IF EXISTS revw RESTRICT;
 

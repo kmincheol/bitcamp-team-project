@@ -142,25 +142,12 @@ height: auto;
                     <select id="teamLevelId" name="teamLevelId" class="sel" aria-label="팀실력">
                       <option value="" selected>팀실력 선택</option>
                       <c:forEach items="${teamLevels}" var="teamLevel">
-                        <c:choose>
-                          <c:when test="${teamLevel.teamLevel eq 'high'}">
+                        
                             <option value="${teamLevel.teamLevelId}"
-                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>상
+                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>${teamLevel.teamLevel} 
                             </option>
-                          </c:when>
+                          
 
-                          <c:when test="${teamLevel.teamLevel eq 'mid'}">
-                            <option value="${teamLevel.teamLevelId}"
-                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>중
-                            </option>
-                          </c:when>
-
-                          <c:when test="${teamLevel.teamLevel eq 'low'}">
-                            <option value="${teamLevel.teamLevelId}"
-                              ${team.teamLevelId == teamLevel.teamLevelId ? "selected" : ""}>하
-                            </option>
-                          </c:when>
-                        </c:choose>
                       </c:forEach>
                     </select>
                   </div>

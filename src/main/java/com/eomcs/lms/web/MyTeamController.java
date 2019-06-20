@@ -194,7 +194,7 @@ public class MyTeamController {
 	   @RequestMapping("/list2/delete/{mtno}/{tno}")
 	    public String delete2MatchAply(@PathVariable int mtno, @PathVariable int tno,Model model) {
 	        myTeamService.deleteMatchAply(mtno,tno);
-	        return "redirect:../../tno";
+	        return "redirect:../../" + tno ;
 	    }
 
 	
@@ -202,7 +202,7 @@ public class MyTeamController {
 	public String matchSuccess(@PathVariable int matchNo,@PathVariable int otNo,Model model) {
 			 myTeamService.mtchupdate(otNo, matchNo);
 			 
-		return "redirect:../../";
+		return "myteam/list2";
 	}
 	
 
@@ -283,7 +283,6 @@ public class MyTeamController {
         List<TeamMember> teamMembers = teamService.teamMemberList();
         List<TopLocation> topLocations = teamService.topLocationList();
         Team team = myTeamService.findByNo(no);
-      System.out.println(team.getTeamId());
         
         model.addAttribute("team" ,team );     
         model.addAttribute("teamTypes", teamTypes);
