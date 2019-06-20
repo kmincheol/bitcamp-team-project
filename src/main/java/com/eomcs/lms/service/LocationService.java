@@ -8,6 +8,6 @@ public interface LocationService {
   List<TopLocation> findToplocation(int topLocationNo);
   List<TopLocation> topLocationList();
   List<MiddleLocation> findMiddleLocation(int topLocationNo);
-  String TopLocationName(int topLocationNo);
-  String MiddleLocationName(int middleLocationNo);
+  List<TopLocation> TopLocationName(int topLocationNo);
+  List<MiddleLocation> MiddleLocationName(int middleLocationNo);
 }

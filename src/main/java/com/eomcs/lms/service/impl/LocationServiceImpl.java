@@ -32,12 +32,12 @@ public class LocationServiceImpl implements LocationService {
   }
 
   @Override
-  public String TopLocationName(int topLocationNo) {
+  public List<TopLocation> TopLocationName(int topLocationNo) {
     return locationDao.TopLocationName(topLocationNo);
   }
 
   @Override
-  public String MiddleLocationName(int middleLocationNo) {
+  public List<MiddleLocation> MiddleLocationName(int middleLocationNo) {
     return locationDao.MiddleLocationName(middleLocationNo);
   }
 

@@ -12,8 +12,8 @@
     <result column="toplc_name"  property="topLocationName"/>
   
     <collection property="middleLocation" ofType="MiddleLocation">
-      <id column="toplc_id" property="topLocationId" />
-      <result column="midlc_id" property="middleLocationId" />
+      <id column="midlc_id" property="middleLocationId" />
+      <result column="toplc_id" property="topLocationId" />
       <result column="midlc_no" property="middleLocationNo" />
       <result column="midlc_name" property="middleLocationName" />
     </collection>
@@ -62,18 +62,20 @@
     where t.toplc_id = #{no}
   </select>
 
-  <select id="TopLocationName" resultType="java.lang.String" parameterType="int">
+  <select id="TopLocationName" resultMap="topLocationMap" parameterType="int">
     select
-      toplc_name
+    toplc_id,
+    toplc_name
     from
       toplc
     where
       toplc_no = #{value}
   </select>
   
-  <select id="MiddleLocationName" resultType="java.lang.String" parameterType="int">
+  <select id="MiddleLocationName" resultMap="middleLocationMap" parameterType="int">
     select
-       midlc_name
+     midlc_id,
+     midlc_name
     from
        midlc
     where
