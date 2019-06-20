@@ -34,7 +34,7 @@
 
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 
-<link rel="stylesheet" href="${contextRootPath}/css/announce_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_list.css">
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
@@ -92,14 +92,13 @@ table tbody tr {
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
+  <div id="main-text">
+    <img src="${contextRootPath}/images/announce.jpg" style="width: 100%; height: 100%;">
+    <h1>공지사항</h1>
+  </div>
+
   <div class="container" id="main-wrap">
    
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/speaker.png" style="width: 30px; height: 30px;">공지사항
-      </h2>
-    </div>
-    
       <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
         <thead>
           <tr>

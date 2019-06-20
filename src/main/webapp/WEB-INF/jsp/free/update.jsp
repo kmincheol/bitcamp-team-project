@@ -2,7 +2,7 @@
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <title>자유게시판</title>
 <!-- common.css -->
@@ -52,7 +52,7 @@ th {
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
   <div id="main-text">
-    <img src="${contextRootPath}/images/freeboard2.png" style="width: 100%; height: 100%;">
+    <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
     <div class="text-field" id="main-textfield">
       <span style="font-weight: bold; font-size: 2.0em;">게시물을 </span> <span
         style="font-weight: bold; font-size: 2.0em;">수정</span> <span style="font-size: 2.0em;">할

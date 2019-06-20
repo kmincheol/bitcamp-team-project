@@ -6,10 +6,8 @@
 <html>
 <head>
 <title>답글</title>
-<jsp:include page="../commonCss.jsp" />
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board_list.css">
-<link rel="stylesheet" href="${contextRootPath}/css/header.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/recruit_board_list.css">
 </head>
 
 <body>

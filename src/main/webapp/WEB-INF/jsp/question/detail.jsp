@@ -18,7 +18,7 @@ trimDirectiveWhitespaces="true"%>
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
-<link rel="stylesheet" href="${contextRootPath}/css/question_detail.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/question_detail.css">
 
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
@@ -37,7 +37,6 @@ trimDirectiveWhitespaces="true"%>
     </div>
     
   <div id="main-wrap" class="container">
-  
 
     <form action='update' method='post' name="remove">
       <div id="title-wrap" class="form-group">
@@ -145,7 +144,7 @@ trimDirectiveWhitespaces="true"%>
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-  <script>                                      
+  <script>
 $(document).ready(function() {
     $('.summernote').summernote({
       width:1080,

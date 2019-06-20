@@ -31,7 +31,7 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="${contextRootPath}/css/question_form.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/question_form.css">
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 
 <style>   

@@ -1,56 +1,103 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <title>공지사항 등록</title>
-<jsp:include page="../commonCss.jsp" />
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/announce.css">
+<link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_form.css">
+
+<style>
+th {
+	vertical-align: middle !important;
+	text-align: center;
+	background: #f9f7f7;
+}
+</style>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
-  <div class="container">
-  <br><br><br>
-  <br>
-    <h3>글 쓰기</h3>
-    <hr>
-    <br>
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+  <div id="main-text">
+    <img src="${contextRootPath}/images/announce.jpg" style="width: 100%; height: 100%;">
+    <div class="text-field" id="main-textfield">
+      <span style="font-weight: bold; font-size: 2.0em;">공지사항</span> <span style="font-size: 1.8em;">
+        을</span>
+      <div style="font-size: 1.8em;">등록할 수 있습니다.</div>
+    </div>
+  </div>
+
+  <div id="main-wrap" class="container">
     <form id='add_form' action='add' method='post'>
+      <div id="table" style="margin-top: 40px;">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th id="table-header" scope="row">제목</th>
+              <td><input id="title" name="title" class="form-control"></td>
+            </tr>
+            <tr>
+              <th id="table-header" scope="row" style="width: 151px;">내용</th>
+              <td><textarea id="summernote" name='contents' rows='5'></textarea></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label" style="text-align:center;">제목</label>
-        <div class="col-sm-10">
-          <input class="form-control" id="title" name='title'>
-        </div>
-      </div>
-
-      <div class="announceSummernote">
-        <textarea id="summernote" name="contents"></textarea>
-      </div>
-
-      <div class="form-group row" id="buttonRow">
-        <div class="col-sm-10" >
-          <button id="add" class="btn btn-dark">등록</button>
-          <a class="btn btn-dark" href='.'>목록</a>
+        <div class="col-sm-12 text-center">
+          <button id="add" class="btn btn-outline-dark" style="width: 80px">등록</button>
+          <a class="btn btn-outline-dark" href='.' style="width: 80px">목록</a>
         </div>
       </div>
     </form>
   </div>
   <!-- .container -->
 
-      
-      <!-- 제목을 입력하지 않고 확인버튼을 클릭시 alert 창 띄움 -->
 
-<jsp:include page="../javascript.jsp" />  
-<script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
-<script>
+  <!-- 제목을 입력하지 않고 확인버튼을 클릭시 alert 창 띄움 -->
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+
+  <script src="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.js"></script>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+  <script>
 "use strict"
 
 $(document).ready(function() {
   $('#summernote').summernote({
-    height: 300,
+    height: 400,
+    width:900,
     minHeight: null,
     maxHeight: null,
     focus: true

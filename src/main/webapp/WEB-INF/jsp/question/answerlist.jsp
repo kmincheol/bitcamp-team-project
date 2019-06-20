@@ -33,7 +33,7 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
 
-<link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/question_list.css">
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */

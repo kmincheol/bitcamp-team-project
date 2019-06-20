@@ -1,8 +1,8 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-  trimDirectiveWhitespaces="true"%>
+trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="ko">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html>
 <html>
 <head>
 <title>공지사항게시판</title>
@@ -18,21 +18,21 @@
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
+<link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_detail.css">
+
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/announce_detail.css">
 </head>
 <body>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
+  <div id="main-text">
+    <img src="${contextRootPath}/images/announce.jpg" style="width: 100%; height: 100%;">
+    <h1>공지사항</h1>
+  </div>
 
-  <div class="container" id="main-wrap">
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/speaker.png" style="width: 30px; height: 30px;">공지사항
-      </h2>
-    </div>
+  <div id="main-wrap" class="container">        
     <c:choose>
       <c:when test="${empty announce}">
         <p>해당 게시물을 찾을 수 없습니다.</p>
@@ -49,8 +49,8 @@
                 id="createdDate" name="createdDate">${announce.modifierDate}</span> <span>|</span> <span
                 id="viewCount" name="teamViewCount">${announce.viewCount}</span>
             </div>
-          </div>
-
+          </div>      
+       
           <!-- 내용 전 -->
           <div id="contents-section">
             <div class="contents-section-head">
