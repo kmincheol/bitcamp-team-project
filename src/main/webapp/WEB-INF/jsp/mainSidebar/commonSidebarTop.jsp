@@ -68,7 +68,7 @@
                     href="${contextRootPath}/app/member/findPassword">비밀번호찾기</a>
                   <lable style="color:white; font-size:10px;"> / </lable>
                   <a style="color: white; font-size: 10px; text-decoration: none;"
-                    href="${contextRootPath}/app/member/agreeTerms">회원가입</a>
+                    href="${contextRootPath}/app/member/form">회원가입</a>
                 </div>
               <div class="snsLoginBtnBox" style="text-align: center;">         
                 <span id="facebookBtn" class="snsLoginBtn"> 

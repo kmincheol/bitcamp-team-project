@@ -41,7 +41,47 @@ values(19,'match9',password('1111'),'매치9','1989-01-01','여','010-1334-4511'
 insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
 values(20,'match10',password('1111'),'매치10','1999-01-01','여','010-7744-5255','test10@match.com',33333,'인천','연수동','homepage');
 
-
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('1',password('1111'),'김기원','1990-01-01','남','010-1322-5253','kiki@gmail.com',33333,'인천','연수동','homepage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('2',password('1111'),'전상오','1992-01-01','남','010-1322-5253','jeonsangoh@gmail.com',33333,'인천','연수동','homepage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('3',password('1111'),'엄진영','1967-01-01','남','010-1322-5253','eom@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('4',password('1111'),'박재중','1994-01-01','남','010-1333-5233','park@gmail.com',33333,'인천','연수동','homepage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('5',password('1111'),'송광호','1990-01-01','남','010-1322-5253','song@gmail.com',33333,'인천','연수동','homepage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('6',password('1111'),'오승빈','1992-01-01','남','010-1322-5253','oh@gmail.com',33333,'인천','연수동','hompage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('7',password('1111'),'최익현','1967-01-01','남','010-1233-5333','choi@gmail.com',33333,'인천','연수동','homepage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('8',password('1111'),'우승완','1990-01-01','여','010-1322-5253','woo@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('9',password('1111'),'이대구','1960-01-01','여','010-1322-5253','kmc2@gmail.com',33333,'인천','연수동','homepage');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('10',password('1111'),'김시진','1994-01-01','남','010-1322-5253','kimsi@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('11',password('1111'),'한성우','1967-01-01','남','010-1322-5253','han@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('12',password('1111'),'마동석','1967-01-01','여','010-1322-5253','ma@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('13',password('1111'),'엄티처','1967-01-01','남','010-1322-5253','eomcs@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('14',password('1111'),'설리','1994-01-01','여','010-1322-5253','seol@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('15',password('1111'),'가인','1988-01-01','여','010-1322-5253','gain@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('16',password('1111'),'이승엽','1970-01-01','남','010-1322-5253','pro@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('17',password('1111'),'류현진','1985-01-01','남','010-1322-5253','la@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('18',password('1111'),'손흥민','1992-01-01','남','010-1322-5253','son@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('19',password('1111'),'김메시','1988-01-01','남','010-1322-5253','messi@gmail.com',33333,'인천','연수동','google');
+insert into mbr(user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
+values('20',password('1111'),'손날두','1992-01-01','남','010-1322-5253','sons@gmail.com',33333,'인천','연수동','google');
+insert into mbr(mbr_id,user_id,pwd,name,bth_dt,gndr,tel,email,post,bas_addr,det_addr,login_type)
 
 -- 연령대데이터
 insert into age(age_id, ages)
@@ -71,21 +111,21 @@ values(3,'회사소모임');
 
 -- 팀수준데이터
 insert into tm_lev(tm_lev_id,levs)
-values(1,'high');
+values(1,'상');
 insert into tm_lev(tm_lev_id,levs)
-values(2,'mid');
+values(2,'중');
 insert into tm_lev(tm_lev_id,levs)
-values(3,'low');
+values(3,'하');
 
 -- 종목유형데이터
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(1,'soccer');
+values(1,'축구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(2,'baseball');
+values(2,'야구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(3,'basketball');
+values(3,'농구');
 insert into spt_clsf(spt_clsf_id,spt_clsf_name)
-values(4,'pingpong');
+values(4,'탁구');
 
 -- 팀데이터
 insert into tm(tm_id,name,area,age_id,tm_type_id,tm_lev_id,spt_clsf_id)
@@ -244,13 +284,13 @@ values(4,6,'농구팀원모집합니다.','인천사시는분오세요.',1,3);
 
 -- 경기데이터
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(1,1,4,1,'축구한판','축구합시다.','2019-09-09','010101','서초경기장','as010101','as202020','010-5698-5456',10000);
+values(1,1,4,1,'축구한판','축구합시다.','2019-09-09','0101','서초경기장','as010101','as202020','010-5698-5456',10000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(2,2,5,2,'야구한판','야구합시다.','2019-09-07','020101','고양경기장','ks010101','ks202020','010-4598-5456',5000);
+values(2,2,5,2,'야구한판','야구합시다.','2019-09-07','0201','고양경기장','ks010101','ks202020','010-4598-5456',5000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(3,3,6,3,'농구한판','농구합시다.','2019-09-03','030101','인천경기장','ss010101','ss202020','010-5645-5456',20000);
+values(3,3,6,3,'농구한판','농구합시다.','2019-09-03','0301','인천경기장','ss010101','ss202020','010-5645-5456',20000);
 insert into mtch(mtch_id,tm_id,tm_id2,spt_clsf_id,titl,cont,game_dt,area,stdm_psti,stdm_lat,stdm_long,tel,cost)
-values(10,8,6,3,'농구한판','농구합시다.','2019-09-03','030101','인천경기장','ss010101','ss202020','010-5645-5456',20000);
+values(10,8,6,3,'농구한판','농구합시다.','2019-09-03','0301','인천경기장','ss010101','ss202020','010-5645-5456',20000);
 
 insert into mtch(mtch_id,tm_id,spt_clsf_id,titl,cont,game_dt,area,tel)
 values(11,10,1,'매치해요1','고고고1','2019-07-01','0101','010-5621-4521');
@@ -1105,7 +1145,9 @@ values(1,1,'공격수');
 insert into position (spt_clsf_id, position_no, position_name)
 values(1,2,'미드필더');
 insert into position (spt_clsf_id, position_no, position_name)
-values(1,3,'미드필더');
+values(1,3,'수비수');
+insert into position (spt_clsf_id, position_no, position_name)
+values(1,4,'골키퍼');
 insert into position (spt_clsf_id, position_no, position_name)
 values(2,1,'타자');
 insert into position (spt_clsf_id, position_no, position_name)

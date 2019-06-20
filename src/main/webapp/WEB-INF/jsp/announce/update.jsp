@@ -28,7 +28,7 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextRootPath}/css/announce_update.css">
+<link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_update.css">
 
 <style>
 th {
@@ -45,21 +45,23 @@ th {
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <div class="container" id="main-wrap">
-    <div id="main-text">
-      <div class="text-field" id="main-textfield">
-        <span style="font-weight: bold; font-size: 2.0em;">문의</span> <span style="font-size: 1.8em;">
-          했던 게시글을</span>
-        <div style="font-size: 1.8em;">변경할 수 있습니다.</div>
-      </div>
+<div id="main-text">
+    <img src="${contextRootPath}/images/announce.jpg" style="width: 100%; height: 100%;">
+    <div class="text-field" id="main-textfield">
+      <span style="font-weight: bold; font-size: 2.0em;">공지사항 게시글</span> <span style="font-size: 1.8em;">
+        을</span>
+      <div style="font-size: 1.8em;">변경할 수 있습니다.</div>
     </div>
+  </div>
+
+  <div class="container" id="main-wrap">
     <c:choose>
       <c:when test="${empty announce}">
         <p>해당 공지사항게시물이 없습니다</p>
       </c:when>
       <c:otherwise>
         <form action='.' method='post' id='update_form'>
-          <div id="table">
+          <div id="table" style="margin-top: 40px;">
             <table class="table table-bordered">
               <tbody>
                 <tr>

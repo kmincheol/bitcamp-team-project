@@ -14,16 +14,32 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
+
 <style>
   th{
     vertical-align: middle!important;
     text-align: center;
     background: #f9f7f7;
-  }    
+  }
+  .ui-datepicker-calendar thead th {
+color:black;
+ }
 </style>
 
 </head>
 <body>
+ <c:choose>
+
+      <c:when test="${confirm ne 'confirm'}">
+      <script>
+      alert("잘못된 접근입니다.")
+       location.href="${contextRootPath}/app/matchboard";
+      </script>
+      </c:when>
+      
+</c:choose>
+
+
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
 
@@ -83,21 +99,25 @@
               <div class="form-group row" style="margin-bottom: 0;">
                 <div class="col-sm">
                   <div class="input-group">
-                    <select class="custom-select" id="sido" name="location" onchange="itemChange()">
+                    <select class="custom-select" id="sido">
                       <option value="" disabled selected hidden>지역선택</option>
-                      <!-- db명 toplc_name  -->
-                      <option value="서울">서울</option>   
+                       <c:forEach items="${locations}" var="topLocation">
+                        <option value="${topLocation.topLocationNo}"
+                          ${team.topLocation.topLocationId == topLocation.topLocationId ? "selected" : ""}>${topLocation.topLocationName}
+                        </option>
+                      </c:forEach>
                     </select>
                   </div>
                 </div>
                 <div class="col-sm">
                   <div class="input-group">
                     <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
-                    <select name='location' class="custom-select" id="gugun">
+                    <select class="custom-select" id="gugun">
                       <option value="" disabled selected hidden>지역선택</option>
                     </select>
                   </div>
                 </div>
+                <input type="hidden" name="location" id="location" value=""> <!-- 실질적 위치 들어가는 부분 -->
               </div>
             </td>
             <th scope="row">전화번호</th>
@@ -126,11 +146,15 @@
   </div>
   <!-- .container -->
 
-  <jsp:include page="../javascript.jsp" />
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
 <script src="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.min.js"></script>
 
   <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.min.js"></script>
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+
 
 <script type="text/javascript">
 
@@ -168,96 +192,85 @@ $(function() {
 });
 
 
-function itemChange(number){
- 	var Seoul = new Array(); 
- 	Seoul[0] = '강남구';
-	Seoul[1] = '강동구';
-	Seoul[2] = '강북구';
-	Seoul[3] = '강서구';
-	Seoul[4] = '관악구';
-	Seoul[5] = '광진구';
-	Seoul[6] = '구로구';
-	Seoul[7] = '금천구';
-	Seoul[8] = '노원구';
-	Seoul[9] = '도봉구';
-	Seoul[10] = '동대문구';
-	Seoul[11] = '동작구';
-	Seoul[12] = '마포구';
-	Seoul[13] = '서대문구';
-	Seoul[14] = '서초구';
-	Seoul[15] = '성동구';
-	Seoul[16] = '성북구';
-	Seoul[17] = '송파구';
-	Seoul[18] = '양천구';
-	Seoul[19] = '영등포구';
-	Seoul[20] = '용산구';
-	Seoul[21] = '은평구';
-	Seoul[22] = '종로구';
-	Seoul[23] = '중구';
-	Seoul[24] = '중랑구';
-	 
-	var selectItem = $("#sido").val();
-	 
-	var changeItem;
-	  
-	if(selectItem == "서울"){ // 서울
-	  changeItem = Seoul;
-	}
-	$('#gugun').empty();
-	 
-	for(var count = 0; count < changeItem.length; count++){
-	    var option = $("<option>"+changeItem[count]+"</option>");
-	    $('#gugun').append(option);
-	    }
-}
-	
-	
-function numberMaxLength(e){
-    if(e.value.length > e.maxLength){
-        e.value = e.value.slice(0, e.maxLength);
-    }
-}
 
-	
-	function check_onclick(){
-  		theForm=document.update;
-  		var choicelocation1 = $("#sido option:selected").val();
-  		var choicelocation2 = $("#gugun option:selected").val();
-  
-  if(theForm.title.value=="" || theForm.playDate.value==""
-      || choicelocation1=="" || theForm.teamSportsId.value=="" || theForm.contents.value==""
-        || theForm.cost.value==""){
-    
-  		if(theForm.title.value==""){
-  			alert("제목 입력란이 비어있습니다. 확인해 주세요.");
- 			 theForm.title.focus();
-  		}
-      else if(theForm.playDate.value==""){
-    			alert("경기 날짜를 입력해주세요.");
-    		}
-       else if(choicelocation1==""){
-    			alert("지역을 선택 해주세요.");
-    		}
-      else if(theForm.teamSportsId.value==""){
-    			alert("종목을 선택해 주세요.");
-       theForm.teamSportsId.focus();
-    		}
-      else if(theForm.contents.value==""){
-        			alert("내용을 입력해 주세요.");
-        }
-      else if(theForm.cost.value==""){
-        		alert("비용을 입력해 주세요.");
-           theForm.teamSportsId.focus();
-        }
-  } else {
-    if (confirm("매치 수정하시겠습니까?") == true){    //확인
-      document.update.submit();
-  	}  else {   //취소
-      return false;
- 		 }
-  }
-	
-}
+$('#sido').change(function() {
+	   var no = $(this).val();
+	   console.log(name)
+	   
+	    $.getJSON('../AddressCheck', 
+	         {
+	       no: no
+	         },
+	       function(obj) {
+	         if (obj.status == 'success') { 
+	           var location = new Array;
+	           var subLocation = obj.middleLocations 
+	           var length = subLocation.length; 
+	             $('#gugun').html('');
+	             
+	             for (var i = 0; i < length; i++) {
+	               var option = $(
+	                   "<option value='" + subLocation[i].middleLocationId+ "'>" + subLocation[i].middleLocationName + "</option>"); 
+	                
+	               $(option).appendTo($('#gugun'));
+	             }
+	           } 
+	           }); 
+	 });
+
+        	$('#gugun').on('click', function() {
+        
+        		var top = $("#sido option:selected").val();
+        		var mid = $("#gugun option:selected").val();
+        
+        		console.log(top)
+        		console.log(mid)
+        
+        		$('#location').val(top + mid)
+        		console.log($('#location').val())
+        	});
+        
+        	
+        	function numberMaxLength(e) {
+        		if (e.value.length > e.maxLength) {
+        			e.value = e.value.slice(0, e.maxLength);
+        		}
+        	}
+
+	function check_onclick() {
+		theForm = document.update;
+		var choicelocation1 = $("#sido option:selected").val();
+		var choicelocation2 = $("#gugun option:selected").val();
+
+		if (theForm.title.value == "" || theForm.playDate.value == ""
+				|| choicelocation1 == "" || theForm.teamSportsId.value == ""
+				|| theForm.contents.value == "" || theForm.cost.value == "") {
+
+			if (theForm.title.value == "") {
+				alert("제목 입력란이 비어있습니다. 확인해 주세요.");
+				theForm.title.focus();
+			} else if (theForm.playDate.value == "") {
+				alert("경기 날짜를 입력해주세요.");
+			} else if (choicelocation1 == "") {
+				alert("지역을 선택 해주세요.");
+			} else if (theForm.teamSportsId.value == "") {
+				alert("종목을 선택해 주세요.");
+				theForm.teamSportsId.focus();
+			} else if (theForm.contents.value == "") {
+				alert("내용을 입력해 주세요.");
+			} else if (theForm.cost.value == "") {
+				alert("비용을 입력해 주세요.");
+				theForm.teamSportsId.focus();
+			}
+		} else {
+			if (confirm("매치 수정하시겠습니까?") == true) { //확인
+				document.update.submit();
+			} else { //취소
+				return false;
+			}
+		}
+
+	}
 </script>
 
 </body>

@@ -30,13 +30,14 @@
 
 <body>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
-  
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
   
+  <div id="main-text">
+    <img src="${contextRootPath}/images/recruit.png" style="width: 100%; height: 100%;">
+    <h1>모집 게시판</h1>
+  </div>    
+     
   <div id="main-wrap" class="container">
-    <div id="main-text">
-      <h2><img src="${contextRootPath}/images/open-book.png">게시글</h2>
-    </div>
       <form action='update' method='post' name="remove" enctype='multipart/form-data'>
         <div id="title-wrap" class="form-group row">
           <div id="title-row" class="col-sm-12">
@@ -54,7 +55,7 @@
         <div id="info-wrap">
           <table class="info-table">
             <tr>
-              <th>
+              <th style="border-left: 1px solid #ccc;">
                 <div>종목</div>
               </th>
               <td>
@@ -63,13 +64,13 @@
               <th>
                 <div>지역</div>
               </th>
-              <td>
+              <td style="border-right: 1px solid #ccc;">
                 <div id="location" name="teamArea">${teamRecruit.team.teamArea}</div>
-              </td>
-            </tr>
-          </table>
+              </td>      
+            </tr>  
+          </table>     
         </div>
-
+     
         <div id="contents-section">
           <div class="contents-section-head">
             <div>내용</div>
@@ -87,12 +88,18 @@
                 <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
                 <a class="btn btn-outline-dark" href="#">모집마감</a>
               </c:if>     
-            </c:forEach>
-            <c:if test="${!empty sessionScope.loginUser}">
+            </c:forEach>     
+            <c:set var="doneLoop" value="false"/> 
+             <c:forEach var="team" items="${team}">
+              <%-- <c:if test="${team.teamId != teamRecruit.teamId}"> --%>  
+              <input type="hidden" class="teamId" value="${team.teamId}">
+              <input type="hidden" id="ReteamId" value="${teamRecruit.teamId}"> 
+                <c:set var="doneLoop" value="true"/> 
+              <%-- </c:if> --%>
+               </c:forEach>
               <a onclick="return joinCheck()"
                 href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}'
-                id="join" class="btn btn-outline-dark">가입신청</a>     
-            </c:if>
+                id="join" class="btn btn-outline-dark">가입신청</a>
           </div>
         </div>
       </div>
@@ -107,6 +114,18 @@
     <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
 
   <script>
+  $(document).ready(function (){
+	  $('.teamId').each(function(index, item) {
+		  if ($(item).val() == $('#ReteamId').val()) {
+			  $('#join').hide();
+			  return false;
+		  } else {
+			  $('#join').show();
+		  }
+	  });
+  }); // ready
+  
+  
 			function removeCheck() {
 				if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 					document.remove.submit();

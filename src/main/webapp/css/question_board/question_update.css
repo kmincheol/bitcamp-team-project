@@ -1,0 +1,12 @@
+#main-textfield{
+	position: relative;
+  top: 90px;
+}
+
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+}

@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-location.href="matchboard/list/";
+location.href="matchboard/list";
 </script>
 </body>
 </html>

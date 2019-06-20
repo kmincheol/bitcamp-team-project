@@ -6,11 +6,11 @@
 	border-bottom: 2px solid black;
 }
 
-.text-field {
-	position: relative;
-	top: 40px;
+#main-textfield{
+    position: relative;
+    top: -180px;
+    color: white;
 }
-
 
 form {
 	margin: 0 auto;
@@ -18,12 +18,6 @@ form {
 
 #table {
 	margin-bottom: 30px;
-}
-
-#table-header {
-	background: #efefef;
-	text-align: center;
-	vertical-align: middle;
 }
 
 #area_select, #local_select {

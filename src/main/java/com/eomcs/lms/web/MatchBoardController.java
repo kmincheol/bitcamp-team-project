@@ -2,7 +2,6 @@ package com.eomcs.lms.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.MiddleLocation;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TopLocation;
@@ -121,9 +121,11 @@ public class MatchBoardController {
   public String test(Match match) throws Exception {
     return "matchboard/test";
   }
+   
+  
   
   @GetMapping("form")
-  public String form(Model model, HttpSession session, @RequestParam(defaultValue="01") int topLocationNo) {
+  public String form(Model model, HttpSession session) {
     Member member = (Member) session.getAttribute("loginUser");
     
     try {
@@ -133,14 +135,18 @@ public class MatchBoardController {
     }catch (Exception e) {
       return "matchboard/auth";
     }
+
     
-    List<TopLocation> location = locationService.findToplocation(topLocationNo);
-    model.addAttribute("location", location);
+    List<TopLocation> locations = locationService.topLocationList();
+    model.addAttribute("locations", locations);
     
     List<Match> match = matchBoardService.leaderJudge(member.getNo());
-   
-//    @SuppressWarnings("unchecked")
-//    List<Team> teams = (List<Team>) teamService.getTeam(member.getNo()); 
+    
+    List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo());
+    if (teams.size() == 0 || teams == null) {
+      session.setAttribute("teamsCheck", "notTeams");
+    } else {
+    }
     
     model.addAttribute("member", member); 
     model.addAttribute("match",match); 
@@ -167,7 +173,6 @@ public class MatchBoardController {
       }
     } else {
     }
-
 
     model.addAttribute("all", all);
     session.setAttribute("recommendMatches", recommendMatches); // 세션에 추천매칭 추가
@@ -199,9 +204,26 @@ public class MatchBoardController {
   
   
   
-  @GetMapping("update_form/{no}")
-  public String detailUpdate(@PathVariable int no, Model model) {
+  @GetMapping("update_form/{no}") // 업데이트 form 용
+  public String detailUpdate(@PathVariable int no, HttpSession session, Model model) {
     Match match = matchBoardService.get(no);
+    Member member = (Member) session.getAttribute("loginUser");
+    if (member == null) {
+      return "redirect:../../auth/form";
+    }
+    int matchTeamNo = match.getTeam().getTeamId(); // teamNo : 현 매치글을 작성한 팀 번호
+    List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo()); //회원 번호로 TeamMember 객체를 모두 가져오고
+    for(TeamMember t : teams) { //TeamMember 객체에서 team의 정보를 뽑아내기
+      int loginUserTeamNumber = t.getTeam().getTeamId();
+         if(matchTeamNo == loginUserTeamNumber) { 
+            session.setAttribute("confirm", "confirm");
+          }
+    }
+    
+    
+    List<TopLocation> locations = locationService.topLocationList(); // TOP 지역선택용
+    model.addAttribute("locations", locations);
+    
     model.addAttribute("match", match);
    return "matchboard/update";
   }
@@ -223,10 +245,34 @@ public class MatchBoardController {
       return "redirect:../matchboard";
   }
   
+  @ResponseBody
+  @GetMapping("AddressCheck")
+  public Object AddressCheck(int no) {
+    HashMap<String,Object> map = new HashMap<>();
+    
+    if (locationService.findToplocation(no) != null) {
+      List<MiddleLocation> middleLocations = locationService.findMiddleLocation(no);
+      System.out.println("MiddleLocations"+ middleLocations);
+      
+      map.put("status", "success");
+      map.put("middleLocations", middleLocations);
+    } else {
+      map.put("status", "fail");
+    }  
+    return map;
+  }
   
   
-  @PostMapping("update")
+  @PostMapping("update") // 업데이트
   public String update(Match match) {
+    
+    String address = match.getLocation();
+    
+    String address1 = address.substring(0, 2);
+    String address2 = address.substring(3);
+    
+    match.setLocation(address1 +" "+address2);
+    
     System.out.println("UPDATEUPDATE"+ match.toString());
     if (matchBoardService.update(match) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
@@ -281,6 +327,17 @@ public class MatchBoardController {
   @ResponseBody
   public Object detailData(int no, HttpSession session) {
     Match match = matchBoardService.get(no);
+    
+    String address = match.getLocation(); // 4글자이거나 5글자임 ex) 0101, 13217 이런식.
+    
+    String address1 = address.substring(0, 2);
+    int addressFirst = Integer.parseInt(address1);
+    String address2 = address.substring(3);
+    int addressSecond = Integer.parseInt(address2);
+    
+    
+    
+    
     HashMap<String,Object> matchMap = new HashMap<>();
     
     // 다른 사용자가 해당하는 매치글에 신청하기 위한 목적.
@@ -291,8 +348,9 @@ public class MatchBoardController {
       matchMap.put("myteam",teams);
     } else {
     }
-    
     matchMap.put("match", match);
+    matchMap.put("addressFirst", addressFirst);
+    matchMap.put("addressSecond", addressSecond);
     
     return matchMap;
   }

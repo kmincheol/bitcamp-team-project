@@ -15,10 +15,19 @@
       <id column="toplc_id" property="topLocationId" />
       <result column="midlc_id" property="middleLocationId" />
       <result column="midlc_no" property="middleLocationNo" />
-      <result column="midel_name" property="middleLocationName" />
+      <result column="midlc_name" property="middleLocationName" />
     </collection>
     
-  </resultMap>
+  </resultMap> 
+  
+  
+   <resultMap type="middleLocation" id="middleLocationMap">
+      <id column="toplc_id" property="topLocationId" />
+      <result column="midlc_id" property="middleLocationId" />
+      <result column="midlc_no" property="middleLocationNo" />
+      <result column="midlc_name" property="middleLocationName" />
+    </resultMap>
+  
   
   
   <select id="findTopLocation" resultMap="topLocationMap" parameterType="int">
@@ -30,6 +39,27 @@
       left outer join midlc m on t.toplc_id = m.toplc_id
     where
       t.toplc_no = #{value}
+  </select>
+  
+  <select id="topLocationList" resultMap="topLocationMap">
+    select
+    toplc_id,
+    toplc_no,
+    toplc_name
+    from 
+    toplc
+  </select>
+  
+   <select id="findMiddleLocation" resultMap="middleLocationMap" parameterType="int"> 
+    select
+    midlc_id,
+    midlc_no,
+    midlc_name,
+    m.toplc_id
+    from
+    midlc m
+    left outer join toplc t on m.toplc_id = t.toplc_id  
+    where t.toplc_id = #{no}
   </select>
   
 </mapper>

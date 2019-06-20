@@ -38,16 +38,27 @@
     text-align: center;
     background: #f9f7f7;
   }
-   .ui-datepicker-calendar thead th {
+  .ui-datepicker-calendar thead th {
 color:black;
  }
 </style>
 
 </head>      
 <body>
+ <c:choose>
+      <c:when test="${teamsCheck eq 'notTeams'}">
+      <script>
+      alert("소속된 팀이 없습니다. 팀을 먼저 생성해주세요!")
+       location.href="${contextRootPath}/app/matchboard";
+      </script>
+       </c:when>
+</c:choose>
+
+
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />         
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
 
   <div class="container" id="main-wrap">
   
@@ -75,7 +86,7 @@ color:black;
           <tr>
             <th scope="row">소속팀</th>
             <td><select name='teamNo' class="custom-select" id="selectBox22">
-                <option value="" disabled selected hidden>소속팀(Leader) 선택</option>
+                <option value="" disabled selected hidden>소속팀 선택</option>
                 <c:forEach items="${match}" var="match">   
                   <c:if test="${!match.team.teamMember.team_leader}">
                     <option value='${match.team.teamId}'>${match.team.teamName}</option>
@@ -114,21 +125,25 @@ color:black;
               <div class="form-group row" style="margin-bottom: 0;">
                 <div class="col-sm">
                   <div class="input-group">
-                    <select class="custom-select" id="sido" name="location" onchange="itemChange()">
+                    <select class="custom-select" id="sido">
                       <option value="" disabled selected hidden>지역선택</option>
-                      <!-- db명 toplc_name  -->
-                      <option value="서울">서울</option>   
+                      <c:forEach items="${locations}" var="topLocation">
+                        <option value="${topLocation.topLocationNo}"
+                          ${team.topLocation.topLocationId == topLocation.topLocationId ? "selected" : ""}>${topLocation.topLocationName}
+                        </option>
+                      </c:forEach>
                     </select>
                   </div>
                 </div>
                 <div class="col-sm">
                   <div class="input-group">
                     <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
-                    <select name='location' class="custom-select" id="gugun">
+                    <select class="custom-select" id="gugun">
                       <option value="" disabled selected hidden>지역선택</option>
                     </select>
                   </div>
                 </div>
+                <input type="hidden" name="location" id="location" value=""> <!-- 실질적 위치 들어가는 부분 -->
               </div>
             </td>
             <th scope="row">전화번호</th>
@@ -150,7 +165,7 @@ color:black;
       </table>
 
       <div id="btnArea" style=" text-align: center;">       
-          <a class="btn btn-outline-dark" href='.'>목록</a>
+          <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
           <input type="button" id="add" class="btn btn-outline-dark" onclick="check_onclick()" value="매치보드에 등록하기">
       </div>
     </form>
@@ -198,55 +213,46 @@ color:black;
                 });
             });
 
-			function itemChange(number) {
-				var Seoul = new Array();
-				Seoul[0] = '강남구';
-				Seoul[1] = '강동구';
-				Seoul[2] = '강북구';
-				Seoul[3] = '강서구';
-				Seoul[4] = '관악구';
-				Seoul[5] = '광진구';
-				Seoul[6] = '구로구';
-				Seoul[7] = '금천구';
-				Seoul[8] = '노원구';
-				Seoul[9] = '도봉구';
-				Seoul[10] = '동대문구';
-				Seoul[11] = '동작구';
-				Seoul[12] = '마포구';
-				Seoul[13] = '서대문구';
-				Seoul[14] = '서초구';
-				Seoul[15] = '성동구';
-				Seoul[16] = '성북구';
-				Seoul[17] = '송파구';
-				Seoul[18] = '양천구';
-				Seoul[19] = '영등포구';
-				Seoul[20] = '용산구';
-				Seoul[21] = '은평구';
-				Seoul[22] = '종로구';
-				Seoul[23] = '중구';
-				Seoul[24] = '중랑구';
 
-				var selectItem = $("#sido").val();
-
-				var changeItem;
-
-				if (selectItem == "서울") { // 서울
-					changeItem = Seoul;
-				}
-				$('#gugun').empty();
-
-				for (var count = 0; count < changeItem.length; count++) {
-					var option = $("<option>" + changeItem[count] + "</option>");
-					$(' #gugun').append(option);
-				}
-
-				/* var ssido = $("#sido").find("option:selected").val();
-				var ggugun = $("#gugun").find("option:selected").val();
-
-				var location = ("$(ssido).text()" + "$(ggugun).text()"); 
-				document.attr("#loc").text(location); */
-			}
-
+            $('#sido').change(function() {
+            	   var no = $(this).val();
+            	   console.log(name)
+            	   
+            	    $.getJSON('./AddressCheck', 
+            	         {
+            	       no: no
+            	         },
+            	       function(obj) {
+            	         if (obj.status == 'success') { 
+            	           var location = new Array;
+            	           var subLocation = obj.middleLocations 
+            	           var length = subLocation.length; 
+            	             $('#gugun').html('');
+            	             
+            	             for (var i = 0; i < length; i++) {
+            	               var option = $(
+            	                   "<option value='" + subLocation[i].middleLocationId+ "'>" + subLocation[i].middleLocationName + "</option>"); 
+            	                
+            	               $(option).appendTo($('#gugun'));
+            	             }
+            	           } 
+            	           }); 
+            	 });
+            
+            $('#gugun').on('click', function(){
+            	   
+                var top = $("#sido option:selected").val();
+                var mid = $("#gugun option:selected").val();
+               
+                console.log(top)
+                console.log(mid)
+                
+               $('#location').val(top + mid) 
+               console.log($('#location').val())
+              });
+            
+            
+            
 			
 			function numberMaxLength(e){
 			    if(e.value.length > e.maxLength){

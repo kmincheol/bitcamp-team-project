@@ -31,6 +31,7 @@ public class Member implements Cloneable, Serializable {
   private int mainTeam;
   
   private List<Team> team;
+  Team myteam;
   private TeamMember teamMember;
   private TeamTypeSports teamTypeSports;
   
@@ -43,6 +44,14 @@ public class Member implements Cloneable, Serializable {
         + ", status=" + status + ", createdDate=" + createdDate + ", latestDate=" + latestDate
         + ", manager=" + manager + ", mainTeam=" + mainTeam + ", team=" + team + ", teamMember="
         + teamMember + ", teamTypeSports=" + teamTypeSports + "]";
+  }
+
+  public Team getMyteam() {
+    return myteam;
+  }
+
+  public void setMyteam(Team myteam) {
+    this.myteam = myteam;
   }
 
   public int getNo() {

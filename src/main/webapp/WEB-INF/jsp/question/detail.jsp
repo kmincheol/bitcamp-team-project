@@ -18,7 +18,7 @@ trimDirectiveWhitespaces="true"%>
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
-<link rel="stylesheet" href="${contextRootPath}/css/question_detail.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/question_detail.css">
 
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
@@ -28,14 +28,15 @@ trimDirectiveWhitespaces="true"%>
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
-  <div id="main-wrap" class="container">
-
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/open-book.png">게시글
-      </h2>
+  
+ <div id="main-text">
+ <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
+      <h1>
+        고객 센터
+      </h1>      
     </div>
+    
+  <div id="main-wrap" class="container">
 
     <form action='update' method='post' name="remove">
       <div id="title-wrap" class="form-group">
@@ -143,7 +144,7 @@ trimDirectiveWhitespaces="true"%>
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-  <script>                                      
+  <script>
 $(document).ready(function() {
     $('.summernote').summernote({
       width:1080,

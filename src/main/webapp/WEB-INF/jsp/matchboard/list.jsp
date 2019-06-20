@@ -190,7 +190,7 @@
         </div> <!-- tools 끝 -->
         
         <div id="submitArea">
-            <button type="button" class="btn" id="matchform"
+            <button type="button" class="btn-outline-dark" id="matchform"
             onClick="location.href='${contextRootPath}/app/matchboard/form' " >
             매치등록하기
             </button>
@@ -238,19 +238,19 @@
                     
                     <div class="sportsType">종목 :
                     <c:choose>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '축구'}">
                             <p style="display:none;">축구</p>
                                  축구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '야구'}">
                             <p style="display:none;">야구</p>
                                  야구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/baseball_list_min.png">
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '농구'}">
                             <p style="display:none;">농구</p>
                                  농구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/basketball_list_min.png">
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '탁구'}">
                             <p style="display:none;">탁구</p>
                                  탁구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/pingpong_list_min.png">
                             </c:when>
@@ -258,13 +258,13 @@
                     </div>
                     <div class="teamLevel">팀레벨 : 
                           <c:choose>
-                            <c:when test="${match.teamLevel.teamLevel eq 'high'}">
+                            <c:when test="${match.teamLevel.teamLevel eq '상'}">
                              상
                             </c:when>
-                            <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
+                            <c:when test="${match.teamLevel.teamLevel eq '중'}">
                              중
                             </c:when>
-                            <c:when test="${match.teamLevel.teamLevel eq 'low'}">
+                            <c:when test="${match.teamLevel.teamLevel eq '하'}">
                              하
                             </c:when>
                           </c:choose>
@@ -301,7 +301,7 @@
              <c:if test="${!empty sessionScope.loginUser}">
              <h6 id="myteamtext" style="color:green; display:inline; float:left">나의 팀 :</h6>
                <select name='teamId' class="form-control" id="selectBox">
-                 <option value="" selected>나의소속팀</option>
+                 <option value="" selected>나의 소속팀</option>
                   <c:forEach items="${myteam}" var="myteam">
                     <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
                   </c:forEach>
@@ -355,7 +355,7 @@
                      
                       <td class="detail recommendTd" id="${match.no}" colspan="5" 
                           style="cursor: pointer;" 
-                           onMouseOver="this.style.backgroundColor='#f4f4f4';" 
+                           onMouseOver="this.style.backgroundColor='rgb(45, 45, 45)';" 
                            onMouseOut="this.style.backgroundColor=''"
                           data-toggle="modal" 
                           data-target="#exampleModalCenter"
@@ -370,16 +370,16 @@
                                onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'">
                         
                           <c:choose>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'soccer'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '축구'}">
                               <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/football_list_min.png"></div>
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'basketball'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '농구'}">
                               <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/basketball_list_min.png"></div>
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'baseball'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '야구'}">
                               <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/baseball_list_min.png"></div>
                             </c:when>
-                            <c:when test="${match.teamTypeSports.teamSportsType eq 'pingpong'}">
+                            <c:when test="${match.teamTypeSports.teamSportsType eq '탁구'}">
                               <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/pingpong_list_min.png"></div>
                             </c:when>
                           </c:choose>
@@ -387,16 +387,16 @@
                                
                                <br>
                                <ul id="EEE">
-                          <li>${match.topLocation.topLocationName}&nbsp${match.middleLocation.middleLocationName}</li>
+                          <li id="sibarLocation">${match.location}</li>
                           <li>${match.teamAges.teamAges} / 
                           <c:choose>
-                            <c:when test="${match.teamLevel.teamLevel eq 'high'}">
+                            <c:when test="${match.teamLevel.teamLevel eq '상'}">
                              상
                             </c:when>
-                            <c:when test="${match.teamLevel.teamLevel eq 'mid'}">
+                            <c:when test="${match.teamLevel.teamLevel eq '중'}">
                              중
                             </c:when>
-                            <c:when test="${match.teamLevel.teamLevel eq 'low'}">
+                            <c:when test="${match.teamLevel.teamLevel eq '하'}">
                              하
                             </c:when>
                           </c:choose>
@@ -415,7 +415,14 @@
                 <c:otherwise>
                   <tr>
                     <td>
-                      <div>추천할 팀이 없음</div>
+                      <div id="noSuggestion"><br>추천할 팀이 없음 <br><br>
+                      <button class="btn" style="color:#008bff; "
+                      onClick="location.href='${contextRootPath}/app/team/form' " >
+                      팀 등록하기
+                      </button>
+                      <br>
+                      </div>
+                        
                     </td>
                   </tr>
                 </c:otherwise>
@@ -427,6 +434,10 @@
               <tr>
                 <td id="loginsugge">
                   <div>로그인을 하면 팀에 맞는<br> 경기를 추천해드립니다.</div>
+                      <button class="btn" style="color:#008bff; "
+                      onClick="location.href='${contextRootPath}/app/auth/form' " >
+                      로그인
+                      </button>
                 </td>
               </tr>
             </c:otherwise>
@@ -568,7 +579,7 @@
                     $('.modal-body').append("<div='ajPlayDate' ><br> 경기날짜 : " +data.match.playDate + "</div>");
                     $('.modal-body').append("<div='ajlevel' ><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
                   $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
-                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.match.location + "</div>");
+                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.match.location +"</div>");
                   $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");
                   $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "원</div>");
                   $('.modal-body').append("<div='ajcontents'><br> 내용 : "+data.match.contents + "</div>");

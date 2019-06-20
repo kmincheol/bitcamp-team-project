@@ -72,7 +72,11 @@ public class TeamController {
   }
   
   @GetMapping("form")
-  public void form(Map<String,Object> map) {
+  public String form(Map<String,Object> map, HttpSession session) {
+    Member member = (Member) session.getAttribute("loginUser");
+    
+    if (member != null) {
+    
     List<TeamType> teamTypes = teamService.teamTypeList();
     List<TeamAges> teamAges = teamService.teamAgeList();
     List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
@@ -86,7 +90,10 @@ public class TeamController {
     map.put("teamLevels", teamLevels);
     map.put("teamMembers", teamMembers);
     map.put("topLocations", topLocations);
-    
+    } else {
+      return "redirect:../auth/form";
+    }
+  return "team/form";
   }
   
   @ResponseBody
@@ -121,6 +128,8 @@ public class TeamController {
   public String add(Team team, HttpSession session, TeamMember teamMember) {
 
       Member member = (Member) session.getAttribute("loginUser");
+      
+      member.setMyteam(team);
       
       teamMember.setMemberNo(member.getNo());
       teamMember.setMember(member);

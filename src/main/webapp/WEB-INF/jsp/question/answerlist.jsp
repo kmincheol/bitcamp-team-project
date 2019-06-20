@@ -33,7 +33,7 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
 
-<link rel="stylesheet" href="${contextRootPath}/css/question_list.css">
+<link rel="stylesheet" href="${contextRootPath}/css/question_board/question_list.css">
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
@@ -91,13 +91,14 @@ table tbody tr {
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
-  <div class="container" id="main-wrap">
-    <div id="main-text">
-      <h2>
-        <img src="${contextRootPath}/images/headset.png">답변대기 게시물
-      </h2>
+<div id="main-text">
+ <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
+      <h1>
+      답변 대기
+      </h1>      
     </div>
+  <div class="container" id="main-wrap">
+    
 
 
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">

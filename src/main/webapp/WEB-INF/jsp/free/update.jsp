@@ -2,7 +2,7 @@
   trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <title>자유게시판</title>
 <!-- common.css -->
@@ -18,52 +18,61 @@
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
 <!-- recruit_board_update.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_update.css">
+<link rel="stylesheet" href="${contextRootPath}/css/free/free_update.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-      
+
 <!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
 
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
 
 <!-- MDBootstrap Datatables  -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
+  rel="stylesheet">
 
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
+
+<style>
+th {
+	vertical-align: middle !important;
+	text-align: center;
+	background: #f9f7f7;
+}
+</style>
 </head>
 
 <body>
- <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
-  
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
-  
-   <div id="main-wrap" class="container">
-   
-     <div id="main-text">
-      <div class="text-field">
-        <span style="font-weight: bold; font-size: 2.0em;">쓴 게시물을 </span> 
-        <span style="font-weight: bold; font-size: 2.0em;">수정</span>
-        <span style="font-size: 2.0em;">할 수 있습니다. </span> 
-        <br> <br> 
-        <span>수정할 항목을 변경 후 <span style="font-weight: bold;">저장</span> 버튼을 누르세요.</span>
-      </div>
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+  <div id="main-text">
+    <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
+    <div class="text-field" id="main-textfield">
+      <span style="font-weight: bold; font-size: 2.0em;">게시물을 </span> <span
+        style="font-weight: bold; font-size: 2.0em;">수정</span> <span style="font-size: 2.0em;">할
+        수 있습니다. </span> <br> <span style="font-size: 1. .8em;">수정할 항목을 변경 후 <span
+        style="font-size: 1.8em font-weight: bold;">저장</span> 버튼을 누르세요.
+      </span>
     </div>
-    
-    
-     <form id='update_form' action='../update' name="change" method='post'>
-      <div id="table">
+  </div>
+
+  <div id="main-wrap" class="container">
+
+    <form id='update_form' action='../update' name="change" method='post'>
+      <div id="table" style="margin-top: 40px;">
         <table class="table table-bordered">
           <tbody>
             <!-- 번호 넘겨줘야함 / 화면에 보이지 않음 -->
-            <div class="content-number">
+            <div class="content-number" style="display: none">
               <label for="no" class="col-sm-2 col-form-label">번호</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="teamNo" id="no"
-                  value="${free.no}" readonly />
+                <input type="text" class="form-control" name="teamNo" id="no" value="${free.no}"
+                  readonly>
               </div>
             </div>
 
@@ -73,7 +82,7 @@
                 value="${free.title}" /></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row" style="width:151px;">내용</th>
+              <th id="table-header" scope="row" style="width: 151px;">내용</th>
               <td><textarea class="form-control" id="summernote" name='teamContents' rows='5'>${free.contents}</textarea></td>
             </tr>
           </tbody>
@@ -81,12 +90,12 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12 text-center">
-          <a class="btn btn-outline-dark" href='${contextRootPath}/app/free'>취소</a>
-          <a class="btn btn-outline-dark" href='' id="update" >저장</a>
-        </div>    
+          <a class="btn btn-outline-dark" href='${contextRootPath}/app/free' style="width: 80px">취소</a>
+          <a class="btn btn-outline-dark" href='' id="update" style="width: 80px">저장</a>
+        </div>
       </div>
     </form>
-    </div>
+  </div>
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
@@ -95,8 +104,8 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
-      
-<script>
+
+  <script>
 "use strict"
 
 $(document).ready(function() {

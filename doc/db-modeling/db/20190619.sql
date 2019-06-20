@@ -309,7 +309,7 @@ CREATE TABLE mtch (
   mdt         DATETIME     NULL     DEFAULT now() COMMENT '최근수정일', -- 최근수정일
   game_dt     DATETIME     NOT NULL COMMENT '경기날짜', -- 경기날짜
   area        VARCHAR(100) NOT NULL COMMENT '지역', -- 지역
-  stdm_psti   VARCHAR(255) NULL     COMMENT '경기장이름', -- 경기장이름
+  stdm_psti   VARCHAR(255) NULL     DEFAULT '경기장이 없습니다.' COMMENT '경기장이름', -- 경기장이름
   stdm_lat    VARCHAR(100) NULL     COMMENT '경기장위치위도', -- 경기장위치위도
   stdm_long   VARCHAR(100) NULL     COMMENT '경기장위치경도', -- 경기장위치경도
   tel         VARCHAR(30)  NOT NULL COMMENT '연락처', -- 연락처
@@ -582,18 +582,18 @@ ALTER TABLE join_tm
       rcrm_id  -- 팀원모집번호
     );
 
--- 시군구지역2
+-- 포지션
 CREATE TABLE position (
   position_id   INTEGER(30) NOT NULL COMMENT '식별번호', -- 식별번호
   position_no   INTEGER(30) NOT NULL COMMENT '포지션번호', -- 포지션번호
   position_name VARCHAR(50) NOT NULL COMMENT '이름', -- 이름
   spt_clsf_id   INTEGER(30) NULL     COMMENT '종목유형번호' -- 종목유형번호
 )
-COMMENT '시군구지역2';
+;
 
--- 시군구지역2
+-- 포지션
 ALTER TABLE position
-  ADD CONSTRAINT PK_position -- 시군구지역2 기본키
+  ADD CONSTRAINT PK_position -- 포지션 기본키
     PRIMARY KEY (
       position_id -- 식별번호
     );
