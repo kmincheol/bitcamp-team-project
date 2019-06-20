@@ -177,8 +177,8 @@ table tbody tr {
             <a class="input-group-btn1 btn btn-outline-dark"
               href="${contextRootPath}/app/recruit_board/form">글쓰기</a>
           </div>
-        </div>        
-      </c:if>
+        </div>            
+      </c:if>      
     </c:forEach>
   </div>
 
