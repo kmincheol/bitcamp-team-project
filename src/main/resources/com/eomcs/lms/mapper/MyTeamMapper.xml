@@ -659,7 +659,8 @@ select
      left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
       left outer join toplc p on p.toplc_no = substr(t.area,1,2)
     left outer join midlc d on d.midlc_id = substr(t.area,3,2)
-    where   p.toplc_id = d.toplc_id and tm_id = ${value}
+    where   
+    p.toplc_id = d.toplc_id and tm_id = ${value}
   
   </select>
 
