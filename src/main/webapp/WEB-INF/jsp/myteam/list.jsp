@@ -100,12 +100,13 @@ body {
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
 
-
-  <div id="main-wrap" class="container">
-    <div id="main-text">
-  <h2>    
-        <img src="${contextRootPath}/images/myteammain.jpg">나의 팀정보
+<div id="main-text">
+    <img src="${contextRootPath}/images/국대.jpg" style="width:100%; height:100%;"> 
+  <h2>     
+      나의 팀정보
       </h2>
+    </div>
+  <div id="main-wrap" class="container">
     </div>
     <div id="cdcd" style="width:1080px;height: 50px;margin-top: 30px;">
                            
