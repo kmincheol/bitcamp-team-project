@@ -87,12 +87,18 @@
                 <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
                 <a class="btn btn-outline-dark" href="#">모집마감</a>
               </c:if>     
-            </c:forEach>
-            <c:if test="${!empty sessionScope.loginUser}">
+            </c:forEach>     
+            <c:set var="doneLoop" value="false"/> 
+             <c:forEach var="team" items="${team}">
+              <%-- <c:if test="${team.teamId != teamRecruit.teamId}"> --%>  
+              <input type="hidden" class="teamId" value="${team.teamId}">
+              <input type="hidden" id="ReteamId" value="${teamRecruit.teamId}"> 
+                <c:set var="doneLoop" value="true"/> 
+              <%-- </c:if> --%>
+               </c:forEach>
               <a onclick="return joinCheck()"
                 href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}'
-                id="join" class="btn btn-outline-dark">가입신청</a>     
-            </c:if>
+                id="join" class="btn btn-outline-dark">가입신청</a>
           </div>
         </div>
       </div>
@@ -107,6 +113,18 @@
     <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp"/>
 
   <script>
+  $(document).ready(function (){
+	  $('.teamId').each(function(index, item) {
+		  if ($(item).val() == $('#ReteamId').val()) {
+			  $('#join').hide();
+			  return false;
+		  } else {
+			  $('#join').show();
+		  }
+	  });
+  }); // ready
+  
+  
 			function removeCheck() {
 				if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 					document.remove.submit();

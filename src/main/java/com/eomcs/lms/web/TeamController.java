@@ -122,6 +122,8 @@ public class TeamController {
 
       Member member = (Member) session.getAttribute("loginUser");
       
+      member.setMyteam(team);
+      
       teamMember.setMemberNo(member.getNo());
       teamMember.setMember(member);
       // add 할 시 팀장 지정

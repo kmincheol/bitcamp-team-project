@@ -16,6 +16,7 @@ import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.service.TeamRecruitBoardService;
+import com.eomcs.lms.service.TeamService;
 
 @Controller
 @RequestMapping("/recruit_board")
@@ -25,6 +26,9 @@ public class RecruitBoardController {
 
   @Autowired
   TeamRecruitBoardService recruitBoardService;
+  @Autowired
+  TeamService teamService;
+
 
   @RequestMapping("/form")
   public String recruitView(Model model, HttpSession session) {
@@ -35,14 +39,20 @@ public class RecruitBoardController {
   }
 
   @GetMapping("{no}")
-  public String detail(@PathVariable int no, Model model) {
+  public String detail(@PathVariable int no, Model model, HttpSession session) {
+
+    Member member = (Member) session.getAttribute("loginUser");
+    // 멤버넘버로 팀 찾는 쿼리에 로그인 유저 넘버 넘겨서 팀조회
+    // 모집게시판 팀 번호랑 멤버넘버로 찾은 팀 번호랑 비교
     TeamRecruit teamRecruit = recruitBoardService.get(no);
-
-    int b = teamRecruit.getTeamId();
-    List<TeamMember> teamMember = recruitBoardService.get3(b);
-
-    model.addAttribute("teamRecruit", teamRecruit);
+    List<Team> team = recruitBoardService.get2(member.getNo());
+    List<TeamMember> teamMember = recruitBoardService.get3(teamRecruit.getTeamId());
+    
+    // 팀 멤버에 팀 리더, 팀원 번호 
+    model.addAttribute("teamRecruit", teamRecruit); 
     model.addAttribute("teamMember", teamMember);
+    model.addAttribute("team", team);
+
 
     return "recruit_board/detail";
   }
@@ -51,10 +61,10 @@ public class RecruitBoardController {
   public String detailUpdate(@PathVariable int no, Model model) {
     TeamRecruit teamRecruit = recruitBoardService.getUpdate(no);
     model.addAttribute("teamRecruit", teamRecruit);
-    
+
     return "recruit_board/update";
   }
-  
+
   @PostMapping("add")
   public String add(TeamRecruit teamRecruit, HttpSession session, TeamMember tm) {
     Member member = (Member) session.getAttribute("loginUser");
@@ -84,15 +94,15 @@ public class RecruitBoardController {
   public String list(Model model) {
     List<TeamRecruit> teamRecruits = recruitBoardService.list();
     List<Member> member = recruitBoardService.list3();
-    
+
     logger.info(member);
-    
+
     model.addAttribute("list", teamRecruits);
     model.addAttribute("member", member);
-    
+
     return "recruit_board/list";
   }
-  
+
 
 
   @PostMapping("update")
@@ -102,11 +112,11 @@ public class RecruitBoardController {
     }
     return "redirect:../recruit_board/" + String.valueOf(teamRecruit.getTeamNo());
   }
-  
+
   @GetMapping("{no}/{mno}")
   public String insertJoinTeam(@PathVariable int no, @PathVariable int mno) {
     recruitBoardService.add3(no, mno);
-    
+
     return "redirect:.";
   }
 
