@@ -35,7 +35,7 @@ public class FacebookServiceImpl implements FacebookService {
     String facebookUrl = 
         "https://graph.facebook.com/v3.3/oauth/access_token?"+
         "client_id=" + globalPropertySource.getFacebookClientId() +
-        "&redirect_uri=" + "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=facebook" +
+        "&redirect_uri=" + "https://battlematching.online/app/auth/snsAccessToken?loginType=facebook" +
         "&client_secret="+ globalPropertySource.getFacebookClientSecret() +
         "&code=" + code;
     

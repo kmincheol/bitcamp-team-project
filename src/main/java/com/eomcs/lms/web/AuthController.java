@@ -66,7 +66,7 @@ public class AuthController {
     logger.info(state);
     
     String redirectUri = 
-        "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=";
+        "https://battlematching.online/app/auth/snsAccessToken?loginType=";
     String returnUrl = "auth/snsLoginFail";
     
     if (loginType.equalsIgnoreCase("facebook")) {

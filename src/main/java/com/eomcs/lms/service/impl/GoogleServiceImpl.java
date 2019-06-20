@@ -42,7 +42,7 @@ public class GoogleServiceImpl implements GoogleService {
     paramMap.add("code", code);
     paramMap.add("client_id", globalPropertySource.getGoogleClientId());
     paramMap.add("client_secret", globalPropertySource.getGoogleClientSecret());
-    paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=google");
+    paramMap.add("redirect_uri", "https://battlematching.online/app/auth/snsAccessToken?loginType=google");
     paramMap.add("grant_type", "authorization_code");
     
     HttpHeaders headers = new HttpHeaders();

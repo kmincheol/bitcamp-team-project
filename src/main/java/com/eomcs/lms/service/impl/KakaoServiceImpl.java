@@ -44,7 +44,7 @@ public class KakaoServiceImpl implements KakaoService {
     MultiValueMap<String,String> paramMap = new LinkedMultiValueMap<String,String>();
     paramMap.add("grant_type", "authorization_code");
     paramMap.add("client_id", globalPropertySource.getKakaoClientId());
-    paramMap.add("redirect_uri", "http://localhost:8080/bitcamp-team-project/app/auth/snsAccessToken?loginType=kakao");
+    paramMap.add("redirect_uri", "https://battlematching.online/app/auth/snsAccessToken?loginType=kakao");
     paramMap.add("code", code);
     paramMap.add("client_secret", globalPropertySource.getKakaoClientSecret());
     
