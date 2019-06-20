@@ -31,6 +31,16 @@ public class LocationServiceImpl implements LocationService {
     return locationDao.findMiddleLocation(topLocationNo);
   }
 
+  @Override
+  public String TopLocationName(int topLocationNo) {
+    return locationDao.TopLocationName(topLocationNo);
+  }
+
+  @Override
+  public String MiddleLocationName(int middleLocationNo) {
+    return locationDao.MiddleLocationName(middleLocationNo);
+  }
+
 
 }
 

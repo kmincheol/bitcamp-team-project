@@ -639,10 +639,10 @@ select
  <select id="findByNo" resultMap="teamMap" parameterType="int">
     select
     tm_id,
+    area,
     t.name,
     tm_ambl_phot,
     tm_intd,
-    area,
      p.toplc_name,
     d.midlc_name,
     a.ages,
@@ -660,7 +660,7 @@ select
       left outer join toplc p on p.toplc_no = substr(t.area,1,2)
     left outer join midlc d on d.midlc_id = substr(t.area,3,2)
     where   
-    p.toplc_id = d.toplc_id and tm_id = ${value}
+    tm_id = ${value}
   
   </select>
 

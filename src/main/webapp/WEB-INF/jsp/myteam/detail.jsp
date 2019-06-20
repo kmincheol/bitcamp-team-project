@@ -44,7 +44,7 @@
 
 
  <div id="main-wrap" class="container">
- <div id="main-text">
+ <div id="main-text"z>
     <h2>    
         <img src="${contextRootPath}/images/3dusersoccer.jpg">팀원 정보
       </h2>

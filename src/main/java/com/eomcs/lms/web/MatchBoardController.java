@@ -335,7 +335,8 @@ public class MatchBoardController {
     String address2 = address.substring(3);
     int addressSecond = Integer.parseInt(address2);
     
-    
+    String topLocation = locationService.TopLocationName(addressFirst);
+    String middleLocation = locationService.MiddleLocationName(addressSecond);
     
     
     HashMap<String,Object> matchMap = new HashMap<>();
@@ -349,8 +350,8 @@ public class MatchBoardController {
     } else {
     }
     matchMap.put("match", match);
-    matchMap.put("addressFirst", addressFirst);
-    matchMap.put("addressSecond", addressSecond);
+    matchMap.put("addressTop", topLocation);
+    matchMap.put("addressMiddle", middleLocation);
     
     return matchMap;
   }
