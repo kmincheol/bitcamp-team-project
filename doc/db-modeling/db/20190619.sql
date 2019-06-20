@@ -582,18 +582,18 @@ ALTER TABLE join_tm
       rcrm_id  -- 팀원모집번호
     );
 
--- 시군구지역2
+-- 포지션
 CREATE TABLE position (
   position_id   INTEGER(30) NOT NULL COMMENT '식별번호', -- 식별번호
   position_no   INTEGER(30) NOT NULL COMMENT '포지션번호', -- 포지션번호
   position_name VARCHAR(50) NOT NULL COMMENT '이름', -- 이름
   spt_clsf_id   INTEGER(30) NULL     COMMENT '종목유형번호' -- 종목유형번호
 )
-COMMENT '시군구지역2';
+;
 
--- 시군구지역2
+-- 포지션
 ALTER TABLE position
-  ADD CONSTRAINT PK_position -- 시군구지역2 기본키
+  ADD CONSTRAINT PK_position -- 포지션 기본키
     PRIMARY KEY (
       position_id -- 식별번호
     );

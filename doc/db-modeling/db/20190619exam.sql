@@ -1105,7 +1105,9 @@ values(1,1,'공격수');
 insert into position (spt_clsf_id, position_no, position_name)
 values(1,2,'미드필더');
 insert into position (spt_clsf_id, position_no, position_name)
-values(1,3,'미드필더');
+values(1,3,'수비수');
+insert into position (spt_clsf_id, position_no, position_name)
+values(1,4,'골키퍼');
 insert into position (spt_clsf_id, position_no, position_name)
 values(2,1,'타자');
 insert into position (spt_clsf_id, position_no, position_name)
