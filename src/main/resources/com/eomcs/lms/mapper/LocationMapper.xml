@@ -61,7 +61,25 @@
     left outer join toplc t on m.toplc_id = t.toplc_id  
     where t.toplc_id = #{no}
   </select>
+
+  <select id="TopLocationName" resultType="java.lang.String" parameterType="int">
+    select
+      toplc_name
+    from
+      toplc
+    where
+      toplc_no = #{value}
+  </select>
   
+  <select id="MiddleLocationName" resultType="java.lang.String" parameterType="int">
+    select
+       midlc_name
+    from
+       midlc
+    where
+       midlc_id = #{value}
+  </select>
+
 </mapper>
 
 

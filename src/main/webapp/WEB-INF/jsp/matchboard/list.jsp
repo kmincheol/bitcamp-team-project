@@ -579,7 +579,7 @@
                     $('.modal-body').append("<div='ajPlayDate' ><br> 경기날짜 : " +data.match.playDate + "</div>");
                     $('.modal-body').append("<div='ajlevel' ><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
                   $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
-                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.match.location +"</div>");
+                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.addressTop + " " + data.addressMiddle + "</div>");
                   $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");
                   $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "원</div>");
                   $('.modal-body').append("<div='ajcontents'><br> 내용 : "+data.match.contents + "</div>");
