@@ -264,7 +264,7 @@ public class MyTeamController {
       
         return "myteam/list5";
     }
-
+  
     @RequestMapping("/list5/delete/{mtno}")
     public String deleteMatch(@PathVariable int mtno) {
       
