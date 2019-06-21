@@ -11,7 +11,7 @@
 <script src="${contextRootPath}/js/rootpath.js"></script>
 <script>
         $(document).ready(function () {
-          opener.location.href = rootpath + "app/main";
+          opener.location.href = "${contextRootPath}/app/main";
           self.close();
         });
 </script>

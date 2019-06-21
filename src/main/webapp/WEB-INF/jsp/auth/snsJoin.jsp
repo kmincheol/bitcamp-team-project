@@ -65,7 +65,7 @@
                   cancelButtonText: '취소',
                   reverseButtons: true
               }).then((result) => {
-                var openUrl = rootpath + "app/member/signUpCompletion";
+                var openUrl = "${contextRootPath}/app/member/signUpCompletion";
                 var agreeMkt;
                 if (result.value) {
                   agreeMkt = true;
@@ -75,7 +75,7 @@
                 console.log(agreeMkt);
                 console.log(loginType);
                 
-                $.getJSON(rootpath + 'app/auth/snsEnter', {
+                $.getJSON('${contextRootPath}/app/auth/snsEnter', {
                   "termsRequired" : true,
                   "termsMarketing" : agreeMkt,
                   "loginType" : loginType
