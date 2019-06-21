@@ -130,7 +130,6 @@ public class TeamController {
       Member member = (Member) session.getAttribute("loginUser");
       
       member.setMyteam(team);
-      
       teamMember.setMemberNo(member.getNo());
       teamMember.setMember(member);
       // add 할 시 팀장 지정
@@ -141,6 +140,8 @@ public class TeamController {
       teamMember.setTeamMemberNo(team.getTeamId());
       teamService.addTeamLeader(teamMember);
       
+      member.setMainTeam(team.getTeamId());
+      System.out.println("->" + team.getTeamId());
       return "redirect:.";
   }
   
