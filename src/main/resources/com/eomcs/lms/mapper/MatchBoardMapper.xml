@@ -79,8 +79,8 @@
     
     <!-- 매치신청테이블 -->
    <collection property="matchApply" ofType="MatchApply">
-      <id column="tm_id" property="teamNo" />
-      <result column="mtch_id" property="matchNo" />
+      <id column="mtch_id" property="matchNo" />
+      <result column="tm_id" property="teamNo" />
       <result column="aply_stat" property="applyStatus" />
       <result column="aply_dt" property="applyDate" />
     </collection>
@@ -221,12 +221,12 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(m.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(m.area,3,2)
   </sql>
   
   <sql id="select123"> <!-- 매치정보를 위한 select2 -->
    select distinct
-    mtch_id,
+    m.mtch_id,
     m.tm_id,
     tm_id2,
     s.spt_clsf_id,
@@ -251,20 +251,23 @@
     p.toplc_name,
     d.midlc_name,
     a.ages,
-    tmb.tlead_wth
+    tmb.tlead_wth,
+    aply_stat
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
+    left outer join mtchaply apy on apy.mtch_id = m.mtch_id
     left outer join mbr u on tmb.mbr_id = u.mbr_id
     left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(m.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(m.area,3,2)
    where
-    tmb.tlead_wth = 1
+    tmb.tlead_wth = 1 AND
+    aply_stat like '대기중'
   </sql>
   
 <sql id="select2"> <!-- 추천매칭을 위한 select -->
@@ -292,7 +295,7 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_no = substr(m.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(m.area,3,2)
   </sql>
 
 

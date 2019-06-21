@@ -130,6 +130,8 @@ public class MatchServiceImpl implements MatchBoardService {
     List<TeamMember> teams = teamDao.findTeamMemberByMemberNo(member.getNo());
     // 그 유저의 메인팀 번호로 종목, 지역, 수준, 연령을 얻음.
     
+    logger.info("로그인 유저의 메인팀 >>" +member.getMainTeam());
+    
     if (member.getMainTeam() != 0) {
       Team team = teamDao.findSportsTypeByNo(member.getMainTeam());
       

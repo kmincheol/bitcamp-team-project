@@ -22,8 +22,7 @@
   
   
    <resultMap type="middleLocation" id="middleLocationMap">
-      <id column="toplc_id" property="topLocationId" />
-      <result column="midlc_id" property="middleLocationId" />
+      <id column="midlc_id" property="middleLocationId" />
       <result column="midlc_no" property="middleLocationNo" />
       <result column="midlc_name" property="middleLocationName" />
     </resultMap>
@@ -77,9 +76,10 @@
      midlc_id,
      midlc_name
     from
-       midlc
+    midlc
     where
-       midlc_id = #{value}
+    midlc_id = #{value}
+       
   </select>
 
 </mapper>

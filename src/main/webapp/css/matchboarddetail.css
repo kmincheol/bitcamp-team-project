@@ -104,16 +104,24 @@ table.info-table td {
 	padding-bottom: 100px;
 }
 
+#control-box{
+}
+
 #mtaply{
   text-align:center;
-  width:300px;
-  background-color: #decdb0;
-  border: 2px solid #e1dbd6;
+  width:380px;
   border-radius: 14px;
-  margin-bottom: 90px;
   margin-top: 20px;
   margin-left: 20px;
+  display:inline-block;
 }
+
+#buttonss{
+  text-align:center;
+  display:inline-block;
+  margin-bottom: 90px;
+}
+
 
 #selectBox{
   margin: 0 auto;

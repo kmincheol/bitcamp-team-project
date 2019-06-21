@@ -100,7 +100,7 @@ color:black;
                 <div class="col-sm">
                   <div class="input-group">
                     <select class="custom-select" id="sido">
-                      <option value="" disabled selected hidden>지역선택</option>
+                      <option value="${top.topLocationId}" disabled selected hidden>지역선택</option>
                        <c:forEach items="${locations}" var="topLocation">
                         <option value="${topLocation.topLocationNo}"
                           ${team.topLocation.topLocationId == topLocation.topLocationId ? "selected" : ""}>${topLocation.topLocationName}
@@ -113,7 +113,7 @@ color:black;
                   <div class="input-group">
                     <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
                     <select class="custom-select" id="gugun">
-                      <option value="" disabled selected hidden>지역선택</option>
+                      <option value="${middle.middleLocationId}" disabled selected hidden>지역선택</option>
                     </select>
                   </div>
                 </div>
