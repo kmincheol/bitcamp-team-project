@@ -266,8 +266,7 @@
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
     left outer join midlc d on d.midlc_id = substr(m.area,3,2)
    where
-    tmb.tlead_wth = 1 AND
-    aply_stat like '대기중'
+    tmb.tlead_wth = 1
   </sql>
   
 <sql id="select2"> <!-- 추천매칭을 위한 select -->

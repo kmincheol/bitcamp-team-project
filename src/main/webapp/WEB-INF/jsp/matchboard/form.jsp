@@ -235,6 +235,13 @@ color:black;
             	                
             	               $(option).appendTo($('#gugun'));
             	             }
+            	             
+            	             var mid = $("#gugun option:selected").val();
+            	             var top = $("#sido option:selected").val();
+            	                console.log(top)
+            	                console.log(mid)
+            	               $('#location').val(top + mid) 
+            	               console.log($('#location').val())
             	           } 
             	           }); 
             	 });
@@ -251,8 +258,7 @@ color:black;
                console.log($('#location').val())
               });
             
-            
-            
+
 			
 			function numberMaxLength(e){
 			    if(e.value.length > e.maxLength){
