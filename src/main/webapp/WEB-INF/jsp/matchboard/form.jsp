@@ -32,6 +32,11 @@
 
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
+
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+<link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+
 <style>   
   th{
     vertical-align: middle!important;
@@ -41,6 +46,9 @@
   .ui-datepicker-calendar thead th {
 color:black;
  }
+.btn-sss, .btn-fff {
+ cursor: pointer
+}
 </style>
 
 </head>      
@@ -186,10 +194,18 @@ color:black;
 
   <script src="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.min.js"></script>
 
-
+<script src="${contextRootPath}/js/rootpath.js"></script>
 
   <script type="text/javascript">
 			var openWin;
+			
+			var swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success btn-sss',
+          cancelButton: 'btn btn-danger btn-fff'
+        },
+        buttonsStyling: false,
+      })
 			
 			function openMap() {
 				// window.name = "부모창 이름"; 
@@ -277,37 +293,141 @@ function check_onclick(){
         || theForm.cost.value==""){
     
   		if(theForm.title.value==""){
-  			alert("제목 입력란이 비어있습니다. 확인해 주세요.");
- 			 theForm.title.focus();
+  		  swalWithBootstrapButtons.fire({
+          title: "확인해 주세요!",
+          html: '제목 입력란이 비어있습니다.',
+          type: 'error'
+      }).then((result) => {
+          if (result.value) {
+            theForm.title.focus();
+            return false;
+          }
+      })
   		}
   		else if(theForm.teamNo.value==""){
-    			alert("소속팀 선택이 되어있지 않습니다. 확인해 주하게되어 있고, 옵션도 풍부하게 갖추어져 있습니세요.");
+        swalWithBootstrapButtons.fire({
+          title: "확인해 주세요!",
+          html: '소속팀 선택이 되어있지 않습니다.',
+          type: 'error'
+      }).then((result) => {
+          if (result.value) {
+            theForm.teamNo.focus();
+            return false;
+          }
+      })
     		}
       else if(theForm.playDate.value==""){
-    			alert("경기 날짜를 입력해주세요.");
-       theForm.playDate.focus();
+        swalWithBootstrapButtons.fire({
+          title: "확인해 주세요!",
+          html: '경기 날짜를 입력해주세요.',
+          type: 'error'
+      }).then((result) => {
+          if (result.value) {
+            theForm.playDate.focus();
+            return false;
+          }
+      })
     		}
        else if(choicelocation1==""){
-    			alert("지역을 선택 해주세요.");
+         swalWithBootstrapButtons.fire({
+           title: "확인해 주세요!",
+           html: '지역을 선택 해주세요.',
+           type: 'error'
+       }).then((result) => {
+           if (result.value) {
+             return false;
+           }
+       })
     		}
       else if(theForm.teamSportsId.value==""){
-    			alert("종목을 선택해 주세요.");
-       theForm.teamSportsId.focus();
+        swalWithBootstrapButtons.fire({
+          title: "확인해 주세요!",
+          html: '종목을 선택해 주세요.',
+          type: 'error'
+      }).then((result) => {
+          if (result.value) {
+            theForm.teamSportsId.focus();
+            return false;
+          }
+      })
     		}
       else if(theForm.contents.value==""){
-        			alert("내용을 입력해 주세요.");
+        swalWithBootstrapButtons.fire({
+          title: "확인해 주세요!",
+          html: '내용을 입력해 주세요.',
+          type: 'error'
+      }).then((result) => {
+          if (result.value) {
+            return false;
+          }
+      })
         }
-      else if(theForm.cost.value==""){
-        			alert("비용을 입력해 주세요.");
-           theForm.teamSportsId.focus();
+      else if(theForm.cost.value == ""){
+        swalWithBootstrapButtons.fire({
+          title: "확인해 주세요!",
+          html: '비용을 입력해 주세요.',
+          type: 'error'
+      }).then((result) => {
+          if (result.value) {
+            theForm.cost.focus();
+            return false;
+          }
+      })
         }
-  } else {
-    if (confirm("매치 등록하시겠습니까?") == true){    //확인
-      document.submit.submit();
-  	}  else {   //취소
-      return false;
- 		 }
+  		
+  		return false;
   }
+  
+  if (theForm.playDate.value.length > 0 || theForm.playDate.value != null) {
+    console.log("여기");
+    
+    if (dateDiff(theForm.playDate.value,new Date())) { // 현재날짜가 삭제 시작일 후 인 경우
+      console.log("여긴?");
+      swalWithBootstrapButtons.fire({
+        title: "확인해 주세요!",
+        html: '현재 날짜 이후로만 선택할 수 있습니다.',
+        type: 'error'
+    })
+          theForm.cost.focus();
+          return false;
+      
+    }
+  }
+  
+  swalWithBootstrapButtons.fire({
+    title: '매치를 등록하시겠습니까?',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: '확인',
+    cancelButtonText: '취소',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.value) {
+      document.submit.submit();
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      return false;
+    }
+  })
+  }
+  
+function dateDiff(_date1, _date2) {
+  var diffDate_1 = _date1 instanceof Date ? _date1 : new Date(_date1);
+  var diffDate_2 = _date2 instanceof Date ? _date2 : new Date(_date2);
+
+  diffDate_1 = new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
+  diffDate_2 = new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
+
+  var diff = diffDate_2.getTime() - diffDate_1.getTime();
+  //diff = Math.ceil(diff / (1000 * 3600 * 24));
+  console.log(diff);
+  
+  if (diff > 0) {
+    return true;
+  } else {
+    return false;
+  }
+  
+ // return diff;
   }
 		</script>
 
