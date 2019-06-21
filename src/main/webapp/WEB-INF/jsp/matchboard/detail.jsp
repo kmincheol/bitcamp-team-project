@@ -109,7 +109,7 @@
               <div id="mtaply">
                <c:if test="${!empty sessionScope.loginUser}">
                <select name='teamId' class="form-control" id="selectBox">
-                 <option value="" selected>소속팀(Leader) 선택</option>
+                 <option value="" selected>소속팀 선택</option>
                   <c:forEach items="${myteam}" var="myteam">
                     <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
                   </c:forEach>
