@@ -286,6 +286,15 @@ height: auto;
                 
                $(option).appendTo($('#middleLocation'));
              }
+             var top = $('#topLocation').val(); 
+             var mid = $('#middleLocation').val(); 
+            
+             console.log(top)
+             console.log(mid)
+             
+            $('#area').val(top + mid) 
+            console.log($('#area').val())
+             
            } 
            }); 
  });
