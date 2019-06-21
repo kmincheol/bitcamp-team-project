@@ -45,7 +45,7 @@ th {
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-<div id="main-text">
+<div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/announce.jpg" style="width: 100%; height: 100%;">
     <div class="text-field" id="main-textfield">
       <span style="font-weight: bold; font-size: 2.0em;">공지사항 게시글</span> <span style="font-size: 1.8em;">
@@ -54,14 +54,14 @@ th {
     </div>
   </div>
 
-  <div class="container" id="main-wrap">
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
     <c:choose>
       <c:when test="${empty announce}">
         <p>해당 공지사항게시물이 없습니다</p>
       </c:when>
       <c:otherwise>
         <form action='.' method='post' id='update_form'>
-          <div id="table" style="margin-top: 40px;">
+          <div id="table">
             <table class="table table-bordered">
               <tbody>
                 <tr>
@@ -71,13 +71,13 @@ th {
                       <input type="text" class="form-control" name="no" id="no"
                         value="${announce.no}" readonly />
                     </div>
-                  </div>
+                  </div>        
                 </tr>
                 <tr>
                   <th id="table-header" scope="row">최근수정일</th>
-                  <td><input type="text" readonly class="form-control-plaintext"
-                    id="createdDate" value="${announce.modifierDate}"></td>
-                </tr>
+                  <td><div type="text" class="form-control-plaintext"
+                    id="createdDate"> ${announce.modifierDate}</div>
+                </tr>        
                 <tr>
                   <th id="table-header" scope="row">제목</th>
                   <td><input class="form-control" id="title" name='title'
@@ -93,7 +93,7 @@ th {
 
           <div class="form-group">
             <div class="col-sm-12" style="text-align: center;">
-              <a class="btn btn-outline-dark" href='../'>목록</a>
+              <a class="btn btn-outline-dark" href='../'>취소</a>
               <button class="btn btn-outline-dark" id="update">변경하기</button>
             </div>
           </div>

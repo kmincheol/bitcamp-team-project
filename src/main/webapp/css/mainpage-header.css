@@ -9,13 +9,12 @@ body {
       font-weight: lighter;
 }
 
-header {
+header #aa {
       width: 100%;
       height: 100vh;
-      background: url("../images/mainpage1.jpg") no-repeat 50% 30%;
       background-size: cover;
 }
-
+     
 .logo {
       line-height: 60px;
       position: fixed;
@@ -29,7 +28,7 @@ header {
       z-index: 999;
 }
 
-.header-nav {
+.header-nav {       
       position: fixed;
       width: 100%;
       line-height: 60px;
@@ -41,7 +40,6 @@ header {
 			right: 0px;
 			line-height: 60px;
 			list-style: none;
-			background: rgba(0, 0, 0, 0);
 			overflow: hidden;
 			color: #fff;
 			padding: 0;
@@ -49,10 +47,6 @@ header {
 			margin: 0;
 			padding-right: 40px;
 			transition: 1s;
-}
-
-.header-nav.black ul {
-      background: #000;
 }
 
 .header-nav ul li {

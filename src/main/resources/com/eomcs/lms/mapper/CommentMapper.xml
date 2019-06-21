@@ -73,6 +73,11 @@
     where cmt_id = #{no}
   </delete>
   
+  <delete id="deleteAll" parameterType="int">
+    delete from cmt 
+    where free_id = #{value}
+  </delete>
+  
   <update id="update" parameterType="comment">
     update cmt
     set

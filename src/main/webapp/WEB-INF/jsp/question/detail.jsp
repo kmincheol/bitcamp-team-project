@@ -36,11 +36,11 @@ trimDirectiveWhitespaces="true"%>
       </h1>      
     </div>
     
-  <div id="main-wrap" class="container">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
 
     <form action='update' method='post' name="remove">
       <div id="title-wrap" class="form-group">
-        <div id="title-row" class="col-sm-12">
+        <div id="title-row" class="col-sm-12">    
           <div id="title" name="title">${question.title}</div>
         </div>
         <div id="teamName-row" class="col-sm-12">
@@ -57,9 +57,9 @@ trimDirectiveWhitespaces="true"%>
             <div class="contents">${question.contents}</div>
           </div>
         </div>
-    </form>
+    </form>   
 
-
+   
     <jsp:include page="alist.jsp"></jsp:include>
     <div style="width: 100%; text-align: center; margin-top: 30px; margin-bottom: 30px;">
       <div style="display: inline-block;">
@@ -126,11 +126,11 @@ trimDirectiveWhitespaces="true"%>
               name="contents">${answer.contents}</textarea>
           </div>
         </div>
-
+      
         <div class="form-group">
-          <div class="col-sm-10">
-            <button id="modify_button" class="btn btn-dark" onclick="button3_click();">수정</button>
-            <a class="btn btn-dark" href='delete2/${answer.answerNo}'>삭제</a>
+          <div class="col-sm-12" style="text-align: center;">
+            <a class="btn btn-outline-dark" href='delete2/${answer.answerNo}' style="width:80px;">삭제</a>
+            <button id="modify_button" class="btn btn-outline-dark" onclick="button3_click();" style="width:80px;">수정</button>
           </div>
         </div>
 
@@ -147,13 +147,13 @@ trimDirectiveWhitespaces="true"%>
   <script>
 $(document).ready(function() {
     $('.summernote').summernote({
-      width:1080,
+      width:1048,
       height: 300,
       minHeight: null,
       maxHeight: null,
       focus: true
     });
-       
+           
     $('#add').click((e) =>{
       submitAgree();
       return false;

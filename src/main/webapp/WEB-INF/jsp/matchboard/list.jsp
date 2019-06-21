@@ -349,6 +349,21 @@
           <c:choose>
             <c:when test="${!empty sessionScope.loginUser}">
               <c:choose>
+                 <c:when test="${noSetTeam eq 'noSetTeam'}">
+                  <tr>
+                    <td>
+                      <div id="noSuggestion"><br>추천할 팀이 없습니다. <br> 팀을 생성후 대표팀을 설정하세요.<br><br>
+                      <button class="btn" style="color:#008bff; "
+                      onClick="location.href='${contextRootPath}/app/team/form' " >
+                      팀 등록하기
+                      </button>
+                      <br>
+                      </div>
+                    </td>
+                   </tr>
+                  </c:when>
+              
+              
                 <c:when test="${teamsCheck eq 'exist'}">
                   <c:forEach items="${recommendMatches}" var="match">
                     <tr>
@@ -412,22 +427,7 @@
                   </c:forEach>
                 </c:when>
                 
-                <c:otherwise>
-                  <tr>
-                    <td>
-                      <div id="noSuggestion"><br>추천할 팀이 없음 <br><br>
-                      <button class="btn" style="color:#008bff; "
-                      onClick="location.href='${contextRootPath}/app/team/form' " >
-                      팀 등록하기
-                      </button>
-                      <br>
-                      </div>
-                        
-                    </td>
-                  </tr>
-                </c:otherwise>
               </c:choose>
-            
             </c:when>
             
             <c:otherwise>
@@ -608,6 +608,7 @@
               
               $.getJSON("matchboard/data", {"no" : no}, function(data) {
                 console.log(data);
+                console.log(data.topLocation);
                   $('.modal-title').text(data.match.team.teamName);
                   $('.modal-title').append("<div id='ajmatchno' style='color:black;'><h6>매치번호"+ data.match.no + " 　　　　　　　　　　　　　　조회수 " + data.match.viewCount + " </h6></div>");
                   $('.modal-body').append("<div id='ajplaydate' style='color:black;'>경기날짜 : "+data.match.playDate +"</div>");
@@ -615,7 +616,7 @@
                     $('.modal-body').append("<div='ajPlayDate' ><br> 경기날짜 : " +data.match.playDate + "</div>");
                     $('.modal-body').append("<div='ajlevel' ><br> 레벨 : " +data.match.teamLevel.teamLevel + "</div>");
                   $('.modal-body').append("<div='ajsporttype'><br> 종목 : "+data.match.teamTypeSports.teamSportsType + "</div>");
-                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.addressTop.topLocationName+ " " + data.addressMiddle.middleLocationName + "</div>");
+                  $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.topLocation.topLocationName+ " " + data.middleLocation.middleLocationName + "</div>");
                   $('.modal-body').append("<div='ajstadium'><br> 경기장 : "+data.match.stadiumName + "</div>");
                   $('.modal-body').append("<div='ajcost'><br> 비용 : "+data.match.cost + "원</div>");
                   $('.modal-body').append("<div='ajcontents'><br> 내용 : "+data.match.contents + "</div>");

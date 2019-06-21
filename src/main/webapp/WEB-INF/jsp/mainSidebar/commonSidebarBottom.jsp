@@ -2,6 +2,7 @@
   trimDirectiveWhitespaces="true"%>
 
 </main>
+ <jsp:include page="../commonSideHeaderFooter/commonFooter.jsp" />
 </div>
 <!-- page-content" -->
 

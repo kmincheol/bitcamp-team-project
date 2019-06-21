@@ -50,24 +50,24 @@ th {
 </style>
 </head>
 <body>
-
+   
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
-  <div id="main-text">
+    
+  <div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
     <div class="text-field" id="main-textfield">
       <span style="font-weight: bold; font-size: 2.0em;">자유롭게 </span> <span
         style="font-size: 1.8em;"> 글을 </span>
-      <div style="font-size: 1.8em;">등록할 수 있습니다.</div>
+      <div style="font-size: 1.8em;">등록할 수 있습니다.</div>        
     </div>
   </div>
 
-  <div id="main-wrap" class="container">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
 
     <form id='add_form' name="add-cancle" action='add' method='post'>
-      <div id="table" style="margin-top: 40px;">
+      <div id="table">
         <table class="table table-bordered">
           <tbody>
             <tr>

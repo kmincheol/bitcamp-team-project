@@ -8,6 +8,6 @@ public interface LocationService {
   List<TopLocation> findToplocation(int topLocationNo);
   List<TopLocation> topLocationList();
   List<MiddleLocation> findMiddleLocation(int topLocationNo);
-  List<TopLocation> TopLocationName(int topLocationNo);
-  List<MiddleLocation> MiddleLocationName(int middleLocationNo);
+  TopLocation TopLocationName(int topLocationNo);
+  MiddleLocation MiddleLocationName(int middleLocationNo);
 }

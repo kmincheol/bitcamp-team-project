@@ -1,6 +1,7 @@
 #main-textfield{
-	position: relative;
-  top: 90px;
+    position: relative;
+    top: -150px;
+    color: white;
 }
 
 #main-text {

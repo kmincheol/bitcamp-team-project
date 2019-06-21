@@ -56,7 +56,9 @@
                 <div>경기장</div>
               </th>
               <td>
-                <div id="location">${match.stadiumName}</div>
+                <div id="location">${match.stadiumName}
+                <button class="btn btn-outline-dark" id="map" type="button" onclick="openMap()" style="margin-left:20px;">위치보기</button>
+                </div>
               </td>
             </tr>
             <tr>
@@ -85,7 +87,7 @@
                 <div>지역</div>
               </th>
               <td>
-                <div id="location">${match.location}</div>
+                <div id="location">${topLocation.topLocationName} &nbsp ${middleLocation.middleLocationName}</div>
               </td>
             </tr>
           </table>
@@ -102,7 +104,24 @@
 
   
       <div id="control-box" class="form-group row">
-          <div class="col-sm-12 text-center">                
+          <div class="col-sm-12 text-center" style="margin-bottom:20px;">
+          <c:if test="${sessionScope.loginUser.id ne matchuserId}">
+              <div id="mtaply">
+               <c:if test="${!empty sessionScope.loginUser}">
+               <select name='teamId' class="form-control" id="selectBox">
+                 <option value="" selected>소속팀 선택</option>
+                  <c:forEach items="${myteam}" var="myteam">
+                    <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
+                  </c:forEach>
+               </select>
+               
+                <a class="btn btn-danger" id="btnsub2">매치신청보내기</a>
+              </c:if>
+              </div>
+          </c:if>
+           </div>
+      
+          <div id="buttonss" class="col-sm-12 text-center">                
             <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
       
             <!-- 수정, 삭제는 해당팀의 팀장만 가능하게 조건필요 -->
@@ -113,26 +132,12 @@
           <a id="updt" class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard/update_form/${match.no}'>변경</a> 
             </c:if>
             </c:if>
-    </div>
+           </div>
     </div>
     </div>
     
       </form>
-          <c:if test="${sessionScope.loginUser.id ne matchuserId}">
-              <div id="mtaply">
-               <c:if test="${!empty sessionScope.loginUser}">
-              <h5 style="color: #557745;">나의 팀:</h5>
-               <select name='teamId' class="form-control" id="selectBox">
-                 <option value="" selected>소속팀(Leader) 선택</option>
-                  <c:forEach items="${myteam}" var="myteam">
-                    <option value='${myteam.team.teamId}'>${myteam.team.teamName}</option>
-                  </c:forEach>
-               </select>
-               
-                <button class="btn btn-danger" id="btnsub2">매치신청</button>
-              </c:if>
-              </div>
-          </c:if>
+
       
     </div>
   </div> <!-- .container -->
@@ -151,16 +156,13 @@ var teamnocom = sizesize;
 console.log("${sessionScope.loginUser.id} + '로그인 유저 아이디'");
 console.log("${matchuserId} + '매치글 작성 유저 아이디'");
 
-function openMap(){
+function openMap() {
     // window.name = "부모창 이름"; 
     window.name = "parentForm";
     // window.open("open할 window", "자식창 이름", "팝업창 옵션");
     window.open("${contextRootPath}/app/matchboard/map2.jsp",
             "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
 }
-
-
-
 
 $('#btnsub2').click(function() {
     var choiceTeamValue = $("#selectBox option:selected").val();
@@ -172,12 +174,8 @@ $('#btnsub2').click(function() {
    console.log(no +"-> 매치번호"); // 매치번호
    console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
  
-
-     
        console.log(no+"-> 매치번호");
        console.log(matchTeamNo+"-> 매치글작성한 팀번호");
-   
-   
    
    if (choiceTeamValue == "") {
  		 alert("팀을 선택해주세요.");
@@ -190,7 +188,7 @@ $('#btnsub2').click(function() {
 		
  	  $.ajax({
  	    type:"POST",
- 	    url:'submit/' + no,
+ 	    url:'matchboard/submit/' + no,
  	    contentType: 'application/json',
  	    dataType: "text",
  	    data:JSON.stringify({
@@ -205,10 +203,11 @@ $('#btnsub2').click(function() {
  	    	},
  	    error : function(data) {
  	       alert("이미 신청되었습니다.")
- 	       location.href=".";
+ 	      return false;
  	    	}
  	    })
  	 });
+
 
 
 

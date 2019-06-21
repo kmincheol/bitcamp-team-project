@@ -33,6 +33,9 @@
 
 <!-- comment css -->
 <link rel="stylesheet" href="${contextRootPath}/css/comment.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css">  
 </head>
 
 <body>
@@ -40,12 +43,12 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <div id="main-text">
+  <div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
     <h1>자유 게시판</h1>
-  </div>
+  </div>   
 
-  <div id="main-wrap" class="container">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
     <div class="freeList">
       <c:choose>
         <c:when test="${empty free}">
@@ -103,13 +106,14 @@
             <div class="col-sm-12" style="padding:0px;">
               <textarea class="form-control comment-form"
                 placeholder="댓글을 작성하세요." autocomplete=off rows="2" style="width: 100%; float:left;"></textarea>
-              <button class="btn btn-outline-dark" id="cmt-submit" type='button' style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button>
+              <!-- <button class="btn btn-outline-dark" id="cmt-submit" type='button' style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button> -->
+              <button class="btn btn-outline-dark sunext" type="button" id="cmt-submit" style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button> 
               <span id="counter">0/150</span>         
             </div>        
           </div>   
         </div>
-      </form>
-      <br>
+      </form>   
+      <br>     
       <%-- <jsp:include page="../comment/form.jsp" />  --%>
     </c:if>
     <jsp:include page="../comment/list.jsp" />
@@ -140,17 +144,24 @@
     
     $('#cmt-submit').on('click', function() {
       var conts = $('.comment-form').val();  
-      
+      if (conts == '') {
+        Swal.fire({
+          type: 'error',
+          title: '댓글을 입력하세요!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
       $.post('../comment/add',  
           {  
         contents: conts  
           },
         function(obj) {
-          if (obj.status == 'success') { 
+          if (obj.status == 'success') {  
             
          document.location.reload(true);
           }
-    })
+    }) };
   });
   });
 </script>
