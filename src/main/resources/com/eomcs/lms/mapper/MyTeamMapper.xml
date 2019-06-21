@@ -612,7 +612,7 @@ select
   </delete>
   
   
-  <delete id="mtchApllyDelete" parameterType="int">
+  <delete id="mtchApllyDelete" parameterType="int"> <!-- 성사된 매치경기 삭제할때. -->
     delete from mtchaply
     where  mtch_id = #{value}
   </delete>
