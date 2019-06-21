@@ -7,7 +7,7 @@
 <title>SNS 회원가입</title>
 <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
-<link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+<link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
 <style>
 .btn-sss, .btn-fff {
  cursor: pointer
@@ -16,6 +16,7 @@
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="${contextRootPath}/js/rootpath.js"></script>
 
 <script>
         $(document).ready(function () {
@@ -64,15 +65,17 @@
                   cancelButtonText: '취소',
                   reverseButtons: true
               }).then((result) => {
-                var openUrl = "${contextRootPath}/app/member/signUpCompletion";
+                var openUrl = rootpath + "app/member/signUpCompletion";
                 var agreeMkt;
                 if (result.value) {
                   agreeMkt = true;
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                   agreeMkt = false;
                 }
+                console.log(agreeMkt);
+                console.log(loginType);
                 
-                $.getJSON('${contextRootPath}/app/auth/snsEnter', {
+                $.getJSON(rootpath + 'app/auth/snsEnter', {
                   "termsRequired" : true,
                   "termsMarketing" : agreeMkt,
                   "loginType" : loginType
@@ -83,7 +86,7 @@
                     self.close();
                   } else {
                     swalWithBootstrapButtons.fire({
-                        title: '회원가입에 실패했습니다.<br>다시 시도해주세요.',
+                        title: '회원가입에 실패했습니다!<br>다시 시도해주세요.',
                         html: '만약 이와 같은 현상이 반복된다면<br>고객센터로 문의해주시기 바랍니다.',
                         type: 'error'
                     }).then((result) => {

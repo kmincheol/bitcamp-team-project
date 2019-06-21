@@ -7,7 +7,7 @@
 <title>SNS 로그인 실패</title>
 <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
-<link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+<link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
 <style>
 .btn-sss, .btn-fff {
  cursor: pointer
@@ -16,6 +16,7 @@
 </head>
 <body>
 <script src="${contextRootPath}/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="${contextRootPath}/js/rootpath.js"></script>
 <script>
 $(document).ready(function () {
   alertMsg();

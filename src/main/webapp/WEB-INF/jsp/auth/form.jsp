@@ -55,19 +55,19 @@
         <h6 class="snsLoginHeading">소셜 로그인으로 더 빠르게 시작하세요!</h6>
         
         <div class="snsLoginBtnBox">
-          <span id="facebookBtn" class="snsLoginBtn">
+          <span id="facebookBtnAuth" class="snsLoginBtn">
             <img src="${contextRootPath}/images/facebookLogo.png" class="snsBtn facebookBtn">
           </span>
         
-          <span id="naverBtn" class="snsLoginBtn">
+          <span id="naverBtnAuth" class="snsLoginBtn">
             <img src="${contextRootPath}/images/naverLogin.png" class="snsBtn">
           </span>
         
-          <span id="kakaoBtn" class="snsLoginBtn">
+          <span id="kakaoBtnAuth" class="snsLoginBtn">
             <img src="${contextRootPath}/images/kakaoIcon.png" class="snsBtn">
           </span>
         
-          <span id="googleBtn" class="snsLoginBtn">
+          <span id="googleBtnAuth" class="snsLoginBtn">
             <img src="${contextRootPath}/images/g-normal.png" class="snsBtn">
           </span>
         </div>
@@ -129,10 +129,10 @@ $(function() {
   var kakao = 'kakao';
   var google = 'google';
   
-  $('#facebookBtn').click(function() {windowopenPopup(facebook);});
-  $('#naverBtn').click(function() {windowopenPopup(naver);});
-  $('#kakaoBtn').click(function() {windowopenPopup(kakao);});
-  $('#googleBtn').click(function() {windowopenPopup(google);});
+  $('#facebookBtnAuth').click(function() {windowopenPopup(facebook);});
+  $('#naverBtnAuth').click(function() {windowopenPopup(naver);});
+  $('#kakaoBtnAuth').click(function() {windowopenPopup(kakao);});
+  $('#googleBtnAuth').click(function() {windowopenPopup(google);});
   
 });
 
@@ -146,7 +146,7 @@ function windowopenPopup(type) {
       'width=600, height=600, left=' + popupX +
       ', top=' + popupY + ', toolbar=no, menubar=no, location=no, status=no'
       );
-}
+} 
 </script>
 
 
