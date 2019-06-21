@@ -211,7 +211,7 @@ height: auto;
                     <div class="self_introduce_area">
                       <textarea class="ps_box self_introduce" id="teamInfo" name="teamInfo"
                         placeholder="간단한 팀소개를 입력해주세요." rows="20" cols="30" style="height: 90px;"></textarea>
-                        <span id="counter">0/150</span> 
+                        <span id="counter">0/20</span> 
                     </div> 
                   </div>
                 </div> 
@@ -254,13 +254,13 @@ height: auto;
       "use strict"
         $(document).ready(function(){
        $('#teamInfo').on('keydown', function() {
-          if($(this).val().length > 150) {
-              $(this).val($(this).val().substring(0, 150));
+          if($(this).val().length > 20) {
+              $(this).val($(this).val().substring(0, 20));
           }
           
           var content = $(this).val();
           $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
-          $('#counter').html(content.length + '/150');
+          $('#counter').html(content.length + '/20');
       }); 
       $('#teamInfo').keyup(); 
         });

@@ -202,7 +202,7 @@ public class MyTeamController {
 	public String matchSuccess(@PathVariable int matchNo,@PathVariable int otNo,Model model) {
 			 myTeamService.mtchupdate(otNo, matchNo);
 			 
-		return "myteam/list2";
+		return "redirect:../../../";
 	}
 	
 
@@ -242,9 +242,10 @@ public class MyTeamController {
         otherTeam.clear();
 
     List<Match> match = myTeamService.sucessMatching(tno);  //임시번호 나의팀번호
-                     
-             model.addAttribute("myTeam",myTeamService.matchMyTeam(tno));   // 나의 팀정보   
-   
+    List<Team>team= myTeamService.matchMyTeam(tno);
+             model.addAttribute("myTeam",team);   // 나의 팀정보   
+
+              System.out.println();
       for(Match m : match) {
         if(m.getOtherTeamNo() != 0) {
              for(Team t : myTeamService.matchOtherTeam(m.getOtherTeamNo())) {
@@ -256,7 +257,7 @@ public class MyTeamController {
                model.addAttribute("otherTeam",otherTeam);
         }
       }
-      System.out.println(matchNosd3.toString());
+      System.out.println(otherTeam.toString());
       model.addAttribute("matchNosd3",matchNosd3);
        
     model.addAttribute("tno",tno);
