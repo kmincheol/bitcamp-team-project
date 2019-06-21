@@ -79,6 +79,10 @@ a:hover{
   
 }
 
+.teamLevel{
+  width: 160px;
+}
+
 
 [data-jplist-group]{
     width: 500px;
@@ -182,7 +186,7 @@ a:hover{
   width: 78px;
 }
 #name-clear-btn3 {
-  margin-left: 8px;
+  margin-left: 9px;
   padding-top: 4px;
   width: 78px;
 }
@@ -382,6 +386,7 @@ button{
     top: 290px;
 }
 .modal-footer-inside{
+  padding-top: 13px;
 }
 
 #mtaply{
@@ -422,8 +427,13 @@ button{
   text-align: center;
 }
 
+.modal-header{
+  padding-right: 8px;
+}
+
 #exampleModalCenterTitle{
   text-align:center;
+  font-size:32px;
   margin-left: 45px;
 }
 
