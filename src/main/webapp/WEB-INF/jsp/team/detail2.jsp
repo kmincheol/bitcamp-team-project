@@ -10,8 +10,9 @@
 <title>팀 상세조회</title>
 <jsp:include page="../commonCss.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">     
 <link rel="stylesheet" href="${contextRootPath}/css/team2.css">
-</head>
+</head> 
 <body>
 
   <%-- <jsp:include page="../header.jsp" /> --%>
@@ -44,35 +45,12 @@
         <div style='margin:10px;'> <b style='font-size:30px; color:darkred;'>팀명</b><br>${team.teamName}</div> 
         <div class='area' style='margin:10px;'> <b style='font-size:30px; color:darkred;'>지역</b><br>${team.teamArea}</div>    
         <div class='lev' style='margin:10px;'> <b  style='font-size:30px; color:darkred'>팀실력 </b><br>
-          <c:choose>
-                <c:when test="${team.teamLevel.teamLevel eq 'high'}">
-                  상
-                </c:when>
-                <c:when test="${team.teamLevel.teamLevel eq 'mid'}">
-                  중
-                </c:when>
-                <c:when test="${team.teamLevel.teamLevel eq 'low'}">
-                  하
-                </c:when>
-         </c:choose>
+         ${team.teamLevel.teamLevel}
         </div>  
         </div>
         <div style='position:relative; left:120px; bottom:248px;'>   
         <div class='sportsTypes' style='margin:10px;'> <b  style='font-size:30px; color:darkred'>종목</b><br>
-         <c:choose>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'soccer'}">
-                  축구
-                </c:when>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'basketball'}">
-                  농구
-                </c:when>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'baseball'}">
-                  야구
-                </c:when>
-                <c:when test="${team.teamTypeSports.teamSportsType eq 'pingpong'}">
-                  탁구
-                </c:when>
-        </c:choose>
+        ${team.teamTypeSports.teamSportsType}
         </div> 
         <div style='margin:10px;'> <b  style='font-size:30px; color:darkred'>연령대</b><br>${team.teamAges.teamAges}</div>
         <div style='margin:10px;'> <b  style='font-size:30px; color:darkred'>창단일</b><br>${team.teamCreateDate}</div>  

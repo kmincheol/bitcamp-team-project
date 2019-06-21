@@ -165,8 +165,10 @@ public class MatchBoardController {
     if (session.getAttribute("loginUser") != null) {
       Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
       List<Match> logUserteames = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서// 리더정보 뽑아오기
-                                                                                 
+      logger.info("로그인유저" + member);
+      logger.info("로그인유저팀" + logUserteames);
       List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo());
+      logger.info("팀팀" + teams);
       recommendMatches = matchBoardService.recommendMatch(member); // 추천매칭 정보가져오기
       
       model.addAttribute("myteam", logUserteames);
@@ -178,6 +180,8 @@ public class MatchBoardController {
     } else {
     }
     
+    logger.info("모두" + all);
+    logger.info("추천" + recommendMatches);
     model.addAttribute("all", all);
     
     if(recommendMatches.size() >= 1) {

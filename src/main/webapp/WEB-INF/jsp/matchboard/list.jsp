@@ -77,6 +77,7 @@
         <!-- filter control -->
         <div id="toolsss">
         <table id="tabletable">
+        <tr>
         <td>
         <div id="allTypes">
         <button class="btn btn-dark" id="allbtn1" type="button" style="margin-bottom: 6px;"
@@ -114,6 +115,7 @@
         </div>
         
         </td>
+        
         <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
         <td>
         <div id="allLevel">        
@@ -186,6 +188,7 @@
          placeholder="날짜를 선택하세요" />
     </div>
     </td>
+    </tr>
     </table>
         </div> <!-- tools 끝 -->
         

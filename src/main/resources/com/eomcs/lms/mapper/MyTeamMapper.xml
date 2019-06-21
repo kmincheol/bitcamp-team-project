@@ -515,7 +515,8 @@ mtc.tm_id = #{value}
  m.mbr_id,
  gndr,
  tel,    
- email
+ email,
+ m.prof_phot
  from
   rcrm rc 
   left outer join join_tm jt on rc.rcrm_id = jt.rcrm_id

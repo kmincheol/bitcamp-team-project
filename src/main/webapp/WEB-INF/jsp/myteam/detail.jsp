@@ -23,38 +23,50 @@
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <style>
 
-#main-text h2 {
-  position: absolute;
-  text-align: left;
-  bottom: 0;
+
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 40px;
+}     
+    
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
 }
 
-#main-text h2 img {
+#main-text h1 img {
+  width: 30px;
+  height: 30px;
   margin-bottom: 25px;
   margin-right: 5px;
-  width:80px;
-  height:80px;
 }
+
+
 </style>
 </head>
 <body>
  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
+  <div id="main-text">
+    <img src="${contextRootPath}/images/국대.jpg" style="width:100%; height:100%;">
+  <h1>    
+        팀원 정보
+      </h1>
+    </div>
 
  <div id="main-wrap" class="container">
- <div id="main-text"z>
-    <h2>    
-        <img src="${contextRootPath}/images/3dusersoccer.jpg">팀원 정보
-      </h2>
-    </div>
 
 
 <div style="border: 15px solid #efefef;width: 1080px;height: 400px;">
      
       <div style="width: 600px;height: 350px; float:left;">
-             <div  style="width: 450px;height: 450px; margin:auto; margin-top:25px" >
+             <div  style="width: 450px;height: 450px; margin:auto; margin-top:30px" >
              <table class="table" style="border-top:4px solid;border-bottom:4px solid; font-size:17px">
   <tbody>
     <tr>

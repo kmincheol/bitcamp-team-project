@@ -225,8 +225,8 @@ table tbody tr {
 			/* window.name = "parentForm"; */
       var no = $(this).children().val();
 			console.log(no)
-			window.open("${contextRootPath}/app/team/" + no,"childForm","width=1200, height=1200, resizable = no, scrollbars = no");
-					});
+			window.open("${contextRootPath}/app/team/" + no,"childForm","width=800, height=750, resizable = no, scrollbars = no");  
+					}); 
 			});
 		</script>
 </body>

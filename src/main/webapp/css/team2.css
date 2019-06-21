@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.container {
+font-family: 'Jua', sans-serif;
+
+
 html{
   width:800px;
   height:600px;
@@ -10,7 +14,7 @@ body{
   height:600px;
 }
 .revise {
-  font-family: 'Do Hyeon', sans-serif;
+  /* font-family: 'Do Hyeon', sans-serif;  */
   margin-left: 67px;
   width:595px;
   height:600px;
