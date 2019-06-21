@@ -322,7 +322,7 @@ function redirect() {
   }).then(function(result) {
     if (result.value) {
       $('#join_form').submit();
-      location.href = "http://localhost:8080/bitcamp-team-project/app/auth/form";
+      location.href = "https://battlematching.online/app/auth/form";
     }
   })
 }
