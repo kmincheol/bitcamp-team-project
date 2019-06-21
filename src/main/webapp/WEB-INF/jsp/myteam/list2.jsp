@@ -17,8 +17,6 @@
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 
-<!-- recruit_board_list.css -->
-<%-- <link rel="stylesheet" href="${contextRootPath}/css/recruit_board/recruit_board_list.css"> --%>
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -44,18 +42,28 @@
 .team_info {
 
 }
-#main-text h2 {
-  position: absolute;
-  text-align: left;
-  bottom: 0;
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 40px;
+}     
+    
+#main-text h1 {
+  position: relative;
+    top: -60%;
+    color: white;
 }
 
-#main-text h2 img {
+#main-text h1 img {
+  width: 30px;
+  height: 30px;
   margin-bottom: 25px;
   margin-right: 5px;
-  width:80px;
-  height:80px;
 }
+
 </style>
 
 </head>
@@ -63,13 +71,15 @@
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
-  <div id="main-wrap" class="container">
-     <div id="main-text">
-    <h2>    
-        <img src="${contextRootPath}/images/3dusersoccer.jpg">요청받은 경기
-      </h2>
+  
+    <div id="main-text">
+    <img src="${contextRootPath}/images/국대.jpg" style="width:100%; height:100%;">
+  <h1>    
+        나의 팀정보
+      </h1>
     </div>
+  <div id="main-wrap" class="container">
+ 
        <div id="cdcd" style="width:1080px;height: 50px;margin-top: 30px;">
              <div id="myTeamHeader" style="text-align: center; font-size: 20px;">
           <span style="margin : 50px;"><a href="${contextRootPath}/app/myteam"style="text-decoration:none; color:black"> 나의팀 </a> </span> 
@@ -99,12 +109,12 @@
             <tbody>  
                <c:forEach items="${matchNos}" var="matchNos">
               <tr style="height: 100px;">
-                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img  style ="width:100px" src="${matchNos.team.teamEmblemPhoto }"/></td>
+                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img  style ="width:200px" src="${matchNos.team.teamEmblemPhoto }"/></td>
                 <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px;">
-                <div class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
-                <div class="team_info">&middot; 연령 : ${matchNos.team.teamAgeId } 대</div>
-                <div class="team_info">&middot; 수준 : ${matchNos.team.teamLevelId }</div>
-                <div class="team_info">&middot; 소개 : ${matchNos.team.teamInfo }</div>
+                <div style="font-size:20px" class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
+                <div style="font-size:20px"class="team_info">&middot; 연령 : ${matchNos.team.teamAgeId } 대</div>
+                <div style="font-size:20px"class="team_info">&middot; 수준 : ${matchNos.team.teamLevelId }</div>
+                <div style="font-size:20px"class="team_info">&middot; 소개 : ${matchNos.team.teamInfo }</div>
                 </td>              
                 <td colspan="1" style="vertical-align: middle; width: 150px;">  
                    <a class="btn btn-outline-dark" href="${contextRootPath}/app/myteam/list2/update/${matchNos.no}/${matchNos.team.teamId}" style="width: 100%;">수락</a>

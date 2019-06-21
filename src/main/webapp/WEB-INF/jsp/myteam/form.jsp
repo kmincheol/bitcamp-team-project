@@ -58,7 +58,7 @@ height: auto;
                     <label for="id">팀명</label>
                   </h3>
                   <span class="ps_box int_pass" id="idImg"> 
-                  <input type="text" id="teamName" name="teamName"  title="ID" maxlength="20"  value="${team.teamName}" readonly / >
+                  <input type="text" style="float:left;" id="teamName" name="teamName"  title="ID" maxlength="20"  value="${team.teamName}" readonly / >
                   </span>  <span class="error_next_box" id="idMsg" style="display: none" role="alert"></span> 
                 </div>
 
@@ -93,7 +93,7 @@ height: auto;
                     <label for="teamSportsId">종목</label>
                   </h3>
                   <div class="ps_box" id="teamSportsIdBox">
-               <input type="text" id="teamTypeSports" name="teamTypeSports"  title="ID" maxlength="20"  value="${team.teamTypeSports.teamSportsType}" readonly / >
+               <input type="text"  style="float:left;" id="teamTypeSports" name="teamTypeSports"  title="ID" maxlength="20"  value="${team.teamTypeSports.teamSportsType}" readonly / >
                     </div>
                   <span class="error_next_box" id="teamSportsIdMsg" style="display: none"
                     role="alert"></span>
@@ -198,7 +198,7 @@ height: auto;
                     <div class="self_introduce_area">
                       <textarea class="ps_box self_introduce" id="teamInfo" name="teamInfo"
                         placeholder="${team.teamInfo}" rows="20" cols="30" style="height: 90px;"></textarea>
-                        <span id="counter">0/150</span> 
+                        <span id="counter">0/20</span> 
                     </div> 
                   </div>
                 </div> 
@@ -261,6 +261,20 @@ $('#fileupload').fileupload(
             }
           }
         });
+        
+$(document).ready(function(){
+    $('#teamInfo').on('keydown', function() {
+       if($(this).val().length > 20) {
+           $(this).val($(this).val().substring(0, 20));
+       }
+       
+       var content = $(this).val();
+       $(this).height(((content.split('\n').length + 1) * 1.5) + 'em');
+       $('#counter').html(content.length + '/20');
+   }); 
+   $('#teamInfo').keyup(); 
+     });
+   
 </script>
 
 

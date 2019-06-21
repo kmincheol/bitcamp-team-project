@@ -31,7 +31,7 @@ public class FacebookServiceImpl implements FacebookService {
   }
   
   public String requestFaceBookAccessTokenAndUserDataCheck
-  (HttpSession session, String code) throws Exception {
+  (HttpSession session, String code, String state) throws Exception {
     String facebookUrl = 
         "https://graph.facebook.com/v3.3/oauth/access_token?"+
         "client_id=" + globalPropertySource.getFacebookClientId() +

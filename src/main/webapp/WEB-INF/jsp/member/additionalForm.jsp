@@ -187,7 +187,7 @@
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js?autoload=false"></script>
 
 <script>
 "use strict"
@@ -480,6 +480,10 @@ function checkBirthday() {
     showErrorBox(biryy);
     showErrorBox(birmm);
     showErrorBox(birdd);
+    return false;
+  }
+  
+  if (mm == null) {
     return false;
   }
 

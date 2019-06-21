@@ -74,6 +74,7 @@ public class AuthController {
       String facebookUrl = "https://www.facebook.com/v3.3/dialog/oauth?"+
               "client_id="+ globalPropertySource.getFacebookClientId() +
               "&redirect_uri=" + redirectUri + "facebook"+
+              "&state=" + state +
               "&scope=public_profile,email";
 
       returnUrl = "redirect:" + facebookUrl;
@@ -145,7 +146,8 @@ public class AuthController {
     // 토큰을 이용하여 개인정보를 가져오고 가입된 유저인지 체크함.
     if (loginType.equalsIgnoreCase("facebook")) {
       logger.debug("facebookAccessToken / code : "+ code);
-      url = facebookService.requestFaceBookAccessTokenAndUserDataCheck(session, code);
+      logger.info("state >>" + state);
+      url = facebookService.requestFaceBookAccessTokenAndUserDataCheck(session, code, state);
       
     } else if (loginType.equalsIgnoreCase("naver")) {
       logger.debug("naverAccessToken / code : "+ code);
