@@ -65,8 +65,9 @@ public class MyTeamController {
       model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
 		model.addAttribute("tr", tr);
+		System.out.println(tr.toString());
 		return "myteam/list";
-
+		  
 	}
 	
   
@@ -141,6 +142,7 @@ public class MyTeamController {
 		for(Member m : member) {
 			if(m.getNo() == mno) {
 				model.addAttribute("memberInfo",m);
+				System.out.println("aaa" + m.toString());
 			}
 		}
 		model.addAttribute("tno",tno);

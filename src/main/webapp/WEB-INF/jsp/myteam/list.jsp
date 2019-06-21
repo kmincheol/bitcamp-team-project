@@ -288,9 +288,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
   <c:forEach items="${tm}" var="teamMember">
    arr.push("${teamMember.teamMemberNo}");
    arrb.push("${teamMember.member.name}");
-   <c:if test="${teamMember.member.photo == null}">
-   arrd.push("${contextRootPath}/images/기본사람사진.jpeg");
- </c:if>
+   arrd.push("${teamMember.member.photo}");
    arre.push("${teamMember.position}");
    arrf.push("${teamMember.member.no}");
    arrg.push("${teamMember.member.birthDay}");
@@ -339,7 +337,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
             div.id = "abcd"
             div.innerHTML =
               '<div class="flip-card"><a href="${contextRootPath}/app/myteam/apply/${tr.member.no}/' + bbb[1] + '/' + ${tr.teamNo} + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
-             '<img src ="${contextRootPath}/images/기본사람사진.jpeg" width = "259px" height = "250px">' + 
+             '<img src ="${tr.member.photo}" width = "259px" height = "250px">' + 
              '<span style="display: inline-block;font-size:30px; width: 260px;  text-align:center; background-color: red; color: white">'+ 
              '${tr.member.name}' + '</span></div>' +
               '<div class="flip-card-back" ><h3> 대기 명단 </h3></div></div></a></div>'
