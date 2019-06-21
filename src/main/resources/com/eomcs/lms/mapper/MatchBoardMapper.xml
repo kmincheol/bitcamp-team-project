@@ -291,7 +291,7 @@
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
     left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
-    left outer join spt_clAND tm_id2 is nullsf s on m.spt_clsf_id = s.spt_clsf_id
+    left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
@@ -304,7 +304,7 @@
    <include refid="select123"/>
    AND tm_id2 is null
     order by
-    mtch_id desc
+    mtch_id asc
    </select>
    
   <select id="findAll" resultMap="matchMap" parameterType="map">
