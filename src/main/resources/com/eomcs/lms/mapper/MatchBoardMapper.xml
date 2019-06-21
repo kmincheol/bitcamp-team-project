@@ -266,7 +266,8 @@
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
     left outer join midlc d on d.midlc_id = substr(m.area,3,2)
    where
-    tmb.tlead_wth = 1
+    tmb.tlead_wth = 1 AND
+    game_dt >= CURDATE()
   </sql>
   
 <sql id="select2"> <!-- 추천매칭을 위한 select -->
@@ -290,7 +291,7 @@
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
     left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
-    left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
+    left outer join spt_clAND tm_id2 is nullsf s on m.spt_clsf_id = s.spt_clsf_id
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
@@ -301,11 +302,10 @@
 <!-- js로 처리할거라 모든 데이터 가져옴 -->
    <select id="search" resultMap="matchMap">
    <include refid="select123"/>
+   AND tm_id2 is null
     order by
     mtch_id desc
    </select>
-   
-   
    
   <select id="findAll" resultMap="matchMap" parameterType="map">
 	<include refid="select123"/>  

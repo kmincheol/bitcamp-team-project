@@ -38,10 +38,6 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
  
- 
- 
- 
- 
         <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
@@ -68,7 +64,7 @@
   <div class="container" id="main-wrap">
        <!-- hidden sort control  -->
         <div style="display: none" data-jplist-control="hidden-sort" data-group="group1"
-            data-path=".playDate"  data-order="desc"  data-type="text" >
+            data-path=".playDate"  data-order="asc"  data-type="text" >
         </div>
         
     <div class="content">
