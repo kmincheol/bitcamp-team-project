@@ -116,6 +116,17 @@
       user_id = #{no}
   </select>
   
+  <select id="findById3" resultMap="memberMap" parameterType="string">
+    select
+      <include refid="default-columns"/>,
+      prof_phot,
+      main_tm_id
+    from 
+      mbr
+    where 
+      user_id = #{id}
+  </select>
+  
   <select id="findByIdPassword" resultMap="memberMap" parameterType="map">
     select 
       <include refid="default-columns"/>,
@@ -185,6 +196,16 @@
       )
   </insert>
   
+  
+  <update id="insertMainTeam" parameterType="member">
+    update mbr
+    <set>
+      <if test="mainTeam != null">main_tm_id = #{mainTeam}</if>  
+    </set>  
+    where 
+      mbr_id = #{no}
+  </update>
+  
   <update id="update" parameterType="member">
     update mbr
     <set>
@@ -195,7 +216,7 @@
       <if test="baseAddress != null">bas_addr = #{baseAddress},</if>
       <if test="detailAddress != null">det_addr = #{detailAddress},</if>
       <if test="selfIntroduce != null">s_intd = #{selfIntroduce},</if>
-      <if test="photo != null">prof_phot = #{photo}</if> 
+      <if test="photo != null">prof_phot = #{photo},</if>
     </set>  
     where 
       mbr_id = #{no}

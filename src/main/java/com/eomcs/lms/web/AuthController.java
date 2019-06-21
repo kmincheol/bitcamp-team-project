@@ -41,10 +41,6 @@ public class AuthController {
   @Autowired NaverService naverService;
   @Autowired GlobalPropertySource globalPropertySource;
   
-  @GetMapping("snsLogin")
-  public void snsLogin() {
-  }
-  
   @GetMapping("snsLoginFail")
   public void snsLoginFail() {
   }

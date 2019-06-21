@@ -36,9 +36,9 @@ function alertMsg() {
         title: '로그인에 실패했습니다.',
         html: '비밀번호를 확인해주세요.',
         type: 'error',
-        footer: '<a href="../member/findPassword">비밀번호를 찾으시려면 클릭해주세요.</a>'
+        footer: '<a href="${contextRootPath}/app/member/findPassword">비밀번호를 찾으시려면 클릭해주세요.</a>'
     }).then((result) => {
-      location.href = "http://localhost:8080/bitcamp-team-project/app/auth/form"
+      location.href = "${contextRootPath}/app/auth/form"
       })
 }
 </script>

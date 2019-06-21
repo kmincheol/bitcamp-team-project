@@ -359,11 +359,13 @@
     left outer join tm t on tmb.tm_mbr_id = t.tm_id
     left outer join mbr m on tmb.mbr_id = m.mbr_id
     where tm_mbr_id = ${value}
+    order by (case when tlead_wth then 1 when tlead_wth then 2 end) desc
   </select>
 
   <select id="findByNo" resultMap="teamMap1" parameterType="int">
     select
     tm_id,
+    m.mbr_id,
     t.name,
     tm_ambl_phot,
     tm_intd,
@@ -386,6 +388,7 @@
      left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
     where tm_id = ${value}
+     order by (case when tlead_wth then 1 when tlead_wth then 2 end) desc
   </select>
 
  <select id="findSportsTypeByNo" resultMap="teamMap1" parameterType="int">

@@ -1,6 +1,7 @@
 // 프록시 패턴 적용 - MemberDao에서 인터페이스를 추출한다.
 package com.eomcs.lms.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.Member;
@@ -23,6 +24,8 @@ public interface MemberDao {
   int updateOption(Member member);
   int delete(int no);
   List<Team> findByteam(int no);
+  int insertMainTeam(Member member);
+  Member findById3(HashMap<String, Object> paramMap);
 }
 
 

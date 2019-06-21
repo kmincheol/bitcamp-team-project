@@ -106,11 +106,6 @@ public class MemberController {
   public void findPassword() {
   }
 
-  @GetMapping("fbJoin")
-  public void fbJoin(String accessToken, HttpSession session) {
-    session.setAttribute("accessToken", accessToken);
-  }
-
   @RequestMapping(value="checkEmail", produces="text/plain;charset=UTF-8")
   @ResponseBody
   private String checkEMail(@RequestBody Map<String,Object> content) throws Exception {
@@ -285,10 +280,6 @@ public class MemberController {
     }
   }
 
-  @GetMapping("join")
-  public void join() {
-  }
-
   @PostMapping("enter")
   public String add(
       Member member, 
@@ -374,12 +365,6 @@ public class MemberController {
     List<Member> members = memberService.list(null);
     model.addAttribute("list", members);
     return "member/list";
-  }
-
-  @GetMapping("search")
-  public void search(String keyword, Model model) {
-    List<Member> members = memberService.list(keyword);
-    model.addAttribute("list", members);
   }
 
   @RequestMapping(value="profUpdate/update", method= {RequestMethod.POST})

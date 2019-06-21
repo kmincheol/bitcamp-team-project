@@ -16,7 +16,7 @@
                     message = '${message}';
                 }
                 alert(message);
-                location.href = "http://localhost:8080/bitcamp-team-project/app/member/agreeTerms";
+                location.href = "${contextRootPath}/app/member/agreeTerms";
             }
 
             setTimeout(redirect, 100);
