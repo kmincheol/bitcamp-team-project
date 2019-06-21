@@ -65,6 +65,13 @@ public class MemberServiceImpl implements MemberService {
   }
   
   @Override
+  public Member getId(String id) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("id", id);
+  return memberDao.findById3(paramMap);
+  }
+  
+  @Override
   public Member checkId(String userId) {
     return memberDao.findById(userId);
   }
@@ -101,6 +108,12 @@ public class MemberServiceImpl implements MemberService {
     paramMap.put("password", password);
     
     return memberDao.findByIdPassword(paramMap);
+  }
+  
+  @Override
+  public int addMainTeam(Member member) {
+    
+    return memberDao.insertMainTeam(member);
   }
   
   @Override

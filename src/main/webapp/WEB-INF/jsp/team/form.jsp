@@ -48,8 +48,10 @@ height: auto;
       <br>
       <hr class="hrblack" />
       <div class="join_content">
+      <%-- <c:forEach items="${member}" var="member">
+      <input id="userId" type="hidden" value="${member.id}">
+      </c:forEach> --%>
         <form id='add_form' action='add' method='post'>
-
           <div class="join_form">
             <div class="join_form_left" style="height: 800px;">
               <!-- id, password -->
@@ -388,6 +390,7 @@ height: auto;
         $('#btnCreate').click(function(event) {
           submitClose();
 
+          
           if (idFlag) {
             mainSubmit();
           } else {
@@ -405,12 +408,57 @@ height: auto;
         }
         if (idFlag) {
           $('#add_form').submit();
+          logOut();
+          logIn();
+          
+           /* $.post('../comment/add',  
+        function(obj) {
+          if (obj.status == 'success') {  
+            logout();
+            logIn();
+         location.reload();
+          } */
+  /*   })
+          
+        function(obj) {
+          if (obj.status == 'success') {  
+            
+         document.location.reload(true);
+          }
+    } */
+          
+          
         } else {
           submitOpen();
           return false;
         }
       }
 
+      function logOut() {
+        $.ajax({
+          url     : '${ContextRootPath}/app/team/reLogout',
+          type    : 'GET',
+          sendDataType : 'json',
+          async   : false
+        })
+        .done(function(json) {
+          sessionStorage.clear();
+        });
+      }
+
+      function logIn() {
+        var id = $('#userId').val();
+        $.ajax({
+          url     : '${ContextRootPath}/app/team/reLogin?id=' + id,
+          type    : 'GET',
+          sendDataType : 'json',
+          async   : false
+        })
+      }
+      
+      
+      
+      
       function submitClose() {
         $('#btnJoin').attr("disabled", true);
       }
