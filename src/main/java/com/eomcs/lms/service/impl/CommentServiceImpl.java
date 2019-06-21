@@ -49,6 +49,12 @@ public class CommentServiceImpl implements CommentService {
    
     return commentDao.delete(no);
   }
+  
+  @Override
+  public int deleteAll(int no) {
+    
+    return commentDao.deleteAll(no);
+  }
 }
 
 

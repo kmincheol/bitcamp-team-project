@@ -116,6 +116,8 @@ public class FreeController {
   @GetMapping("delete/{no}")
   public String delete(@PathVariable int no) {
 
+    commentService.deleteAll(no);
+    
     if (freeService.delete(no) == 0) 
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
 

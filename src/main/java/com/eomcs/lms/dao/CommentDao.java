@@ -8,6 +8,7 @@ public interface CommentDao {
   List<Comment> findAll(int no);
   int update(Comment comment);
   int delete(int no);
+  int deleteAll(int no);
 }
 
 

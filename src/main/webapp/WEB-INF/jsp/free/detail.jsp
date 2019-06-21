@@ -33,6 +33,9 @@
 
 <!-- comment css -->
 <link rel="stylesheet" href="${contextRootPath}/css/comment.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css">  
 </head>
 
 <body>
@@ -103,7 +106,8 @@
             <div class="col-sm-12" style="padding:0px;">
               <textarea class="form-control comment-form"
                 placeholder="댓글을 작성하세요." autocomplete=off rows="2" style="width: 100%; float:left;"></textarea>
-              <button class="btn btn-outline-dark" id="cmt-submit" type='button' style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button>
+              <!-- <button class="btn btn-outline-dark" id="cmt-submit" type='button' style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button> -->
+              <button class="btn btn-outline-dark sunext" type="button" id="cmt-submit" style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button> 
               <span id="counter">0/150</span>         
             </div>        
           </div>   
@@ -140,17 +144,24 @@
     
     $('#cmt-submit').on('click', function() {
       var conts = $('.comment-form').val();  
-      
+      if (conts == '') {
+        Swal.fire({
+          type: 'error',
+          title: '댓글을 입력하세요!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
       $.post('../comment/add',  
           {  
         contents: conts  
           },
         function(obj) {
-          if (obj.status == 'success') { 
+          if (obj.status == 'success') {  
             
          document.location.reload(true);
           }
-    })
+    }) };
   });
   });
 </script>
