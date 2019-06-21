@@ -27,12 +27,12 @@ trimDirectiveWhitespaces="true"%>
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <div id="main-text">
+  <div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/announce.jpg" style="width: 100%; height: 100%;">
     <h1>공지사항</h1>
   </div>
 
-  <div id="main-wrap" class="container">        
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">        
     <c:choose>
       <c:when test="${empty announce}">
         <p>해당 게시물을 찾을 수 없습니다.</p>

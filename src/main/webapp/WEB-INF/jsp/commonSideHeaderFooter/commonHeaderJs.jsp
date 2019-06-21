@@ -12,11 +12,11 @@
 
 	$(window).on("scroll", function() {
 		if ($(window).scrollTop()) {
-			$('nav').addClass('black');
+			$('nav').addClass('darkred');
 		}
 
 		else {
-			$('nav').removeClass('black');
+			$('nav').removeClass('darkred');
 		}
 	})
-</script>
+</script>     

@@ -43,12 +43,12 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <div id="main-text">
+  <div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/freeboard.png" style="width: 100%; height: 100%;">
     <h1>자유 게시판</h1>
-  </div>
+  </div>   
 
-  <div id="main-wrap" class="container">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
     <div class="freeList">
       <c:choose>
         <c:when test="${empty free}">
@@ -112,8 +112,8 @@
             </div>        
           </div>   
         </div>
-      </form>
-      <br>
+      </form>   
+      <br>     
       <%-- <jsp:include page="../comment/form.jsp" />  --%>
     </c:if>
     <jsp:include page="../comment/list.jsp" />

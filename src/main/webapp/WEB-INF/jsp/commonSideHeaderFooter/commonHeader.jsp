@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <header>
-  <nav class="header-nav">
+  <nav class="header-nav">     
     <div class="menu">
       <ul>
         <li><a href="${contextRootPath}/app/main">Home</a></li>

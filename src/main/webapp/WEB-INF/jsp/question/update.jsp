@@ -49,7 +49,6 @@ th {
 
 <body>
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
-
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
   <div id="hidden" class="form-group row">
@@ -59,15 +58,17 @@ th {
         value="${question.questionNo}" readonly />
     </div>
   </div>
-
-  <div class="container" id="main-wrap">
-    <div id="main-text">
+  
+    <div id="main-text" style="margin-bottom: 40px;">
+    <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
       <div class="text-field" id="main-textfield">
         <span style="font-weight: bold; font-size: 2.0em;">문의</span> <span
           style="font-size: 1.8em;"> 했던 게시글을</span>
         <div style="font-size: 1.8em;">변경할 수 있습니다.</div>
       </div>
-    </div>    
+    </div>
+
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
 
     <form id='update_form' action='../update' method='post' onsubmit="return update_check()">
       <div id="table">

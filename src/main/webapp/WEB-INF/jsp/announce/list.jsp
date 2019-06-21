@@ -118,7 +118,7 @@ table tbody tr {
               
               <td>
               <!-- popover 적용됨 -->
-					<div class="form-group pos-relative">
+					<div class="form">
             	<a href='#' class="js-tooltip-trigger" id="ref">${announce.member.name}</a>
           		<span class="js-tooltip" style="display: none;">
           			<strong>아이디:</strong>

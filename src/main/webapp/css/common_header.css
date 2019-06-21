@@ -9,7 +9,7 @@ body {
 }
 
 header {
-	    background:black;
+	    background:darkred;
       width: 100%;
       height: 92px;
       /* background: url("../images/mainpage1.jpg") no-repeat 50% 30%; */
@@ -35,14 +35,14 @@ header {
       line-height: 60px;
       z-index: 999;
 }
-  
+         
 .header-nav ul  {
 			position: fixed;
 			width: 100%;
 			right: 0px;
 			line-height: 60px;
 			list-style: none;
-			background: rgba(0, 0, 0, 0);
+			background: darkred;
 			overflow: hidden;
 			color: #fff;
 			padding: 0;
@@ -53,7 +53,7 @@ header {
 }
 
 .header-nav.black ul {
-      background: #000;
+      background: darkred;            
 }
 
 .header-nav ul li {

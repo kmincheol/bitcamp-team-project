@@ -251,11 +251,13 @@
     p.toplc_name,
     d.midlc_name,
     a.ages,
-    tmb.tlead_wth
+    tmb.tlead_wth,
+    aply_stat
    from
     mtch m
     left outer join tm t on m.tm_id = t.tm_id
     left outer join tm_mbr tmb on t.tm_id = tmb.tm_mbr_id
+    left outer join mtchaply apy on apy.mtch_id = m.mtch_id
     left outer join mbr u on tmb.mbr_id = u.mbr_id
     left outer join tm_lev l on t.tm_lev_id = l.tm_lev_id
     left outer join spt_clsf s on m.spt_clsf_id = s.spt_clsf_id
@@ -264,7 +266,8 @@
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
     left outer join midlc d on d.midlc_id = substr(m.area,3,2)
    where
-    tmb.tlead_wth = 1
+    tmb.tlead_wth = 1 AND
+    aply_stat like '대기중'
   </sql>
   
 <sql id="select2"> <!-- 추천매칭을 위한 select -->

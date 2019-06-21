@@ -48,7 +48,7 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
   
-  <div id="main-text">
+  <div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/qna.png" style="width:100%; height:100%;">
       <div class="text-field" id="main-textfield">
         <span style="font-weight: bold; font-size: 2.0em;">궁금해하는 글</span> 
@@ -57,23 +57,23 @@
       </div>
     </div>
     
-  <div class="container" id="main-wrap">
-
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
+    
       <form id="add_form" action='add' method='post' onsubmit="return check()">
-      <div id="table" style="margin-top: 40px;">
+      <div id="table">
         <table class="table table-bordered">
           <tbody>
             <tr>
               <th id="table-header" scope="row">제목</th>
               <td><input type="text" class="form-control" name="title" id="title"
                 value="${question.title}" /></td>
-            </tr>
-            <tr>
-              <th id="table-header" scope="row" style="width: 151px; min-width: 151px;">내용</th>
+            </tr>     
+            <tr>  
+              <th id="table-header" scope="row" style="width: 151px;">내용</th>
               <td><textarea id="summernote" name='contents' rows='5'></textarea></td>
             </tr>
             <tr>
-              <th id="table-header" scope="row">비밀글 설정</th>
+              <th id="table-header" scope="row">비밀글 설정</th>   
               <td><input type="checkbox" name="password"
                 id="password" style="width: 30px; height: 30px; vertical-align: middle;"/>${question.password}</td>
             </tr>

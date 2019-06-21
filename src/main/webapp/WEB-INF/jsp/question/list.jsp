@@ -160,13 +160,11 @@ table tbody tr {
           href="${contextRootPath}/app/question/answerlist">답변 목록</a>
       </c:if>
     </div>
-
+   
     <div id="btnbtn">
       <c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.no != 1}">
-        <a class="btn btn-outline-dark" href="${contextRootPath}/app/question/form">문의
-          하기</a>
-        <a class="btn  btn-outline-dark" href="${contextRootPath}/app/question/mylist/${member.no}">나의
-          문의내역</a>
+        <a class="btn btn-outline-dark" href="${contextRootPath}/app/question/form">문의 하기</a>
+        <a class="btn  btn-outline-dark" href="${contextRootPath}/app/question/mylist/${member.no}">나의 문의내역</a>
       </c:if>
     </div>
   </div>

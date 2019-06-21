@@ -98,9 +98,7 @@ table tbody tr {
       </h1>      
     </div>
   <div class="container" id="main-wrap">
-    
-
-
+            
     <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
       <thead>
         <tr>
@@ -134,7 +132,7 @@ table tbody tr {
       </tbody>
     </table>
     <div>
-      <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question">목록으로</a>
+      <a class="btn btn-outline-dark" id="btnbtn" href="${contextRootPath}/app/question" style="top:-135px;">목록으로</a>
     </div>
   </div>
 

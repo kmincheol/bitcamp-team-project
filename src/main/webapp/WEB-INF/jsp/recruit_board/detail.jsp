@@ -32,12 +32,12 @@
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/>
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
   
-  <div id="main-text">
+  <div id="main-text" style="margin-bottom: 40px;">
     <img src="${contextRootPath}/images/recruit.png" style="width: 100%; height: 100%;">
     <h1>모집 게시판</h1>
   </div>    
      
-  <div id="main-wrap" class="container">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
       <form action='update' method='post' name="remove" enctype='multipart/form-data'>
         <div id="title-wrap" class="form-group row">
           <div id="title-row" class="col-sm-12">
@@ -81,12 +81,12 @@
         </div>
         <div id="control-box" class="form-group row">
           <div class="col-sm-12 text-center">                
-            <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board'>목록</a>
+            <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board' style="width: 80px;">목록</a>
             <c:forEach var="teamMember" items="${teamMember}">
               <c:if test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
-                <a class="btn btn-outline-dark" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}'>삭제</a>
-                <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'>변경</a>
-                <a class="btn btn-outline-dark" href="#">모집마감</a>
+                <a class="btn btn-outline-dark" onclick="return removeCheck()" href='delete/${teamRecruit.teamNo}' style="width: 80px;">삭제</a>
+                <a class="btn btn-outline-dark" href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}' style="width: 80px;">변경</a>
+                <a class="btn btn-outline-dark" href="#">모집마감</a>    
               </c:if>     
             </c:forEach>     
             <c:set var="doneLoop" value="false"/> 
