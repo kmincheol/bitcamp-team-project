@@ -154,6 +154,8 @@ $('.cancel').on('click', function(){
 
 	var matchNo = $(this).parent().parent().children('#matchNo').text();
 	
+	console.log("매치번호"+matchNo);
+	
 	Swal.fire({
     title: '경기를 취소 하시겠습니까?',
     type: 'warning',

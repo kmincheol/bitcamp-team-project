@@ -143,7 +143,7 @@
           <td>
           <div class="md-form">
           글 제목 :
-                <input class="form-control-sm" id="titleSearchBox" aria-describedby="emailHelp"
+                <input autocomplete=off class="form-control-sm" id="titleSearchBox" aria-describedby="emailHelp"
                 data-jplist-control="textbox-filter" data-group="group1"
                 data-name="my-filter-1" data-path=".title"
                 type="text" value=""
@@ -153,7 +153,7 @@
           
           <div class="md-form">
           팀 명 :
-                <input class="form-control-sm" id="teamSearchBox" aria-describedby="emailHelp"
+                <input autocomplete=off class="form-control-sm" id="teamSearchBox" aria-describedby="emailHelp"
                 data-jplist-control="textbox-filter" data-group="group1"
                 data-name="my-filter-1" data-path=".teamName"
                 type="text" value=""
@@ -354,8 +354,8 @@
                     <td>
                       <div id="noSuggestion"><br>추천할 팀이 없습니다. <br> 대표팀을 설정하세요.<br><br>
                       <button class="btn" style="color:#008bff; "
-                      onClick="location.href='${contextRootPath}/app/recruit_board' " >
-                          팀원모집 게시판
+                      onClick="location.href='${contextRootPath}/app/myteam' " >
+                          대표팀 설정하기
                       </button>
                       <br>
                       </div>

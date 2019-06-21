@@ -88,7 +88,7 @@ color:black;
         <tbody>
           <tr>
             <th scope="row">제목</th>
-            <td colspan="3"><input type="text" id="title" class="form-control col-md-12"
+            <td colspan="3"><input autocomplete=off type="text" id="title" class="form-control col-md-12"
               name="title"></td>
           </tr>
           <tr>
@@ -118,7 +118,7 @@ color:black;
             <th scope="row">경기장</th>
             <td>
               <div class="input-group md-form form-sm form-2 pl-0">
-                <input id="pInput" class="form-control my-0 py-1 lime-border" type="text"
+                <input id="pInput" autocomplete=off class="form-control my-0 py-1 lime-border" type="text"
                   placeholder="검색하세요" aria-label="Search" name="stadiumName">
                 <div class="input-group-append">
                   <span class="input-group-text lime lighten-2" id="basic-text1"><a
@@ -155,7 +155,7 @@ color:black;
               </div>
             </td>
             <th scope="row">전화번호</th>
-            <td><input type="text" class="form-control" name="telephone"></td>
+            <td><input autocomplete=off type="text" class="form-control" name="telephone"></td>
           </tr>
           <tr>
             <th scope="row">내용</th>
@@ -166,7 +166,7 @@ color:black;
           <tr>    
             <th scope="row">비용(원)</th>                      
             <td colspan="3">
-            <input type="number" class="form-control" maxlength="7" oninput="numberMaxLength(this);"
+            <input type="number" autocomplete=off class="form-control" maxlength="7" oninput="numberMaxLength(this);"
             name="cost" value=0 style="width: 343px;"></td>
           </tr>
         </tbody>

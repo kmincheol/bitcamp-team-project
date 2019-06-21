@@ -58,71 +58,16 @@ public class MatchBoardController {
     return matches;
   }
 
-
   @GetMapping("map")
   public void map() {}
 
   @GetMapping("map2")
   public void map2() {}
 
-
-  @GetMapping("list3")
-  public void list3(Model model, HttpSession session) {
-    List<Match> all = matchBoardService.search();
-
-    // 로그인 유저를 위한.
-    if (session.getAttribute("loginUser") != null) {
-      Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
-      List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보
-                                                                          // 뽑아오기
-      model.addAttribute("myteam", teames);
-    } else {
-    }
-    model.addAttribute("all", all);
-  }
-
-
-  @GetMapping("list4")
-  public void list4(Model model, HttpSession session) {
-    List<Match> all = matchBoardService.search();
-
-    // 로그인 유저를 위한.
-    if (session.getAttribute("loginUser") != null) {
-      Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
-      List<Match> teames = matchBoardService.teamInfoGet(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보
-                                                                          // 뽑아오기
-      model.addAttribute("myteam", teames);
-      logger.info(teames);
-    } else {
-    }
-    model.addAttribute("all", all);
-  }
-
-  @GetMapping("list5")
-  public void list5() {}
-
-  @GetMapping("list6")
-  public void list6(Model model) {
-    List<Match> all = matchBoardService.search();
-    model.addAttribute("all", all);
-  }
-
-  @GetMapping("list7")
-  public void list7(Model model) {
-    List<Match> all = matchBoardService.search();
-    for (Match m : all) {
-      logger.info(m.getPlayDate());
-      logger.info(m.getPlayDate().getTime());
-    }
-    model.addAttribute("all", all);
-  }
-
   @GetMapping("test")
   public String test(Match match) throws Exception {
     return "matchboard/test";
   }
-
-
 
   @GetMapping("form")
   public String form(Model model, HttpSession session) {
@@ -135,8 +80,6 @@ public class MatchBoardController {
     } catch (Exception e) {
       return "matchboard/auth";
     }
-
-
     List<TopLocation> locations = locationService.topLocationList();
     model.addAttribute("locations", locations);
 
@@ -158,7 +101,6 @@ public class MatchBoardController {
   @GetMapping
   public String list(HttpSession session, Model model) {
     
-    
     ArrayList<Match> recommendMatches = new ArrayList<>(); // 추천매칭 담을 배열
     List<Match> all = matchBoardService.search();
 
@@ -179,7 +121,6 @@ public class MatchBoardController {
       }
     } else {
     }
-    
     logger.info("모두" + all);
     logger.info("추천" + recommendMatches);
     model.addAttribute("all", all);
@@ -189,13 +130,8 @@ public class MatchBoardController {
     } else {
       session.setAttribute("noSetTeam", "noSetTeam");
     }
-    
-    
-      
     return "/matchboard/list";
   }
-
-
 
   @RequestMapping("{no}")
   public String detail(@PathVariable int no, HttpSession session, Model model) {
@@ -229,7 +165,6 @@ public class MatchBoardController {
       Member member = (Member) session.getAttribute("loginUser");
       List<Match> teams = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서 리더정보 뽑아오기
                                                                          
-
       model.addAttribute("myteam", teams);
     } else {
     }
@@ -281,8 +216,6 @@ public class MatchBoardController {
         session.setAttribute("confirm", "confirm");
       }
     }
-
-
     List<TopLocation> locations = locationService.topLocationList(); // TOP 지역선택용
     model.addAttribute("locations", locations);
     model.addAttribute("match", match);
@@ -318,7 +251,6 @@ public class MatchBoardController {
     return map;
   }
 
-
   @PostMapping("update") // 업데이트
   public String update(Match match) {
 
@@ -328,8 +260,6 @@ public class MatchBoardController {
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
     return "redirect:../matchboard";
   }
-
-
 
   // 키 참조때문에 삭제 안되면 matchtb_revise.sql 파일 참조. --임시
   // 경기신청 데이터 지우고, 후기게시판 데이터 지우고,
@@ -345,8 +275,6 @@ public class MatchBoardController {
 
     return "redirect:../matchboard";
   }
-
-
 
   @GetMapping("sideBar")
   public String list2(@RequestParam(defaultValue = "1") int pageNo,
@@ -369,7 +297,6 @@ public class MatchBoardController {
     model.addAttribute("matches", matches);
     return "matchboard/sideBar";
   }
-
 
   @RequestMapping("data") // JSON. 매치정보 모달을 위한.
   @ResponseBody
@@ -433,10 +360,8 @@ public class MatchBoardController {
 
   @RequestMapping(value = "submit/{no}", method = {RequestMethod.GET, RequestMethod.POST})
   @ResponseBody
-  public String submit(@PathVariable int no, @RequestBody String teamId) throws ParseException { // 매치번호를
-                                                                                                 // 받음.
-                                                                                                 // 신청팀번호를
-                                                                                                 // 받음.
+  public String submit(@PathVariable int no, @RequestBody String teamId) throws ParseException { //매치번호를 받음. 신청팀번호를 받음.
+
     logger.debug("AAAA" + no);
     logger.debug("BBBB" + teamId); // teamId는 지금 JSON문자열임.
     // teamId => {"teamId":"7"}

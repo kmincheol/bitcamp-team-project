@@ -26,6 +26,7 @@ import com.eomcs.lms.domain.TeamRecruit;
 import com.eomcs.lms.domain.TeamType;
 import com.eomcs.lms.domain.TeamTypeSports;
 import com.eomcs.lms.domain.TopLocation;
+import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.MyTeamService;
 import com.eomcs.lms.service.TeamService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -42,12 +43,10 @@ public class MyTeamController {
   
 	private static final Logger logger = LogManager.getLogger(MyTeamController.class);
 
-	 @Autowired 
-	 TeamService teamService;
-	@Autowired
-	MyTeamService myTeamService;
-	@Autowired
-	ServletContext servletContext;
+	@Autowired TeamService teamService;
+	@Autowired MyTeamService myTeamService;
+	@Autowired ServletContext servletContext;
+	@Autowired MatchBoardService matchBoardService;
 
 	List<Team> maa;
 	
@@ -267,14 +266,27 @@ public class MyTeamController {
         return "myteam/list5";
     }
   
+    
+    //---- 
+    
     @RequestMapping("/list5/delete/{mtno}")
     public String deleteMatch(@PathVariable int mtno) {
+      logger.debug("성사된 매치번호가져오나?"+ mtno); // 1번 잘 들어오는거 확인.
+
+      matchBoardService.delete(mtno);
+      //-> 삭제 : 매치신청- 태그- 매치글 데이터
+      // 리뷰데이터 지워야하는데..... 흠..... 
       
-       myTeamService.mtchApllyDelete(mtno);
-        myTeamService.mtchDelete(mtno);
+      
+      // myTeamService.mtchDelete(mtno);
+      // myTeamService.mtchApllyDelete(mtno); // 
+      
         return "redirect:../../";
     }
 
+    
+    
+    
     @RequestMapping("/form/{no}")
     public String deledddteMatch(Model model, @PathVariable int no) {
        

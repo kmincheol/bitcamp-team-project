@@ -3,7 +3,10 @@ package com.eomcs.lms.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import com.eomcs.lms.dao.MatchApplyDao;
+import com.eomcs.lms.dao.MatchDao;
 import com.eomcs.lms.dao.MyTeamDao;
+import com.eomcs.lms.dao.TagDao;
 import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
@@ -11,18 +14,20 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
+import com.eomcs.lms.service.MatchBoardService;
 import com.eomcs.lms.service.MyTeamService;
-
-// 5월 14일 생성만 함
 
 
 @Service
 public class MyTeamServiceImpl implements MyTeamService {
 
+  MatchBoardService matchBoardService;
   MyTeamDao myteamDao;
 
-  public MyTeamServiceImpl(MyTeamDao myteamDao) {
+  
+  public MyTeamServiceImpl(MyTeamDao myteamDao, MatchBoardService matchBoardService) {
     this.myteamDao = myteamDao;
+    this.matchBoardService = matchBoardService;
   } 
 
   @Override
@@ -113,6 +118,10 @@ public int deleteJoinTeam(int mno, int rcrmno) {
 	return myteamDao.deleteJoinTeam(map);
 }
 
+
+
+//---- 
+
 @Override
 public int deleteMatchAply(int mtno,int tno) {
 	
@@ -120,8 +129,14 @@ public int deleteMatchAply(int mtno,int tno) {
   map.put("mtno", mtno);
   map.put("tno", tno);
   
+  matchBoardService.delete(mtno);
+  
   return myteamDao.mtchAplyDelete(map);
 }
+
+
+
+
 
 @Override
 public int mtchupdate(int otNo, int matchNo) {
