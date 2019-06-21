@@ -1,14 +1,14 @@
-.snsLoginBox {
+.snsLoginBoxAuth {
 	text-align: center
 }
-.snsLoginBtnBox {
+.snsLoginBtnBoxAuth {
   height: 35px;
   margin: 0 50px 24px 50px
 }
-.snsLoginHeading {
+.snsLoginHeadingAuth {
 	margin: 0 0 15px 0
 }
-.snsBtn {
+.snsBtnAuth {
 	display: inline-block;
   width: 35px;
   height: 35px;
@@ -16,12 +16,12 @@
   border: 1px solid #eee;
 	border-radius: 5px
 }
-.snsLoginBtn {
+.snsLoginBtnAuth {
 	display: inline-block;
 	height: 35px;
 	margin: 5px;
 }
-.facebookBtn {
+.facebookBtnAuth {
   background-color: #fff
 }
 #kakaoBtn:hover {

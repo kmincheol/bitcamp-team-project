@@ -51,24 +51,24 @@
     border-radius: 5%;
     padding-top: 50px;">
     
-      <div class="snsLoginBox">
-        <h6 class="snsLoginHeading">소셜 로그인으로 더 빠르게 시작하세요!</h6>
+      <div class="snsLoginBoxAuth">
+        <h6 class="snsLoginHeadingAuth">소셜 로그인으로 더 빠르게 시작하세요!</h6>
         
-        <div class="snsLoginBtnBox">
-          <span id="facebookBtnAuth" class="snsLoginBtn">
-            <img src="${contextRootPath}/images/facebookLogo.png" class="snsBtn facebookBtn">
+        <div class="snsLoginBtnBoxAuth">
+          <span id="facebookBtnAuth" class="snsLoginBtnAuth">
+            <img src="${contextRootPath}/images/facebookLogo.png" class="snsBtnAuth facebookBtnAuth">
           </span>
         
-          <span id="naverBtnAuth" class="snsLoginBtn">
-            <img src="${contextRootPath}/images/naverLogin.png" class="snsBtn">
+          <span id="naverBtnAuth" class="snsLoginBtnAuth">
+            <img src="${contextRootPath}/images/naverLogin.png" class="snsBtnAuth">
           </span>
         
-          <span id="kakaoBtnAuth" class="snsLoginBtn">
-            <img src="${contextRootPath}/images/kakaoIcon.png" class="snsBtn">
+          <span id="kakaoBtnAuth" class="snsLoginBtnAuth">
+            <img src="${contextRootPath}/images/kakaoIcon.png" class="snsBtnAuth">
           </span>
         
-          <span id="googleBtnAuth" class="snsLoginBtn">
-            <img src="${contextRootPath}/images/g-normal.png" class="snsBtn">
+          <span id="googleBtnAuth" class="snsLoginBtnAuth">
+            <img src="${contextRootPath}/images/g-normal.png" class="snsBtnAuth">
           </span>
         </div>
       </div>
