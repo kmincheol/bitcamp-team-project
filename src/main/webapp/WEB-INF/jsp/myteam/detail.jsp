@@ -21,6 +21,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 <style>
 
 
@@ -113,13 +116,44 @@
           </div>
             <c:if test="${teamLeader.memberNo eq sessionScope.loginUser.no }">
           <div>
-            <a class="btn btn-outline-dark" href='../delete/${teamMember.teamMemberNo}/${teamMember.memberNo}'>추방</a>
+           <input type="hidden" id="teamMemberNo" value="${teamMember.teamMemberNo}">  
+           <input type="hidden" id="memberNo" value="${teamMember.memberNo}">  
+            <button class ="getout btn btn-outline-dark" type="button" >추방</button>
           </div>
           </c:if>
 </div> <!-- containner -->
  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+
+<script type="text/javascript">
+
+
+$('.getout').on('click', function(){
+	var teamMemberNo = $('#teamMemberNo').val(); 
+	 var memberNo = $('#memberNo').val(); 
+	
+	Swal.fire({
+	    title: '정말 추방 하시겠습니까??',
+	    type: 'warning',
+	    showCancelButton: true,
+	    confirmButtonColor: '#3085d6',
+	    cancelButtonColor: '#d33',
+	    confirmButtonText: '예! 추방하겠습니다.',
+	    cancelButtonText: '아니오'
+	  }).then((result) => {
+	    if (result.value) {
+	      Swal.fire(
+	       '추방하였습니다'
+	      )
+	     location.href='../delete/'+teamMemberNo + '/' + memberNo
+ 	    }
+	  })
+	});
+
+
+</script>
+
 
 </body>
 

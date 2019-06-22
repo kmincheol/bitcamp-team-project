@@ -60,6 +60,8 @@ public interface MyTeamDao {
   
   int update(Team team);
   
+  int updateMainTeam(Map<String, Integer> map);
+  
 }
 
 

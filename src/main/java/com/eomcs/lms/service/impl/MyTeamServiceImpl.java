@@ -129,7 +129,7 @@ public int deleteMatchAply(int mtno,int tno) {
   map.put("mtno", mtno);
   map.put("tno", tno);
   
-  matchBoardService.delete(mtno);
+		/* matchBoardService.delete(mtno); */
   
   return myteamDao.mtchAplyDelete(map);
 }
@@ -194,6 +194,14 @@ public int mtchupdate(int otNo, int matchNo) {
     // TODO Auto-generated method stub
     return myteamDao.update(team);
   }
+
+@Override
+public int updateMainTeam(int mno, int tno) {
+	HashMap<String, Integer> map = new HashMap<String, Integer>(); // MAP을 이용해 담기
+	  map.put("mno", mno);
+	  map.put("tno", tno);
+	return myteamDao.updateMainTeam(map);
+}
 }
 
 

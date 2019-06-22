@@ -43,8 +43,8 @@ public interface MyTeamService {
   int deleteJoinTeam(int tno, int rcrmno);
 
   int deleteMatchAply(int mtno,int tno);
-
-
+  int updateMainTeam(int mno,int tno);
+  
   List<Match> list4(int no);
 
   List<Match>sucessMatching(int no);

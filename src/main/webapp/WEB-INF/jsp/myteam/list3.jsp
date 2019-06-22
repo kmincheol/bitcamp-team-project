@@ -35,7 +35,8 @@
   
    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
    
-<link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 
 <style>
 .container {
@@ -120,7 +121,11 @@
                 <div class="team_info">&middot; 비용 : ${matchNos.match.cost }</div>
                 </td>              
                 <td colspan="1" style="vertical-align: middle; width: 150px;">  
-                  <a class="btn btn-outline-dark"   href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}/${tno}" style="width: 120px;">취소</a>
+                  <button class="cancle  btn btn-outline-dark"  type="button" style="width: 120px;">취소</button>
+                  <input type="hidden" id="matchNos" value="${matchNos.match.no}">  
+                  <input type="hidden" id="no" value="${tno}">  
+<%--                    href="${contextRootPath}/app/myteam/list3/delete/${matchNos.match.no}/${tno}" --%>
+                
                 </td>
               </tr>
                </c:forEach> 
@@ -139,8 +144,29 @@
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
-<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script>
+
+$('.cancle').on('click', function(){
+  var matchNos = $('#matchNos').val(); 
+   var no = $('#no').val(); 
+  
+  Swal.fire({
+      title: '정말 취소 하시겠습니까??',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '예! 취소하겠습니다.',
+      cancelButtonText: '아니오'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+         '취소하였습니다'
+        )
+       location.href='../list3/delete/'+matchNos + '/' + no
+      }
+    })
+  });
 
 </script>
 

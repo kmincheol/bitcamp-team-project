@@ -319,6 +319,30 @@
     <result column="cont" property="teamContents" />
   </resultMap>
   
+  <resultMap type="member" id="memberMap">
+    <id column="mbr_id" property="no" />
+    <result column="user_id" property="id" />
+    <result column="pwd" property="password" />
+    <result column="name" property="name" />
+    <result column="bth_dt" property="birthDay" />
+    <result column="gndr" property="gender" />
+    <result column="tel" property="tel" />
+    <result column="email" property="email" />
+    <result column="post" property="post" />
+    <result column="bas_addr" property="baseAddress" />
+    <result column="det_addr" property="detailAddress" />
+    <result column="prof_phot" property="photo" />
+    <result column="s_intd" property="selfIntroduce" />
+    <result column="login_type" property="loginType" />
+    <result column="stat" property="status" />
+    <result column="cdt" property="createdDate" />
+    <result column="lcd" property="latestDate" />
+    <result column="mgr" property="manager" />
+    <result column="main_tm_id" property="mainTeam" />
+
+  </resultMap>
+  
+  
     <sql id="default-columns">
       mbr_id, 
       name, 
@@ -357,6 +381,8 @@
       tm_unf_phot,
       area,
      t.cdt,
+       p.toplc_name,
+    d.midlc_name,
      types,
     levs,
     spt_clsf_name,
@@ -366,10 +392,12 @@
       tm t
     left outer join tm_mbr tmbr on t.tm_id = tmbr.tm_mbr_id
     left outer join mbr m on tmbr.mbr_id = m.mbr_id
-       left outer join age a on t.age_id = a.age_id
-        left outer join tm_type tp on t.tm_type_id = tp.tm_type_id
-         left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
-          left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    left outer join age a on t.age_id = a.age_id
+    left outer join tm_type tp on t.tm_type_id = tp.tm_type_id
+    left outer join tm_lev tl on t.tm_lev_id = tl.tm_lev_id
+    left outer join spt_clsf s on t.spt_clsf_id = s.spt_clsf_id
+    left outer join toplc p on p.toplc_no = substr(t.area,1,2)
+    left outer join midlc d on d.midlc_id = substr(t.area,3,2)
          
        where m.mbr_id = ${value}
   </select> 
@@ -603,7 +631,7 @@ select
  * 
  from mtch 
  where 
- tm_id = #{value}
+ tm_id = #{value} or tm_id2 = #{value} 
   </select> 
   
  <delete id="mtchDelete" parameterType="int">
@@ -690,7 +718,14 @@ select
   
 
 
-
+ <update id="updateMainTeam" parameterType="member">
+    update mbr
+     set
+     main_tm_id = #{tno}       
+            
+    where 
+      mbr_id = #{mno};
+  </update>
 
 
 

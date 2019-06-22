@@ -64,7 +64,8 @@ public class MyTeamController {
       model.addAttribute("team", team);
 		model.addAttribute("tm", tm);
 		model.addAttribute("tr", tr);
-		System.out.println(tr.toString());
+		
+		System.out.println(team.toString());
 		return "myteam/list";
 		  
 	}
@@ -234,21 +235,24 @@ public class MyTeamController {
 	@RequestMapping("/list3/delete/{mtno}/{tno}")
 	public String deleteMatchAply(@PathVariable int mtno, @PathVariable int tno,Model model) {
 		myTeamService.deleteMatchAply(mtno,tno);
-		return "redirect:../../tno";
+		return "redirect:../../" + tno;
 	}
-
 
     @RequestMapping("/list5/{tno}")
     public String myMatching(@PathVariable int tno,Model model) {
         otherTeam.clear();
-
-    List<Match> match = myTeamService.sucessMatching(tno);  //임시번호 나의팀번호
+        matchNosd3.clear();
+    List<Match> match = myTeamService.sucessMatching(tno);  // 나의팀번호
     List<Team>team= myTeamService.matchMyTeam(tno);
              model.addAttribute("myTeam",team);   // 나의 팀정보   
-
-              System.out.println();
-      for(Match m : match) {
-        if(m.getOtherTeamNo() != 0) {
+     
+     for(Match m : match) {
+        if(m.getOtherTeamNo() != 0  ) {
+        	if(m.getOtherTeamNo()==tno) {
+        				m.setOtherTeamNo(m.getTeamNo());
+        				m.setTeamNo(tno);
+        	}
+        	 
              for(Team t : myTeamService.matchOtherTeam(m.getOtherTeamNo())) {
                   if(m.getOtherTeamNo() == t.getTeamId()) {
                     matchNosd3.add(m); 
@@ -258,7 +262,7 @@ public class MyTeamController {
                model.addAttribute("otherTeam",otherTeam);
         }
       }
-      System.out.println(otherTeam.toString());
+     System.out.println(matchNosd3.toString());
       model.addAttribute("matchNosd3",matchNosd3);
        
     model.addAttribute("tno",tno);
@@ -273,13 +277,13 @@ public class MyTeamController {
     public String deleteMatch(@PathVariable int mtno) {
       logger.debug("성사된 매치번호가져오나?"+ mtno); // 1번 잘 들어오는거 확인.
 
-      matchBoardService.delete(mtno);
+		/* matchBoardService.delete(mtno); */
       //-> 삭제 : 매치신청- 태그- 매치글 데이터
       // 리뷰데이터 지워야하는데..... 흠..... 
       
       
-      // myTeamService.mtchDelete(mtno);
-      // myTeamService.mtchApllyDelete(mtno); // 
+       myTeamService.mtchApllyDelete(mtno); 
+       myTeamService.mtchDelete(mtno);
       
         return "redirect:../../";
     }
@@ -312,12 +316,19 @@ public class MyTeamController {
 
     @RequestMapping("/form/update")
     public String updateTeam(Team team) {
-       System.out.println("ddd"+ team.toString());
     myTeamService.update(team);
         return "redirect:../";
     }
 
-    
+    @RequestMapping("/update/mainTeam/{mno}/{tno}")
+    public String updateMainTeam(@PathVariable int mno, @PathVariable int tno ) {
+     System.out.println(mno + tno);
+    	
+     myTeamService.updateMainTeam(mno, tno);
+       
+    	return "redirect:../../../";
+    }
+
     
 
 

@@ -21,6 +21,8 @@
 <link href="${contextRootPath}/css/common.css" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 
 <style>
 .select-wrapper input.select-dropdown {
@@ -127,6 +129,7 @@ body {
     <div id="main-text">
     <img src="${contextRootPath}/images/국대.jpg" style="width:100%; height:100%;">
   <h1>    
+  <input id="loginUserNo" type="hidden"  value ="${sessionScope.loginUser.no}"/>
         나의 팀정보
       </h1>
     </div>
@@ -137,7 +140,7 @@ body {
    
     <div id="teamInfo"
       style="border: 1px solid black; width: 1080px; height: 400px; box-shadow: 7px 7px 7px darkgray;">
-    <div id="teamModify" style="width: 188px;height: 13px;border 1px solid;position: absolute;margin-left: 28px;/* background-color: white; */margin-top: 20px;">
+    <div id="teamModify" style="width: 200px;height: 13px;border 1px solid;position: absolute;margin-left: 28px;/* background-color: white; */margin-top: 20px;">
     </div>
       <div id="teamMark"
         style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">
@@ -153,7 +156,7 @@ body {
                 value="
                        ${team.teamName},
                          ${team.teamId},
-                       ${team.teamArea},
+                       ${team.topLocation.topLocationName},
               ${team.teamAges.teamAges},
               ${team.teamType.teamType},
             ${team.teamLevel.teamLevel},
@@ -187,7 +190,7 @@ body {
  
  <!-- ------------------------------- 스크립트 시작  -->
   <script type="text/javascript">
- 
+  var loginUserNo = $('#loginUserNo').val();
   window.onload= select_onchange;
  
   // 셀렉문 
@@ -246,7 +249,7 @@ function select_onchange(){
   row1.innerHTML = '<span style="display: inline-block;font-size:30px; color: darkred; width: 100px;">종 목</div></span> ' + 
   '<span style="display: inline-block;font-size:30px; ;width: 300px;"> <U>'+bbb[8]+ '</U></span>' + 
   '<span style="display: inline-block;font-size:30px; color: darkred; width: 100px;">지 역</span> ' + 
-  '<span style="display: inline-block;font-size:30px; width: 100px;"> <U>'+'서울'+'</U></span>' 
+  '<span style="display: inline-block;font-size:30px; width: 100px;"> <U>'+bbb[2]+'</U></span>' 
   
   
 row2.innerHTML = '<span style="display: inline-block;font-size:30px; color: darkred; width: 100px;">창단일</span> ' + 
@@ -266,7 +269,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
       row1.innerHTML = '<span style="display: inline-block;font-size:30px; color: darkred; width: 100px;">종 목</div></span> ' + 
                            '<span style="display: inline-block;font-size:30px; ;width: 300px;"> <U>'+bbb[8]+'</U></span>' + 
                            '<span style="display: inline-block;font-size:30px; color: darkred; width: 100px;">지 역</span> ' + 
-                           '<span style="display: inline-block;font-size:30px; width: 100px;"><U>'+'서울'+'</U></span>' 
+                           '<span style="display: inline-block;font-size:30px; width: 100px;"><U>'+bbb[2]+'</U></span>' 
                            
                            
        row2.innerHTML = '<span style="display: inline-block;font-size:30px; color: darkred;width: 100px;">창단일</span> ' + 
@@ -359,9 +362,64 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
        ' </div>'
         
        document.getElementById("teamModify").innerHTML= 
-    	   '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/form/'+bbb[1]+ '"style="text-decoration:none; color:black">팀 정보 변경</a></span > '
-}//셀렉문 onchange
+    	   '<span ><button class=" teamInfoModify btn btn-outline-dark" type="button" >팀 정보 변경</button></span > ' +
+    	   '<span ><button class ="mainTeam btn btn-outline-dark" type="button" >대표팀 설정</button> </span > '
 
+    	   /* <input type="hidden" id="teamMemberNo" value="${teamMember.teamMemberNo}">  
+        <input type="hidden" id="memberNo" value="${teamMember.memberNo}">   */
+        
+    	 /*   <a href="${contextRootPath}/app/myteam/update/mainTeam/' + loginUserNo +'/'+ bbb[1] + '"style="text-decoration:none; color:black">대표팀 설정</a> */
+        
+        
+    	   $('.mainTeam').on('click', function(){
+    		   Swal.fire({
+    		       title: bbb[0] + ' (을)를<br>대표팀으로 설정 하시겠습니까?',
+    		       type: 'question',
+    		       showCancelButton: true,
+    		       confirmButtonColor: '#3085d6',
+    		       cancelButtonColor: '#d33',
+    		       confirmButtonText: '예! 설정하겠습니다.',
+    		       cancelButtonText: '아니오'
+    		     }).then((result) => {
+    		       if (result.value) {
+    		         Swal.fire(
+    		         bbb[0] + ' (이)가 <br> 대표팀이 되었습니다.'
+    		         )  
+    		         location.href='update/mainTeam/' + loginUserNo + '/' + bbb[1]
+    		       }
+    		     })
+    		   });
+
+        
+        $('.teamInfoModify').on('click', function(){
+          Swal.fire({
+              title: bbb[0] + ' 의 <br> 정보를 변경 하시겠습니까?',
+              type: 'question',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: '예! 변경하겠습니다.',
+              cancelButtonText: '아니오'
+            }).then((result) => {
+              if (result.value) {
+                location.href='form/'+   bbb[1]
+              }
+            })
+          });
+
+
+       
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+  }//셀렉문 onchange
 
 </script>
 

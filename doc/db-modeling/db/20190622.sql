@@ -1,8 +1,6 @@
 --외래키 제약 풀기
 SET foreign_key_checks = 0;
 
--- 후기게시판
-DROP TABLE IF EXISTS revw RESTRICT;
 
 -- 종목유형
 DROP TABLE IF EXISTS spt_clsf RESTRICT;
@@ -31,8 +29,6 @@ DROP TABLE IF EXISTS cmt RESTRICT;
 -- 경기
 DROP TABLE IF EXISTS mtch RESTRICT;
 
--- 경기태그
-DROP TABLE IF EXISTS mtch_tag RESTRICT;
 
 -- 경기신청
 DROP TABLE IF EXISTS mtchaply RESTRICT;
@@ -76,24 +72,6 @@ DROP TABLE IF EXISTS join_tm RESTRICT;
 -- 시군구지역2
 DROP TABLE IF EXISTS position RESTRICT;
 
--- 후기게시판
-CREATE TABLE revw (
-  tm_id   INTEGER(30) NOT NULL COMMENT '평가팀', -- 평가팀
-  tm_id2  INTEGER(30) NOT NULL COMMENT '피평가팀', -- 피평가팀
-  mtch_id INTEGER(30) NOT NULL COMMENT '경기번호', -- 경기번호
-  cont    MEDIUMTEXT  NULL     COMMENT '내용', -- 내용
-  gpa     INTEGER     NOT NULL COMMENT '별점수' -- 별점수
-)
-COMMENT '후기게시판';
-
--- 후기게시판
-ALTER TABLE revw
-  ADD CONSTRAINT PK_revw -- 후기게시판 기본키
-    PRIMARY KEY (
-      tm_id,   -- 평가팀
-      tm_id2,  -- 피평가팀
-      mtch_id  -- 경기번호
-    );
 
 -- 종목유형
 CREATE TABLE spt_clsf (
@@ -333,31 +311,13 @@ ALTER TABLE mtch
 ALTER TABLE mtch
   AUTO_INCREMENT = 1;
 
--- 경기태그
-CREATE TABLE mtch_tag (
-  mtch_tag_id INTEGER(30) NOT NULL COMMENT '경기태그번호', -- 경기태그번호
-  mtch_id     INTEGER(30) NULL     COMMENT '경기번호', -- 경기번호
-  mbr_id      INTEGER(30) NULL     COMMENT '회원번호', -- 회원번호
-  tag_name    VARCHAR(50) NOT NULL COMMENT '태그이름' -- 태그이름
-)
-COMMENT '경기태그';
-
--- 경기태그
-ALTER TABLE mtch_tag
-  ADD CONSTRAINT PK_mtch_tag -- 경기태그 기본키
-    PRIMARY KEY (
-      mtch_tag_id -- 경기태그번호
-    );
-
-ALTER TABLE mtch_tag
-  MODIFY COLUMN mtch_tag_id INTEGER(30) NOT NULL AUTO_INCREMENT COMMENT '경기태그번호';
 
 -- 경기신청
 CREATE TABLE mtchaply (
   tm_id     INTEGER(30) NOT NULL COMMENT '팀번호', -- 팀번호
   mtch_id   INTEGER(30) NOT NULL COMMENT '경기번호', -- 경기번호
   aply_dt   DATETIME    NOT NULL COMMENT '신청일', -- 신청일
-  aply_stat VARCHAR(20) NOT NULL COMMENT '신청상태' -- 신청상태
+  aply_stat VARCHAR(20) NOT NULL DEFAULT '대기중' COMMENT '신청상태' -- 신청상태
 )
 COMMENT '경기신청';
 
@@ -603,7 +563,6 @@ ALTER TABLE position
 ALTER TABLE position
   MODIFY COLUMN position_id INTEGER(30) NOT NULL AUTO_INCREMENT;
   
-
 
 -- 자유게시판
 ALTER TABLE free
