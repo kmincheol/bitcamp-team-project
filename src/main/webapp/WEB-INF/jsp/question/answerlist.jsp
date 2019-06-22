@@ -17,7 +17,7 @@
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
 
 <!-- footer.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer1.css">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -136,11 +136,11 @@ table tbody tr {
     </div>
   </div>
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom1.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
-  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />      
 
   <script>
 			var lang_kor = {

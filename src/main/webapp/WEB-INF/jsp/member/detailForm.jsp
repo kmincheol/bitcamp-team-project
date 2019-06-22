@@ -1,14 +1,11 @@
 <%@page import="com.eomcs.lms.domain.Member"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-  trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>회원 상세조회</title>
-<!-- common.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/common.css">
-
 <!-- header -->
 <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
 
@@ -16,22 +13,20 @@
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
 
 <!-- footer.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-
-<link rel="stylesheet" href="${contextRootPath}/css/free/free.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer1.css">
 
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 <!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
-  rel="stylesheet">
-
-<!-- Material Design Bootstrap -->
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet"> -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
 
 <!-- Your custom styles (optional) -->
-<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css"
+	rel="stylesheet">
 
 
 <style>
@@ -70,91 +65,94 @@ h6 {
 .page-content {
 	height: 641px;
 }
+.hoverdiv:hover {
+	
+}
 </style>
 </head>
 <body>
-  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+	<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+	<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
 
-  <c:choose>
-    <c:when test="${empty member}">
-      <p>해당하는 회원이 없습니다.</p>
-    </c:when>
+	<c:choose>
+		<c:when test="${empty member}">
+			<p>해당하는 회원이 없습니다.</p>
+		</c:when>
 
-    <c:otherwise>
-      <%-- <jsp:include page="../header.jsp" /> --%>
+		<c:otherwise>
+			<div class="container">
+				<div class="hoverdiv" style="margin-top: 100px;">
+					<h2>
+						<b style="color: brown;">${member.name}</b>님! <br> 안전한 정보 관리를
+						위해 <br>비밀번호를 주기적으로 변경해주세요.
+					</h2>
+					<h6 style="margin-bottom: 80px;">SNS 계정 사용자는 비밀번호 변경이 불가합니다.</h6>
+				</div>
+				<input class="loginType" type="hidden" value="${member.loginType}">     
+				<div> 
+				<div style="width: 500px; height: 300px; border: 1px solid black; border-radius: 5px; float: left; text-align: center;">
+					<div class="hoverdiv" style="margin-top: 60px">
+						<h4>프로필 변경</h4>
+						<h6>프로필 사진 및 기본 정보를 변경할 수 있습니다.</h6>
+					</div>
+					<input class="prof_no" type="hidden" value="${member.no}">
+					<button class="prof-btn btn btn-dark" style="margin-top: 50px; width: 300px; height: 60px;">변경하기</button>
+				</div>                 
 
-      <div class="container" id="main-wrap">
-        <br> <br>
-        <h2>
-          <b style="color: brown;">${member.name}</b>님! <br> 안전한 정보 관리를 위해 <br>비밀번호를 주기적으로
-          변경해주세요.
-        </h2>
-        <h6 style="margin-bottom: 80px;">SNS 계정 사용자는 비밀번호 변경이 불가합니다.</h6>
-        <input class="loginType" type="hidden" value="${member.loginType}">
-        <div class="row">
-          <div class="col button">
-            <br>
-            <h4>프로필 변경</h4>
-            <h6>프로필 사진 및 기본 정보를 변경할 수 있습니다.</h6>
-            <input class="prof_no" type="hidden" value="${member.no}"> 
-            <input class="prof-btn input-group-btn btn btn-dark" type="button" value="변경하기">
-          </div>
+				<div style="width: 500px; height: 300px; border: 1px solid black; border-radius: 5px; float: left; text-align: center;">
+					<div style="margin-top: 60px">
+						<h4>비밀번호 변경</h4>
+						<h6 class="prevMs" style="display: none;">비밀번호를 변경할 수 있습니다.</h6>
+					</div>      
+					<c:if test="${member.loginType == 'homepage'}">
+						<button class="password-btn btn btn-dark" style="margin-top: 50px; width: 300px; height: 60px;">변경하기</button>
+					</c:if>
+					<c:if test="${member.loginType != 'homepage'}">
+						<br>
+						<br>
+						<h6 class="message" style="color: red;">SNS 계정 사용자는 비밀번호 변경이
+							불가합니다.</h6>
+					</c:if>
+				</div>       
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 
-          <div class="col button">
-            <br>
-            <h4>비밀번호 변경</h4>
-            <h6 class="prevMs" style="display: none;">비밀번호를 변경할 수 있습니다.</h6>
+	<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom1.jsp" />
 
-            <c:if test="${member.loginType == 'homepage'}">
-              <input class="password-btn input-group-btn btn btn-dark" type="button"
-                style="display: none" value="변경하기">
-            </c:if>
-            <c:if test="${member.loginType != 'homepage'}">
-              <br>
-              <br>
-              <h6 class="message" style="color: red;">SNS 계정 사용자는 비밀번호 변경이 불가합니다.</h6>
-            </c:if>
+	<jsp:include
+		page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
-          </div>
-        </div>
-      </div>
-    </c:otherwise>
-  </c:choose>
-
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
-
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
-
-  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+	<jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
 
-  <script>
-			$(document).ready(function() {
+	<script>
+		$(document).ready(function() {
 
-				var login = $('.loginType').val();
+			var login = $('.loginType').val();
 
-				if (login != 'homepage') {
-					$('.prevMs').hide();
-				} else {
-					$('.prevMs').show();
-					$('.password-btn').show();
-				}
+			if (login != 'homepage') {
+				$('.prevMs').hide();
+			} else {
+				$('.prevMs').show();
+				$('.password-btn').show();
+			}
 
-			});
+		});
 
-			$('.prof-btn').on('click', function() {
-				var no = $('.prof_no').val();
-				no2 = btoa(no);
-				location = "profUpdate/" + no2;
-				/* location="profUpdate/" + no; */
-			});
+		$('.prof-btn').on('click', function() {
+			var no = $('.prof_no').val();
+			no2 = btoa(no);
+			location = "profUpdate/" + no2;
+			/* location="profUpdate/" + no; */
+		});
 
-			$('.password-btn').on('click', function() {
-				var no = $('.prof_no').val();
-				no2 = btoa(no);
-				location = "passwordUpdate/" + no2;
-			});
-		</script>
+		$('.password-btn').on('click', function() {
+			var no = $('.prof_no').val();
+			no2 = btoa(no);
+			location = "passwordUpdate/" + no2;
+		});
+	</script>
 </body>
 </html>

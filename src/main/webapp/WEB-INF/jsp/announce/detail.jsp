@@ -16,7 +16,7 @@ trimDirectiveWhitespaces="true"%>
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
 
 <!-- footer.css -->
-<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer1.css">
 
 <link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_detail.css">
 
@@ -73,12 +73,12 @@ trimDirectiveWhitespaces="true"%>
             </div>
           </div>
         </form>
-      </c:otherwise>
+      </c:otherwise>              
     </c:choose>
   </div>
 
 
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom1.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
