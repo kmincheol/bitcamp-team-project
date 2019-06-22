@@ -8,40 +8,41 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+   
   
     <div class="comment-list">
       <table class="table table-hover">
         <tbody class="cmtlist">
-          <c:forEach items="${list}" var="comment">
+           <c:forEach items="${list}" var="comment">
             <span style="font-size: 15px; margin-right: 10px;"><b>${comment.member.name}</b></span>
             <span style="font-size: 12px;">${comment.modifierDate}</span>
-            <div class="conts" style="border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 10px;">
+            <br> 
+            <div class="conts" style="word-break: break-all;">      
+            <c:if test="${sessionScope.loginUser.name eq comment.member.name}">    
+              <div class="btnsave" style="margin-bottom: 10px;">
+                  <%-- <a class="deletebtn btn btn-outline-dark" 
+                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a> --%>   
+                    <input id="cmtNo" type="hidden" value="${comment.no}">
+                    <a class="deletebtn" style="font-size: 13px; cursor: pointer;">삭제</a>
+                  <a class="update-btn" style="font-size: 13px; cursor: pointer;">/ 수정</a>   
+                  <div class="save-cancel" style="display: none;">  
+                   <form id="form-save" action="../comment/update" method="post">
+                    <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'style="display:none;">
+                   <input class="form-control contentsF" name='contents' style="margin-top:10px; font-size: 20px; height:53px; margin-bottom: 5px;" value="${comment.contents}"/>
+                    <span class="counter2">0/150</span>       
+                    <button class="save-btn btn btn-outline-dark">저장</button>       
+                     </form>
+                    <button class="cancel-btn btn btn-outline-dark">취소</button>     
+                  </div>
+                </div>    
+              </c:if>
               <input type="text" class="no" name="no" value="${comment.no}" style="display: none;">
-              <label class="cmtcontents" style="font-size: 20px; display:inline;  margin-bottom:5px;" >${comment.contents}</label>
+              <label class="cmtcontents" style="font-size: 18px; margin-bottom:5px; padding:10px;" >${comment.contents}</label>
               <input class="cmtcontents2" type="hidden" value="${comment.contents}"
                 style="font-size: 20px; display:inline;  margin-bottom:5px;" >
               
-              <c:if test="${sessionScope.loginUser.name eq comment.member.name}">
-                <div class="btnsave" style="float: right; top: -20px; position: relative;">
-                           
-                  <%-- <a class="deletebtn btn btn-outline-dark" 
-                    href='${contextRootPath}/app/comment/delete/${comment.no}'>삭제</a> --%>
-                    <input id="cmtNo" type="hidden" value="${comment.no}">
-                    <button class="deletebtn btn btn-outline-dark" 
-                    type="button">삭제</button>
-                  <button class="update-btn btn btn-outline-dark" type="button">변경</button>
-                  <div class="save-cancel" style="display: none;">
-                   <form id="form-save" action="../comment/update" method="post">
-                    <input type="text" class="form-control-plaintext" id="no" name='no' value='${comment.no}'style="display:none;">
-                   <textarea class="form-control contentsF" name='contents' style='margin-top:10px; font-size: 20px;'>${comment.contents}</textarea>
-                    <span class="counter2">0/150</span> 
-                    <button class="save-btn btn btn-outline-dark">저장</button>
-                     </form>
-                    <a class="cancel-btn btn btn-outline-dark">취소</a>
-                  </div>
-                </div>
-              </c:if>
+              
+              <hr style="margin-top: 0px;">
             </div>
           </c:forEach>
         </tbody>
@@ -78,8 +79,8 @@
             state.attr("style", "display:none;");
           }
         };
-        
-        $('.contentsF').on('keyup', function() {
+           
+        $('.contentsF').on('keyup', function() {  
           if($(this).val().length > 150) {
               $(this).val($(this).val().substring(0, 150));
           }
@@ -121,7 +122,7 @@
             
               var conts = $('.contentsF').val();  
               
-              $.post('../comment/update',  
+              $.post('../comment/update', 
                   { 
                 contents: conts
                   },

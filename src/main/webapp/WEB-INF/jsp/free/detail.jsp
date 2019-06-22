@@ -99,16 +99,13 @@
 
     <c:if test="${sessionScope.loginUser != null}">
       <form action='../comment/add' method="post" id="form-update">
-
         <div id="comment">
-
           <div class="form-group">
-            <div class="col-sm-12" style="padding:0px;">
+            <div class="col-sm-12" style="padding:0px; margin-bottom: 30px;">
               <textarea class="form-control comment-form"
-                placeholder="댓글을 작성하세요." autocomplete=off rows="2" style="width: 100%; float:left;"></textarea>
-              <!-- <button class="btn btn-outline-dark" id="cmt-submit" type='button' style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button> -->
-              <button class="btn btn-outline-dark sunext" type="button" id="cmt-submit" style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button> 
-              <span id="counter">0/150</span>         
+                placeholder="댓글을 작성하세요." autocomplete=off rows="2" style="width: 960px; float:left; margin-bottom: 5px;"></textarea>
+              <button class="btn btn-outline-dark sunext" type="button" id="cmt-submit" style="position: absolute; right: 0; width: 75px; height: 62px;">작성</button>
+              <div id="counter">0/150</div>         
             </div>        
           </div>   
         </div>

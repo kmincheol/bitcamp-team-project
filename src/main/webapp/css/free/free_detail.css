@@ -88,3 +88,9 @@ table.info-table td {
 	padding-bottom: 100px;
 	border: 1px solid #ccc;
 }
+
+#counter{
+	clear: both;
+    width: 50px;
+    padding-left: 9px;
+}
