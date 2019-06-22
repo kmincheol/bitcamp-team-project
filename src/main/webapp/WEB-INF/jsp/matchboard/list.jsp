@@ -402,7 +402,7 @@
                                
                                <br>
                                <ul id="EEE">
-                          <li class="sibarLocation" id="sibarLocation">${match.topLocation.topLocationName}&nbsp ${match.middleLocation.middleLocationName}</li>
+                          <li class="sibarLocation" id="sibarLocation">${match.topLocation.topLocationName}&nbsp ${match.topLocation.middleLocation.middleLocationName}</li>
                           <li>${match.teamAges.teamAges} / 
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq '상'}">

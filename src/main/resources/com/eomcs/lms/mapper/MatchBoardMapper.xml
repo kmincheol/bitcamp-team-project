@@ -195,7 +195,6 @@
     vw_cnt,
     m.cdt,
     game_dt,
-    m.area,
     stdm_psti,
     stdm_lat,
     stdm_long,
@@ -207,6 +206,7 @@
     t.tm_ambl_phot,
     u.user_id,
     l.levs,
+    m.area,
     p.toplc_name,
     d.midlc_name,
     a.ages,
@@ -221,7 +221,7 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_id = substr(m.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(m.area,3,3)
   </sql>
   
   <sql id="select123"> <!-- 매치정보를 위한 select2 -->
@@ -264,7 +264,7 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_id = substr(m.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(m.area,3,3)
    where
     tmb.tlead_wth = 1 AND
     game_dt >= CURDATE()
@@ -295,7 +295,7 @@
     left outer join spt_clsf on s.spt_clsf_id = t.spt_clsf_id
     left outer join age a on t.age_id = a.age_id
     left outer join toplc p on p.toplc_no = substr(m.area,1,2)
-    left outer join midlc d on d.midlc_id = substr(m.area,3,2)
+    left outer join midlc d on d.midlc_id = substr(m.area,3,3)
   </sql>
 
 
