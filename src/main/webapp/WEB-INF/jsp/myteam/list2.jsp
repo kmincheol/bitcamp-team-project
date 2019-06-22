@@ -115,7 +115,7 @@
                 <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px;">
                 <div style="font-size:20px" class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
                 <div style="font-size:20px"class="team_info">&middot; 연령 : ${matchNos.team.teamAgeId } 대</div>
-                <div style="font-size:20px"class="team_info">&middot; 수준 : ${matchNos.team.teamLevelId }</div>
+                <div style="font-size:20px"class="team_info">&middot; 수준 : ${matchNos.teamLevel.teamLevel } </div>
                 <div style="font-size:20px"class="team_info">&middot; 소개 : ${matchNos.team.teamInfo }</div>
                 </td>              
                 <td colspan="1" style="vertical-align: middle; width: 150px;">  

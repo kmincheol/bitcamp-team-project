@@ -167,11 +167,10 @@ height: auto;
               <div class="row_group join_photo">
                 <div class="join_row join_photo_title">
                   <h3 class="join_title" id="photo_title">
-                    <label for="fileupload">앰블럼 사진<span class="terms_choice">(선택하지
-                        않으면 기본사진이 들어갑니다.)</span></label>
+                    <label for="fileupload">앰블럼 사진<span class="terms_choice"></span></label>
                     <div class="file_input">
                       <input type="hidden" id="photo1" name="teamEmblemPhoto"
-                        value="${contextRootPath}/upload/emblem/vs.jpg"> <input type="hidden"
+                        value="${team.teamEmblemPhoto}"> <input type="hidden"
                         readonly="readonly" title="File Route" id="file_route"> <label>
                         사진올리기 <input type="file" id="fileupload" name="files">
                       </label>
@@ -180,7 +179,7 @@ height: auto;
                 </div>
                 <div class="join_photo_view">
                   <span class="photoView"> <label for="photo"> <img id="images-div1"
-                      src="${contextRootPath}/upload/emblem/vs.jpg"
+                      src="${team.teamEmblemPhoto}"
                       style="width: 200px; height: 200px;">
                   </label>
                   </span>

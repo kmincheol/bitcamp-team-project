@@ -113,9 +113,9 @@
                <c:forEach items="${matchNos}" var="matchNos"> 
               <tr style="height: 100px;">
                 <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img src="${matchNos.team.teamEmblemPhoto }"/></td>
-                <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px;">
+                <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px; font-size:20px">
                 <div class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
-                <div class="team_info">&middot; 지역 : ${matchNos.match.location }</div>
+                <div class="team_info">&middot; 지역 : ${matchNos.topLocation.topLocationName }</div>
                 <div class="team_info">&middot; 구장 : ${matchNos.match.stadiumName }</div>
                 <div class="team_info">&middot; 날짜 :${matchNos.match.playDate }</div>
                 <div class="team_info">&middot; 비용 : ${matchNos.match.cost }</div>

@@ -181,11 +181,10 @@ public class MyTeamController {
 	  matchNosd.clear();
 	
 	  List<Match> matchNos = myTeamService.findMatchNo2(tno);
-   
     for(Match m : matchNos) {
-      if(m.getOtherTeamNo() == 0 && m.getTeamNo() != 0 ) {
+    	System.out.println(m.getTeamLevel().getTeamLevel());
+    	if(m.getOtherTeamNo() == 0 && m.getTeamNo() != 0 ) {
         matchNosd.add(m);
-        System.out.println(matchNosd.toString());
         model.addAttribute("matchNos",matchNosd);
        }
     }
@@ -216,7 +215,6 @@ public class MyTeamController {
 	    matchNosd2.clear();
 		
 	    List<MatchApply> matchNos = myTeamService.findMatchNo(tno); //번호 수정해야함
-		
 	    
 		for(MatchApply m : matchNos) {
 		   if(m != null) {
@@ -311,6 +309,8 @@ public class MyTeamController {
         model.addAttribute("teamMembers", teamMembers);
         model.addAttribute("topLocations", topLocations);
          
+       System.out.println(team.toString());
+        
         return "myteam/form";
     }
 

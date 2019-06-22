@@ -385,7 +385,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
     		         Swal.fire(
     		         bbb[0] + ' (이)가 <br> 대표팀이 되었습니다.'
     		         )  
-    		         location.href='update/mainTeam/' + loginUserNo + '/' + bbb[1]
+    		         location.href='${contextRootPath}/app/myteam/update/mainTeam/' + loginUserNo + '/' + bbb[1]
     		       }
     		     })
     		   });
@@ -402,7 +402,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
               cancelButtonText: '아니오'
             }).then((result) => {
               if (result.value) {
-                location.href='form/'+   bbb[1]
+                location.href='${contextRootPath}/app/myteam/form/'+   bbb[1]
               }
             })
           });
