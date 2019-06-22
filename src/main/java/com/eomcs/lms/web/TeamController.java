@@ -38,7 +38,17 @@ public class TeamController {
   @Autowired ServletContext servletContext;
 
   @GetMapping
-  public String list(Model model) {
+  public String list(Model model, HttpSession session) {
+	  
+	  Member member = (Member) session.getAttribute("loginUser");
+	  String id = member.getId();
+	  System.out.println(id);
+	  //session.invalidate();
+	  
+	  Member member2 = memberService.getId(id);
+	  System.out.println(member2);
+	  session.setAttribute("loginUser", member2);
+	  
     List<Team> teams = teamService.teamList1();
     List<TeamMember> teamMembers = teamService.teamMemberList();
     List<TeamTypeSports> teamTypeSports = teamService.sportsTypeList();
@@ -50,6 +60,7 @@ public class TeamController {
     model.addAttribute("teamTypes", teamTypes);
     model.addAttribute("teamAges", teamAges);
     model.addAttribute("teamMembers", teamMembers); 
+    model.addAttribute("member", member2);
 
     return "team/list";
   }
@@ -170,9 +181,14 @@ public class TeamController {
     teamService.addTeamLeader(teamMember);
 
     member.setMainTeam(team.getTeamId());
-    System.out.println(member);
     memberService.addMainTeam(member);  
     System.out.println(member.getMainTeam());
+
+    //String id = member.getId();
+    //String sessionId = session.getId();
+    //session.invalidate();
+    
+   // reLogin(id, session, sessionId);
     
     return "redirect:../team";
   }
@@ -192,12 +208,15 @@ public class TeamController {
   @ResponseBody
   @GetMapping("reLogin")
   public Object reLogin(String id, HttpSession session) {
-    Member member = memberService.getId(id);
+    
+	  
     HashMap<String,Object> map = new HashMap<>();
-
-    session.setAttribute("loginUser", member);
-    map.put("status", "success");
-    return map;
+	  Member member = memberService.getId(id);
+    session.setAttribute("loginUser", member); 
+		  map.put("status", "success");
+		  System.out.println("로그인 성공");
+		  return map;
+		 
   }
   
   @ResponseBody
@@ -208,7 +227,7 @@ public class TeamController {
 
     HashMap<String,Object> content = new HashMap<>();
     content.put("status", "success");
-
+    System.out.println("로그아웃 성공");
     return content;
   }
 

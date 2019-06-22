@@ -66,6 +66,8 @@
       <div class="force-overflow"> 
       <c:forEach items="${teams}" var="team">     
   
+      <input type="hidden" id="userId" value="${member.id}">
+  
         <ul class="team_ul">  
           <li style="display: none;" id='teamId'>${team.teamId}</li> 
           <li>
@@ -148,6 +150,7 @@
          
 
   <script type="text/javascript">
+  
   
   function changeItem(){
     // 종목 선택시 콘솔 출력 

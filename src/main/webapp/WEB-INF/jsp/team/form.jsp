@@ -268,9 +268,9 @@ height: auto;
         });
       
  $('#topLocation').change(function() {
-   var no = $(this).val();
-   console.log(name) 
-   
+   var no = $(this).val(); 
+   console.log(no) 
+    
     $.getJSON('./AddressCheck', 
          {
        no: no 
@@ -393,6 +393,7 @@ height: auto;
           
           if (idFlag) {
             mainSubmit();
+            
           } else {
             setTimeout(function() {
               mainSubmit();
@@ -407,27 +408,8 @@ height: auto;
           return false;
         }
         if (idFlag) {
-          $('#add_form').submit();
-          logOut();
-          logIn();
-          
-           /* $.post('../comment/add',  
-        function(obj) {
-          if (obj.status == 'success') {  
-            logout();
-            logIn();
-         location.reload();
-          } */
-  /*   })
-          
-        function(obj) {
-          if (obj.status == 'success') {  
-            
-         document.location.reload(true);
-          }
-    } */
-          
-          
+		   $('#add_form').submit();
+
         } else {
           submitOpen();
           return false;
