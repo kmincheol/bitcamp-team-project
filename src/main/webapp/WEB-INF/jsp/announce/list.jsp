@@ -145,13 +145,13 @@ table tbody tr {
             <a href='${contextRootPath}/app/announce/form' class="btn btn-outline-dark">새 글</a>  
           </div>
         </div>
-      </c:if>
+      </c:if>     
     </c:if>
 
   </div>
   <!-- .container -->   
 
-   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
+   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom1.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 

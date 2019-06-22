@@ -19,4 +19,12 @@
 			$('nav').removeClass('darkred');
 		}
 	})
-</script>     
+</script>   
+ <script>
+   $('#mypage-btn').on('click', function(){
+      var no = $('#loginNo').val(); 
+      no2 = btoa(no); 
+      location="${contextRootPath}/app/member/" + no2;   
+   });
+    
+    </script>  
