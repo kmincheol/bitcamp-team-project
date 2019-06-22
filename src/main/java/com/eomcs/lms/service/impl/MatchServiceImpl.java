@@ -86,12 +86,14 @@ public class MatchServiceImpl implements MatchBoardService {
 
   @Override
   public int delete(int no) {
+    System.out.println("매치서비스 삭제번호확인"+no);
     // 경기신청 데이터 지우고, (다른팀에서 신청한것들.)
     // 후기게시판 데이터 지우고, (경기가 시작되고나서 생성되는 게시판이고, 경기가 진행되었다면 매치보드 글을 삭제하지 못하게 설계)
     // 태그 데이터 지우고
     // 그리고 나서 매치보드 번호 삭제. 
-
     matchApplyDao.deleteAll(no);
+
+    
     tagDao.deleteByTagNo(no);
     return matchDao.delete(no);
   }

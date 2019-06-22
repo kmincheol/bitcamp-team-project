@@ -261,6 +261,8 @@ public class MatchBoardController {
     return "redirect:../matchboard";
   }
 
+  
+  
   // 키 참조때문에 삭제 안되면 matchtb_revise.sql 파일 참조. --임시
   // 경기신청 데이터 지우고, 후기게시판 데이터 지우고,
   // 태그 데이터 지우고 그리고 나서 매치보드 번호 삭제.
@@ -268,7 +270,7 @@ public class MatchBoardController {
   public String delete(@PathVariable int no) {
     System.out.println("DELETEDLETE" + no);
 
-    matchApplyService.delete(no);
+//    matchApplyService.delete(no);
 
     if (matchBoardService.delete(no) == 0)
       throw new RuntimeException("해당 번호의 게시물이 없습니다.");
@@ -276,6 +278,9 @@ public class MatchBoardController {
     return "redirect:../matchboard";
   }
 
+  
+  
+  
   @GetMapping("sideBar")
   public String list2(@RequestParam(defaultValue = "1") int pageNo,
       @RequestParam(defaultValue = "3") int pageSize, Model model) {

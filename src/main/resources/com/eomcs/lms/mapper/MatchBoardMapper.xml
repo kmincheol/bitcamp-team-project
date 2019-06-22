@@ -416,7 +416,7 @@
 
 
 
-<!--  삭제가 안된다면 db 설계를 바꿔야함. matchtb_revise 참조-->
+<!--  삭제가 안된다면 키 걸려있는거부터 삭제해야 함 -->
   <delete id="delete" parameterType="int">
     delete from mtch
     where mtch_id = #{no}
