@@ -105,18 +105,12 @@ a:hover{
 }
 
 #allbtn1 {
-  width: 165px;
-  margin-bottom: 6px;
-  margin-left: 44px;
-  margin-top: 10px;
-  height: 32px;
+  width: 250px;
+  margin-bottom: 12px;
 }
 
 #allbtn2 {
   width: 250px;
-  margin-bottom: 6px;
-  padding-top: 3px;
-  height: 32px;
 }
 
 .teamName{
@@ -151,16 +145,16 @@ a:hover{
   margin-bottom: 47px;
 }
 
-#allTypes{
-  display:inline-block;
+#allTypes{  
+	margin-bottom: 10px;
 }     
 
 #allLevel{
-  margin-right: 40px;
   display:inline-block;
 }
 
 #inputBox2{
+	margin-left: 50px;
   display:inline-block;
 }
 
@@ -217,11 +211,9 @@ a:hover{
 
 
 #matchform{
-  width: 100%;
-  height: 45px;
-  font-size:19px;
-  position: relative;
-    left: -6px;
+    width: 170px;
+    height: 170px;
+    font-size: 20px;
 }
 
 
@@ -257,13 +249,12 @@ a:hover{
 }
 
 #sstypeArea{
-  width: 250px;
+  width: 262px;
   text-align: center;
-  margin-top: 7px;
-  margin-left: 2px;
 }
 
 #stype{
+	margin: 0 5px;
   border: 1px solid #ffffff;
   width: 40px;
   border-radius: 120px;
