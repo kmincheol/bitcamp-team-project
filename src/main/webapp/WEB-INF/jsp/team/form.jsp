@@ -182,8 +182,8 @@ height: auto;
               <div class="row_group join_photo">
                 <div class="join_row join_photo_title">
                   <h3 class="join_title" id="photo_title">
-                    <label for="fileupload">앰블럼 사진<span class="terms_choice">(선택하지
-                        않으면 기본사진이 들어갑니다.)</span></label>
+                    <label for="fileupload">앰블럼 사진<div class="terms_choice">(선택하지
+                        않으면 기본사진이 들어갑니다.)</div></label>
                     <div class="file_input">
                       <input type="hidden" id="photo1" name="teamEmblemPhoto"
                         value="${contextRootPath}/upload/emblem/vs.jpg"> <input type="hidden"
@@ -208,11 +208,11 @@ height: auto;
                 <div class="row_group">
                   <div class="join_row">
                     <h3 class="join_title">
-                      <label for="teamInfo">팀 소개<span class="terms_choice">(선택)</span></label>
-                    </h3>
+                      <label for="teamInfo">팀 소개<div class="terms_choice">(선택)</div></label>
+                    </h3>    
                     <div class="self_introduce_area">
                       <textarea class="ps_box self_introduce" id="teamInfo" name="teamInfo"
-                        placeholder="간단한 팀소개를 입력해주세요." rows="20" cols="30" style="height: 90px;"></textarea>
+                        placeholder="간단한 팀소개를 입력해주세요." rows="20" cols="30" style="height: 135px;"></textarea>     
                         <span id="counter">0/20</span> 
                     </div> 
                   </div>
@@ -223,7 +223,7 @@ height: auto;
             </div>
             <!-- .join_form -->
           </div>
-          <div class="btn_area" style="position: relative; bottom: 500px;">
+          <div class="btn_area">
             <button class="btn btn_type btn-outline-secondary sunext" id="btnCreate" type="button">생성하기</button>
           </div>
           <!-- .btn_area -->

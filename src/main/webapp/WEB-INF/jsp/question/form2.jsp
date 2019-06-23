@@ -20,7 +20,7 @@
 
       <label for="title" class="col-sm-2 col-form-label">내용</label>
       <div class="col-sm-10">
-       <textarea class="form-control col-sm-13" rows="5" name="contents"  name="contents" id="contents" />
+       <textarea class="form-control col-sm-13" rows="5" name="contents"  name="contents" id="contents">
        ${answer.contents}
       </textarea>
        </div>

@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
+
 <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
 
 <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
@@ -66,23 +67,25 @@ color:black;
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
-
-  <div class="container" id="main-wrap">
-  
-    <div id="main-text">
+      
+<div id="main-text" style="margin-bottom: 40px;">
+    <img src="${contextRootPath}/images/matchboard.png" style="width: 100%; height: 100%;">
+    <div class="text-field" id="main-textfield">
       <h2 style="text-align: center;">
         <b>매치 글</b>을 <b>등록</b>할 수 있습니다.
       </h2>
       <br>
-      <p>
+      <p>   
         <b>매치</b> 글을 등록한 후
       </p>
       <p>
         다른 팀의<b>대결 신청을 받아</b>경기를 진행해 보세요.
-      </p>
+      </p>      
     </div>
-
+  </div>        
+     
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 100px;">
+  
     <form action='add' method='post' name="submit">
       <table id="match_table" class="table table-bordered table-white">
         <tbody>
@@ -103,7 +106,6 @@ color:black;
             </select></td>
             <th scope="row">경기일</th>
             <td><input autocomplete=off class="form-control" type='text' id="datepicker" name='playDate' value=""/></td>
-            </td>
           </tr>
           <tr>
             <th scope="row">종목</th>
@@ -172,7 +174,7 @@ color:black;
         </tbody>
       </table>
 
-      <div id="btnArea" style=" text-align: center; margin-bottom: 50px;">       
+      <div id="btnArea" style=" text-align: center; margin-bottom: 25px;">       
           <a class="btn btn-outline-dark" href='${contextRootPath}/app/matchboard'>목록</a>
           <input type="button" id="add" class="btn btn-outline-dark" onclick="check_onclick()" value="매치보드에 등록하기">
       </div>

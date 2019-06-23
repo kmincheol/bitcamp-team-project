@@ -12,10 +12,11 @@
 
 <!-- header -->
 <link rel="stylesheet" href="${contextRootPath}/css/mainpage-header.css">
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    
 <jsp:include page="../mainSidebar/commonSidebarCss.jsp" />
-</head>
+</head>            
 
 <body>
 	<jsp:include page="../mainSidebar/commonSidebarTop.jsp" />

@@ -57,7 +57,7 @@
       </div>
     </div>
     
-  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 100px;">
     
       <form id="add_form" action='add' method='post' onsubmit="return check()">
       <div id="table">

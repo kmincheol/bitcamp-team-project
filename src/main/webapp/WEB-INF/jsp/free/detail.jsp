@@ -48,7 +48,7 @@
     <h1>자유 게시판</h1>
   </div>   
 
-  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 100px;">
     <div class="freeList">
       <c:choose>
         <c:when test="${empty free}">

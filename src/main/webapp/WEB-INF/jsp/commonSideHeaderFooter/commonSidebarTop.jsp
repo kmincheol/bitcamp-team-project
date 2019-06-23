@@ -156,4 +156,4 @@
     </nav> 
     <!-- sidebar-wrapper  -->
     <!-- 본문 영역 -->
-    <main class="page-content">
+    <main class="page-content" style="background:white;">

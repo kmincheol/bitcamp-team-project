@@ -36,10 +36,10 @@ trimDirectiveWhitespaces="true"%>
       </h1>      
     </div>
     
-  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 40px;">
+  <div id="main-wrap" class="container" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 100px;">
 
     <form action='update' method='post' name="remove">
-      <div id="title-wrap" class="form-group">
+      <div id="title-wrap" class="form-group">    
         <div id="title-row" class="col-sm-12">    
           <div id="title" name="title">${question.title}</div>
         </div>
@@ -102,7 +102,7 @@ trimDirectiveWhitespaces="true"%>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-10">
+          <div class="col-sm-12" style="text-align: center">
             <button id="add_Answer_Btn" class="btn  btn-outline-dark">등록</button>
             <a class="btn  btn-outline-dark" href='${contextRootPath}/app/question'>목록</a>
           </div>

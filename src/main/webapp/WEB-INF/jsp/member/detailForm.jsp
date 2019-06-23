@@ -65,9 +65,6 @@ h6 {
 .page-content {
 	height: 641px;
 }
-.hoverdiv:hover {
-	
-}
 </style>
 </head>
 <body>
@@ -90,17 +87,19 @@ h6 {
 				</div>
 				<input class="loginType" type="hidden" value="${member.loginType}">     
 				<div> 
-				<div style="width: 500px; height: 300px; border: 1px solid black; border-radius: 5px; float: left; text-align: center;">
-					<div class="hoverdiv" style="margin-top: 60px">
+				<div style="width: 500px; height: 300px; border-radius: 5px; float: left; 
+				    box-shadow: 0px 0px 10px 0px grey; margin-left: 50px; text-align: center;">
+					<div class="hoverdiv" style="margin-top: 60px">        
 						<h4>프로필 변경</h4>
 						<h6>프로필 사진 및 기본 정보를 변경할 수 있습니다.</h6>
 					</div>
-					<input class="prof_no" type="hidden" value="${member.no}">
+					<input class="prof_no" type="hidden" value="${member.no}">            
 					<button class="prof-btn btn btn-dark" style="margin-top: 50px; width: 300px; height: 60px;">변경하기</button>
 				</div>                 
 
-				<div style="width: 500px; height: 300px; border: 1px solid black; border-radius: 5px; float: left; text-align: center;">
-					<div style="margin-top: 60px">
+				<div style="width: 500px; height: 300px; border-radius: 5px; float: right;
+				    box-shadow: 0px 0px 10px 0px grey; margin-right: 50px; text-align: center;">
+					<div style="margin-top: 60px">    
 						<h4>비밀번호 변경</h4>
 						<h6 class="prevMs" style="display: none;">비밀번호를 변경할 수 있습니다.</h6>
 					</div>      
