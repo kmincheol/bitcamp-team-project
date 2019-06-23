@@ -10,11 +10,18 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>팀 조회</title>
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
 <jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
 <!-- commonSidebar css -->
 <jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
-<!-- footer.css --> 
+
+<!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
 <!-- Bootstrap core CSS --> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
   rel="stylesheet">  
@@ -24,44 +31,37 @@
 <link rel="stylesheet" href="${contextRootPath}/css/team.css">
  <link rel="stylesheet" href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
  <link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<style>
+.footer {
+	margin-top: 154px !important;
+}
+.page-wrapper .page-content{
+overflow-x:unset!important;
+height: 805px;
+}      
+</style>
 </head>   
   
  
-<body>  
+<body>       
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp"/> 
- 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp"/>
-  <div class="container">   
-    <br>
-    <br> 
- 
-    <div id="main-text">
-      <h2>등록된 <b>팀의 정보</b>를 열람할 수 있습니다.</h2><br>
+            
+  <div id="main-text">     
+    <img src="${contextRootPath}/images/teamboard.png" style="width: 100%; height: 100%;">
+     <h2>등록된 <b>팀의 정보</b>를 열람할 수 있습니다.</h2>
       <h5 >검색기능을 사용하여 원하는 종목의 <br> 팀을 찾아 조회 하세요.</h5> 
-    </div> 
+  </div>
+  
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 100px;">   
  
-  <!-- 종목 선택 select -->
-    <%--  <span class="category1">
-     <select class="form-control select" id="teamSportsId" name='teamSportsId' onchange="changeItem()"> 
-          <option>전체</option>
-      <c:forEach items="${teamTypeSports}" var="typeSports">
-           <option value="${typeSports.teamSportsTypeId}"
-            ${team.teamSportsId == typeSports.teamSportsTypeId ? "selected" : ""}>${typeSports.teamSportsType} 
-          </option>
-      </c:forEach> 
-    </select> 
-     </span> --%>
-      
       <div class="md-form">
        <input autocomplete=off type="text" id="inputIconEx2"
           class="form-control" aria-describedby="emailHelp" name='keyword' autocomplete=off> 
         <label for="inputIconEx2">키워드 검색</label> 
       </div>  
-     
-      <!-- <input type='search' id="keyword" name='keyword' placeholder="키워드를 입력하세요" autocomplete=off> -->
-     <br>
-      
+           
     <div class="team_list scrollbar scrollbar-primary">  
       <div class="force-overflow"> 
       <c:forEach items="${teams}" var="team">     
@@ -116,10 +116,11 @@
         </ul>   
       </c:forEach> 
       </div>  
-    </div> 
-    <div class="detailForm">
+    </div>
+    <div style="float:right; right: 228px; top: 274px; font-size: 40px; position: relative; color:gray;">팀을 선택해 주세요.</div>
+    <div class="detailForm">       
     <div class="detail" id="triangle-topleft"></div> 
-    <div class="detail" id="triangle-bottomright"></div>
+    <div class="detail" id="triangle-bottomright"></div>   
     <div class="detail">  
       
     <div class="suvdetail"><h1 class="detailText"><b>팀 상세 정보</b></h1></div> 
@@ -143,7 +144,7 @@
   
   <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
-
+ 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
@@ -265,15 +266,15 @@
     
      str +=  " <div style='display:none;'> <b>팀번호</b> "+ no + "</div>" +
      "<div class='contents' style='height:230px;'>" + 
-        "<div class='shiny' style='width:250px; height:250px; bottom: 30px; right:20px; position:relative;'> <img src=" + teamEmblemPhoto + " style='width:200px; height:200px; right:20px; bottom:10px; position:relative;'><div class='show-off' /> </div>" + 
-        "<hr style='position:relative; bottom:70px; right:30px; width:250px;'><br>" +   
+        "<div class='shiny' style='width:250px; height:250px; bottom: 30px; right:20px; position:relative;'> <img src=" + teamEmblemPhoto + " style='width:200px; height:200px; right:11px; bottom:10px; position:relative;'><div class='show-off' /> </div>" + 
+        "<hr style='position:relative; bottom:70px; right:30px; width:250px;'>" +   
         "</div>" +
         "<div style='position:relative; right:30px; bottom:10px;'>" +   
         "<div style='margin:10px;'> <b style='font-size:30px; color:darkred;'>팀명</b><br>" + teamName + "</div>" + 
         "<div class='area' style='margin:10px;'> <b style='font-size:30px; color:darkred;'>지역</b><br>" + teamArea + "</div>" +    
         "<div class='lev' style='margin:10px;'> <b  style='font-size:30px; color:darkred'>팀실력 </b><br>" + teamLev + "</div>" +  
         "</div>" +   
-        "<div style='position:relative; left:120px; bottom:267px;'>" +   
+        "<div style='position:relative; left:120px; bottom:265px;'>" +   
         "<div class='sportsTypes' style='margin:10px;'> <b  style='font-size:30px; color:darkred'>종목</b><br>" + teamSprotsType + "</div>" + 
         "<div style='margin:10px;'> <b  style='font-size:30px; color:darkred'>연령대</b><br>" + teamAges + "</div>" + 
         "<div style='margin:10px;'> <b  style='font-size:30px; color:darkred'>창단일</b><br> " + teamCreateDate + "</div>" +  

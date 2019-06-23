@@ -65,7 +65,10 @@ h6 {
 .page-content {
 	height: 641px;
 }
-</style>
+.hoverdiv:hover{    
+box-shadow: 0px 0px 10px 3px gray;  
+}
+</style>  
 </head>
 <body>
 	<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
@@ -78,7 +81,7 @@ h6 {
 
 		<c:otherwise>
 			<div class="container">
-				<div class="hoverdiv" style="margin-top: 100px;">
+				<div style="margin-top: 100px;">
 					<h2>
 						<b style="color: brown;">${member.name}</b>님! <br> 안전한 정보 관리를
 						위해 <br>비밀번호를 주기적으로 변경해주세요.
@@ -87,9 +90,9 @@ h6 {
 				</div>
 				<input class="loginType" type="hidden" value="${member.loginType}">     
 				<div> 
-				<div style="width: 500px; height: 300px; border-radius: 5px; float: left; 
-				    box-shadow: 0px 0px 10px 0px grey; margin-left: 50px; text-align: center;">
-					<div class="hoverdiv" style="margin-top: 60px">        
+				<div class="hoverdiv" style="width: 500px; height: 300px; border-radius: 5px; float: left; 
+				    box-shadow: 0px 0px 10px -2px grey; margin-left: 50px; text-align: center;">
+					<div style="margin-top: 60px">        
 						<h4>프로필 변경</h4>
 						<h6>프로필 사진 및 기본 정보를 변경할 수 있습니다.</h6>
 					</div>
@@ -97,8 +100,8 @@ h6 {
 					<button class="prof-btn btn btn-dark" style="margin-top: 50px; width: 300px; height: 60px;">변경하기</button>
 				</div>                 
 
-				<div style="width: 500px; height: 300px; border-radius: 5px; float: right;
-				    box-shadow: 0px 0px 10px 0px grey; margin-right: 50px; text-align: center;">
+				<div class="hoverdiv" style="width: 500px; height: 300px; border-radius: 5px; float: right;
+				    box-shadow: 0px 0px 10px -2px grey; margin-right: 50px; text-align: center;">
 					<div style="margin-top: 60px">    
 						<h4>비밀번호 변경</h4>
 						<h6 class="prevMs" style="display: none;">비밀번호를 변경할 수 있습니다.</h6>
