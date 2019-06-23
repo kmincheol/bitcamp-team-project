@@ -78,128 +78,151 @@
     
         <!-- filter control -->
         <div id="toolsss">
-        <table id="tabletable">
-        <tr>
-        <td>
-        <div id="allTypes">
-        <button class="btn btn-dark" id="allbtn1" type="button" style="margin-bottom: 6px;"
-            data-jplist-control="buttons-text-filter"
-            data-path="default" data-mode="radio"
-            data-group="group1" name="sportsType" data-selected="true">
-         모든 종목</button><br>
-        
-        <div id="sstypeArea">
-        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType" 
-            data-mode="radio" data-group="group1" name="sportsType" data-text="축구">
-        <img id="imgcontro1" src="${contextRootPath}/images/football_list_min.png" title="축구"
-        style="width:28px; height: 28px;"> 
-        </button><!-- 축구버튼 -->
-        
-        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
-            data-mode="radio" data-group="group1" name="sportsType" data-text="야구">
-         <img id="imgcontro2" src="${contextRootPath}/images/baseball_list_min.png" title="야구"
-         style="width:28px; height: 28px;">
-        </button><!-- 야구버튼 -->
-        
-        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
-            data-mode="radio" data-group="group1" name="sportsType" data-text="농구">
-         <img id="imgcontro3" src="${contextRootPath}/images/basketball_list_min.png" title="농구"
-         style="width:28px; height: 28px;">
-        </button><!-- 농구버튼 -->
-        
-        <button id="stype" type="button" data-jplist-control="buttons-text-filter" data-path=".sportsType"
-            data-mode="radio" data-group="group1" name="sportsType" data-text="탁구">
-         <img id="imgcontro4" src="${contextRootPath}/images/pingpong_list_min.png" title="탁구"
-         style="width:28px; height: 28px;">
-        </button><!-- 탁구버튼 -->
-        
-        </div>
-        </div>
-        
-        </td>
-        
-        <!-- 　　　　　　 --><!-- 여기에 왼쪽에 공백있음 -->
-        <td>
-        <div id="allLevel">        
-         <!-- filter control -->
-        <button class="btn btn-dark" id="allbtn2" data-jplist-control="buttons-text-filter"
-            data-path="default"  data-mode="radio" data-group="group1" name="teamLevel"  data-selected="true">
-         모든 레벨 </button> <!-- 전체 -->  
+					<table id="tabletable">
+						<tr>
+							<td>
+								<div style="margin-left: 80px">
+									<div id="allTypes">
+										<button class="btn btn-dark" id="allbtn1" type="button"
+											data-jplist-control="buttons-text-filter" data-path="default"
+											data-mode="radio" data-group="group1" name="sportsType"
+											data-selected="true">모든 종목</button>
 
-      <div id="levelArea">
-        <button type="button" id="levelbtn1" class="btn btn-outline-dark"  data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="상">
-        상 </button>
+										<div id="sstypeArea">
+											<button id="stype" type="button"
+												data-jplist-control="buttons-text-filter"
+												data-path=".sportsType" data-mode="radio"
+												data-group="group1" name="sportsType" data-text="축구">
+												<img id="imgcontro1"
+													src="${contextRootPath}/images/football_list_min.png"
+													title="축구" style="width: 28px; height: 28px;">
+											</button>
+											<!-- 축구버튼 -->
+
+											<button id="stype" type="button"
+												data-jplist-control="buttons-text-filter"
+												data-path=".sportsType" data-mode="radio"
+												data-group="group1" name="sportsType" data-text="야구">
+												<img id="imgcontro2"
+													src="${contextRootPath}/images/baseball_list_min.png"
+													title="야구" style="width: 28px; height: 28px;">
+											</button>
+											<!-- 야구버튼 -->
+
+											<button id="stype" type="button"
+												data-jplist-control="buttons-text-filter"
+												data-path=".sportsType" data-mode="radio"
+												data-group="group1" name="sportsType" data-text="농구">
+												<img id="imgcontro3"
+													src="${contextRootPath}/images/basketball_list_min.png"
+													title="농구" style="width: 28px; height: 28px;">
+											</button>
+											<!-- 농구버튼 -->
+
+											<button id="stype" type="button"
+												data-jplist-control="buttons-text-filter"
+												data-path=".sportsType" data-mode="radio"
+												data-group="group1" name="sportsType" data-text="탁구">
+												<img id="imgcontro4"
+													src="${contextRootPath}/images/pingpong_list_min.png"
+													title="탁구" style="width: 28px; height: 28px;">
+											</button>
+											<!-- 탁구버튼 -->
+
+										</div>
+									</div>
+
+									<!-- 여기에 왼쪽에 공백있음 -->
+									<div id="allLevel">
+										<!-- filter control -->
+										<button class="btn btn-dark" id="allbtn2"
+											data-jplist-control="buttons-text-filter" data-path="default"
+											data-mode="radio" data-group="group1" name="teamLevel"
+											data-selected="true">모든 레벨</button>
+										<!-- 전체 -->
+
+										<div id="levelArea">
+											<button type="button" id="levelbtn1"
+												class="btn btn-outline-dark"
+												data-jplist-control="buttons-text-filter"
+												data-path=".teamLevel" data-mode="radio" data-group="group1"
+												name="teamLevel" data-text="상">상</button>
+
+											<button type="button" id="levelbtn2"
+												class="btn btn-outline-dark"
+												data-jplist-control="buttons-text-filter"
+												data-path=".teamLevel" data-mode="radio" data-group="group1"
+												name="teamLevel" data-text="중">중</button>
+
+											<button type="button" id="levelbtn3"
+												class="btn btn-outline-dark"
+												data-jplist-control="buttons-text-filter"
+												data-path=".teamLevel" data-mode="radio" data-group="group1"
+												name="teamLevel" data-text="하">하</button>
+										</div>
+									</div>
+								</div>
+							</td>
+
+							<td>
+								<div id="inputBox2" style="margin-top: 5px;">
+									<div class="md-form"
+										style="font-size: 16px; margin-bottom: 15px;">
+										글 제목 : <input autocomplete=off class="form-control-sm"
+											id="titleSearchBox" aria-describedby="emailHelp"
+											data-jplist-control="textbox-filter" data-group="group1"
+											data-name="my-filter-1" data-path=".title" type="text"
+											value="" data-clear-btn-id="name-clear-btn1" />
+										<button type="button" class="btn btn-dark"
+											id="name-clear-btn1">지우기</button>
+									</div>
+
+									<div class="md-form"
+										style="font-size: 16px; margin-bottom: 15px;">
+										팀 명 : <input autocomplete=off class="form-control-sm"
+											id="teamSearchBox" aria-describedby="emailHelp"
+											data-jplist-control="textbox-filter" data-group="group1"
+											data-name="my-filter-1" data-path=".teamName" type="text"
+											value="" data-clear-btn-id="name-clear-btn2" />
+
+										<button type="button" class="btn btn-dark"
+											id="name-clear-btn2">지우기</button>
+									</div>
+
+									<!-- datepicker 적용 -->
+									<div class="md-form"
+										style="font-size: 16px; margin-bottom: 15px;">
+										날 짜 : <input autocomplete=off class="form-control-sm"
+											type="text" id="datepicker">
+										<button type="button" class="btn btn-dark"
+											id="name-clear-btn3">초기화</button>
+
+									</div>
+
+
+								</div>
+
+								<div style="display: none;">
+									<input data-jplist-control="textbox-filter" data-group="group1"
+										data-name="my-filter-1" data-path=".playDate"
+										id="textbox-filter" name="playDate" type="text" value=""
+										data-clear-btn-id="name-clear-btn3" placeholder="날짜를 선택하세요" />
+								</div>
+							</td>
+							<td>
+								<div id="submitArea"
+									style="margin-left: 50px; margin-top: -4px;">
+									<button type="button" class="btn btn-outline-dark"
+										id="matchform"
+										onClick="location.href='${contextRootPath}/app/matchboard/form'">
+										매치등록하기</button>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div> <!-- tools 끝 -->
         
-        <button type="button" id="levelbtn2" class="btn btn-outline-dark"  data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel"  data-mode="radio" data-group="group1" name="teamLevel" data-text="중">
-        중 </button>
         
-        <button type="button" id="levelbtn3" class="btn btn-outline-dark" data-jplist-control="buttons-text-filter"
-            data-path=".teamLevel" data-mode="radio" data-group="group1" name="teamLevel" data-text="하">
-        하 </button>
-      </div>  
-        </div>
-        </td>
-        
-        <td>
-        <div id="inputBox2">
-        <table>
-          <tr>
-          <td>
-          <div class="md-form">
-          글 제목 :
-                <input autocomplete=off class="form-control-sm" id="titleSearchBox" aria-describedby="emailHelp"
-                data-jplist-control="textbox-filter" data-group="group1"
-                data-name="my-filter-1" data-path=".title"
-                type="text" value=""
-                data-clear-btn-id="name-clear-btn1"/>
-          <button type="button" class="btn btn-dark" id="name-clear-btn1">지우기</button>
-          </div>
-          
-          <div class="md-form">
-          팀 명 :
-                <input autocomplete=off class="form-control-sm" id="teamSearchBox" aria-describedby="emailHelp"
-                data-jplist-control="textbox-filter" data-group="group1"
-                data-name="my-filter-1" data-path=".teamName"
-                type="text" value=""
-                data-clear-btn-id="name-clear-btn2"/>
-                
-          <button type="button" class="btn btn-dark" id="name-clear-btn2">지우기</button>
-          </div>
-          
-                <!-- datepicker 적용 -->
-          <div class="md-form">
-          날 짜 : <input autocomplete=off class="form-control-sm" type="text" id="datepicker">
-          <button type="button" class="btn btn-dark" id="name-clear-btn3">초기화 </button>
-          
-          </div>
-          </td>
-          <td>      
-          </td>
-          </tr>
-          </table>
-          </div>
-          
-    <div style="display: none;">
-    <input  
-         data-jplist-control="textbox-filter" data-group="group1"
-         data-name="my-filter-1" data-path=".playDate"
-         id="textbox-filter" name="playDate" type="text"  value=""
-         data-clear-btn-id="name-clear-btn3"
-         placeholder="날짜를 선택하세요" />
-    </div>
-    </td>
-    </tr>
-    </table>
-        </div> <!-- tools 끝 -->
-        
-        <div id="submitArea">
-            <button type="button" class="btn btn-outline-dark" id="matchform"
-            onClick="location.href='${contextRootPath}/app/matchboard/form'" >       
-            매치등록하기
-            </button>
-        </div>
                 <!-- text filter control -->
         </div>
         
