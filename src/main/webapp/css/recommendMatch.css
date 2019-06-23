@@ -1,10 +1,9 @@
 .recommendDiv {
-  width: 250px;
-  float:left;
-  margin-left: 135px;
-}
+/*  position: fixed;
+    right: 135px; */
+}     
 .recommendTable {
-	width: 190px;
+	width: 220px;
   font-size: 16px;
 	border: 1px solid black;
 }

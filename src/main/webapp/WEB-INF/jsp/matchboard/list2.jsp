@@ -42,10 +42,17 @@
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
         <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
+        
+        <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+        <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+        
  <style>
  .modal-title{
  color:red;
  }
+ .btn-sss, .btn-fff {
+ cursor: pointer
        
  .recommendDiv {
   position: absolute;
@@ -522,13 +529,22 @@
                   $('.modal-body').append("<div='ajlocation'><br> 지역 : "+data.addressTop.topLocationName+ " " + data.addressMiddle.middleLocationName + "</div>");
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo+"-> 매치글작성한 팀번호");
-           console.log(no+"-> 매치글번호");
-          console.log(data.match.topLocation.topLocationName);
-          console.log(data.match.middleLocation.middleLocationName)
+					 console.log(no+"-> 매치글번호");
+					console.log(data.match.topLocation.topLocationName);
+					console.log(data.match.middleLocation.middleLocationName)
                   });
               }
             
-            $( "#datepicker" ).datepicker({
+            var swalWithBootstrapButtons = Swal.mixin({
+              customClass: {
+                confirmButton: 'btn btn-success btn-sss',
+                cancelButton: 'btn btn-danger btn-fff'
+              },
+              buttonsStyling: false,
+            })
+            
+            
+        	  $( "#datepicker" ).datepicker({
            
                   onSelect: function(value, props) {
                          var tb = document.getElementById('textbox-filter');
@@ -546,8 +562,8 @@
                        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
                });           
-            
-            $('#btnsub2').click(function() {
+        	  
+        	  $('#btnsub2').click(function() {
                   var choiceTeamValue = $("#selectBox option:selected").val();
 
                  //console.log(typeof choiceTeamValue);
@@ -555,34 +571,66 @@
                  console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
                
                  if (choiceTeamValue == "") {
-                   alert("팀을 선택해주세요.");
-                    return false;
-                  }
-          if (matchTeamNo == choiceTeamValue) {
-            alert("자기가 속한 팀에 신청을 할 수 없습니다.")
-            return false;
-          }
-          
-                  $.ajax({
-                    type:"POST",
-                    url:'matchboard/submit/' + no,
-                    contentType: 'application/json',
-                    dataType: "text",
-                    data:JSON.stringify({
-                      teamId: choiceTeamValue
-                    }),
-                    success : function(data) {
-                      console.log(data)
-                      if (data == 12345) {
-                        alert("신청 되었습니다.");
-                        location.href="matchboard";
-                          }
-                      },
-                    error : function(data) {
-                       alert("이미 신청되었습니다.")
-                      }
-                    })
-                 });
+             	    	swalWithBootstrapButtons.fire({
+         	            title: "팀을 선택해주세요!",
+         	            type: 'info'
+         	        }).then((result) => {
+         	            if (result.value) {
+         	              return false;
+         	            }
+         	        })
+               	    return false;
+               	  }
+                 
+   				if (matchTeamNo == choiceTeamValue) {
+             swalWithBootstrapButtons.fire({
+                 title: "자기가 속한 팀에 <br> 신청할 수 없습니다.",
+                 type: 'error'
+             }).then((result) => {
+                 if (result.value) {
+                   return false;
+                 }
+             })
+   					return false;
+   				}
+   
+   if(choiceTeamValue != null) {
+               	  $.ajax({
+               	    type:"POST",
+               	    url:'matchboard/submit/' + no,
+               	    contentType: 'application/json',
+               	    dataType: "text",
+               	    data:JSON.stringify({
+               	      teamId: choiceTeamValue
+               	    }),
+               	    success : function(data) {
+               	    	console.log(data)
+               	    	
+               	    		if(data == 12345){
+               	    		  swalWithBootstrapButtons.fire({
+               	            title: "신청되었습니다!",
+               	            type: 'success'
+               	        }).then((result) => {
+               	            if (result.value) {
+               	              location.href="matchboard";
+               	              return false;
+               	            }
+               	        })
+               	    		}
+               	    	},
+               	    error : function(data) {
+                 	    		  swalWithBootstrapButtons.fire({
+                 	            title: "이미 신청을 보냈습니다.",
+                 	            type: 'error'
+                 	        }).then((result) => {
+                 	            if (result.value) {
+                 	              return false;
+                 	            }
+                 	        })
+               	    	}
+               	    })
+   } // if 끝
+               	 });
           })
           
           
@@ -618,44 +666,44 @@
                   $('.modal-footer-inside').append("<div='ajcost'><br> 비용 : "+data.match.cost + "원</div>");
                   matchTeamNo = data.match.team.teamId;
                   console.log(matchTeamNo+"-> 매치글작성한 팀번호");
-           console.log(no+"-> 매치글번호");
-          console.log(data.match.topLocation.topLocationName);
-          console.log(data.match.middleLocation.middleLocationName)
-          
+					 console.log(no+"-> 매치글번호");
+					console.log(data.match.topLocation.topLocationName);
+					console.log(data.match.middleLocation.middleLocationName)
+					
                   });
               }
               
           $('#name-clear-btn3').click(function() {
-            $('#datepicker').val('');
+        	  $('#datepicker').val('');
           });
           
           
            $('.modal-body').click(function() {
-            location.href = 'matchboard/' + no;
+        	  location.href = 'matchboard/' + no;
           });
               
            $(document).ready(function() {
 
-             // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-             var floatPosition = parseInt($(".recommendDiv").css('top'));
-             // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+        	   // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+        	   var floatPosition = parseInt($(".recommendDiv").css('top'));
+        	   // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
 
-             $(window).scroll(function() {
-               // 현재 스크롤 위치를 가져온다.
-               var scrollTop = $(window).scrollTop();
-               var newPosition = scrollTop + floatPosition + "px";
+        	   $(window).scroll(function() {
+        	     // 현재 스크롤 위치를 가져온다.
+        	     var scrollTop = $(window).scrollTop();
+        	     var newPosition = scrollTop + floatPosition + "px";
 
-               /* 애니메이션 없이 바로 따라감
-                $("#floatMenu").css('top', newPosition);
-                */
+        	     /* 애니메이션 없이 바로 따라감
+        	      $("#floatMenu").css('top', newPosition);
+        	      */
 
-               $(".recommendDiv").stop().animate({
-                 "top" : newPosition
-               }, 500);
+        	     $(".recommendDiv").stop().animate({
+        	       "top" : newPosition
+        	     }, 500);
 
-             }).scroll();
+        	   }).scroll();
 
-           });
+        	 });
 
 
           
