@@ -9,8 +9,19 @@
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextRootPath}/css/common.css" />
 <link rel="stylesheet" href="${contextRootPath}/css/matchboarddetail.css">
+
+        <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+        <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+
 </head>
 <jsp:include page="../header.jsp" />
+
+ <style>
+ .btn-sss, .btn-fff {
+ cursor: pointer
+}
+ </style>
 
 <body>
   <div class="container" id="main-wrap">
@@ -164,6 +175,15 @@ function openMap() {
             "childForm", "width=800, height=500, resizable = no, scrollbars = no");    
 }
 
+var swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success btn-sss',
+    cancelButton: 'btn btn-danger btn-fff'
+  },
+  buttonsStyling: false,
+})
+
+
 $('#btnsub2').click(function() {
     var choiceTeamValue = $("#selectBox option:selected").val();
 
@@ -178,17 +198,32 @@ $('#btnsub2').click(function() {
        console.log(matchTeamNo+"-> 매치글작성한 팀번호");
    
    if (choiceTeamValue == "") {
- 		 alert("팀을 선택해주세요.");
+ 	    	swalWithBootstrapButtons.fire({
+       title: "팀을 선택해주세요!",
+       type: 'info'
+   }).then((result) => {
+       if (result.value) {
+         return false;
+       }
+   })
  	    return false;
  	  }
 		if (matchTeamNo == choiceTeamValue) {
-			alert("자기가 속한 팀에 신청을 할 수 없습니다.")
-			return false;
+      swalWithBootstrapButtons.fire({
+        title: "자기가 속한 팀에 <br> 신청할 수 없습니다.",
+        type: 'error'
+    }).then((result) => {
+        if (result.value) {
+          return false;
+        }
+    })
+    return false;
 		}
 		
+if(choiceTeamValue != null) {
  	  $.ajax({
  	    type:"POST",
- 	    url:'matchboard/submit/' + no,
+ 	    url:'submit/' + no,
  	    contentType: 'application/json',
  	    dataType: "text",
  	    data:JSON.stringify({
@@ -197,16 +232,36 @@ $('#btnsub2').click(function() {
  	    success : function(data) {
  	    	console.log(data)
  	    	if (data == 12345) {
- 	        alert("신청 되었습니다.");
- 	        location.href=".";
- 	        	}
+ 	      swalWithBootstrapButtons.fire({
+         title: "신청되었습니다!",
+         type: 'success'
+     }).then((result) => {
+         if (result.value) {
+           location.href="../matchboard";
+           return false;
+         }
+     })
+ 	      }
+ 	    
  	    	},
  	    error : function(data) {
- 	       alert("이미 신청되었습니다.")
+ 	    		  swalWithBootstrapButtons.fire({
+         title: "이미 신청을 보냈습니다.",
+         type: 'error'
+     }).then((result) => {
+         if (result.value) {
+           return false;
+         }
+     })
  	      return false;
  	    	}
  	    })
+}
+ 	    
+ 	    
+ 	    
  	 });
+ 	 
 
 
 
