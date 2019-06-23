@@ -182,7 +182,6 @@ public class MyTeamController {
 	
 	  List<Match> matchNos = myTeamService.findMatchNo2(tno);
     for(Match m : matchNos) {
-    	System.out.println(m.getTeamLevel().getTeamLevel());
     	if(m.getOtherTeamNo() == 0 && m.getTeamNo() != 0 ) {
         matchNosd.add(m);
         model.addAttribute("matchNos",matchNosd);
@@ -192,10 +191,11 @@ public class MyTeamController {
 	  return "myteam/list2";
 	}
 	
+	
 	   @RequestMapping("/list2/delete/{mtno}/{tno}")
-	    public String delete2MatchAply(@PathVariable int mtno, @PathVariable int tno,Model model) {
+	    public String delete2MatchAply(@PathVariable int mtno, @PathVariable int tno, Model model) {
 	        myTeamService.deleteMatchAply(mtno,tno);
-	        return "redirect:../../" + tno ;
+	        return "redirect:../../../" ;
 	    }
 
 	
