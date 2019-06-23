@@ -42,10 +42,18 @@
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
         <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
+        
+        <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+        <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+        
  <style>
  .modal-title{
  color:red;
  }
+ .btn-sss, .btn-fff {
+ cursor: pointer
+}
  </style>
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
@@ -525,10 +533,13 @@
               }
             
             
-            
-            
-            
-            
+            var swalWithBootstrapButtons = Swal.mixin({
+              customClass: {
+                confirmButton: 'btn btn-success btn-sss',
+                cancelButton: 'btn btn-danger btn-fff'
+              },
+              buttonsStyling: false,
+            })
             
             
         	  $( "#datepicker" ).datepicker({
@@ -560,14 +571,30 @@
                  console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
                
                  if (choiceTeamValue == "") {
-               		 alert("팀을 선택해주세요.");
+             	    	swalWithBootstrapButtons.fire({
+         	            title: "팀을 선택해주세요!",
+         	            type: 'info'
+         	        }).then((result) => {
+         	            if (result.value) {
+         	              return false;
+         	            }
+         	        })
                	    return false;
                	  }
+                 
    				if (matchTeamNo == choiceTeamValue) {
-   					alert("자기가 속한 팀에 신청을 할 수 없습니다.")
+             swalWithBootstrapButtons.fire({
+                 title: "자기가 속한 팀에 <br> 신청할 수 없습니다.",
+                 type: 'error'
+             }).then((result) => {
+                 if (result.value) {
+                   return false;
+                 }
+             })
    					return false;
    				}
-   				
+   
+   if(choiceTeamValue != null) {
                	  $.ajax({
                	    type:"POST",
                	    url:'matchboard/submit/' + no,
@@ -578,15 +605,31 @@
                	    }),
                	    success : function(data) {
                	    	console.log(data)
-               	    	if (data == 12345) {
-               	        alert("신청 되었습니다.");
-               	        location.href="matchboard";
-               	        	}
+               	    	
+               	    		if(data == 12345){
+               	    		  swalWithBootstrapButtons.fire({
+               	            title: "신청되었습니다!",
+               	            type: 'success'
+               	        }).then((result) => {
+               	            if (result.value) {
+               	              location.href="matchboard";
+               	              return false;
+               	            }
+               	        })
+               	    		}
                	    	},
                	    error : function(data) {
-               	       alert("이미 신청되었습니다.")
+                 	    		  swalWithBootstrapButtons.fire({
+                 	            title: "이미 신청을 보냈습니다.",
+                 	            type: 'error'
+                 	        }).then((result) => {
+                 	            if (result.value) {
+                 	              return false;
+                 	            }
+                 	        })
                	    	}
                	    })
+   } // if 끝
                	 });
           })
           
