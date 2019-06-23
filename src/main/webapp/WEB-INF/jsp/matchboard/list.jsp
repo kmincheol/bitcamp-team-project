@@ -262,8 +262,8 @@
                     <div class="playDate" style="font-size: 16px; float: left; margin-left: 75px;">&middot; 경기날짜 : ${match.playDate}</div><br>
                      <div class="matchArea" style="clear: both; font-size: 16px; float: left; margin-top: 10px;">&middot; 지역 : ${match.topLocation.topLocationName}&nbsp ${match.middleLocation.middleLocationName} </div>
                     
-                    <div class="teamLevel" style="float: left; font-size: 16px; margin-left: 45px; margin-top: 10px;">&middot; 연령대 : ${match.teamAges.teamAges}</div>
-                    <div class="teamLevel1" style="float: left; font-size: 16px; margin-left: 120px; margin-top: 10px;">&middot; 팀 레벨 : 
+                    <div class="teamLevel1" style="float: left; font-size: 16px; margin-left: 45px; margin-top: 10px;">&middot; 연령대 : ${match.teamAges.teamAges}</div>
+                    <div class="teamLevel" style="float: left; font-size: 16px; margin-left: 120px; margin-top: 10px;">&middot; 팀 레벨 : 
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq '상'}">
                              상
