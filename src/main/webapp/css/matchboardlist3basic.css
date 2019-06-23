@@ -40,47 +40,48 @@ a:hover{
 
 #floatfloat{
   float:left;
-  width: 100%;
+  padding-left: 30px;
+  width: 500px;
 }
 
  #formform{
-  width: 100%;
+  width: 1080px;
   height: 1000px;
+  margin-left: 100px;
   margin-right: 30px;
-  margin-top:135px;
+  margin-top:120px;
 } 
 
 #listtitle{
-    float: left;
-    text-align: center;
-    width: 100%;
-    height: 42px;
-    font-size: 21px;
-    border-radius: 2px;
-    margin-top: 28px;
-    padding-top: 6px;
-    box-shadow: 0px 0px 4px 1px darkgrey;
-    background-color: white;
-    position: relative;
+  float:left;
+  text-align:center;
+  width: 550px;
+  height: 42px;
+  font-size: 21px;
+  border-radius: 2px;
+  margin-top: 28px;
+  padding-top: 6px;
+  border: 2px solid #dfdfdf;
+  background-color: #dde0db;
 }
 
 #list{
-    width: 1040px;
-    margin-left: 20px;
-    border-radius: 2px;
-    border: 1px solid lightgrey;
-    border-top: 0px;
-    margin-top: -2px;
-    margin-bottom: 28px;
-    padding-left: 13px;
-    height: 942px;
-    background-color: white;
-    float: left;
+  width: 530px;
+  margin-left: 10px;
+  border-radius: 2px;
+  border: 2px solid #dfdfdf;
+  border-top: 0px;
+  margin-bottom: 28px;
+  padding-left: 13px;
+  height: 878px;
+  background-color: #eeeee9;
+  float: left;
+  
 }
 
 
 [data-jplist-group]{
-    width: 1030px;
+    width: 500px;
     display: flex;
     font-size: 16px;
     flex-wrap: nowrap;
@@ -89,8 +90,8 @@ a:hover{
 }
 
 [data-jplist-item]{
-  width: 1013px;
-  height: 150px;
+  width: 500px;
+  height: 140px;
   border-bottom: 1px solid #dee2e6;
   /* text-align: center; */
   overflow: hidden; 
@@ -130,10 +131,10 @@ a:hover{
 }
 
 .title {
+    max-width: 140px;
+    display:inline-block;
     vertical-align: middle;
-    font-size: 20px;
-    margin-right: 185px;
-    text-align: center;
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -219,11 +220,21 @@ a:hover{
 
 
 #matchform{
-  width: 100%;
-  height: 45px;
+  width: 500px;
+  height: 36px;
+  margin-left: 155px;
   font-size:19px;
-  position: relative;
-    left: -6px;
+  border:0px;
+  /* background: deepskyblue; */
+  /* background:#ae0015; */
+/*   color: white; */
+/*   
+  background: rgb(0,0,0); Old browsers
+  background: -moz-linear-gradient(-45deg, rgba(0,0,0,1) 7%, rgba(255,40,44,1) 27%, rgba(255,45,49,1) 44%, rgba(255,180,145,1) 64%, rgba(226,255,12,1) 78%, rgba(255,180,145,1) 87%, rgba(255,0,4,1) 100%); FF3.6-15
+  background: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 7%,rgba(255,40,44,1) 27%,rgba(255,45,49,1) 44%,rgba(255,180,145,1) 64%,rgba(226,255,12,1) 78%,rgba(255,180,145,1) 87%,rgba(255,0,4,1) 100%); Chrome10-25,Safari5.1-6
+  background: linear-gradient(135deg, rgba(0,0,0,1) 7%,rgba(255,40,44,1) 27%,rgba(255,45,49,1) 44%,rgba(255,180,145,1) 64%,rgba(226,255,12,1) 78%,rgba(255,180,145,1) 87%,rgba(255,0,4,1) 100%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ff0004',GradientType=1 ); IE6-9 fallback on horizontal gradient
+   */
 }
 
 
@@ -236,7 +247,7 @@ a:hover{
     display: flex;
     justify-content: center;
     text-align:center;
-    width: 100%;
+    width: 810px;
     float: left;
     margin-bottom: 70px;
 }

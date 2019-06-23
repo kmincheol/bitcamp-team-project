@@ -46,15 +46,9 @@
  .modal-title{
  color:red;
  }
-       
- .recommendDiv {
-  position: absolute;
-  right: 115px;
-  top: 350px;
-}
  </style>
- 
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
     </head>
     <body ng-app="app"> 
@@ -195,8 +189,8 @@
         </div> <!-- tools 끝 -->
         
         <div id="submitArea">
-            <button type="button" class="btn btn-outline-dark" id="matchform"
-            onClick="location.href='${contextRootPath}/app/matchboard/form'" >       
+            <button type="button" class="btn-outline-dark" id="matchform"
+            onClick="location.href='${contextRootPath}/app/matchboard/form' " >
             매치등록하기
             </button>
         </div>
@@ -216,30 +210,33 @@
                 <c:forEach items="${all}" var="match">
                  
                  <div data-jplist-item>
-                 <table class="table table-bordered table-striped results" id="matchInfo">    
+                 <table class="table table-bordered table-striped results" id="matchInfo">
                  
-                 <tr onMouseOver="this.style.backgroundColor='#f2f3f2';" onMouseOut="this.style.backgroundColor='white';" style="background: white;">      
-                 <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="1" 
+                 <tr onMouseOver="this.style.backgroundColor='white';" onMouseOut="this.style.backgroundColor='#f2f3f2';">
+                 <td id="${match.team.teamId}" class="teamInfo sorting_asc" colspan="2" 
                  data-toggle="modal" data-target="#exampleModalCenter2"
                   onClick="window.open('${contextRootPath}/app/team/${match.team.teamId}', '팝업!', 'width=804, height=752');return false;"
-                  align="center" style="cursor: pointer; padding-top: 13px; width:195px;" >
-                             
+                  align="center" style="cursor: pointer; padding-top: 0px;" >
                   
-                  <div>     
+                  
+                  <div>
                   <img class="TeamEmblemPhoto" src="${match.team.teamEmblemPhoto}" style="width:100px; height:100px;" 
                        onerror="this.src='${contextRootPath}/upload/emblem/vs.jpg'"></div>
                        
-                   <div class="teamName">${match.team.teamName}</div><br>     
+                   <div class="teamName">${match.team.teamName}</div><br>
                 </td>
                 
                 <td class="detail" id="${match.no}" colspan="5"
-                 onMouseOver="this.style.backgroundColor='#f2f3f2';" onMouseOut="this.style.backgroundColor='white';"
-                style="cursor: pointer; padding-top: 12px; width:130px; background: white;" data-toggle="modal" data-target="#exampleModalCenter"
+                 onMouseOver="this.style.backgroundColor='white';" onMouseOut="this.style.backgroundColor='#f2f3f2';"
+                style="cursor: pointer; padding-top: 12px; width:130px;" data-toggle="modal" data-target="#exampleModalCenter"
                 onClick="modalEvent('${match.no}');" >
+                
                     <div class="teamName" style="width:130px; display:none">${match.team.teamName}</div>
-                    <div class="title">- ${match.title} -</div><br>
-                    <div class="sportsType" style="float: left; font-size: 16px;">&middot; 종목 :
-                    <c:choose>       
+                    <div class="title" style="width:130px;">제목 : ${match.title}</div>
+                    <div class="playDate" style="width:130px;">경기날짜 : ${match.playDate}</div>
+                    
+                    <div class="sportsType">종목 :
+                    <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq '축구'}">
                             <p style="display:none;">축구</p>
                                  축구 <img style="width:15px; height:15px; margin-bottom:5px;" src="${contextRootPath}/images/football_list_min.png">
@@ -258,12 +255,11 @@
                             </c:when>
                           </c:choose>
                     </div>
-                         
-                    <div class="playDate" style="font-size: 16px; float: left; margin-left: 75px;">&middot; 경기날짜 : ${match.playDate}</div><br>
-                     <div class="matchArea" style="clear: both; font-size: 16px; float: left; margin-top: 10px;">&middot; 지역 : ${match.topLocation.topLocationName}&nbsp ${match.middleLocation.middleLocationName} </div>
                     
-                    <div class="teamLevel" style="float: left; font-size: 16px; margin-left: 45px; margin-top: 10px;">&middot; 연령대 : ${match.teamAges.teamAges}</div>
-                    <div class="teamLevel1" style="float: left; font-size: 16px; margin-left: 120px; margin-top: 10px;">&middot; 팀 레벨 : 
+                     <div class="matchArea">지역 : ${match.topLocation.topLocationName}&nbsp ${match.middleLocation.middleLocationName} </div>
+                    
+                    <div class="teamLevel">팀 연령대 : ${match.teamAges.teamAges} / 
+                             팀 레벨 : 
                           <c:choose>
                             <c:when test="${match.teamLevel.teamLevel eq '상'}">
                              상
@@ -528,6 +524,13 @@
                   });
               }
             
+            
+            
+            
+            
+            
+            
+            
         	  $( "#datepicker" ).datepicker({
            
                   onSelect: function(value, props) {
@@ -546,6 +549,8 @@
                        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
                        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif"
                });           
+        	  
+        	  
         	  
         	  $('#btnsub2').click(function() {
                   var choiceTeamValue = $("#selectBox option:selected").val();
@@ -633,31 +638,6 @@
            $('.modal-body').click(function() {
         	  location.href = 'matchboard/' + no;
           });
-              
-           $(document).ready(function() {
-
-        	   // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-        	   var floatPosition = parseInt($(".recommendDiv").css('top'));
-        	   // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
-
-        	   $(window).scroll(function() {
-        	     // 현재 스크롤 위치를 가져온다.
-        	     var scrollTop = $(window).scrollTop();
-        	     var newPosition = scrollTop + floatPosition + "px";
-
-        	     /* 애니메이션 없이 바로 따라감
-        	      $("#floatMenu").css('top', newPosition);
-        	      */
-
-        	     $(".recommendDiv").stop().animate({
-        	       "top" : newPosition
-        	     }, 500);
-
-        	   }).scroll();
-
-        	 });
-
-
           
              
         </script>

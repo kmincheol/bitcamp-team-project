@@ -139,7 +139,7 @@ body {
     </div>
    
     <div id="teamInfo"
-      style="border: 1px solid black; width: 1080px; height: 400px; box-shadow: 7px 7px 7px darkgray;">
+      style="width: 1080px; height: 400px; box-shadow: 0px 0px 10px 0px darkgray;">
     <div id="teamModify" style="width: 200px;height: 13px;border 1px solid;position: absolute;margin-left: 28px;/* background-color: white; */margin-top: 20px;">
     </div>
       <div id="teamMark"
@@ -170,7 +170,7 @@ body {
           </select>
         </div>
       </div>
- <div style="margin-top:150px">
+ <div>
       <div id="row1" style="width: 660px; height: 50px; float: left; margin-text-align: center;top: 20px;"></div>
       <div id="row2" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
       <div id="row3" style="width: 660px; height: 50px; float: left; margin-top: 5px;"></div>
@@ -179,7 +179,7 @@ body {
 
     </div>
 
-    <div id="aaaa" style="width: 1100px;  float: left; margin-top: 22px; margin-bottom: 50px;"></div>
+    <div id="aaaa" style="width: 1100px;  float: left; margin-top: 22px; margin-bottom: 50px; position: relative; left: -2px;"></div>
   </div>
   <!-- containner -->
 
@@ -318,15 +318,14 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
         div.id = "abcd"
         div.innerHTML =
           '<div class="flip-card"><a href="${contextRootPath}/app/myteam/' + arrr[i] +'/' + arrff[i] + '"> <div class="flip-card-inner"> <div class="flip-card-front">' +
-         '<img src ="' + arrdd[i] +  '"width = "259px" height = "250px">' + 
-         '<span style="display: inline-block;font-size:30px; width: 260px; text-align:center; background-color: indigo; color: white">'+ 
+         '<img src ="' + arrdd[i] +  '"width = "261px" height = "250px">' + 
+         '<span style="display: inline-block;font-size:30px; width: 261px; text-align:center; background-color: indigo; color: white">'+ 
           arrc[i] + '</span></div>' +
           '<div class="flip-card-back"><h3 >' + arree[i] + '</h3></div></div></a></div>'
-        div.style.border= "1px solid black";
         div.style.margin= "5px";
         div.style.width= "261px";
         div.style.height= "295px";
-        div.style.boxShadow = "5px 5px 5px darkgray";      
+        div.style.boxShadow = "0px 0px 10px 0px darkgray";      
         div.style.float= "left";
         document.getElementById('aaaa').appendChild(div);
       
