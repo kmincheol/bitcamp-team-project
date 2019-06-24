@@ -208,6 +208,16 @@ public int updateMainTeam(int mno, int tno) {
 	  map.put("tno", tno);
 	return myteamDao.updateMainTeam(map);
 }
+
+@Override
+public int updatePosition(int tno, int mno,String position) {
+  HashMap<String, Object> map = new HashMap<String, Object>(); // MAP을 이용해 담기
+  map.put("mno", mno);
+  map.put("tno", tno);
+  map.put("position", position);
+  
+  return myteamDao.updatePosition(map);
+}
 }
 
 

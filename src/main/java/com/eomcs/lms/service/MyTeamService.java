@@ -34,6 +34,8 @@ public interface MyTeamService {
   List<Member> findByMember(int no);
 
   int insertTeamMember(int tno, int mno);
+  
+  int updatePosition(int tno, int mno,String position);
 
   List<TeamRecruit> findByTeamRecruitTeamNo(int no);
 
@@ -63,4 +65,7 @@ public interface MyTeamService {
   Team findByNo(int no);
   
   int update(Team team);
+  
+  
+  
 }

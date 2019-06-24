@@ -1,5 +1,6 @@
 package com.eomcs.lms.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.eomcs.lms.domain.JoinTeam;
@@ -44,7 +45,9 @@ public interface MyTeamDao {
   int mtchupdate(Map<String, Integer> map);
 
   int mtchAplyDelete(Map<String, Integer> map);
-
+  
+  int updatePosition(HashMap<String, Object> map);
+ 
   List<Match> findAll4(int no);
   
   List<Match>sucessMatching(int no);
