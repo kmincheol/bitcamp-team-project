@@ -63,12 +63,13 @@
 
   <select id="TopLocationName" resultMap="topLocationMap" parameterType="int">
     select
-    toplc_id,
-    toplc_name
+     toplc_id,
+     toplc_no,
+     toplc_name
     from
-      toplc
+     toplc
     where
-      toplc_no = #{value}
+     toplc_no = #{value}
   </select>
   
   <select id="MiddleLocationName" resultMap="middleLocationMap" parameterType="int">
@@ -76,9 +77,9 @@
      midlc_id,
      midlc_name
     from
-    midlc
+     midlc
     where
-    midlc_id = #{value}
+     midlc_id = #{value}
        
   </select>
 

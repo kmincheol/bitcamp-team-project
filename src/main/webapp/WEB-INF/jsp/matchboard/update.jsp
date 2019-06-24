@@ -15,6 +15,10 @@
 <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
 <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
 
+<script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+<link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+
 <style>
   th{
     vertical-align: middle!important;
@@ -115,7 +119,7 @@ color:black;
                 <div class="col-sm">
                   <div class="input-group">
                     <select class="custom-select" id="sido">
-                      <option value="${top.topLocationId}" disabled selected hidden>지역선택</option>
+                      <option value="${match.topLocation.topLocationNo}" disabled selected hidden>${match.topLocation.topLocationName}</option>
                        <c:forEach items="${locations}" var="topLocation">
                         <option value="${topLocation.topLocationNo}"
                           ${team.topLocation.topLocationId == topLocation.topLocationId ? "selected" : ""}>${topLocation.topLocationName}
@@ -128,11 +132,11 @@ color:black;
                   <div class="input-group">
                     <!-- 지역번호2를 받아야하니까 도메인 수정하장 -->
                     <select class="custom-select" id="gugun">
-                      <option value="${middle.middleLocationId}" disabled selected hidden>지역선택</option>
+                      <option value="${match.middleLocation.middleLocationId}" disabled selected hidden>${match.middleLocation.middleLocationName}</option>
                     </select>
                   </div>
                 </div>
-                <input type="hidden" name="location" id="location" value=""> <!-- 실질적 위치 들어가는 부분 -->
+                <input type="hidden" name="location" id="location" value="${match.location}"> <!-- 실질적 위치 들어가는 부분 -->
               </div>
             </td>
             <th scope="row">전화번호</th>
@@ -178,8 +182,23 @@ var matctTeamTypeVal = ${match.teamTypeSports.teamSportsTypeId};
 
 /* 페이지 로드시 종목번호로 자동 셀렉트 해줌 */
   $(function() {
+	  console.log("${match.topLocation.topLocationNo}");
+	  console.log("${match.middleLocation.middleLocationId}");
+	  console.log("${match.topLocation.topLocationName}");
+	  console.log("${match.middleLocation.middleLocationName}");
+	  console.log("${match.location}");
 	  $("#inputGroupSelect01 option:eq(${match.teamTypeSports.teamSportsTypeId})").attr("selected","selected");
+ 	  $("#sido option:eq(${match.topLocation.topLocationNo})").attr("selected","selected");
+	  $("#gugun option:eq(${match.middleLocation.middleLocationId})").attr("selected","selected"); 
   });
+
+  var swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success btn-sss',
+        cancelButton: 'btn btn-danger btn-fff'
+      },
+      buttonsStyling: false,
+    })
 
 function openMap()
 {
@@ -208,42 +227,49 @@ $(function() {
 
 
 
-$('#sido').change(function() {
-	   var no = $(this).val();
-	   console.log(name)
-	   
-	    $.getJSON('../AddressCheck', 
-	         {
-	       no: no
-	         },
-	       function(obj) {
-	         if (obj.status == 'success') { 
-	           var location = new Array;
-	           var subLocation = obj.middleLocations 
-	           var length = subLocation.length; 
-	             $('#gugun').html('');
-	             
-	             for (var i = 0; i < length; i++) {
-	               var option = $(
-	                   "<option value='" + subLocation[i].middleLocationId+ "'>" + subLocation[i].middleLocationName + "</option>"); 
-	                
-	               $(option).appendTo($('#gugun'));
-	             }
-	           } 
-	           }); 
-	 });
+        $('#sido').change(function() {
+        	   var no = $(this).val();
+        	   console.log(name)
+        	   
+        	    $.getJSON('../AddressCheck', 
+        	         {
+        	       no: no
+        	         },
+        	       function(obj) {
+        	         if (obj.status == 'success') { 
+        	           var location = new Array;
+        	           var subLocation = obj.middleLocations 
+        	           var length = subLocation.length; 
+        	             $('#gugun').html('');
+        	             
+        	             for (var i = 0; i < length; i++) {
+        	               var option = $(
+        	                   "<option value='" + subLocation[i].middleLocationId+ "'>" + subLocation[i].middleLocationName + "</option>"); 
+        	                
+        	               $(option).appendTo($('#gugun'));
+        	             }
+        	             
+        	             var mid = $("#gugun option:selected").val();
+        	             var top = $("#sido option:selected").val();
+        	                console.log(top)
+        	                console.log(mid)
+        	               $('#location').val(top + mid) 
+        	               console.log($('#location').val())
+        	           } 
+        	           }); 
+        	 });
 
-        	$('#gugun').on('click', function() {
-        
-        		var top = $("#sido option:selected").val();
-        		var mid = $("#gugun option:selected").val();
-        
-        		console.log(top)
-        		console.log(mid)
-        
-        		$('#location').val(top + mid)
-        		console.log($('#location').val())
-        	});
+          $('#gugun').on('click', function(){
+          	   
+              var top = $("#sido option:selected").val();
+              var mid = $("#gugun option:selected").val();
+             
+              console.log(top)
+              console.log(mid)
+              
+             $('#location').val(top + mid) 
+             console.log($('#location').val())
+            });
         
         	
         	function numberMaxLength(e) {
@@ -261,31 +287,145 @@ $('#sido').change(function() {
 				|| choicelocation1 == "" || theForm.teamSportsId.value == ""
 				|| theForm.contents.value == "" || theForm.cost.value == "") {
 
-			if (theForm.title.value == "") {
-				alert("제목 입력란이 비어있습니다. 확인해 주세요.");
-				theForm.title.focus();
-			} else if (theForm.playDate.value == "") {
-				alert("경기 날짜를 입력해주세요.");
-			} else if (choicelocation1 == "") {
-				alert("지역을 선택 해주세요.");
-			} else if (theForm.teamSportsId.value == "") {
-				alert("종목을 선택해 주세요.");
-				theForm.teamSportsId.focus();
-			} else if (theForm.contents.value == "") {
-				alert("내용을 입력해 주세요.");
-			} else if (theForm.cost.value == "") {
-				alert("비용을 입력해 주세요.");
-				theForm.teamSportsId.focus();
-			}
-		} else {
-			if (confirm("매치 수정하시겠습니까?") == true) { //확인
-				document.update.submit();
-			} else { //취소
-				return false;
-			}
+	  		if(theForm.title.value==""){
+	    		  swalWithBootstrapButtons.fire({
+	            title: "확인해 주세요!",
+	            html: '제목 입력란이 비어있습니다.',
+	            type: 'error'
+	        }).then((result) => {
+	            if (result.value) {
+	              theForm.title.focus();
+	              return false;
+	            }
+	        })
+	    	}
+			
+	  		else if(theForm.teamNo.value==""){
+	  	        swalWithBootstrapButtons.fire({
+	  	          title: "확인해 주세요!",
+	  	          html: '소속팀 선택이 되어있지 않습니다.',
+	  	          type: 'error'
+	  	      }).then((result) => {
+	  	          if (result.value) {
+	  	            theForm.teamNo.focus();
+	  	            return false;
+	  	          }
+	  	      })
+	  	    }
+	  		
+	        else if(theForm.playDate.value==""){
+	            swalWithBootstrapButtons.fire({
+	              title: "확인해 주세요!",
+	              html: '경기 날짜를 입력해주세요.',
+	              type: 'error'
+	          }).then((result) => {
+	              if (result.value) {
+	                theForm.playDate.focus();
+	                return false;
+	              }
+	          })
+	        }
+	        else if(choicelocation1==""){
+	            swalWithBootstrapButtons.fire({
+	              title: "확인해 주세요!",
+	              html: '지역을 선택 해주세요.',
+	              type: 'error'
+	          }).then((result) => {
+	              if (result.value) {
+	                return false;
+	              }
+	          })
+	       		}
+	        else if(theForm.teamSportsId.value==""){
+	            swalWithBootstrapButtons.fire({
+	              title: "확인해 주세요!",
+	              html: '종목을 선택해 주세요.',
+	              type: 'error'
+	          }).then((result) => {
+	              if (result.value) {
+	                theForm.teamSportsId.focus();
+	                return false;
+	              }
+	          })
+	        }
+			
+	        else if(theForm.contents.value==""){
+	            swalWithBootstrapButtons.fire({
+	              title: "확인해 주세요!",
+	              html: '내용을 입력해 주세요.',
+	              type: 'error'
+	          }).then((result) => {
+	              if (result.value) {
+	                return false;
+	              }
+	          })
+	            }
+			
+	        else if(theForm.cost.value == ""){
+	            swalWithBootstrapButtons.fire({
+	              title: "확인해 주세요!",
+	              html: '비용을 입력해 주세요.',
+	              type: 'error'
+	          }).then((result) => {
+	              if (result.value) {
+	                theForm.cost.focus();
+	                return false;
+	              }
+	          })
+	            }
+	  		return false;
 		}
-
+	  		
+		if (theForm.playDate.value.length > 0 || theForm.playDate.value != null) {
+		    console.log("여기");
+		    
+		    if (dateDiff(theForm.playDate.value,new Date())) { // 현재날짜가 삭제 시작일 후 인 경우
+		      console.log("여긴?");
+		      swalWithBootstrapButtons.fire({
+		        title: "확인해 주세요!",
+		        html: '현재 날짜 이후로만 선택할 수 있습니다.',
+		        type: 'error'
+		    })
+		          theForm.cost.focus();
+		          return false;
+		    }
+		  }
+		
+		  swalWithBootstrapButtons.fire({
+			    title: '매치를 수정하시겠습니까?',
+			    type: 'warning',
+			    showCancelButton: true,
+			    confirmButtonText: '확인',
+			    cancelButtonText: '취소',
+			    reverseButtons: true
+			  }).then((result) => {
+			    if (result.value) {
+			      document.update.submit();
+			    } else if (result.dismiss === Swal.DismissReason.cancel) {
+			      return false;
+			    }
+			  })
 	}
+	  		
+	function dateDiff(_date1, _date2) {
+		  var diffDate_1 = _date1 instanceof Date ? _date1 : new Date(_date1);
+		  var diffDate_2 = _date2 instanceof Date ? _date2 : new Date(_date2);
+
+		  diffDate_1 = new Date(diffDate_1.getFullYear(), diffDate_1.getMonth()+1, diffDate_1.getDate());
+		  diffDate_2 = new Date(diffDate_2.getFullYear(), diffDate_2.getMonth()+1, diffDate_2.getDate());
+
+		  var diff = diffDate_2.getTime() - diffDate_1.getTime();
+		  //diff = Math.ceil(diff / (1000 * 3600 * 24));
+		  console.log(diff);
+		  
+		  if (diff > 0) {
+		    return true;
+		  } else {
+		    return false;
+		  }
+		  
+		 // return diff;
+		  }
 </script>
 
 </body>

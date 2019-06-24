@@ -208,7 +208,9 @@
     l.levs,
     m.area,
     p.toplc_name,
+    p.toplc_no,
     d.midlc_name,
+    d.midlc_id,
     a.ages,
     tmb.tlead_wth
    from
@@ -249,7 +251,9 @@
     u.user_id,
     l.levs,
     p.toplc_name,
+    p.toplc_no,
     d.midlc_name,
+    d.midlc_id,
     a.ages,
     tmb.tlead_wth,
     aply_stat

@@ -40,9 +40,19 @@
  
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
+<<<<<<< HEAD
+        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
+ 
+        <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+        <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+ 
+ 
+=======
         <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
         
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"> 
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
  <style>
  .modal-title{
  color:red;
@@ -51,8 +61,17 @@
  .recommendDiv {
   position: absolute;
   right: 50px;
+<<<<<<< HEAD
+  top: 250px;
+}
+
+.btn-sss, .btn-fff {
+ cursor: pointer
+}
+=======
   top: 350px;
 }     
+>>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
  </style>
  
     </head>
@@ -528,7 +547,14 @@
                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
               });
             
-            
+             var swalWithBootstrapButtons = Swal.mixin({
+                 customClass: {
+                   confirmButton: 'btn btn-success btn-sss',
+                   cancelButton: 'btn btn-danger btn-fff'
+                 },
+                 buttonsStyling: false,
+               })
+               
           $(function() {
             
             
@@ -580,14 +606,31 @@
                  console.log(choiceTeamValue+"-> 신청팀번호"); //신청팀번호
                
                  if (choiceTeamValue == "") {
-                   alert("팀을 선택해주세요.");
+                	 swalWithBootstrapButtons.fire({
+          	            title: "팀을 선택해주세요!",
+          	            type: 'info'
+          	        }).then((result) => {
+          	            if (result.value) {
+          	              return false;
+          	            }
+          	        })
+                	    return false;
+                  }
+                 
+          if (matchTeamNo == choiceTeamValue) {
+        	  swalWithBootstrapButtons.fire({
+                  title: "자기가 속한 팀에 <br> 신청할 수 없습니다.",
+                  type: 'error'
+              }).then((result) => {
+                  if (result.value) {
                     return false;
                   }
-          if (matchTeamNo == choiceTeamValue) {
-            alert("자기가 속한 팀에 신청을 할 수 없습니다.")
-            return false;
-          }
+              })
+    					return false;
+    		}
           
+          
+            if(choiceTeamValue != null) {
                   $.ajax({
                     type:"POST",
                     url:'matchboard/submit/' + no,
@@ -599,18 +642,31 @@
                     success : function(data) {
                       console.log(data)
                       if (data == 12345) {
-                        alert("신청 되었습니다.");
-                        location.href="matchboard";
-                          }
+                    	  swalWithBootstrapButtons.fire({
+                 	            title: "신청되었습니다!",
+                 	            type: 'success'
+                 	        }).then((result) => {
+                 	            if (result.value) {
+                 	              location.href="matchboard";
+                 	              return false;
+                 	            }
+                 	        })
+                 	    }
                       },
                     error : function(data) {
-                       alert("이미 신청되었습니다.")
+                    	swalWithBootstrapButtons.fire({
+             	            title: "이미 신청을 보냈습니다.",
+             	            type: 'error'
+             	        }).then((result) => {
+             	            if (result.value) {
+             	              return false;
+             	            }
+             	        })
                       }
                     })
+            }
                  });
           })
-          
-          
               $('.recommendTd').on('click', function(){ 
                 var location = $(this).children($('.sibarLocation')).text(); 
                 console.log(location)    

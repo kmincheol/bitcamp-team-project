@@ -201,13 +201,13 @@ color:black;
   <script type="text/javascript">
 			var openWin;
 			
-			var swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success btn-sss',
-          cancelButton: 'btn btn-danger btn-fff'
-        },
-        buttonsStyling: false,
-      })
+    		var swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success btn-sss',
+              cancelButton: 'btn btn-danger btn-fff'
+            },
+            buttonsStyling: false,
+          })
 			
 			function openMap() {
 				// window.name = "부모창 이름"; 
@@ -329,7 +329,7 @@ function check_onclick(){
             return false;
           }
       })
-    		}
+    }
        else if(choicelocation1==""){
          swalWithBootstrapButtons.fire({
            title: "확인해 주세요!",

@@ -207,9 +207,8 @@ public class MatchBoardController {
       return "redirect:../../auth/form";
     }
     int matchTeamNo = match.getTeam().getTeamId(); // teamNo : 현 매치글을 작성한 팀 번호
-    List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo()); // 회원 번호로
-                                                                                      // TeamMember
-                                                                                      // 객체를 모두 가져오고
+    List<TeamMember> teams = teamService.getTeamMemberListByMemberNo(member.getNo()); // 회원 번호로 TeamMember 객체를 모두 가져오고
+    
     for (TeamMember t : teams) { // TeamMember 객체에서 team의 정보를 뽑아내기
       int loginUserTeamNumber = t.getTeam().getTeamId();
       if (matchTeamNo == loginUserTeamNumber) {
