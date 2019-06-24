@@ -58,15 +58,16 @@
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
     </head>
     <body ng-app="app"> 
-
-    <div id="topComment">
-      <h2>
+    
+    <div id="main-text">
+    <img src="${contextRootPath}/images/matchboardlist.png" style="width: 100%; height: 100%;">
+    <h2>
         등록된 <b>매치 글</b>을 검색하여 찾거나
       </h2>
-      <h2>직접 매치글을 등록할 수 있습니다.</h2>
+      <h3>직접 매치글을 등록할 수 있습니다.</h3>
       <p style="margin-bottom:50px;">
-      </p>
-    </div>
+      </p>     
+  </div>
   <div class="container" id="main-wrap">
        <!-- hidden sort control  -->
         <div style="display: none" data-jplist-control="hidden-sort" data-group="group1"
