@@ -340,6 +340,7 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
         '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list3/'+bbb[1]+ '"style="text-decoration:none; color:black">요청한 경기</a></span > ' +
         '<span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list2/'+bbb[1]+ '"style="text-decoration:none; color:black">요청받은 경기</a></span>'   +
        ' <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list5/'+bbb[1]+ '"style="text-decoration:none; color:black">성사된 나의 경기</a></span>'+
+       ' <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list4/'+bbb[1]+ '"style="text-decoration:none; color:black">등록한 게시글</a></span>'+
        ' </div>'
         
        document.getElementById("teamModify").innerHTML= 

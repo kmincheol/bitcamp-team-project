@@ -67,6 +67,9 @@
   margin-bottom: 25px;
   margin-right: 5px;
 }
+.footer{
+margin-top: 314px!important;
+}
 </style>
 
 </head>
@@ -88,6 +91,7 @@
         <span style="margin : 50px;"><a href="${contextRootPath}/app/myteam/list3/${tno}" style="text-decoration:none; color:black">요청한 경기</a></span > 
         <span style="margin : 50px;"><a href="${contextRootPath}/app/myteam/list2/${tno}" style="text-decoration:none; color:black">요청받은 경기</a></span>
         <span style="margin : 50px;border-bottom: 2px solid #51c321;"><a href="${contextRootPath}/app/myteam/list5/${tno}" style="text-decoration:none; color:black">성사된 나의 경기</a></span>
+         <span style="margin : 50px"><a href="${contextRootPath}/app/myteam/list4/${tno}" style="text-decoration:none; color:black">등록한 게시글</a></span>
                 </div>
           
     </div>

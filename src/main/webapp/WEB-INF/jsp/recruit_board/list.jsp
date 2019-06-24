@@ -120,16 +120,16 @@ table tbody tr {
             <td>${list.teamNo}</td>
             <!-- 종목에 따라 이미지 출력 -->    
             <td><c:choose>
-                <c:when test="${list.teamTypeSports.teamSportsType eq 'soccer'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq '축구'}">
                   <img src="${contextRootPath}/images/football_list.png" style=" width: 30px; height: 30px;">
                 </c:when>
-                <c:when test="${list.teamTypeSports.teamSportsType eq 'basketball'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq '농구'}">
                   <img src="${contextRootPath}/images/basketball_list.png" style=" width: 30px; height: 30px;">
                 </c:when>
-                <c:when test="${list.teamTypeSports.teamSportsType eq 'baseball'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq '야구'}">
                   <img src="${contextRootPath}/images/baseball_list.png" style=" width: 30px; height: 30px;">
                 </c:when>
-                <c:when test="${list.teamTypeSports.teamSportsType eq 'pingpong'}">
+                <c:when test="${list.teamTypeSports.teamSportsType eq '탁구'}">
                   <img src="${contextRootPath}/images/pingpong_list.png" style=" width: 30px; height: 30px;">
                 </c:when>
               </c:choose></td>

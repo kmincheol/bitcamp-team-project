@@ -83,9 +83,12 @@ table tbody tr {
 .table>tbody>tr>td {
   vertical-align: middle;
 }
+.footer{
+    margin-top: 70px!important;
+    }
 </style>
 </head>
-
+     
 <body>
 
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />

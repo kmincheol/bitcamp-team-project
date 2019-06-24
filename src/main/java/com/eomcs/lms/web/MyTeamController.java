@@ -71,15 +71,16 @@ public class MyTeamController {
 	}
 	
   
-  @GetMapping("/list4")
-  public String list4(Model model, HttpSession session) {
+  @GetMapping("/list4/{tno}")
+  public String list4(Model model, HttpSession session, @PathVariable int tno) {
     Member member = (Member) session.getAttribute("loginUser");
     int a = member.getNo(); // 회원번호
     
-    List<Match> matchs = myTeamService.list4(a);
+    List<Match> matchs = myTeamService.list4(tno);
 
     session.setAttribute("member", member);
     model.addAttribute("matchs", matchs);
+    model.addAttribute("tno", tno);
     logger.debug(matchs);
 
     return "myteam/list4";

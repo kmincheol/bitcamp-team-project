@@ -34,7 +34,7 @@
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <style>
 .footer {
-	margin-top: 154px !important;
+	margin-top: 184px !important;
 }
 .page-wrapper .page-content{
 overflow-x:unset!important;
