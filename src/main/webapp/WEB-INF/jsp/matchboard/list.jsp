@@ -49,7 +49,7 @@
        
  .recommendDiv {
   position: absolute;
-  right: 115px;
+  right: 18px;
   top: 350px;
 }
  </style>
