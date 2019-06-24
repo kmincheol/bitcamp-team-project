@@ -28,110 +28,120 @@ public class TeamRecruit implements Cloneable, Serializable {
   private TeamMember teamMember;
   private TeamAges teamAges;
   private JoinTeam joinTeam;
-
-  
-  
-  
-  
+private TopLocation topLocation;
+private MiddleLocation middleLocation;
 @Override
 public String toString() {
-	return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle + ", teamContents="
-			+ teamContents + ", teamViewCount=" + teamViewCount + ", teamCreatedDate=" + teamCreatedDate
-			+ ", teamModifyDate=" + teamModifyDate + ", teamRcrmStatus=" + teamRcrmStatus + ", teamRcrmPerson="
-			+ teamRcrmPerson + ", team=" + team + ", teamTypeSports=" + teamTypeSports + ", member=" + member
-			+ ", teamMember=" + teamMember + ", teamAges=" + teamAges + ", joinTeam=" + joinTeam + "]";
+  return "TeamRecruit [teamNo=" + teamNo + ", teamId=" + teamId + ", teamTitle=" + teamTitle
+      + ", teamContents=" + teamContents + ", teamViewCount=" + teamViewCount + ", teamCreatedDate="
+      + teamCreatedDate + ", teamModifyDate=" + teamModifyDate + ", teamRcrmStatus="
+      + teamRcrmStatus + ", teamRcrmPerson=" + teamRcrmPerson + ", team=" + team
+      + ", teamTypeSports=" + teamTypeSports + ", member=" + member + ", teamMember=" + teamMember
+      + ", teamAges=" + teamAges + ", joinTeam=" + joinTeam + ", topLocation=" + topLocation
+      + ", middleLocation=" + middleLocation + "]";
 }
 public int getTeamNo() {
-	return teamNo;
+  return teamNo;
 }
 public void setTeamNo(int teamNo) {
-	this.teamNo = teamNo;
+  this.teamNo = teamNo;
 }
 public int getTeamId() {
-	return teamId;
+  return teamId;
 }
 public void setTeamId(int teamId) {
-	this.teamId = teamId;
+  this.teamId = teamId;
 }
 public String getTeamTitle() {
-	return teamTitle;
+  return teamTitle;
 }
 public void setTeamTitle(String teamTitle) {
-	this.teamTitle = teamTitle;
+  this.teamTitle = teamTitle;
 }
 public String getTeamContents() {
-	return teamContents;
+  return teamContents;
 }
 public void setTeamContents(String teamContents) {
-	this.teamContents = teamContents;
+  this.teamContents = teamContents;
 }
 public int getTeamViewCount() {
-	return teamViewCount;
+  return teamViewCount;
 }
 public void setTeamViewCount(int teamViewCount) {
-	this.teamViewCount = teamViewCount;
+  this.teamViewCount = teamViewCount;
 }
 public Date getTeamCreatedDate() {
-	return teamCreatedDate;
+  return teamCreatedDate;
 }
 public void setTeamCreatedDate(Date teamCreatedDate) {
-	this.teamCreatedDate = teamCreatedDate;
+  this.teamCreatedDate = teamCreatedDate;
 }
 public Date getTeamModifyDate() {
-	return teamModifyDate;
+  return teamModifyDate;
 }
 public void setTeamModifyDate(Date teamModifyDate) {
-	this.teamModifyDate = teamModifyDate;
+  this.teamModifyDate = teamModifyDate;
 }
 public String getTeamRcrmStatus() {
-	return teamRcrmStatus;
+  return teamRcrmStatus;
 }
 public void setTeamRcrmStatus(String teamRcrmStatus) {
-	this.teamRcrmStatus = teamRcrmStatus;
+  this.teamRcrmStatus = teamRcrmStatus;
 }
 public int getTeamRcrmPerson() {
-	return teamRcrmPerson;
+  return teamRcrmPerson;
 }
 public void setTeamRcrmPerson(int teamRcrmPerson) {
-	this.teamRcrmPerson = teamRcrmPerson;
+  this.teamRcrmPerson = teamRcrmPerson;
 }
 public Team getTeam() {
-	return team;
+  return team;
 }
 public void setTeam(Team team) {
-	this.team = team;
+  this.team = team;
 }
 public TeamTypeSports getTeamTypeSports() {
-	return teamTypeSports;
+  return teamTypeSports;
 }
 public void setTeamTypeSports(TeamTypeSports teamTypeSports) {
-	this.teamTypeSports = teamTypeSports;
+  this.teamTypeSports = teamTypeSports;
 }
 public Member getMember() {
-	return member;
+  return member;
 }
 public void setMember(Member member) {
-	this.member = member;
+  this.member = member;
 }
 public TeamMember getTeamMember() {
-	return teamMember;
+  return teamMember;
 }
 public void setTeamMember(TeamMember teamMember) {
-	this.teamMember = teamMember;
+  this.teamMember = teamMember;
 }
 public TeamAges getTeamAges() {
-	return teamAges;
+  return teamAges;
 }
 public void setTeamAges(TeamAges teamAges) {
-	this.teamAges = teamAges;
+  this.teamAges = teamAges;
 }
 public JoinTeam getJoinTeam() {
-	return joinTeam;
+  return joinTeam;
 }
 public void setJoinTeam(JoinTeam joinTeam) {
-	this.joinTeam = joinTeam;
+  this.joinTeam = joinTeam;
 }
-  
+public TopLocation getTopLocation() {
+  return topLocation;
+}
+public void setTopLocation(TopLocation topLocation) {
+  this.topLocation = topLocation;
+}
+public MiddleLocation getMiddleLocation() {
+  return middleLocation;
+}
+public void setMiddleLocation(MiddleLocation middleLocation) {
+  this.middleLocation = middleLocation;
+}
   
   
   
