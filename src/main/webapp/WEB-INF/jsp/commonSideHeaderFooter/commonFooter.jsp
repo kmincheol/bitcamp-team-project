@@ -2,7 +2,6 @@
   trimDirectiveWhitespaces="true"%>
   
   <div class="footer">
-  <div><p>(주)BattleMatching</p></div>
-    <p>footer</p>   
+  <div><p style="padding-top: 40px;">(주)BattleMatching</p></div>
   </div>
        

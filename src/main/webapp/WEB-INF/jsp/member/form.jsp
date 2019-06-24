@@ -17,18 +17,24 @@
   <link rel="stylesheet" href="${contextRootPath}/css/member_form.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   
-</head>
+  <style>
+  .footer{
+      margin-top: 70px!important;
+      }
+  </style>
+</head>       
 <body style="background:white">
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
  
+ <div id="main-text">
+    <img src="${contextRootPath}/images/signup.png" style="width: 100%; height: 100%;">
+    <h1>회원가입</h1>
+  </div>
+ 
 <div class="container" id="container">
   <div id="content">
             
-    <div class="join_step">
-      <img src="${contextRootPath}/images/logo.png" class="joinImg">
-    </div>
-
     <div class="join_content">
       <form id="join_form" action="enter" method='POST'>
         <input type="hidden" id="loginType" name="loginType" value="homepage"> 
