@@ -75,10 +75,10 @@ margin: 15px;
                 <h3 class="join_title" id="photo_title">
                   <label for="fileupload" style="cursor: pointer">프로필 사진<span class="terms_choice">(선택)</span></label>
                   <span class="file_input">
-                    <input type="text" readonly="readonly" title="File Route" id="file_route">
-                    <label for="fileupload">
-                       사진올리기
-                      <input type="file" id="fileupload" name="files">
+                    <input type="text" readonly="readonly" title="File Route" id="file_route" style="display:none;"> 
+                    <label for="fileupload"> 
+                       사진올리기  
+                      <input type="file" id="fileupload" name="files"> 
                     </label>
                     <label for="uploadCancel">
                        취소하기
@@ -96,17 +96,17 @@ margin: 15px;
               </div>
             </div><!-- .join_photo -->
             <div class="row_group">
-              <div class="join_row">
+             <%--  <div class="join_row">
                 <h3 class="join_title">
                   <label for="addressBtn">주소/상세주소</label>
                 </h3>
                 <div class="address_area">
                   <span class="ps_box" id="postBox">
-                    <input class="int" placeholder="우편번호" value="${member.post}" name="post" id="addr1" type="text" readonly="readonly" maxlength="5">
-                  </span>
-                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호찾기"> 
-                </div>
-                <div>
+                    <input class="int" placeholder="우편번호" value="${member.post}" name="post" id="addr1" type="text" readonly="readonly" maxlength="5">${member.post} 
+                  </span> 
+                  <input id="addressBtn" type="button" class="btn-sm addressBtn" value="우편번호찾기">   
+                </div>  
+                <div> 
                   <span class="ps_box" id="baseAddr">
                     <input class="int" placeholder="도로명 주소" value="${member.baseAddress}"name="baseAddress" id="addr2" type="text" readonly="readonly" />
                   </span> 
@@ -117,7 +117,7 @@ margin: 15px;
                   </span>
                 </div>
                 <span class="error_next_box" id="addressMsg" style="display:none" role="alert"></span> 
-              </div>
+              </div> --%>
               <div class="join_row"> 
                 <h3 class="join_title">
                   <label for="self_introduce">자기소개<span class="terms_choice">(선택)</span></label>
@@ -212,6 +212,7 @@ $('#fileupload').fileupload({
 
 $(document).ready(function() {
   defaultScript();
+  
 /* 
   $('#gender').change(function() {
     checkGender();
@@ -231,7 +232,7 @@ $(document).ready(function() {
   });
 
   $('#btnJoin').click(function(event) {
-    submitClose();
+    /* submitClose(); */
     mainSubmit();
 
   });
@@ -240,13 +241,12 @@ $(document).ready(function() {
 
 
 function mainSubmit() {
-  if (!checkUnrealInput()) {
-    submitOpen();
-    return false;
-  }
-  
   $('#profChange_form').submit();
-}
+  
+/*     submitOpen();  
+    return false; 
+ */
+ }
 
 function submitClose() {
   $('#btnJoin').attr("disabled", true);
@@ -267,15 +267,15 @@ function defaultScript() {
 };
 
 function checkUnrealInput() {
-
-  if (
-      checkAddress() 
-      ) {
+ 
+/*   if (
+      checkAddress()  
+      ) { 
         return true;
       } else { 
-        return false;
+        return false; 
       }
-}
+ */}
 
 function showErrorMsg(obj, msg) {
   obj.attr("class", "error_next_box");
@@ -330,7 +330,7 @@ function execPostCode() {
   });
 }
 
-function checkAddress() {
+/* function checkAddress() {
   var post = $('#addr1').val();
   var postBox = $('#postBox');
   var baseAddrBox = $('#baseAddr');
@@ -350,7 +350,7 @@ function checkAddress() {
   showDefaultBox(detailAddrBox);
   hideMsg(oMsg);
   return true;
-}
+} */
 
 /* function checkGender() {
   var gender = $('#gender').val();

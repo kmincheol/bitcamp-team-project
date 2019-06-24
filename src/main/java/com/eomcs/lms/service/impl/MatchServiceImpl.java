@@ -173,13 +173,13 @@ public class MatchServiceImpl implements MatchBoardService {
           if (t.getTeamMemberNo() == m.getTeamNo()) {
             break;
           }
-          if (teams.get(teams.size()) == t) {
-            logger.info("내팀>> " + teams.get(teams.size()).hashCode());
-            logger.info("for문 >> " + t.hashCode());
+//          if (teams.get(teams.size()) == t) {
+//            logger.info("내팀>> " + teams.get(teams.size()).hashCode());
+//            logger.info("for문 >> " + t.hashCode());
             recommendMatches.add(m);
-          } else {
-            continue;
-          }
+//          } else {
+//            continue;
+//          }
         }
         if (recommendMatches.size() == 5) {
           break;
