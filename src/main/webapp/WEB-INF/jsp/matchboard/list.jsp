@@ -40,19 +40,11 @@
  
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
-<<<<<<< HEAD
         <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
  
         <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
-        <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
- 
- 
-=======
-        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
-        
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"> 
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
  <style>
  .modal-title{
  color:red;
@@ -61,17 +53,14 @@
  .recommendDiv {
   position: absolute;
   right: 50px;
-<<<<<<< HEAD
   top: 250px;
 }
 
 .btn-sss, .btn-fff {
  cursor: pointer
 }
-=======
   top: 350px;
 }     
->>>>>>> branch 'master' of https://github.com/kmincheol/bitcamp-team-project.git
  </style>
  
     </head>
