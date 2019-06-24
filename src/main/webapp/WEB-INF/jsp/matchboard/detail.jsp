@@ -6,8 +6,40 @@
 <title>${match.team.teamName} 매치 글 상세보기</title>
 <head>
 
-<link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextRootPath}/css/common.css" />
+<!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+
+<!-- recruit_board_list.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/free/free.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+
+<!-- Your custom styles (optional) -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
+
+<!-- MDBootstrap Datatables  -->
+<link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:700&display=swap&subset=korean"
+  rel="stylesheet">
+
+
 <link rel="stylesheet" href="${contextRootPath}/css/matchboarddetail.css">
 
         <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
@@ -15,7 +47,6 @@
         <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
 
 </head>
-<jsp:include page="../header.jsp" />
 
  <style>
  .btn-sss, .btn-fff {
@@ -24,6 +55,10 @@
  </style>
 
 <body>
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+
   <div class="container" id="main-wrap">
 
 <div id="main-wrap" class="container">
@@ -67,7 +102,7 @@
                 <div>경기장</div>
               </th>
               <td>
-                <div id="location">${match.stadiumName}
+                <div id="location"><input type="hidden" id="stadiumName" value="${match.stadiumName}">${match.stadiumName}
                 <button class="btn btn-outline-dark" id="map" type="button" onclick="openMap()" style="margin-left:20px;">위치보기</button>
                 </div>
               </td>
@@ -153,8 +188,11 @@
     </div>
   </div> <!-- .container -->
 
+ <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
-  <jsp:include page="../javascript.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
 
 
 <script>
