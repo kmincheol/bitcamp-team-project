@@ -428,6 +428,7 @@
     select
     tmb.tm_mbr_id,
     tmb.mbr_id,
+    m.prof_phot,
     m.name,    
     pstn,
     tlead_wth,
@@ -435,7 +436,6 @@
     m.gndr,
     m.tel,
     m.email,
-    m.prof_phot,
     p.position_id,
     p.position_no,
     p.position_name,
@@ -758,8 +758,6 @@ select
  where
     qstn_id = #{questionNo};
   </update>
-  
-
 
  <update id="updateMainTeam" parameterType="member">
     update mbr
@@ -768,6 +766,14 @@ select
             
     where 
       mbr_id = #{mno};
+  </update>
+
+ <update id="updatePosition" parameterType="hashmap">
+    update tm_mbr
+     set
+     pstn = #{position}       
+    where 
+      tm_mbr_id = #{tno} And mbr_id=#{mno}
   </update>
 
 

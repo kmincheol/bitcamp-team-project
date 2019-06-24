@@ -2,7 +2,6 @@ package com.eomcs.lms.web;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.eomcs.lms.domain.JoinTeam;
 //github.com/kmincheol/bitcamp-team-project.git
@@ -92,9 +92,11 @@ public class MyTeamController {
 	public String detail(@PathVariable int tno, @PathVariable int mno, Model model, HttpSession session) {
 
 		Member member = (Member) session.getAttribute("loginUser");
-
+  
 		int a = member.getNo(); // 회원번호
         
+		model.addAttribute("tno",tno);
+		
 		List<TeamMember> atm = myTeamService.findByMyTeamMember3(tno);
 		
 		for(TeamMember t: atm) {
@@ -111,6 +113,21 @@ public class MyTeamController {
 		}
 		return "myteam/detail";
 	}
+	
+	
+	   /* 팀원 포지션변경 */
+
+    @PostMapping("{tno}/{mno}/update")
+    public String positionUpdate(@PathVariable int tno, @PathVariable int mno, 
+        Model model, HttpSession session, TeamMember teamMember) {
+     String position = teamMember.getPosition();
+      myTeamService.updatePosition(tno, mno,position);
+        
+      
+      
+      return "redirect:../" + mno;
+    }
+	
 	
 // 신청 한 사람 상세보기
 	

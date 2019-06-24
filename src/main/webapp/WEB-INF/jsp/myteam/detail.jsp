@@ -87,7 +87,19 @@
     </tr>
         <tr>
       <th scope="row">포지션</th>
-      <td>${teamMember.position}</td>
+       <c:choose>
+        <c:when test="${ sessionScope.loginUser.no == teamLeader.memberNo}">
+             <td>
+              <form id='update_form' action=${teamMember.memberNo}/update method='post'>  
+                 <input style="width:80px" name="position" value="${teamMember.position}">
+                        <button>포지션 변경</button>
+             </form>
+             </td>
+        </c:when>
+        <c:otherwise>
+            <td>${teamMember.position}</td>
+        </c:otherwise>
+      </c:choose>
     </tr>
        <tr>
       <th scope="row">생년월일</th>
