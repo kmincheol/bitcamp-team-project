@@ -32,6 +32,8 @@
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 <link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_form.css">
 
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
 <style>
 th {
 	vertical-align: middle !important;

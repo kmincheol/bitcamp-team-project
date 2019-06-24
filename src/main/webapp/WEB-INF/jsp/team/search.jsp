@@ -15,6 +15,7 @@
 <jsp:include page="../header.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/header.css">
 <link rel="stylesheet" href="${contextRootPath}/css/team.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
 

@@ -27,8 +27,8 @@
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/mdb.min.css" rel="stylesheet">
 <!-- sns Login -->
 <link rel="stylesheet" href="${contextRootPath}/css/snsLogin.css">
-<!-- Jua -->
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<!--  -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
 .custom-control-input:checked ~.custom-control-label::before {
 	color: #fff;

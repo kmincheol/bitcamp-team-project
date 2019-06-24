@@ -21,31 +21,49 @@
   crossorigin="anonymous">
 <link rel="stylesheet"  
   href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
-<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link rel="stylesheet"
   href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
 <link rel="stylesheet" href="${contextRootPath}/css/team_form.css">
-<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
-
-<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
-
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
 .page-wrapper{
 height: auto;
 }
+#main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 40px;
+}
+
+#main-text h1, h5 {
+  text-shadow:4px 4px 6px black;
+  position: relative;
+    top: -60%;
+    color: white;
+}    
+
 </style> 
 </head>
 <body>   
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
-  <div id="container">
-    <div id="content">
-      <h1>
+<jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
+<div id="main-text">
+    <img src="${contextRootPath}/images/matchboardlist.png" style="width: 100%; height: 100%;">
+    <h1>
         팀을 <strong>생성</strong>할 수 있습니다.
       </h1>
       <br>
       <h5>팀을 생성하면 다른팀과 경기를 진행할 수 있습니다.</h5>
+  </div>
+  
+  <div id="container" style="box-shadow: 0px 0px 10px 0px darkgrey;">
+    <div id="content">
 
-      <br>
       <hr class="hrblack" />
       <div class="join_content">
       <%-- <c:forEach items="${member}" var="member">

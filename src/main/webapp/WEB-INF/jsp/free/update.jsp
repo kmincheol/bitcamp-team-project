@@ -33,7 +33,7 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <!-- summernote -->
 <link href="${contextRootPath}/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet">
 

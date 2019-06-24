@@ -15,7 +15,7 @@
 
 <!-- footer.css -->
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
-
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
 

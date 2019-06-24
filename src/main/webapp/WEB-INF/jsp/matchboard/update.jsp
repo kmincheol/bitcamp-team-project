@@ -24,6 +24,21 @@
   .ui-datepicker-calendar thead th {
 color:black;
  }
+ #main-text {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 230px;
+  border-bottom: 2px solid black;
+  margin-bottom: 40px;
+}
+
+#main-text h2 {
+  text-shadow:4px 4px 6px black;
+  position: relative;
+    top: -60%;
+    color: white;     
+}  
 </style>
 
 </head>
@@ -37,17 +52,17 @@ color:black;
       </script>
       </c:when>
       
-</c:choose>
-
+</c:choose>    
 
   <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
 
-  <div id="main-text">    
+<div id="main-text" style="margin-bottom: 40px;">
+    <img src="${contextRootPath}/images/matchboardlist.png" style="width: 100%; height: 100%;">
     <h2 style="text-align:center;"><b>매치 글</b>을 <b>수정</b>할 수 있습니다.</h2>
   </div>
   
-  <div class="container" id="main-wrap" style="margin-top: 50px;">
+  <div class="container" id="main-wrap" style="box-shadow: 0px 0px 10px 0px darkgrey; padding: 15px; margin-bottom: 100px;">
 
     <form action='../update' method='post' name="update">
     
@@ -63,7 +78,7 @@ color:black;
           </tr>
           <tr>
             <th scope="row">소속팀</th>
-            <td>
+            <td style="vertical-align: middle;">     
             ${match.team.teamName}
             </td>
             <th scope="row">경기일</th>

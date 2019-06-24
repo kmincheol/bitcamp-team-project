@@ -39,6 +39,7 @@
  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
    
   <div class="container">
    <br><br>

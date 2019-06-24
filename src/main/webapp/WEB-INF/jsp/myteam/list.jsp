@@ -20,9 +20,10 @@
 
 <link href="${contextRootPath}/css/common.css" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 <style>
 .select-wrapper input.select-dropdown {
@@ -140,7 +141,7 @@ body {
    
     <div id="teamInfo"
       style="width: 1080px; height: 400px; box-shadow: 0px 0px 10px 0px darkgray;">
-    <div id="teamModify" style="width: 200px;height: 13px;border 1px solid;position: absolute;margin-left: 28px;/* background-color: white; */margin-top: 20px;">
+    <div id="teamModify" style="width: 220px;height: 13px;border 1px solid;position: absolute;margin-left: 28px;/* background-color: white; */margin-top: 20px;">
     </div>
       <div id="teamMark"
         style="width: 350px; height: 350px; margin: 22px; float: left; text-align: center; padding-top: 50px">

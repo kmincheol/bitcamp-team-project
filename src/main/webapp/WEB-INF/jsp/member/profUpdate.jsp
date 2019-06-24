@@ -7,8 +7,23 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
   <title>BATTLE MATCHING :: 상세정보입력</title>
-  <jsp:include page="../commonCss.jsp"/>
+  <!-- common.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/common.css">
+
+<!-- header -->
+<jsp:include page="../commonSideHeaderFooter/commonHeaderCss.jsp" />
+
+<!-- commonSidebar css -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarCss.jsp" />
+
+<!-- footer.css -->
+<link rel="stylesheet" href="${contextRootPath}/css/footer.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+  rel="stylesheet">
+
   <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css"> 
    
  
@@ -21,7 +36,10 @@ margin: 15px;
 
 </head>
 <body style="background:white">
- 
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />
+
 <div id="container">
   <div id="content">
             <h2>프로필 정보를 <b>확인하고 수정</b>할 수 있습니다.</h2>
@@ -158,17 +176,14 @@ margin: 15px;
 </div>
         
       </form><!-- #join_form-->
-      
-      
-
-      
+          
     </div><!-- .join_content -->
     </c:otherwise>
     </c:choose>
   </div><!-- .content -->
 </div><!-- .container -->
+<jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
-<jsp:include page="../javascript.jsp"/>
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="${contextRootPath}/node_modules/blueimp-load-image/js/load-image.all.min.js"></script>
 <script src="${contextRootPath}/node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
@@ -177,6 +192,11 @@ margin: 15px;
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-process.js"></script> 
 <script src="${contextRootPath}/node_modules/blueimp-file-upload/js/jquery.fileupload-image.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />
+
+  <jsp:include page="../commonSideHeaderFooter/commonHeaderJs.jsp" />
+
 
 <script>
 "use strict"

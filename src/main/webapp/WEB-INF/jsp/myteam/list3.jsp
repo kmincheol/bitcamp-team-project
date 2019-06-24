@@ -33,8 +33,7 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
   
-   <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
-   
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">   
 <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 

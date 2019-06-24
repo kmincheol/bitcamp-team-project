@@ -26,7 +26,7 @@
 
 <!-- Your custom styles (optional) -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/style.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style type="text/css">
 
 

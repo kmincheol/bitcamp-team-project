@@ -38,10 +38,11 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
  
-        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
-        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
+        <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" />
+        
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"> 
  <style>
  .modal-title{
  color:red;
@@ -50,15 +51,15 @@
  .recommendDiv {
   position: absolute;
   right: 50px;
-  top: 250px;
-}
+  top: 350px;
+}     
  </style>
  
-<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
-  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
     </head>
     <body ng-app="app"> 
     
+<jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
+  <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" /> 
     <div id="main-text">
     <img src="${contextRootPath}/images/matchboardlist.png" style="width: 100%; height: 100%;">
     <h2>
@@ -659,7 +660,6 @@
           });
               
            $(document).ready(function() {
-
              // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
              var floatPosition = parseInt($(".recommendDiv").css('top'));
              // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );

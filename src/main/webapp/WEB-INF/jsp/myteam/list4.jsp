@@ -30,6 +30,7 @@
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css"
   rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .container {
@@ -121,7 +122,7 @@ table tbody tr {
          <span style="margin : 50px; border-bottom: 2px solid #51c321;"><a href="${contextRootPath}/app/myteam/list4/" style="text-decoration:none; color:black">등록한 게시글</a></span>
                 </div>
                 </div>
-    <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center">
+    <table id="dtBasicExample" class="table" cellspacing="0" width="100%" style="text-align: center ">
       <thead>
         <tr>
           <th class="th-sm">번호</th>

@@ -36,6 +36,8 @@
 
 <link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_list.css">
 
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
 .pagination {

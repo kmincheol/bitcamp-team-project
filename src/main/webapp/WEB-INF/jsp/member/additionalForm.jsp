@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
   <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css">
   <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-  <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
+  <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"> 
 </head>
 <body style="background:white">
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
