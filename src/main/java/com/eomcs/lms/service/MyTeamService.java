@@ -5,6 +5,7 @@ import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Position;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
@@ -46,6 +47,8 @@ public interface MyTeamService {
   int updateMainTeam(int mno,int tno);
   
   List<Match> list4(int no);
+  
+  List<Position> positionList(int no);
 
   List<Match>sucessMatching(int no);
   

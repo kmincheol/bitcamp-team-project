@@ -120,7 +120,7 @@
                 <div class="team_info">&middot; 날짜 :${matchNos.match.playDate }</div>
                 <div class="team_info">&middot; 비용 : ${matchNos.match.cost }</div>
                 </td>              
-                <td colspan="1" style="vertical-align: middle; width: 150px;">  
+                <td colspan="1" style="vertical-align: middle; width: 150px;height:150px;">  
                   <button class="cancle  btn btn-outline-dark"  type="button" style="width: 120px;">취소</button>
                   <input type="hidden" id="matchNos" value="${matchNos.match.no}">  
                   <input type="hidden" id="no" value="${tno}">  

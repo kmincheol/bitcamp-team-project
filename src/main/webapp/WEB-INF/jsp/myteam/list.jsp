@@ -225,25 +225,7 @@ function select_onchange(){
   var teamMark = document.getElementById("teamMark");
   var teamName= document.getElementById("teamName");
    var teamDetail = document.getElementById("teamdetail");
- /* 종목변환 */
- if(bbb[8]="soccer"){
-	   bbb[8]="축구"
- }else if(bbb[8]="baseball"){
-	 bbb[8]="야구"
- }else if(bbb[8]="basketball"){
-   bbb[8]="농구"
- }else if(bbb[8]="pingpong"){
-   bbb[8]="탁구"
- }
- 
- /*  레벨 변환 */
- if(bbb[5]="high"){
-     bbb[5]="상"
- }else if(bbb[5]="mid"){
-   bbb[5]="중"
- }else if(bbb[5]="low"){
-   bbb[5]="하"
- }
+
    if (bbb.length > 11){
   teamMark.innerHTML ='<img src ="' + bbb[9] +',' +bbb[10] +'" width = "250px" height = "250px" >'
   row1.innerHTML = '<span style="display: inline-block;font-size:30px; color: darkred; width: 100px;">종 목</div></span> ' + 
@@ -381,9 +363,6 @@ row4.innerHTML = '<span style="display: inline-block;font-size:30px; color: dark
     		       cancelButtonText: '아니오'
     		     }).then((result) => {
     		       if (result.value) {
-    		         Swal.fire(
-    		         bbb[0] + ' (이)가 <br> 대표팀이 되었습니다.'
-    		         )  
     		         location.href='${contextRootPath}/app/myteam/update/mainTeam/' + loginUserNo + '/' + bbb[1]
     		       }
     		     })

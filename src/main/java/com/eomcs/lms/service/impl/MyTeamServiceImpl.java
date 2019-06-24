@@ -11,6 +11,7 @@ import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Position;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
@@ -77,6 +78,11 @@ public int insertTeamMember(int tno, int mno) {
 @Override
 public List<MatchApply> findMatchNo(int no) {
   return myteamDao.findByMatchNo(no);
+}
+
+@Override
+public List<Position> positionList(int no) {
+  return myteamDao.findByPostion(no);
 }
 
 @Override

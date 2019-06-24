@@ -114,6 +114,15 @@
        <id column="tm_id" property="teamId" />
     <result column="name" property="teamName" />
     </association>
+    
+     <association property="position2" javaType="Position">
+       <id column="position_id" property="positionId" />
+     <result column="position_no" property="positionNo" />
+      <result column="position_name" property="positionName" />
+     <result column="spt_clsf_id" property="teamTypeSportsId" />
+    </association>
+    
+    
   </resultMap>
   
   
@@ -426,13 +435,30 @@
     m.gndr,
     m.tel,
     m.email,
-    m.prof_phot
+    m.prof_phot,
+    p.position_id,
+    p.position_no,
+    p.position_name,
+    t.spt_clsf_id
     from
     tm_mbr tmb
     left outer join tm t on tmb.tm_mbr_id = t.tm_id
     left outer join mbr m on tmb.mbr_id = m.mbr_id
-         
+    left outer join position p on   t.spt_clsf_id = p.spt_clsf_id
+   
        where tmb.mbr_id = ${value}
+  </select> 
+  
+  <select id="findByPostion" resultMap="teamMemberMap" parameterType="int">
+    select
+    p.position_id,
+    p.position_no,
+    p.position_name,
+    t.spt_clsf_id
+    from
+    position p 
+    left outer join tm t on p.spt_clsf_id = t.spt_clsf_id
+   where t.tm_id = ${value}
   </select> 
 
      <select id="findByMyTeamMember2" resultMap="teamMemberMap" >
