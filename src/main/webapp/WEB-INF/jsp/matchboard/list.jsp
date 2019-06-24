@@ -52,14 +52,12 @@
        
  .recommendDiv {
   position: absolute;
-  right: 50px;
-  top: 250px;
-}
+  right: -285px;
+  top: 0px;
+}    
 
 .btn-sss, .btn-fff {
  cursor: pointer
-}
-  top: 350px;
 }     
  </style>
  
@@ -77,7 +75,7 @@
       <p style="margin-bottom:50px;">
       </p>     
   </div>
-  <div class="container" id="main-wrap">
+  <div class="container" id="main-wrap" style="position: relative; left: -100px;">
        <!-- hidden sort control  -->
         <div style="display: none" data-jplist-control="hidden-sort" data-group="group1"
             data-path=".playDate"  data-order="asc"  data-type="text" >
