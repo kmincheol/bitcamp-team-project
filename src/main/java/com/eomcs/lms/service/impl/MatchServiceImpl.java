@@ -104,6 +104,11 @@ public class MatchServiceImpl implements MatchBoardService {
     return matchDao.search();
   }
 
+  @Override
+  public List<Match> topthree() {
+    return matchDao.topthree();
+  }
+  
 
   @Override
   public int size() {

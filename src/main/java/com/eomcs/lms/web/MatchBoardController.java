@@ -103,7 +103,10 @@ public class MatchBoardController {
     
     ArrayList<Match> recommendMatches = new ArrayList<>(); // 추천매칭 담을 배열
     List<Match> all = matchBoardService.search();
-
+    
+    List<Match> top3 = matchBoardService.topthree(); // 어쩔수 없다... 날짜순으로 3개 뽑아온 데이터
+      session.setAttribute("top3", top3);
+    
     if (session.getAttribute("loginUser") != null) {
       Member member = (Member) session.getAttribute("loginUser"); // member에 로그인 유저 정보 담고.
       List<Match> logUserteames = matchBoardService.leaderJudge(member.getNo()); // 로그인 유저의 팀 목록 받아서// 리더정보 뽑아오기

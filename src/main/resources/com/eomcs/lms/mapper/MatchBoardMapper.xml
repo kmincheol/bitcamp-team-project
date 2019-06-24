@@ -393,6 +393,15 @@
       mtch_id = #{value} AND
       tmb.tlead_wth = 1;
   </select> 
+  
+  
+  <select id="topthree" resultMap="matchMap">
+    <include refid="select123"/>
+    AND tm_id2 is null
+    LIMIT 3;
+  </select> 
+  
+  
 
  <insert id="insert" parameterType="match"
           useGeneratedKeys="true" keyColumn="mtch_id" keyProperty="no">

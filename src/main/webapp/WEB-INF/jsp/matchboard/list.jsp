@@ -383,10 +383,10 @@
           <tr>
             <th class="recommendTh">추천매칭</th>
           </tr>
-          <c:choose>
-            <c:when test="${!empty sessionScope.loginUser}">
-              <c:choose>
-                 <c:when test="${noSetTeam eq 'noSetTeam'}">
+          <%-- <c:choose> --%>
+            <c:if test="${!empty sessionScope.loginUser}">
+              <%-- <c:choose> --%>
+<%--                  <c:when test="${noSetTeam eq 'noSetTeam'}">
                   <tr>
                     <td>
                       <div id="noSuggestion" style="background: white;"><br>추천할 팀이 없습니다. <br> 대표팀을 설정하세요.<br><br>
@@ -398,13 +398,12 @@
                       </div>
                     </td>
                    </tr>
-                  </c:when>
+                  </c:when> --%>
               
               
-                <c:when test="${teamsCheck eq 'exist'}">
-                  <c:forEach items="${recommendMatches}" var="match">
+                <%-- <c:when test="${teamsCheck eq 'exist'}"> --%>
+                  <c:forEach items="${top3}" var="match">
                     <tr>
-                     
                       <td class="detail recommendTd" id="${match.no}" colspan="5" 
                           style="cursor: pointer;" 
                            onMouseOver="this.style.backgroundColor='rgb(45, 45, 45)';" 
@@ -462,12 +461,12 @@
                       </td>
                      </tr>
                   </c:forEach>
-                </c:when>
-                
-              </c:choose>
-            </c:when>
+                  
+                <%-- </c:when> --%>
+              <%-- </c:choose> --%>
+            </c:if>
             
-            <c:otherwise>
+            <c:if test="${empty sessionScope.loginUser}">
               <tr>
                 <td id="loginsugge">
                   <div>로그인을 하면 팀에 맞는<br> 경기를 추천해드립니다.</div>
@@ -477,9 +476,9 @@
                       </button>
                 </td>
               </tr>
-            </c:otherwise>
+             </c:if>
             
-          </c:choose>
+          <%-- </c:choose> --%>
           
         </table>
       </div>
