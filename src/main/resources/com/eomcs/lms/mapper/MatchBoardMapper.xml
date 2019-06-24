@@ -398,6 +398,7 @@
   <select id="topthree" resultMap="matchMap">
     <include refid="select123"/>
     AND tm_id2 is null
+    order by game_dt asc
     LIMIT 3;
   </select> 
   
