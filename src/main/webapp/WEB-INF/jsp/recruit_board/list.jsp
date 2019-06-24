@@ -154,7 +154,7 @@ table tbody tr {
               <input id="openTm1" value="${list.team.teamName}" type="hidden">
               </td>   --%>
             <!-- 지역 --> 
-            <td>${list.team.teamArea }</td>
+            <td>${list.topLocation.topLocationName }</td>
             <!-- 게시글 상태(모집중, 모집완료) -->
             <td><c:choose>
                 <c:when test="${list.teamRcrmStatus == 0}"> 모집중 </c:when>
