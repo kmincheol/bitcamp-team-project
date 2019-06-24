@@ -207,7 +207,7 @@ height: auto;
             </div>
             <!-- .join_form -->
           </div>
-          <div class="btn_area" style="position: relative; bottom: 500px;">
+          <div class="btn_area" style="position: relative;">
             <button class="btn btn_type btn-outline-secondary sunext" id="btnCreate" >변경하기</button>
           </div>
           <!-- .btn_area -->
