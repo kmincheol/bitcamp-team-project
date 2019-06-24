@@ -226,7 +226,6 @@ $(function() {
 });
 
 
-
         $('#sido').change(function() {
         	   var no = $(this).val();
         	   console.log(name)
@@ -255,12 +254,45 @@ $(function() {
         	                console.log(mid)
         	               $('#location').val(top + mid) 
         	               console.log($('#location').val())
-        	           } 
+        	           }
         	           }); 
         	 });
 
+        
+        $('#gugun').mouseenter(function(){
+        	var no = $('#sido').val();
+        	
+    	    $.getJSON('../AddressCheck', 
+       	         {
+       	       no: no
+       	         },
+       	       function(obj) {
+       	         if (obj.status == 'success') { 
+       	           var location = new Array;
+       	           var subLocation = obj.middleLocations 
+       	           var length = subLocation.length; 
+       	             
+       	             for (var i = 0; i < length; i++) {
+       	               var option = $(
+       	                   "<option value='" + subLocation[i].middleLocationId+ "'>" + subLocation[i].middleLocationName + "</option>"); 
+       	                
+       	               $(option).appendTo($('#gugun'));
+       	             }
+       	             
+       	             var mid = $("#gugun option:selected").val();
+       	             var top = $("#sido option:selected").val();
+       	                console.log(top)
+       	                console.log(mid)
+       	               $('#location').val(top + mid) 
+       	               console.log($('#location').val())
+       	           }
+       	           }); 
+        });
+        
+        
+        
           $('#gugun').on('click', function(){
-          	   
+        	  
               var top = $("#sido option:selected").val();
               var mid = $("#gugun option:selected").val();
              
@@ -278,6 +310,11 @@ $(function() {
         		}
         	}
 
+        	
+        	
+        	
+        	
+        	
 	function check_onclick() {
 		theForm = document.update;
 		var choicelocation1 = $("#sido option:selected").val();
