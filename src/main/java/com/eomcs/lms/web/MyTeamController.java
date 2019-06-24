@@ -84,10 +84,6 @@ public class MyTeamController {
 
     return "myteam/list4";
   }
-   
-   
-
-
 	
 	/* 팀원 상세보기 */
 
@@ -98,14 +94,13 @@ public class MyTeamController {
 
 		int a = member.getNo(); // 회원번호
         
-		List<TeamMember>atm = myTeamService.findByMyTeamMember3(tno);
+		List<TeamMember> atm = myTeamService.findByMyTeamMember3(tno);
 		
 		for(TeamMember t: atm) {
 		    if(t.isTeamLeader() == true) {
 		        model.addAttribute("teamLeader",t);
 		    }
 		}
-		
 		List<TeamMember> tm = myTeamService.teamMemberList(mno);
      
 		for(TeamMember tmm : tm) {
@@ -113,12 +108,11 @@ public class MyTeamController {
 				model.addAttribute("teamMember",tmm);
 			}
 		}
-
-		  
 		return "myteam/detail";
 	}
 	
 // 신청 한 사람 상세보기
+	
 	@GetMapping("apply/{mno}/{tno}/{trno}")
 	public String detail2(@PathVariable int tno, @PathVariable int mno,@PathVariable int trno,  Model model, HttpSession session) {
 

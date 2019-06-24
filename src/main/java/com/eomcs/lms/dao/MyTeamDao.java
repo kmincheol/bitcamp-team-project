@@ -6,6 +6,7 @@ import com.eomcs.lms.domain.JoinTeam;
 import com.eomcs.lms.domain.Match;
 import com.eomcs.lms.domain.MatchApply;
 import com.eomcs.lms.domain.Member;
+import com.eomcs.lms.domain.Position;
 import com.eomcs.lms.domain.Team;
 import com.eomcs.lms.domain.TeamMember;
 import com.eomcs.lms.domain.TeamRecruit;
@@ -61,6 +62,8 @@ public interface MyTeamDao {
   int update(Team team);
   
   int updateMainTeam(Map<String, Integer> map);
+
+  List<Position> findByPostion(int no);
   
 }
 

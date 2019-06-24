@@ -7,11 +7,12 @@ public class TeamMember {
  private String position;
  private Member member;
  private Team team;
- 
+ private Position position2;
 @Override
 public String toString() {
   return "TeamMember [teamMemberNo=" + teamMemberNo + ", memberNo=" + memberNo + ", teamLeader="
-      + teamLeader + ", position=" + position + ", member=" + member + ", team=" + team + "]";
+      + teamLeader + ", position=" + position + ", member=" + member + ", team=" + team
+      + ", position2=" + position2 + "]";
 }
 public int getTeamMemberNo() {
   return teamMemberNo;
@@ -48,6 +49,12 @@ public Team getTeam() {
 }
 public void setTeam(Team team) {
   this.team = team;
+}
+public Position getPosition2() {
+  return position2;
+}
+public void setPosition2(Position position2) {
+  this.position2 = position2;
 }
  
 
