@@ -70,7 +70,7 @@
 								<div>지역</div>
 							</th>
 							<td style="border-right: 1px solid #ccc;">
-								<div id="location" name="teamArea">${teamRecruit.team.teamArea}</div>
+								<div id="location" name="teamArea">${teamRecruit.topLocation.topLocationName}</div>
 							</td>
 						</tr>
 					</table>

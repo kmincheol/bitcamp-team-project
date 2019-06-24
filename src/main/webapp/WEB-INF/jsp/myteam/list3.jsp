@@ -115,7 +115,7 @@ margin-top: 70px!important;
             <tbody>  
                <c:forEach items="${matchNos}" var="matchNos"> 
               <tr style="height: 100px;">
-                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img style="width:150px" src="${matchNos.team.teamEmblemPhoto }"/></td>
+                <td colspan="1" style="vertical-align: middle; text-align: center; width: 150px; height:150px;"><img style="width:150px; height:150px" src="${matchNos.team.teamEmblemPhoto }"/></td>
                 <td colspan="2" style="vertical-align: middle; width: 220px; padding-left: 30px; font-size:20px">
                 <div class="team_info">&middot; 팀명 : ${matchNos.team.teamName } </div>
                 <div class="team_info">&middot; 지역 : ${matchNos.topLocation.topLocationName }</div>

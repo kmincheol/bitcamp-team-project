@@ -42,7 +42,18 @@
     <id column="age_id" property="teamAgeId" />
     <result column="ages" property="teamAges" />
   </association>
-  
+    <association property="topLocation" javaType="TopLocation">
+      <id column="toplc_id" property="topLocationId" />
+      <result column="toplc_no" property="topLocationNo" />
+      <result column="toplc_name" property="topLocationName" />
+    </association>
+    
+    <association property="middleLocation" javaType="MiddleLocation">
+      <id column="midlc_id" property="middleLocationId" />
+      <result column="midlc_no" property="middleLocationNo" />
+      <result column="midlc_name" property="middleLocationName" />
+      <result column="toplc_id" property="topLocationId" />
+    </association>
   </resultMap>
 <!-- //////////////////////////////////////////////////////////////////////////////////// -->
   <resultMap type="Member" id="memberMap">
@@ -140,6 +151,8 @@
     ages,
     spt_clsf_name,
     t.tm_id,
+      p.toplc_name,
+    d.midlc_name,
     t.name,
     tmbr.mbr_id,
     user_id,
@@ -151,6 +164,8 @@
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
     left outer join tm_mbr tmbr on t.tm_id = tmbr.tm_mbr_id
     left outer join mbr m on tmbr.mbr_id = m.mbr_id
+      left outer join toplc p on p.toplc_no = substr(t.area,1,2)
+    left outer join midlc d on d.midlc_id = substr(t.area,3,2)
     order by rcrm_id
     desc
   </select>
@@ -190,6 +205,8 @@
     titl,
     area,
     cont,
+      p.toplc_name,
+    d.midlc_name,
     name,
     rcrm_stat,
     r.cdt,
@@ -201,6 +218,8 @@
     rcrm r
     left outer join tm t on r.tm_id = t.tm_id
     left outer join spt_clsf s on s.spt_clsf_id = t.spt_clsf_id
+     left outer join toplc p on p.toplc_no = substr(t.area,1,2)
+    left outer join midlc d on d.midlc_id = substr(t.area,3,2)
     where
     r.rcrm_id = #{teamNo};
 
