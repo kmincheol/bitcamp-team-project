@@ -302,6 +302,7 @@ $(document).ready(function() {
 function mainSubmit() {
   if (!checkUnrealInput()) {
     submitOpen();
+    $('#join_form').submit();
     return false;
   }
   if (telFlag && authFlag) {

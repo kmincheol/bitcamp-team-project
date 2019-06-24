@@ -315,7 +315,7 @@ public class MemberController {
     Member loginMember = (Member) session.getAttribute("loginUser");
 
     member.setNo(loginMember.getNo());
-
+System.out.println(member.getPhoto());
     memberService.updateOption(member);
 
     session.invalidate();

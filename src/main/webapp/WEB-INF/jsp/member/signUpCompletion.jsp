@@ -14,6 +14,11 @@
 <link rel="stylesheet" href="${contextRootPath}/css/footer.css">
 <link rel="stylesheet" href="${contextRootPath}/css/signUpCompletion.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<style>    
+.footer{
+margin-top: 39px!important;
+}
+</style>
 </head>
 <body>
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
