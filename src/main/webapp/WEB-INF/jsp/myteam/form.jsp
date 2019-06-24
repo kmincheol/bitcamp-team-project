@@ -21,10 +21,10 @@
   crossorigin="anonymous">
 <link rel="stylesheet"  
   href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
-<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link rel="stylesheet"
   href="${contextRootPath}/node_modules/jplist-es6/dist/1.2.0/jplist.styles.css" />
 <link rel="stylesheet" href="${contextRootPath}/css/team_form.css">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <jsp:include page="../commonSideHeaderFooter/commonHeader.jsp" />
 
 <jsp:include page="../commonSideHeaderFooter/commonSidebarTop.jsp" />

@@ -21,6 +21,8 @@ trimDirectiveWhitespaces="true"%>
 <link rel="stylesheet" href="${contextRootPath}/css/announce_board/announce_detail.css">
 
 <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
 .footer{
     margin-top: 155px;

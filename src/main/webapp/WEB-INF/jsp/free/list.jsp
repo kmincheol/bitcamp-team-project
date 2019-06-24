@@ -38,8 +38,7 @@
 
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
-<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:700&display=swap&subset=korean"
-  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 <style>
 /* 페이지 컨트롤러 가운데 정렬 style */
@@ -137,7 +136,7 @@ table tbody tr {
       </div>
     </c:if>
   </div>
-
+     
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottom.jsp" />
 
   <jsp:include page="../commonSideHeaderFooter/commonSidebarBottomScript.jsp" />

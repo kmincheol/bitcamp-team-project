@@ -38,7 +38,6 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 <!-- <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet"> -->
  
-        <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="${contextRootPath}/css/matchboardlist3.css" />
         <link rel="stylesheet" href="${contextRootPath}/css/recommendMatch.css" />
         <link rel="stylesheet" href="${contextRootPath}/jquery-ui-1.12.1.datepicker2/jquery-ui.css" /> 
@@ -46,7 +45,7 @@
         <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
         <link href="https://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
  <style>
  .modal-title{
  color:red;

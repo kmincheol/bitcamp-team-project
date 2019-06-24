@@ -11,6 +11,7 @@
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
    <link rel="stylesheet" href="${contextRootPath}/css/map.css">
    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6afe281961d12333e35931392e5380a8&libraries=services"></script> 
 </head>  
 <body>

@@ -8,6 +8,7 @@
    <jsp:include page="../commonCss.jsp"/>
    <link rel="stylesheet" href="${contextRootPath}/node_modules/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="${contextRootPath}/css/matchboard.css">
+   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 <body>
 

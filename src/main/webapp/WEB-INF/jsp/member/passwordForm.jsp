@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>회원가입</title>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <jsp:include page="../commonCss.jsp" />
 </head>
 <body>

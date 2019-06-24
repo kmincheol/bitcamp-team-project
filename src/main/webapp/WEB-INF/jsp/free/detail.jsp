@@ -36,6 +36,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
 <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css">  
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 
 <body>

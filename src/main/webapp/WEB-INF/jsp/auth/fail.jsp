@@ -9,6 +9,7 @@
   <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 <link href="http://sweetalert2.github.io/styles/bootstrap4-buttons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <style>
 .btn-sss, .btn-fff {
  cursor: pointer

@@ -37,7 +37,7 @@ body {
 }
 #container {
   text-align: center;
-  margin: 90px auto 0 auto;
+  margin: 0 auto;
   width: 1000px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box

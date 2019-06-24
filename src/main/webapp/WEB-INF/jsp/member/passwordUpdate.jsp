@@ -9,6 +9,7 @@
 <jsp:include page="../commonCss.jsp" />
 <link rel="stylesheet" href="${contextRootPath}/css/member_additionalForm.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css">  
 
 <style>
