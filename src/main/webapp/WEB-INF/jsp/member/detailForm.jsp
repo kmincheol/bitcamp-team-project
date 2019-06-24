@@ -68,6 +68,9 @@ h6 {
 .hoverdiv:hover{    
 box-shadow: 0px 0px 10px 3px gray;  
 }
+.footer{
+margin-top: 0px!important;
+}
 </style>  
 </head>
 <body>

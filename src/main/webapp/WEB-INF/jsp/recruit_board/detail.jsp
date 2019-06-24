@@ -96,8 +96,9 @@
 								<a class="btn btn-outline-dark"
 									href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'
 									style="width: 80px;">변경</a>
-								<a class="btn btn-outline-dark" href="#">모집마감</a>
-							</c:if>
+                  <a class="btn btn-outline-dark" onclick="return removeCheck1()"
+                  href='delete/${teamRecruit.teamNo}'>모집마감</a>
+							</c:if>     
 						</c:forEach>
 						<c:set var="doneLoop" value="false" />
 						<c:forEach var="team" items="${team}">
@@ -144,6 +145,15 @@
 				return false;
 			}
 		}
+		    
+		function removeCheck1() {
+		      if (confirm("모집을 마감하시겠습니까?\n모집 마감 시 게시글이 삭제됩니다.") == true) { //확인
+		        document.remove.submit();
+		        alert('삭제되었습니다.');
+		      } else { //취소
+		        return false;
+		      }
+		    }
 
 		function joinCheck() {
 			if (confirm("가입신청 하시겠습니까?") == true) { //확인

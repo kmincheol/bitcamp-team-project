@@ -49,8 +49,8 @@
        
  .recommendDiv {
   position: absolute;
-  right: 18px;
-  top: 350px;
+  right: 50px;
+  top: 250px;
 }
  </style>
  
@@ -380,7 +380,7 @@
                  <c:when test="${noSetTeam eq 'noSetTeam'}">
                   <tr>
                     <td>
-                      <div id="noSuggestion"><br>추천할 팀이 없습니다. <br> 대표팀을 설정하세요.<br><br>
+                      <div id="noSuggestion" style="background: white;"><br>추천할 팀이 없습니다. <br> 대표팀을 설정하세요.<br><br>
                       <button class="btn" style="color:#008bff; "
                       onClick="location.href='${contextRootPath}/app/myteam' " >
                           대표팀 설정하기

@@ -41,6 +41,8 @@ a:hover{
 #floatfloat{
   float:left;
   width: 100%;
+  left: -100px;
+  position: relative;
 }
 
  #formform{

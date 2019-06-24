@@ -82,6 +82,9 @@ table tbody tr {
 
 .table>tbody>tr>td {
   vertical-align: middle;
+}    
+.footer{
+    margin-top: 70px!important;
 }
 </style>
 </head>

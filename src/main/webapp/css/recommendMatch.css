@@ -3,7 +3,7 @@
     right: 135px; */
 }     
 .recommendTable {
-	width: 190px;
+	width: 257px;
   font-size: 16px;
 	border: 1px solid black;
 }
@@ -28,7 +28,6 @@
 	padding: 10px;
 	vertical-align: top;
 	background-color: rgb(64, 64, 64);
-	border : 1px solid #dee2e6;
 }
 .recommendTeamLevel{
   float:right;
@@ -64,22 +63,17 @@
 }
 
 .recommendPlayDate {
-  background-color: rgb(94, 94, 94);
-  color:white;
-  text-align:center;
-	float: left;
-	margin-top:3px;
-	width: 200px;
-	height: 32px;
-	padding-top: 5px;
-	margin-left: 4px;
+    background-color: rgb(94, 94, 94);
+    color: white;
+    text-align: center;
+    margin-left: 4px;
 }
 .recommendBox {
   float: left;
   border : 1px solid #dee2e6;
   border-top-width: 0px;
   background-color: white;
-  width: 200px;
+  width: 229px;
   margin-left: 4px;
   
 }
@@ -87,7 +81,7 @@
   float: left;
 	width: 50px;
 	height: 50px;
-	margin-top: 20px;
+	margin-top: 8px;
 	margin-left: 8px;
     margin-right: 5px;
 }
@@ -95,7 +89,7 @@
 #sidbarSubmit{
   float:left;
   text-align:center;
-  width:198px;
+  width:228px;
   height: 30px;
   padding-top: 5px;
   background-color: #d3d7cf;
@@ -103,7 +97,7 @@
 
 
 #EEE{
-  margin-left: 90px;
+  margin-left: 30px;
 }
 
 .recommendTeamInfo {
