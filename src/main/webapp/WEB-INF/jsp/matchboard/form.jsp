@@ -56,9 +56,30 @@ color:black;
 <body>
  <c:choose>
       <c:when test="${teamsCheck eq 'notTeams'}">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script>
-      alert("소속된 팀이 없습니다. 팀을 먼저 생성해주세요!")
-       location.href="${contextRootPath}/app/matchboard";
+      $(function(){
+        alert();
+      });
+      
+      function alert() {
+        var swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success btn-sss',
+            cancelButton: 'btn btn-danger btn-fff'
+          },
+          buttonsStyling: false,
+        })
+        
+        swalWithBootstrapButtons.fire({
+          title: "소속된 팀이 없습니다!",
+          html: '팀을 먼저 생성해 주시거나 다른 팀에 가입해주세요!',
+          type: 'error'
+      }).then((result) => {
+            location.href="${contextRootPath}/app/matchboard";
+      })
+      }
+      
       </script>
        </c:when>
 </c:choose>
