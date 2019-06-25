@@ -32,6 +32,8 @@
 	rel="stylesheet">
   
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 </head>
 
 <body>
@@ -93,8 +95,8 @@
 						<c:forEach var="teamMember" items="${teamMember}">
 							<c:if
 								test="${teamMember.memberNo eq sessionScope.loginUser.no && teamMember.teamLeader == 'true'}">
-								<a class="btn btn-outline-dark" onclick="return removeCheck()"
-									href='delete/${teamRecruit.teamNo}' style="width: 80px;">삭제</a>
+								<button type="button" id="dd" class="btn btn-outline-dark" onclick="removeCheck()"
+									 style="width: 80px;">삭제</button>
 								<a class="btn btn-outline-dark"
 									href='${contextRootPath}/app/recruit_board/update/${teamRecruit.teamNo}'
 									style="width: 80px;">변경</a>
@@ -110,12 +112,12 @@
 							<c:set var="doneLoop" value="true" />
 							<%-- </c:if> --%>
 						</c:forEach>
-						<a onclick="return joinCheck()"
-							href='${contextRootPath}/app/recruit_board/${teamRecruit.teamNo}/${sessionScope.loginUser.no}'
-							id="join" class="btn btn-outline-dark">가입신청</a>
+						<button type="button" id="join1" onclick="return joinCheck()" class="btn btn-outline-dark">가입신청</button>
 					</div>
 				</div>
 			</div>
+        <input id="ddddd" type="hidden" value="${teamRecruit.teamNo}"> 
+        <input id="join" type="hidden" value="${teamRecruit.teamNo}/${sessionScope.loginUser.no}"> 
 		</form>
 	</div>
 	<!-- .container -->
@@ -138,15 +140,55 @@
 				}
 			});
 		}); // ready
+		
+		$('#dd').on('click', function(){   
+			  var ddddd = $('#ddddd').val(); 
+			Swal.fire({
+			      title: '정말 삭제 하시겠습니까??',
+			      type: 'warning',
+			      showCancelButton: true,
+			      confirmButtonColor: '#3085d6',
+			      cancelButtonColor: '#d33',
+			      confirmButtonText: '예! 삭제하겠습니다.',
+			      cancelButtonText: '아니오'
+			    }).then((result) => {
+			      if (result.value) {
+			        Swal.fire(
+			         '삭제하였습니다'
+			        )
+			       location.href='../recruit_board/delete/' + ddddd
+			      }
+			    })
+			  });
+		
+		$('#join1').on('click', function(){  
+	        var join = $('#join').val(); 
+	      Swal.fire({
+	            title: '신청 하시겠습니까??',
+	            type: 'warning',
+	            showCancelButton: true,
+	            confirmButtonColor: '#3085d6',
+	            cancelButtonColor: '#d33',
+	            confirmButtonText: '예! 신청하겠습니다.',
+	            cancelButtonText: '아니오'
+	          }).then((result) => {
+	            if (result.value) {
+	              Swal.fire(
+	               '신청되었습니다.'
+	              )
+	             location.href='../recruit_board/' + join
+	            }
+	          })
+	        });
 
-		function removeCheck() {
+	/* 	function removeCheck() {
 			if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 				document.remove.submit();
 				alert('삭제되었습니다.');
 			} else { //취소
 				return false;
 			}
-		}
+		} */
 		    
 		function removeCheck1() {
 		      if (confirm("모집을 마감하시겠습니까?\n모집 마감 시 게시글이 삭제됩니다.") == true) { //확인
@@ -157,14 +199,6 @@
 		      }
 		    }
 
-		function joinCheck() {
-			if (confirm("가입신청 하시겠습니까?") == true) { //확인
-				document.remove.submit();
-				alert('가입신청되었습니다.');
-			} else { //취소
-				return false;
-			}
-		}
 	</script>
 
 

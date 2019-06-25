@@ -2,11 +2,11 @@
   trimDirectiveWhitespaces="true"%>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  
-  <div class="page-wrapper chiller-theme"> 
+  <div class="page-wrapper chiller-theme toggled"> 
     <a id="show-sidebar" class="btn btn-lg">  
     <i class="fas fa-bars"><img src="${contextRootPath}/images/logo.png" class="header-side-logo"></i>
     </a> 
-    <nav id="sidebar" class="sidebar-wrapper"> 
+    <nav id="sidebar" class="sidebar-wrapper">        
       <div class="sidebar-content"> 
         <div class="sidebar-brand"> 
           <img src="${contextRootPath}/images/logo.png" class="side-logo">
