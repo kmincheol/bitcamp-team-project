@@ -34,8 +34,8 @@
 
 <!-- MDBootstrap Datatables  -->
 <link href="${contextRootPath}/node_modules/mdbootstrap/css/addons/datatables.min.css" rel="stylesheet">
-     
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+       <script src="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+<link href="${contextRootPath}/node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet"> 
 
      
 <style>
@@ -128,15 +128,14 @@ table tbody tr {
                 <c:otherwise>
                   <c:choose>
                     <c:when test="${question.password == true }">
-                      <a href="${contextRootPath}/app/question/${question.questionNo}"
-                        onclick="return aa()">${question.title}</a>
+                      <a onclick="return aa()" style="cursor: pointer;">${question.title}</a>
                       <img src="${contextRootPath}/images/locked.png" style="width: 20px">
                     </c:when>
                     <c:otherwise>
                       <a href="${contextRootPath}/app/question/${question.questionNo}">${question.title}</a>
                     </c:otherwise>
                   </c:choose>
-                </c:otherwise>
+                </c:otherwise>   
               </c:choose></td>
             <td>${question.member.id}</td>
             <td>${question.createdDate}</td>
@@ -177,8 +176,10 @@ table tbody tr {
 
   <script>
 			function aa() {
-				alert('작성자만 확인할 수 있습니다');
-				return false;
+				  Swal.fire({
+			            type: 'error',
+			            title: '작성자와 관리자만<br>확인할 수 있습니다.',
+			          })
 			}
 
 			var lang_kor = {
