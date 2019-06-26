@@ -420,16 +420,16 @@
                         
                           <c:choose>
                             <c:when test="${match.teamTypeSports.teamSportsType eq '축구'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/football_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 11px; margin-right: 2px; " src="${contextRootPath}/images/football_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq '농구'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/basketball_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 11px; margin-right: 2px; " src="${contextRootPath}/images/basketball_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq '야구'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/baseball_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 11px; margin-right: 2px; " src="${contextRootPath}/images/baseball_list_min.png"></div>
                             </c:when>
                             <c:when test="${match.teamTypeSports.teamSportsType eq '탁구'}">
-                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 5px; margin-right: 2px; " src="${contextRootPath}/images/pingpong_list_min.png"></div>
+                              <div class="recommendSportsType"><img style="width:15px; height:15px; margin-top: 11px; margin-right: 2px; " src="${contextRootPath}/images/pingpong_list_min.png"></div>
                             </c:when>
                           </c:choose>
                                <label id="teamNameText">${match.team.teamName}</label>
