@@ -278,11 +278,11 @@ $(document).ready(function() {
     });
   
   $('#uploadCancel').click(function() {
-    $('#images-div').attr('src', "../../images/profile.png");
+    $('#images-div').attr('src', "${contextRootPath}/images/profile.png");
     $('#photo').val('');
     console.log($('#photo').val());
-    $('.file_input input[type=text]').val('');
-    return false;
+    $('#file_route').val('');
+    return false; 
   });
 
   $('#btnJoin').click(function(event) {
@@ -324,7 +324,7 @@ function redirect() {
   }).then(function(result) {
     if (result.value) {
       $('#join_form').submit();
-      location.href = "https://battlematching.online/app/auth/form";
+      location.href = "${contextRootPath}/app/auth/form";
     }
   })
 }

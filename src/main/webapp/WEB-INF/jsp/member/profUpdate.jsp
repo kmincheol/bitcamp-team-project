@@ -88,27 +88,23 @@ margin: 15px;
                 <span class="error_next_box" id="phoneNoMsg" style="display:none" role="alert"></span>
               </div><!-- .join_row-->
               
-              <div class="row_group join_photo">
+              
+              <div class="join_photo">
               <div class="join_row join_photo_title">
                 <h3 class="join_title" id="photo_title">
                   <label for="fileupload" style="cursor: pointer">프로필 사진<span class="terms_choice">(선택)</span></label>
-                  <span class="file_input">
-                    <input type="text" readonly="readonly" title="File Route" id="file_route" style="display:none;"> 
-                    <label for="fileupload"> 
-                       사진올리기  
-                      <input type="file" id="fileupload" name="files"> 
-                    </label>
-                    <label for="uploadCancel">
-                       취소하기
-                      <input type="button" id="uploadCancel">
-                    </label>
-                  </span>
                 </h3>
+                  <span class="ps_box" id="profileBox">
+                    <input type="text" readonly="readonly" title="File Route" id="file_route">
+                  </span>
+                  <button type="button" id="fileupload1" class="btn btn-sm btn-outline-dark emailBtn">사진올리기</button>
+                  <input type="file" id="fileupload" name="files" style="display:none">
+                  <button type="button" id="uploadCancel" class="btn btn-sm btn-outline-dark emailBtn">취소하기</button>
               </div>
               <div class="join_photo_view">
                 <span class="photoView">
                   <label for="fileupload" style="cursor: pointer">
-                    <img id="images-div" src="${member.photo}">
+                    <img id="images-div" src="${contextRootPath}/images/profile.png">
                   </label>
                 </span>
               </div>
@@ -200,7 +196,6 @@ margin: 15px;
 
 <script>
 "use strict"
-
 $('#fileupload').fileupload({
   autoUpload: false,
   disableImageResize: /Android(?!.*Chrome)|Opera/
@@ -225,6 +220,11 @@ $('#fileupload').fileupload({
   }
 });
 
+$('#fileupload').change(function() {
+  var filename = $(this).val().replace(/c:\\fakepath\\/i, '');
+  $('#file_route').val(filename);
+});
+
 /* $('.file_input input[type=file]').change(function() {
   var filename = $(this).val().replace(/c:\\fakepath\\/i, '');
   $('.file_input input[type=text]').val(filename);
@@ -233,6 +233,11 @@ $('#fileupload').fileupload({
 $(document).ready(function() {
   defaultScript();
   
+  
+  $('#fileupload1').click(function (e) {
+    e.preventDefault();
+    $('#fileupload').click();
+    });
 /* 
   $('#gender').change(function() {
     checkGender();
@@ -244,13 +249,13 @@ $(document).ready(function() {
   });
   
   $('#uploadCancel').click(function() {
-    $('#images-div').attr('src', "../../images/profile.png");
+    $('#images-div').attr('src', "${contextRootPath}/images/profile.png");
     $('#photo').val('');
     console.log($('#photo').val());
-    $('.file_input input[type=text]').val('');
-    return false;
+    $('#file_route').val('');
+    return false; 
   });
-
+  
   $('#btnJoin').click(function(event) {
     /* submitClose(); */
     mainSubmit();
