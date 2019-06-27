@@ -376,18 +376,20 @@ button{
 }
 
 #myteamtext{
-  padding-top: 12px;
+  padding-top: 9px;
+  padding-right: 8px;
 }
 
 #selectBox{
   width:120px;
+  padding-left: 9px;
 }
 
 #btnsub2 {
   float:right;
   padding-left: 3px;
   padding-right: 3px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 
