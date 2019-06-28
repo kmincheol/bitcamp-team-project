@@ -29,4 +29,6 @@ hs_err_pid*
 *.iml
 dump.rdb
 config.ini
-
+email.properties
+sns.properties
+sms.properties
