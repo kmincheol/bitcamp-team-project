@@ -1,5 +1,5 @@
 # bitcamp-team-project
-battlematching.online
+# battlematching.online
 
 - 비트캠프 교육과정에서 진행하는 팀 프로젝트
 
